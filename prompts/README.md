@@ -10,6 +10,8 @@
 | [**`role-1-ai-search.md`**](./role-1-ai-search.md) | **คนที่ 1: AI & Search Engineer** | Query Understanding, Embeddings, Hybrid Retrieval (RRF), Grounded RAG, Anti-Hallucination Guardrail, Evidence Linker |
 | [**`role-2-backend-devops.md`**](./role-2-backend-devops.md) | **คนที่ 2: Backend, Data & DevOps** | PostgreSQL 16 + pgvector, Multi-version Dataset (2542/2554/2569), Dialect Mapping, REST APIs, Docker, Data Governance |
 | [**`role-3-frontend-product.md`**](./role-3-frontend-product.md) | **คนที่ 3: Frontend & UX/Product** | Next.js 14 App Router, Tailwind CSS, 5 UI Modules, Mock Data Toggle, 10-Step Demo Flow, Product Ownership & Pitch |
+| [**`TECH_STACK.md`**](./TECH_STACK.md) | **ทุกคนในทีม** | มาตรฐานเทคโนโลยีที่กำหนด (Next.js 14, NestJS, PostgreSQL 16 + pgvector, OpenAI/Gemini) |
+| [**`PERFORMANCE_AND_PERFECTION.md`**](./PERFORMANCE_AND_PERFECTION.md) | **ทุกคนในทีม** | สถาปัตยกรรม Extreme Performance: Sub-10ms Vector Search, In-Memory Caching, SSE Streaming, 3-Tier Fail-Safe |
 
 ---
 
