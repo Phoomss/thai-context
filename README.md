@@ -1,95 +1,143 @@
-# 🇹🇭 THAI CONTEXT
-> **"ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน"**  
-> *Semantic Thai Language Exploration Platform for Contextual Word Discovery, Lexical Evolution & Grounded AI*
+# THAI CONTEXT — Backend Platform
+
+> **Tagline:** “ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน”  
+> **Platform:** Thai Context Intelligence Platform for Hackathon “เปิดคลังคำ พลิกคลังคิด”
 
 ---
 
-## 👥 โครงสร้างทีมและการแบ่งบทบาท (Team Ownership)
+## 🌟 Overview
 
-| สมาชิก | ตำแหน่ง | หน้าที่หลัก | โฟลเดอร์งาน | คู่มือ Prompt |
-| :--- | :--- | :--- | :--- | :--- |
-| **คนที่ 1** | **🧠 AI & Search Engineer** | Query Understanding, Hybrid Search, Grounded RAG, Safe Abstention | `backend/src/modules/ai/` | [`prompts/role-1-ai-search.md`](./prompts/role-1-ai-search.md) |
-| **คนที่ 2** | **⚙️ Backend, Data & DevOps** | PostgreSQL 16 + pgvector, REST APIs, Seeding 3 ยุค + ภาษาถิ่น, Docker | `backend/` & `docker-compose.yml` | [`prompts/role-2-backend-devops.md`](./prompts/role-2-backend-devops.md) |
-| **คนที่ 3** | **🎨 Frontend & UX/Product** | Next.js 14 Web App, 5 UI Modules, Fail-Safe Mock Toggle, 10-Step Story | `frontend/` | [`prompts/role-3-frontend-product.md`](./prompts/role-3-frontend-product.md) |
+**THAI CONTEXT** ไม่ใช่เพียง Dictionary Search ทั่วไปที่ต้องทราบคำศัพท์ก่อนค้นหา แต่เป็นระบบ **Dictionary Intelligence** ที่เปลี่ยนกระบวนทัศน์การค้นหาภาษาไทย:
+- **Traditional:** รู้คำ → ค้นคำ → อ่านความหมาย
+- **THAI CONTEXT:** รู้สิ่งที่อยากสื่อ → อธิบายความหมาย/บริบท → ระบบค้นพบคำ → เปรียบเทียบ → เข้าใจการใช้ → ตรวจสอบหลักฐาน
 
 ---
 
-## 🚀 วิธีการรันโปรเจกต์ (Quickstart Guide)
-
-### 1. เปิดฐานข้อมูล PostgreSQL 16 + pgvector (คนที่ 2 ดูแล)
-```bash
-# รัน Database Container (สคริปต์ SQL 05-database-schema.sql จะถูก Initialized ให้อัตโนมัติ)
-docker compose up -d
-
-# ตรวจสอบสถานะว่า Database รันเรียบร้อย
-docker ps
-```
-
-### 2. รัน Backend Service (NestJS API บนพอร์ต 4000)
-```bash
-cd backend
-
-# ติดตั้ง Dependencies
-npm install
-
-# รัน Backend ในโหมด Development
-npm run start:dev
-
-# ทดสอบเปิดดู Swagger Documentation
-# URL: http://localhost:4000/api/docs
-```
-
-### 3. รัน Frontend Web App (Next.js 14 บนพอร์ต 3000)
-```bash
-cd frontend
-
-# ติดตั้ง Dependencies
-npm install
-
-# รัน Frontend Development Server
-npm run dev
-
-# เข้าชมหน้าเว็บ
-# URL: http://localhost:3000
-```
-
----
-
-## 📁 โครงสร้างโปรเจกต์ (Monorepo Directory Structure)
+## 🏗️ Architecture
 
 ```text
-thai-context/
-├── docker-compose.yml                      # ฐานข้อมูล PostgreSQL 16 + pgvector
-├── .env.example                            # ตัวแปรระบบตัวอย่าง (API Keys, URLs)
-├── README.md                               # เอกสารคู่มือนี้
-│
-├── backend/                                # ⚙️ Backend API Service (NestJS + TypeScript)
-│   ├── src/
-│   │   ├── main.ts                         # จุดเริ่มต้นเซิร์ฟเวอร์, CORS, Swagger
-│   │   ├── app.module.ts
-│   │   ├── database/                       # Database Service & Connection Pool
-│   │   └── modules/
-│   │       ├── ai/                         # 🧠 AI Pipeline (Gemini 3.8 Flash, RAG, Guardrail)
-│   │       ├── search/                     # 🔎 Meaning-first & Keyword Search APIs
-│   │       ├── words/                      # 📚 Word Detail, 3-Era Evolution & Compare APIs
-│   │       ├── dialects/                   # 🌏 Thai Dialect Explorer APIs
-│   │       └── feedback/                   # 📊 Relevance Feedback Metrics API
-│   └── package.json
-│
-├── frontend/                               # 🎨 Frontend Web Application (Next.js 14 App Router)
-│   ├── src/
-│   │   ├── app/                            # Layout, Page & Styles
-│   │   ├── components/                     # UI Modules (Search, Slider, Map, Drawer)
-│   │   ├── lib/                            # API Client พร้อม Fail-Safe Mock Fallback
-│   │   └── mocks/                          # ชุดข้อมูลจำลองสำหรับเดโม 10 ขั้นตอน
-│   └── package.json
-│
-├── docs/                                   # 📑 เอกสารข้อกำหนดระบบ (Module 01 - 10)
-└── prompts/                                # 🧭 Master Prompts พร้อมโค้ดสำหรับทั้ง 3 Role
+Next.js (Web Frontend)
+   │
+   ▼
+NestJS Core Backend (apps/api)
+   │
+   ├──────────────────────────┐
+   ▼                          ▼
+PostgreSQL 16 + pgvector   FastAPI AI/NLP Service (apps/ai-service)
+                              │
+                    ┌─────────┴─────────┐
+                    ▼                   ▼
+                PyThaiNLP          Embedding / Grounded RAG
+```
+
+- **`apps/api` (NestJS Core Backend):**
+  - REST API Routing & Data Validation
+  - Dictionary Engine (2542, 2554, 2569, DIALECT)
+  - Word Evolution & Change Detection
+  - Dialect Explorer & Standard ↔ Dialect Mappings
+  - AI Orchestration
+  - Swagger Documentation (`/api/docs`)
+
+- **`apps/ai-service` (FastAPI AI/NLP):**
+  - PyThaiNLP Thai Text Processing & Tokenization
+  - Query Understanding (Meaning, Excluded Words, Context Intent)
+  - Pluggable Dense Embedding (Local Deterministic, Gemini, OpenAI)
+  - pgvector Semantic Search
+  - Context-Aware Ranking
+  - Grounded RAG & Hallucination Guard
+
+- **`PostgreSQL 16 + pgvector`:**
+  - 15 Relational Tables with Vector Indexing
+
+---
+
+## 🚀 Quick Start with Docker Compose
+
+รันระบบทั้งหมดด้วยคำสั่งเดียว:
+
+```bash
+docker compose up --build
+```
+
+### Services Healthcheck:
+- **Core API Health:** `http://localhost:3001/health`
+- **AI Service Health:** `http://localhost:8000/health`
+- **Swagger Documentation:** `http://localhost:3001/api/docs`
+- **FastAPI Documentation:** `http://localhost:8000/docs`
+
+---
+
+## 💻 Local Development Setup
+
+### 1. Requirements
+- Node.js 20+
+- Python 3.11+
+- Docker & PostgreSQL with pgvector
+
+### 2. Setup PostgreSQL
+```bash
+docker compose up -d postgres
+```
+
+### 3. Setup NestJS Core API (`apps/api`)
+```bash
+cd apps/api
+npm install
+npx prisma db push
+npm run seed
+npm run start:dev
+```
+
+### 4. Setup FastAPI AI Service (`apps/ai-service`)
+```bash
+cd apps/ai-service
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m app.main
 ```
 
 ---
 
-## 🛡️ ระบบ Fail-Safe สำหรับวันเดโมบนเวที (100% Zero-Failure Guarantee)
-- หน้าเว็บมีปุ่มสลับ **Mock Data / Live API** ที่แถบ Header ด้านขวาบน
-- หากสัญญาณอินเทอร์เน็ตที่สถานที่จัดงานขัดข้อง หรือ Backend ไม่ตอบสนอง หน้าเว็บจะ **Fallback ไปใช้ Mock Data ทันทีโดยอัตโนมัติ** ทำให้การนำเสนอบนเวทีไม่สะดุดอย่างแน่นอน!
+## 🧪 Testing
+
+### Run NestJS API Tests:
+```bash
+cd apps/api
+npm test
+```
+
+### Run FastAPI AI Service Tests:
+```bash
+cd apps/ai-service
+pytest
+```
+
+---
+
+## 📖 API Documentation & Endpoints
+
+| Method | Path | Description |
+| :--- | :--- | :--- |
+| `GET` | `/health` | Core API Health Check |
+| `GET` | `/api/v1/search?q=คำค้น` | Keyword Search (partial, exact, definition, edition) |
+| `POST` | `/api/v1/search/meaning` | Meaning-first Search (“ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน”) |
+| `POST` | `/api/v1/search/context` | Context-aware Search with excluded words |
+| `GET` | `/api/v1/dictionary/words/:word` | Word Detail (Official Data vs AI Guidance) |
+| `GET` | `/api/v1/dictionary/words/:word/evolution`| Evolution Timeline (2542, 2554, 2569) |
+| `GET` | `/api/v1/dictionary/compare/:word` | Detect Edition Changes (ADDED, CHANGED, UNCHANGED) |
+| `POST` | `/api/v1/compare` | Compare words with grounded evidence |
+| `GET` | `/api/v1/dialect` | Regional Dialect Explorer with filters |
+| `GET` | `/api/v1/dialect/mapping/:word` | Standard ↔ Dialect Mappings (OFFICIAL vs AI_INFERRED) |
+| `POST` | `/api/v1/ai/chat` | Grounded RAG Chat with Hallucination Guard |
+| `POST` | `/api/v1/feedback` | Submit user interaction & search feedback |
+
+---
+
+## 📚 Technical Documentation
+
+- [Architecture Overview](docs/architecture.md)
+- [Database Design & Schema](docs/database.md)
+- [API Reference](docs/api.md)
+- [AI & NLP Pipeline](docs/ai-pipeline.md)
+- [Data Ingestion Pipeline](docs/data-ingestion.md)

@@ -1,13 +1,45 @@
 # Dependencies
 node_modules/
+**/node_modules/
 .pnp
 .pnp.js
+.pnpm-store/
 
-# Build Outputs
+# Python Virtual Environments
+.venv/
+**/venv/
+**/env/
+**/ENV/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python Caches and Bytecode
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing & Coverage
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+.nyc_output/
+
+# Build Outputs & Caches
 dist/
+**/dist/
 build/
+**/build/
 .next/
+**/.next/
 out/
+**/out/
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+.turbo/
 
 # Environment Variables
 .env
@@ -15,6 +47,19 @@ out/
 .env.development.local
 .env.test.local
 .env.production.local
+*.env
+!*.env.example
+
+# Database & Persistent Volumes
+pgdata/
+**/pgdata/
+*.sqlite
+*.sqlite3
+
+# Large Raw Datasets & Scraped Dumps
+data/raw/
+**/data/raw/
+*.jsonl
 
 # Logs
 npm-debug.log*
@@ -22,6 +67,12 @@ yarn-debug.log*
 yarn-error.log*
 *.log
 
-# OS Files
+# Editor & OS Files
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 *.pem

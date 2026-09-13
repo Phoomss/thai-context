@@ -1,0 +1,2688 @@
+{
+  "sources": [
+    {
+      "id": "735210f0-f6db-5389-aca7-6f2e28d348be",
+      "code": "ROYAL_SOCIETY",
+      "name": "สำนักงานราชบัณฑิตยสภา",
+      "publisher": "สำนักงานราชบัณฑิตยสภา",
+      "description": "พจนานุกรมฉบับมาตรฐานแห่งชาติ จัดทำโดยสำนักงานราชบัณฑิตยสภา"
+    },
+    {
+      "id": "d261b51f-2c83-593b-8bc0-877b303eaba8",
+      "code": "DIALECT_INSTITUTE",
+      "name": "สถาบันวิจัยภาษาและวัฒนธรรมเอเชีย",
+      "publisher": "ศูนย์ศึกษาและรวบรวมภาษาถิ่น",
+      "description": "คลังข้อมูลพจนานุกรมและวรรณกรรมภาษาถิ่น ๔ ภาค"
+    },
+    {
+      "id": "15329524-90c6-5688-87ad-5328de425272",
+      "code": "DEMO_WIKTIONARY",
+      "name": "คลังคำสาธิต Wiktionary/Kaikki",
+      "publisher": "THAI CONTEXT Open Research",
+      "description": "ข้อมูลสำหรับทดสอบระบบ THAI CONTEXT Hackathon"
+    }
+  ],
+  "editions": [
+    {
+      "id": "37f7284d-5737-5565-8fc6-e4ddcdcc1c93",
+      "sourceId": "735210f0-f6db-5389-aca7-6f2e28d348be",
+      "editionCode": "ROYAL_2542",
+      "editionYear": "2542",
+      "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒",
+      "publicationDate": "1999-12-01",
+      "isActive": true
+    },
+    {
+      "id": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "sourceId": "735210f0-f6db-5389-aca7-6f2e28d348be",
+      "editionCode": "ROYAL_2554",
+      "editionYear": "2554",
+      "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+      "publicationDate": "2012-04-05",
+      "isActive": true
+    },
+    {
+      "id": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "sourceId": "735210f0-f6db-5389-aca7-6f2e28d348be",
+      "editionCode": "ROYAL_2569",
+      "editionYear": "2569",
+      "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๖๙ (ฉบับดิจิทัล)",
+      "publicationDate": "2026-01-01",
+      "isActive": true
+    },
+    {
+      "id": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "sourceId": "d261b51f-2c83-593b-8bc0-877b303eaba8",
+      "editionCode": "DIALECT_THAI",
+      "editionYear": "2565",
+      "title": "คลังรวบรวมพจนานุกรมภาษาถิ่นไทย ๔ ภาค",
+      "publicationDate": "2022-06-15",
+      "isActive": true
+    }
+  ],
+  "partsOfSpeech": [
+    {
+      "id": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "code": "N",
+      "abbrThai": "น.",
+      "nameThai": "คำนาม",
+      "nameEnglish": "Noun"
+    },
+    {
+      "id": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "code": "V",
+      "abbrThai": "ก.",
+      "nameThai": "คำกริยา",
+      "nameEnglish": "Verb"
+    },
+    {
+      "id": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "code": "ADJ",
+      "abbrThai": "ว.",
+      "nameThai": "คำวิเศษณ์",
+      "nameEnglish": "Adjective"
+    },
+    {
+      "id": "d24891a4-0b6c-5c36-a28d-6c094c56a529",
+      "code": "ADV",
+      "abbrThai": "ก.ว.",
+      "nameThai": "คำกริยาวิเศษณ์",
+      "nameEnglish": "Adverb"
+    },
+    {
+      "id": "1a0d55fe-c5d4-5f71-965f-445fed7947fd",
+      "code": "PRON",
+      "abbrThai": "ส.",
+      "nameThai": "คำสรรพนาม",
+      "nameEnglish": "Pronoun"
+    },
+    {
+      "id": "cc07fa4f-3bd5-5809-8148-78c432b9d872",
+      "code": "PREP",
+      "abbrThai": "บ.",
+      "nameThai": "คำบุพบท",
+      "nameEnglish": "Preposition"
+    },
+    {
+      "id": "90c17f23-c306-53ec-9357-8bc0b55bcf25",
+      "code": "CONJ",
+      "abbrThai": "สั.",
+      "nameThai": "คำสันธาน",
+      "nameEnglish": "Conjunction"
+    }
+  ],
+  "dialectRegions": [
+    {
+      "id": "66f8808a-ba98-5cdf-8518-8f790a52de08",
+      "code": "NORTH",
+      "nameThai": "ภาษาถิ่นเหนือ",
+      "description": "กลุ่มภาษาล้านนา ภาคเหนือ"
+    },
+    {
+      "id": "0a787a1c-680d-56e6-a30d-a989b19cd6a9",
+      "code": "NORTHEAST",
+      "nameThai": "ภาษาถิ่นอีสาน",
+      "description": "กลุ่มภาษาไทย-ลาว ภาคตะวันออกเฉียงเหนือ"
+    },
+    {
+      "id": "29aceab8-d865-5a0a-890c-912f58363830",
+      "code": "SOUTH",
+      "nameThai": "ภาษาถิ่นใต้",
+      "description": "กลุ่มภาษาถิ่น ๑๔ จังหวัดภาคใต้"
+    },
+    {
+      "id": "7e526edc-9e0c-58b9-811f-16ca1f2518f0",
+      "code": "CENTRAL",
+      "nameThai": "ภาษาถิ่นกลาง",
+      "description": "สำนวนและภาษาถิ่นลุ่มน้ำภาคกลาง"
+    }
+  ],
+  "words": [
+    {
+      "id": "b81dcf62-0b2b-5309-b5c5-f7e3c38a0d11",
+      "headword": "ประสิทธิภาพ",
+      "headwordClean": "ประสิทธิภาพ",
+      "charLength": 11
+    },
+    {
+      "id": "60a31591-212c-5aae-9cd4-2423228b551b",
+      "headword": "ประสิทธิผล",
+      "headwordClean": "ประสิทธิผล",
+      "charLength": 10
+    },
+    {
+      "id": "24ffae52-466d-56a3-851e-33c405d5a0de",
+      "headword": "ศักยภาพ",
+      "headwordClean": "ศักยภาพ",
+      "charLength": 7
+    },
+    {
+      "id": "e10615a6-202b-55c6-9b67-0e533ab4bcaa",
+      "headword": "อนุมัติ",
+      "headwordClean": "อนุมัติ",
+      "charLength": 7
+    },
+    {
+      "id": "da947bd0-1fd8-565d-8570-90dc8a2a1016",
+      "headword": "เห็นชอบ",
+      "headwordClean": "เห็นชอบ",
+      "charLength": 7
+    },
+    {
+      "id": "2a4fe11d-90bb-5bd7-b399-7dc608c3ac1a",
+      "headword": "อนุญาต",
+      "headwordClean": "อนุญาต",
+      "charLength": 6
+    },
+    {
+      "id": "d2864f19-6968-5b25-b37e-07601af87ce2",
+      "headword": "รวดเร็ว",
+      "headwordClean": "รวดเร็ว",
+      "charLength": 7
+    },
+    {
+      "id": "6a1dafe3-8268-5602-97f2-d0bec49150d4",
+      "headword": "ว่องไว",
+      "headwordClean": "ว่องไว",
+      "charLength": 6
+    },
+    {
+      "id": "1c696ff3-732b-50ba-b609-3b972ebac9f7",
+      "headword": "ทันใจ",
+      "headwordClean": "ทันใจ",
+      "charLength": 5
+    },
+    {
+      "id": "00d01e03-477c-5438-9bc6-86f5a88a2408",
+      "headword": "เชี่ยวชาญ",
+      "headwordClean": "เชี่ยวชาญ",
+      "charLength": 9
+    },
+    {
+      "id": "d7a4054e-d2f7-5d81-bb58-b9f7b1d793cb",
+      "headword": "ชำนาญ",
+      "headwordClean": "ชำนาญ",
+      "charLength": 5
+    },
+    {
+      "id": "eae135d3-7862-5db1-84be-8a0cb8d91cae",
+      "headword": "สันทัด",
+      "headwordClean": "สันทัด",
+      "charLength": 6
+    },
+    {
+      "id": "d43906a3-f962-50ac-ad08-91e0f1c77336",
+      "headword": "เก่ง",
+      "headwordClean": "เก่ง",
+      "charLength": 4
+    },
+    {
+      "id": "fa3a52e4-248f-536f-aca3-094e0321951c",
+      "headword": "อร่อย",
+      "headwordClean": "อร่อย",
+      "charLength": 5
+    },
+    {
+      "id": "dd279866-8c2a-5444-8631-156b86145541",
+      "headword": "กิน",
+      "headwordClean": "กิน",
+      "charLength": 3
+    },
+    {
+      "id": "ec119703-3294-5c83-bad3-feecdbd433d6",
+      "headword": "รับประทาน",
+      "headwordClean": "รับประทาน",
+      "charLength": 9
+    },
+    {
+      "id": "067d748d-7c5a-5066-9c1f-950bd017efdd",
+      "headword": "บริโภค",
+      "headwordClean": "บริโภค",
+      "charLength": 6
+    },
+    {
+      "id": "5d7e89c0-cb0b-5033-b60b-5f9419cc4f7a",
+      "headword": "พัฒนา",
+      "headwordClean": "พัฒนา",
+      "charLength": 5
+    },
+    {
+      "id": "eaa759df-30e1-5584-9498-54115b7d6689",
+      "headword": "ปัญญาประดิษฐ์",
+      "headwordClean": "ปัญญาประดิษฐ์",
+      "charLength": 13
+    },
+    {
+      "id": "850fca35-6da5-5275-bd3d-007acaaa783a",
+      "headword": "นวัตกรรม",
+      "headwordClean": "นวัตกรรม",
+      "charLength": 8
+    },
+    {
+      "id": "4efdf21a-947a-501f-9c47-88521cd886f4",
+      "headword": "บูรณาการ",
+      "headwordClean": "บูรณาการ",
+      "charLength": 8
+    },
+    {
+      "id": "588e1350-29b2-50c6-9a19-9b941e615e77",
+      "headword": "สละสลวย",
+      "headwordClean": "สละสลวย",
+      "charLength": 7
+    },
+    {
+      "id": "46b1f1c5-2546-50a3-9a69-f5538f55bcbd",
+      "headword": "สัมฤทธิผล",
+      "headwordClean": "สัมฤทธิผล",
+      "charLength": 9
+    },
+    {
+      "id": "e105b149-7584-5f54-9eb1-d0e4119b35f4",
+      "headword": "ประณีต",
+      "headwordClean": "ประณีต",
+      "charLength": 6
+    },
+    {
+      "id": "57944c96-a8bf-5c6b-b4c3-ea8b84e78d61",
+      "headword": "ละเอียดลออ",
+      "headwordClean": "ละเอียดลออ",
+      "charLength": 10
+    },
+    {
+      "id": "ea9d447e-c299-5dbd-9e81-702487b3174c",
+      "headword": "อัตลักษณ์",
+      "headwordClean": "อัตลักษณ์",
+      "charLength": 9
+    },
+    {
+      "id": "9c31e5fd-27b7-55ad-85d0-38308abeb3cd",
+      "headword": "ภูมิปัญญา",
+      "headwordClean": "ภูมิปัญญา",
+      "charLength": 9
+    },
+    {
+      "id": "e87ce612-8c94-5ac6-a563-f837187155b4",
+      "headword": "วิจารณญาณ",
+      "headwordClean": "วิจารณญาณ",
+      "charLength": 9
+    },
+    {
+      "id": "d64ab580-cc2a-5ea4-90e4-a043e79f1756",
+      "headword": "สำเร็จ",
+      "headwordClean": "สำเร็จ",
+      "charLength": 6
+    },
+    {
+      "id": "1e64d052-3ea4-58e5-bfea-3146cc33a5b3",
+      "headword": "ล้มเหลว",
+      "headwordClean": "ล้มเหลว",
+      "charLength": 7
+    },
+    {
+      "id": "8d349c32-9582-595e-b412-14aa266774a8",
+      "headword": "บรรลุ",
+      "headwordClean": "บรรลุ",
+      "charLength": 5
+    },
+    {
+      "id": "6df2d145-4f31-5ba6-8238-89c755ea9ffc",
+      "headword": "เจรจา",
+      "headwordClean": "เจรจา",
+      "charLength": 5
+    },
+    {
+      "id": "80742582-fbb9-5db2-8c7d-a783601c9126",
+      "headword": "สนทนา",
+      "headwordClean": "สนทนา",
+      "charLength": 5
+    },
+    {
+      "id": "b0701a15-8ae5-55f3-9ce8-47c6b9df3ffb",
+      "headword": "มิตรภาพ",
+      "headwordClean": "มิตรภาพ",
+      "charLength": 7
+    },
+    {
+      "id": "3f7a6561-460c-52bc-a994-57a306e5de92",
+      "headword": "สัมพันธภาพ",
+      "headwordClean": "สัมพันธภาพ",
+      "charLength": 10
+    }
+  ],
+  "wordEntries": [
+    {
+      "id": "d2d76ebf-113c-5556-af51-4f1af99b0b3d",
+      "wordId": "b81dcf62-0b2b-5309-b5c5-f7e3c38a0d11",
+      "editionId": "37f7284d-5737-5565-8fc6-e4ddcdcc1c93",
+      "pronunciation": "ปฺระ-สิด-ทิ-พาบ",
+      "royalSequence": 1,
+      "pageNumber": 712,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "2639cf61-f349-5333-a9e9-53c3e1c3b81b",
+      "wordId": "b81dcf62-0b2b-5309-b5c5-f7e3c38a0d11",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ปฺระ-สิด-ทิ-พาบ",
+      "royalSequence": 1,
+      "pageNumber": 734,
+      "metadata": {
+        "domain": "การบริหาร"
+      }
+    },
+    {
+      "id": "8971f6d5-e191-554b-a532-69aada373dd8",
+      "wordId": "b81dcf62-0b2b-5309-b5c5-f7e3c38a0d11",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ปฺระ-สิด-ทิ-พาบ",
+      "royalSequence": 1,
+      "pageNumber": 820,
+      "metadata": {
+        "domain": "การบริหารและเทคโนโลยี"
+      }
+    },
+    {
+      "id": "180a2846-6ae3-529b-9a82-6c27a8a66351",
+      "wordId": "60a31591-212c-5aae-9cd4-2423228b551b",
+      "editionId": "37f7284d-5737-5565-8fc6-e4ddcdcc1c93",
+      "pronunciation": "ปฺระ-สิด-ทิ-ผน",
+      "royalSequence": 2,
+      "pageNumber": 712,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "3793e076-f57f-5cb5-bf22-a8ebc9be646a",
+      "wordId": "60a31591-212c-5aae-9cd4-2423228b551b",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ปฺระ-สิด-ทิ-ผน",
+      "royalSequence": 2,
+      "pageNumber": 734,
+      "metadata": {
+        "domain": "การบริหาร"
+      }
+    },
+    {
+      "id": "00c74409-568a-5174-a927-fec27b16c77d",
+      "wordId": "60a31591-212c-5aae-9cd4-2423228b551b",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ปฺระ-สิด-ทิ-ผน",
+      "royalSequence": 2,
+      "pageNumber": 820,
+      "metadata": {
+        "domain": "การบริหาร"
+      }
+    },
+    {
+      "id": "b5ed0d78-3249-56e1-9656-74b1510a8fd2",
+      "wordId": "24ffae52-466d-56a3-851e-33c405d5a0de",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สัก-กะ-ยะ-พาบ",
+      "royalSequence": 3,
+      "pageNumber": 1150,
+      "metadata": {
+        "domain": "จิตวิทยาและการพัฒนา"
+      }
+    },
+    {
+      "id": "67eeb04c-7bbd-5385-92e6-cfd7b031e576",
+      "wordId": "24ffae52-466d-56a3-851e-33c405d5a0de",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สัก-กะ-ยะ-พาบ",
+      "royalSequence": 3,
+      "pageNumber": 1280,
+      "metadata": {
+        "domain": "การพัฒนาทรัพยากรมนุษย์"
+      }
+    },
+    {
+      "id": "3c303044-ba58-5ec5-b20b-4cc9e2e6754c",
+      "wordId": "e10615a6-202b-55c6-9b67-0e533ab4bcaa",
+      "editionId": "37f7284d-5737-5565-8fc6-e4ddcdcc1c93",
+      "pronunciation": "อะ-นุ-มัด",
+      "royalSequence": 4,
+      "pageNumber": 1345,
+      "metadata": {
+        "domain": "ราชการ"
+      }
+    },
+    {
+      "id": "db970b31-c527-5f75-bd51-fcf2c6181ab9",
+      "wordId": "e10615a6-202b-55c6-9b67-0e533ab4bcaa",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "อะ-นุ-มัด",
+      "royalSequence": 4,
+      "pageNumber": 1390,
+      "metadata": {
+        "domain": "กฎหมายและราชการ"
+      }
+    },
+    {
+      "id": "896a99e9-ffea-5724-87e2-28f974dbd2ba",
+      "wordId": "e10615a6-202b-55c6-9b67-0e533ab4bcaa",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "อะ-นุ-มัด",
+      "royalSequence": 4,
+      "pageNumber": 1510,
+      "metadata": {
+        "domain": "นิติศาสตร์"
+      }
+    },
+    {
+      "id": "aa292e98-c380-5f48-bd3e-aa029cf76708",
+      "wordId": "da947bd0-1fd8-565d-8570-90dc8a2a1016",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "เห็น-ชอบ",
+      "royalSequence": 5,
+      "pageNumber": 1320,
+      "metadata": {
+        "domain": "การประชุมและบริหาร"
+      }
+    },
+    {
+      "id": "9521cc40-921e-5df3-b758-746bc99eaf9f",
+      "wordId": "da947bd0-1fd8-565d-8570-90dc8a2a1016",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "เห็น-ชอบ",
+      "royalSequence": 5,
+      "pageNumber": 1460,
+      "metadata": {
+        "domain": "การบริหารรัฐกิจ"
+      }
+    },
+    {
+      "id": "8ee61878-6ff9-5d96-8e29-3c9c0b7ba1d7",
+      "wordId": "2a4fe11d-90bb-5bd7-b399-7dc608c3ac1a",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "อะ-นุ-ยาด",
+      "royalSequence": 6,
+      "pageNumber": 1392,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "398e6acf-dfd0-58e3-8715-9996c35091d2",
+      "wordId": "2a4fe11d-90bb-5bd7-b399-7dc608c3ac1a",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "อะ-นุ-ยาด",
+      "royalSequence": 6,
+      "pageNumber": 1512,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "adef8737-9824-5b6d-b950-f200a8a3c1be",
+      "wordId": "d2864f19-6968-5b25-b37e-07601af87ce2",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "รวด-เหฺร็ว",
+      "royalSequence": 7,
+      "pageNumber": 956,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "891feb62-7de2-5c2f-bf90-18ca889ec4b2",
+      "wordId": "d2864f19-6968-5b25-b37e-07601af87ce2",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "รวด-เหฺร็ว",
+      "royalSequence": 7,
+      "pageNumber": 1080,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "0c8ddaf3-fe76-503b-b7a9-34b451d4ba58",
+      "wordId": "6a1dafe3-8268-5602-97f2-d0bec49150d4",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ว่อง-ไว",
+      "royalSequence": 8,
+      "pageNumber": 1102,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "26b296bd-a62a-5310-a0c2-e8ea039d29d6",
+      "wordId": "6a1dafe3-8268-5602-97f2-d0bec49150d4",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ว่อง-ไว",
+      "royalSequence": 8,
+      "pageNumber": 1215,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "934df8b5-7a4b-5952-b309-165b00fb2982",
+      "wordId": "1c696ff3-732b-50ba-b609-3b972ebac9f7",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ทัน-ใจ",
+      "royalSequence": 9,
+      "pageNumber": 540,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "0911b034-1178-5279-936b-c82d5d7a546a",
+      "wordId": "1c696ff3-732b-50ba-b609-3b972ebac9f7",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ทัน-ใจ",
+      "royalSequence": 9,
+      "pageNumber": 605,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "f2801eef-5e43-5671-896f-508ef46476c4",
+      "wordId": "00d01e03-477c-5438-9bc6-86f5a88a2408",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "เชี่ยว-ชาน",
+      "royalSequence": 10,
+      "pageNumber": 389,
+      "metadata": {
+        "domain": "วิชาการและการทำงาน"
+      }
+    },
+    {
+      "id": "a9c43347-2a8e-5aa4-94b1-f7cc4d7ae1ab",
+      "wordId": "00d01e03-477c-5438-9bc6-86f5a88a2408",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "เชี่ยว-ชาน",
+      "royalSequence": 10,
+      "pageNumber": 445,
+      "metadata": {
+        "domain": "วิชาชีพและการทำงาน"
+      }
+    },
+    {
+      "id": "a620378d-3bc8-52d6-8e48-b562318424af",
+      "wordId": "d7a4054e-d2f7-5d81-bb58-b9f7b1d793cb",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ชำ-นาน",
+      "royalSequence": 11,
+      "pageNumber": 372,
+      "metadata": {
+        "domain": "ทักษะและการปฏิบัติ"
+      }
+    },
+    {
+      "id": "40435d93-d072-56f1-a545-0b78e05631d9",
+      "wordId": "d7a4054e-d2f7-5d81-bb58-b9f7b1d793cb",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ชำ-นาน",
+      "royalSequence": 11,
+      "pageNumber": 420,
+      "metadata": {
+        "domain": "ทักษะและการปฏิบัติ"
+      }
+    },
+    {
+      "id": "842e2a9e-4060-5158-ac0d-792faec77a6a",
+      "wordId": "eae135d3-7862-5db1-84be-8a0cb8d91cae",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สัน-ทัด",
+      "royalSequence": 12,
+      "pageNumber": 1210,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "92c1162f-700b-59e3-b615-ec788c9240ab",
+      "wordId": "eae135d3-7862-5db1-84be-8a0cb8d91cae",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สัน-ทัด",
+      "royalSequence": 12,
+      "pageNumber": 1335,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "2b990e73-aeea-542b-bb10-329d4526d4fb",
+      "wordId": "d43906a3-f962-50ac-ad08-91e0f1c77336",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "เก่ง",
+      "royalSequence": 13,
+      "pageNumber": 142,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "1eba8b75-bf72-5f89-be1d-813befe0d0fb",
+      "wordId": "d43906a3-f962-50ac-ad08-91e0f1c77336",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "เก่ง",
+      "royalSequence": 13,
+      "pageNumber": 165,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "6fa61963-6997-59a8-8885-d42106103628",
+      "wordId": "fa3a52e4-248f-536f-aca3-094e0321951c",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "อะ-หฺร่อย",
+      "royalSequence": 14,
+      "pageNumber": 1420,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "f08d0db8-8cca-5390-bf07-802d3454d78c",
+      "wordId": "fa3a52e4-248f-536f-aca3-094e0321951c",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "อะ-หฺร่อย",
+      "royalSequence": 14,
+      "pageNumber": 1540,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "4674c37d-a718-5c7d-9b4d-f70f53ec1d43",
+      "wordId": "dd279866-8c2a-5444-8631-156b86145541",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "กิน",
+      "royalSequence": 15,
+      "pageNumber": 145,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "4a21cf52-78d7-50af-afda-4ad020675dc4",
+      "wordId": "dd279866-8c2a-5444-8631-156b86145541",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "กิน",
+      "royalSequence": 15,
+      "pageNumber": 170,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "0bb69d86-633a-5a96-ae1f-e3a01a16bd70",
+      "wordId": "ec119703-3294-5c83-bad3-feecdbd433d6",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "รับ-ปฺระ-ทาน",
+      "royalSequence": 16,
+      "pageNumber": 948,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "1e7e1af0-7dab-5af7-84c1-5ede5bf6a252",
+      "wordId": "ec119703-3294-5c83-bad3-feecdbd433d6",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "รับ-ปฺระ-ทาน",
+      "royalSequence": 16,
+      "pageNumber": 1070,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "c524ae54-c9fd-5626-854a-77045701225e",
+      "wordId": "067d748d-7c5a-5066-9c1f-950bd017efdd",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "บอ-ริ-โพก",
+      "royalSequence": 17,
+      "pageNumber": 630,
+      "metadata": {
+        "domain": "เศรษฐศาสตร์และวิชาการ"
+      }
+    },
+    {
+      "id": "5dea88f3-2e3c-5192-80aa-c2b412e0ce59",
+      "wordId": "067d748d-7c5a-5066-9c1f-950bd017efdd",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "บอ-ริ-โพก",
+      "royalSequence": 17,
+      "pageNumber": 710,
+      "metadata": {
+        "domain": "เศรษฐศาสตร์และสังคม"
+      }
+    },
+    {
+      "id": "3e25296d-d82e-5561-aced-d9d1ef684a2f",
+      "wordId": "5d7e89c0-cb0b-5033-b60b-5f9419cc4f7a",
+      "editionId": "37f7284d-5737-5565-8fc6-e4ddcdcc1c93",
+      "pronunciation": "พัด-ทะ-นา",
+      "royalSequence": 18,
+      "pageNumber": 770,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "353d465f-38c7-52a9-ba5a-d5e30a98f65b",
+      "wordId": "5d7e89c0-cb0b-5033-b60b-5f9419cc4f7a",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "พัด-ทะ-นา",
+      "royalSequence": 18,
+      "pageNumber": 810,
+      "metadata": {
+        "domain": "การพัฒนา"
+      }
+    },
+    {
+      "id": "2a3e5ab4-c6ef-58d4-bb83-3680eb9e7483",
+      "wordId": "5d7e89c0-cb0b-5033-b60b-5f9419cc4f7a",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "พัด-ทะ-นา",
+      "royalSequence": 18,
+      "pageNumber": 915,
+      "metadata": {
+        "domain": "การพัฒนาและความยั่งยืน"
+      }
+    },
+    {
+      "id": "86e62528-fd99-5c31-87d2-85abbb45e462",
+      "wordId": "eaa759df-30e1-5584-9498-54115b7d6689",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ปัน-ยา-ปฺระ-ดิด",
+      "royalSequence": 19,
+      "pageNumber": 725,
+      "metadata": {
+        "domain": "คอมพิวเตอร์และเทคโนโลยี"
+      }
+    },
+    {
+      "id": "760c2872-300a-5804-aa74-87b38a6fb129",
+      "wordId": "eaa759df-30e1-5584-9498-54115b7d6689",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ปัน-ยา-ปฺระ-ดิด",
+      "royalSequence": 19,
+      "pageNumber": 830,
+      "metadata": {
+        "domain": "วิทยาศาสตร์และเทคโนโลยีดิจิทัล"
+      }
+    },
+    {
+      "id": "9506f2a4-86d1-544f-8c7f-78eb08e1667c",
+      "wordId": "850fca35-6da5-5275-bd3d-007acaaa783a",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "นะ-วัด-ตะ-กำ",
+      "royalSequence": 20,
+      "pageNumber": 588,
+      "metadata": {
+        "domain": "เศรษฐศาสตร์และเทคโนโลยี"
+      }
+    },
+    {
+      "id": "2b297a8b-c238-5c96-b04a-b288e72b11c5",
+      "wordId": "850fca35-6da5-5275-bd3d-007acaaa783a",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "นะ-วัด-ตะ-กำ",
+      "royalSequence": 20,
+      "pageNumber": 660,
+      "metadata": {
+        "domain": "นวัตกรรมและเทคโนโลยี"
+      }
+    },
+    {
+      "id": "bca52ffa-9fe7-5739-b090-004d0d64b416",
+      "wordId": "4efdf21a-947a-501f-9c47-88521cd886f4",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "บู-ระ-นา-กาน",
+      "royalSequence": 21,
+      "pageNumber": 662,
+      "metadata": {
+        "domain": "การบริหารและการศึกษา"
+      }
+    },
+    {
+      "id": "2bedc73d-8540-5dd0-a2af-cbd60814d838",
+      "wordId": "4efdf21a-947a-501f-9c47-88521cd886f4",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "บู-ระ-นา-กาน",
+      "royalSequence": 21,
+      "pageNumber": 745,
+      "metadata": {
+        "domain": "การบริหารยุทธศาสตร์"
+      }
+    },
+    {
+      "id": "500ca526-456d-5591-aabb-46692709c8fe",
+      "wordId": "588e1350-29b2-50c6-9a19-9b941e615e77",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สะ-หละ-สะ-หฺลวย",
+      "royalSequence": 22,
+      "pageNumber": 1188,
+      "metadata": {
+        "domain": "ภาษาและวรรณกรรม"
+      }
+    },
+    {
+      "id": "3ff29de8-d964-5611-9223-c3491df03079",
+      "wordId": "588e1350-29b2-50c6-9a19-9b941e615e77",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สะ-หละ-สะ-หฺลวย",
+      "royalSequence": 22,
+      "pageNumber": 1310,
+      "metadata": {
+        "domain": "ภาษาและวรรณกรรม"
+      }
+    },
+    {
+      "id": "99642cb0-105e-552b-a24d-f74de18a1710",
+      "wordId": "46b1f1c5-2546-50a3-9a69-f5538f55bcbd",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สำ-ริด-ทิ-ผน",
+      "royalSequence": 23,
+      "pageNumber": 1215,
+      "metadata": {
+        "domain": "การบริหาร"
+      }
+    },
+    {
+      "id": "2c8282dd-8e48-5d39-9e16-c1104cd82745",
+      "wordId": "46b1f1c5-2546-50a3-9a69-f5538f55bcbd",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สำ-ริด-ทิ-ผน",
+      "royalSequence": 23,
+      "pageNumber": 1340,
+      "metadata": {
+        "domain": "การบริหารยุทธศาสตร์"
+      }
+    },
+    {
+      "id": "be17c298-1061-5f55-8db3-d3b1048f7e8a",
+      "wordId": "e105b149-7584-5f54-9eb1-d0e4119b35f4",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ปฺระ-นีด",
+      "royalSequence": 24,
+      "pageNumber": 718,
+      "metadata": {
+        "domain": "ศิลปะและช่างฝีมือ"
+      }
+    },
+    {
+      "id": "4b88af9c-6a74-5f8e-9345-608ff96a16c0",
+      "wordId": "e105b149-7584-5f54-9eb1-d0e4119b35f4",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ปฺระ-นีด",
+      "royalSequence": 24,
+      "pageNumber": 825,
+      "metadata": {
+        "domain": "ศิลปวัฒนธรรมและงานช่าง"
+      }
+    },
+    {
+      "id": "0be10606-4f8f-5749-ab3f-2d4170a8450b",
+      "wordId": "57944c96-a8bf-5c6b-b4c3-ea8b84e78d61",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ละ-เอียด-ละ-ออ",
+      "royalSequence": 25,
+      "pageNumber": 1030,
+      "metadata": {
+        "domain": "การทำงานและพฤติกรรม"
+      }
+    },
+    {
+      "id": "029129da-c9ec-5f0e-9619-877a57c55481",
+      "wordId": "57944c96-a8bf-5c6b-b4c3-ea8b84e78d61",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ละ-เอียด-ละ-ออ",
+      "royalSequence": 25,
+      "pageNumber": 1145,
+      "metadata": {
+        "domain": "การทำงานและมาตรฐาน"
+      }
+    },
+    {
+      "id": "39750e97-1a2b-58f8-9a84-6b9d2b599c58",
+      "wordId": "ea9d447e-c299-5dbd-9e81-702487b3174c",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "อัด-ตะ-ลัก",
+      "royalSequence": 26,
+      "pageNumber": 1425,
+      "metadata": {
+        "domain": "สังคมวิทยาและวัฒนธรรม"
+      }
+    },
+    {
+      "id": "c62d3855-b91d-5ebd-a2b4-fcdaf0493ed9",
+      "wordId": "ea9d447e-c299-5dbd-9e81-702487b3174c",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "อัด-ตะ-ลัก",
+      "royalSequence": 26,
+      "pageNumber": 1550,
+      "metadata": {
+        "domain": "วัฒนธรรมและสังคมศาสตร์"
+      }
+    },
+    {
+      "id": "2f4660a9-69bf-5fa1-ab13-ff93ac572716",
+      "wordId": "9c31e5fd-27b7-55ad-85d0-38308abeb3cd",
+      "editionId": "37f7284d-5737-5565-8fc6-e4ddcdcc1c93",
+      "pronunciation": "พูม-ปัน-ยา",
+      "royalSequence": 27,
+      "pageNumber": 780,
+      "metadata": {
+        "domain": "วัฒนธรรม"
+      }
+    },
+    {
+      "id": "8f0c210a-ffaa-52b1-8224-023fb8b52bf5",
+      "wordId": "9c31e5fd-27b7-55ad-85d0-38308abeb3cd",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "พูม-ปัน-ยา",
+      "royalSequence": 27,
+      "pageNumber": 825,
+      "metadata": {
+        "domain": "วัฒนธรรมและสังคม"
+      }
+    },
+    {
+      "id": "b0fa203d-62a7-5574-a81f-34709fc10c19",
+      "wordId": "9c31e5fd-27b7-55ad-85d0-38308abeb3cd",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "พูม-ปัน-ยา",
+      "royalSequence": 27,
+      "pageNumber": 930,
+      "metadata": {
+        "domain": "มรดกทางวัฒนธรรม"
+      }
+    },
+    {
+      "id": "31524867-ec84-5c58-affc-a695350dbccc",
+      "wordId": "e87ce612-8c94-5ac6-a563-f837187155b4",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "วิ-จา-ระ-นะ-ยาน",
+      "royalSequence": 28,
+      "pageNumber": 1075,
+      "metadata": {
+        "domain": "ปรัชญาและจิตวิทยา"
+      }
+    },
+    {
+      "id": "e527bceb-f18b-566c-9e38-03b84f122034",
+      "wordId": "e87ce612-8c94-5ac6-a563-f837187155b4",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "วิ-จา-ระ-นะ-ยาน",
+      "royalSequence": 28,
+      "pageNumber": 1190,
+      "metadata": {
+        "domain": "ทักษะแห่งศตวรรษที่ 21"
+      }
+    },
+    {
+      "id": "76c669e4-ecb0-50cd-a131-e62922dbea82",
+      "wordId": "d64ab580-cc2a-5ea4-90e4-a043e79f1756",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สำ-เสร็ด",
+      "royalSequence": 29,
+      "pageNumber": 1210,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "28be412b-4729-5caa-9c3d-179892b754e2",
+      "wordId": "d64ab580-cc2a-5ea4-90e4-a043e79f1756",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สำ-เสร็ด",
+      "royalSequence": 29,
+      "pageNumber": 1335,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "754e2469-b336-5afa-9f6b-847f2cbdc349",
+      "wordId": "1e64d052-3ea4-58e5-bfea-3146cc33a5b3",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "ล้ม-เหลว",
+      "royalSequence": 30,
+      "pageNumber": 1005,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "fa5cb3a4-d18f-57a4-a1c3-f476e732cc64",
+      "wordId": "1e64d052-3ea4-58e5-bfea-3146cc33a5b3",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "ล้ม-เหลว",
+      "royalSequence": 30,
+      "pageNumber": 1120,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "07fe4e4a-4034-5687-8224-4ae5d646bf0f",
+      "wordId": "8d349c32-9582-595e-b412-14aa266774a8",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "บัน-ลุ",
+      "royalSequence": 31,
+      "pageNumber": 612,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "6b8244dd-25a1-5973-b7d5-5fcc5be01826",
+      "wordId": "8d349c32-9582-595e-b412-14aa266774a8",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "บัน-ลุ",
+      "royalSequence": 31,
+      "pageNumber": 690,
+      "metadata": {
+        "domain": "การบริหารและกฎหมาย"
+      }
+    },
+    {
+      "id": "a0c3f6c4-804f-5deb-9300-bf1e9a7b4d7b",
+      "wordId": "6df2d145-4f31-5ba6-8238-89c755ea9ffc",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "เจน-ระ-จา",
+      "royalSequence": 32,
+      "pageNumber": 310,
+      "metadata": {
+        "domain": "การทูตและการเจรจา"
+      }
+    },
+    {
+      "id": "ae4b7bbd-68ee-5b87-a991-dad220427749",
+      "wordId": "6df2d145-4f31-5ba6-8238-89c755ea9ffc",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "เจน-ระ-จา",
+      "royalSequence": 32,
+      "pageNumber": 355,
+      "metadata": {
+        "domain": "การทูตและความสัมพันธ์ระหว่างประเทศ"
+      }
+    },
+    {
+      "id": "2ab0286d-a0de-51a9-9aa8-1e835c9f12a8",
+      "wordId": "80742582-fbb9-5db2-8c7d-a783601c9126",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สน-ทะ-นา",
+      "royalSequence": 33,
+      "pageNumber": 1195,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "e38c5ed8-8102-58df-94c7-3933e383cff6",
+      "wordId": "80742582-fbb9-5db2-8c7d-a783601c9126",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สน-ทะ-นา",
+      "royalSequence": 33,
+      "pageNumber": 1318,
+      "metadata": {
+        "domain": "การสื่อสาร"
+      }
+    },
+    {
+      "id": "f44cf02f-b3f5-5ffd-91e1-1833e1341aa5",
+      "wordId": "b0701a15-8ae5-55f3-9ce8-47c6b9df3ffb",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "มิด-ตฺระ-พาบ",
+      "royalSequence": 34,
+      "pageNumber": 890,
+      "metadata": {
+        "domain": "ทั่วไป"
+      }
+    },
+    {
+      "id": "58a137cc-423e-5562-8344-050e6d0f3977",
+      "wordId": "b0701a15-8ae5-55f3-9ce8-47c6b9df3ffb",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "มิด-ตฺระ-พาบ",
+      "royalSequence": 34,
+      "pageNumber": 1005,
+      "metadata": {
+        "domain": "จิตวิทยาและสังคม"
+      }
+    },
+    {
+      "id": "96d79357-4e52-53f9-80d4-e45996988e70",
+      "wordId": "3f7a6561-460c-52bc-a994-57a306e5de92",
+      "editionId": "1164e3e3-129b-59f6-a6e5-7f9a48d1d31b",
+      "pronunciation": "สำ-พัน-ทะ-พาบ",
+      "royalSequence": 35,
+      "pageNumber": 1216,
+      "metadata": {
+        "domain": "วิชาการและการบริหาร"
+      }
+    },
+    {
+      "id": "59a3276e-bd25-5fc6-bc3b-62e84ac00458",
+      "wordId": "3f7a6561-460c-52bc-a994-57a306e5de92",
+      "editionId": "166b0b93-93fd-5238-9e9a-6455452abc50",
+      "pronunciation": "สำ-พัน-ทะ-พาบ",
+      "royalSequence": 35,
+      "pageNumber": 1342,
+      "metadata": {
+        "domain": "จิตวิทยาสังคมและการบริหาร"
+      }
+    }
+  ],
+  "definitions": [
+    {
+      "id": "b4ab95bf-9166-50c0-9bc5-9b13e1b0e123",
+      "entryId": "d2d76ebf-113c-5556-af51-4f1af99b0b3d",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความสามารถที่ทำให้เกิดผลสัมฤทธิ์ในการทำงาน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "a1ddde23-ae8e-5ba5-8de6-e27e4b9c2f2c",
+      "entryId": "2639cf61-f349-5333-a9e9-53c3e1c3b81b",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความสามารถที่ทำให้เกิดผลสัมฤทธิ์ในการปฏิบัติงานโดยใช้ทรัพยากรและเวลาอย่างคุ้มค่าที่สุด",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหาร"
+    },
+    {
+      "id": "96e975bd-acda-54b0-b888-2a8638c7e386",
+      "entryId": "8971f6d5-e191-554b-a532-69aada373dd8",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร พลังงาน หรือเวลาน้อยที่สุด ครอบคลุมทั้งระบบการทำงานและเทคโนโลยี",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหารและเทคโนโลยี"
+    },
+    {
+      "id": "5e6282db-26f5-5af2-8ef0-9b51af68570e",
+      "entryId": "180a2846-6ae3-529b-9a82-6c27a8a66351",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ผลสำเร็จที่เกิดขึ้นตามความมุ่งหมาย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "88148ba7-23cc-562b-a79f-54172c2ae9e7",
+      "entryId": "3793e076-f57f-5cb5-bf22-a8ebc9be646a",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ผลสำเร็จที่เกิดขึ้นตรงตามวัตถุประสงค์หรือเป้าหมายที่กำหนดไว้ โดยไม่คำนึงถึงปริมาณทรัพยากรที่ใช้",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหาร"
+    },
+    {
+      "id": "dd5b4553-ba2e-5c04-b9ba-2b68840423da",
+      "entryId": "00c74409-568a-5174-a927-fec27b16c77d",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ระดับความสำเร็จในการบรรลุผลลัพธ์ตามวัตถุประสงค์ที่ตั้งไว้ ไม่ว่าจะเป็นด้านผลผลิต คุณภาพ หรือการเปลี่ยนแปลงที่พึงประสงค์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหาร"
+    },
+    {
+      "id": "8b07940f-8731-5dc9-b442-66c98c560e31",
+      "entryId": "b5ed0d78-3249-56e1-9656-74b1510a8fd2",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "อำนาจหรือพลังแฝงที่มีอยู่ในตัวซึ่งอาจพัฒนาให้ปรากฏเป็นจริงได้",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "จิตวิทยาและการพัฒนา"
+    },
+    {
+      "id": "6e9b02e0-34f8-55f9-944f-429d04decf97",
+      "entryId": "67eeb04c-7bbd-5385-92e6-cfd7b031e576",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ขีดความสามารถ ซ่อนเร้น หรือความพร้อมที่จะพัฒนาให้เกิดผลลัพธ์อันยิ่งใหญ่ในอนาคต",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การพัฒนาทรัพยากรมนุษย์"
+    },
+    {
+      "id": "5a6e5d96-5370-527c-bb05-68de5ff7ee80",
+      "entryId": "3c303044-ba58-5ec5-b20b-4cc9e2e6754c",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ให้อำนาจกระทำการตามระเบียบ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ราชการ"
+    },
+    {
+      "id": "d2cf4dc5-90aa-5652-b3a3-8e079c4ef9fc",
+      "entryId": "db970b31-c527-5f75-bd51-fcf2c6181ab9",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ให้อำนาจกระทำการตามระเบียบที่กำหนดไว้ เช่น ผู้บังคับบัญชาอนุมัติให้เบิกเงิน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "กฎหมายและราชการ"
+    },
+    {
+      "id": "548ac4e1-43ed-532d-aa44-97d578b0d349",
+      "entryId": "896a99e9-ffea-5724-87e2-28f974dbd2ba",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การใช้อำนาจหน้าที่ตามกฎหมายหรือระเบียบเพื่ออนุญาตหรือรับรองให้ดำเนินการอย่างเป็นทางการ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "นิติศาสตร์"
+    },
+    {
+      "id": "6d465282-628e-5e9f-9ed1-8a45aaaf338e",
+      "entryId": "aa292e98-c380-5f48-bd3e-aa029cf76708",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "เห็นว่าถูกต้อง สมควร หรือเหมาะสม เช่น ที่ประชุมเห็นชอบกับข้อเสนอ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การประชุมและบริหาร"
+    },
+    {
+      "id": "da598c37-fae9-5b1c-a17a-4d6ef7834bf7",
+      "entryId": "9521cc40-921e-5df3-b758-746bc99eaf9f",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การแสดงทัศนะยอมรับ สนับสนุน หรือพิจารณาว่าถูกต้องเหมาะสมในเชิงหลักการหรือนโยบาย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหารรัฐกิจ"
+    },
+    {
+      "id": "8464bd71-db10-5a8a-8c79-acd241a050b2",
+      "entryId": "8ee61878-6ff9-5d96-8e29-3c9c0b7ba1d7",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ยินยอม ยอมให้ ตกลง",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "516594d0-f78f-5e06-b330-121e9e0b0943",
+      "entryId": "398e6acf-dfd0-58e3-8715-9996c35091d2",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การยินยอมให้กระทำสิ่งใดสิ่งหนึ่ง ซึ่งอาจเป็นความสัมพันธ์ส่วนบุคคลหรือตามกฎหมาย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "949ab9e2-16a3-53a5-98b8-1b8113a17ba7",
+      "entryId": "adef8737-9824-5b6d-b950-f200a8a3c1be",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "เร็วมาก, ฉับไว, ไม่ชักช้า",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "8898fdbe-8941-55f9-8bb8-0cdb4a5d4954",
+      "entryId": "891feb62-7de2-5c2f-bf90-18ca889ec4b2",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "ดำเนินไปโดยใช้เวลาน้อยมาก ฉับไว ปราดเปรียว ทันต่อสถานการณ์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "5021b1c0-d857-5f8a-865a-7c4aeb9f1b63",
+      "entryId": "0c8ddaf3-fe76-503b-b7a9-34b451d4ba58",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "คล่องแคล่วและรวดเร็ว, ปราดเปรียว",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "41d72d3b-7de2-5b14-8e57-12acf06730ba",
+      "entryId": "26b296bd-a62a-5310-a0c2-e8ea039d29d6",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีความคล่องแคล่ว รวดเร็วในการเคลื่อนไหวหรือการคิดตัดสินใจอย่างแม่นยำ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "b249d503-fa1a-559b-a909-cde28ef51bed",
+      "entryId": "934df8b5-7a4b-5952-b309-165b00fb2982",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "รวดเร็วดังใจนึก, รวดเร็วทันทีทันใด",
+      "registerLevel": "INFORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "42d5905f-6068-5cb7-a2db-832287c5366a",
+      "entryId": "0911b034-1178-5279-936b-c82d5d7a546a",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "ได้ผลลัพธ์ตอบสนองตรงกับความต้องการในเวลาอันสั้น มักใช้ในบริบทบริการหรือความรู้สึกพึงพอใจ",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "ae00cb30-3e0d-516d-b6e3-4037b840f44e",
+      "entryId": "f2801eef-5e43-5671-896f-508ef46476c4",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีความรู้ความสามารถและมีประสบการณ์สูงในวิชาการหรือการปฏิบัติงานด้านใดด้านหนึ่ง",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วิชาการและการทำงาน"
+    },
+    {
+      "id": "5c7ea554-0922-5766-9161-ee41011d196c",
+      "entryId": "a9c43347-2a8e-5aa4-94b1-f7cc4d7ae1ab",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีความรู้ความสามารถ ทักษะ และประสบการณ์ในระดับสูงลึกซึ้งเฉพาะสาขา จนสามารถเป็นที่ปรึกษาหรือสร้างสรรค์ผลงานระดับสูงได้",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วิชาชีพและการทำงาน"
+    },
+    {
+      "id": "b7b8125a-04de-50cc-ae22-e3d6c187e486",
+      "entryId": "a620378d-3bc8-52d6-8e48-b562318424af",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "เจนจัด คล่องแคล่วเพราะเคยทำมาบ่อยๆ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทักษะและการปฏิบัติ"
+    },
+    {
+      "id": "02bcbfc3-f392-5636-8292-3ef2bd4dd9c9",
+      "entryId": "40435d93-d072-56f1-a545-0b78e05631d9",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีทักษะความคล่องแคล่ว แม่นยำ และมีประสบการณ์ผ่านการลงมือปฏิบัติจริงซ้ำๆ จนเกิดความรอบรู้",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทักษะและการปฏิบัติ"
+    },
+    {
+      "id": "13892ec9-431c-58eb-afc1-d1ef3b1384d2",
+      "entryId": "842e2a9e-4060-5158-ac0d-792faec77a6a",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "ถนัด คุ้นเคย เคยชิน เช่น สันทัดกรณี",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "b6989526-72e0-5dd1-9410-cd1c20982646",
+      "entryId": "92c1162f-700b-59e3-b615-ec788c9240ab",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีความถนัด คุ้นเคย หรือมีความรู้ความเข้าใจในเรื่องใดเรื่องหนึ่งเป็นพิเศษ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "accbca01-8cb5-5a8d-a020-ee8ec51120b8",
+      "entryId": "2b990e73-aeea-542b-bb10-329d4526d4fb",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "สามารถในทางใดทางหนึ่ง เช่น เก่งเลข เก่งภาษา",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "2d5d364c-7e6d-561e-8923-31d41033912a",
+      "entryId": "1eba8b75-bf72-5f89-be1d-813befe0d0fb",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีความสามารถ มีทักษะดีเด่น หรือทำสิ่งใดสิ่งหนึ่งได้ผลดีเยี่ยม (นิยมใช้ในภาษาพูดและกึ่งทางการ)",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "e58b548a-db9f-5374-bddb-131ffcbd8414",
+      "entryId": "6fa61963-6997-59a8-8885-d42106103628",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีรสดีเป็นที่ถูกปาก, มีรสชาติถูกอัธยาศัย",
+      "registerLevel": "INFORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "91eb352c-6b30-5394-86dd-745d63b1255d",
+      "entryId": "f08d0db8-8cca-5390-bf07-802d3454d78c",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีรสชาติดีเลิศ กลมกล่อม ถูกปากและน่าพึงพอใจต่อประสาทรับรส",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "6a0ef71c-4b14-52fd-be0d-5021cb813881",
+      "entryId": "4674c37d-a718-5c7d-9b4d-f70f53ec1d43",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "เคี้ยวแล้วกลืนลงกระเพาะ, ดื่ม, รับประทาน (มักใช้ในระดับภาษาพูดและกันเอง)",
+      "registerLevel": "INFORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "91850823-74ef-5fde-8303-27300a30bdc3",
+      "entryId": "4a21cf52-78d7-50af-afda-4ad020675dc4",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การนำอาหารหรือเครื่องดื่มเข้าสู่ร่างกายผ่านการเคี้ยวหรือกลืน เป็นคำพื้นฐานระดับภาษาทั่วไป",
+      "registerLevel": "INFORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "7cb5d060-3117-5628-8286-fdb7b8923577",
+      "entryId": "0bb69d86-633a-5a96-ae1f-e3a01a16bd70",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "กิน (เป็นคำสุภาพ มักย่อเป็น ทาน)",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "00cc8904-a6d0-5d26-bf30-5de4fb60f32f",
+      "entryId": "1e7e1af0-7dab-5af7-84c1-5ede5bf6a252",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "กิน (คำสุภาพทางการ ใช้ในบริบทงานพิธีการ กึ่งทางการ หรือการสื่อสารสุภาพชน)",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "31fbeb22-c6e4-5ff3-bea5-a2386659a414",
+      "entryId": "c524ae54-c9fd-5626-854a-77045701225e",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "กิน (ใช้เฉพาะอาหาร), เสพ, ใช้สอย (สิ่งของ)",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "เศรษฐศาสตร์และวิชาการ"
+    },
+    {
+      "id": "9f52c93a-273c-5628-b7de-2eaa751c964b",
+      "entryId": "5dea88f3-2e3c-5192-80aa-c2b412e0ce59",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การใช้ประโยชน์จากสินค้าหรือบริการ หรือการรับประทานอาหารในเชิงเศรษฐศาสตร์และสุขอนามัย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "เศรษฐศาสตร์และสังคม"
+    },
+    {
+      "id": "b8113c99-2411-5f13-a3de-2e473e0c556b",
+      "entryId": "3e25296d-d82e-5561-aced-d9d1ef684a2f",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ทำให้เจริญ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "0e111ad1-68c8-5482-9546-cb0826bdc96a",
+      "entryId": "353d465f-38c7-52a9-ba5a-d5e30a98f65b",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ทำให้เจริญ, ทำให้ก้าวหน้า, เปลี่ยนแปลงไปในทางที่ดีขึ้น",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การพัฒนา"
+    },
+    {
+      "id": "0f2261f0-1c00-5bcc-b75b-bfd3ae4404de",
+      "entryId": "2a3e5ab4-c6ef-58d4-bb83-3680eb9e7483",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "กระบวนการทำให้เกิดความเปลี่ยนแปลงอย่างเป็นระบบเพื่อยกระดับคุณค่า ขีดความสามารถ และความยั่งยืน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การพัฒนาและความยั่งยืน"
+    },
+    {
+      "id": "3bac2d3d-6e5a-5bd3-987a-cb457e28e460",
+      "entryId": "86e62528-fd99-5c31-87d2-85abbb45e462",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "สาขาหนึ่งของวิทยาการคอมพิวเตอร์ที่เน้นการพัฒนาเครื่องจักรให้คิดและกระทำได้คล้ายมนุษย์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "คอมพิวเตอร์และเทคโนโลยี"
+    },
+    {
+      "id": "7bbabc82-c2d3-5c45-a43c-9c70118404ca",
+      "entryId": "760c2872-300a-5804-aa74-87b38a6fb129",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ระบบคอมพิวเตอร์หรืออัลกอริทึมที่ถูกออกแบบให้มีความสามารถในการรับรู้ การเรียนรู้ การใช้เหตุผล และการแก้ปัญหาที่ซับซ้อนทัดเทียมหรือเหนือกว่าสติปัญญามนุษย์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วิทยาศาสตร์และเทคโนโลยีดิจิทัล"
+    },
+    {
+      "id": "d0085fe5-d145-57c0-8db7-5d01040690b4",
+      "entryId": "9506f2a4-86d1-544f-8c7f-78eb08e1667c",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "สิ่งใหม่ที่เกิดจากการใช้ความรู้และความคิดสร้างสรรค์ที่มีประโยชน์ต่อเศรษฐกิจและสังคม",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "เศรษฐศาสตร์และเทคโนโลยี"
+    },
+    {
+      "id": "e0a04c13-d033-58c4-8ea3-03778bde9683",
+      "entryId": "2b297a8b-c238-5c96-b04a-b288e72b11c5",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "กระบวนการ ผลิตภัณฑ์ หรือบริการที่สร้างสรรค์ขึ้นใหม่หรือต่อยอดจากเดิม ซึ่งสร้างคุณค่าทางเศรษฐกิจ สิ่งแวดล้อม หรือสังคมอย่างเป็นรูปธรรม",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "นวัตกรรมและเทคโนโลยี"
+    },
+    {
+      "id": "3544be46-abfb-5738-b0c7-e2618b377e04",
+      "entryId": "bca52ffa-9fe7-5739-b090-004d0d64b416",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "รวมเข้าเป็นอันหนึ่งอันเดียวกัน, ประสานองค์ความรู้หรือการทำงานให้สอดคล้องกัน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหารและการศึกษา"
+    },
+    {
+      "id": "73d9cc03-e6fc-5200-a546-da67300a5cdc",
+      "entryId": "2bedc73d-8540-5dd0-a2af-cbd60814d838",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การหลอมรวมองค์ประกอบ องค์ความรู้ หรือกระบวนการที่หลากหลายเข้าด้วยกันอย่างเป็นระบบและเป็นเอกภาพเพื่อเป้าหมายร่วมกัน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหารยุทธศาสตร์"
+    },
+    {
+      "id": "87ebfaa4-039f-5841-b712-72c6ae14eb7e",
+      "entryId": "500ca526-456d-5591-aabb-46692709c8fe",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "เกลี้ยงเกลา, เรียบเรียงถ้อยคำได้อย่างไพเราะเหมาะสมและมีความกลมกลืน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ภาษาและวรรณกรรม"
+    },
+    {
+      "id": "03746643-4430-5a35-9481-5f4e014b1075",
+      "entryId": "3ff29de8-d964-5611-9223-c3491df03079",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีท่วงทำนองการเรียบเรียงถ้อยคำที่ราบรื่น งดงาม ไพเราะ และสื่อความหมายได้อย่างคมคาย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ภาษาและวรรณกรรม"
+    },
+    {
+      "id": "a51a4708-10e4-5035-ac23-bfdd88e1653c",
+      "entryId": "99642cb0-105e-552b-a24d-f74de18a1710",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ผลสำเร็จ, ผลที่สำเร็จตามความประสงค์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหาร"
+    },
+    {
+      "id": "d1a76aa1-7f1e-51ea-9d52-66da0d1f7b63",
+      "entryId": "2c8282dd-8e48-5d39-9e16-c1104cd82745",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความสำเร็จสูงสุดที่เกิดจากการลงมือปฏิบัติงานอย่างมีทิศทางและยุทธศาสตร์ที่ชัดเจน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหารยุทธศาสตร์"
+    },
+    {
+      "id": "8f177619-14e9-506d-a530-83d4a16fd25b",
+      "entryId": "be17c298-1061-5f55-8db3-d3b1048f7e8a",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "ละเอียดลออ เรียบร้อย งดงาม ไม่หยาบ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ศิลปะและช่างฝีมือ"
+    },
+    {
+      "id": "67c7da35-2dbc-5009-9642-803eb11d014c",
+      "entryId": "4b88af9c-6a74-5f8e-9345-608ff96a16c0",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "ทำด้วยความตั้งใจ ละเอียดรอบคอบ และพิถีพิถันจนเกิดความงดงามสมบูรณ์แบบ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ศิลปวัฒนธรรมและงานช่าง"
+    },
+    {
+      "id": "f19c17a3-57d7-5101-a762-75d1b743556b",
+      "entryId": "0be10606-4f8f-5749-ab3f-2d4170a8450b",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "ถี่ถ้วน รอบคอบ ไม่ประมาท ไม่ละเลยจุดเล็กจุดน้อย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การทำงานและพฤติกรรม"
+    },
+    {
+      "id": "2ff17500-3482-5bdf-8ce4-715d54bf2b9e",
+      "entryId": "029129da-c9ec-5f0e-9619-877a57c55481",
+      "posId": "14810316-d1ca-507f-bcdc-7e9573cdfe92",
+      "senseOrder": 1,
+      "definitionText": "มีความถี่ถ้วน พิถีพิถัน และใส่ใจในรายละเอียดปลีกย่อยอย่างรอบด้านเพื่อป้องกันความผิดพลาด",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การทำงานและมาตรฐาน"
+    },
+    {
+      "id": "85052978-9bae-5088-8d38-3c3ce629b54f",
+      "entryId": "39750e97-1a2b-58f8-9a84-6b9d2b599c58",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ลักษณะเฉพาะตัวของบุคคล สิ่งของ หรือชุมชนที่ทำให้แตกต่างจากสิ่งอื่น",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "สังคมวิทยาและวัฒนธรรม"
+    },
+    {
+      "id": "756190bc-094d-58b6-8fb5-5e3a4c824c3e",
+      "entryId": "c62d3855-b91d-5ebd-a2b4-fcdaf0493ed9",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "เอกลักษณ์เฉพาะและคุณลักษณะแก่นแท้ที่สะท้อนถึงความเป็นตัวตน ซึ่งสร้างการรับรู้และความภาคภูมิใจ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วัฒนธรรมและสังคมศาสตร์"
+    },
+    {
+      "id": "f2c12716-3f44-5819-b0b7-102749432215",
+      "entryId": "2f4660a9-69bf-5fa1-ab13-ff93ac572716",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความรอบรู้ของชุมชนหรือพื้นแผ่นดิน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วัฒนธรรม"
+    },
+    {
+      "id": "ad028d8b-1075-5c1c-8116-128f2c5d9b38",
+      "entryId": "8f0c210a-ffaa-52b1-8224-023fb8b52bf5",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความรู้ ความสามารถ และทักษะที่ถ่ายทอดและสั่งสมมาแต่โบราณในวิถีชีวิตของชุมชน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วัฒนธรรมและสังคม"
+    },
+    {
+      "id": "a591861a-b144-5aee-8502-d5780eb71547",
+      "entryId": "b0fa203d-62a7-5574-a81f-34709fc10c19",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "องค์ความรู้ ทักษะ การปฏิบัติ และความเข้าใจเชิงลึกที่สืบทอดและพัฒนาต่อยอดผ่านประสบการณ์ของชุมชน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "มรดกทางวัฒนธรรม"
+    },
+    {
+      "id": "3c1497d4-b49d-5c90-b6ad-7dc427a86cea",
+      "entryId": "31524867-ec84-5c58-affc-a695350dbccc",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ปัญญาที่สามารถรู้หรือให้เหตุผลที่ถูกต้องรอบคอบเพื่อพิจารณาตัดสินใจ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ปรัชญาและจิตวิทยา"
+    },
+    {
+      "id": "cc120ebe-d4b4-5331-8084-2170a77477d2",
+      "entryId": "e527bceb-f18b-566c-9e38-03b84f122034",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความสามารถในการคิดวิเคราะห์ สังเคราะห์ และประเมินคุณค่าของข้อมูล ข่าวสาร หรือเหตุการณ์อย่างมีตรรกะและเป็นกลาง",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทักษะแห่งศตวรรษที่ 21"
+    },
+    {
+      "id": "73a6606b-12df-56d5-995a-cb4b945964e1",
+      "entryId": "76c669e4-ecb0-50cd-a131-e62922dbea82",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "เสร็จ, ถึงจุดหมาย, ได้ผลตามประสงค์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "d2609adb-2047-53bb-aa82-d6c32ebe1fb1",
+      "entryId": "28be412b-4729-5caa-9c3d-179892b754e2",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การบรรลุเป้าหมายที่กำหนดไว้ได้อย่างสมบูรณ์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "c2004f8c-db93-5827-8a84-11bd75c0a380",
+      "entryId": "754e2469-b336-5afa-9f6b-847f2cbdc349",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ไม่ประสบผลสำเร็จ, ไม่ได้ผลตามต้องการ",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "f5204de3-1bb2-55cd-827e-76f9a41c2c3e",
+      "entryId": "fa5cb3a4-d18f-57a4-a1c3-f476e732cc64",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การไม่สามารถบรรลุผลลัพธ์ตามเป้าหมาย หรือการยุติลงโดยไม่เกิดผลสัมฤทธิ์",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "0b5ff612-fdbc-587a-97c8-f56ce0e5e119",
+      "entryId": "07fe4e4a-4034-5687-8224-4ae5d646bf0f",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "ถึง, สำเร็จ, ได้ถึงจุดหมาย",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "f4fddcf4-824a-5432-a5fd-e1b82eb6d3d7",
+      "entryId": "6b8244dd-25a1-5973-b7d5-5fcc5be01826",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การก้าวถึงเป้าประสงค์ ข้อตกลง หรือระดับความเข้าใจสูงสุดตามที่ตั้งใจไว้",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การบริหารและกฎหมาย"
+    },
+    {
+      "id": "a750fb08-7b03-562a-bd79-5722a4d28190",
+      "entryId": "a0c3f6c4-804f-5deb-9300-bf1e9a7b4d7b",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "พูดจากันอย่างเป็นทางการเพื่อหาข้อยุติหรือความตกลง",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การทูตและการเจรจา"
+    },
+    {
+      "id": "30769250-8c76-55dd-b94d-aa61583c9222",
+      "entryId": "ae4b7bbd-68ee-5b87-a991-dad220427749",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "กระบวนการสื่อสารและต่อรองอย่างเป็นทางการระหว่างสองฝ่ายขึ้นไปเพื่อผลประโยชน์ร่วมกันหรือข้อยุติข้อพิพาท",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "การทูตและความสัมพันธ์ระหว่างประเทศ"
+    },
+    {
+      "id": "75b2ba50-7485-59e1-8802-5627cfda1ef4",
+      "entryId": "2ab0286d-a0de-51a9-9aa8-1e835c9f12a8",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "พูดคุยกัน แลกเปลี่ยนความคิดเห็นกัน",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "6d0864fb-b464-5562-acbc-37dbfd8d479e",
+      "entryId": "e38c5ed8-8102-58df-94c7-3933e383cff6",
+      "posId": "06d20c73-32fc-5966-a387-c953379bbdc2",
+      "senseOrder": 1,
+      "definitionText": "การพูดคุยสื่อสารเพื่อแลกเปลี่ยนความคิด ความรู้สึก หรือข้อมูลข่าวสารในบรรยากาศที่เป็นมิตร",
+      "registerLevel": "SEMI_FORMAL",
+      "subjectDomain": "การสื่อสาร"
+    },
+    {
+      "id": "8938b62b-af55-57ac-bea3-64bd6371ead6",
+      "entryId": "f44cf02f-b3f5-5ffd-91e1-1833e1341aa5",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความเป็นมิตร ความผูกพันด้วยความรักใคร่จริงใจระหว่างเพื่อน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "ทั่วไป"
+    },
+    {
+      "id": "c5c01e34-89c6-584f-9b26-cb710ebeb4dc",
+      "entryId": "58a137cc-423e-5562-8344-050e6d0f3977",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "สายสัมพันธ์อันแน่นแฟ้นที่ตั้งอยู่บนความไว้วางใจ ความเข้าใจ และความปรารถนาดีต่อกัน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "จิตวิทยาและสังคม"
+    },
+    {
+      "id": "c1595713-aada-5b5b-9925-734f9a4a892d",
+      "entryId": "96d79357-4e52-53f9-80d4-e45996988e70",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "ความผูกพัน ความเกี่ยวข้องกัน",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "วิชาการและการบริหาร"
+    },
+    {
+      "id": "6d4c6781-7858-5053-9506-98bc0db50f0e",
+      "entryId": "59a3276e-bd25-5fc6-bc3b-62e84ac00458",
+      "posId": "891fecbd-8c0e-5d63-af46-83fc1a94070d",
+      "senseOrder": 1,
+      "definitionText": "โครงสร้างหรือรูปแบบความเกี่ยวโยง ปฏิสัมพันธ์ และความผูกพันระหว่างบุคคล กลุ่ม หรือองค์กร",
+      "registerLevel": "FORMAL",
+      "subjectDomain": "จิตวิทยาสังคมและการบริหาร"
+    }
+  ],
+  "examples": [
+    {
+      "id": "f8e2f916-fc3f-51cd-bddb-2886122910cb",
+      "definitionId": "b4ab95bf-9166-50c0-9bc5-9b13e1b0e123",
+      "exampleText": "เครื่องจักรนี้ทำงานมีประสิทธิภาพดี",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "1223549e-6c2b-5d01-be87-a9bc8f2fc0bb",
+      "definitionId": "a1ddde23-ae8e-5ba5-8de6-e27e4b9c2f2c",
+      "exampleText": "การบริหารงานยุคใหม่ต้องคำนึงถึงประสิทธิภาพและความคุ้มค่า",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "4e12f701-e409-5f76-8a0b-5f5c90d3fd72",
+      "definitionId": "96e975bd-acda-54b0-b888-2a8638c7e386",
+      "exampleText": "ระบบปัญญาประดิษฐ์ช่วยเพิ่มประสิทธิภาพในการประมวลผลข้อมูลขนาดใหญ่",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "4ae5284f-f6c4-572c-ad82-aa6ab8fda261",
+      "definitionId": "5e6282db-26f5-5af2-8ef0-9b51af68570e",
+      "exampleText": "โครงการนี้บรรลุประสิทธิผลตามเป้าหมาย",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "790cb28b-63c4-51d7-9bf1-f59a3bfae031",
+      "definitionId": "88148ba7-23cc-562b-a79f-54172c2ae9e7",
+      "exampleText": "การรักษาโรคเน้นประสิทธิผลในการหายของผู้ป่วยเป็นหลัก",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "bdd65fb4-1839-5ae4-918e-07282fac8f5f",
+      "definitionId": "dd5b4553-ba2e-5c04-b9ba-2b68840423da",
+      "exampleText": "นโยบายสาธารณะที่ดีต้องประเมินทั้งประสิทธิผลและความคุ้มค่า",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "3ba88610-ff59-5622-9cce-0930cb50ea78",
+      "definitionId": "8b07940f-8731-5dc9-b442-66c98c560e31",
+      "exampleText": "เด็กทุกคนมีศักยภาพในการเรียนรู้ที่ซ่อนอยู่",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "16cdcd7c-e004-5537-b743-001b0b8e6b9d",
+      "definitionId": "6e9b02e0-34f8-55f9-944f-429d04decf97",
+      "exampleText": "การลงทุนด้านการศึกษาเพื่อปลดปล่อยศักยภาพของคนรุ่นใหม่",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "33185450-3c39-5a12-b2a2-71ae42103e0f",
+      "definitionId": "5a6e5d96-5370-527c-bb05-68de5ff7ee80",
+      "exampleText": "รัฐมนตรีอนุมัติโครงการ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "9bbce921-da06-5f34-8b1b-842553920c5b",
+      "definitionId": "d2cf4dc5-90aa-5652-b3a3-8e079c4ef9fc",
+      "exampleText": "คณะกรรมการมีมติอนุมัติงบประมาณประจำปี",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "9279eb66-915a-5f69-a594-88f6bba8f0c6",
+      "definitionId": "548ac4e1-43ed-532d-aa44-97d578b0d349",
+      "exampleText": "ผู้มีอำนาจลงนามอนุมัติคำขออนุมัติจัดซื้อจัดจ้างผ่านระบบอิเล็กทรอนิกส์",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "f49a4542-c4c2-5c08-9b19-ed78828cf799",
+      "definitionId": "6d465282-628e-5e9f-9ed1-8a45aaaf338e",
+      "exampleText": "คณะรัฐมนตรีเห็นชอบในหลักการของร่างพระราชบัญญัติ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "ab2fb4b1-220d-51cb-82fa-7c32adb5b1d0",
+      "definitionId": "da598c37-fae9-5b1c-a17a-4d6ef7834bf7",
+      "exampleText": "ที่ประชุมสภาผู้แทนราษฎรมีมติเห็นชอบกับรายงานการศึกษา",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "18862aa9-5999-58c4-aae0-9152d75acde1",
+      "definitionId": "8464bd71-db10-5a8a-8c79-acd241a050b2",
+      "exampleText": "ครูอนุญาตให้นักเรียนกลับบ้านได้",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "5fbb3c4c-e490-5f4b-aa80-d4c8daa08dfd",
+      "definitionId": "516594d0-f78f-5e06-b330-121e9e0b0943",
+      "exampleText": "เทศบาลออกใบอนุญาตก่อสร้างอาคาร",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "c98680e8-1122-5a6e-a615-33380731d622",
+      "definitionId": "949ab9e2-16a3-53a5-98b8-1b8113a17ba7",
+      "exampleText": "การคมนาคมขนส่งในปัจจุบันมีความรวดเร็วขึ้นมาก",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "ae5a43ca-8f2d-5d13-8440-dfb8dd68fe9d",
+      "definitionId": "8898fdbe-8941-55f9-8bb8-0cdb4a5d4954",
+      "exampleText": "การตอบสนองที่รวดเร็วช่วยลดความเสียหายจากภัยพิบัติ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "f5305810-800b-5566-b76b-0e0db5dd717c",
+      "definitionId": "5021b1c0-d857-5f8a-865a-7c4aeb9f1b63",
+      "exampleText": "เขามีไหวพริบว่องไวในการแก้ไขปัญหาเฉพาะหน้า",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "ca2d0b37-ffec-5727-9081-a537d8db20e0",
+      "definitionId": "41d72d3b-7de2-5b14-8e57-12acf06730ba",
+      "exampleText": "นักกีฬามีทักษะการเคลื่อนไหวที่ว่องไวและมั่นคง",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "7c216ed3-ad96-5511-9754-344ba814288d",
+      "definitionId": "b249d503-fa1a-559b-a909-cde28ef51bed",
+      "exampleText": "การสั่งซื้อของออนไลน์ยุคนี้สะดวกรวดเร็วทันใจ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "3a53cc9e-a4ed-5115-8b07-3e82b5e65478",
+      "definitionId": "42d5905f-6068-5cb7-a2db-832287c5366a",
+      "exampleText": "การบริการที่รวดเร็วทันใจสร้างความประทับใจแก่ลูกค้า",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "b664efcd-dbb5-5315-bb49-29897e0cb98f",
+      "definitionId": "ae00cb30-3e0d-516d-b6e3-4037b840f44e",
+      "exampleText": "เขาเป็นแพทย์ผู้เชี่ยวชาญด้านโรคหัวใจ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "a06299d6-37b9-5dea-9bfd-30b4d18cbc1d",
+      "definitionId": "5c7ea554-0922-5766-9161-ee41011d196c",
+      "exampleText": "นักวิจัยผู้เชี่ยวชาญด้านนาโนเทคโนโลยีระดับนานาชาติ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "91fbfdce-9c2b-5639-9d62-92afe83f78eb",
+      "definitionId": "b7b8125a-04de-50cc-ae22-e3d6c187e486",
+      "exampleText": "ช่างคนนี้มีความชำนาญในการซ่อมเครื่องยนต์โบราณ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "86da0341-4b4c-585d-9f8a-006b494bc295",
+      "definitionId": "02bcbfc3-f392-5636-8292-3ef2bd4dd9c9",
+      "exampleText": "คนขับรถที่มีความชำนาญเส้นทางในแถบภูเขา",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "eaccf461-9371-5017-96a1-0c82ec443335",
+      "definitionId": "13892ec9-431c-58eb-afc1-d1ef3b1384d2",
+      "exampleText": "เขาไม่สันทัดการใช้ภาษาต่างประเทศ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "f459313d-803f-5dda-abf0-33a59c81b9e0",
+      "definitionId": "b6989526-72e0-5dd1-9410-cd1c20982646",
+      "exampleText": "ผู้สันทัดกรณีด้านความสัมพันธ์ระหว่างประเทศวิเคราะห์สถานการณ์",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "bdb20d7f-1242-5f2b-b938-ec5b13b167c9",
+      "definitionId": "accbca01-8cb5-5a8d-a020-ee8ec51120b8",
+      "exampleText": "เด็กคนนี้เรียนเก่งและมีวินัย",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "a03a53ac-8d3b-572e-b43d-97f43a0d2428",
+      "definitionId": "2d5d364c-7e6d-561e-8923-31d41033912a",
+      "exampleText": "เขาเป็นคนเก่งที่พร้อมจะเรียนรู้สิ่งใหม่ตลอดเวลา",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "0efd97c8-6a85-5289-9641-4c49617157de",
+      "definitionId": "e58b548a-db9f-5374-bddb-131ffcbd8414",
+      "exampleText": "อาหารร้านนี้ทำได้อร่อยถูกปากมาก",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "0b69614e-abb8-5955-960f-2c4f8a61b714",
+      "definitionId": "91eb352c-6b30-5394-86dd-745d63b1255d",
+      "exampleText": "สำรับอาหารไทยโบราณที่ปรุงได้อย่างประณีตและอร่อยครบรส",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "f3300294-666e-5787-b186-683cb1e3cb7a",
+      "definitionId": "6a0ef71c-4b14-52fd-be0d-5021cb813881",
+      "exampleText": "พวกเราไปกินข้าวด้วยกันตอนเที่ยง",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "1a8e3318-43f9-5f36-9895-c74274e56405",
+      "definitionId": "91850823-74ef-5fde-8303-27300a30bdc3",
+      "exampleText": "คนไทยโบราณนิยมกินข้าวพร้อมหน้ากันทั้งครอบครัว",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "41c5639f-f7be-5369-bbd6-5fbe8cc581c1",
+      "definitionId": "7cb5d060-3117-5628-8286-fdb7b8923577",
+      "exampleText": "ขอเชิญแขกผู้มีเกียรติร่วมรับประทานอาหารค่ำ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "eb4f783f-d087-51a1-9af5-e8d18aba035a",
+      "definitionId": "00cc8904-a6d0-5d26-bf30-5de4fb60f32f",
+      "exampleText": "การรับประทานอาหารที่มีคุณค่าทางโภชนาการครบถ้วนช่วยสร้างเสริมสุขภาพ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "3cde610b-aa3b-5afc-9c67-cc873d08f22e",
+      "definitionId": "31fbeb22-c6e4-5ff3-bea5-a2386659a414",
+      "exampleText": "ผู้บริโภคมีสิทธิได้รับการคุ้มครองความปลอดภัย",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "19941dac-3f3b-5332-ac3e-79874c7e5acf",
+      "definitionId": "9f52c93a-273c-5628-b7de-2eaa751c964b",
+      "exampleText": "การรณรงค์ให้บริโภคอาหารที่ผลิตจากวัตถุดิบอินทรีย์",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "22b334d9-40f0-5148-b0c4-ffbd7591ee72",
+      "definitionId": "b8113c99-2411-5f13-a3de-2e473e0c556b",
+      "exampleText": "พัฒนาชนบท",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "4c22ca22-8e3a-5996-b590-e7e5ce4db1f8",
+      "definitionId": "0e111ad1-68c8-5482-9546-cb0826bdc96a",
+      "exampleText": "การพัฒนาคุณภาพชีวิตของประชาชนในท้องถิ่น",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "d44617a3-d073-502d-a45b-ba4967723a5c",
+      "definitionId": "0f2261f0-1c00-5bcc-b75b-bfd3ae4404de",
+      "exampleText": "เป้าหมายการพัฒนาที่ยั่งยืน (SDGs) ขององค์การสหประชาชาติ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "fca5a550-62f4-57d0-843c-a928d6b6b4a2",
+      "definitionId": "3bac2d3d-6e5a-5bd3-987a-cb457e28e460",
+      "exampleText": "การวิจัยด้านปัญญาประดิษฐ์กำลังก้าวหน้าอย่างรวดเร็ว",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "767f947c-3588-5bea-a589-88a1aaa91c2f",
+      "definitionId": "7bbabc82-c2d3-5c45-a43c-9c70118404ca",
+      "exampleText": "การประยุกต์ใช้ปัญญาประดิษฐ์ในการประมวลผลภาษาธรรมชาติและการแพทย์แม่นยำ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "1d75641d-fcf1-5670-81f3-6c9dd57d4d8c",
+      "definitionId": "d0085fe5-d145-57c0-8db7-5d01040690b4",
+      "exampleText": "องค์กรต้องส่งเสริมนวัตกรรมเพื่อเพิ่มขีดความสามารถในการแข่งขัน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "f8d17c1f-3960-58d0-b5df-21a5f4a81f25",
+      "definitionId": "e0a04c13-d033-58c4-8ea3-03778bde9683",
+      "exampleText": "การพัฒนานวัตกรรมทางสังคมเพื่อแก้ไขปัญหาความเหลื่อมล้ำ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "dcd69337-3342-587d-9826-2ff23ff7e2b3",
+      "definitionId": "3544be46-abfb-5738-b0c7-e2618b377e04",
+      "exampleText": "การจัดการเรียนการสอนแบบบูรณาการวิทยาศาสตร์กับคณิตศาสตร์",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "7387742d-5bfc-59d0-b801-37eeb5366790",
+      "definitionId": "73d9cc03-e6fc-5200-a546-da67300a5cdc",
+      "exampleText": "การบูรณาการข้อมูลข้ามหน่วยงานเพื่อการบริหารจัดการภัยพิบัติระดับชาติ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "a602b520-deee-5ea5-af19-2ccd057eb92e",
+      "definitionId": "87ebfaa4-039f-5841-b712-72c6ae14eb7e",
+      "exampleText": "กวีท่านนี้ใช้สำนวนภาษาได้สละสลวยจับใจ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "d6e509ff-4bb2-58f4-b185-dc3f3807dbc3",
+      "definitionId": "03746643-4430-5a35-9481-5f4e014b1075",
+      "exampleText": "บทความวิชาการที่ดีควรมีเนื้อหาสาระลึกซึ้งและภาษาที่สละสลวยอ่านง่าย",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "1578887b-3f66-5bda-a9e0-2517b128f558",
+      "definitionId": "a51a4708-10e4-5035-ac23-bfdd88e1653c",
+      "exampleText": "ความเพียรพยายามย่อมนำมาซึ่งสัมฤทธิผลในหน้าที่การงาน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "af19e49e-f836-58cb-98d4-47f29f832dce",
+      "definitionId": "d1a76aa1-7f1e-51ea-9d52-66da0d1f7b63",
+      "exampleText": "การขับเคลื่อนองค์กรไปสู่สัมฤทธิผลตามแผนแม่บทระยะยาว",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "ea9c290e-10ed-5c45-bc2c-91a32aa70193",
+      "definitionId": "8f177619-14e9-506d-a530-83d4a16fd25b",
+      "exampleText": "ช่างทองสร้างสรรค์ผลงานลวดลายประณีตบรรจง",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "c0cdbccd-4c9e-56ad-acc3-62dada63c041",
+      "definitionId": "67c7da35-2dbc-5009-9642-803eb11d014c",
+      "exampleText": "อาหารไทยชาววังมีความประณีตทั้งรสชาติและการจัดตกแต่งจาน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "da83427c-be86-5e6c-b401-520185c39fa0",
+      "definitionId": "f19c17a3-57d7-5101-a762-75d1b743556b",
+      "exampleText": "ผู้ตรวจสอบบัญชีต้องมีความละเอียดลออในทุกตัวเลข",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "7053bf0e-df80-5942-98bd-0d68bcbe4b66",
+      "definitionId": "2ff17500-3482-5bdf-8ce4-715d54bf2b9e",
+      "exampleText": "กระบวนการพิสูจน์หลักฐานทางนิติวิทยาศาสตร์ต้องมีความละเอียดลออสูงสุด",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "18a422b8-989d-5b31-bf85-26e107679037",
+      "definitionId": "85052978-9bae-5088-8d38-3c3ce629b54f",
+      "exampleText": "การอนุรักษ์อัตลักษณ์ทางวัฒนธรรมของชุมชนท้องถิ่น",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "8177d7a2-85bd-514a-a5a4-aec87b9b427f",
+      "definitionId": "756190bc-094d-58b6-8fb5-5e3a4c824c3e",
+      "exampleText": "อัตลักษณ์ทางสถาปัตยกรรมไทยผสมผสานความร่วมสมัยได้อย่างกลมกลืน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "eef64c1e-4df1-5d32-8624-0177d04df64a",
+      "definitionId": "f2c12716-3f44-5819-b0b7-102749432215",
+      "exampleText": "ภูมิปัญญาชาวบ้านในการรักษาโรคด้วยสมุนไพร",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "1236abb5-0808-581b-9f8f-ce0a8678c686",
+      "definitionId": "ad028d8b-1075-5c1c-8116-128f2c5d9b38",
+      "exampleText": "การส่งเสริมภูมิปัญญาไทยสู่ระดับสากล",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "3eb76611-2bad-55fd-92bf-fb41fff10a1c",
+      "definitionId": "a591861a-b144-5aee-8502-d5780eb71547",
+      "exampleText": "ภูมิปัญญาการจัดการน้ำชุมชนช่วยรับมือกับภาวะโลกรวนอย่างยั่งยืน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "de1ffe49-ef75-5d28-86fc-625341df6a6c",
+      "definitionId": "3c1497d4-b49d-5c90-b6ad-7dc427a86cea",
+      "exampleText": "ผู้รับข่าวสารในยุคดิจิทัลต้องใช้วิจารณญาณอย่างยิ่ง",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "15201058-aaf2-5f11-aa30-9884d0de5938",
+      "definitionId": "cc120ebe-d4b4-5331-8084-2170a77477d2",
+      "exampleText": "การสร้างเสริมวิจารณญาณในการรู้เท่าทันสื่อดิจิทัลและปัญญาประดิษฐ์",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "8d34a01f-853d-52b3-ac18-7074db082fed",
+      "definitionId": "73a6606b-12df-56d5-995a-cb4b945964e1",
+      "exampleText": "โครงการก่อสร้างสะพานดำเนินการได้สำเร็จลุล่วง",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "dbd97241-d7be-5d18-9370-298f00bd6dba",
+      "definitionId": "d2609adb-2047-53bb-aa82-d6c32ebe1fb1",
+      "exampleText": "เขาสอบผ่านและสำเร็จการศึกษาในระดับปริญญาเอก",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "381cb3ba-7146-5c8f-8f5e-1b6b0c28947f",
+      "definitionId": "c2004f8c-db93-5827-8a84-11bd75c0a380",
+      "exampleText": "แผนการดำเนินธุรกิจล้มเหลวเนื่องจากภาวะเศรษฐกิจตกต่ำ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "d44ab3a2-354c-541c-bc8c-bada7de51ea8",
+      "definitionId": "f5204de3-1bb2-55cd-827e-76f9a41c2c3e",
+      "exampleText": "การเรียนรู้จากความผิดพลาดช่วยป้องกันไม่ให้ล้มเหลวซ้ำเดิม",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "83abf1c2-d9dc-532e-876b-936341a88d74",
+      "definitionId": "0b5ff612-fdbc-587a-97c8-f56ce0e5e119",
+      "exampleText": "คณะเจรจาสามารถบรรลุข้อตกลงหยุดยิงได้สำเร็จ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "ee14f29c-13a6-5a5a-8adf-c5bbdaf719f4",
+      "definitionId": "f4fddcf4-824a-5432-a5fd-e1b82eb6d3d7",
+      "exampleText": "องค์กรสามารถบรรลุเป้าหมายความเป็นกลางทางคาร์บอนก่อนกำหนด",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "8bdda808-bd34-580d-a98c-dacf040b6f32",
+      "definitionId": "a750fb08-7b03-562a-bd79-5722a4d28190",
+      "exampleText": "ตัวแทนทั้งสองฝ่ายเปิดการเจรจาการค้าทวิภาคี",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "f8c5080b-10be-560d-aef5-267d7ada6786",
+      "definitionId": "30769250-8c76-55dd-b94d-aa61583c9222",
+      "exampleText": "การเจรจาสนธิสัญญาสันติภาพภายใต้การกำกับดูแลของสหประชาชาติ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "26c16ac5-4d0b-53e2-98c1-e209523b735d",
+      "definitionId": "75b2ba50-7485-59e1-8802-5627cfda1ef4",
+      "exampleText": "พวกเขานั่งสนทนากันเรื่องสัพเพเหระอย่างเป็นกันเอง",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "2800131b-2bd2-5bb5-b5d8-e913e9d41b10",
+      "definitionId": "6d0864fb-b464-5562-acbc-37dbfd8d479e",
+      "exampleText": "รายการสนทนาโต๊ะกลมว่าด้วยอนาคตการศึกษาไทย",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "6b7eb947-94c7-577c-8500-71781cb9ca35",
+      "definitionId": "8938b62b-af55-57ac-bea3-64bd6371ead6",
+      "exampleText": "มิตรภาพที่แท้จริงย่อมยืนยาวข้ามกาลเวลา",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "829d928d-c518-5c3f-9917-d60f01b1c789",
+      "definitionId": "c5c01e34-89c6-584f-9b26-cb710ebeb4dc",
+      "exampleText": "การแข่งขันกีฬาช่วยกระชับมิตรภาพและความสามัคคีระหว่างเยาวชน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "fa386830-0a24-545f-82d8-2568f36227cd",
+      "definitionId": "c1595713-aada-5b5b-9925-734f9a4a892d",
+      "exampleText": "การสร้างสัมพันธภาพอันดีระหว่างเพื่อนร่วมงาน",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    },
+    {
+      "id": "509267d0-b1db-55a2-b224-fbbd393c1a78",
+      "definitionId": "6d4c6781-7858-5053-9506-98bc0db50f0e",
+      "exampleText": "การพัฒนาสัมพันธภาพเชิงบวกในครอบครัวช่วยเสริมสร้างภูมิคุ้มกันทางใจ",
+      "sourceAttribution": "พจนานุกรม ฉบับราชบัณฑิตยสถาน"
+    }
+  ],
+  "dialectEntries": [
+    {
+      "id": "84d9c617-be46-57a2-bf5b-5000b4b91389",
+      "regionId": "66f8808a-ba98-5cdf-8518-8f790a52de08",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "ลำ",
+      "dialectWordClean": "ลำ",
+      "ipaPhonetic": "/ลำ/",
+      "localMeaning": "รสชาติอร่อย มีรสโอชา ถูกปาก",
+      "culturalNotes": "ภาษาล้านนา ใช้บอกรสชาติอาหาร"
+    },
+    {
+      "id": "87c46a28-b9b8-582c-9c8b-f7531e53a7f6",
+      "regionId": "66f8808a-ba98-5cdf-8518-8f790a52de08",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "กิ๋น",
+      "dialectWordClean": "กิ๋น",
+      "ipaPhonetic": "/กิ๋น/",
+      "localMeaning": "กิน รับประทาน เคี้ยวและกลืน",
+      "culturalNotes": "ภาษาล้านนา แปลงเสียงสระอิ"
+    },
+    {
+      "id": "a8312c96-e66a-5265-bd2d-b3e2ef68c0d2",
+      "regionId": "66f8808a-ba98-5cdf-8518-8f790a52de08",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "ยะการ",
+      "dialectWordClean": "ยะการ",
+      "ipaPhonetic": "/ยะการ/",
+      "localMeaning": "ทำงาน ทำภารกิจ หรือหน้าที่",
+      "culturalNotes": "ยะ = ทำ, การ = งาน"
+    },
+    {
+      "id": "f78f422d-3881-51eb-948a-498c769c6d56",
+      "regionId": "66f8808a-ba98-5cdf-8518-8f790a52de08",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "อู้",
+      "dialectWordClean": "อู้",
+      "ipaPhonetic": "/อู้/",
+      "localMeaning": "พูด กล่าว จา สนทนา",
+      "culturalNotes": "คำกริยาหลักของชาวเหนือ"
+    },
+    {
+      "id": "b7db9d65-1a25-5cbf-9d5e-998389129910",
+      "regionId": "66f8808a-ba98-5cdf-8518-8f790a52de08",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "งามแต้",
+      "dialectWordClean": "งามแต้",
+      "ipaPhonetic": "/งามแต้/",
+      "localMeaning": "สวยมาก งดงามอย่างแท้จริง",
+      "culturalNotes": "แต้ = จริงๆ"
+    },
+    {
+      "id": "f6179ff8-0860-546f-8de7-9f3161036801",
+      "regionId": "0a787a1c-680d-56e6-a30d-a989b19cd6a9",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "แซ่บ",
+      "dialectWordClean": "แซ่บ",
+      "ipaPhonetic": "/แซ่บ/",
+      "localMeaning": "รสชาติอร่อย เผ็ดนัว จัดจ้าน ถึงใจ",
+      "culturalNotes": "คำอีสานยอดนิยม แสดงความอร่อยครบรส"
+    },
+    {
+      "id": "32261c5b-e3e0-50c8-9aeb-fe1046853198",
+      "regionId": "0a787a1c-680d-56e6-a30d-a989b19cd6a9",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "กิน",
+      "dialectWordClean": "กิน",
+      "ipaPhonetic": "/กิน/",
+      "localMeaning": "กิน รับประทานอาหาร (ออกเสียง กิน หรือ จังหัน)",
+      "culturalNotes": "ภาษาอีสาน"
+    },
+    {
+      "id": "296f76f7-b94f-532a-bfce-ba1a05ad8bd2",
+      "regionId": "0a787a1c-680d-56e6-a30d-a989b19cd6a9",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "เฮ็ดเวียก",
+      "dialectWordClean": "เฮ็ดเวียก",
+      "ipaPhonetic": "/เฮ็ดเวียก/",
+      "localMeaning": "ทำงาน ปฏิบัติหน้าที่ ออกแรงทำงาน",
+      "culturalNotes": "เฮ็ด = ทำ, เวียก = งาน/การงาน"
+    },
+    {
+      "id": "2148c02b-5d7d-5941-9828-20e3dcb641ca",
+      "regionId": "0a787a1c-680d-56e6-a30d-a989b19cd6a9",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "เว้า",
+      "dialectWordClean": "เว้า",
+      "ipaPhonetic": "/เว้า/",
+      "localMeaning": "พูด พูดจา สนทนา",
+      "culturalNotes": "กริยาพูดของชาวอีสาน"
+    },
+    {
+      "id": "456d679f-ee4b-50d0-8614-e1f753a7505e",
+      "regionId": "0a787a1c-680d-56e6-a30d-a989b19cd6a9",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "งามหลาย",
+      "dialectWordClean": "งามหลาย",
+      "ipaPhonetic": "/งามหลาย/",
+      "localMeaning": "สวยงามมาก เลอค่า",
+      "culturalNotes": "หลาย = มาก"
+    },
+    {
+      "id": "cbbb244b-9fbe-5ef6-8c39-0df6af6b7a54",
+      "regionId": "29aceab8-d865-5a0a-890c-912f58363830",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "หรอย",
+      "dialectWordClean": "หรอย",
+      "ipaPhonetic": "/หรอย/",
+      "localMeaning": "อร่อยมาก ได้รสชาติ สะใจ ดีเยี่ยม",
+      "culturalNotes": "ภาษาใต้ใช้ได้ทั้งอาหารและอารมณ์ความสุข"
+    },
+    {
+      "id": "b3147c62-0efd-5443-861a-6bb579835de3",
+      "regionId": "29aceab8-d865-5a0a-890c-912f58363830",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "กิน",
+      "dialectWordClean": "กิน",
+      "ipaPhonetic": "/กิน/",
+      "localMeaning": "กิน รับประทาน (สำเนียงใต้สั้นห้วน)",
+      "culturalNotes": "ภาษาถิ่นใต้"
+    },
+    {
+      "id": "30aa9ece-4c2e-586a-89f9-83d54260c1ab",
+      "regionId": "29aceab8-d865-5a0a-890c-912f58363830",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "แหลง",
+      "dialectWordClean": "แหลง",
+      "ipaPhonetic": "/แหลง/",
+      "localMeaning": "พูด สนทนา พูดจา",
+      "culturalNotes": "ภาษาถิ่นใต้ เช่น แหลงใต้"
+    },
+    {
+      "id": "0dc13dca-39fe-5853-bd5d-19448d783319",
+      "regionId": "29aceab8-d865-5a0a-890c-912f58363830",
+      "editionId": "a12654fe-c78e-545e-b0ed-2c1aa3482549",
+      "dialectWord": "สวยจังหู",
+      "dialectWordClean": "สวยจังหู",
+      "ipaPhonetic": "/สวยจังหู/",
+      "localMeaning": "สวยมาก งดงามยิ่งนัก",
+      "culturalNotes": "จังหู = มาก ยิ่งนัก"
+    }
+  ],
+  "semanticMappings": [
+    {
+      "id": "8822eee3-f91f-5d57-a910-e0e9883c4492",
+      "standardEntryId": "f08d0db8-8cca-5390-bf07-802d3454d78c",
+      "dialectEntryId": "84d9c617-be46-57a2-bf5b-5000b4b91389",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 1.0,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "d9dbf659-998a-585a-bb97-8d96ec48c1f9",
+      "standardEntryId": "4a21cf52-78d7-50af-afda-4ad020675dc4",
+      "dialectEntryId": "87c46a28-b9b8-582c-9c8b-f7531e53a7f6",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 1.0,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "59ce204c-e9ed-54f1-807b-030ffaf79e0c",
+      "standardEntryId": "e38c5ed8-8102-58df-94c7-3933e383cff6",
+      "dialectEntryId": "f78f422d-3881-51eb-948a-498c769c6d56",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 0.92,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "20ca5d90-c762-533b-b3eb-57519d3ef606",
+      "standardEntryId": "4b88af9c-6a74-5f8e-9345-608ff96a16c0",
+      "dialectEntryId": "b7db9d65-1a25-5cbf-9d5e-998389129910",
+      "relationshipType": "CULTURAL_ANALOG",
+      "confidenceScore": 0.85,
+      "sourceType": "AI_INFERRED",
+      "curatedBy": "AI Semantic Inferrer"
+    },
+    {
+      "id": "28a779a3-5bec-5f03-a313-9da5417d20a9",
+      "standardEntryId": "f08d0db8-8cca-5390-bf07-802d3454d78c",
+      "dialectEntryId": "f6179ff8-0860-546f-8de7-9f3161036801",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 1.0,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "87527a5e-139f-5544-83ef-a3b25b65e0dd",
+      "standardEntryId": "4a21cf52-78d7-50af-afda-4ad020675dc4",
+      "dialectEntryId": "32261c5b-e3e0-50c8-9aeb-fe1046853198",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 1.0,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "aa09be9a-6ae0-5ea8-bee2-a11efe52f9bd",
+      "standardEntryId": "e38c5ed8-8102-58df-94c7-3933e383cff6",
+      "dialectEntryId": "2148c02b-5d7d-5941-9828-20e3dcb641ca",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 0.92,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "dc45bc76-a691-5957-a322-f6a535622a91",
+      "standardEntryId": "4b88af9c-6a74-5f8e-9345-608ff96a16c0",
+      "dialectEntryId": "456d679f-ee4b-50d0-8614-e1f753a7505e",
+      "relationshipType": "CULTURAL_ANALOG",
+      "confidenceScore": 0.82,
+      "sourceType": "AI_INFERRED",
+      "curatedBy": "AI Semantic Inferrer"
+    },
+    {
+      "id": "cd2f1e9f-c817-53be-9cee-a4f033546457",
+      "standardEntryId": "f08d0db8-8cca-5390-bf07-802d3454d78c",
+      "dialectEntryId": "cbbb244b-9fbe-5ef6-8c39-0df6af6b7a54",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 1.0,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "cf2f0dae-8b7b-5445-b883-365e8c77a369",
+      "standardEntryId": "4a21cf52-78d7-50af-afda-4ad020675dc4",
+      "dialectEntryId": "b3147c62-0efd-5443-861a-6bb579835de3",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 1.0,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "6c667e88-eb5e-5698-b49c-3c6c7cbf3aff",
+      "standardEntryId": "e38c5ed8-8102-58df-94c7-3933e383cff6",
+      "dialectEntryId": "30aa9ece-4c2e-586a-89f9-83d54260c1ab",
+      "relationshipType": "EXACT_EQUIVALENT",
+      "confidenceScore": 0.92,
+      "sourceType": "OFFICIAL_DATA",
+      "curatedBy": "พจนานุกรมภาษาถิ่นเปรียบเทียบ"
+    },
+    {
+      "id": "e57a13c2-fcca-52c6-b8b4-0032c16bffb6",
+      "standardEntryId": "4b88af9c-6a74-5f8e-9345-608ff96a16c0",
+      "dialectEntryId": "0dc13dca-39fe-5853-bd5d-19448d783319",
+      "relationshipType": "CULTURAL_ANALOG",
+      "confidenceScore": 0.8,
+      "sourceType": "AI_INFERRED",
+      "curatedBy": "AI Semantic Inferrer"
+    }
+  ],
+  "wordRelationships": [
+    {
+      "id": "0e9ebad8-c15b-55e2-904c-fc881515deaf",
+      "sourceWordId": "b81dcf62-0b2b-5309-b5c5-f7e3c38a0d11",
+      "targetWordId": "60a31591-212c-5aae-9cd4-2423228b551b",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "6368f9be-b09f-517d-8911-edaf79275a0a",
+      "sourceWordId": "b81dcf62-0b2b-5309-b5c5-f7e3c38a0d11",
+      "targetWordId": "24ffae52-466d-56a3-851e-33c405d5a0de",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "AI_INFERRED"
+    },
+    {
+      "id": "eb4fadc4-d442-5412-b76f-f1e5f8bed934",
+      "sourceWordId": "e10615a6-202b-55c6-9b67-0e533ab4bcaa",
+      "targetWordId": "da947bd0-1fd8-565d-8570-90dc8a2a1016",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "d089dc96-1452-5f7e-9008-d2b54cd92f1e",
+      "sourceWordId": "e10615a6-202b-55c6-9b67-0e533ab4bcaa",
+      "targetWordId": "2a4fe11d-90bb-5bd7-b399-7dc608c3ac1a",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "882f9b85-5231-5673-b177-9afbf166400b",
+      "sourceWordId": "d2864f19-6968-5b25-b37e-07601af87ce2",
+      "targetWordId": "6a1dafe3-8268-5602-97f2-d0bec49150d4",
+      "relationshipType": "SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "35a68c2e-d80c-5d55-bbdd-a2870b40473a",
+      "sourceWordId": "d2864f19-6968-5b25-b37e-07601af87ce2",
+      "targetWordId": "1c696ff3-732b-50ba-b609-3b972ebac9f7",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "41292093-7b46-5325-8ce2-cabe17a503f1",
+      "sourceWordId": "d43906a3-f962-50ac-ad08-91e0f1c77336",
+      "targetWordId": "00d01e03-477c-5438-9bc6-86f5a88a2408",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "195817ba-565d-5c12-89e8-c23e1dcbb5cc",
+      "sourceWordId": "d43906a3-f962-50ac-ad08-91e0f1c77336",
+      "targetWordId": "d7a4054e-d2f7-5d81-bb58-b9f7b1d793cb",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "5e352902-5d25-55cb-bf1c-eb9408bf582d",
+      "sourceWordId": "00d01e03-477c-5438-9bc6-86f5a88a2408",
+      "targetWordId": "d7a4054e-d2f7-5d81-bb58-b9f7b1d793cb",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "47a2d07f-a96f-583f-bd1d-f3c6eaec8e56",
+      "sourceWordId": "d7a4054e-d2f7-5d81-bb58-b9f7b1d793cb",
+      "targetWordId": "eae135d3-7862-5db1-84be-8a0cb8d91cae",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "93ef1c85-6e9e-5a80-84e8-28babe22672c",
+      "sourceWordId": "dd279866-8c2a-5444-8631-156b86145541",
+      "targetWordId": "ec119703-3294-5c83-bad3-feecdbd433d6",
+      "relationshipType": "SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "e9f28181-fd79-5802-8d63-90b872e2d7f8",
+      "sourceWordId": "ec119703-3294-5c83-bad3-feecdbd433d6",
+      "targetWordId": "067d748d-7c5a-5066-9c1f-950bd017efdd",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "2f45169a-1238-5feb-8f67-0e3e7ef7de4c",
+      "sourceWordId": "d64ab580-cc2a-5ea4-90e4-a043e79f1756",
+      "targetWordId": "8d349c32-9582-595e-b412-14aa266774a8",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "40c900bc-b2d4-5591-9bc9-a6fd8d9b0d9c",
+      "sourceWordId": "d64ab580-cc2a-5ea4-90e4-a043e79f1756",
+      "targetWordId": "46b1f1c5-2546-50a3-9a69-f5538f55bcbd",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "f7d46462-5838-5199-9c1d-088fc72a32c2",
+      "sourceWordId": "d64ab580-cc2a-5ea4-90e4-a043e79f1756",
+      "targetWordId": "1e64d052-3ea4-58e5-bfea-3146cc33a5b3",
+      "relationshipType": "ANTONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "de0c55c3-2b45-5986-8080-ae6e3925735f",
+      "sourceWordId": "e105b149-7584-5f54-9eb1-d0e4119b35f4",
+      "targetWordId": "57944c96-a8bf-5c6b-b4c3-ea8b84e78d61",
+      "relationshipType": "SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "46c5b7b0-a9b6-54f1-98b9-e30e6aaa3967",
+      "sourceWordId": "6df2d145-4f31-5ba6-8238-89c755ea9ffc",
+      "targetWordId": "80742582-fbb9-5db2-8c7d-a783601c9126",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    },
+    {
+      "id": "6910748b-b406-55f1-81d7-cc730b1d1822",
+      "sourceWordId": "b0701a15-8ae5-55f3-9ce8-47c6b9df3ffb",
+      "targetWordId": "3f7a6561-460c-52bc-a994-57a306e5de92",
+      "relationshipType": "NEAR_SYNONYM",
+      "sourceType": "OFFICIAL_DATA"
+    }
+  ]
+}
