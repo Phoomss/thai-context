@@ -20,12 +20,17 @@ class VectorSearchService:
             SELECT 
                 se.entity_id as id,
                 w.headword as word,
-                d.definition_text as definition,
+                COALESCE(d.definition_text, (
+                    SELECT def2.definition_text FROM definitions def2 WHERE def2.entry_id = we.id ORDER BY def2.sense_order ASC LIMIT 1
+                )) as definition,
                 de.edition_year as edition,
                 1 - (se.embedding <=> %s::vector) AS similarity
             FROM search_embeddings se
-            JOIN definitions d ON se.entity_id = d.id
-            JOIN word_entries we ON d.entry_id = we.id
+            LEFT JOIN word_entries we ON (
+                (se.entity_type = 'WORD_ENTRY' AND se.entity_id = we.id) OR
+                (se.entity_type = 'DEFINITION' AND EXISTS (SELECT 1 FROM definitions d2 WHERE d2.id = se.entity_id AND d2.entry_id = we.id))
+            )
+            LEFT JOIN definitions d ON (se.entity_type = 'DEFINITION' AND se.entity_id = d.id)
             JOIN words w ON we.word_id = w.id
             LEFT JOIN dictionary_editions de ON we.edition_id = de.id
             ORDER BY se.embedding <=> %s::vector ASC
@@ -35,9 +40,45 @@ class VectorSearchService:
         try:
             with psycopg.connect(self.db_url) as conn:
                 with conn.cursor() as cur:
+                    from app.services.nlp.tokenizer import ThaiNLPTokenizer
+                    q_tokens = [t for t in ThaiNLPTokenizer.extract_keywords(query_text) if len(t) > 1]
+
+                    # 1. Exact/Keyword retrieval for tokens in query
+                    exact_rows = []
+                    if q_tokens:
+                        placeholders = ', '.join(['%s'] * len(q_tokens))
+                        exact_sql = f"""
+                            SELECT 
+                                we.id as id,
+                                w.headword as word,
+                                (SELECT def2.definition_text FROM definitions def2 WHERE def2.entry_id = we.id ORDER BY def2.sense_order ASC LIMIT 1) as definition,
+                                de.edition_year as edition,
+                                0.95 as similarity
+                            FROM words w
+                            JOIN word_entries we ON we.word_id = w.id
+                            LEFT JOIN dictionary_editions de ON we.edition_id = de.id
+                            WHERE w.headword IN ({placeholders})
+                            LIMIT %s;
+                        """
+                        cur.execute(exact_sql, (*q_tokens, top_k))
+                        exact_rows = cur.fetchall()
+
+                    # 2. Dense vector similarity search
                     fetch_limit = max(60, top_k * 5)
                     cur.execute(sql, (vector_str, vector_str, fetch_limit))
-                    rows = cur.fetchall()
+                    vector_rows = cur.fetchall()
+
+                    # Union unique rows (exact matches prioritize)
+                    seen_words = set()
+                    rows = []
+                    for r in exact_rows:
+                        if r[1] not in seen_words:
+                            seen_words.add(r[1])
+                            rows.append(r)
+                    for r in vector_rows:
+                        if r[1] not in seen_words:
+                            seen_words.add(r[1])
+                            rows.append(r)
                     results = []
                     for row in rows:
                         raw_sim = float(row[4])
