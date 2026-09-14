@@ -75,7 +75,8 @@ export async function GET(request: NextRequest) {
     "http://localhost:3001";
   const forceMock =
     process.env.THAI_CONTEXT_USE_MOCK === "true" ||
-    process.env.NEXT_PUBLIC_USE_MOCK === "true";
+    process.env.NEXT_PUBLIC_USE_MOCK === "true" ||
+    process.env.NODE_ENV === "test";
 
   if (backendUrl && !forceMock) {
     try {
