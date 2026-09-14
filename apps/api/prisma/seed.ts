@@ -4,32 +4,58 @@ import * as path from 'path';
 
 const prisma = new PrismaClient();
 
-// Deterministic mock embedding generator (1536 dims) based on string hash
-function generateDeterministicVector(text: string, dimension = 1536): number[] {
-  const vec = new Array(dimension).fill(0);
-  let hash = 0;
-  for (let i = 0; i < text.length; i++) {
-    hash = (hash << 5) - hash + text.charCodeAt(i);
-    hash |= 0;
+// Synchronized deterministic embedding generator (1536 dims) matching Python Random Projection
+function hashFeature(feature: string, seed = 42, dimension = 1536): { idx: number; sign: number } {
+  let h = seed;
+  for (let i = 0; i < feature.length; i++) {
+    h = ((h << 5) - h + feature.charCodeAt(i)) & 0xffffffff;
+    if (h >= 0x80000000) h -= 0x100000000;
   }
-  
-  // Seed pseudorandom generator with hash
-  let seed = Math.abs(hash) || 1;
-  const rnd = () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
+  const idx = Math.abs(h) % dimension;
+  const sign = Math.abs(h) % 2 === 0 ? 1.0 : -1.0;
+  return { idx, sign };
+}
 
+function generateDeterministicVector(text: string, dimension = 1536): number[] {
+  if (!text) return new Array(dimension).fill(0);
+
+  const cleaned = text.trim();
+  const vec = new Array(dimension).fill(0);
+
+  // 1. Whole text fingerprint
+  const { idx: wholeIdx, sign: wholeSign } = hashFeature(cleaned, 101, dimension);
+  vec[wholeIdx] += 3.0 * wholeSign;
+
+  // 2. Token features (words separated by whitespace)
+  const tokens = cleaned.split(/\s+/);
+  for (const t of tokens) {
+    if (!t) continue;
+    const { idx, sign } = hashFeature(t, 202, dimension);
+    vec[idx] += 2.0 * sign;
+  }
+
+  // 3. Character 2-grams, 3-grams & 4-grams for Thai morphological capture
+  const chars = cleaned.replace(/\s+/g, '');
+  for (const n of [2, 3, 4]) {
+    if (chars.length >= n) {
+      for (let i = 0; i <= chars.length - n; i++) {
+        const gram = chars.substring(i, i + n);
+        const { idx, sign } = hashFeature(gram, 404 + n, dimension);
+        vec[idx] += 1.2 * sign;
+      }
+    }
+  }
+
+  // 4. L2 Normalization
   let norm = 0;
   for (let i = 0; i < dimension; i++) {
-    const val = rnd() - 0.5;
-    vec[i] = val;
-    norm += val * val;
+    norm += vec[i] * vec[i];
   }
-  
-  // Normalize vector to unit length
   norm = Math.sqrt(norm);
-  return vec.map((v) => Number((v / norm).toFixed(6)));
+  if (norm > 0) {
+    return vec.map((v) => Number((v / norm).toFixed(6)));
+  }
+  return new Array(dimension).fill(0);
 }
 
 async function main() {

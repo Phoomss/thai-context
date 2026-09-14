@@ -114,6 +114,12 @@ cd apps/api
 npm test
 ```
 
+### Run Automated Smoke Test (All 12 Core Endpoints):
+```bash
+./scripts/smoke_test.sh
+# หรือ cd apps/api && npm run test:smoke
+```
+
 ### Run FastAPI AI Service Tests:
 ```bash
 cd apps/ai-service
