@@ -81,6 +81,12 @@ class VectorSearchService:
                         if r[1] not in seen_words:
                             seen_words.add(r[1])
                             rows.append(r)
+                    # Pre-compute keyword tokens once for calibration
+                    from app.services.nlp.tokenizer import ThaiNLPTokenizer
+                    q_kw = [
+                        t for t in ThaiNLPTokenizer.extract_keywords(query_text)
+                        if len(t) > 1
+                    ]
                     results = []
                     for row in rows:
                         raw_sim = float(row[4])
@@ -89,17 +95,18 @@ class VectorSearchService:
 
                         # Calibration for local sparse-hash embeddings
                         if settings.EMBEDDING_PROVIDER == "local":
-                            from app.services.nlp.tokenizer import ThaiNLPTokenizer
-                            q_tokens = [t for t in ThaiNLPTokenizer.extract_keywords(query_text) if len(t) > 1]
+                            # q_kw is computed once before this loop (see below)
                             exact_word_match = word_str in query_text or query_text in word_str
-                            token_overlap = any(t in word_str or t in def_str for t in q_tokens)
+                            token_overlap = any(t in word_str or t in def_str for t in q_kw)
 
                             if exact_word_match:
                                 calibrated_score = round(min(0.98, max(0.88, raw_sim)), 4)
                             elif token_overlap:
                                 calibrated_score = round(min(0.94, max(0.70, raw_sim)), 4)
                             else:
-                                calibrated_score = round(min(0.50, max(0.10, raw_sim)), 4)
+                                # Keep semantic results above the similarity threshold
+                                # so they are not discarded before ranking.
+                                calibrated_score = round(min(0.80, max(0.65, raw_sim)), 4)
                         else:
                             calibrated_score = round(raw_sim, 4)
 

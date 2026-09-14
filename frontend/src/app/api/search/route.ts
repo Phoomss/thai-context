@@ -7,6 +7,7 @@ function adaptSearchResponse(raw: any, query: string): unknown {
       ? raw.data
       : raw;
 
+  // Pass through if already in the expected contract shape
   if (
     data &&
     typeof data === "object" &&
@@ -14,6 +15,27 @@ function adaptSearchResponse(raw: any, query: string): unknown {
     Array.isArray(data.recommendations)
   ) {
     return raw;
+  }
+
+  // NestJS meaning-search returns { recommendations, intent, context, ... }
+  // without query_understanding — normalise it here so parseResponse works.
+  if (
+    data &&
+    typeof data === "object" &&
+    Array.isArray((data as any).recommendations) &&
+    (data as any).recommendations.length > 0
+  ) {
+    const d = data as any;
+    return {
+      query_understanding: {
+        raw_query: rawQuery,
+        detected_meaning: d.intent || rawQuery,
+        context: d.query_understanding?.context || d.context || undefined,
+        excluded_words: d.query_understanding?.excluded_words || [],
+      },
+      recommendations: d.recommendations,
+      mode: "live",
+    };
   }
 
   const rawQuery = (
@@ -156,9 +178,12 @@ export async function POST(request: Request) {
     const adapted = adaptSearchResponse(rawData, cleanQuery);
     const parsed = parseResponse(adapted);
 
-    // If still 0 recommendations, fall back to mock search for smooth UX
+    // If still 0 recommendations, try mock search for smooth UX
     if (parsed.recommendations.length === 0) {
-      return Response.json(mockSearch(cleanQuery, "fallback"), {
+      const fallback = mockSearch(cleanQuery, "fallback");
+      // mockSearch may also return 0 results for unknown words;
+      // return it regardless so the client can show the notice.
+      return Response.json(fallback, {
         headers: { "Cache-Control": "no-store" },
       });
     }

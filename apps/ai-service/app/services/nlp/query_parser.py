@@ -1,6 +1,9 @@
 import re
 from typing import List, Tuple, Optional
-from pythainlp.tokenize import word_tokenize
+try:
+    from pythainlp.tokenize import word_tokenize
+except ImportError:
+    word_tokenize = None  # handled gracefully in ThaiNLPTokenizer
 from app.models.schemas import QueryUnderstandingResponse
 from app.services.nlp.tokenizer import ThaiNLPTokenizer
 
@@ -62,11 +65,13 @@ class QueryParserService:
         for prefix in self.INTENT_PREFIXES:
             meaning = re.sub(prefix, "", meaning)
 
-        # Clean trailing/leading artifacts
-        meaning = re.sub(r"^[แต่,\s]+", "", meaning)
-        meaning = re.sub(r"[แต่,\s]+$", "", meaning).strip()
+        # Clean leading/trailing artifacts — strip whole connector words,
+        # NOT individual Thai characters (character classes break Thai)
+        meaning = re.sub(r"^(?:แต่|และ|หรือ|,|\s)+", "", meaning)
+        meaning = re.sub(r"(?:แต่|และ|หรือ|,|\s)+$", "", meaning).strip()
 
-        if not meaning:
+        # Fall back to full query if stripping left nothing useful
+        if not meaning or len(meaning.strip()) < 2:
             meaning = cleaned_query
 
         # 4. Determine Intent
