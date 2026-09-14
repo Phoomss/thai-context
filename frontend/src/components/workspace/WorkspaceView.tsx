@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import AgentPipelineStatus from "./AgentPipelineStatus";
-import WorkspaceResultCard from "./WorkspaceResultCard";
+import WorkspaceResultCard, { type WorkspaceResultTab } from "./WorkspaceResultCard";
 import { executeWorkspace } from "@/lib/api-client";
 import { audioManager } from "@/lib/audio-manager";
 import type { Recommendation } from "@/lib/search-types";
@@ -87,11 +87,16 @@ export default function WorkspaceView() {
   const [activeDraft, setActiveDraft] = useState<string>("");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // Interactive 5-Step Workflow & Filter Tab state
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState<WorkspaceResultTab>("all");
+
   const resultsRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 2500);
+    setTimeout(() => setToastMessage(null), 2800);
   };
 
   useEffect(() => {
@@ -129,6 +134,21 @@ export default function WorkspaceView() {
       if (messageToSend) {
         setQuery("");
       }
+
+      // Stepper highlights the latest milestone, but keeps activeTab as "all" so user sees the full overview
+      if (response.language_check) {
+        setCurrentStep(5);
+      } else if (response.generated_content && response.generated_content.length > 0) {
+        setCurrentStep(4);
+      } else if (response.comparison) {
+        setCurrentStep(3);
+      } else if (response.recommendations && response.recommendations.length > 0) {
+        setCurrentStep(2);
+      } else {
+        setCurrentStep(1);
+      }
+      setActiveTab("all");
+
       setTimeout(() => {
         if (typeof resultsRef.current?.scrollIntoView === "function") {
           resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -141,11 +161,74 @@ export default function WorkspaceView() {
     }
   };
 
+  const handleStepClick = (step: number) => {
+    setCurrentStep(step);
+
+    if (step === 1) {
+      setActiveTab("all");
+      textareaRef.current?.focus();
+      textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      showToast("สเต็ป 1: ระบุเจตนาหรือความหมายที่ต้องการค้นหา");
+    } else if (step === 2) {
+      setActiveTab("words");
+      if (currentResult && currentResult.recommendations && currentResult.recommendations.length > 0) {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("สเต็ป 2: แสดงคลังคำศัพท์ที่ค้นพบจากพจนานุกรมทางการ");
+      } else {
+        const sample = "หาคำที่หมายถึงทำงานได้ดีและใช้ทรัพยากรน้อย";
+        setQuery(sample);
+        textareaRef.current?.focus();
+        textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("สเต็ป 2: ค้นพบคำศัพท์ — กรอกตัวอย่างคำค้นแล้ว กดประมวลผลได้ทันที");
+      }
+    } else if (step === 3) {
+      setActiveTab("compare");
+      if (currentResult && currentResult.comparison) {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("สเต็ป 3: แสดงตารางเปรียบเทียบเฉดคำและจุดเน้น (Nuance Delta)");
+      } else {
+        const sample = "ประสิทธิภาพ หรือ ประสิทธิผล ต่างกันอย่างไร";
+        setQuery(sample);
+        textareaRef.current?.focus();
+        textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("สเต็ป 3: เปรียบเทียบเฉดคำ — กรอกตัวอย่างคำถามเปรียบเทียบแล้ว");
+      }
+    } else if (step === 4) {
+      setActiveTab("writing");
+      if (currentResult && currentResult.generated_content && currentResult.generated_content.length > 0) {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("สเต็ป 4: แสดงข้อความที่แต่งและปรับแต่งตามบริบท");
+      } else {
+        const sample = "แต่งประโยคคำว่า ประสิทธิภาพ สำหรับรายงานวิชาการ";
+        setQuery(sample);
+        textareaRef.current?.focus();
+        textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("สเต็ป 4: แต่งและเรียบเรียง — กรอกตัวอย่างการสั่งแต่งประโยคแล้ว");
+      }
+    } else if (step === 5) {
+      setActiveTab("check");
+      if (currentResult && currentResult.language_check) {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("สเต็ป 5: แสดงผลตรวจทานความสละสลวยและคำซ้ำซ้อน");
+      } else {
+        const sample = activeDraft.trim()
+          ? `ช่วยตรวจภาษาข้อความนี้: ${activeDraft}`
+          : "ช่วยตรวจภาษาประโยคนี้ให้หน่อย: ระบบนี้สามารถที่จะทำการประมวลผลได้อย่างรวดเร็ว";
+        setQuery(sample);
+        textareaRef.current?.focus();
+        textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("สเต็ป 5: ตรวจทานภาษา — พร้อมส่งให้ AI ตรวจสอบไวยากรณ์และความเยิ่นเย้อ");
+      }
+    }
+  };
+
   const handleResetSession = () => {
     setSessionId(`session-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`);
     setCurrentResult(null);
     setQuery("");
     setActiveDraft("");
+    setCurrentStep(1);
+    setActiveTab("all");
     setErrorMessage(null);
     showToast("เริ่มเซสชันใหม่เรียบร้อยแล้ว");
   };
@@ -205,28 +288,53 @@ export default function WorkspaceView() {
         </div>
       </div>
 
-      {/* Guided Workflow Stepper */}
+      {/* Interactive Guided Workflow Stepper */}
       <div className="workspace-stepper" role="navigation" aria-label="ขั้นตอนการทำงาน">
-        <div className="workspace-step-item active">
+        <button
+          type="button"
+          onClick={() => handleStepClick(1)}
+          className={`workspace-step-item ${currentStep === 1 ? "active" : ""}`}
+          title="คลิกเพื่อไประบุเจตนาการใช้งาน"
+        >
           <span className="workspace-step-num">1</span>
           <span>ระบุเจตนา</span>
-        </div>
-        <div className="workspace-step-item">
+        </button>
+        <button
+          type="button"
+          onClick={() => handleStepClick(2)}
+          className={`workspace-step-item ${currentStep === 2 ? "active" : ""}`}
+          title="คลิกเพื่อดูคลังคำศัพท์ที่ค้นพบ"
+        >
           <span className="workspace-step-num">2</span>
           <span>ค้นพบคำศัพท์</span>
-        </div>
-        <div className="workspace-step-item">
+        </button>
+        <button
+          type="button"
+          onClick={() => handleStepClick(3)}
+          className={`workspace-step-item ${currentStep === 3 ? "active" : ""}`}
+          title="คลิกเพื่อดูการเปรียบเทียบเฉดคำ"
+        >
           <span className="workspace-step-num">3</span>
           <span>เปรียบเทียบเฉด</span>
-        </div>
-        <div className="workspace-step-item">
+        </button>
+        <button
+          type="button"
+          onClick={() => handleStepClick(4)}
+          className={`workspace-step-item ${currentStep === 4 ? "active" : ""}`}
+          title="คลิกเพื่อดูข้อความที่แต่งและเรียบเรียง"
+        >
           <span className="workspace-step-num">4</span>
           <span>แต่งและเรียบเรียง</span>
-        </div>
-        <div className="workspace-step-item">
+        </button>
+        <button
+          type="button"
+          onClick={() => handleStepClick(5)}
+          className={`workspace-step-item ${currentStep === 5 ? "active" : ""}`}
+          title="คลิกเพื่อดูการตรวจทานภาษาและความสละสลวย"
+        >
           <span className="workspace-step-num">5</span>
           <span>ตรวจทานภาษา</span>
-        </div>
+        </button>
       </div>
 
       {/* Main 2-Column Grid Layout */}
@@ -267,6 +375,7 @@ export default function WorkspaceView() {
             {/* Textarea Composer */}
             <div className="workspace-textarea-wrap">
               <textarea
+                ref={textareaRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => {
@@ -407,6 +516,15 @@ export default function WorkspaceView() {
                   }}
                   activeDraftText={activeDraft}
                   onUpdateDraft={setActiveDraft}
+                  activeTab={activeTab}
+                  onTabChange={(tab) => {
+                    setActiveTab(tab);
+                    if (tab === "words") setCurrentStep(2);
+                    else if (tab === "compare") setCurrentStep(3);
+                    else if (tab === "writing") setCurrentStep(4);
+                    else if (tab === "check") setCurrentStep(5);
+                    else setCurrentStep(1);
+                  }}
                 />
 
                 {/* Continuation Action Bar */}

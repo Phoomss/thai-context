@@ -9,11 +9,15 @@ import type {
 import { audioManager } from "@/lib/audio-manager";
 import type { Recommendation } from "@/lib/search-types";
 
+export type WorkspaceResultTab = "all" | "words" | "compare" | "writing" | "check" | "bridge";
+
 interface WorkspaceResultCardProps {
   result: WorkspaceResponsePayload;
   onSelectAction?: (prompt: string) => void;
   activeDraftText?: string;
   onUpdateDraft?: (text: string) => void;
+  activeTab?: WorkspaceResultTab;
+  onTabChange?: (tab: WorkspaceResultTab) => void;
 }
 
 export default function WorkspaceResultCard({
@@ -21,11 +25,19 @@ export default function WorkspaceResultCard({
   onSelectAction,
   activeDraftText,
   onUpdateDraft,
+  activeTab: controlledTab,
+  onTabChange,
 }: WorkspaceResultCardProps) {
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [copiedGeneral, setCopiedGeneral] = useState(false);
   const [selectedWordSet, setSelectedWordSet] = useState<Set<string>>(new Set());
-  const [activeTab, setActiveTab] = useState<"all" | "words" | "compare" | "writing" | "check" | "bridge">("all");
+  const [internalTab, setInternalTab] = useState<WorkspaceResultTab>("all");
+  const activeTab = controlledTab ?? internalTab;
+
+  const handleTabSelect = (tab: WorkspaceResultTab) => {
+    setInternalTab(tab);
+    onTabChange?.(tab);
+  };
 
   const {
     context,
@@ -200,7 +212,7 @@ export default function WorkspaceResultCard({
       <div className="workspace-tabs">
         <button
           type="button"
-          onClick={() => setActiveTab("all")}
+          onClick={() => handleTabSelect("all")}
           className={`workspace-tab-btn ${activeTab === "all" ? "active" : ""}`}
         >
           🌟 แสดงทั้งหมด
@@ -208,7 +220,7 @@ export default function WorkspaceResultCard({
         {recommendations && recommendations.length > 0 && (
           <button
             type="button"
-            onClick={() => setActiveTab("words")}
+            onClick={() => handleTabSelect("words")}
             className={`workspace-tab-btn ${activeTab === "words" ? "active" : ""}`}
           >
             📖 คำศัพท์ ({recommendations.length})
@@ -217,7 +229,7 @@ export default function WorkspaceResultCard({
         {comparison && (
           <button
             type="button"
-            onClick={() => setActiveTab("compare")}
+            onClick={() => handleTabSelect("compare")}
             className={`workspace-tab-btn ${activeTab === "compare" ? "active" : ""}`}
           >
             ⚖️ เปรียบเทียบคำ
@@ -226,7 +238,7 @@ export default function WorkspaceResultCard({
         {generated_content && generated_content.length > 0 && (
           <button
             type="button"
-            onClick={() => setActiveTab("writing")}
+            onClick={() => handleTabSelect("writing")}
             className={`workspace-tab-btn ${activeTab === "writing" ? "active" : ""}`}
           >
             ✍️ ข้อความที่สร้าง ({generated_content.length})
@@ -235,7 +247,7 @@ export default function WorkspaceResultCard({
         {language_check && (
           <button
             type="button"
-            onClick={() => setActiveTab("check")}
+            onClick={() => handleTabSelect("check")}
             className={`workspace-tab-btn ${activeTab === "check" ? "active" : ""}`}
           >
             🔍 ตรวจภาษา ({language_check.score}/100)
@@ -244,7 +256,7 @@ export default function WorkspaceResultCard({
         {language_bridge && (
           <button
             type="button"
-            onClick={() => setActiveTab("bridge")}
+            onClick={() => handleTabSelect("bridge")}
             className={`workspace-tab-btn ${activeTab === "bridge" ? "active" : ""}`}
           >
             🌐 Bridge (EN)

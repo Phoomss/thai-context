@@ -963,6 +963,7 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
   box-shadow: var(--shadow-soft);
   margin-bottom: 28px;
 }
+button.workspace-step-item,
 .workspace-step-item {
   display: flex;
   align-items: center;
@@ -977,11 +978,15 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
   transition: all 180ms ease;
   cursor: pointer;
   text-align: left;
+  min-height: 42px;
+  width: 100%;
 }
+button.workspace-step-item:hover,
 .workspace-step-item:hover {
   background: var(--bg-soft);
   color: var(--ink);
 }
+button.workspace-step-item.active,
 .workspace-step-item.active {
   background: #eef6fd;
   color: var(--accent);
