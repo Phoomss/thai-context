@@ -2,6 +2,7 @@ import logging
 from typing import List
 import psycopg
 from fastapi import APIRouter, HTTPException, Depends
+from fastapi.responses import StreamingResponse
 from app.core.config import settings
 from app.models.schemas import (
     HealthResponse,
@@ -168,23 +169,52 @@ def compare_words(payload: CompareRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Compare words failed: {str(e)}")
 
+def _retrieve_chat_evidences(payload: ChatRequest) -> List[EvidenceItem]:
+    search_term = (payload.word or "").strip()
+    if not search_term:
+        # Extract potential target word or use message
+        search_term = payload.message.strip()
+
+    candidates = vector_search_service.search(search_term, top_k=4)
+    evidences = [
+        EvidenceItem(
+            word=c.word,
+            source="สำนักงานราชบัณฑิตยสภา",
+            edition=c.edition or "2554",
+            definition=c.definition,
+            source_type="OFFICIAL",
+            relevance=c.score
+        )
+        for c in candidates
+    ]
+    return evidences
+
 @router.post("/chat", response_model=ChatResponse)
 def rag_chat(payload: ChatRequest):
     try:
-        candidates = vector_search_service.search(payload.message, top_k=3)
-        evidences = [
-            EvidenceItem(
-                word=c.word,
-                source="สำนักงานราชบัณฑิตยสภา",
-                edition=c.edition or "2554",
-                definition=c.definition,
-                relevance=c.score
-            )
-            for c in candidates
-        ]
-        return rag_assistant.answer_query(payload.message, evidences)
+        evidences = _retrieve_chat_evidences(payload)
+        return rag_assistant.answer_query(payload, evidences)
     except Exception as e:
+        logger.error(f"RAG chat failed: {e}")
         raise HTTPException(status_code=500, detail=f"RAG chat failed: {str(e)}")
+
+@router.post("/chat/stream")
+async def rag_chat_stream(payload: ChatRequest):
+    try:
+        evidences = _retrieve_chat_evidences(payload)
+        generator = rag_assistant.stream_consultation(payload, evidences)
+        return StreamingResponse(
+            generator,
+            media_type="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "Connection": "keep-alive",
+                "X-Accel-Buffering": "no",
+            }
+        )
+    except Exception as e:
+        logger.error(f"RAG chat stream failed: {e}")
+        raise HTTPException(status_code=500, detail=f"RAG chat stream failed: {str(e)}")
 
 @router.post("/phonetics", response_model=PhoneticsResponse)
 def get_phonetics(payload: PhoneticsRequest):
