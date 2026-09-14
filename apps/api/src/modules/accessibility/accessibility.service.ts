@@ -207,7 +207,7 @@ export class AccessibilityService {
 
     // 1. Query Database word_translations
     try {
-      const wordRecord = await (this.prisma as any).word.findUnique({
+      const wordRecord = await this.prisma.word.findUnique({
         where: { headword: cleaned },
         include: {
           translations: true,
@@ -328,7 +328,7 @@ export class AccessibilityService {
   async getSignLanguage(headword: string): Promise<SignLanguageEntryDto[]> {
     const cleaned = headword.trim();
     try {
-      const wordRecord = await (this.prisma as any).word.findUnique({
+      const wordRecord = await this.prisma.word.findUnique({
         where: { headword: cleaned },
         include: {
           signEntries: {
