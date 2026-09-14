@@ -43,9 +43,13 @@ test("ambient scene, reversible transitions, footer shortcut and reduced motion"
   await expect(page.locator("#meaning")).toBeFocused();
 });
 
-test("recorded pronunciation pause/resume, stop on replacement, copy and mobile share", async ({ page, context }) => {
+test("server pronunciation pause/resume, stop on replacement, copy and mobile share", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => {
+    Reflect.deleteProperty(window, "speechSynthesis");
+    Reflect.deleteProperty(window, "SpeechSynthesisUtterance");
+  });
   // A real PCM WAV exercises HTMLAudioElement in Chrome without relying on
   // an installed Thai speech voice or external audio service.
   const wav = Buffer.alloc(44 + 8000 * 2 * 8);
@@ -54,13 +58,17 @@ test("recorded pronunciation pause/resume, stop on replacement, copy and mobile 
   wav.writeUInt32LE(8000, 24); wav.writeUInt32LE(16000, 28);
   wav.writeUInt16LE(2, 32); wav.writeUInt16LE(16, 34);
   wav.write("data", 36); wav.writeUInt32LE(wav.length - 44, 40);
-  await page.route("**/qa-audio.wav", route => route.fulfill({ contentType: "audio/wav", body: wav }));
-  await page.route("**/api/search", async route => {
-    const response = await route.fetch();
-    const data = await response.json();
-    for (const word of data.recommendations) word.pronunciation = { audio_url: "/qa-audio.wav", locale: "th-TH" };
-    await route.fulfill({ json: data });
-  });
+  await page.route("**/api/v1/tts/synthesize", route =>
+    route.fulfill({
+      json: {
+        audioBase64: wav.toString("base64"),
+        format: "wav",
+        provider: "PLAYWRIGHT_TTS",
+        cached: false,
+        durationMs: 8000,
+      },
+    }),
+  );
   await page.goto("/");
   await page.locator("#meaning").fill("ทำงานทรัพยากร");
   await page.locator(".search-submit").click();
@@ -90,8 +98,78 @@ test("recorded pronunciation pause/resume, stop on replacement, copy and mobile 
   expect(sheet!.y + sheet!.height).toBeCloseTo(850, 0);
   await page.keyboard.press("Escape");
   await expect(page.locator(".share-control>button")).toBeFocused();
-  await page.unroute("**/qa-audio.wav");
-  await page.route("**/qa-audio.wav", route => route.fulfill({ contentType: "audio/wav", body: "invalid" }));
+  await page.unroute("**/api/v1/tts/synthesize");
+  await page.route("**/api/v1/tts/synthesize", route =>
+    route.fulfill({
+      json: {
+        audioBase64: Buffer.from("invalid").toString("base64"),
+        format: "wav",
+        provider: "PLAYWRIGHT_TTS",
+        cached: false,
+      },
+    }),
+  );
   await speaker.click();
   await expect(page.locator(".audio-control [role=status]")).toBeVisible();
+});
+
+test("server pronunciation deduplicates loading and discards a replaced word", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => {
+    Reflect.deleteProperty(window, "speechSynthesis");
+    Reflect.deleteProperty(window, "SpeechSynthesisUtterance");
+  });
+  const browserErrors: string[] = [];
+  page.on("pageerror", error => browserErrors.push(error.message));
+  page.on("console", message => {
+    if (message.type() === "error") browserErrors.push(message.text());
+  });
+
+  let requests = 0;
+  let release!: () => void;
+  const gate = new Promise<void>(resolve => { release = resolve; });
+  await page.route("**/api/v1/tts/synthesize", async route => {
+    requests++;
+    await gate;
+    try {
+      await route.fulfill({
+        json: {
+          audioBase64: Buffer.from("stale audio").toString("base64"),
+          format: "wav",
+          provider: "PLAYWRIGHT_TTS",
+          cached: false,
+        },
+      });
+    } catch {
+      // The expected AbortController cancellation can close this route first.
+    }
+  });
+
+  await page.goto("/");
+  await page.locator("#meaning").fill("ทำงาน");
+  await page.locator(".search-submit").click();
+  const speaker = page.locator(".audio-control button");
+  await speaker.click();
+  await expect(speaker).toBeDisabled();
+  await expect(speaker).toHaveAttribute("aria-busy", "true");
+  await expect(speaker).toContainText("กำลังโหลด");
+
+  await speaker.evaluate((button: HTMLButtonElement) => {
+    button.click();
+    button.click();
+  });
+  await expect.poll(() => requests).toBe(1);
+
+  await page.locator(".candidate-row").nth(1).click();
+  await expect(page.locator("#word-title")).not.toHaveText("ประสิทธิภาพ");
+  release();
+  await expect(speaker).toBeEnabled();
+  await expect(speaker).toHaveAttribute("aria-pressed", "false");
+  await page.waitForTimeout(100);
+  expect(browserErrors).toEqual([]);
+
+  await page.setViewportSize({ width: 375, height: 850 });
+  const target = await speaker.boundingBox();
+  expect(target?.height).toBeGreaterThanOrEqual(44);
+  expect(target?.width).toBeGreaterThanOrEqual(44);
 });

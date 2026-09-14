@@ -73,7 +73,7 @@ pie title สถานะฟีเจอร์ Frontend เทียบกับ
 
 ---
 
-### 🟡 หมวดที่ 2: Real Data Binding (เปลี่ยนจาก Hardcoded เป็นข้อมูลจริง)
+### 🟡 หมวดที่ 2: Real Data Binding (เปลี่ยนจาก Hardc ded เป็นข้อมูลจริง)
 
 1. **วิวัฒนาการคำศัพท์ตามยุคสมัย (Evolution Explorer):**
    - **สถานะปัจจุบัน:** [`EvolutionExplorer.tsx`](file:///Users/mac/Desktop/workspace/thai-context/frontend/src/components/evolution/EvolutionExplorer.tsx) มี UI แท็บปี 2542, 2554, 2569 แล้ว แต่ใช้ Mock Data จาก [`explorer-data.ts`](file:///Users/mac/Desktop/workspace/thai-context/frontend/src/lib/explorer-data.ts)
