@@ -612,9 +612,149 @@ async function main() {
         }
       }
     }
+  // ==========================================
+  // INGEST DATA FROM data/processed/
+  // ==========================================
+  console.log('📦 Loading and Ingesting datasets from data/processed/...');
+  const processedDirCandidates = [
+    path.resolve(process.cwd(), 'data/processed'),
+    path.resolve(__dirname, '../../../data/processed'),
+    path.resolve(__dirname, '../../data/processed'),
+    '/app/data/processed',
+  ];
+  const processedBaseDir = processedDirCandidates.find((p) => fs.existsSync(p));
+
+  if (processedBaseDir) {
+    // 1. Ingest Transliterations (termsTransliteration)
+    const transPath = path.join(processedBaseDir, 'termsTransliteration', 'terms_transliteration.json');
+    if (fs.existsSync(transPath)) {
+      const transItems = JSON.parse(fs.readFileSync(transPath, 'utf-8'));
+      console.log(`Ingesting ${transItems.length} Royal Society Transliterations...`);
+      for (const item of transItems) {
+        const thaiWord = item.transliteration_thai?.trim();
+        const enTerm = item.term_english?.trim();
+        if (!thaiWord || !enTerm) continue;
+
+        const w = await prisma.word.upsert({
+          where: { headword: thaiWord },
+          update: { headwordClean: thaiWord },
+          create: {
+            headword: thaiWord,
+            headwordClean: thaiWord,
+            charLength: thaiWord.length,
+          },
+        });
+
+        await prisma.wordTranslation.upsert({
+          where: { id: `trans-translit-${w.id}`.slice(0, 36) },
+          update: { translatedWord: enTerm },
+          create: {
+            id: `trans-translit-${w.id}`.slice(0, 36),
+            wordId: w.id,
+            languageCode: 'en',
+            translatedWord: enTerm,
+            contextualExplanation: `คำทับศัพท์ทางการราชบัณฑิตยสภา จากคำภาษาอังกฤษ "${enTerm}"`,
+            provenance: 'OFFICIAL_ROYAL_TRANSLITERATION',
+            confidenceScore: 1.0,
+          },
+        }).catch(() => {});
+      }
+      console.log(`✅ Royal Society Transliterations ingested!`);
+    }
+
+    // 2. Ingest Technical Coined Terms (terms/*.json)
+    const termsDir = path.join(processedBaseDir, 'terms');
+    if (fs.existsSync(termsDir)) {
+      const termFiles = fs.readdirSync(termsDir).filter((f) => f.endsWith('.json'));
+      for (const tfile of termFiles) {
+        const titems = JSON.parse(fs.readFileSync(path.join(termsDir, tfile), 'utf-8'));
+        console.log(`Ingesting terms from ${tfile} (${titems.length} items)...`);
+        for (const item of titems) {
+          const enTerm = item.term?.trim();
+          const defs = item.definition?.trim();
+          const field = item.field || 'ศัพท์บัญญัติ';
+          if (!enTerm || !defs) continue;
+
+          for (const part of defs.split(',')) {
+            const thaiPart = part.trim();
+            if (!thaiPart || thaiPart.length < 2) continue;
+
+            const w = await prisma.word.upsert({
+              where: { headword: thaiPart },
+              update: { headwordClean: thaiPart },
+              create: {
+                headword: thaiPart,
+                headwordClean: thaiPart,
+                charLength: thaiPart.length,
+              },
+            });
+
+            await prisma.wordTranslation.upsert({
+              where: { id: `term-trans-${w.id}`.slice(0, 36) },
+              update: { translatedWord: enTerm, contextualExplanation: `สาขา ${field}` },
+              create: {
+                id: `term-trans-${w.id}`.slice(0, 36),
+                wordId: w.id,
+                languageCode: 'en',
+                translatedWord: enTerm,
+                contextualExplanation: `ศัพท์บัญญัติราชบัณฑิตยสภา สาขา ${field} (${enTerm})`,
+                provenance: 'OFFICIAL_ROYAL_COINED',
+                confidenceScore: 1.0,
+              },
+            }).catch(() => {});
+          }
+        }
+      }
+      console.log(`✅ Technical Coined Terms ingested!`);
+    }
+
+    // 3. Ingest Regional Dialects (dialects/*.json)
+    const dialectsDir = path.join(processedBaseDir, 'dialects');
+    if (fs.existsSync(dialectsDir)) {
+      const dialectFiles = fs.readdirSync(dialectsDir).filter((f) => f.endsWith('.json'));
+      const dialectEdition = await prisma.dictionaryEdition.findFirst({
+        where: { editionCode: 'DIALECT_THAI' },
+      });
+      const regionCodeMap = new Map<string, string>();
+      for (const r of await prisma.dialectRegion.findMany()) {
+        regionCodeMap.set(r.code, r.id);
+      }
+
+      if (dialectEdition) {
+        for (const dfile of dialectFiles) {
+          const ddata = JSON.parse(fs.readFileSync(path.join(dialectsDir, dfile), 'utf-8'));
+          const regionKey = (ddata.region || '').toLowerCase();
+          const regionCode = regionKey === 'north' ? 'NORTH' : regionKey === 'south' ? 'SOUTH' : 'NORTHEAST';
+          const regId = regionCodeMap.get(regionCode);
+          if (!regId) continue;
+
+          console.log(`Ingesting dialects from ${dfile} (${ddata.entries?.length || 0} entries)...`);
+          for (const entry of (ddata.entries || [])) {
+            const headword = entry.headword?.trim();
+            if (!headword) continue;
+            const ipa = entry.transcriptions?.[1] || null;
+            const meaning = entry.raw_text?.trim() || headword;
+
+            await prisma.dialectEntry.create({
+              data: {
+                regionId: regId,
+                editionId: dialectEdition.id,
+                dialectWord: headword,
+                dialectWordClean: headword,
+                ipaPhonetic: ipa,
+                localMeaning: meaning,
+                culturalNotes: `หมวด: ${ddata.title || ddata.category}`,
+              },
+            }).catch(() => {});
+          }
+        }
+        console.log(`✅ Regional Dialects ingested!`);
+      }
+    }
   }
 
   console.log('✅ Accessibility & Multilingual data successfully seeded!');
+  console.log('✅ All data from data/processed successfully ingested!');
   console.log('✅ Seed completed successfully!');
 }
 

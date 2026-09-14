@@ -120,6 +120,42 @@ KNOWN_PHONETICS_DICT: Dict[str, Dict[str, str]] = {
     }
 }
 
+def _load_processed_dict_phonetics():
+    import json
+    import os
+
+    candidates = [
+        "data/processed/dict",
+        "../../data/processed/dict",
+        "../../../data/processed/dict",
+        "/app/data/processed/dict"
+    ]
+    dict_dir = next((c for c in candidates if os.path.isdir(c)), None)
+    if not dict_dir:
+        return
+
+    # Ingest from dict_2569.json and dict_2554.json
+    for fname in ["dict_2569.json", "dict_2554.json"]:
+        fpath = os.path.join(dict_dir, fname)
+        if os.path.exists(fpath):
+            try:
+                with open(fpath, "r", encoding="utf-8") as f:
+                    entries = json.load(f)
+                    for e in entries:
+                        hw = e.get("headword")
+                        pron = e.get("pronunciation")
+                        if hw and pron and hw not in KNOWN_PHONETICS_DICT:
+                            KNOWN_PHONETICS_DICT[hw] = {
+                                "phonetic_spelling": pron.strip(),
+                                "transliteration_rtgs": hw, # default
+                                "ipa": "",
+                                "tone_pattern": "M"
+                            }
+            except Exception:
+                pass
+
+_load_processed_dict_phonetics()
+
 class ThaiPhoneticsService:
     @staticmethod
     def get_phonetics(headword: str, known_spelling: Optional[str] = None) -> Dict[str, Any]:

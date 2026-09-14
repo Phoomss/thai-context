@@ -9,6 +9,9 @@ import {
   SignLanguageEntryDto,
 } from './dto/word-accessibility.dto';
 
+import * as fs from 'fs';
+import * as path from 'path';
+
 @Injectable()
 export class AccessibilityService {
   private readonly logger = new Logger(AccessibilityService.name);
@@ -16,11 +19,71 @@ export class AccessibilityService {
   private readonly cache = new Map<string, { data: any; expiresAt: number }>();
   private readonly TTL_MS = 1000 * 60 * 30; // 30 minutes
 
+  private readonly transliterationThaiToEn = new Map<string, string>();
+  private readonly transliterationEnToThai = new Map<string, string>();
+  private readonly technicalTermsMap = new Map<string, { enTerm: string; field: string }>();
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly config: ConfigService,
   ) {
     this.aiServiceUrl = this.config.get<string>('aiServiceUrl', 'http://localhost:8000');
+    this.loadProcessedData();
+  }
+
+  private loadProcessedData(): void {
+    const candidates = [
+      path.resolve(process.cwd(), 'data/processed'),
+      path.resolve(__dirname, '../../../../data/processed'),
+      path.resolve(__dirname, '../../../data/processed'),
+      '/app/data/processed',
+    ];
+    const baseDir = candidates.find((p) => fs.existsSync(p));
+    if (!baseDir) return;
+
+    try {
+      // 1. Load Royal Society Transliterations
+      const transPath = path.join(baseDir, 'termsTransliteration', 'terms_transliteration.json');
+      if (fs.existsSync(transPath)) {
+        const transList = JSON.parse(fs.readFileSync(transPath, 'utf-8'));
+        for (const item of transList) {
+          const th = item.transliteration_thai?.trim();
+          const en = item.term_english?.trim();
+          if (th && en) {
+            this.transliterationThaiToEn.set(th, en);
+            this.transliterationEnToThai.set(en.toLowerCase(), th);
+          }
+        }
+        this.logger.log(`Loaded ${this.transliterationThaiToEn.size} Royal Society transliterations from data/processed`);
+      }
+
+      // 2. Load Royal Society Coined Terms
+      const termsDir = path.join(baseDir, 'terms');
+      if (fs.existsSync(termsDir)) {
+        const files = fs.readdirSync(termsDir).filter((f) => f.endsWith('.json'));
+        let count = 0;
+        for (const file of files) {
+          const items = JSON.parse(fs.readFileSync(path.join(termsDir, file), 'utf-8'));
+          for (const item of items) {
+            const en = item.term?.trim();
+            const defs = item.definition?.trim();
+            const field = item.field || 'ศัพท์บัญญัติ';
+            if (en && defs) {
+              for (const part of defs.split(',')) {
+                const cleanPart = part.trim();
+                if (cleanPart && !this.technicalTermsMap.has(cleanPart)) {
+                  this.technicalTermsMap.set(cleanPart, { enTerm: en, field });
+                  count++;
+                }
+              }
+            }
+          }
+        }
+        this.logger.log(`Loaded ${count} Royal Society coined terms from data/processed`);
+      }
+    } catch (e: any) {
+      this.logger.warn(`Failed to load processed data in AccessibilityService: ${e?.message || e}`);
+    }
   }
 
   private getFromCache<T>(key: string): T | null {
@@ -184,7 +247,47 @@ export class AccessibilityService {
       this.logger.warn(`DB translations lookup failed: ${dbErr?.message || dbErr}`);
     }
 
-    // 2. Direct call to AI service
+    // 2. Check in-memory processed data (Royal Society Transliterations & Coined Terms)
+    if (this.transliterationThaiToEn.has(cleaned)) {
+      const en = this.transliterationThaiToEn.get(cleaned)!;
+      return [
+        {
+          translatedWord: en,
+          languageCode: 'en',
+          contextualExplanation: `คำทับศัพท์ภาษาไทยตามประกาศสำนักงานราชบัณฑิตยสภา จากคำภาษาอังกฤษ "${en}"`,
+          provenance: 'OFFICIAL_ROYAL_TRANSLITERATION',
+          confidenceScore: 1.0,
+        },
+      ];
+    }
+
+    if (this.transliterationEnToThai.has(cleaned.toLowerCase())) {
+      const th = this.transliterationEnToThai.get(cleaned.toLowerCase())!;
+      return [
+        {
+          translatedWord: th,
+          languageCode: 'th',
+          contextualExplanation: `Official Royal Society Thai transliteration for "${cleaned}"`,
+          provenance: 'OFFICIAL_ROYAL_TRANSLITERATION',
+          confidenceScore: 1.0,
+        },
+      ];
+    }
+
+    if (this.technicalTermsMap.has(cleaned)) {
+      const t = this.technicalTermsMap.get(cleaned)!;
+      return [
+        {
+          translatedWord: t.enTerm,
+          languageCode: 'en',
+          contextualExplanation: `ศัพท์บัญญัติสำนักงานราชบัณฑิตยสภา สาขา ${t.field} (${t.enTerm})`,
+          provenance: 'OFFICIAL_ROYAL_COINED',
+          confidenceScore: 1.0,
+        },
+      ];
+    }
+
+    // 3. Direct call to AI service
     const fallbackTrans = await this.fetchTranslationFromAi(cleaned);
     return [fallbackTrans];
   }

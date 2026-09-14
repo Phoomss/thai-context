@@ -71,6 +71,75 @@ CURATED_TRANSLATIONS: Dict[str, Dict[str, Any]] = {
     }
 }
 
+def _load_processed_bilingual_terms():
+    import json
+    import glob
+    import os
+
+    candidates = [
+        "data/processed",
+        "../../data/processed",
+        "../../../data/processed",
+        "/app/data/processed"
+    ]
+    base_dir = next((c for c in candidates if os.path.isdir(c)), None)
+    if not base_dir:
+        return
+
+    # 1. Load Royal Society Transliterations (termsTransliteration)
+    trans_path = os.path.join(base_dir, "termsTransliteration", "terms_transliteration.json")
+    if os.path.exists(trans_path):
+        try:
+            with open(trans_path, "r", encoding="utf-8") as f:
+                trans_items = json.load(f)
+                for item in trans_items:
+                    th = item.get("transliteration_thai")
+                    en = item.get("term_english")
+                    if th and en:
+                        th_clean = th.strip()
+                        en_clean = en.strip()
+                        if th_clean not in CURATED_TRANSLATIONS:
+                            CURATED_TRANSLATIONS[th_clean] = {
+                                "primary_translation": en_clean,
+                                "secondary_translations": [],
+                                "contextual_explanation_en": f"Official Royal Society Thai transliteration (คำทับศัพท์) for the English term '{en_clean}'.",
+                                "usage_nuance_en": "Official Royal Society transliteration standard (ราชบัณฑิตยสภา).",
+                                "provenance": "OFFICIAL_ROYAL_TRANSLITERATION",
+                                "confidence_score": 1.0
+                            }
+        except Exception as e:
+            logger.warning(f"Error loading terms_transliteration.json: {e}")
+
+    # 2. Load Royal Society Coined Terms (terms/terms_*.json)
+    terms_pattern = os.path.join(base_dir, "terms", "*.json")
+    for fpath in glob.glob(terms_pattern):
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                coined_items = json.load(f)
+                for item in coined_items:
+                    en = item.get("term")
+                    th_defs = item.get("definition", "")
+                    field = item.get("field", "ศัพท์บัญญัติ")
+                    if en and th_defs:
+                        en_clean = en.strip()
+                        # Split multiple comma-separated Thai translations
+                        for part in th_defs.split(","):
+                            clean_part = part.strip()
+                            if clean_part and clean_part not in CURATED_TRANSLATIONS:
+                                CURATED_TRANSLATIONS[clean_part] = {
+                                    "primary_translation": en_clean,
+                                    "secondary_translations": [],
+                                    "contextual_explanation_en": f"Official Royal Society coined terminology for '{en_clean}' in the domain of {field}.",
+                                    "usage_nuance_en": f"Technical register: {field}",
+                                    "provenance": "OFFICIAL_ROYAL_COINED",
+                                    "confidence_score": 1.0
+                                }
+        except Exception as e:
+            logger.warning(f"Error loading {fpath}: {e}")
+
+_load_processed_bilingual_terms()
+
+
 BILINGUAL_PROMPT = """You are the Grounded Bilingual Translation Agent for THAI CONTEXT.
 Your task is to provide an accurate English bridge for the official Thai dictionary word based STRICTLY on its Thai definition.
 
