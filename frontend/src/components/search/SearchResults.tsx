@@ -165,7 +165,7 @@ export default function SearchResults({
                   {words.map((candidate, index) => (
                     <button
                       key={candidate.id ?? candidate.headword}
-                      className="candidate-row"
+                      className="candidate-row font-thai-reading"
                       aria-pressed={candidate.headword === word.headword}
                       disabled={loading}
                       onClick={() => select(candidate)}
@@ -191,10 +191,10 @@ export default function SearchResults({
               <article data-reveal className="word-detail" aria-labelledby="word-title">
                 <div key={word.headword} className="detail-content">
                   <p className="detail-kicker">ความหมายของคำ</p>
-                  <h3 id="word-title" tabIndex={-1}>
+                  <h3 id="word-title" className="font-thai-reading thai-headword" tabIndex={-1}>
                     {word.headword}
                   </h3>
-                  <p className="word-phonetic">
+                  <p className="word-phonetic font-thai-reading">
                     {word.pronunciation?.phonetic} {word.pos && <span>{word.pos}</span>}
                   </p>
                   <div className="word-utilities">
@@ -208,19 +208,19 @@ export default function SearchResults({
 
                   <section>
                     <h4>ความหมาย</h4>
-                    <p className="definition">{word.definition}</p>
+                    <p className="definition font-thai-reading">{word.definition}</p>
                   </section>
                   {!!examples.length && (
                     <section>
                       <h4>ตัวอย่างการใช้</h4>
                       {examples.map((example) => (
-                        <blockquote key={example}>{example}</blockquote>
+                        <blockquote className="font-thai-reading" key={example}>{example}</blockquote>
                       ))}
                     </section>
                   )}
                   <section>
                     <h4>เหมาะกับบริบท</h4>
-                    <div className="word-tags">
+                    <div className="word-tags font-thai-reading">
                       {[...(word.registers ?? []), ...(word.contexts ?? [])].map(
                         (tag, index) => <span key={tag + index}>{tag}</span>,
                       )}
@@ -229,7 +229,7 @@ export default function SearchResults({
                   {(word.related_words?.length || words.length > 1) && (
                     <section>
                       <h4>คำใกล้เคียง</h4>
-                      <div className="related-words">
+                      <div className="related-words font-thai-reading">
                         {(word.related_words ??
                           words
                             .filter((candidate) => candidate !== word)
@@ -278,7 +278,7 @@ export default function SearchResults({
                 <section className="context-guidance">
                   <Icon name="book" />
                   <h3>บริบทการใช้</h3>
-                  <p>
+                  <p className="font-thai-reading">
                     {word.contextual_explanation ??
                       word.ai_explanation ??
                       "พิจารณาความหมายและระดับภาษาให้ตรงกับสถานการณ์ที่ต้องการสื่อ"}
@@ -296,8 +296,8 @@ export default function SearchResults({
                   <h3>แหล่งข้อมูล</h3>
                   {word.evidence ? (
                     <>
-                      <p>{word.evidence.source_book}</p>
-                      <small>
+                      <p className="font-thai-reading">{word.evidence.source_book}</p>
+                      <small className="font-thai-reading">
                         {word.evidence.edition}{" "}
                         {word.evidence.edition_year &&
                           `พ.ศ. ${word.evidence.edition_year}`}
@@ -309,7 +309,7 @@ export default function SearchResults({
                       </p>
                     </>
                   ) : (
-                    <p>ยังไม่มีหลักฐานเพียงพอสำหรับยืนยันข้อมูลนี้</p>
+                    <p className="font-thai-reading">ยังไม่มีหลักฐานเพียงพอสำหรับยืนยันข้อมูลนี้</p>
                   )}
                   <button
                     className="evidence-button"

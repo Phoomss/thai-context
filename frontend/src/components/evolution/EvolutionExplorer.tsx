@@ -42,11 +42,11 @@ export default function EvolutionExplorer({ word }: { word: string }) {
         >
           <div>
             <span className="era-status">{era.label} · {era.state}</span>
-            <h3>{word || "คำที่กำลังสำรวจ"}</h3>
+            <h3 className="font-thai-reading">{word || "คำที่กำลังสำรวจ"}</h3>
           </div>
           <div>
-            <p>{era.definition}</p>
-            <small>{era.note}</small>
+            <p className="font-thai-reading">{era.definition}</p>
+            <small className="font-thai-reading">{era.note}</small>
           </div>
         </article>
       </div>

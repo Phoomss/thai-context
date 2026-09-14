@@ -13,8 +13,8 @@ export default function ParsedIntent({
   return (
     <div className="intent" data-reveal>
       <span>คุณกำลังมองหาคำที่สื่อถึง</span>
-      <p>“{loading ? query : (intent?.detected_meaning ?? query)}”</p>
-      <div className="intent-details">
+      <p className="font-thai-reading">“{loading ? query : (intent?.detected_meaning ?? query)}”</p>
+      <div className="intent-details font-thai-reading">
         {intent?.context && <small>บริบท: {intent.context}</small>}
         {!!intent?.excluded_words?.length && (
           <small>ไม่รวม: {intent.excluded_words.join(" · ")}</small>
@@ -23,4 +23,3 @@ export default function ParsedIntent({
     </div>
   );
 }
-
