@@ -64,6 +64,58 @@ export default function ContextComparator({
         <h2 id="compare-title">เปรียบเทียบคำในบริบท</h2>
         <span>เลือกคำสองคำ แล้วดูว่าน้ำหนักและจังหวะการใช้ต่างกันอย่างไร</span>
       </header>
+
+      {/* Nuance Delta Summary Banner */}
+      {leftWord && rightWord && leftWord.headword !== rightWord.headword && (
+        <aside
+          className="nuance-delta-banner"
+          aria-label="สรุปจุดต่างสำคัญ"
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto 24px",
+            padding: "16px 20px",
+            background: "#eff6ff",
+            borderRadius: "14px",
+            border: "1px solid #bfdbfe",
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "12px",
+          }}
+        >
+          <span style={{ fontSize: "20px", flexShrink: 0 }}>💡</span>
+          <div>
+            <strong
+              style={{
+                display: "block",
+                color: "#1e40af",
+                fontSize: "14px",
+                marginBottom: "4px",
+              }}
+            >
+              สรุปจุดต่างสำคัญ (Nuance Delta):
+            </strong>
+            <p
+              className="font-thai-reading"
+              style={{
+                margin: 0,
+                fontSize: "14px",
+                color: "#1e3a8a",
+                lineHeight: 1.6,
+              }}
+            >
+              คำว่า <strong>&ldquo;{leftWord.headword}&rdquo;</strong>{" "}
+              {leftWord.comparison?.emphasis
+                ? `เน้น${leftWord.comparison.emphasis}`
+                : `เน้น${leftWord.definition}`}{" "}
+              — ในขณะที่คำว่า <strong>&ldquo;{rightWord.headword}&rdquo;</strong>{" "}
+              {rightWord.comparison?.emphasis
+                ? `เน้น${rightWord.comparison.emphasis}`
+                : `เน้น${rightWord.definition}`}
+            </p>
+          </div>
+        </aside>
+      )}
+
       <div className="comparison-surface">
         {[leftWord, rightWord].map((word, index) => {
           const data = detail(word);
@@ -98,7 +150,6 @@ export default function ContextComparator({
             </article>
           );
         })}
-        <span className="versus" aria-hidden="true">เทียบ</span>
       </div>
     </section>
   );
