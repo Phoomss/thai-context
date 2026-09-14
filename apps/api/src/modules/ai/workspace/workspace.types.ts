@@ -101,6 +101,13 @@ export interface AgentTrace {
   duration_ms?: number;
 }
 
+export interface CoThinkingAnalysis {
+  strategic_recommendation: string;
+  nuance_breakdown: string;
+  risk_warning?: string;
+  next_step_ideas: string[];
+}
+
 export interface WorkspaceContext {
   sessionId: string;
   message: string;
@@ -116,6 +123,7 @@ export interface WorkspaceContext {
   generatedContent: GeneratedContentItem[];
   languageCheck?: LanguageCheckResult | null;
   languageBridge?: LanguageBridgeResult | null;
+  coThinking?: CoThinkingAnalysis | null;
   evidence: EvidenceItem[];
   confidence: number;
   confidenceLevel: 'HIGH' | 'MEDIUM' | 'LOW';
@@ -148,6 +156,7 @@ export interface WorkspaceResponseDto {
   generated_content: GeneratedContentItem[];
   language_check?: LanguageCheckResult | null;
   language_bridge?: LanguageBridgeResult | null;
+  co_thinking?: CoThinkingAnalysis | null;
   evidence: EvidenceItem[];
   confidence: number;
   confidence_level: 'HIGH' | 'MEDIUM' | 'LOW';

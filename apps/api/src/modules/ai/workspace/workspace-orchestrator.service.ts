@@ -6,6 +6,7 @@ import {
   WorkspaceContext,
   WorkspaceRequestDto,
   WorkspaceResponseDto,
+  CoThinkingAnalysis,
 } from './workspace.types';
 
 @Injectable()
@@ -107,7 +108,9 @@ export class WorkspaceOrchestratorService {
       }
     }
 
-    // 3. Final Answer Synthesis
+    // 3. Final Answer Synthesis & Co-Thinking Analysis
+    const coThinking = this.synthesizeCoThinking(context);
+    context.coThinking = coThinking;
     const answer = this.synthesizeAnswer(context);
 
     // 4. Update session history
@@ -133,6 +136,7 @@ export class WorkspaceOrchestratorService {
       generated_content: context.generatedContent,
       language_check: context.languageCheck,
       language_bridge: context.languageBridge,
+      co_thinking: coThinking,
       evidence: context.evidence,
       confidence: context.confidence,
       confidence_level: context.confidenceLevel,
@@ -282,5 +286,63 @@ export class WorkspaceOrchestratorService {
     }
 
     return parts.join('\n');
+  }
+
+  private synthesizeCoThinking(context: WorkspaceContext): CoThinkingAnalysis | null {
+    if (
+      context.abstained ||
+      (!context.recommendations.length &&
+        !context.comparison &&
+        !context.generatedContent.length &&
+        !context.languageCheck)
+    ) {
+      return null;
+    }
+
+    const firstRec = context.recommendations?.[0];
+    const firstWord = firstRec?.word || context.selectedWords?.[0] || 'คำที่เลือก';
+    const def = firstRec?.definition || 'ความหมายตามพจนานุกรมทางการ';
+    const src = firstRec?.source || 'พจนานุกรม ฉบับราชบัณฑิตยสถาน';
+    const edition = firstRec?.edition || '2554';
+    const reg = context.inferredContext?.type || 'วิชาการ';
+
+    let strategicRec = '';
+    let nuanceBreakdown = '';
+    let riskWarning = '';
+
+    if (context.comparison) {
+      const wA = context.comparison.wordA;
+      const wB = context.comparison.wordB;
+      const empA = context.comparison.details?.[wA]?.emphasis || 'กระบวนการและความคุ้มค่า';
+      const empB = context.comparison.details?.[wB]?.emphasis || 'ผลสำเร็จปลายทาง';
+      strategicRec = `จากการวิเคราะห์เปรียบเทียบในฐานข้อมูล หากคุณต้องการเน้น${empA} แนะนำให้เลือกใช้ "${wA}" แต่หากต้องการชู${empB} ควรเลือกใช้ "${wB}"`;
+      nuanceBreakdown = context.comparison.difference_summary;
+      riskWarning = `ระวังการใช้สับสนระหว่าง "${wA}" และ "${wB}" ในประโยคเดียวกัน เพราะจะทำให้เจตนาของเอกสารคลาดเคลื่อน`;
+    } else if (context.recommendations.length > 0) {
+      strategicRec = `จากการวิเคราะห์คลังข้อมูลราชบัณฑิตยสภา แนะนำให้ใช้คำว่า "${firstWord}" เนื่องจากตรงกับนิยามอย่างเป็นทางการคือ "${def}" ซึ่งจะช่วยเสริมความน่าเชื่อถือและความแม่นยำในบริบท${reg}`;
+      nuanceBreakdown = `อ้างอิงจาก ${src} พ.ศ. ${edition}: สื่อความหมายชัดเจนและสอดคล้องกับระดับภาษาทางการ`;
+      riskWarning = `หลีกเลี่ยงการใช้คำซ้อนเยิ่นเย้อ เช่น "ทำการ${firstWord}" หรือ "มี${firstWord}อย่างยิ่ง" ควรใช้เป็นคำเฉพาะตามแบบแผนภาษาไทย`;
+    } else if (context.languageCheck) {
+      strategicRec = `ผลการตรวจทานภาษาได้คะแนน ${context.languageCheck.score}/100 ข้อความมีความถูกต้องตามแบบแผน แนะนำให้ปรับแก้จุดเยิ่นเย้อเพื่อเพิ่มความกระชับ`;
+      nuanceBreakdown = context.languageCheck.summary;
+      riskWarning = `ตรวจสอบคำเชื่อมและโครงสร้างประโยค เพื่อให้กระชับและสื่อสารได้อย่างตรงจุด`;
+    } else {
+      strategicRec = `AI ช่วยวิเคราะห์และผสมผสานคำศัพท์ตามบริบท${reg} เพื่อให้คุณนำไปปรับแต่งต่อได้ทันที`;
+      nuanceBreakdown = `ใช้คำศัพท์ที่ตรงตามเจตนาและมาตรฐานภาษาไทยร่วมสมัย`;
+    }
+
+    const nextStepIdeas = [
+      `📊 แตกประเด็นเป็นหัวข้อสไลด์นำเสนอ (Presentation Bullets)`,
+      `✉️ ปรับเป็นร่างอีเมลสรุปถึงผู้บริหาร (Executive Brief)`,
+      `📢 แปลงเป็นข้อความประกาศทางการ (Official Announcement)`,
+      `🎯 เขียนย่อหน้าขยายความเชิงวิชาการ (Academic Rationale)`,
+    ];
+
+    return {
+      strategic_recommendation: strategicRec,
+      nuance_breakdown: nuanceBreakdown,
+      risk_warning: riskWarning,
+      next_step_ideas: nextStepIdeas,
+    };
   }
 }

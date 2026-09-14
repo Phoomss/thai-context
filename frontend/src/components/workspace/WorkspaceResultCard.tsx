@@ -46,6 +46,7 @@ export default function WorkspaceResultCard({
     generated_content,
     language_check,
     language_bridge,
+    co_thinking,
     evidence,
     confidence_level,
     confidence,
@@ -205,6 +206,119 @@ export default function WorkspaceResultCard({
             <span>🛡️</span> ระงับการสรุปผลเนื่องจากหลักฐานไม่เพียงพอ
           </div>
           <p style={{ margin: 0, fontSize: "14px", lineHeight: 1.6 }}>{abstention_reason}</p>
+        </div>
+      )}
+
+      {/* AI Co-Thinking Partner Card (สมองช่วยคิดและต่อยอด อิงจากฐานข้อมูล) */}
+      {co_thinking && !abstained && (
+        <div
+          className="workspace-card"
+          style={{
+            background: "linear-gradient(135deg, #ffffff 0%, #f4f8fe 100%)",
+            borderColor: "#bfdbfe",
+            padding: "24px 28px",
+            marginBottom: 0,
+            boxShadow: "0 8px 30px rgba(47, 120, 207, 0.08)",
+          }}
+        >
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px", marginBottom: "14px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <span style={{ fontSize: "24px" }}>🧠</span>
+              <div>
+                <h3 style={{ fontSize: "16px", fontWeight: 700, color: "var(--ink)", margin: 0 }}>
+                  AI Co-Thinking Partner (สมองช่วยคิดและต่อยอด)
+                </h3>
+                <span style={{ fontSize: "11px", color: "var(--accent)", fontWeight: 600 }}>
+                  วิเคราะห์เชื่อมโยงและกลั่นกรองจากฐานข้อมูลพจนานุกรมทางการ
+                </span>
+              </div>
+            </div>
+            <span
+              className="workspace-badge-tag"
+              style={{ background: "#e0f2fe", color: "#0369a1", borderColor: "#7dd3fc" }}
+            >
+              ✦ Strategic Angle
+            </span>
+          </div>
+
+          {/* Strategic Recommendation */}
+          <div
+            style={{
+              padding: "16px 18px",
+              borderRadius: "14px",
+              background: "white",
+              border: "1px solid #dbeafe",
+              fontSize: "14px",
+              lineHeight: 1.75,
+              color: "var(--ink)",
+              marginBottom: "12px",
+            }}
+          >
+            {co_thinking.strategic_recommendation}
+          </div>
+
+          {/* Nuance & Risk Warning Grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "10px", marginBottom: "16px" }}>
+            {co_thinking.nuance_breakdown && (
+              <div
+                style={{
+                  padding: "12px 14px",
+                  borderRadius: "10px",
+                  background: "#f8fafc",
+                  border: "1px solid var(--border)",
+                  fontSize: "12px",
+                  color: "var(--muted)",
+                  lineHeight: 1.6,
+                }}
+              >
+                <strong style={{ color: "var(--ink)" }}>🔍 วิเคราะห์ความต่าง:</strong> {co_thinking.nuance_breakdown}
+              </div>
+            )}
+            {co_thinking.risk_warning && (
+              <div
+                style={{
+                  padding: "12px 14px",
+                  borderRadius: "10px",
+                  background: "#fffbeb",
+                  border: "1px solid #fde68a",
+                  fontSize: "12px",
+                  color: "#92400e",
+                  lineHeight: 1.6,
+                }}
+              >
+                {co_thinking.risk_warning}
+              </div>
+            )}
+          </div>
+
+          {/* Next-Step Building Blocks */}
+          {co_thinking.next_step_ideas && co_thinking.next_step_ideas.length > 0 && (
+            <div style={{ paddingTop: "12px", borderTop: "1px solid #e2e8f0" }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "var(--ink)", marginBottom: "8px" }}>
+                🚀 สั่งให้ AI ต่อยอดเป็นผลงานรูปแบบอื่นได้ทันที (Next-Step Actions):
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                {co_thinking.next_step_ideas.map((idea, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => onSelectAction?.(idea.replace(/^[^\s]+\s/, ""))}
+                    className="workspace-draft-btn"
+                    style={{
+                      fontSize: "12px",
+                      padding: "6px 14px",
+                      background: "white",
+                      borderColor: "#cbd5e1",
+                      color: "var(--ink)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {idea} ➔
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

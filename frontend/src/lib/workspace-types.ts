@@ -104,6 +104,13 @@ export interface WorkspaceRequestPayload {
   selected_words?: string[];
 }
 
+export interface CoThinkingAnalysis {
+  strategic_recommendation: string;
+  nuance_breakdown: string;
+  risk_warning?: string;
+  next_step_ideas: string[];
+}
+
 export interface WorkspaceResponsePayload {
   session_id: string;
   intent: string;
@@ -115,6 +122,7 @@ export interface WorkspaceResponsePayload {
   generated_content: GeneratedContentItem[];
   language_check?: LanguageCheckResult | null;
   language_bridge?: LanguageBridgeResult | null;
+  co_thinking?: CoThinkingAnalysis | null;
   evidence: EvidenceItem[];
   confidence: number;
   confidence_level: 'HIGH' | 'MEDIUM' | 'LOW';

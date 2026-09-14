@@ -105,6 +105,33 @@ export class WritingAgent implements LanguageAgent {
       ];
     }
 
+    const isBulletRequest = text.includes('สไลด์') || text.includes('bullet') || text.includes('หัวข้อ');
+    const isEmailRequest = text.includes('อีเมล') || text.includes('email');
+    const isAnnouncementRequest = text.includes('ประกาศ');
+
+    if (isBulletRequest) {
+      items.unshift({
+        type: 'bullet_points',
+        content: `• การยกระดับ${targetWord}: จัดสรรทรัพยากรให้เกิดความคุ้มค่าสูงสุด\n• ปรับปรุงกระบวนการ: ลดขั้นตอนและระยะเวลาการทำงาน\n• ผลลัพธ์เชิงประจักษ์: สร้างผลสัมฤทธิ์ที่วัดผลได้ตามเป้าหมาย`,
+        register: 'presentation',
+        notes: `หัวข้อนำเสนอสำหรับสไลด์ ชูจุดเด่นของ "${targetWord}"`,
+      });
+    } else if (isEmailRequest) {
+      items.unshift({
+        type: 'paragraph',
+        content: `เรียน ท่านผู้บริหาร\n\nสืบเนื่องจากการพัฒนาระบบใหม่ ทีมงานได้มุ่งเน้นการเสริมสร้าง${targetWord}ในการปฏิบัติงาน เพื่อให้การใช้ทรัพยากรขององค์กรเกิดความคุ้มค่าสูงสุด จึงขอเรียนสรุปแนวทางดังแนบ\n\nขอแสดงความนับถือ`,
+        register: 'executive_email',
+        notes: `ร่างอีเมลทางการสำหรับสื่อสารกับผู้บริหารโดยใช้คำว่า "${targetWord}"`,
+      });
+    } else if (isAnnouncementRequest) {
+      items.unshift({
+        type: 'paragraph',
+        content: `ประกาศ: เพื่อเสริมสร้าง${targetWord}ในการปฏิบัติงานของทุกภาคส่วน ขอให้บุคลากรยึดถือแนวทางการจัดสรรเวลาและทรัพยากรอย่างคุ้มค่าสูงสุดนับแต่บัดนี้เป็นต้นไป`,
+        register: 'official_announcement',
+        notes: `ข้อความประกาศทางการสำหรับเผยแพร่ในหน่วยงาน`,
+      });
+    }
+
     context.generatedContent = items;
     // Set the first sentence as the current active text in the workspace for continuation
     if (items.length > 0 && !context.currentText) {
