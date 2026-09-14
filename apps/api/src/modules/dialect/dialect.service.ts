@@ -56,6 +56,18 @@ export class DialectService {
       whereClause.localMeaning = { contains: filter.meaning };
     }
 
+    if (filter.category) {
+      if (filter.category === 'body_parts') {
+        whereClause.culturalNotes = { contains: 'หมวดอวัยวะ' };
+      } else if (filter.category === 'kinship') {
+        whereClause.culturalNotes = { contains: 'หมวดคำเรียกญาติ' };
+      } else if (filter.category === 'conversation') {
+        whereClause.NOT = [
+          { culturalNotes: { contains: 'หมวด:' } },
+        ];
+      }
+    }
+
     const entries = await this.prisma.dialectEntry.findMany({
       where: whereClause,
       include: {
@@ -76,21 +88,31 @@ export class DialectService {
 
     const result = {
       count: entries.length,
-      results: entries.map((e) => ({
-        id: e.id,
-        dialectWord: e.dialectWord,
-        region: e.region.nameThai,
-        regionCode: e.region.code,
-        meaning: e.localMeaning,
-        culturalNotes: e.culturalNotes,
-        standardEquivalents: e.semanticMappings.map((sm) => ({
-          standardWord: sm.standardEntry.word.headword,
-          confidence: Number(sm.confidenceScore),
-          type: sm.sourceType === 'OFFICIAL_DATA' ? 'OFFICIAL' : 'AI_INFERRED',
-        })),
-        source: e.edition.source.name,
-        edition: e.edition.editionYear,
-      })),
+      results: entries.map((e) => {
+        let category = 'conversation';
+        if (e.culturalNotes?.includes('หมวดอวัยวะ')) {
+          category = 'body_parts';
+        } else if (e.culturalNotes?.includes('หมวดคำเรียกญาติ')) {
+          category = 'kinship';
+        }
+
+        return {
+          id: e.id,
+          dialectWord: e.dialectWord,
+          region: e.region.nameThai,
+          regionCode: e.region.code,
+          meaning: e.localMeaning,
+          culturalNotes: e.culturalNotes,
+          category,
+          standardEquivalents: e.semanticMappings.map((sm) => ({
+            standardWord: sm.standardEntry.word.headword,
+            confidence: Number(sm.confidenceScore),
+            type: sm.sourceType === 'OFFICIAL_DATA' ? 'OFFICIAL' : 'AI_INFERRED',
+          })),
+          source: e.edition.source.name,
+          edition: e.edition.editionYear,
+        };
+      }),
     };
     return result;
   }

@@ -16,4 +16,9 @@ export class DialectFilterDto {
   @IsOptional()
   @IsString()
   meaning?: string;
+
+  @ApiPropertyOptional({ description: 'Filter by category (conversation, kinship, body_parts)', example: 'conversation' })
+  @IsOptional()
+  @IsString()
+  category?: string;
 }

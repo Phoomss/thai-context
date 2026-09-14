@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useId } from "react";
+import { useState, useMemo, useId, useEffect } from "react";
 import {
   DIALECT_CATEGORIES,
   DIALECT_WORD_GROUPS,
@@ -23,36 +23,129 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
   const [selectedRegion, setSelectedRegion] = useState<string>("กลาง");
   const [searchQuery, setSearchQuery] = useState("");
   const [playingWord, setPlayingWord] = useState<string | null>(null);
+  const [wordGroups, setWordGroups] = useState<DialectWordGroup[]>(DIALECT_WORD_GROUPS);
   const searchInputId = useId();
+
+  // Load dialect word groups from primary Next.js backend proxy route
+  useEffect(() => {
+    if (typeof window === "undefined" || process.env.VITEST) return;
+    let isMounted = true;
+    async function loadDialects() {
+      try {
+        const res = await fetch("/api/v1/dialect");
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && Array.isArray(data.results) && data.results.length > 0) {
+            setWordGroups((prev) => {
+              const customGroups = prev.filter((g) => g.id.startsWith("custom-"));
+              return [...customGroups, ...data.results];
+            });
+          }
+        }
+      } catch {
+        // Local cached fallback already loaded in state
+      }
+    }
+    loadDialects();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // When currentWord is provided, sync selection or fetch dynamic mapping from backend
+  useEffect(() => {
+    if (!currentWord || !currentWord.trim()) return;
+    const trimmed = currentWord.trim();
+    let isMounted = true;
+
+    const existing = wordGroups.find((g) => g.standardWord === trimmed);
+    if (existing) {
+      setSelectedCategory(existing.category);
+      setSelectedWordId(existing.id);
+      return;
+    }
+
+    if (typeof window === "undefined" || process.env.VITEST) return;
+
+    async function fetchMapping() {
+      try {
+        const res = await fetch(
+          `/api/v1/dialect/mapping/${encodeURIComponent(trimmed)}`,
+        );
+        if (res.ok) {
+          const data = await res.json();
+          if (
+            isMounted &&
+            Array.isArray(data.mappings) &&
+            data.mappings.length > 0
+          ) {
+            const newGroup: DialectWordGroup = {
+              id: `custom-${trimmed}`,
+              standardWord: data.standardWord || trimmed,
+              category: data.category || "conversation",
+              categoryLabel: data.categoryLabel || "สนทนายอดนิยม",
+              dialects: data.mappings.map((m: any) => ({
+                region: m.region,
+                word: m.word,
+                phonetic: m.phonetic || "",
+                meaning: m.meaning,
+                culturalNotes: m.culturalNotes || "",
+                provenance:
+                  m.type === "OFFICIAL" || m.confidence === 1
+                    ? "official"
+                    : "inferred",
+                source:
+                  m.source ||
+                  "คลังข้อมูลภาษาถิ่น ๔ ภาค สถาบันวิจัยภาษาและวัฒนธรรมเอเชีย ม.มหิดล",
+              })),
+            };
+
+            setWordGroups((prev) => {
+              if (prev.some((g) => g.standardWord === trimmed)) return prev;
+              return [newGroup, ...prev];
+            });
+            setSelectedCategory(newGroup.category);
+            setSelectedWordId(newGroup.id);
+          }
+        }
+      } catch {
+        // Fallback or ignore
+      }
+    }
+
+    fetchMapping();
+    return () => {
+      isMounted = false;
+    };
+  }, [currentWord, wordGroups]);
 
   // If currentWord is provided and matches a known group, select it
   const initialGroup = useMemo(() => {
     if (!currentWord) return null;
     const trimmed = currentWord.trim();
-    return (
-      DIALECT_WORD_GROUPS.find((g) => g.standardWord === trimmed) ?? null
-    );
-  }, [currentWord]);
+    return wordGroups.find((g) => g.standardWord === trimmed) ?? null;
+  }, [currentWord, wordGroups]);
 
   // Words available in selected category
   const wordsInCategory = useMemo(() => {
-    return DIALECT_WORD_GROUPS.filter((g) => g.category === selectedCategory);
-  }, [selectedCategory]);
+    return wordGroups.filter((g) => g.category === selectedCategory);
+  }, [wordGroups, selectedCategory]);
 
   // Filtered words by search query
   const filteredWords = useMemo(() => {
     if (!searchQuery.trim()) return wordsInCategory;
     const q = searchQuery.trim().toLowerCase();
-    return DIALECT_WORD_GROUPS.filter(
+    return wordGroups.filter(
       (g) =>
-        g.standardWord.toLowerCase().includes(q) ||
-        g.dialects.some(
-          (d) =>
-            d.word.toLowerCase().includes(q) ||
-            d.meaning.toLowerCase().includes(q),
-        ),
+        g.category === selectedCategory &&
+        (g.standardWord.toLowerCase().includes(q) ||
+          g.dialects.some(
+            (d) =>
+              d.word.toLowerCase().includes(q) ||
+              d.meaning.toLowerCase().includes(q),
+          )),
     );
-  }, [wordsInCategory, searchQuery]);
+  }, [wordGroups, wordsInCategory, searchQuery, selectedCategory]);
 
   // Currently active word group
   const activeGroup: DialectWordGroup = useMemo(() => {
@@ -60,11 +153,12 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
       const match = filteredWords.find((g) => g.id === selectedWordId);
       return match || filteredWords[0];
     }
-    const found = DIALECT_WORD_GROUPS.find((g) => g.id === selectedWordId);
+    const found = wordGroups.find((g) => g.id === selectedWordId);
     if (found) return found;
     if (initialGroup) return initialGroup;
+    if (wordsInCategory.length > 0) return wordsInCategory[0];
     return DEFAULT_DIALECT_GROUP;
-  }, [selectedWordId, initialGroup, searchQuery, filteredWords]);
+  }, [selectedWordId, initialGroup, searchQuery, filteredWords, wordGroups, wordsInCategory]);
 
   const displayedEntries: DialectEntry[] =
     activeGroup?.dialects || (fallbackDialectEntries as DialectEntry[]);
@@ -119,7 +213,7 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
                 onClick={() => {
                   setSelectedCategory(cat.key);
                   setSearchQuery("");
-                  const firstInCat = DIALECT_WORD_GROUPS.find(
+                  const firstInCat = wordGroups.find(
                     (g) => g.category === cat.key,
                   );
                   if (firstInCat) setSelectedWordId(firstInCat.id);
