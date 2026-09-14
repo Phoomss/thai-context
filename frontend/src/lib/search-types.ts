@@ -1,3 +1,5 @@
+import type { TranslationItem } from "./accessibility-types";
+
 export type Evidence = {
   source_book: string;
   edition?: string;
@@ -12,6 +14,8 @@ export type Recommendation = {
   score?: number;
   pos?: string;
   definition: string;
+  english?: string;
+  translations?: TranslationItem[];
   ai_explanation?: string;
   contextual_explanation?: string;
   examples?: string[];
@@ -72,9 +76,11 @@ export function parseResponse(
       !strings(r.contexts) || !strings(r.examples)
     )
       throw new Error("Invalid recommendation");
-    for (const key of ["id", "pos", "ai_explanation", "contextual_explanation", "canonical_url"])
+    for (const key of ["id", "pos", "ai_explanation", "contextual_explanation", "canonical_url", "english"])
       if (r[key] !== undefined && typeof r[key] !== "string")
         throw new Error("Invalid text");
+    if (r.translations !== undefined && !Array.isArray(r.translations))
+      throw new Error("Invalid translations");
     if (r.pronunciation !== undefined) {
       const p = r.pronunciation;
       if (!object(p) || ["phonetic", "audio_url", "locale"].some(k => p[k] !== undefined && typeof p[k] !== "string"))

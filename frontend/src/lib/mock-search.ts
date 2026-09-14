@@ -7,6 +7,29 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     pos: "น.",
     definition:
       "ความสามารถในการทำงานให้ได้ผล โดยใช้เวลาและทรัพยากรอย่างคุ้มค่า",
+    english: "efficiency",
+    translations: [
+      {
+        translatedWord: "efficiency",
+        languageCode: "en",
+        secondaryTranslations: ["competence", "productivity"],
+        contextualExplanation:
+          "ความสามารถในการสร้างผลผลิตสูงสุดโดยใช้ทรัพยากรน้อยที่สุด",
+        usageNuance: "ภาษาทางการและบริบทการบริหารจัดการ",
+        provenance: "OFFICIAL_ROYAL_COINED",
+        confidenceScore: 1.0,
+      },
+      {
+        translatedWord: "performance efficacy",
+        languageCode: "en",
+        secondaryTranslations: ["operational efficiency"],
+        contextualExplanation:
+          "คำแปลแนะนำสำหรับการทำงานในองค์กรร่วมสมัย",
+        usageNuance: "บริบทการปฏิบัติการสมัยใหม่",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.88,
+      },
+    ],
     ai_explanation: "ตัวอย่างนี้เน้นวิธีทำงานและการใช้ทรัพยากร",
     registers: ["ทางการ"],
     contexts: ["การทำงาน"],
@@ -31,6 +54,24 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     score: 0.88,
     pos: "น.",
     definition: "ผลสำเร็จที่เกิดขึ้นตามเป้าหมายที่ตั้งไว้",
+    english: "effectiveness",
+    translations: [
+      {
+        translatedWord: "effectiveness",
+        languageCode: "en",
+        secondaryTranslations: ["efficacy", "fruitfulness"],
+        contextualExplanation: "ผลสำเร็จที่เกิดขึ้นตามเป้าหมายหรือวัตถุประสงค์ที่กำหนดไว้",
+        usageNuance: "เน้นการบรรลุเป้าหมายของงานหรือนโยบาย",
+        provenance: "OFFICIAL_ROYAL_COINED",
+        confidenceScore: 1.0,
+      },
+      {
+        translatedWord: "outcome success",
+        languageCode: "en",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.82,
+      },
+    ],
     ai_explanation:
       "ตัวอย่างนี้เน้นการบรรลุเป้าหมาย มากกว่าปริมาณทรัพยากรที่ใช้",
     registers: ["ทางการ"],
@@ -48,6 +89,17 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     score: 0.84,
     pos: "น.",
     definition: "ผลสำเร็จตามความมุ่งหมาย",
+    english: "achievement",
+    translations: [
+      {
+        translatedWord: "achievement",
+        languageCode: "en",
+        secondaryTranslations: ["accomplishment", "success"],
+        contextualExplanation: "ความสำเร็จลุล่วงตามความมุ่งหมายอย่างสมบูรณ์",
+        provenance: "OFFICIAL_ROYAL_COINED",
+        confidenceScore: 1.0,
+      },
+    ],
     ai_explanation:
       "ใช้กล่าวถึงความสำเร็จของงานหรือความพยายามในตัวอย่างงานเขียน",
     registers: ["ทางการ"],
@@ -59,6 +111,17 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     score: 0.78,
     pos: "ก.",
     definition: "ใช้จ่ายอย่างประหยัดและระมัดระวัง",
+    english: "frugal",
+    translations: [
+      {
+        translatedWord: "frugal",
+        languageCode: "en",
+        secondaryTranslations: ["thrifty", "economical"],
+        contextualExplanation: "การใช้จ่ายอย่างระมัดระวังและประหยัดรอบคอบ",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.92,
+      },
+    ],
     ai_explanation: "ตัวอย่างนี้เน้นความประหยัดในการใช้จ่าย",
     registers: ["ทั่วไป"],
     contexts: ["ชีวิตประจำวัน"],
@@ -69,6 +132,17 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     score: 0.92,
     pos: "ก.",
     definition: "ช่วยกันทำกิจกรรมหรืองานให้บรรลุจุดมุ่งหมาย",
+    english: "cooperate",
+    translations: [
+      {
+        translatedWord: "cooperate",
+        languageCode: "en",
+        secondaryTranslations: ["collaborate", "team up"],
+        contextualExplanation: "การร่วมแรงร่วมใจกันทำงานเพื่อให้บรรลุจุดมุ่งหมายเดียวกัน",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.95,
+      },
+    ],
     ai_explanation: "สื่อถึงการลงมือทำงานด้วยกัน",
     registers: ["ทั่วไป"],
     contexts: ["การทำงาน"],
@@ -79,6 +153,17 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     score: 0.87,
     pos: "ก.",
     definition: "เชื่อมโยงการทำงานของหลายฝ่ายให้สอดคล้องกัน",
+    english: "coordinate",
+    translations: [
+      {
+        translatedWord: "coordinate",
+        languageCode: "en",
+        secondaryTranslations: ["liaise", "synchronize"],
+        contextualExplanation: "การเชื่อมโยงและจัดระเบียบการทำงานร่วมกันระหว่างฝ่าย",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.94,
+      },
+    ],
     ai_explanation: "เน้นการติดต่อและจัดงานระหว่างฝ่าย",
     registers: ["ทางการ"],
     contexts: ["การทำงาน"],
@@ -88,6 +173,17 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     headword: "กรุณารอสักครู่",
     score: 0.9,
     definition: "ข้อความสุภาพสำหรับขอให้อีกฝ่ายรอช่วงเวลาสั้น ๆ",
+    english: "please hold on",
+    translations: [
+      {
+        translatedWord: "please hold on",
+        languageCode: "en",
+        secondaryTranslations: ["please wait a moment", "just a moment"],
+        contextualExplanation: "ถ้อยคำสุภาพเพื่อขอให้อีกฝ่ายรอสักครู่",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.89,
+      },
+    ],
     ai_explanation:
       "เป็นตัวอย่างข้อความสำหรับการสื่อสาร ไม่ใช่หัวคำที่ยืนยันจากพจนานุกรม",
     registers: ["สุภาพ"],
@@ -99,6 +195,23 @@ const entries: (Recommendation & { keywords: string[] })[] = [
     score: 0.93,
     pos: "ก.",
     definition: "ศึกษาอย่างเป็นระบบเพื่อค้นหาหรือตรวจสอบความรู้",
+    english: "research",
+    translations: [
+      {
+        translatedWord: "research",
+        languageCode: "en",
+        secondaryTranslations: ["investigation", "study"],
+        contextualExplanation: "การค้นคว้าหาความจริงหรือองค์ความรู้อย่างเป็นระเบียบแบบแผน",
+        provenance: "OFFICIAL_ROYAL_COINED",
+        confidenceScore: 1.0,
+      },
+      {
+        translatedWord: "systematic investigation",
+        languageCode: "en",
+        provenance: "AI_GENERATED",
+        confidenceScore: 0.86,
+      },
+    ],
     ai_explanation: "ใช้ในตัวอย่างบริบททางวิชาการ",
     registers: ["วิชาการ"],
     contexts: ["การศึกษา"],
