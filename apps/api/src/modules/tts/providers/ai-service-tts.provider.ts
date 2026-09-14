@@ -27,7 +27,7 @@ export class AiServiceTtsProvider implements ITtsProvider {
   async synthesize(text: string, options?: TtsSynthesizeOptions): Promise<TtsSynthesizeResult> {
     try {
       const res = await axios.post(
-        `${this.aiServiceUrl}/tts-synthesize`,
+        `${this.aiServiceUrl}/ai/tts-synthesize`,
         {
           text,
           voice: options?.voice || this.config.get<string>('tts.voiceThai', 'th-TH-PremwadeeNeural'),

@@ -214,6 +214,30 @@ export const MOCK_TRANSLATIONS: Record<string, TranslationItem[]> = {
       confidenceScore: 0.86,
     },
   ],
+  สวัสดี: [
+    {
+      translatedWord: "hello / greetings",
+      languageCode: "en",
+      secondaryTranslations: ["good morning / afternoon", "good day", "greetings"],
+      contextualExplanation:
+        "คำทักทายสากลของไทย ใช้ได้ทุกช่วงเวลาเพื่อทักทายหรืออำลา มาจากภาษาสันสกฤตหมายถึงความดีงามและความเจริญรุ่งเรือง",
+      usageNuance: "ใช้ได้ทั้งในบริบทสุภาพ ทางการ และชีวิตประจำวัน",
+      provenance: "OFFICIAL_CURATED",
+      confidenceScore: 1.0,
+    },
+  ],
+  คิดถึง: [
+    {
+      translatedWord: "miss / think of",
+      languageCode: "en",
+      secondaryTranslations: ["yearn for", "long for"],
+      contextualExplanation:
+        "การนึกถึงบุคคลหรือสิ่งใดสิ่งหนึ่งด้วยความผูกพันหรือห่วงหา",
+      usageNuance: "แสดงความรู้สึกผูกพัน ตรงกับภาษาถิ่น: กึ๊ดเติงหา (เหนือ), คึดฮอด (อีสาน), ข้องใจ (ใต้)",
+      provenance: "OFFICIAL_CURATED",
+      confidenceScore: 1.0,
+    },
+  ],
 };
 
 export async function searchMeaning(
