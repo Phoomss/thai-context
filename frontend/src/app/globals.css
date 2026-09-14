@@ -432,6 +432,161 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
   .translation-main-row { align-items:start;gap:8px }
 }
 
+/* Feature: Thai Braille Support (Blind / Low-Vision & Accessible) */
+.braille-trigger-btn { color:#1e293b;font-size:13px;font-weight:500;gap:6px;border-color:#cbd5e1 }
+.braille-trigger-btn:hover { border-color:#94a3b8;background:#f1f5f9 }
+
+.braille-modal { position:fixed;inset:0;margin:auto;width:min(860px,calc(100% - 32px));max-height:min(90vh,880px);border:1px solid var(--border);border-radius:28px;padding:0;background:white;color:var(--ink);box-shadow:0 24px 60px rgb(19 35 59 / 20%);animation:detail-enter 280ms var(--ease-out);overflow:hidden }
+.braille-modal-surface { display:flex;flex-direction:column;max-height:min(90vh,880px) }
+.braille-modal-header { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px;border-bottom:1px solid var(--border);background:#fafcfe }
+.braille-header-title { display:flex;align-items:center;gap:14px }
+.braille-icon-pill { display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:14px;background:#f1f5f9;border:1px solid #cbd5e1;font-size:24px;color:#0f172a;flex-shrink:0 }
+.braille-kicker { display:block;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:0.02em;margin-bottom:2px }
+.braille-modal-header h2 { margin:0;font-size:24px;font-weight:600;color:var(--ink);line-height:1.3 }
+.braille-close-btn { width:40px;height:40px;min-height:0;padding:0;border-radius:12px;border:1px solid var(--border);background:white;color:var(--muted);font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 180ms ease }
+.braille-close-btn:hover { background:#f2f7fb;color:var(--ink);border-color:#bed5ec }
+.braille-modal-body { padding:28px;overflow-y:auto }
+
+.braille-content-stack { display:flex;flex-direction:column;gap:24px }
+
+/* Primary Unicode Display Banner */
+.braille-banner { display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:24px 28px;background:#0d1829;color:white;border-radius:22px;border:1px solid #1e293b;box-shadow:0 10px 30px rgb(13 24 41 / 18%) }
+.braille-banner-left { display:flex;flex-direction:column;gap:8px }
+.braille-banner-label { font-size:12px;color:#94a3b8;font-weight:500;letter-spacing:0.02em }
+.braille-unicode-display { display:inline-flex;align-items:center;padding:4px 0 }
+.braille-chars { font-size:clamp(32px,4.5vw,48px);line-height:1.2;letter-spacing:0.18em;color:#f8fafc;user-select:all }
+.braille-banner-actions { display:flex;gap:10px;align-items:center;flex-wrap:wrap }
+.braille-tts-btn,.braille-copy-btn { display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;border-radius:12px;font-size:13px;font-weight:500;cursor:pointer;transition:all 180ms ease }
+.braille-tts-btn { background:var(--accent);color:white;border:1px solid #1d60ad }
+.braille-tts-btn:hover { background:#246fc4 }
+.braille-copy-btn { background:#1e293b;color:#f8fafc;border:1px solid #334155 }
+.braille-copy-btn:hover { background:#334155 }
+
+/* 6-Dot Cells Section */
+.braille-cells-section { display:flex;flex-direction:column;gap:14px }
+.braille-section-title { margin:0;font-size:15px;font-weight:600;color:var(--ink) }
+.section-head { display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap }
+.braille-help-tip { font-size:12px;color:var(--text-muted) }
+.braille-cells-grid { display:flex;flex-wrap:wrap;gap:10px;padding:2px 0 }
+.braille-cell-card { display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 10px;border-radius:14px;border:1px solid var(--border);background:#fbfdff;min-width:68px;cursor:pointer;transition:all 180ms ease }
+.braille-cell-card:hover { border-color:#94a3b8;background:white;translate:0 -2px;box-shadow:0 6px 18px rgb(0 0 0 / 6%) }
+.braille-cell-card.is-selected { border-color:var(--accent);background:#eef6fd;box-shadow:0 0 0 2px var(--accent) }
+.cell-thai-char { font-size:18px;font-weight:600;color:var(--ink);line-height:1.2 }
+
+/* Standard 2x3 Tactile Dot Matrix */
+.braille-dot-matrix { display:flex;gap:7px;padding:6px 8px;background:white;border:1px solid #e2e8f0;border-radius:8px }
+.matrix-col { display:flex;flex-direction:column;gap:6px }
+.dot { width:9px;height:9px;border-radius:50%;background:transparent;border:1.5px solid #94a3b8;box-sizing:border-box }
+.dot.is-filled { background:#0f172a;border-color:#0f172a;box-shadow:0 1px 3px rgb(15 23 42 / 30%) }
+.cell-unicode-char { font-size:22px;line-height:1;color:var(--ink) }
+.cell-dots-badge { font-size:10px;color:var(--text-muted);font-weight:500 }
+
+/* Cell Inspector */
+.cell-inspector-box { padding:16px 20px;border-radius:14px;background:#f1f5f9;border-left:3px solid var(--accent);display:flex;flex-direction:column;gap:6px }
+.inspector-badge { font-size:10px;font-weight:600;letter-spacing:0.05em;color:var(--accent);text-transform:uppercase }
+.inspector-title { font-size:16px;color:var(--ink) }
+.inspector-desc { margin:0;font-size:14px;color:var(--muted);line-height:1.6 }
+.inspector-role { font-size:12px;color:var(--text-muted) }
+
+/* Guide Section */
+.braille-guide-section { display:flex;flex-direction:column;gap:10px }
+.guide-content-box { padding:18px 22px;border-radius:16px;background:#f8fafc;border:1px solid #e2e8f0 }
+.guide-content-box p { margin:0;font-size:15px;line-height:1.85;color:var(--ink) }
+
+/* Footer Meta */
+.braille-footer-meta { display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted);flex-wrap:wrap }
+.meta-status { color:#15803d;font-weight:500 }
+
+/* Braille States (Loading / Error / Empty) */
+.braille-state-box { display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 24px;min-height:320px }
+.braille-spinner { width:40px;height:40px;border:3px solid #e2ebf3;border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:18px }
+.braille-state-icon { font-size:44px;line-height:1;margin-bottom:16px }
+.braille-state-box h3 { font-size:20px;font-weight:600;margin:0 0 10px;color:var(--ink) }
+.braille-state-box p { font-size:15px;line-height:1.8;color:var(--muted);max-width:480px;margin:0 0 14px }
+.braille-action-btn { background:var(--surface-warm);border:1px solid var(--border);border-radius:12px;padding:10px 20px;font-size:14px;color:var(--accent);cursor:pointer }
+
+/* Feature: Reverse Braille Styles (Mode Tabs, Keypad, Result Banner) */
+.braille-mode-bar { display:flex;gap:8px;padding:10px 28px 0;border-bottom:1px solid var(--border);background:#f8fafc }
+.braille-tab-btn { display:inline-flex;align-items:center;gap:6px;padding:10px 18px;font-size:14px;font-weight:500;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all 160ms ease;min-height:44px }
+.braille-tab-btn:hover { color:var(--ink);background:rgb(255 255 255 / 60%) }
+.braille-tab-btn.is-active { color:var(--accent);font-weight:600;border-bottom-color:var(--accent);background:white;border-radius:8px 8px 0 0 }
+
+.reverse-stack { display:flex;flex-direction:column;gap:22px }
+.reverse-keypad-card { display:flex;flex-direction:column;gap:16px;padding:22px;border-radius:20px;border:1px solid var(--border);background:#fbfdff }
+.reverse-load-current-btn { font-size:12px;color:var(--accent);background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:6px 12px;cursor:pointer;min-height:36px;transition:all 160ms ease }
+.reverse-load-current-btn:hover { background:#dbeafe }
+.reverse-keypad-workspace { display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:stretch }
+
+.reverse-dot-matrix-controls { display:flex;gap:12px;padding:14px 16px;background:white;border:1.5px solid #cbd5e1;border-radius:16px;box-shadow:0 4px 12px rgb(15 23 42 / 4%) }
+.reverse-matrix-col { display:flex;flex-direction:column;gap:10px }
+.reverse-dot-btn { display:flex;align-items:center;gap:10px;min-width:90px;min-height:46px;padding:8px 14px;border-radius:12px;border:1.5px solid #cbd5e1;background:#f8fafc;color:var(--ink);font-weight:600;font-size:13px;cursor:pointer;transition:all 160ms ease;user-select:none }
+.reverse-dot-btn:hover { border-color:#94a3b8;background:#f1f5f9;translate:0 -1px }
+.reverse-dot-btn:focus-visible { outline:2px solid var(--accent);outline-offset:2px }
+.reverse-dot-btn.is-active { background:#0f172a;color:white;border-color:#0f172a;box-shadow:0 4px 12px rgb(15 23 42 / 20%) }
+.reverse-dot-indicator { width:14px;height:14px;border-radius:50%;border:2px solid #64748b;background:transparent;flex-shrink:0;transition:all 160ms ease }
+.reverse-dot-btn.is-active .reverse-dot-indicator { border-color:#38bdf8;background:#38bdf8;box-shadow:0 0 8px rgb(56 189 248 / 60%) }
+.reverse-dot-label { font-size:13px;letter-spacing:0.02em }
+
+.reverse-cell-preview-card { display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:16px 20px;background:white;border:1px solid var(--border);border-radius:16px }
+.preview-label { font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent) }
+.preview-cell-stage { display:flex;align-items:center;gap:18px }
+.preview-braille-char { font-size:48px;line-height:1;min-width:60px;text-align:center;color:#0f172a;background:#f1f5f9;border-radius:12px;padding:8px 12px;border:1px solid #e2e8f0 }
+.preview-cell-info { display:flex;flex-direction:column;gap:2px }
+.preview-thai-char { font-size:22px;font-weight:700;color:var(--ink) }
+.preview-dots-summary { font-size:12px;color:var(--accent);font-weight:600 }
+.preview-desc { font-size:13px;color:var(--muted) }
+
+.reverse-keypad-actions { display:flex;flex-wrap:wrap;gap:8px }
+.reverse-action-add { display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 18px;background:var(--accent);color:white;border:1px solid #1d60ad;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all 160ms ease }
+.reverse-action-add:hover { background:#246fc4 }
+.reverse-action-aux { display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;background:#f8fafc;color:var(--ink);border:1px solid var(--border);border-radius:12px;font-size:13px;font-weight:500;cursor:pointer;transition:all 160ms ease }
+.reverse-action-aux:hover { background:#f1f5f9;border-color:#94a3b8 }
+
+.reverse-input-section { display:flex;flex-direction:column;gap:8px }
+.reverse-input-header { display:flex;justify-content:space-between;align-items:baseline }
+.reverse-input-label { font-size:13px;font-weight:600;color:var(--ink) }
+.braille-text-input-field { width:100%;min-height:48px;padding:10px 16px;font-size:20px;letter-spacing:0.12em;color:#0f172a;background:white;border:1.5px solid var(--border);border-radius:14px;box-sizing:border-box;transition:border-color 160ms ease,box-shadow 160ms ease }
+.braille-text-input-field:focus { outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgb(43 124 228 / 15%) }
+
+.reverse-output-section { display:flex;flex-direction:column;gap:16px }
+.reverse-result-banner { display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:22px 28px;background:#0d1829;color:white;border-radius:20px;border:1px solid #1e293b;box-shadow:0 10px 30px rgb(13 24 41 / 18%) }
+.reverse-result-left { display:flex;flex-direction:column;gap:6px;flex:1;min-width:200px }
+.reverse-result-label { font-size:12px;color:#94a3b8;font-weight:500;letter-spacing:0.02em }
+.reverse-thai-display { display:flex;align-items:center }
+.reverse-thai-text { font-size:clamp(24px,4vw,36px);font-weight:700;line-height:1.25;color:#f8fafc;user-select:all }
+.reverse-thai-placeholder { font-size:15px;color:#64748b;font-style:italic }
+
+.reverse-ambiguity-notice { display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border-radius:14px;background:#fffbeb;border:1px solid #fef3c7;border-left:4px solid #f59e0b;color:#92400e;font-size:13px;line-height:1.65 }
+.reverse-ambiguity-notice .notice-icon { font-size:20px;line-height:1;flex-shrink:0;margin-top:2px }
+.reverse-ambiguity-notice strong { color:#78350f;display:block;margin-bottom:2px }
+.reverse-ambiguity-notice p { margin:0 }
+
+.reverse-breakdown-section { display:flex;flex-direction:column;gap:10px }
+.reverse-breakdown-title { margin:0;font-size:14px;font-weight:600;color:var(--ink) }
+.reverse-chips-grid { display:flex;flex-wrap:wrap;gap:8px }
+.reverse-cell-chip { display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#f8fafc;font-size:13px }
+.chip-braille { font-size:16px;color:#0f172a;font-weight:600 }
+.chip-arrow { color:#94a3b8;font-size:11px }
+.chip-thai { font-weight:600;color:var(--ink) }
+.chip-dots { font-size:11px;color:var(--text-muted);background:white;padding:2px 6px;border-radius:6px;border:1px solid #e2e8f0 }
+.chip-alternatives { font-size:11px;color:#b45309 }
+
+@media(max-width:767px) {
+  .braille-modal { inset:auto 0 0;width:100%;max-height:92svh;border-radius:26px 26px 0 0;animation:drawer-enter 280ms var(--ease-out) }
+  .braille-modal-header { padding:18px 20px }
+  .braille-mode-bar { padding:8px 16px 0;overflow-x:auto }
+  .braille-modal-body { padding:20px }
+  .braille-banner { padding:18px 20px }
+  .braille-chars { font-size:32px }
+  .braille-cells-grid { justify-content:center }
+  .braille-footer-meta { flex-direction:column;align-items:flex-start }
+  .reverse-keypad-workspace { grid-template-columns:1fr }
+  .reverse-dot-matrix-controls { justify-content:center }
+  .reverse-dot-btn { min-width:80px;min-height:44px }
+  .reverse-result-banner { padding:18px 20px }
+  .reverse-thai-text { font-size:24px }
+}
+
 @media(max-height:700px) and (min-width:768px) { .hero { min-height:740px } }
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto }

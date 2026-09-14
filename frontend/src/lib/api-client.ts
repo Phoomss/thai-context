@@ -3,7 +3,10 @@ import {
   sortTranslations,
   type SignLanguageEntry,
   type TranslationItem,
+  type BrailleData,
+  type DecodedBrailleResult,
 } from "./accessibility-types";
+import { encodeThaiToBraille, decodeBrailleToThai } from "./braille-encoder";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
@@ -305,3 +308,78 @@ export async function fetchTranslations(
   const fallback = MOCK_TRANSLATIONS[cleanWord];
   return fallback ? sortTranslations(fallback) : [];
 }
+
+export async function fetchBraille(
+  word: string,
+  signal?: AbortSignal,
+): Promise<BrailleData | null> {
+  const cleanWord = word.trim();
+  if (!cleanWord) return null;
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dictionary/words/${encodeURIComponent(cleanWord)}/braille`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      },
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data && typeof data === "object" && data.brailleUnicode) {
+        return data as BrailleData;
+      }
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  // Graceful fallback to high-accuracy client encoder
+  return encodeThaiToBraille(cleanWord);
+}
+
+export async function decodeBrailleText(
+  braille: string,
+  signal?: AbortSignal,
+): Promise<DecodedBrailleResult> {
+  const clean = braille.trim();
+  if (!clean) {
+    return decodeBrailleToThai("");
+  }
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch("/api/v1/dictionary/braille/decode", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ braille: clean }),
+      signal: combinedSignal,
+    });
+    if (response.ok) {
+      const data = await response.json();
+      if (
+        data &&
+        typeof data === "object" &&
+        typeof data.decodedText === "string"
+      ) {
+        return data as DecodedBrailleResult;
+      }
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  return decodeBrailleToThai(clean);
+}
+
+

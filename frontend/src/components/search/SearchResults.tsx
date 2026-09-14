@@ -16,6 +16,7 @@ import SmartFilters, { type SmartFilterValue } from "./SmartFilters";
 import PronunciationButton from "../pronunciation/PronunciationButton";
 import ShareResultButton from "../share/ShareResultButton";
 import SignLanguageModal from "../tsl/SignLanguageModal";
+import BrailleModal from "../braille/BrailleModal";
 import WordTranslations from "../translations/WordTranslations";
 import Icon from "../ui/Icon";
 
@@ -43,6 +44,7 @@ export default function SearchResults({
   const { result, loading, error, revealed, revision, query } = experience;
   const [selection, setSelection] = useState("");
   const [signLanguageOpen, setSignLanguageOpen] = useState(false);
+  const [brailleOpen, setBrailleOpen] = useState(false);
   const [filters, setFilters] = useState<SmartFilterValue>({
     register: "",
     context: "",
@@ -54,6 +56,7 @@ export default function SearchResults({
     setFilters({ register: "", context: "", excluded: "" });
     setSelection(sharedWord);
     setSignLanguageOpen(false);
+    setBrailleOpen(false);
     audioManager.stop();
   }, [revision, sharedWord]);
 
@@ -69,6 +72,7 @@ export default function SearchResults({
 
   useEffect(() => {
     setSignLanguageOpen(false);
+    setBrailleOpen(false);
     audioManager.stop();
   }, [word?.headword]);
 
@@ -225,6 +229,16 @@ export default function SearchResults({
                       aria-label={`ดูภาษามือไทยสำหรับคำว่า ${word.headword}`}
                     >
                       <span className="tsl-btn-text">[ภาษามือไทย 🤟]</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="icon-button braille-trigger-btn font-thai-reading"
+                      onClick={() => setBrailleOpen(true)}
+                      aria-haspopup="dialog"
+                      aria-expanded={brailleOpen}
+                      aria-label={`ดูอักษรเบรลล์สำหรับคำว่า ${word.headword}`}
+                    >
+                      <span className="braille-btn-text">[Braille ⠃]</span>
                     </button>
                     <ShareResultButton
                       word={word}
@@ -385,6 +399,13 @@ export default function SearchResults({
           word={word.headword}
           isOpen={signLanguageOpen}
           onClose={() => setSignLanguageOpen(false)}
+        />
+      )}
+      {word && (
+        <BrailleModal
+          word={word.headword}
+          isOpen={brailleOpen}
+          onClose={() => setBrailleOpen(false)}
         />
       )}
     </section>
