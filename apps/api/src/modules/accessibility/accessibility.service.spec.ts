@@ -92,4 +92,28 @@ describe('AccessibilityService', () => {
     const res = await service.getSignLanguage('คำที่ไม่มีภาษามือ');
     expect(res).toEqual([]);
   });
+
+  it('should return Thai Braille encoding and reading guide for a word', async () => {
+    const res = await service.getBraille('ประสิทธิภาพ');
+    expect(res).toBeDefined();
+    expect(res.word).toBe('ประสิทธิภาพ');
+    expect(res.brailleUnicode).toBeDefined();
+    expect(res.brailleCells.length).toBe('ประสิทธิภาพ'.length);
+    expect(res.brailleCells[0].char).toBe('ป');
+    expect(res.brailleCells[0].dots).toEqual([1, 2, 3, 4]);
+    expect(res.brailleCells[0].braille).toBe('⠏');
+    expect(res.readingGuide).toContain('สะกดอักษรเบรลล์:');
+    expect(res.verificationStatus).toBe('OFFICIAL');
+  });
+
+  it('should reverse decode Braille characters into Thai text', async () => {
+    const res = await service.decodeBraille('⠏⠇⠣');
+    expect(res).toBeDefined();
+    expect(res.brailleInput).toBe('⠏⠇⠣');
+    expect(res.decodedText).toBe('ปลา');
+    expect(res.cells.length).toBe(3);
+    expect(res.cells[0].char).toBe('ป');
+    expect(res.cells[0].dots).toEqual([1, 2, 3, 4]);
+    expect(res.readingGuide).toContain('ถอดรหัสเป็นข้อความ:');
+  });
 });

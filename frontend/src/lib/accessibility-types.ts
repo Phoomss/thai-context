@@ -47,3 +47,39 @@ export function sortTranslations(entries: TranslationItem[]): TranslationItem[] 
     return (b.confidenceScore ?? 0) - (a.confidenceScore ?? 0);
   });
 }
+
+export interface BrailleCell {
+  char: string;
+  braille: string; // Unicode Braille character (e.g. ⠏)
+  dots: number[]; // Array of dot numbers [1..6]
+  role: "consonant" | "vowel" | "tone" | "symbol" | "other";
+  description: string;
+}
+
+export interface BrailleData {
+  word: string;
+  brailleUnicode: string;
+  brailleCells: BrailleCell[];
+  readingGuide?: string;
+  audioText?: string;
+  sourceAttribution?: string;
+  verificationStatus?: string;
+}
+
+export interface DecodedBrailleCell {
+  braille: string; // Unicode Braille character (e.g. ⠏)
+  dots: number[]; // Array of dot numbers [1..6]
+  char: string; // Primary decoded Thai character (e.g. 'ป')
+  alternatives?: string[]; // Alternative characters sharing the same dots (e.g. ['ฉ', 'ฌ'])
+  role: "consonant" | "vowel" | "tone" | "symbol" | "other";
+  description: string;
+}
+
+export interface DecodedBrailleResult {
+  brailleInput: string;
+  decodedText: string;
+  cells: DecodedBrailleCell[];
+  readingGuide: string;
+  hasAmbiguity: boolean;
+}
+

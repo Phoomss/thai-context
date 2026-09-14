@@ -1,4 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsString, IsNotEmpty } from 'class-validator';
 
 export class PronunciationItemDto {
   @ApiProperty({ example: 'ประ-สิด-ทิ-พาบ' })
@@ -80,6 +81,48 @@ export class SignLanguageEntryDto {
   media: SignMediaDto[];
 }
 
+export class BrailleCellDto {
+  @ApiProperty({ example: 'ป' })
+  char: string;
+
+  @ApiProperty({ example: '⠏' })
+  braille: string;
+
+  @ApiProperty({ example: [1, 2, 3, 4] })
+  dots: number[];
+
+  @ApiProperty({ example: 'consonant' })
+  role: string;
+
+  @ApiProperty({ example: 'ป. ปลา (จุด 1-2-3-4)' })
+  description: string;
+}
+
+export class BrailleResponseDto {
+  @ApiProperty({ example: 'ประสิทธิภาพ' })
+  word: string;
+
+  @ApiProperty({ example: '⠏⠗⠁⠎⠊⠾⠾⠊⠯⠣⠯' })
+  brailleUnicode: string;
+
+  @ApiProperty({ type: [BrailleCellDto] })
+  brailleCells: BrailleCellDto[];
+
+  @ApiPropertyOptional({
+    example: 'สะกดอักษรเบรลล์: ป (⠏, จุด 1-2-3-4) + ร (⠗, จุด 1-2-3-5)...',
+  })
+  readingGuide?: string;
+
+  @ApiPropertyOptional({ example: 'ประสิทธิภาพ' })
+  audioText?: string;
+
+  @ApiPropertyOptional({ example: 'สมาคมคนตาบอดแห่งประเทศไทย' })
+  sourceAttribution?: string;
+
+  @ApiProperty({ example: 'OFFICIAL' })
+  verificationStatus: string;
+}
+
 export class WordAccessibilityResponseDto {
   @ApiProperty({ example: 'ประสิทธิภาพ' })
   headword: string;
@@ -93,6 +136,9 @@ export class WordAccessibilityResponseDto {
   @ApiProperty({ type: [SignLanguageEntryDto] })
   signLanguage: SignLanguageEntryDto[];
 
+  @ApiPropertyOptional({ type: BrailleResponseDto })
+  braille?: BrailleResponseDto;
+
   @ApiProperty({
     example: {
       supported: true,
@@ -104,3 +150,48 @@ export class WordAccessibilityResponseDto {
     synthesizeEndpoint: string;
   };
 }
+
+export class DecodeBrailleRequestDto {
+  @ApiProperty({ example: '⠏⠇⠣' })
+  @IsString()
+  @IsNotEmpty()
+  braille: string;
+}
+
+export class DecodedBrailleCellDto {
+  @ApiProperty({ example: '⠏' })
+  braille: string;
+
+  @ApiProperty({ example: [1, 2, 3, 4] })
+  dots: number[];
+
+  @ApiProperty({ example: 'ป' })
+  char: string;
+
+  @ApiPropertyOptional({ example: ['ฉ', 'ฌ'] })
+  alternatives?: string[];
+
+  @ApiProperty({ example: 'consonant' })
+  role: string;
+
+  @ApiProperty({ example: 'ป. ปลา (จุด 1-2-3-4)' })
+  description: string;
+}
+
+export class DecodedBrailleResponseDto {
+  @ApiProperty({ example: '⠏⠇⠣' })
+  brailleInput: string;
+
+  @ApiProperty({ example: 'ปลา' })
+  decodedText: string;
+
+  @ApiProperty({ type: [DecodedBrailleCellDto] })
+  cells: DecodedBrailleCellDto[];
+
+  @ApiProperty({ example: 'ถอดรหัสเป็นข้อความ: ป + ล (หรือ ฬ) + า' })
+  readingGuide: string;
+
+  @ApiProperty({ example: true })
+  hasAmbiguity: boolean;
+}
+

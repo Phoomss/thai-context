@@ -1,7 +1,11 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { AccessibilityService } from './accessibility.service';
-import { WordAccessibilityResponseDto } from './dto/word-accessibility.dto';
+import {
+  WordAccessibilityResponseDto,
+  DecodeBrailleRequestDto,
+  DecodedBrailleResponseDto,
+} from './dto/word-accessibility.dto';
 
 @ApiTags('Accessibility & Multilingual')
 @Controller('api/v1/dictionary/words')
@@ -37,5 +41,23 @@ export class AccessibilityController {
   @ApiParam({ name: 'word', example: 'ประสิทธิภาพ' })
   async getSignLanguage(@Param('word') word: string) {
     return this.accessibilityService.getSignLanguage(word);
+  }
+
+  @Get(':word/braille')
+  @ApiOperation({
+    summary: 'Get Thai Braille encoding, dot patterns, character breakdown, and reading guide',
+  })
+  @ApiParam({ name: 'word', example: 'ประสิทธิภาพ' })
+  async getBraille(@Param('word') word: string) {
+    return this.accessibilityService.getBraille(word);
+  }
+
+  @Post('braille/decode')
+  @ApiOperation({
+    summary: 'Reverse decode Unicode Braille characters back into Thai text with reading breakdown',
+  })
+  @ApiResponse({ status: 200, type: DecodedBrailleResponseDto })
+  async decodeBraille(@Body() body: DecodeBrailleRequestDto) {
+    return this.accessibilityService.decodeBraille(body.braille);
   }
 }

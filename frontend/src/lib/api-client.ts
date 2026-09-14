@@ -3,7 +3,10 @@ import {
   sortTranslations,
   type SignLanguageEntry,
   type TranslationItem,
+  type BrailleData,
+  type DecodedBrailleResult,
 } from "./accessibility-types";
+import { encodeThaiToBraille, decodeBrailleToThai } from "./braille-encoder";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
@@ -330,10 +333,10 @@ export async function fetchTranslations(
   return fallback ? sortTranslations(fallback) : [];
 }
 
-export async function fetchDialectMapping(
+export async function fetchBraille(
   word: string,
   signal?: AbortSignal,
-) {
+): Promise<BrailleData | null> {
   const cleanWord = word.trim();
   if (!cleanWord) return null;
 
@@ -344,7 +347,7 @@ export async function fetchDialectMapping(
 
   try {
     const response = await fetch(
-      `/api/v1/dialect/mapping/${encodeURIComponent(cleanWord)}`,
+      `/api/v1/dictionary/words/${encodeURIComponent(cleanWord)}/braille`,
       {
         headers: { Accept: "application/json" },
         signal: combinedSignal,
@@ -352,81 +355,55 @@ export async function fetchDialectMapping(
     );
 
     if (response.ok) {
-      return await response.json();
+      const data = await response.json();
+      if (data && typeof data === "object" && data.brailleUnicode) {
+        return data as BrailleData;
+      }
     }
   } catch {
-    // Fallback to local data
+    // Network / offline fallback below
   }
 
-  const { getDialectGroup } = await import("./dialect-data");
-  const group = getDialectGroup(cleanWord);
-  if (!group) return null;
-
-  return {
-    standardWord: group.standardWord,
-    category: group.category,
-    categoryLabel: group.categoryLabel,
-    mappings: group.dialects.map((d) => ({
-      word: d.word,
-      region: d.region,
-      regionCode: d.region === "กลาง" ? "CENTRAL" : d.region === "เหนือ" ? "NORTH" : d.region === "อีสาน" ? "NORTHEAST" : "SOUTH",
-      phonetic: d.phonetic ?? "",
-      meaning: d.meaning,
-      confidence: d.provenance === "official" ? 1.0 : 0.75,
-      type: d.provenance === "official" ? "OFFICIAL" : "AI_INFERRED",
-      culturalNotes: d.culturalNotes ?? null,
-      source: d.source,
-    })),
-  };
+  // Graceful fallback to high-accuracy client encoder
+  return encodeThaiToBraille(cleanWord);
 }
 
-export async function fetchDialects(
-  category?: string,
-  query?: string,
+export async function decodeBrailleText(
+  braille: string,
   signal?: AbortSignal,
-) {
+): Promise<DecodedBrailleResult> {
+  const clean = braille.trim();
+  if (!clean) {
+    return decodeBrailleToThai("");
+  }
+
   const timeoutSignal = AbortSignal.timeout(6000);
   const combinedSignal = signal
     ? AbortSignal.any([signal, timeoutSignal])
     : timeoutSignal;
 
   try {
-    const params = new URLSearchParams();
-    if (category) params.set("category", category);
-    if (query) params.set("query", query);
-
-    const response = await fetch(`/api/v1/dialect?${params.toString()}`, {
-      headers: { Accept: "application/json" },
+    const response = await fetch("/api/v1/dictionary/braille/decode", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ braille: clean }),
       signal: combinedSignal,
     });
-
     if (response.ok) {
-      return await response.json();
+      const data = await response.json();
+      if (
+        data &&
+        typeof data === "object" &&
+        typeof data.decodedText === "string"
+      ) {
+        return data as DecodedBrailleResult;
+      }
     }
   } catch {
-    // Fallback to local data
+    // Network / offline fallback below
   }
 
-  const {
-    DIALECT_CATEGORIES,
-    DIALECT_WORD_GROUPS,
-    getDialectsByCategory,
-    searchDialectGroups,
-  } = await import("./dialect-data");
-
-  let results = DIALECT_WORD_GROUPS;
-  if (category) {
-    results = getDialectsByCategory(category as any);
-  }
-  if (query) {
-    results = searchDialectGroups(query);
-    if (category) results = results.filter((g) => g.category === category);
-  }
-
-  return {
-    categories: DIALECT_CATEGORIES,
-    count: results.length,
-    results,
-  };
+  return decodeBrailleToThai(clean);
 }
+
 
