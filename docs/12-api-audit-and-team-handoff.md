@@ -39,7 +39,7 @@
 | **Compare** | `POST /api/v1/compare` | 🟡 Ready | NestJS $\rightarrow$ AI Service | ส่ง 2–5 คำให้ AI วิเคราะห์ความต่างและบริบทการใช้งาน |
 | **AI Chat** | `POST /api/v1/ai/chat/stream` | 🟡 Ready | NestJS $\rightarrow$ AI Service | แช็ตปรึกษาการใช้คำศัพท์ภาษาไทยแบบ Grounded RAG (SSE Stream) |
 | **AI Chat** | `POST /api/v1/ai/chat` | 🟡 Ready | NestJS $\rightarrow$ AI Service | แช็ตถาม-ตอบแบบ Synchronous JSON |
-| **Feedback** | `POST /api/v1/feedback` | 🟡 Ready | NestJS $\rightarrow$ Postgres | บันทึกคะแนนความเกี่ยวข้องและความพึงพอใจของผู้ใช้ |
+| **Feedback** | `POST /api/v1/feedback` | 🟢 Active | NestJS $\rightarrow$ Postgres | บันทึกคะแนนความเกี่ยวข้องและความพึงพอใจของผู้ใช้ |
 | **TTS** | `POST /api/v1/tts/synthesize` | 🟢 Active | NestJS $\rightarrow$ AI Service | สร้างเสียงอ่านสังเคราะห์ภาษาไทย (Fallback อัตโนมัติ) |
 | **TTS** | `GET /api/v1/tts/status` | 🟡 Ready | NestJS | ตรวจสอบสถานะสุขภาพของ TTS Engine |
 | **Dialect** | `GET /api/v1/dialect` | 🔵 Shadowed | NestJS $\rightarrow$ Postgres | ค้นหาภาษาถิ่น (Frontend ปัจจุบันอ่านผ่าน Local JSON) |
@@ -49,8 +49,8 @@
 
 ## 3. แผนงานสำหรับทีมพัฒนา (Actionable Tasks for Dev Team)
 
-### 📌 Task 1: ระบบประเมินผลลัพธ์การค้นหา (User Feedback Loop)
-- **Priority:** 🔴 **High (Quick Win)**
+### 📌 Task 1: ระบบประเมินผลลัพธ์การค้นหา (User Feedback Loop) — ✅ Completed
+- **Status:** 🟢 **ใช้งานจริงแล้ว (Active & Tested)**
 - **Endpoint:** `POST /api/v1/feedback`
 - **เป้าหมาย:** เพิ่มปุ่ม "คำนี้ตรงใจ" (Thumbs Up) / "คำนี้ไม่ตรง" (Thumbs Down) ใต้การ์ดคำศัพท์เพื่อนำ Feedback ไปปรับปรุงคะแนนความเกี่ยวข้อง
 

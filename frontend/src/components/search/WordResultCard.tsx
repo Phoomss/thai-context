@@ -1,4 +1,5 @@
 import type { Recommendation, SearchResponse } from "@/lib/search-types";
+import SearchResultFeedback from "../feedback/SearchResultFeedback";
 
 export default function WordResultCard({
   word,
@@ -7,6 +8,7 @@ export default function WordResultCard({
   mode,
   loading,
   selected,
+  query = "",
   onEvidence,
   onCompare,
 }: {
@@ -16,6 +18,7 @@ export default function WordResultCard({
   mode?: SearchResponse["mode"];
   loading: boolean;
   selected: boolean;
+  query?: string;
   onEvidence: (word: Recommendation) => void;
   onCompare: (word: Recommendation) => void;
 }) {
@@ -71,6 +74,11 @@ export default function WordResultCard({
           <span aria-hidden="true">↗</span>
         </button>
       </div>
+      <SearchResultFeedback
+        query={query}
+        word={word.headword}
+        compact
+      />
     </article>
   );
 }

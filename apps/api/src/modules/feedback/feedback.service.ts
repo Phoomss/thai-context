@@ -10,23 +10,43 @@ export class FeedbackService {
 
   async createFeedback(dto: CreateFeedbackDto) {
     let wordId: string | null = null;
-    if (dto.recommendedWord) {
+    const targetWord = (dto.recommendedWord || dto.selectedWord || '').trim();
+    if (targetWord) {
       const word = await this.prisma.word.findUnique({
-        where: { headword: dto.recommendedWord.trim() },
+        where: { headword: targetWord },
       });
       if (word) {
         wordId = word.id;
       }
     }
 
+    const action =
+      dto.userAction ||
+      (typeof dto.relevanceScore === 'number'
+        ? dto.relevanceScore > 0
+          ? 'THUMBS_UP'
+          : 'THUMBS_DOWN'
+        : 'THUMBS_UP');
+
+    const score =
+      typeof dto.rating === 'number'
+        ? dto.rating
+        : typeof dto.relevanceScore === 'number'
+        ? dto.relevanceScore === 1
+          ? 5
+          : dto.relevanceScore === -1
+          ? 1
+          : Math.min(Math.max(Math.round(dto.relevanceScore), 1), 5)
+        : undefined;
+
     const feedback = await this.prisma.searchFeedback.create({
       data: {
-        queryText: dto.queryText,
+        queryText: (dto.queryText || dto.query || '').trim(),
         recommendedWordId: wordId,
-        userAction: dto.userAction,
-        rating: dto.rating,
-        feedbackNotes: dto.feedbackNotes,
-        sessionId: dto.sessionId,
+        userAction: action,
+        rating: score,
+        feedbackNotes: (dto.feedbackNotes || dto.userComment || '').trim() || null,
+        sessionId: dto.sessionId || null,
       },
     });
 

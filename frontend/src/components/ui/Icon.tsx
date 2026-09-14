@@ -11,6 +11,9 @@ const paths = {
   close: "m6 6 12 12M6 18 18 6",
   compare: "M8 3v18M16 3v18M3 8h10M11 16h10",
   source: "M5 3h10l4 4v14H5V3m10 0v5h4M8 12h8M8 16h6",
+  thumbsUp: "M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3",
+  thumbsDown: "M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3",
+  check: "M20 6 9 17l-5-5",
 };
 export default function Icon({ name, style }: { name: keyof typeof paths; style?: CSSProperties }) {
   return <svg style={style} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>;

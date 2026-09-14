@@ -18,6 +18,7 @@ import ShareResultButton from "../share/ShareResultButton";
 import SignLanguageModal from "../tsl/SignLanguageModal";
 import BrailleModal from "../braille/BrailleModal";
 import WordTranslations from "../translations/WordTranslations";
+import SearchResultFeedback from "../feedback/SearchResultFeedback";
 import Icon from "../ui/Icon";
 
 type SearchResultsProps = {
@@ -316,6 +317,10 @@ export default function SearchResults({
                       ไปยังตารางเปรียบเทียบ →
                     </a>
                   )}
+                  <SearchResultFeedback
+                    query={result?.query_understanding.raw_query ?? query}
+                    word={word.headword}
+                  />
                 </div>
               </article>
 
