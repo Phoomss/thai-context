@@ -71,6 +71,31 @@ describe('SearchService', () => {
     expect(result.results.length).toBe(1);
     expect(result.results[0].word).toBe('ประสิทธิภาพ');
     expect(result.results[0].edition).toBe('2554');
+    expect(result.filters.edition).toBeNull();
+  });
+
+  it('keywordSearch should support edition and source filters', async () => {
+    const result = await service.keywordSearch({
+      q: 'ประสิทธิภาพ',
+      edition: '2554',
+      source: 'ROYAL_SOCIETY',
+      exact: true,
+    });
+    expect(prismaService.definition.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          entry: expect.objectContaining({
+            edition: {
+              editionYear: '2554',
+              source: { code: 'ROYAL_SOCIETY' },
+            },
+          }),
+        }),
+      })
+    );
+    expect(result.filters.edition).toBe('2554');
+    expect(result.filters.source).toBe('ROYAL_SOCIETY');
+    expect(result.filters.exact).toBe(true);
   });
 
   it('meaningSearch should call AI recommendation and format results', async () => {
