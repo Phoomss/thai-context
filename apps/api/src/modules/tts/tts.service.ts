@@ -43,7 +43,7 @@ export class TtsService {
 
     // 2. Database Cache Hit
     try {
-      const dbCached = await this.prisma.ttsCache.findUnique({
+      const dbCached = await (this.prisma as any).ttsCache.findUnique({
         where: { cacheKey },
       });
       if (dbCached && dbCached.audioStoragePath) {
@@ -101,7 +101,7 @@ export class TtsService {
     durationMs?: number,
   ): Promise<void> {
     try {
-      await this.prisma.ttsCache.upsert({
+      await (this.prisma as any).ttsCache.upsert({
         where: { cacheKey },
         update: { audioStoragePath: audioBase64, durationMs },
         create: {

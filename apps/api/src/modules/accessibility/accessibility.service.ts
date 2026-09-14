@@ -72,7 +72,7 @@ export class AccessibilityService {
 
     // 1. Check DB word_pronunciations table
     try {
-      const wordRecord = await this.prisma.word.findUnique({
+      const wordRecord = await (this.prisma as any).word.findUnique({
         where: { headword: cleaned },
         include: {
           entries: {
@@ -84,7 +84,7 @@ export class AccessibilityService {
         },
       });
 
-      if (wordRecord && wordRecord.entries.length > 0) {
+      if (wordRecord && wordRecord.entries?.length > 0) {
         for (const entry of wordRecord.entries) {
           if (entry.pronunciations && entry.pronunciations.length > 0) {
             const p = entry.pronunciations[0];
@@ -144,7 +144,7 @@ export class AccessibilityService {
 
     // 1. Query Database word_translations
     try {
-      const wordRecord = await this.prisma.word.findUnique({
+      const wordRecord = await (this.prisma as any).word.findUnique({
         where: { headword: cleaned },
         include: {
           translations: true,
@@ -160,7 +160,7 @@ export class AccessibilityService {
       });
 
       if (wordRecord?.translations && wordRecord.translations.length > 0) {
-        return wordRecord.translations.map((t) => ({
+        return wordRecord.translations.map((t: any) => ({
           translatedWord: t.translatedWord,
           languageCode: t.languageCode,
           contextualExplanation: t.contextualExplanation || undefined,
@@ -225,7 +225,7 @@ export class AccessibilityService {
   async getSignLanguage(headword: string): Promise<SignLanguageEntryDto[]> {
     const cleaned = headword.trim();
     try {
-      const wordRecord = await this.prisma.word.findUnique({
+      const wordRecord = await (this.prisma as any).word.findUnique({
         where: { headword: cleaned },
         include: {
           signEntries: {
@@ -240,14 +240,14 @@ export class AccessibilityService {
         return [];
       }
 
-      return wordRecord.signEntries.map((sign) => ({
+      return wordRecord.signEntries.map((sign: any) => ({
         signName: sign.signName,
         handshapeDescription: sign.handshapeDescription || undefined,
         dialectRegion: sign.dialectRegion,
         verificationStatus: sign.verificationStatus,
         sourceAttribution: sign.sourceAttribution || undefined,
         license: sign.license || undefined,
-        media: sign.mediaList.map((m) => ({
+        media: sign.mediaList.map((m: any) => ({
           mediaType: m.mediaType,
           mediaUrl: m.mediaUrl,
           thumbnailUrl: m.thumbnailUrl || undefined,
