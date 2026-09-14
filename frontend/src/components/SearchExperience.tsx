@@ -240,7 +240,7 @@ export default function SearchExperience() {
             onEvidence={(word) => dispatch({ type: "OPEN_EVIDENCE", word })}
           />
           <EvolutionExplorer word={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
-          <DialectExplorer />
+          <DialectExplorer currentWord={model.result?.recommendations[0]?.headword} />
           <Footer />
         </div>
       )}

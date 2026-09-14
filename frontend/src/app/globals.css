@@ -203,6 +203,34 @@ textarea:focus { outline:0 }
 .dialect-meaning { font-size:16px;color:var(--muted);line-height:1.8 }
 .provenance { font-size:10px;color:var(--text-muted);margin-top:auto;padding-top:24px }
 .dialect-source { font-size:13px;line-height:1.8;color:var(--text-muted);margin-top:8px }
+.dialect-controls { display:flex;flex-direction:column;gap:14px;margin:20px 0 24px }
+.dialect-category-tabs { display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none }
+.dialect-category-tabs::-webkit-scrollbar { display:none }
+.dialect-category-tab { display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:white;color:var(--muted);font-size:13px;cursor:pointer;transition:all 200ms ease;white-space:nowrap }
+.dialect-category-tab:hover { border-color:#99bee3;color:var(--ink) }
+.dialect-category-tab.active { background:#1e293b;border-color:#1e293b;color:white }
+.dialect-category-tab .cat-badge { font-size:11px;padding:2px 8px;border-radius:999px;background:rgba(0,0,0,0.06) }
+.dialect-category-tab.active .cat-badge { background:rgba(255,255,255,0.2);color:white }
+.dialect-selector-row { display:flex;flex-wrap:wrap;align-items:center;gap:12px }
+.dialect-search-wrapper { position:relative;min-width:200px }
+.dialect-search-input { width:100%;padding:7px 12px;border:1px solid var(--border);border-radius:10px;font-size:13px;background:white;outline:none;transition:border-color 200ms }
+.dialect-search-input:focus { border-color:var(--accent) }
+.dialect-word-chips { display:flex;flex-wrap:wrap;gap:8px }
+.dialect-chip { padding:5px 12px;border-radius:8px;border:1px solid var(--border);background:white;color:var(--ink);font-size:13px;cursor:pointer;transition:all 180ms ease }
+.dialect-chip:hover { border-color:#99bee3;background:#f8fbff }
+.dialect-chip.active { background:#0369a1;border-color:#0369a1;color:white;font-weight:600 }
+.dialect-card-top { width:100%;display:flex;align-items:center;justify-content:space-between }
+.dialect-audio-button { width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--border);background:#f8fbff;color:var(--accent);cursor:pointer;transition:all 180ms ease;padding:0 }
+.dialect-audio-button:hover { background:var(--accent);color:white;border-color:var(--accent) }
+.dialect-phonetic { display:inline-block;font-size:11px;color:#0284c7;background:#f0f9ff;padding:2px 6px;border-radius:4px;margin:2px 0 6px;font-family:monospace }
+.dialect-cultural { display:block;font-size:12px;color:var(--text-muted);font-style:italic;margin-top:6px;line-height:1.5 }
+.dialect-audio-bar { display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:#f0f7ff;border:1px solid #bae0fd;border-radius:12px;margin-top:4px }
+.dialect-audio-info { display:flex;align-items:center;gap:10px;flex-wrap:wrap }
+.dialect-audio-region { font-size:13px;color:#0284c7;font-weight:600 }
+.dialect-audio-word { font-size:18px;color:#0c4a6e }
+.dialect-audio-phonetic { font-size:12px;color:#0369a1;background:#e0f2fe;padding:2px 6px;border-radius:4px;font-family:monospace }
+.dialect-audio-play-btn { display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;border:1px solid #7dd3fc;background:white;color:#0284c7;font-size:13px;cursor:pointer;transition:all 180ms ease }
+.dialect-audio-play-btn:hover { background:#0284c7;color:white;border-color:#0284c7 }
 .site-footer { max-width:1200px;width:calc(100% - 2 * var(--page-gutter));margin:var(--section-space) auto 0;border-top:1px solid var(--border);padding:40px 0 80px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:13px }
 .footer-mark { font:22px Georgia,serif;color:var(--ink) }
 .site-footer p { margin:10px 0 }

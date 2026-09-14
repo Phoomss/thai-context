@@ -305,3 +305,104 @@ export async function fetchTranslations(
   const fallback = MOCK_TRANSLATIONS[cleanWord];
   return fallback ? sortTranslations(fallback) : [];
 }
+
+export async function fetchDialectMapping(
+  word: string,
+  signal?: AbortSignal,
+) {
+  const cleanWord = word.trim();
+  if (!cleanWord) return null;
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dialect/mapping/${encodeURIComponent(cleanWord)}`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      },
+    );
+
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch {
+    // Fallback to local data
+  }
+
+  const { getDialectGroup } = await import("./dialect-data");
+  const group = getDialectGroup(cleanWord);
+  if (!group) return null;
+
+  return {
+    standardWord: group.standardWord,
+    category: group.category,
+    categoryLabel: group.categoryLabel,
+    mappings: group.dialects.map((d) => ({
+      word: d.word,
+      region: d.region,
+      regionCode: d.region === "กลาง" ? "CENTRAL" : d.region === "เหนือ" ? "NORTH" : d.region === "อีสาน" ? "NORTHEAST" : "SOUTH",
+      phonetic: d.phonetic ?? "",
+      meaning: d.meaning,
+      confidence: d.provenance === "official" ? 1.0 : 0.75,
+      type: d.provenance === "official" ? "OFFICIAL" : "AI_INFERRED",
+      culturalNotes: d.culturalNotes ?? null,
+      source: d.source,
+    })),
+  };
+}
+
+export async function fetchDialects(
+  category?: string,
+  query?: string,
+  signal?: AbortSignal,
+) {
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const params = new URLSearchParams();
+    if (category) params.set("category", category);
+    if (query) params.set("query", query);
+
+    const response = await fetch(`/api/v1/dialect?${params.toString()}`, {
+      headers: { Accept: "application/json" },
+      signal: combinedSignal,
+    });
+
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch {
+    // Fallback to local data
+  }
+
+  const {
+    DIALECT_CATEGORIES,
+    DIALECT_WORD_GROUPS,
+    getDialectsByCategory,
+    searchDialectGroups,
+  } = await import("./dialect-data");
+
+  let results = DIALECT_WORD_GROUPS;
+  if (category) {
+    results = getDialectsByCategory(category as any);
+  }
+  if (query) {
+    results = searchDialectGroups(query);
+    if (category) results = results.filter((g) => g.category === category);
+  }
+
+  return {
+    categories: DIALECT_CATEGORIES,
+    count: results.length,
+    results,
+  };
+}
+
