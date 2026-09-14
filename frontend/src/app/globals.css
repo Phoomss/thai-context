@@ -233,6 +233,37 @@ textarea:focus { outline:0 }
 .dialect-audio-phonetic { font-size:12px;color:#0369a1;background:#e0f2fe;padding:2px 6px;border-radius:4px;font-family:monospace }
 .dialect-audio-play-btn { display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;border:1px solid #7dd3fc;background:white;color:#0284c7;font-size:13px;cursor:pointer;transition:all 180ms ease }
 .dialect-audio-play-btn:hover { background:#0284c7;color:white;border-color:#0284c7 }
+.evolution-selector-bar { display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;padding:12px 18px;background:white;border:1px solid var(--border);border-radius:16px }
+.evolution-chips-wrapper { display:flex;align-items:center;gap:10px;flex-wrap:wrap }
+.evolution-chips-label { font-size:12px;color:var(--text-muted);font-weight:500 }
+.evolution-chips { display:flex;flex-wrap:wrap;gap:6px }
+.evolution-chip { padding:4px 12px;border-radius:999px;border:1px solid var(--border);background:#f8fafc;color:var(--ink);font-size:12px;cursor:pointer;transition:all 180ms ease }
+.evolution-chip:hover { border-color:#93c5fd;background:#eff6ff }
+.evolution-chip.active { background:#1e40af;border-color:#1e40af;color:white;font-weight:600 }
+.evolution-search-wrapper { display:flex;align-items:center;gap:6px }
+.evolution-search-input { padding:6px 12px;border:1px solid var(--border);border-radius:10px;font-size:12px;background:#f8fafc;outline:none;min-width:140px;transition:border-color 180ms }
+.evolution-search-input:focus { border-color:var(--accent);background:white }
+.evolution-search-btn { padding:6px 12px;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:white;font-size:12px;cursor:pointer;transition:opacity 180ms }
+.evolution-search-btn:hover { opacity:0.9 }
+.evolution-word-header { display:flex;align-items:center;justify-content:space-between;gap:12px }
+.evolution-word-title-row { display:flex;align-items:center;gap:10px }
+.evolution-audio-button { width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--border);background:#f0f9ff;color:#0284c7;cursor:pointer;transition:all 180ms ease;padding:0 }
+.evolution-audio-button:hover { background:#0284c7;color:white;border-color:#0284c7 }
+.evolution-status-badge { display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.02em }
+.status-original { background:#ecfdf5;color:#047857;border:1px solid #a7f3d0 }
+.status-added { background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0 }
+.status-changed { background:#fffbeb;color:#b45309;border:1px solid #fde68a }
+.status-expanded { background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe }
+.status-unchanged { background:#f1f5f9;color:#475569;border:1px solid #cbd5e1 }
+.status-not-found { background:#fef2f2;color:#b91c1c;border:1px solid #fecaca }
+.evolution-change-note { margin-top:14px;padding:10px 14px;background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;font-size:13px;color:#334155;line-height:1.6 }
+.evolution-timeline-track { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border) }
+.evolution-node-card { padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#fbfdff;cursor:pointer;transition:all 200ms ease }
+.evolution-node-card:hover { border-color:#93c5fd;transform:translateY(-1px) }
+.evolution-node-card.active { border-color:#3b82f6;background:#eff6ff;box-shadow:0 2px 8px rgba(59,130,246,0.12) }
+.evolution-node-year { font-size:12px;font-weight:700;color:#1e3a8a;margin-bottom:4px }
+.evolution-node-snippet { font-size:11px;color:var(--text-muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.5 }
+
 .site-footer { max-width:1200px;width:calc(100% - 2 * var(--page-gutter));margin:var(--section-space) auto 0;border-top:1px solid var(--border);padding:40px 0 80px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--muted);font-size:13px }
 .footer-mark { font:22px Georgia,serif;color:var(--ink) }
 .site-footer p { margin:10px 0 }

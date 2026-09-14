@@ -7,6 +7,10 @@ import {
   type DecodedBrailleResult,
 } from "./accessibility-types";
 import { encodeThaiToBraille, decodeBrailleToThai } from "./braille-encoder";
+import {
+  getFallbackWordEvolution,
+  type WordEvolutionResponse,
+} from "./evolution-data";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
@@ -478,3 +482,40 @@ export async function sendFeedback(
     message: "บันทึกข้อเสนอแนะในโหมดออฟไลน์เรียบร้อยแล้ว",
   };
 }
+
+export async function fetchWordEvolution(
+  word: string,
+  signal?: AbortSignal
+): Promise<WordEvolutionResponse> {
+  const cleanWord = word.trim();
+  if (!cleanWord) {
+    return getFallbackWordEvolution("คำที่เลือก");
+  }
+
+  const timeoutSignal = AbortSignal.timeout(5000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dictionary/words/${encodeURIComponent(cleanWord)}/evolution`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data && typeof data === "object" && Array.isArray(data.timeline)) {
+        return data as WordEvolutionResponse;
+      }
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  return getFallbackWordEvolution(cleanWord);
+}
+
