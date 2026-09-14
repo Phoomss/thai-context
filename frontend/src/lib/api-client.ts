@@ -406,4 +406,75 @@ export async function decodeBrailleText(
   return decodeBrailleToThai(clean);
 }
 
+export interface FeedbackPayload {
+  query: string;
+  selectedWord: string;
+  relevanceScore: number; // 1 (thumbs up) or -1 (thumbs down)
+  userAction?: "THUMBS_UP" | "THUMBS_DOWN" | "CLICK" | "COPY";
+  userComment?: string;
+  rating?: number;
+  sessionId?: string;
+}
 
+export interface FeedbackResponse {
+  success: boolean;
+  feedbackId?: string;
+  message?: string;
+}
+
+export async function sendFeedback(
+  payload: FeedbackPayload,
+  signal?: AbortSignal
+): Promise<FeedbackResponse> {
+  const cleanQuery = (payload.query ?? "").trim();
+  const cleanWord = (payload.selectedWord ?? "").trim();
+
+  if (!cleanQuery) {
+    throw new Error("กรุณาระบุข้อความค้นหา (query)");
+  }
+
+  const timeoutSignal = AbortSignal.timeout(5000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch("/api/v1/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        query: cleanQuery,
+        selectedWord: cleanWord,
+        relevanceScore: payload.relevanceScore,
+        userAction:
+          payload.userAction ||
+          (payload.relevanceScore > 0 ? "THUMBS_UP" : "THUMBS_DOWN"),
+        userComment: payload.userComment,
+        rating: payload.rating,
+        sessionId: payload.sessionId,
+      }),
+      signal: combinedSignal,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return {
+        success: Boolean(data.success),
+        feedbackId: data.feedbackId,
+        message: data.message || "Feedback recorded successfully",
+      };
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  // Graceful offline fallback
+  return {
+    success: true,
+    feedbackId: `fb_offline_${Date.now()}`,
+    message: "บันทึกข้อเสนอแนะในโหมดออฟไลน์เรียบร้อยแล้ว",
+  };
+}

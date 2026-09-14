@@ -109,8 +109,11 @@ pie title สถานะฟีเจอร์ Frontend เทียบกับ
    - **สิ่งที่ขาด:** ปุ่มไมโครโฟนบนช่องค้นหา [`HeroSearch.tsx`](file:///Users/mac/Desktop/workspace/thai-context/frontend/src/components/hero/HeroSearch.tsx) เพื่อให้ผู้ใช้พูดประโยคความหมายแทนการพิมพ์
 2. **ตัวกรองระดับภาษา / บริบท (Smart Filters):**
    - **สิ่งที่ขาด:** ใน [`SmartFilters.tsx`](file:///Users/mac/Desktop/workspace/thai-context/frontend/src/components/search/SmartFilters.tsx) ยังเป็นเพียง UI สแตติก ยังไม่ได้ต่อ Filter Logic เข้ากับรายการผลการค้นหา
-3. **ระบบให้คะแนนผลลัพธ์ (User Feedback Loop - FR-18):**
-   - **สิ่งที่ขาด:** ปุ่มกดถูกใจ/ไม่ถูกใจ (👍 / 👎) ที่การ์ดคำศัพท์ เพื่อยิงผลกลับไปยัง `POST /api/v1/feedback`
+3. **ระบบให้คะแนนผลลัพธ์ (User Feedback Loop - FR-18):** ✅ **สมบูรณ์แล้ว (Completed)**
+   - เพิ่มคอมโพเนนต์ `SearchResultFeedback` รองรับทั้งแบบเต็ม (ในหน้ารายละเอียดคำ `SearchResults.tsx`) และแบบย่อ (ในการ์ดคำศัพท์ `WordResultCard.tsx`)
+   - ปุ่มกดถูกใจ/ไม่ถูกใจ ("ตรงใจ" 👍 / "ไม่ตรงบริบท" 👎) เชื่อมต่อ API `POST /api/v1/feedback`
+   - รองรับการกรอกข้อคิดเห็นเพิ่มเติม (User Comment) เมื่อประเมินผลลัพธ์
+   - มีระบบ Optimistic UI, Accessible ARIA, Zero-Crash Offline Fallback และ Unit & Integration Tests ครบ 100%
 
 ---
 

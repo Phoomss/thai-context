@@ -81,8 +81,8 @@ export default function BrailleModal({
       setData(initialData);
       setLoading(false);
       setError(null);
-      if (initialData?.brailleUnicode && !reverseInput) {
-        setReverseInput(initialData.brailleUnicode);
+      if (initialData?.brailleUnicode) {
+        setReverseInput((prev) => prev || initialData.brailleUnicode);
       }
       return;
     }
@@ -453,6 +453,7 @@ export default function BrailleModal({
                           : "ไม่มีจุด";
 
                       return (
+                        /* eslint-disable-next-line jsx-a11y/role-supports-aria-props */
                         <button
                           key={`${cell.char}-${idx}`}
                           type="button"
@@ -460,73 +461,73 @@ export default function BrailleModal({
                           className={`braille-cell-card ${
                             isSelected ? "is-selected" : ""
                           }`}
-                          onClick={() => {
-                            const next = isSelected ? null : idx;
-                            setActiveCellIndex(next);
-                            setAnnouncement(
-                              next !== null
-                                ? `เลือกอักษร ${cell.char} อักษรเบรลล์ ${cell.braille} ${cell.description}`
-                                : "ยกเลิกการเลือกเซลล์"
-                            );
-                          }}
-                          aria-pressed={isSelected}
-                          aria-label={`ตัวอักษร ${cell.char}, อักษรเบรลล์ ${cell.braille}, ${dotsLabel}`}
-                        >
-                          <span className="cell-thai-char font-thai-reading">
-                            {cell.char === " " ? "␣" : cell.char}
-                          </span>
-
-                          {/* Standard 2x3 Braille Dot Matrix */}
-                          <div
-                            className="braille-dot-matrix"
-                            aria-hidden="true"
-                            title={`จุด: ${dotsLabel}`}
+                            onClick={() => {
+                              const next = isSelected ? null : idx;
+                              setActiveCellIndex(next);
+                              setAnnouncement(
+                                next !== null
+                                  ? `เลือกอักษร ${cell.char} อักษรเบรลล์ ${cell.braille} ${cell.description}`
+                                  : "ยกเลิกการเลือกเซลล์"
+                              );
+                            }}
+                            aria-pressed={isSelected}
+                            aria-label={`ตัวอักษร ${cell.char}, อักษรเบรลล์ ${cell.braille}, ${dotsLabel}`}
                           >
-                            {/* Left column: Dots 1, 2, 3 */}
-                            <div className="matrix-col">
-                              <span
-                                className={`dot dot-1 ${
-                                  grid[0][0] ? "is-filled" : ""
-                                }`}
-                              />
-                              <span
-                                className={`dot dot-2 ${
-                                  grid[1][0] ? "is-filled" : ""
-                                }`}
-                              />
-                              <span
-                                className={`dot dot-3 ${
-                                  grid[2][0] ? "is-filled" : ""
-                                }`}
-                              />
-                            </div>
-                            {/* Right column: Dots 4, 5, 6 */}
-                            <div className="matrix-col">
-                              <span
-                                className={`dot dot-4 ${
-                                  grid[0][1] ? "is-filled" : ""
-                                }`}
-                              />
-                              <span
-                                className={`dot dot-5 ${
-                                  grid[1][1] ? "is-filled" : ""
-                                }`}
-                              />
-                              <span
-                                className={`dot dot-6 ${
-                                  grid[2][1] ? "is-filled" : ""
-                                }`}
-                              />
-                            </div>
-                          </div>
+                            <span className="cell-thai-char font-thai-reading">
+                              {cell.char === " " ? "␣" : cell.char}
+                            </span>
 
-                          <span className="cell-unicode-char">
-                            {cell.braille}
-                          </span>
-                          <span className="cell-dots-badge font-thai-reading">
-                            {cell.dots.length > 0 ? cell.dots.join(",") : "—"}
-                          </span>
-                        </button>
+                            {/* Standard 2x3 Braille Dot Matrix */}
+                            <div
+                              className="braille-dot-matrix"
+                              aria-hidden="true"
+                              title={`จุด: ${dotsLabel}`}
+                            >
+                              {/* Left column: Dots 1, 2, 3 */}
+                              <div className="matrix-col">
+                                <span
+                                  className={`dot dot-1 ${
+                                    grid[0][0] ? "is-filled" : ""
+                                  }`}
+                                />
+                                <span
+                                  className={`dot dot-2 ${
+                                    grid[1][0] ? "is-filled" : ""
+                                  }`}
+                                />
+                                <span
+                                  className={`dot dot-3 ${
+                                    grid[2][0] ? "is-filled" : ""
+                                  }`}
+                                />
+                              </div>
+                              {/* Right column: Dots 4, 5, 6 */}
+                              <div className="matrix-col">
+                                <span
+                                  className={`dot dot-4 ${
+                                    grid[0][1] ? "is-filled" : ""
+                                  }`}
+                                />
+                                <span
+                                  className={`dot dot-5 ${
+                                    grid[1][1] ? "is-filled" : ""
+                                  }`}
+                                />
+                                <span
+                                  className={`dot dot-6 ${
+                                    grid[2][1] ? "is-filled" : ""
+                                  }`}
+                                />
+                              </div>
+                            </div>
+
+                            <span className="cell-unicode-char">
+                              {cell.braille}
+                            </span>
+                            <span className="cell-dots-badge font-thai-reading">
+                              {cell.dots.length > 0 ? cell.dots.join(",") : "—"}
+                            </span>
+                          </button>
                       );
                     })}
                   </div>
