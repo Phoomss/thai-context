@@ -19,9 +19,10 @@ export class SearchService {
     const definitions = await this.prisma.definition.findMany({
       where: {
         OR: [
-          { entry: { word: { headword: { contains: q } } } },
-          { entry: { word: { headwordClean: { contains: q } } } },
-          { definitionText: { contains: q } },
+          { entry: { word: { headword: { contains: q, mode: 'insensitive' } } } },
+          { entry: { word: { headwordClean: { contains: q, mode: 'insensitive' } } } },
+          { definitionText: { contains: q, mode: 'insensitive' } },
+          { subjectDomain: { contains: q, mode: 'insensitive' } },
         ],
         ...(queryDto.edition
           ? { entry: { edition: { editionYear: queryDto.edition } } }
@@ -50,6 +51,10 @@ export class SearchService {
       partOfSpeech: d.pos ? d.pos.abbrThai : 'ไม่ระบุ',
       source: d.entry.edition.source.name,
       edition: d.entry.edition.editionYear,
+      editionTitle: d.entry.edition.title,
+      editionCode: d.entry.edition.editionCode,
+      subjectDomain: d.subjectDomain,
+      metadata: d.entry.metadata,
     }));
 
     return {

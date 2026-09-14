@@ -79,10 +79,12 @@ export class DictionaryService {
     // Format Official Information
     const officialEntries = word.entries.map((entry) => ({
       edition: entry.edition.editionYear,
+      editionCode: entry.edition.editionCode,
       editionTitle: entry.edition.title,
       source: entry.edition.source.name,
       pronunciation: entry.pronunciation,
       pageNumber: entry.pageNumber,
+      metadata: entry.metadata,
       definitions: entry.definitions.map((def) => ({
         pos: def.pos ? def.pos.abbrThai : 'ไม่ระบุ',
         posName: def.pos ? def.pos.nameThai : null,

@@ -278,6 +278,101 @@ async function main() {
     );
   }
 
+  // Check and seed Royal Society Coined Terms
+  const coinedCandidatePaths = [
+    path.resolve(__dirname, './coined_terms.json'),
+    path.resolve(__dirname, '../../../data/seed/coined_terms.json'),
+    path.resolve(__dirname, '../../data/seed/coined_terms.json'),
+    '/app/data/seed/coined_terms.json',
+  ];
+  const coinedPath = coinedCandidatePaths.find((p) => fs.existsSync(p));
+  if (coinedPath) {
+    console.log(`📦 Loading Royal Society Coined Terms from ${coinedPath}...`);
+    const coinedData = JSON.parse(fs.readFileSync(coinedPath, 'utf-8'));
+    
+    // Ensure Royal Society Source
+    const royalSrc = await prisma.dictionarySource.findFirst({ where: { code: 'ROYAL_SOCIETY' } });
+    if (royalSrc) {
+      const coinedEdition = await prisma.dictionaryEdition.upsert({
+        where: { editionCode: coinedData.source.edition_code || 'ROYAL_COINED' },
+        update: {
+          title: coinedData.source.title,
+          editionYear: coinedData.source.edition_year || '2567',
+          isActive: true,
+        },
+        create: {
+          sourceId: royalSrc.id,
+          editionCode: coinedData.source.edition_code || 'ROYAL_COINED',
+          editionYear: coinedData.source.edition_year || '2567',
+          title: coinedData.source.title,
+          isActive: true,
+        },
+      });
+
+      const posMap = new Map((await prisma.partOfSpeech.findMany()).map((p) => [p.code, p.id]));
+      const defaultPosId = posMap.get('N');
+
+      console.log(`Inserting ${coinedData.items.length} Coined Terms...`);
+      for (const item of coinedData.items) {
+        const wordRecord = await prisma.word.upsert({
+          where: { headword: item.word },
+          update: { headwordClean: item.clean },
+          create: {
+            headword: item.word,
+            headwordClean: item.clean,
+            charLength: item.word.length,
+          },
+        });
+
+        const entry = await prisma.wordEntry.upsert({
+          where: {
+            uq_word_edition: {
+              wordId: wordRecord.id,
+              editionId: coinedEdition.id,
+            },
+          },
+          update: {
+            pronunciation: item.pronunciation,
+            metadata: item.metadata,
+          },
+          create: {
+            wordId: wordRecord.id,
+            editionId: coinedEdition.id,
+            pronunciation: item.pronunciation,
+            metadata: item.metadata,
+          },
+        });
+
+        const posId = posMap.get(item.pos_code) || defaultPosId;
+        for (let i = 0; i < item.definitions.length; i++) {
+          const defText = item.definitions[i];
+          const subject = item.english_term ? `ศัพท์บัญญัติ (${item.english_term})` : 'ศัพท์บัญญัติ';
+          await prisma.definition.upsert({
+            where: {
+              uq_entry_sense: {
+                entryId: entry.id,
+                senseOrder: i + 1,
+              },
+            },
+            update: {
+              definitionText: defText,
+              subjectDomain: subject,
+            },
+            create: {
+              entryId: entry.id,
+              posId,
+              senseOrder: i + 1,
+              definitionText: defText,
+              registerLevel: 'FORMAL',
+              subjectDomain: subject,
+            },
+          });
+        }
+      }
+      console.log(`✅ Royal Society Coined Terms successfully seeded (${coinedData.items.length} words)!`);
+    }
+  }
+
   console.log('✅ Seed completed successfully!');
 }
 

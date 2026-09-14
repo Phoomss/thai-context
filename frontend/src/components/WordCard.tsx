@@ -19,17 +19,30 @@ interface Props {
 
 export default function WordCard({ word, onOpenEvidence }: Props) {
   const matchPercent = Math.round((word.score || 0.9) * 100);
+  const englishTerm =
+    word.evidence?.english_term ||
+    (word as any).english_term ||
+    (word as any).metadata?.english_term;
 
   return (
     <div className="p-5 bg-slate-900/80 rounded-2xl border border-slate-800 hover:border-slate-700/80 transition shadow-lg flex flex-col justify-between">
       <div>
         {/* Card Header */}
         <div className="flex justify-between items-start mb-2">
-          <div className="flex items-baseline space-x-2">
-            <h3 className="text-2xl font-black text-amber-400 tracking-tight">{word.headword}</h3>
-            <span className="text-xs px-2 py-0.5 bg-slate-800 text-slate-300 rounded font-semibold border border-slate-700">
-              {word.pos || 'น.'}
-            </span>
+          <div className="flex flex-col">
+            <div className="flex items-baseline space-x-2">
+              <h3 className="text-2xl font-black text-amber-400 tracking-tight">{word.headword}</h3>
+              <span className="text-xs px-2 py-0.5 bg-slate-800 text-slate-300 rounded font-semibold border border-slate-700">
+                {word.pos || 'น.'}
+              </span>
+            </div>
+            {englishTerm && (
+              <div className="mt-1.5 flex items-center space-x-1 text-xs text-cyan-300 font-medium">
+                <span className="px-2 py-0.5 bg-cyan-950/80 border border-cyan-800/70 rounded-md">
+                  🏷️ ศัพท์บัญญัติ: {englishTerm}
+                </span>
+              </div>
+            )}
           </div>
           <span className="text-xs px-2.5 py-1 bg-emerald-950/80 text-emerald-300 border border-emerald-800/80 rounded-full font-bold">
             {matchPercent}% Match
