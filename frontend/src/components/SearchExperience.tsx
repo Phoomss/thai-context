@@ -6,6 +6,7 @@ import MorphingNavbar from "./layout/MorphingNavbar";
 import SearchResults from "./search/SearchResults";
 import PersistentSearchComposer from "./search/PersistentSearchComposer";
 import EvidenceDrawer from "./evidence/EvidenceDrawer";
+import AIAssistantDrawer from "./ai/AIAssistantDrawer";
 import ContextComparator from "./compare/ContextComparator";
 import EvolutionExplorer from "./evolution/EvolutionExplorer";
 import DialectExplorer from "./dialect/DialectExplorer";
@@ -38,6 +39,20 @@ export default function SearchExperience() {
   const [compareSelected, setCompareSelected] = useState<string[]>([]);
   const [sharedWord, setSharedWord] = useState("");
   const [footerVisible, setFooterVisible] = useState(false);
+  const [aiAssistantOpen, setAiAssistantOpen] = useState(false);
+  const [aiAssistantWord, setAiAssistantWord] = useState("");
+  const [aiAssistantContext, setAiAssistantContext] = useState("รายงานวิชาการ");
+  const [aiAssistantMessage, setAiAssistantMessage] = useState("");
+
+  const handleOpenAIChat = useCallback((targetWord?: Recommendation | string, message?: string) => {
+    const headword = typeof targetWord === "string" ? targetWord : targetWord?.headword ?? "";
+    const ctx = typeof targetWord === "object" ? targetWord.contexts?.[0] ?? "รายงานวิชาการ" : "รายงานวิชาการ";
+    setAiAssistantWord(headword);
+    setAiAssistantContext(ctx);
+    setAiAssistantMessage(message ?? "");
+    setAiAssistantOpen(true);
+  }, []);
+
   const floating =
     model.hasResults &&
     model.state !== "hero-idle" &&
@@ -208,6 +223,7 @@ export default function SearchExperience() {
       <MorphingNavbar
         navRef={nav}
         busy={isCinematic(model.state)}
+        onAIChat={() => handleOpenAIChat()}
         onHome={(e) => {
           e.preventDefault();
           back();
@@ -230,6 +246,7 @@ export default function SearchExperience() {
           onCompare={toggleCompare}
           onRetry={() => startRequest(model.query, "composer")}
           sharedWord={sharedWord}
+          onAIChat={handleOpenAIChat}
         />
       )}
       {(
@@ -239,6 +256,7 @@ export default function SearchExperience() {
             selected={compareSelected}
             onSelect={setCompareSelected}
             onEvidence={(word) => dispatch({ type: "OPEN_EVIDENCE", word })}
+            onAIChat={handleOpenAIChat}
           />
           <EvolutionExplorer word={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
           <DialectExplorer currentWord={model.result?.recommendations[0]?.headword} />
@@ -261,6 +279,13 @@ export default function SearchExperience() {
           onClose={() => dispatch({ type: "CLOSE_EVIDENCE" })}
         />
       )}
+      <AIAssistantDrawer
+        isOpen={aiAssistantOpen}
+        initialWord={aiAssistantWord}
+        initialContext={aiAssistantContext}
+        initialMessage={aiAssistantMessage}
+        onClose={() => setAiAssistantOpen(false)}
+      />
       <p className="sr-only" role="status" aria-live="polite">
         {isCinematic(model.state)
           ? "กำลังค้นหาคำที่ใกล้กับสิ่งที่คุณกำลังคิด…"

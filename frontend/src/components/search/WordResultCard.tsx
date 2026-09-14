@@ -14,6 +14,7 @@ export default function WordResultCard({
   query = "",
   onEvidence,
   onCompare,
+  onAIChat,
 }: {
   word: Recommendation;
   index: number;
@@ -24,6 +25,7 @@ export default function WordResultCard({
   query?: string;
   onEvidence: (word: Recommendation) => void;
   onCompare: (word: Recommendation) => void;
+  onAIChat?: (word: Recommendation) => void;
 }) {
   const [copiedWord, setCopiedWord] = useState(false);
   const [copiedSentence, setCopiedSentence] = useState(false);
@@ -195,6 +197,18 @@ export default function WordResultCard({
           {word.evidence ? "ตรวจสอบหลักฐาน" : "สถานะหลักฐานอ้างอิง"}{" "}
           <span aria-hidden="true">↗</span>
         </button>
+        {onAIChat && (
+          <button
+            disabled={loading}
+            type="button"
+            className="ai-consult-btn font-thai-reading"
+            onClick={() => onAIChat(word)}
+            title={`ปรึกษาผู้ช่วย AI เกี่ยวกับคำว่า "${word.headword}"`}
+          >
+            <span aria-hidden="true">✨</span>
+            <span>ปรึกษาผู้ช่วย AI</span>
+          </button>
+        )}
       </div>
       <SearchResultFeedback query={query} word={word.headword} compact />
     </article>

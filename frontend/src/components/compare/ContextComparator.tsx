@@ -17,11 +17,13 @@ export default function ContextComparator({
   selected,
   onSelect,
   onEvidence,
+  onAIChat,
 }: {
   words: Recommendation[];
   selected: string[];
   onSelect: (words: string[]) => void;
   onEvidence: (word: Recommendation) => void;
+  onAIChat?: (word: Recommendation, query?: string) => void;
 }) {
   const options = useMemo(
     () => Array.from(new Map(words.map((word) => [word.headword, word])).values()),
@@ -151,6 +153,25 @@ export default function ContextComparator({
           );
         })}
       </div>
+      {onAIChat && leftWord && rightWord && (
+        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center" }}>
+          <button
+            type="button"
+            className="ai-consult-btn font-thai-reading"
+            onClick={() =>
+              onAIChat(
+                leftWord,
+                `คำว่า '${leftWord.headword}' ต่างกับ '${rightWord.headword}' ในงานวิจัยอย่างไร`
+              )
+            }
+          >
+            <span aria-hidden="true">✨</span>
+            <span>
+              ปรึกษาผู้ช่วย AI เพื่อวิเคราะห์ความต่างระหว่าง "{leftWord.headword}" กับ "{rightWord.headword}"
+            </span>
+          </button>
+        </div>
+      )}
     </section>
   );
 }

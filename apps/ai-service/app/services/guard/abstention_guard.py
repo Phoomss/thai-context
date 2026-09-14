@@ -59,26 +59,55 @@ class AbstentionGuard:
                 "recommended_response": "ระบบปฏิเสธการดำเนินการ: THAI CONTEXT ยึดมั่นในข้อมูลทางการของสำนักงานราชบัณฑิตยสภาเป็นหลักฐานอ้างอิงสูงสุด จึงไม่อาจสร้างหรือดัดแปลงนิยามพจนานุกรมขึ้นมาเองได้"
             }
 
+        # Check if the query specifically seeks an official definition of an unknown or non-existent word
+        is_unknown_def_query = False
+        if target_word:
+            is_unknown_def_query = any(k in user_query for k in ["คืออะไร", "แปลว่าอะไร", "นิยาม", "หมายถึง", "ความหมาย"]) or user_query.strip() == target_word
+        else:
+            is_unknown_def_query = bool(re.search(r"คำว่า\s*['\"“]?([A-Za-z0-9_]+|[^\s'\"”]+)['\"”]?\s*(คืออะไร|แปลว่าอะไร|นิยาม|หมายถึง)", user_query))
+
         # Condition 1: Empty evidence check
         if not evidences:
-            logger.info("Abstaining: Zero evidence retrieved.")
-            return {
-                "should_abstain": True,
-                "reason": "ไม่พบข้อมูลคำศัพท์หรือหลักฐานที่เพียงพอในคลังพจนานุกรม",
-                "abstention_type": "NO_EVIDENCE",
-                "recommended_response": "ไม่พบข้อมูลที่เพียงพอจากแหล่งข้อมูลพจนานุกรมที่ระบบรองรับ จึงไม่สามารถยืนยันความหมายหรือการใช้คำนี้ได้อย่างเป็นทางการ"
-            }
+            if is_unknown_def_query:
+                logger.info("Abstaining: Specific definition query for unknown word with zero evidence.")
+                return {
+                    "should_abstain": True,
+                    "reason": "ไม่พบข้อมูลคำศัพท์หรือหลักฐานที่เพียงพอในคลังพจนานุกรม",
+                    "abstention_type": "NO_EVIDENCE",
+                    "recommended_response": "ไม่พบข้อมูลที่เพียงพอจากแหล่งข้อมูลพจนานุกรมที่ระบบรองรับ จึงไม่สามารถยืนยันความหมายหรือการใช้คำนี้ได้อย่างเป็นทางการ"
+                }
+            else:
+                # General conversation, writing advice, or language consultation -> Allow real AI chat
+                return {
+                    "should_abstain": False,
+                    "reason": "คำแนะนำการใช้ภาษาทั่วไป (General Language Consultation)",
+                    "abstention_type": "NONE",
+                    "has_caveat": True,
+                    "caveat_note": "คำแนะนำนี้อิงตามหลักการใช้ภาษาทั่วไป มิได้อ้างอิงจากบทนิยามพจนานุกรมทางการของราชบัณฑิตยสภา",
+                    "recommended_response": ""
+                }
 
         # Condition 2: Relevance threshold check
         top_relevance = max((e.relevance for e in evidences), default=0.0)
         if top_relevance < self.min_similarity_threshold:
-            logger.info(f"Abstaining: Top relevance {top_relevance:.2f} < threshold {self.min_similarity_threshold:.2f}")
-            return {
-                "should_abstain": True,
-                "reason": f"ความเกี่ยวข้องของหลักฐานสูงสุด ({top_relevance:.2f}) ต่ำกว่าเกณฑ์ความน่าเชื่อถือขั้นต่ำ ({self.min_similarity_threshold:.2f})",
-                "abstention_type": "LOW_RELEVANCE",
-                "recommended_response": "หลักฐานพจนานุกรมที่มีอยู่มีความเกี่ยวข้องต่ำเกินกว่าจะสรุปเป็นข้อเท็จจริงทางภาษาได้อย่างชัดเจน เพื่อป้องกันข้อมูลคลาดเคลื่อน ระบบจึงของดเว้นการให้คำตอบในส่วนนี้"
-            }
+            if is_unknown_def_query:
+                logger.info(f"Abstaining: Top relevance {top_relevance:.2f} < threshold {self.min_similarity_threshold:.2f}")
+                return {
+                    "should_abstain": True,
+                    "reason": f"ความเกี่ยวข้องของหลักฐานสูงสุด ({top_relevance:.2f}) ต่ำกว่าเกณฑ์ความน่าเชื่อถือขั้นต่ำ ({self.min_similarity_threshold:.2f})",
+                    "abstention_type": "LOW_RELEVANCE",
+                    "recommended_response": "หลักฐานพจนานุกรมที่มีอยู่มีความเกี่ยวข้องต่ำเกินกว่าจะสรุปเป็นข้อเท็จจริงทางภาษาได้อย่างชัดเจน เพื่อป้องกันข้อมูลคลาดเคลื่อน ระบบจึงของดเว้นการให้คำตอบในส่วนนี้"
+                }
+            else:
+                # Still allow AI conversation with caveat
+                return {
+                    "should_abstain": False,
+                    "reason": "ความเกี่ยวข้องปานกลาง ให้คำแนะนำพร้อมระบุข้อสังเกต",
+                    "abstention_type": "NONE",
+                    "has_caveat": True,
+                    "caveat_note": "หลักฐานที่มีความเกี่ยวข้องบางส่วน โปรดใช้วิจารณญาณประกอบการนำไปใช้งาน",
+                    "recommended_response": ""
+                }
 
         # Condition 3 & 5: Context check (Caveat advisory instead of hard abort when general definition exists)
         has_context_caveat = False
