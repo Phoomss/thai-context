@@ -72,6 +72,7 @@ export default function ContextComparator({
               <label>
                 <span>คำที่ {index ? "๒" : "๑"}</span>
                 <select
+                  className="font-thai-reading"
                   aria-label={`เลือกคำที่ ${index ? "สอง" : "หนึ่ง"}`}
                   value={word.headword}
                   onChange={(event) => change(index ? "right" : "left", event.target.value)}
@@ -81,15 +82,15 @@ export default function ContextComparator({
                   ))}
                 </select>
               </label>
-              <h3>{word.headword}</h3>
+              <h3 className="font-thai-reading">{word.headword}</h3>
               <dl>
-                <div><dt>ความหมาย</dt><dd>{data.meaning}</dd></div>
-                <div className="difference-row"><dt>เน้นอะไร</dt><dd>{data.emphasis}</dd></div>
-                <div><dt>บริบท</dt><dd>{data.context}</dd></div>
-                <div><dt>ระดับภาษา</dt><dd>{data.register}</dd></div>
-                <div><dt>ใช้เมื่อไร</dt><dd>{data.useWhen}</dd></div>
-                <div><dt>ตัวอย่าง</dt><dd>{data.example}</dd></div>
-                <div><dt>จุดที่มักสับสน</dt><dd>{data.confusion}</dd></div>
+                <div><dt>ความหมาย</dt><dd className="font-thai-reading">{data.meaning}</dd></div>
+                <div className="difference-row"><dt>เน้นอะไร</dt><dd className="font-thai-reading">{data.emphasis}</dd></div>
+                <div><dt>บริบท</dt><dd className="font-thai-reading">{data.context}</dd></div>
+                <div><dt>ระดับภาษา</dt><dd className="font-thai-reading">{data.register}</dd></div>
+                <div><dt>ใช้เมื่อไร</dt><dd className="font-thai-reading">{data.useWhen}</dd></div>
+                <div><dt>ตัวอย่าง</dt><dd className="font-thai-reading">{data.example}</dd></div>
+                <div><dt>จุดที่มักสับสน</dt><dd className="font-thai-reading">{data.confusion}</dd></div>
               </dl>
               <button className="source-shortcut" type="button" onClick={() => onEvidence(word)}>
                 {word.evidence ? "ดูหลักฐานของคำนี้ ↗" : "ตรวจสถานะหลักฐาน ↗"}
@@ -102,4 +103,3 @@ export default function ContextComparator({
     </section>
   );
 }
-

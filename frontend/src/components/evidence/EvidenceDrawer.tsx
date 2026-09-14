@@ -56,9 +56,9 @@ export default function EvidenceDrawer({
             ×
           </button>
         </header>
-        <h2 id="evidence-title">{word.headword}</h2>
+        <h2 id="evidence-title" className="font-thai-reading">{word.headword}</h2>
         {sources.length ? (
-          sources.map((evidence, index) => <section key={index} className="evidence-source">
+          sources.map((evidence, index) => <section key={index} className="evidence-source font-thai-reading">
             <p className="evidence-status">
               {isDemo
                 ? "ข้อมูลเดโม — ยังไม่รับรองหลักฐาน"

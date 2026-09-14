@@ -23,17 +23,17 @@ export default function DialectExplorer() {
               onClick={() => setSelected(entry.region)}
             >
               <span className="region">{entry.region}</span>
-              <strong>{entry.word}</strong>
-              <span className="dialect-meaning">{entry.meaning}</span>
+              <strong className="font-thai-reading">{entry.word}</strong>
+              <span className="dialect-meaning font-thai-reading">{entry.meaning}</span>
               <span className={`provenance ${entry.provenance}`}>
                 {entry.provenance === "official" ? "ชุดข้อมูลสาธิต · ยังไม่รับรอง" : "◌ ยังไม่มีหลักฐานทางการเพียงพอ"}
               </span>
-              <span className="dialect-source">{entry.source}</span>
+              <span className="dialect-source font-thai-reading">{entry.source}</span>
             </button>
           );
         })}
       </div>
-      <p className="data-caveat">ข้อมูลภาษาถิ่นในหน้านี้เป็นข้อมูลสาธิต โปรดตรวจสอบกับแหล่งภาษาศาสตร์ก่อนนำไปใช้อ้างอิง</p>
+      <p className="data-caveat font-thai-reading">ข้อมูลภาษาถิ่นในหน้านี้เป็นข้อมูลสาธิต โปรดตรวจสอบกับแหล่งภาษาศาสตร์ก่อนนำไปใช้อ้างอิง</p>
     </section>
   );
 }
