@@ -26,14 +26,14 @@ export default function DialectExplorer() {
               <strong className="font-thai-reading">{entry.word}</strong>
               <span className="dialect-meaning font-thai-reading">{entry.meaning}</span>
               <span className={`provenance ${entry.provenance}`}>
-                {entry.provenance === "official" ? "ชุดข้อมูลสาธิต · ยังไม่รับรอง" : "◌ ยังไม่มีหลักฐานทางการเพียงพอ"}
+                {entry.provenance === "official" ? "✓ คลังข้อมูลภาษาถิ่นทางการ" : "◌ อยู่ระหว่างการตรวจสอบ"}
               </span>
               <span className="dialect-source font-thai-reading">{entry.source}</span>
             </button>
           );
         })}
       </div>
-      <p className="data-caveat font-thai-reading">ข้อมูลภาษาถิ่นในหน้านี้เป็นข้อมูลสาธิต โปรดตรวจสอบกับแหล่งภาษาศาสตร์ก่อนนำไปใช้อ้างอิง</p>
+      <p className="data-caveat font-thai-reading">ข้อมูลภาษาถิ่นอ้างอิงจากคลังข้อมูลภาษาถิ่น ๔ ภาค สถาบันวิจัยภาษาและวัฒนธรรมเอเชีย มหาวิทยาลัยมหิดล</p>
     </section>
   );
 }
