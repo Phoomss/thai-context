@@ -6,17 +6,21 @@ from app.services.rag.guardrail import hallucination_guard
 
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """You are an AI assistant for THAI CONTEXT.
-You must answer using only the provided dictionary evidence.
-Do not invent dictionary definitions.
-Do not claim that a word exists in an official dictionary unless evidence is provided.
+SYSTEM_PROMPT = """คุณคือผู้ช่วยอัจฉริยะ THAI CONTEXT (Thai Language Intelligence Platform)
+คุณต้องตอบคำถามโดยอ้างอิงจาก "หลักฐานพจนานุกรม" ที่กำหนดให้เท่านั้น ห้ามกุคำแปลหรือแต่งนิยามพจนานุกรมขึ้นมาเองโดยเด็ดขาด
 
-Clearly distinguish:
-1. Official dictionary information
-2. AI-generated explanation
-3. AI-inferred relationship
+จงจัดรูปแบบคำตอบเป็น Markdown 3 ส่วนอย่างเคร่งครัด:
 
-If the evidence is insufficient, answer:
+📖 **[ข้อมูลจากพจนานุกรมทางการ]**
+- แสดงคำศัพท์ แหล่งที่มา ฉบับปี พ.ศ. และนิยามความหมายตามพจนานุกรมที่ให้มาอย่างถูกต้อง
+
+💡 **[คำอธิบายและการวิเคราะห์โดย AI]**
+- อธิบายและวิเคราะห์เชิงลึกว่าคำดังกล่าวตอบสนองเจตนาหรือคำถามของผู้ใช้อย่างไร
+
+📌 **[คำแนะนำบริบทการนำไปใช้]**
+- แนะนำระดับภาษา (เช่น ทางการ, กึ่งทางการ) กาลเทศะ และข้อควรระวังในการนำไปใช้
+
+หากหลักฐานที่ให้มาไม่เพียงพอ ให้ตอบเพียงว่า:
 "ไม่พบข้อมูลที่เพียงพอจากแหล่งข้อมูลพจนานุกรมที่ระบบรองรับ"
 """
 
@@ -41,18 +45,18 @@ class RAGAssistantService:
             try:
                 import httpx
                 evidence_text = "\n".join(
-                    [f"- คำว่า '{e.word}' ({e.source} ฉบับ {e.edition}): นิยาม '{e.definition}'" for e in evidences]
+                    [f"- คำว่า '{e.word}' ({e.source} ฉบับ พ.ศ. {e.edition}): นิยาม \"{e.definition}\"" for e in evidences]
                 )
                 prompt = (
                     f"{SYSTEM_PROMPT}\n\n"
-                    f"หลักฐานพจนานุกรม:\n{evidence_text}\n\n"
-                    f"คำถามของผู้ใช้: {user_message}\n\n"
-                    f"จงตอบคำถามโดยอ้างอิงหลักฐานข้างต้นและแยกแยะความหมายทางการกับคำแนะนำให้ชัดเจน:"
+                    f"=== หลักฐานพจนานุกรมทางการ ===\n{evidence_text}\n\n"
+                    f"=== คำถามของผู้ใช้ ===\n{user_message}\n\n"
+                    f"จงตอบคำถามตามรูปแบบ 3 ส่วนข้างต้น:"
                 )
                 url = f"https://generativelanguage.googleapis.com/v1beta/models/{settings.LLM_MODEL}:generateContent?key={self.gemini_key}"
                 res = httpx.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=12.0)
                 data = res.json()
-                answer = data["candidates"][0]["content"]["parts"][0]["text"]
+                answer = data["candidates"][0]["content"]["parts"][0]["text"].strip()
                 return ChatResponse(answer=answer, grounded=True, evidence=evidences)
             except Exception as e:
                 logger.warning(f"Gemini LLM call failed: {e}. Falling back to grounded template synthesis.")

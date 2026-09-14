@@ -119,10 +119,16 @@ class VectorSearchService:
     def _fallback_in_memory_search(self, query_text: str, query_vector: List[float], top_k: int) -> List[SemanticSearchResult]:
         # Fallback reading seed data if DB connection is not established yet
         import os
-        seed_path = "/Users/mac/Desktop/workspace/thai-context/data/seed/demo_dictionary.json"
-        if not os.path.exists(seed_path):
-            seed_path = "../data/seed/demo_dictionary.json"
-        if not os.path.exists(seed_path):
+        candidate_paths = [
+            os.path.join(os.getcwd(), "data/seed/demo_dictionary.json"),
+            "/app/data/seed/demo_dictionary.json",
+            "/Users/mac/Desktop/workspace/thai-context/data/seed/demo_dictionary.json",
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../data/seed/demo_dictionary.json")),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../data/seed/demo_dictionary.json")),
+        ]
+        seed_path = next((p for p in candidate_paths if os.path.exists(p)), None)
+        if not seed_path:
+            logger.warning("No seed data found for fallback search.")
             return []
 
         try:
