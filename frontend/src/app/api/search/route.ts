@@ -13,15 +13,27 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   query = query.trim();
-  const endpoint =
+  const rawEndpoint =
     process.env.THAI_CONTEXT_API_URL ?? process.env.NEXT_PUBLIC_API_URL;
   const forceMock =
     process.env.THAI_CONTEXT_USE_MOCK === "true" ||
     process.env.NEXT_PUBLIC_USE_MOCK === "true";
-  if (!endpoint || forceMock)
+  if (!rawEndpoint || forceMock)
     return Response.json(mockSearch(query as string), {
       headers: { "Cache-Control": "no-store" },
     });
+
+  // Automatically resolve base URL (e.g. http://localhost:3001/api/v1 or http://localhost:3001)
+  // as well as explicit endpoint (http://localhost:3001/api/v1/search/meaning)
+  let endpoint = rawEndpoint.trim().replace(/\/+$/, "");
+  if (endpoint.endsWith("/search/meaning")) {
+    // Already full path
+  } else if (endpoint.endsWith("/api/v1")) {
+    endpoint = `${endpoint}/search/meaning`;
+  } else {
+    endpoint = `${endpoint}/api/v1/search/meaning`;
+  }
+
   try {
     const response = await fetch(endpoint, {
       method: "POST",

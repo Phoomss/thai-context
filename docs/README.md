@@ -21,6 +21,7 @@
 | **08** | [**08-presentation-diagrams.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/08-presentation-diagrams.md) | **Presentation Diagram Packages:** รวบรวม 2 แพ็กเกจแผนภาพ: **Package A (Technical)** สำหรับทีมพัฒนา และ **Package B (Judge/User)** ประกอบด้วย ไดอะแกรม 10 วินาที, แผนภาพแยกข้อมูลทางการ vs AI, แผนภาพนวัตกรรม, และ **10-Step Continuous Demo Story** |
 | **09** | [**09-judge-alignment-and-validation.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/09-judge-alignment-and-validation.md) | **Judge Alignment & System Audit:** ตารางแมปเกณฑ์คะแนนกรรมการละเอียดทุกข้อ, ระเบียบปฏิบัติ Single Source of Truth (SSOT), ตารางตรวจสอบความสมบูรณ์ 17 ข้อ (17-Point Audit Checklist) และรายงาน Gap Analysis |
 | **10** | [**10-hackathon-execution-summary.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/10-hackathon-execution-summary.md) | **Hackathon Master Execution Summary:** สรุปพิมพ์เขียวฉบับสมบูรณ์ โครงสร้างทีม 3 คน, Vertical Slice, Tech Stack, ข้อเปรียบเทียบ ORM, Extreme Performance & Perfection |
+| **11** | [**real-data-guide.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/real-data-guide.md) | **Real Data Architecture & Usage Guide:** คู่มือการรันฐานข้อมูลจริง (PostgreSQL + pgvector), การ Ingestion คำศัพท์ 57,000+ คำ, การตั้งค่า Frontend, การสลับโหมด และการตรวจสอบความถูกต้อง |
 | 📑 | [**final-requriment.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/final-requriment.md) | **Master PRD (Original All-in-One):** เอกสารข้อกำหนดระบบฉบับรวมสมบูรณ์ในไฟล์เดียว |
 
 ---
