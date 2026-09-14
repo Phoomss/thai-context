@@ -637,3 +637,28 @@ export async function searchDictionaryByKeyword(
   };
 }
 
+export async function executeWorkspace(
+  payload: import("./workspace-types").WorkspaceRequestPayload,
+  signal?: AbortSignal
+): Promise<import("./workspace-types").WorkspaceResponsePayload> {
+  const timeoutSignal = AbortSignal.timeout(12000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/ai/workspace", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Workspace request failed: ${response.status}`);
+  }
+
+  return response.json();
+}

@@ -80,6 +80,13 @@ export default function MorphingNavbar({
         <a href="#dialects" onClick={() => setOpen(false)}>ภาษาถิ่น</a>
         <a href="#dictionary" onClick={() => setOpen(false)}>ค้นตามเล่ม</a>
         <a
+          href="/workspace"
+          onClick={() => setOpen(false)}
+          className="text-cyan-400 font-semibold hover:text-cyan-300"
+        >
+          AI Workspace ✦
+        </a>
+        <a
           className="nav-search"
           href={floating ? "#persistent-meaning" : "#meaning"}
           onClick={e => {
