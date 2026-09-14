@@ -30,7 +30,16 @@ export default function WordResultCard({
         <span>{word.score === undefined ? "คำใกล้เคียง" : `${Math.round(word.score * 100)}% ตรงกับความหมาย`}</span>
       </div>
       <h3>
-        {word.headword} {word.pos && <small>[{word.pos}]</small>}
+        <span className="card-headword">{word.headword}</span>{" "}
+        {word.pos && <small>[{word.pos}]</small>}
+        {(word.english || word.translations?.[0]?.translatedWord) && (
+          <span
+            className="card-english-trans"
+            aria-label={`คำแปลภาษาอังกฤษ: ${word.english || word.translations?.[0]?.translatedWord}`}
+          >
+            ({word.english || word.translations?.[0]?.translatedWord})
+          </span>
+        )}
       </h3>
       <p className="definition">{word.definition}</p>
       {word.ai_explanation && (

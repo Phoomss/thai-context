@@ -15,6 +15,8 @@ import ParsedIntent from "./ParsedIntent";
 import SmartFilters, { type SmartFilterValue } from "./SmartFilters";
 import PronunciationButton from "../pronunciation/PronunciationButton";
 import ShareResultButton from "../share/ShareResultButton";
+import SignLanguageModal from "../tsl/SignLanguageModal";
+import WordTranslations from "../translations/WordTranslations";
 import Icon from "../ui/Icon";
 
 type SearchResultsProps = {
@@ -40,6 +42,7 @@ export default function SearchResults({
 }: SearchResultsProps) {
   const { result, loading, error, revealed, revision, query } = experience;
   const [selection, setSelection] = useState("");
+  const [signLanguageOpen, setSignLanguageOpen] = useState(false);
   const [filters, setFilters] = useState<SmartFilterValue>({
     register: "",
     context: "",
@@ -50,6 +53,7 @@ export default function SearchResults({
   useLayoutEffect(() => {
     setFilters({ register: "", context: "", excluded: "" });
     setSelection(sharedWord);
+    setSignLanguageOpen(false);
     audioManager.stop();
   }, [revision, sharedWord]);
 
@@ -64,6 +68,7 @@ export default function SearchResults({
   const word = words.find((candidate) => candidate.headword === selection) ?? words[0];
 
   useEffect(() => {
+    setSignLanguageOpen(false);
     audioManager.stop();
   }, [word?.headword]);
 
@@ -174,7 +179,14 @@ export default function SearchResults({
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>
-                        <strong>{candidate.headword}</strong>
+                        <strong>
+                          {candidate.headword}
+                          {(candidate.english || candidate.translations?.[0]?.translatedWord) && (
+                            <span className="candidate-english font-ui">
+                              {" "}· {candidate.english || candidate.translations?.[0]?.translatedWord}
+                            </span>
+                          )}
+                        </strong>
                         <small>{candidate.registers?.join(" · ") || "คำใกล้เคียง"}</small>
                         {candidate.score !== undefined && (
                           <small>
@@ -193,12 +205,27 @@ export default function SearchResults({
                   <p className="detail-kicker">ความหมายของคำ</p>
                   <h3 id="word-title" className="font-thai-reading thai-headword" tabIndex={-1}>
                     {word.headword}
+                    {(word.english || word.translations?.[0]?.translatedWord) && (
+                      <span className="detail-english-inline font-ui">
+                        {" "}({word.english || word.translations?.[0]?.translatedWord})
+                      </span>
+                    )}
                   </h3>
                   <p className="word-phonetic font-thai-reading">
                     {word.pronunciation?.phonetic} {word.pos && <span>{word.pos}</span>}
                   </p>
                   <div className="word-utilities">
                     <PronunciationButton word={word} />
+                    <button
+                      type="button"
+                      className="icon-button tsl-trigger-btn font-thai-reading"
+                      onClick={() => setSignLanguageOpen(true)}
+                      aria-haspopup="dialog"
+                      aria-expanded={signLanguageOpen}
+                      aria-label={`ดูภาษามือไทยสำหรับคำว่า ${word.headword}`}
+                    >
+                      <span className="tsl-btn-text">[ภาษามือไทย 🤟]</span>
+                    </button>
                     <ShareResultButton
                       word={word}
                       query={result?.query_understanding.raw_query ?? query}
@@ -210,6 +237,10 @@ export default function SearchResults({
                     <h4>ความหมาย</h4>
                     <p className="definition font-thai-reading">{word.definition}</p>
                   </section>
+                  <WordTranslations
+                    headword={word.headword}
+                    initialTranslations={word.translations}
+                  />
                   {!!examples.length && (
                     <section>
                       <h4>ตัวอย่างการใช้</h4>
@@ -349,6 +380,13 @@ export default function SearchResults({
           )}
         </div>
       </div>
+      {word && (
+        <SignLanguageModal
+          word={word.headword}
+          isOpen={signLanguageOpen}
+          onClose={() => setSignLanguageOpen(false)}
+        />
+      )}
     </section>
   );
 }

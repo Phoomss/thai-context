@@ -1,4 +1,218 @@
 import { parseResponse, type SearchResponse } from "./search-types";
+import {
+  sortTranslations,
+  type SignLanguageEntry,
+  type TranslationItem,
+} from "./accessibility-types";
+
+// Editorial mock fallback data for offline / demo environments
+export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
+  ประสิทธิภาพ: [
+    {
+      signName: "ประสิทธิภาพ",
+      handshapeDescription:
+        "มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย แสดงถึงกระบวนการที่รวดเร็วและคุ้มค่า",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4",
+          thumbnailUrl:
+            "https://assets.thai-context.org/tsl/thumbs/prasitthiphap.jpg",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
+  ประสิทธิผล: [
+    {
+      signName: "ประสิทธิผล",
+      handshapeDescription:
+        "กำมือทั้งสองข้าง ชูนิ้วโป้งขึ้นพร้อมกันระดับอก แล้วเลื่อนออกไปข้างหน้า แสดงถึงผลสำเร็จตามเป้าหมาย",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/prasitthiphon.mp4",
+          thumbnailUrl:
+            "https://assets.thai-context.org/tsl/thumbs/prasitthiphon.jpg",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
+  ร่วมมือ: [
+    {
+      signName: "ร่วมมือ",
+      handshapeDescription:
+        "ประสานนิ้วมือทั้งสองข้างเข้าด้วยกัน แล้วดึงเข้าหาลำตัวเล็กน้อย แสดงความร่วมแรงร่วมใจ",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/ruammo.mp4",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
+  วิจัย: [
+    {
+      signName: "วิจัย",
+      handshapeDescription:
+        "ทำมือขวาเป็นรูปตัว C ส่องดูฝ่ามือซ้ายที่หงายอยู่ เสมือนใช้แว่นขยายตรวจสอบข้อมูลอย่างละเอียด",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/wichai.mp4",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
+};
+
+export const MOCK_TRANSLATIONS: Record<string, TranslationItem[]> = {
+  ประสิทธิภาพ: [
+    {
+      translatedWord: "efficiency",
+      languageCode: "en",
+      secondaryTranslations: ["competence", "productivity"],
+      contextualExplanation:
+        "ความสามารถในการสร้างผลผลิตสูงสุดโดยใช้ทรัพยากรน้อยที่สุด",
+      usageNuance: "ภาษาทางการและบริบทการบริหารจัดการ",
+      provenance: "OFFICIAL_ROYAL_COINED",
+      confidenceScore: 1.0,
+    },
+    {
+      translatedWord: "performance efficacy",
+      languageCode: "en",
+      secondaryTranslations: ["operational efficiency"],
+      contextualExplanation:
+        "คำแปลแนะนำสำหรับการทำงานในองค์กรร่วมสมัย",
+      usageNuance: "บริบทการปฏิบัติการสมัยใหม่",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.88,
+    },
+  ],
+  ประสิทธิผล: [
+    {
+      translatedWord: "effectiveness",
+      languageCode: "en",
+      secondaryTranslations: ["efficacy", "fruitfulness"],
+      contextualExplanation:
+        "ผลสำเร็จที่เกิดขึ้นตามเป้าหมายหรือวัตถุประสงค์ที่กำหนดไว้",
+      usageNuance: "เน้นการบรรลุเป้าหมายของงานหรือนโยบาย",
+      provenance: "OFFICIAL_ROYAL_COINED",
+      confidenceScore: 1.0,
+    },
+    {
+      translatedWord: "outcome success",
+      languageCode: "en",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.82,
+    },
+  ],
+  ดิจิทัล: [
+    {
+      translatedWord: "digital",
+      languageCode: "en",
+      secondaryTranslations: ["electronic"],
+      contextualExplanation:
+        'คำทับศัพท์ภาษาไทยตามประกาศสำนักงานราชบัณฑิตยสภา จากคำภาษาอังกฤษ "digital"',
+      usageNuance: "ราชบัณฑิตยสภากำหนดให้ใช้ 'ดิจิทัล' แทน 'ดิจิตอล'",
+      provenance: "OFFICIAL_ROYAL_TRANSLITERATION",
+      confidenceScore: 1.0,
+    },
+  ],
+  สัมฤทธิผล: [
+    {
+      translatedWord: "achievement",
+      languageCode: "en",
+      secondaryTranslations: ["accomplishment", "success"],
+      contextualExplanation: "ความสำเร็จลุล่วงตามความมุ่งหมายอย่างสมบูรณ์",
+      provenance: "OFFICIAL_ROYAL_COINED",
+      confidenceScore: 1.0,
+    },
+  ],
+  มัธยัสถ์: [
+    {
+      translatedWord: "frugal",
+      languageCode: "en",
+      secondaryTranslations: ["thrifty", "economical"],
+      contextualExplanation: "การใช้จ่ายอย่างระมัดระวังและประหยัดรอบคอบ",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.92,
+    },
+  ],
+  ร่วมมือ: [
+    {
+      translatedWord: "cooperate",
+      languageCode: "en",
+      secondaryTranslations: ["collaborate", "team up"],
+      contextualExplanation:
+        "การร่วมแรงร่วมใจกันทำงานเพื่อให้บรรลุจุดมุ่งหมายเดียวกัน",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.95,
+    },
+  ],
+  ประสานงาน: [
+    {
+      translatedWord: "coordinate",
+      languageCode: "en",
+      secondaryTranslations: ["liaise", "synchronize"],
+      contextualExplanation:
+        "การเชื่อมโยงและจัดระเบียบการทำงานร่วมกันระหว่างฝ่าย",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.94,
+    },
+  ],
+  กรุณารอสักครู่: [
+    {
+      translatedWord: "please hold on",
+      languageCode: "en",
+      secondaryTranslations: ["please wait a moment", "just a moment"],
+      contextualExplanation: "ถ้อยคำสุภาพเพื่อขอให้อีกฝ่ายรอสักครู่",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.89,
+    },
+  ],
+  วิจัย: [
+    {
+      translatedWord: "research",
+      languageCode: "en",
+      secondaryTranslations: ["investigation", "study"],
+      contextualExplanation:
+        "การค้นคว้าหาความจริงหรือองค์ความรู้อย่างเป็นระเบียบแบบแผน",
+      provenance: "OFFICIAL_ROYAL_COINED",
+      confidenceScore: 1.0,
+    },
+    {
+      translatedWord: "systematic investigation",
+      languageCode: "en",
+      provenance: "AI_GENERATED",
+      confidenceScore: 0.86,
+    },
+  ],
+};
+
 export async function searchMeaning(
   query: string,
   signal: AbortSignal,
@@ -16,3 +230,179 @@ export async function searchMeaning(
     raw.mode === "demo" || raw.mode === "fallback" ? raw.mode : "live",
   );
 }
+
+export async function fetchSignLanguage(
+  word: string,
+  signal?: AbortSignal,
+): Promise<SignLanguageEntry[]> {
+  const cleanWord = word.trim();
+  if (!cleanWord) return [];
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dictionary/words/${encodeURIComponent(cleanWord)}/sign-language`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      },
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data)) return data;
+      if (data && typeof data === "object" && Array.isArray(data.signLanguage)) {
+        return data.signLanguage;
+      }
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  // Graceful fallback to mock data or empty array
+  return MOCK_SIGN_LANGUAGE[cleanWord] ?? [];
+}
+
+export async function fetchTranslations(
+  word: string,
+  signal?: AbortSignal,
+): Promise<TranslationItem[]> {
+  const cleanWord = word.trim();
+  if (!cleanWord) return [];
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dictionary/words/${encodeURIComponent(cleanWord)}/translations`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      },
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        return sortTranslations(data);
+      }
+      if (data && typeof data === "object" && Array.isArray(data.translations)) {
+        return sortTranslations(data.translations);
+      }
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  // Graceful fallback to mock data or empty array
+  const fallback = MOCK_TRANSLATIONS[cleanWord];
+  return fallback ? sortTranslations(fallback) : [];
+}
+
+export async function fetchDialectMapping(
+  word: string,
+  signal?: AbortSignal,
+) {
+  const cleanWord = word.trim();
+  if (!cleanWord) return null;
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dialect/mapping/${encodeURIComponent(cleanWord)}`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      },
+    );
+
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch {
+    // Fallback to local data
+  }
+
+  const { getDialectGroup } = await import("./dialect-data");
+  const group = getDialectGroup(cleanWord);
+  if (!group) return null;
+
+  return {
+    standardWord: group.standardWord,
+    category: group.category,
+    categoryLabel: group.categoryLabel,
+    mappings: group.dialects.map((d) => ({
+      word: d.word,
+      region: d.region,
+      regionCode: d.region === "กลาง" ? "CENTRAL" : d.region === "เหนือ" ? "NORTH" : d.region === "อีสาน" ? "NORTHEAST" : "SOUTH",
+      phonetic: d.phonetic ?? "",
+      meaning: d.meaning,
+      confidence: d.provenance === "official" ? 1.0 : 0.75,
+      type: d.provenance === "official" ? "OFFICIAL" : "AI_INFERRED",
+      culturalNotes: d.culturalNotes ?? null,
+      source: d.source,
+    })),
+  };
+}
+
+export async function fetchDialects(
+  category?: string,
+  query?: string,
+  signal?: AbortSignal,
+) {
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const params = new URLSearchParams();
+    if (category) params.set("category", category);
+    if (query) params.set("query", query);
+
+    const response = await fetch(`/api/v1/dialect?${params.toString()}`, {
+      headers: { Accept: "application/json" },
+      signal: combinedSignal,
+    });
+
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch {
+    // Fallback to local data
+  }
+
+  const {
+    DIALECT_CATEGORIES,
+    DIALECT_WORD_GROUPS,
+    getDialectsByCategory,
+    searchDialectGroups,
+  } = await import("./dialect-data");
+
+  let results = DIALECT_WORD_GROUPS;
+  if (category) {
+    results = getDialectsByCategory(category as any);
+  }
+  if (query) {
+    results = searchDialectGroups(query);
+    if (category) results = results.filter((g) => g.category === category);
+  }
+
+  return {
+    categories: DIALECT_CATEGORIES,
+    count: results.length,
+    results,
+  };
+}
+

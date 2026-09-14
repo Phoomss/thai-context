@@ -31,7 +31,36 @@ export async function POST(request: Request) {
       signal: AbortSignal.any([request.signal, AbortSignal.timeout(7000)]),
     });
     if (!response.ok) throw new Error("Upstream unavailable");
-    return Response.json(parseResponse(await response.json()), {
+    const rawData = await response.json();
+    let normalizedData = rawData;
+    if (rawData && !rawData.query_understanding && Array.isArray(rawData.results)) {
+      normalizedData = {
+        query_understanding: {
+          raw_query: query as string,
+          detected_meaning: query as string,
+          excluded_words: [],
+        },
+        recommendations: rawData.results.map((item: any) => {
+          const edYear = item.source?.edition ? parseInt(item.source.edition, 10) : 2554;
+          return {
+            headword: item.word || item.headword,
+            score: typeof item.score === "number" ? Number(Math.min(1, Math.max(0.1, item.score)).toFixed(2)) : 0.85,
+            definition: item.definition || item.reason || "ความหมายตามพจนานุกรมทางการ",
+            ai_explanation: item.reason || undefined,
+            evidence: {
+              source_book: item.source?.name || "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+              edition: item.source?.edition ? `พ.ศ. ${item.source.edition}` : "พ.ศ. ๒๕๕๔",
+              edition_year: isNaN(edYear) ? 2554 : edYear,
+              quote: item.definition || item.reason || "",
+              is_official: true,
+            },
+            registers: ["ทางการ"],
+            contexts: ["ทั่วไป"],
+          };
+        }),
+      };
+    }
+    return Response.json(parseResponse(normalizedData, "live"), {
       headers: { "Cache-Control": "no-store" },
     });
   } catch {
