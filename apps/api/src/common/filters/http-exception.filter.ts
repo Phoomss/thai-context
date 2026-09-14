@@ -35,11 +35,15 @@ export class AllExceptionsFilter implements ExceptionFilter {
       this.logger.error(`Unhandled Exception: ${exception.message}`, exception.stack);
     }
 
+    const request = ctx.getRequest<any>();
+    const requestId = request?.requestId || request?.headers?.['x-request-id'] || undefined;
+
     response.status(status).json({
       success: false,
       error: {
         code,
         message,
+        ...(requestId ? { requestId } : {}),
       },
     });
   }

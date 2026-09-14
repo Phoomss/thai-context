@@ -1,3 +1,4 @@
+import uuid
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -19,7 +20,15 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["X-Request-Id"]
 )
+
+@app.middleware("http")
+async def add_request_id_middleware(request: Request, call_next):
+    req_id = request.headers.get("x-request-id") or str(uuid.uuid4())
+    response = await call_next(request)
+    response.headers["X-Request-Id"] = req_id
+    return response
 
 # Exception handler for standardized errors
 @app.exception_handler(Exception)
