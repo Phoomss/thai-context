@@ -30,6 +30,7 @@ type SearchResultsProps = {
   onCompare: (word: Recommendation) => void;
   onRetry: () => void;
   sharedWord?: string;
+  onAIChat?: (word: Recommendation) => void;
 };
 
 export default function SearchResults({
@@ -41,6 +42,7 @@ export default function SearchResults({
   onCompare,
   onRetry,
   sharedWord = "",
+  onAIChat,
 }: SearchResultsProps) {
   const { result, loading, error, revealed, revision, query } = experience;
   const [selection, setSelection] = useState("");
@@ -312,6 +314,18 @@ export default function SearchResults({
                       ? "เลือกเทียบแล้ว"
                       : "เลือกเปรียบเทียบ"}
                   </button>
+                  {onAIChat && (
+                    <button
+                      type="button"
+                      className="ai-consult-btn font-thai-reading"
+                      disabled={loading}
+                      onClick={() => onAIChat(word)}
+                      title={`ปรึกษาผู้ช่วย AI เกี่ยวกับคำว่า "${word.headword}"`}
+                    >
+                      <span aria-hidden="true">✨</span>
+                      <span>ปรึกษาผู้ช่วย AI เกี่ยวกับคำนี้</span>
+                    </button>
+                  )}
                   {!!compareSelected.length && (
                     <a className="source-shortcut" href="#compare">
                       ไปยังตารางเปรียบเทียบ →
@@ -369,6 +383,18 @@ export default function SearchResults({
                     {word.evidence ? "ตรวจสอบหลักฐาน" : "สถานะหลักฐานอ้างอิง"}
                     <Icon name="arrow" />
                   </button>
+                  {onAIChat && (
+                    <button
+                      type="button"
+                      className="ai-consult-btn font-thai-reading"
+                      style={{ marginTop: "10px", width: "100%", justifyContent: "center" }}
+                      disabled={loading}
+                      onClick={() => onAIChat(word)}
+                    >
+                      <span aria-hidden="true">✨</span>
+                      <span>ปรึกษาผู้ช่วย AI</span>
+                    </button>
+                  )}
                 </section>
               </aside>
             </>

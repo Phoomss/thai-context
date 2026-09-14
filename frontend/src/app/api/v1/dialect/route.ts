@@ -127,7 +127,7 @@ export async function GET(request: Request) {
 
       return NextResponse.json({
         categories: DIALECT_CATEGORIES,
-        count: backendData.count ?? groups.length,
+        count: (backendData.count && backendData.count > 0) ? backendData.count : groups.length,
         results: groups,
         totalDatabaseEntries: backendData.count,
         source: "database",

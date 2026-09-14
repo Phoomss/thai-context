@@ -46,6 +46,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 # Include Routers
 app.include_router(ai_router, prefix="/ai", tags=["AI & NLP"])
+app.include_router(ai_router, prefix="/api/v1/ai", tags=["AI & NLP v1"])
 
 @app.get("/health", tags=["Health"])
 def root_health():
