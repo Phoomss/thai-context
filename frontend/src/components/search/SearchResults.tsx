@@ -16,6 +16,7 @@ import SmartFilters, { type SmartFilterValue } from "./SmartFilters";
 import PronunciationButton from "../pronunciation/PronunciationButton";
 import ShareResultButton from "../share/ShareResultButton";
 import SignLanguageModal from "../tsl/SignLanguageModal";
+import SignLanguageSection from "../tsl/SignLanguageSection";
 import BrailleModal from "../braille/BrailleModal";
 import WordTranslations from "../translations/WordTranslations";
 import SearchResultFeedback from "../feedback/SearchResultFeedback";
@@ -257,6 +258,10 @@ export default function SearchResults({
                   <WordTranslations
                     headword={word.headword}
                     initialTranslations={word.translations}
+                  />
+                  <SignLanguageSection
+                    word={word.headword}
+                    onOpenFullModal={() => setSignLanguageOpen(true)}
                   />
                   {!!examples.length && (
                     <section>

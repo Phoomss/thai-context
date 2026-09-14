@@ -8,6 +8,7 @@ import type {
 } from "@/lib/workspace-types";
 import { audioManager } from "@/lib/audio-manager";
 import type { Recommendation } from "@/lib/search-types";
+import SignLanguageSection from "../tsl/SignLanguageSection";
 
 export type WorkspaceResultTab = "all" | "words" | "compare" | "writing" | "check" | "bridge";
 
@@ -900,6 +901,11 @@ export default function WorkspaceResultCard({
               <div style={{ paddingTop: "8px", borderTop: "1px solid var(--border)", fontStyle: "italic", color: "var(--muted)" }}>
                 <strong style={{ fontStyle: "normal", color: "var(--accent)" }}>Example:</strong>{" "}
                 {language_bridge.example}
+              </div>
+
+              {/* Thai Sign Language Accessibility Layer */}
+              <div style={{ marginTop: "14px", paddingTop: "14px", borderTop: "1px solid var(--border)" }}>
+                <SignLanguageSection word={language_bridge.word} />
               </div>
             </div>
           </div>

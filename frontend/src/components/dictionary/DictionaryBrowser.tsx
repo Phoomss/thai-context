@@ -9,6 +9,7 @@ import {
 import { toThaiNumerals } from "@/lib/evolution-data";
 import { audioManager } from "@/lib/audio-manager";
 import Icon from "../ui/Icon";
+import SignLanguageModal from "../tsl/SignLanguageModal";
 
 interface DictionaryBrowserProps {
   initialWord?: string;
@@ -115,6 +116,7 @@ export default function DictionaryBrowser({ initialWord = "ประสิทธ
     return (BENCHMARK_DICTIONARY_ENTRIES[initialWord] || []).length;
   });
   const [playingWord, setPlayingWord] = useState<string | null>(null);
+  const [signModalWord, setSignModalWord] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState<boolean>(true);
   const [, startTransition] = useTransition();
 
@@ -642,27 +644,52 @@ export default function DictionaryBrowser({ initialWord = "ประสิทธ
                       )}
                     </div>
 
-                    <button
-                      type="button"
-                      aria-label={`ฟังเสียงคำว่า ${item.word}`}
-                      onClick={() => handlePlayAudio(item.word)}
-                      style={{
-                        width: "32px",
-                        height: "32px",
-                        minHeight: "32px",
-                        padding: 0,
-                        borderRadius: "50%",
-                        border: "1px solid var(--border)",
-                        background: isPlaying ? "var(--accent)" : "#f0f9ff",
-                        color: isPlaying ? "white" : "#0284c7",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <Icon name={isPlaying ? "pause" : "volume"} />
-                    </button>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                      <button
+                        type="button"
+                        aria-label={`ดูภาษามือไทยสำหรับคำว่า ${item.word}`}
+                        title="ดูภาษามือไทย (Thai Sign Language)"
+                        onClick={() => setSignModalWord(item.word)}
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          minHeight: "32px",
+                          padding: 0,
+                          borderRadius: "50%",
+                          border: "1px solid var(--border)",
+                          background: "#f8fafc",
+                          color: "#0284c7",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
+                      >
+                        🤟
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`ฟังเสียงคำว่า ${item.word}`}
+                        onClick={() => handlePlayAudio(item.word)}
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          minHeight: "32px",
+                          padding: 0,
+                          borderRadius: "50%",
+                          border: "1px solid var(--border)",
+                          background: isPlaying ? "var(--accent)" : "#f0f9ff",
+                          color: isPlaying ? "white" : "#0284c7",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <Icon name={isPlaying ? "pause" : "volume"} />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Definition Body */}
@@ -716,6 +743,14 @@ export default function DictionaryBrowser({ initialWord = "ประสิทธ
             );
           })}
         </div>
+      )}
+
+      {signModalWord && (
+        <SignLanguageModal
+          word={signModalWord}
+          isOpen={Boolean(signModalWord)}
+          onClose={() => setSignModalWord(null)}
+        />
       )}
     </section>
   );
