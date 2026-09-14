@@ -1,20 +1,68 @@
 "use client";
-import { useEffect, useState, useSyncExternalStore } from "react";
+
+import { useEffect, useSyncExternalStore } from "react";
 import { audioManager } from "@/lib/audio-manager";
 import type { Recommendation } from "@/lib/search-types";
 import Icon from "../ui/Icon";
+
 export default function PronunciationButton({ word }: { word: Recommendation }) {
-  const [supported, setSupported] = useState(false);
-  const status = useSyncExternalStore(audioManager.subscribe, audioManager.snapshot, () => "idle");
-  useEffect(() => { setSupported(!!word.pronunciation?.audio_url || "speechSynthesis" in window); return () => audioManager.stop(); }, [word]);
-  if (!supported) return null;
-  const playing = status === "playing" && audioManager.active() === word.headword;
-  const paused = status === "paused" && audioManager.active() === word.headword;
-  return <div className="audio-control">
-    <button className="icon-button" aria-label={playing ? `หยุดเสียงคำว่า ${word.headword} ชั่วคราว` : `อ่านออกเสียงคำว่า ${word.headword}`} aria-pressed={playing} disabled={status === "loading"} onClick={() => audioManager.toggle(word)} title="อ่านออกเสียง">
-      <Icon name={playing ? "pause" : paused ? "play" : "volume"} />
-      <span>{status === "loading" ? "กำลังโหลด" : playing ? "หยุดชั่วคราว" : paused ? "ฟังต่อ" : "ฟังเสียง"}</span>
-    </button>
-    {status === "error" && <small role="status">ไม่สามารถเล่นเสียงได้ ลองอีกครั้ง</small>}
-  </div>;
+  const status = useSyncExternalStore(
+    audioManager.subscribe,
+    audioManager.snapshot,
+    () => "idle",
+  );
+  const headword = word.headword.trim();
+  const active = audioManager.active() === headword;
+  const loading = active && status === "loading";
+  const playing = active && status === "playing";
+  const paused = active && status === "paused";
+  const error = active && status === "error";
+
+  useEffect(
+    () => () => audioManager.stop(headword),
+    [headword],
+  );
+
+  const label = loading
+    ? `กำลังสร้างเสียงคำว่า ${word.headword}`
+    : playing
+      ? `หยุดเสียงคำว่า ${word.headword} ชั่วคราว`
+      : paused
+        ? `ฟังเสียงคำว่า ${word.headword} ต่อ`
+        : error
+          ? `ลองฟังการออกเสียงคำว่า ${word.headword} อีกครั้ง`
+          : `ฟังการออกเสียงคำว่า ${word.headword}`;
+
+  return (
+    <div className="audio-control">
+      <button
+        className="icon-button"
+        type="button"
+        aria-label={label}
+        aria-pressed={playing}
+        aria-busy={loading}
+        disabled={loading}
+        onClick={() => void audioManager.toggle(word)}
+        title={label}
+      >
+        <Icon name={playing ? "pause" : paused ? "play" : "volume"} />
+        <span>
+          {loading
+            ? "กำลังโหลด"
+            : playing
+              ? "หยุดชั่วคราว"
+              : paused
+                ? "ฟังต่อ"
+                : error
+                  ? "ลองอีกครั้ง"
+                  : "ฟังเสียง"}
+        </span>
+      </button>
+      {error && (
+        <small role="status" aria-live="polite">
+          ไม่สามารถเล่นเสียงได้ ลองอีกครั้ง
+        </small>
+      )}
+    </div>
+  );
 }

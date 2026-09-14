@@ -60,8 +60,8 @@ export default function MorphingNavbar({
         <Image
           className="brand-logo"
           src="/assets/thai-context-logo.png"
-          width={38}
-          height={32}
+          width={46}
+          height={40}
           alt=""
           aria-hidden="true"
         />
