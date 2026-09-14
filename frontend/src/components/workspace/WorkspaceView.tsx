@@ -94,12 +94,10 @@ export default function WorkspaceView() {
     setTimeout(() => setToastMessage(null), 2500);
   };
 
-  // Initialize session id
   useEffect(() => {
     setSessionId(`session-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`);
   }, []);
 
-  // Synchronize draft text whenever a result arrives with generated content
   useEffect(() => {
     if (currentResult?.generated_content && currentResult.generated_content.length > 0) {
       setActiveDraft(currentResult.generated_content[0].content);
@@ -169,36 +167,35 @@ export default function WorkspaceView() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="workspace-hero-wrap">
       {/* Toast Alert */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl bg-cyan-950 text-cyan-200 border border-cyan-500/60 shadow-2xl text-xs font-semibold flex items-center gap-2 animate-bounce">
-          <span>✓</span>
+        <div className="workspace-toast" role="status">
+          <span style={{ color: "#4ade80", fontWeight: "bold" }}>✓</span>
           <span>{toastMessage}</span>
         </div>
       )}
 
-      <div className="max-w-5xl mx-auto space-y-6">
-        {/* Workspace Banner & Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800 shadow-xl">
+      {/* Workspace Banner & Header */}
+      <div className="workspace-card" style={{ marginBottom: "28px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/80 text-sky-400 border border-sky-800/60 text-xs font-semibold uppercase tracking-wider mb-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              Unified AI Language Workspace
+            <div className="workspace-eyebrow">
+              <span>✦</span> UNIFIED AI LANGUAGE WORKSPACE
             </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-100 to-indigo-300">
+            <h1 className="workspace-title" style={{ margin: "6px 0 8px" }}>
               THAI CONTEXT Workspace
             </h1>
-            <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
+            <p className="workspace-desc">
               &ldquo;ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน&rdquo; — ค้นพบ เปรียบเทียบ แต่งประโยค เรียบเรียง และตรวจทานภาษาไทยในพื้นที่เดียว
             </p>
           </div>
 
-          <div className="flex items-center gap-2 self-start sm:self-center">
+          <div>
             <button
               type="button"
               onClick={handleResetSession}
-              className="px-3.5 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition-all shadow-sm flex items-center gap-1.5"
+              className="workspace-nav-btn"
               title="เริ่มเซสชันใหม่ เคลียร์บริบทที่จำไว้"
             >
               <span>🔄</span>
@@ -206,329 +203,353 @@ export default function WorkspaceView() {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Guided Workflow Stepper */}
-        <div className="p-3 sm:p-4 rounded-2xl bg-slate-900/60 border border-slate-800/80">
-          <div className="flex items-center justify-between overflow-x-auto gap-2 text-xs font-medium text-slate-400 pb-1 sm:pb-0">
-            <div className="flex items-center gap-1.5 text-cyan-300 font-semibold whitespace-nowrap">
-              <span className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center text-[10px]">1</span>
-              <span>ระบุเจตนา</span>
+      {/* Guided Workflow Stepper */}
+      <div className="workspace-stepper" role="navigation" aria-label="ขั้นตอนการทำงาน">
+        <div className="workspace-step-item active">
+          <span className="workspace-step-num">1</span>
+          <span>ระบุเจตนา</span>
+        </div>
+        <div className="workspace-step-item">
+          <span className="workspace-step-num">2</span>
+          <span>ค้นพบคำศัพท์</span>
+        </div>
+        <div className="workspace-step-item">
+          <span className="workspace-step-num">3</span>
+          <span>เปรียบเทียบเฉด</span>
+        </div>
+        <div className="workspace-step-item">
+          <span className="workspace-step-num">4</span>
+          <span>แต่งและเรียบเรียง</span>
+        </div>
+        <div className="workspace-step-item">
+          <span className="workspace-step-num">5</span>
+          <span>ตรวจทานภาษา</span>
+        </div>
+      </div>
+
+      {/* Main 2-Column Grid Layout */}
+      <div className="workspace-grid-layout">
+        {/* Left Column: Input Form & Results */}
+        <div>
+          {/* Query Input Section */}
+          <div className="workspace-card">
+            {/* Context Selector Bar */}
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "12px", marginBottom: "16px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-muted)" }}>ระดับบริบท:</span>
+                {(["academic", "business", "government", "casual"] as const).map((ctx) => (
+                  <button
+                    key={ctx}
+                    type="button"
+                    onClick={() => setSelectedContext(ctx)}
+                    className={`workspace-context-pill ${selectedContext === ctx ? "active" : ""}`}
+                  >
+                    {ctx === "academic"
+                      ? "🎓 วิชาการ"
+                      : ctx === "business"
+                      ? "💼 ธุรกิจ"
+                      : ctx === "government"
+                      ? "🏛️ ราชการ"
+                      : "💬 สนทนา"}
+                  </button>
+                ))}
+              </div>
+
+              {sessionId && (
+                <span style={{ fontSize: "11px", fontFamily: "monospace", color: "var(--text-muted)" }}>
+                  ID: {sessionId.substring(0, 14)}...
+                </span>
+              )}
             </div>
-            <span className="text-slate-600">➔</span>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <span className="w-5 h-5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 flex items-center justify-center text-[10px]">2</span>
-              <span>ค้นพบคำศัพท์</span>
+
+            {/* Textarea Composer */}
+            <div className="workspace-textarea-wrap">
+              <textarea
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                    e.preventDefault();
+                    handleSend();
+                  }
+                }}
+                placeholder="พิมพ์เจตนาที่ต้องการ เช่น 'หาคำที่หมายถึงทำงานได้ดีและใช้ทรัพยากรน้อย' หรือ 'แต่งประโยคคำว่า ประสิทธิภาพ สำหรับรายงานวิชาการ'..."
+                className="workspace-textarea"
+                rows={3}
+              />
+
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px" }}>
+                <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>
+                  กด <kbd style={{ padding: "2px 6px", borderRadius: "6px", background: "#edf2f7", border: "1px solid #cbd5e1", fontSize: "11px", fontFamily: "monospace" }}>Ctrl + Enter</kbd> เพื่อประมวลผลทันที
+                </span>
+
+                <button
+                  type="button"
+                  disabled={isLoading || !query.trim()}
+                  onClick={() => handleSend()}
+                  className="workspace-submit-btn"
+                  style={{ width: "auto", minWidth: "200px" }}
+                >
+                  {isLoading ? (
+                    <>
+                      <span style={{ display: "inline-block", width: "14px", height: "14px", border: "2px solid rgba(255,255,255,0.3)", borderTopColor: "white", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
+                      กำลังประมวลผล...
+                    </>
+                  ) : (
+                    <>
+                      <span>ประมวลผล Workspace</span>
+                      <span>➔</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
-            <span className="text-slate-600">➔</span>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <span className="w-5 h-5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 flex items-center justify-center text-[10px]">3</span>
-              <span>เปรียบเทียบเฉด</span>
-            </div>
-            <span className="text-slate-600">➔</span>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <span className="w-5 h-5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 flex items-center justify-center text-[10px]">4</span>
-              <span>แต่งและเรียบเรียง</span>
-            </div>
-            <span className="text-slate-600">➔</span>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <span className="w-5 h-5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 flex items-center justify-center text-[10px]">5</span>
-              <span>ตรวจทานภาษา</span>
+
+            {/* Quick Demo Presets */}
+            <div style={{ marginTop: "20px", paddingTop: "18px", borderTop: "1px solid var(--border)" }}>
+              <div style={{ fontSize: "12px", fontWeight: 600, color: "var(--text-muted)", marginBottom: "10px" }}>
+                💡 ตัวอย่างสถานการณ์จำลอง (One-Click Demo):
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
+                {DEMO_PRESETS.map((preset, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setQuery(preset.query);
+                      handleSend(preset.query, preset.context);
+                    }}
+                    className="workspace-draft-btn"
+                    style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px", padding: "10px 14px", height: "auto", textAlign: "left" }}
+                  >
+                    <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--accent)" }}>
+                      {preset.label}
+                    </span>
+                    <span style={{ fontSize: "11px", color: "var(--muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: "100%" }}>
+                      {preset.query}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Query Input Section */}
-        <div className="p-5 sm:p-6 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl">
-          {/* Context Selector Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4 text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-slate-400 font-medium">ระดับบริบท:</span>
-              {(["academic", "business", "government", "casual"] as const).map((ctx) => (
-                <button
-                  key={ctx}
-                  type="button"
-                  onClick={() => setSelectedContext(ctx)}
-                  className={`px-3 py-1.5 rounded-xl font-medium transition-all ${
-                    selectedContext === ctx
-                      ? "bg-sky-500 text-white shadow-md shadow-sky-500/30"
-                      : "bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700/50"
-                  }`}
-                >
-                  {ctx === "academic"
-                    ? "🎓 วิชาการ"
-                    : ctx === "business"
-                    ? "💼 ธุรกิจ"
-                    : ctx === "government"
-                    ? "🏛️ ราชการ"
-                    : "💬 สนทนา"}
-                </button>
-              ))}
+          {/* Error Notification */}
+          {errorMessage && (
+            <div
+              role="alert"
+              className="workspace-card"
+              style={{ background: "#fff5f5", borderColor: "#feb2b2", color: "#c53030" }}
+            >
+              <div style={{ fontWeight: 600, marginBottom: "4px" }}>เกิดข้อผิดพลาด</div>
+              <div style={{ fontSize: "14px" }}>{errorMessage}</div>
             </div>
+          )}
 
-            {sessionId && (
-              <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
-                ID: {sessionId.substring(0, 16)}...
-              </span>
+          {/* Empty State / Inspiration Showcase when no results yet */}
+          {!currentResult && !isLoading && (
+            <div className="workspace-card" style={{ background: "#fbfdff" }}>
+              <h3 style={{ fontSize: "16px", fontWeight: 700, color: "var(--ink)", margin: "0 0 6px" }}>
+                ✨ คลังแรงบันดาลใจและรูปแบบการใช้งาน (Use-Case Inspiration)
+              </h3>
+              <p style={{ fontSize: "14px", color: "var(--muted)", margin: "0 0 18px" }}>
+                เลือกสถานการณ์ที่ตรงกับความต้องการของคุณเพื่อเริ่มต้นทันที:
+              </p>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "14px" }}>
+                {USE_CASES.map((uc, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => {
+                      setQuery(uc.sample);
+                      handleSend(uc.sample);
+                    }}
+                    className="workspace-word-card"
+                    style={{ textAlign: "left", cursor: "pointer", border: "1px solid var(--border)" }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
+                      <span style={{ fontSize: "24px" }}>{uc.icon}</span>
+                      <span className="workspace-badge-tag" style={{ fontSize: "10px", padding: "2px 8px" }}>
+                        {uc.tag}
+                      </span>
+                    </div>
+                    <strong style={{ fontSize: "14px", color: "var(--ink)", marginBottom: "4px" }}>
+                      {uc.title}
+                    </strong>
+                    <p style={{ fontSize: "12px", color: "var(--muted)", margin: 0, lineHeight: 1.5 }}>
+                      &ldquo;{uc.sample}&rdquo;
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Results View Container */}
+          <div ref={resultsRef} style={{ marginTop: "24px" }}>
+            {currentResult && (
+              <>
+                {/* Active Agent Pipeline Bar */}
+                <AgentPipelineStatus
+                  traces={currentResult.agent_traces}
+                  isLoading={isLoading}
+                />
+
+                {/* Comprehensive Result Card */}
+                <WorkspaceResultCard
+                  result={currentResult}
+                  onSelectAction={(followUpPrompt) => {
+                    setQuery(followUpPrompt);
+                    handleSend(followUpPrompt);
+                  }}
+                  activeDraftText={activeDraft}
+                  onUpdateDraft={setActiveDraft}
+                />
+
+                {/* Continuation Action Bar */}
+                <div className="workspace-card" style={{ marginTop: "24px" }}>
+                  <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--ink)", marginBottom: "12px" }}>
+                    ⚡ ขั้นตอนถัดไปที่คุณสามารถทำต่อได้ทันที (Next Actions):
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    <button
+                      type="button"
+                      onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
+                      className="workspace-draft-btn"
+                    >
+                      ✂️ ทำให้สั้นลง
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleSend("ปรับให้เป็นทางการตามระเบียบงานสารบรรณ")}
+                      className="workspace-draft-btn"
+                    >
+                      🏛️ ปรับให้เป็นภาษาทางการ
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleSend("ช่วยตรวจภาษาและคำซ้ำซ้อน")}
+                      className="workspace-draft-btn"
+                    >
+                      🔍 ตรวจสอบคำซ้ำซ้อน
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleSend("แปลเป็นภาษาอังกฤษและอธิบายบริบทวัฒนธรรม")}
+                      className="workspace-draft-btn"
+                    >
+                      🌐 อธิบายเป็นภาษาอังกฤษ (Cross-Cultural)
+                    </button>
+                  </div>
+                </div>
+              </>
             )}
           </div>
-
-          {/* Textarea Composer */}
-          <div className="relative">
-            <textarea
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-                  e.preventDefault();
-                  handleSend();
-                }
-              }}
-              placeholder="พิมพ์เจตนาที่ต้องการ เช่น 'หาคำที่หมายถึงทำงานได้ดีและใช้ทรัพยากรน้อย' หรือ 'แต่งประโยคคำว่า ประสิทธิภาพ สำหรับรายงานวิชาการ'..."
-              rows={3}
-              className="w-full p-4 sm:p-5 rounded-2xl bg-slate-950/90 border border-slate-700/80 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent text-sm sm:text-base leading-relaxed resize-none shadow-inner"
-            />
-
-            <div className="flex items-center justify-between mt-3 pt-2">
-              <span className="text-xs text-slate-400 hidden sm:inline">
-                กด <kbd className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[11px] text-slate-300 font-mono">Ctrl + Enter</kbd> เพื่อประมวลผลทันที
-              </span>
-
-              <button
-                type="button"
-                disabled={isLoading || !query.trim()}
-                onClick={() => handleSend()}
-                className={`ml-auto px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 ${
-                  isLoading || !query.trim()
-                    ? "bg-slate-800 text-slate-500 cursor-not-allowed"
-                    : "bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-lg shadow-sky-500/25 hover:scale-[1.01]"
-                }`}
-              >
-                {isLoading ? (
-                  <>
-                    <span className="w-4 h-4 rounded-full border-2 border-white/20 border-t-white animate-spin" />
-                    กำลังประมวลผล...
-                  </>
-                ) : (
-                  <>
-                    <span>ประมวลผล Workspace</span>
-                    <span>➔</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Quick Demo Presets */}
-          <div className="mt-5 pt-4 border-t border-slate-800/80">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-                <span>💡</span> ตัวอย่างสถานการณ์จำลอง (One-Click Demo):
-              </span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-              {DEMO_PRESETS.map((preset, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => {
-                    setQuery(preset.query);
-                    handleSend(preset.query, preset.context);
-                  }}
-                  className="p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-200 border border-slate-700/60 hover:border-sky-500/50 transition-all text-left group"
-                >
-                  <div className="text-xs font-bold text-sky-300 group-hover:text-cyan-300 mb-0.5">
-                    {preset.label}
-                  </div>
-                  <div className="text-[11px] text-slate-400 truncate">
-                    {preset.query}
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Error Notification */}
-        {errorMessage && (
-          <div
-            role="alert"
-            className="p-4 rounded-2xl bg-rose-950/60 border border-rose-600 text-rose-200 text-sm shadow-xl"
-          >
-            {errorMessage}
-          </div>
-        )}
-
-        {/* Interactive Drafting Studio Box (If Draft exists) */}
-        {activeDraft && (
-          <div className="p-5 sm:p-6 rounded-3xl bg-slate-900/90 border border-cyan-800/50 shadow-2xl">
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-              <div className="flex items-center gap-2">
-                <span className="text-base">📝</span>
-                <h3 className="text-sm sm:text-base font-bold text-cyan-300">
-                  สมุดร่างข้อความที่ใช้งานอยู่ (Active Drafting Studio)
-                </h3>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono">
-                  {activeDraft.length} ตัวอักษร
-                </span>
-                <button
-                  type="button"
-                  onClick={handleDraftSpeak}
-                  className="text-xs px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors flex items-center gap-1"
-                >
-                  🔊 ฟังเสียง
-                </button>
-                <button
-                  type="button"
-                  onClick={handleDraftCopy}
-                  className="text-xs px-3 py-1 rounded-lg bg-sky-900/60 hover:bg-sky-800 text-sky-200 border border-sky-700 transition-colors flex items-center gap-1 font-semibold"
-                >
-                  📋 คัดลอก
-                </button>
-              </div>
+        {/* Right Column: Active Drafting Studio */}
+        <div>
+          <div className="workspace-draft-studio">
+            <div className="workspace-draft-header">
+              <h3 className="workspace-draft-title">
+                <span>📝</span> สมุดร่างข้อความ (Drafting Studio)
+              </h3>
+              <span style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "6px", background: "var(--bg-ice)", color: "var(--accent)", fontWeight: 600 }}>
+                {activeDraft.length} ตัวอักษร
+              </span>
             </div>
+
+            <p style={{ fontSize: "12px", color: "var(--text-muted)", margin: "0 0 12px", lineHeight: 1.5 }}>
+              พื้นที่แต่งและปรับปรุงข้อความสด พร้อมส่งคำสั่งให้ AI ปรับระดับภาษาได้ทันที
+            </p>
 
             <textarea
               value={activeDraft}
               onChange={(e) => setActiveDraft(e.target.value)}
-              rows={3}
-              className="w-full p-4 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm sm:text-base leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              placeholder="ข้อความที่กำลังร่างหรือเลือกมาจากผลลัพธ์จะปรากฏที่นี่ เพื่อให้คุณแก้ไขและปรับปรุงได้อย่างอิสระ..."
+              className="workspace-draft-textarea"
+              rows={8}
             />
 
-            {/* Instant Action Pills for Active Draft */}
-            <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-slate-800">
-              <span className="text-xs text-slate-400 mr-1">สั่ง AI ปรับแต่งข้อความนี้ทันที:</span>
+            <div className="workspace-draft-actions">
               <button
                 type="button"
-                onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
-                className="px-3 py-1 text-xs rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                onClick={handleDraftSpeak}
+                disabled={!activeDraft.trim()}
+                className="workspace-draft-btn"
+                title="ฟังเสียงอ่านข้อความร่าง"
               >
-                ✂️ ทำให้สั้นลง
+                🔊 ฟังเสียง
               </button>
               <button
                 type="button"
-                onClick={() => handleSend("ปรับให้เป็นทางการตามระเบียบงานสารบรรณ")}
-                className="px-3 py-1 text-xs rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                onClick={handleDraftCopy}
+                disabled={!activeDraft.trim()}
+                className="workspace-draft-btn"
+                title="คัดลอกข้อความลงคลิปบอร์ด"
+                style={{ fontWeight: 600, color: "var(--accent)" }}
               >
-                🏛️ ปรับให้เป็นภาษาทางการ
+                📋 คัดลอก
               </button>
               <button
                 type="button"
-                onClick={() => handleSend("ปรับให้เป็นภาษาเขียนเชิงวิชาการ")}
-                className="px-3 py-1 text-xs rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                onClick={() => setActiveDraft("")}
+                disabled={!activeDraft}
+                className="workspace-draft-btn"
+                title="ล้างข้อความร่าง"
               >
-                🎓 เชิงวิชาการ
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend("ช่วยตรวจภาษาและคำซ้ำซ้อน")}
-                className="px-3 py-1 text-xs rounded-lg bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 transition-colors font-medium"
-              >
-                🔍 ตรวจสอบคำซ้ำซ้อน
+                🗑️ ล้าง
               </button>
             </div>
-          </div>
-        )}
 
-        {/* Empty State / Inspiration Showcase when no results yet */}
-        {!currentResult && !isLoading && (
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-slate-800/80">
-            <h3 className="text-base font-bold text-slate-200 mb-1">
-              ✨ คลังแรงบันดาลใจและรูปแบบการใช้งาน (Use-Case Inspiration)
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-400 mb-5">
-              เลือกสถานการณ์ที่ตรงกับความต้องการของคุณเพื่อเริ่มต้นทันที:
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {USE_CASES.map((uc, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => {
-                    setQuery(uc.sample);
-                    handleSend(uc.sample);
-                  }}
-                  className="p-4 rounded-2xl bg-slate-900/80 hover:bg-slate-850 text-left border border-slate-800 hover:border-sky-500/50 transition-all group"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">{uc.icon}</span>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
-                      {uc.tag}
-                    </span>
-                  </div>
-                  <h4 className="text-sm font-bold text-slate-100 group-hover:text-cyan-300 transition-colors mb-1">
-                    {uc.title}
-                  </h4>
-                  <p className="text-xs text-slate-400 line-clamp-2">
-                    &ldquo;{uc.sample}&rdquo;
-                  </p>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Results View Container */}
-        <div ref={resultsRef} className="space-y-6">
-          {currentResult && (
-            <>
-              {/* Active Agent Pipeline Bar */}
-              <AgentPipelineStatus
-                traces={currentResult.agent_traces}
-                isLoading={isLoading}
-              />
-
-              {/* Comprehensive Result Card */}
-              <WorkspaceResultCard
-                result={currentResult}
-                onSelectAction={(followUpPrompt) => {
-                  setQuery(followUpPrompt);
-                  handleSend(followUpPrompt);
-                }}
-                activeDraftText={activeDraft}
-                onUpdateDraft={setActiveDraft}
-              />
-
-              {/* Continuation Action Bar */}
-              <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
-                <span className="text-xs font-bold text-slate-300 block mb-3 flex items-center gap-1.5">
-                  <span>⚡</span> ขั้นตอนถัดไปที่คุณสามารถทำต่อได้ทันที (Next Actions):
-                </span>
-                <div className="flex flex-wrap gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
-                    className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition-colors"
-                  >
-                    ✂️ ทำให้สั้นลง
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleSend("ปรับให้เป็นทางการตามระเบียบงานสารบรรณ")}
-                    className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition-colors"
-                  >
-                    🏛️ ปรับให้เป็นภาษาทางการ
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleSend("ช่วยตรวจภาษาและคำซ้ำซ้อน")}
-                    className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition-colors"
-                  >
-                    🔍 ตรวจสอบคำซ้ำซ้อน
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleSend("แปลเป็นภาษาอังกฤษและอธิบายบริบทวัฒนธรรม")}
-                    className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition-colors"
-                  >
-                    🌐 อธิบายเป็นภาษาอังกฤษ (Cross-Cultural)
-                  </button>
-                </div>
+            {/* Quick Actions for Drafted Text */}
+            <div style={{ marginTop: "16px", paddingTop: "14px", borderTop: "1px solid var(--border)" }}>
+              <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--text-muted)", marginBottom: "8px" }}>
+                คำสั่งด่วนสำหรับข้อความนี้:
               </div>
-            </>
-          )}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                <button
+                  type="button"
+                  disabled={!activeDraft.trim()}
+                  onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
+                  className="workspace-draft-btn"
+                  style={{ fontSize: "11px", padding: "4px 8px" }}
+                >
+                  ✂️ ทำให้สั้นลง
+                </button>
+                <button
+                  type="button"
+                  disabled={!activeDraft.trim()}
+                  onClick={() => handleSend("ปรับให้เป็นทางการตามระเบียบงานสารบรรณ")}
+                  className="workspace-draft-btn"
+                  style={{ fontSize: "11px", padding: "4px 8px" }}
+                >
+                  🏛️ ภาษาทางการ
+                </button>
+                <button
+                  type="button"
+                  disabled={!activeDraft.trim()}
+                  onClick={() => handleSend("ปรับให้เป็นภาษาเขียนเชิงวิชาการ")}
+                  className="workspace-draft-btn"
+                  style={{ fontSize: "11px", padding: "4px 8px" }}
+                >
+                  🎓 เชิงวิชาการ
+                </button>
+                <button
+                  type="button"
+                  disabled={!activeDraft.trim()}
+                  onClick={() => handleSend("ช่วยตรวจภาษาและคำซ้ำซ้อน")}
+                  className="workspace-draft-btn"
+                  style={{ fontSize: "11px", padding: "4px 8px", color: "var(--green)" }}
+                >
+                  🔍 ตรวจสอบคำซ้ำซ้อน
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -8,15 +8,15 @@ interface AgentPipelineStatusProps {
   isLoading?: boolean;
 }
 
-const AGENT_LABELS: Record<string, { th: string; icon: string; color: string }> = {
-  ContextAgent: { th: "วิเคราะห์บริบท", icon: "🎯", color: "text-purple-400 border-purple-800/50 bg-purple-950/40" },
-  WordDiscoveryAgent: { th: "ค้นพบคลังคำ", icon: "📖", color: "text-sky-400 border-sky-800/50 bg-sky-950/40" },
-  WordCompareAgent: { th: "เปรียบเทียบเฉดคำ", icon: "⚖️", color: "text-indigo-400 border-indigo-800/50 bg-indigo-950/40" },
-  WritingAgent: { th: "สร้างประโยคบริบท", icon: "✍️", color: "text-cyan-400 border-cyan-800/50 bg-cyan-950/40" },
-  RewriteAgent: { th: "ปรับแต่งระดับภาษา", icon: "✨", color: "text-amber-400 border-amber-800/50 bg-amber-950/40" },
-  LanguageCheckerAgent: { th: "ตรวจทานไวยากรณ์", icon: "🔍", color: "text-emerald-400 border-emerald-800/50 bg-emerald-950/40" },
-  LanguageBridgeAgent: { th: "สะพานภาษาข้ามวัฒนธรรม", icon: "🌐", color: "text-teal-400 border-teal-800/50 bg-teal-950/40" },
-  HallucinationGuard: { th: "ตรวจความถูกต้องคลังข้อมูล", icon: "🛡️", color: "text-rose-400 border-rose-800/50 bg-rose-950/40" },
+const AGENT_LABELS: Record<string, { th: string; icon: string; bg: string; border: string; text: string }> = {
+  ContextAgent: { th: "วิเคราะห์บริบท", icon: "🎯", bg: "#f5f3ff", border: "#ddd6fe", text: "#6b21a8" },
+  WordDiscoveryAgent: { th: "ค้นพบคลังคำ", icon: "📖", bg: "#eff6ff", border: "#bfdbfe", text: "#1d4ed8" },
+  WordCompareAgent: { th: "เปรียบเทียบเฉดคำ", icon: "⚖️", bg: "#eef2ff", border: "#c7d2fe", text: "#4338ca" },
+  WritingAgent: { th: "สร้างประโยคบริบท", icon: "✍️", bg: "#ecfeff", border: "#a5f3fc", text: "#0e7490" },
+  RewriteAgent: { th: "ปรับแต่งระดับภาษา", icon: "✨", bg: "#fffbeb", border: "#fde68a", text: "#b45309" },
+  LanguageCheckerAgent: { th: "ตรวจทานไวยากรณ์", icon: "🔍", bg: "#f0fdf4", border: "#bbf7d0", text: "#15803d" },
+  LanguageBridgeAgent: { th: "สะพานภาษาข้ามวัฒนธรรม", icon: "🌐", bg: "#f0fdfa", border: "#99f6e4", text: "#0f766e" },
+  HallucinationGuard: { th: "ตรวจความถูกต้องคลังข้อมูล", icon: "🛡️", bg: "#fff1f2", border: "#fecdd3", text: "#be123c" },
 };
 
 export default function AgentPipelineStatus({ traces, isLoading }: AgentPipelineStatusProps) {
@@ -30,61 +30,90 @@ export default function AgentPipelineStatus({ traces, isLoading }: AgentPipeline
     <div
       role="region"
       aria-label="สถานะการทำงานของ Sub-Agents"
-      className="p-4 rounded-2xl border border-sky-800/40 bg-slate-900/90 backdrop-blur-md shadow-xl transition-all mb-6"
+      className="workspace-pipeline-panel"
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500" />
-          </span>
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-300">
+      <div className="workspace-pipeline-header" onClick={() => setIsExpanded(!isExpanded)}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <span style={{ display: "inline-block", width: "10px", height: "10px", borderRadius: "50%", background: "var(--accent)" }} />
+          <h3 className="workspace-pipeline-title">
             AI Sub-Agent Orchestration Pipeline
-          </span>
-          <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700">
+          </h3>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              fontSize: "11px",
+              padding: "2px 8px",
+              borderRadius: "999px",
+              background: "#e2ebf5",
+              color: "var(--ink)",
+              fontWeight: 600,
+            }}
+          >
             {traces.length} Agents {totalMs > 0 && `· ${totalMs}ms`}
           </span>
         </div>
 
         <button
           type="button"
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="text-xs px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/80 transition-colors flex items-center gap-1.5"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsExpanded(!isExpanded);
+          }}
+          className="workspace-draft-btn"
+          style={{ minHeight: "32px", padding: "4px 10px" }}
           aria-expanded={isExpanded}
         >
           <span>{isExpanded ? "ย่อมุมมอง" : "ดูเบื้องหลัง"}</span>
-          <span className="text-[10px]">{isExpanded ? "▲" : "▼"}</span>
+          <span style={{ fontSize: "10px" }}>{isExpanded ? "▲" : "▼"}</span>
         </button>
       </div>
 
       {isExpanded && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 mt-3 pt-3 border-t border-slate-800/80">
+        <div className="workspace-pipeline-list">
           {traces.map((trace, idx) => {
             const meta = AGENT_LABELS[trace.agent] || {
               th: trace.agent,
               icon: "⚡",
-              color: "text-slate-300 border-slate-700 bg-slate-800/50",
+              bg: "#f8fafc",
+              border: "var(--border)",
+              text: "var(--ink)",
             };
             return (
               <div
                 key={idx}
-                className={`flex items-start gap-2.5 p-3 rounded-xl border text-xs transition-all hover:scale-[1.01] ${meta.color}`}
+                className="workspace-agent-badge"
+                style={{
+                  background: meta.bg,
+                  borderColor: meta.border,
+                  color: meta.text,
+                }}
               >
-                <span className="text-lg select-none" aria-hidden="true">
+                <span style={{ fontSize: "20px", flexShrink: 0 }} aria-hidden="true">
                   {meta.icon}
                 </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-1">
-                    <span className="font-bold text-slate-100 truncate">
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "6px" }}>
+                    <strong style={{ fontSize: "13px", fontWeight: 700, color: meta.text }}>
                       {meta.th}
-                    </span>
+                    </strong>
                     {trace.duration_ms !== undefined && (
-                      <span className="text-[10px] font-mono text-slate-400">
+                      <span style={{ fontSize: "10px", opacity: 0.8, fontFamily: "monospace" }}>
                         {trace.duration_ms}ms
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-slate-300/90 truncate mt-0.5" title={trace.summary}>
+                  <p
+                    style={{
+                      margin: "2px 0 0",
+                      fontSize: "11px",
+                      color: "var(--muted)",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                    title={trace.summary}
+                  >
                     {trace.summary}
                   </p>
                 </div>
