@@ -256,7 +256,7 @@ class RAGAssistantService:
 
     def compare_words(self, words_data: List[dict]) -> WordComparisonDetail:
         """
-        Analyze nuanced differences between 2 words based on their definitions.
+        Analyze nuanced differences between 2 to 5 words based on their definitions.
         """
         if len(words_data) < 2:
             return WordComparisonDetail(
@@ -265,27 +265,24 @@ class RAGAssistantService:
                 usageGuidance="-"
             )
 
-        w1 = words_data[0]
-        w2 = words_data[1]
-
-        w1_name = w1.get("headword", "")
-        w2_name = w2.get("headword", "")
-        w1_def = w1.get("definition", "ไม่มีนิยาม")
-        w2_def = w2.get("definition", "ไม่มีนิยาม")
-
-        meaning_diff = (
-            f"'{w1_name}' หมายถึง \"{w1_def}\" ในขณะที่ '{w2_name}' หมายถึง \"{w2_def}\" "
-            f"ทั้งสองคำมีจุดเน้นต่างกันตามนิยามมาตรฐาน"
+        named_definitions = [
+            (
+                item.get("headword", ""),
+                item.get("definition", "ไม่มีข้อมูลในพจนานุกรมทางการ"),
+            )
+            for item in words_data
+        ]
+        meaning_diff = " เปรียบเทียบตามนิยามมาตรฐาน: " + "; ".join(
+            f"'{name}' หมายถึง \"{definition}\"" for name, definition in named_definitions
         )
-
+        names = ", ".join(f"'{name}'" for name, _ in named_definitions)
         context_diff = (
-            f"คำว่า '{w1_name}' มักใช้ในบริบทที่เป็นทางการหรือเชิงโครงสร้าง "
-            f"ส่วน '{w2_name}' นิยมใช้ในบริบทผลลัพธ์เชิงประจักษ์หรือการยอมรับในทางปฏิบัติ"
+            f"คำ {names} ควรแยกบริบทจากขอบเขตความหมายในนิยามทางการของแต่ละคำ "
+            "โดยไม่ใช้แทนกันเมื่อจุดเน้นในนิยามต่างกัน"
         )
-
-        usage_guidance = (
-            f"หากต้องการเน้นการดำเนินการหรือคุณสมบัติให้เลือกใช้ '{w1_name}' "
-            f"หากต้องการเน้นผลสัมฤทธิ์ตามความมุ่งหมายให้เลือกใช้ '{w2_name}'"
+        usage_guidance = "เลือกคำที่นิยามตรงกับสารที่ต้องการสื่อ: " + "; ".join(
+            f"ใช้ '{name}' เมื่อต้องการสื่อถึง {definition}"
+            for name, definition in named_definitions
         )
 
         return WordComparisonDetail(

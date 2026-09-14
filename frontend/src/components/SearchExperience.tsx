@@ -10,7 +10,6 @@ import ContextComparator from "./compare/ContextComparator";
 import EvolutionExplorer from "./evolution/EvolutionExplorer";
 import DialectExplorer from "./dialect/DialectExplorer";
 import Footer from "./layout/Footer";
-import { mockSearch } from "@/lib/mock-search";
 import type { Recommendation } from "@/lib/search-types";
 import {
   experienceReducer,
@@ -21,6 +20,9 @@ import { searchMeaning } from "@/lib/api-client";
 import { audioManager } from "@/lib/audio-manager";
 import CapabilityStrip from "./hero/CapabilityStrip";
 import { useSectionReveal } from "./ui/useSectionReveal";
+
+const EMPTY_RECOMMENDATIONS: Recommendation[] = [];
+
 export default function SearchExperience() {
   const chapters = useRef<HTMLDivElement>(null);
   useSectionReveal(chapters);
@@ -188,14 +190,12 @@ export default function SearchExperience() {
       },
     );
   }
-  const comparisonWords = model.result?.recommendations.length
-    ? model.result.recommendations
-    : mockSearch("ทำงาน").recommendations;
+  const comparisonWords = model.result?.recommendations ?? EMPTY_RECOMMENDATIONS;
   const toggleCompare = (word: Recommendation) => {
     setCompareSelected((selected) => {
       if (selected.includes(word.headword))
         return selected.filter((item) => item !== word.headword);
-      return [...selected.slice(-1), word.headword];
+      return [...selected, word.headword].slice(0, 5);
     });
   };
   return (
@@ -234,8 +234,9 @@ export default function SearchExperience() {
       {(
         <div ref={chapters} className="discovery-chapters">
           <ContextComparator
-            words={comparisonWords.length >= 2 ? comparisonWords : mockSearch("ทำงาน").recommendations}
+            words={comparisonWords}
             selected={compareSelected}
+            sourceMode={model.result?.mode}
             onSelect={setCompareSelected}
             onEvidence={(word) => dispatch({ type: "OPEN_EVIDENCE", word })}
           />

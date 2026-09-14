@@ -8,6 +8,7 @@ from tests.test_ai_assistant import (
     test_5_writing_suggestion_separation,
     test_6_sse_streaming_events,
     test_7_confidence_calculation_weights,
+    test_8_multi_word_comparison_uses_every_word,
 )
 
 def main():
@@ -41,7 +42,11 @@ def main():
     test_7_confidence_calculation_weights()
     print("PASS")
 
-    print("\n✅ All 7 AI Assistant Tests Passed Successfully!")
+    print("Test 8: Multi-word comparison covers every word...", end=" ")
+    test_8_multi_word_comparison_uses_every_word()
+    print("PASS")
+
+    print("\n✅ All 8 AI Assistant Tests Passed Successfully!")
 
 if __name__ == "__main__":
     main()

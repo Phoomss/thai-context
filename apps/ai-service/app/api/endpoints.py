@@ -80,7 +80,7 @@ def context_recommend(payload: ContextRecommendRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Context recommendation failed: {str(e)}")
 
-@router.post("/compare")
+@router.post("/compare", response_model=CompareResponse)
 def compare_words(payload: CompareRequest):
     try:
         words_data = []
@@ -251,4 +251,3 @@ async def tts_synthesize(payload: TtsSynthesizeRequest):
     except Exception as e:
         logger.error(f"TTS synthesis failed: {e}")
         raise HTTPException(status_code=500, detail=f"TTS synthesis failed: {str(e)}")
-
