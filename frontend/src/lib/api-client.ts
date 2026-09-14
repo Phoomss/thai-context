@@ -11,6 +11,11 @@ import {
   getFallbackWordEvolution,
   type WordEvolutionResponse,
 } from "./evolution-data";
+import {
+  normalizeCompareWords,
+  parseCompareResponse,
+  type CompareResponse,
+} from "./compare-types";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
