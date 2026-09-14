@@ -173,7 +173,7 @@ export default function SearchResults({
                 <div className="candidate-list">
                   {words.map((candidate, index) => (
                     <button
-                      key={candidate.id ?? candidate.headword}
+                      key={candidate.id ? `${candidate.id}-${index}` : `${candidate.headword}-${index}`}
                       className="candidate-row font-thai-reading"
                       aria-pressed={candidate.headword === word.headword}
                       disabled={loading}

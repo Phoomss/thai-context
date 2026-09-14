@@ -17,24 +17,24 @@ class VectorSearchService:
         vector_str = f"[{','.join(f'{x:.6f}' for x in query_vector)}]"
         
         sql = """
-            SELECT 
-                se.entity_id as id,
-                w.headword as word,
-                COALESCE(d.definition_text, (
-                    SELECT def2.definition_text FROM definitions def2 WHERE def2.entry_id = we.id ORDER BY def2.sense_order ASC LIMIT 1
-                )) as definition,
-                de.edition_year as edition,
-                1 - (se.embedding <=> %s::vector) AS similarity
-            FROM search_embeddings se
-            LEFT JOIN word_entries we ON (
-                (se.entity_type = 'WORD_ENTRY' AND se.entity_id = we.id) OR
-                (se.entity_type = 'DEFINITION' AND EXISTS (SELECT 1 FROM definitions d2 WHERE d2.id = se.entity_id AND d2.entry_id = we.id))
+            WITH top_emb AS (
+                SELECT entity_id, 1 - (embedding <=> %s::vector) AS similarity
+                FROM search_embeddings
+                ORDER BY embedding <=> %s::vector ASC
+                LIMIT %s
             )
-            LEFT JOIN definitions d ON (se.entity_type = 'DEFINITION' AND se.entity_id = d.id)
+            SELECT 
+                te.entity_id as id,
+                w.headword as word,
+                d.definition_text as definition,
+                de.edition_year as edition,
+                te.similarity as similarity
+            FROM top_emb te
+            JOIN definitions d ON te.entity_id = d.id
+            JOIN word_entries we ON d.entry_id = we.id
             JOIN words w ON we.word_id = w.id
             LEFT JOIN dictionary_editions de ON we.edition_id = de.id
-            ORDER BY se.embedding <=> %s::vector ASC
-            LIMIT %s;
+            ORDER BY te.similarity DESC;
         """
 
         try:
@@ -45,28 +45,35 @@ class VectorSearchService:
                     tokens = [t for t in ThaiNLPTokenizer.extract_keywords(query_text) if len(t) > 1]
                     q_tokens = list(dict.fromkeys([cleaned_q] + tokens))
 
-                    # 1. Exact/Keyword retrieval for tokens in query
+                    # 1. Exact & Substring retrieval prioritizing target words
                     exact_rows = []
-                    if q_tokens:
-                        placeholders = ', '.join(['%s'] * len(q_tokens))
-                        exact_sql = f"""
-                            SELECT 
-                                we.id as id,
-                                w.headword as word,
-                                (SELECT def2.definition_text FROM definitions def2 WHERE def2.entry_id = we.id ORDER BY def2.sense_order ASC LIMIT 1) as definition,
-                                de.edition_year as edition,
-                                0.95 as similarity
-                            FROM words w
-                            JOIN word_entries we ON we.word_id = w.id
-                            LEFT JOIN dictionary_editions de ON we.edition_id = de.id
-                            WHERE w.headword IN ({placeholders})
-                            LIMIT %s;
-                        """
-                        cur.execute(exact_sql, (*q_tokens, top_k))
-                        exact_rows = cur.fetchall()
+                    like_pattern = f"%{cleaned_q}%"
+                    exact_sql = """
+                        SELECT 
+                            we.id as id,
+                            w.headword as word,
+                            (SELECT def2.definition_text FROM definitions def2 WHERE def2.entry_id = we.id ORDER BY def2.sense_order ASC LIMIT 1) as definition,
+                            de.edition_year as edition,
+                            0.98 as similarity
+                        FROM words w
+                        JOIN word_entries we ON we.word_id = w.id
+                        LEFT JOIN dictionary_editions de ON we.edition_id = de.id
+                        WHERE w.headword = %s 
+                           OR w.headword LIKE %s 
+                           OR w.headword_clean LIKE %s
+                        ORDER BY 
+                           CASE 
+                             WHEN w.headword = %s THEN 1
+                             WHEN w.headword LIKE %s THEN 2
+                             ELSE 3
+                           END
+                        LIMIT %s;
+                    """
+                    cur.execute(exact_sql, (cleaned_q, like_pattern, like_pattern, cleaned_q, like_pattern, top_k))
+                    exact_rows = cur.fetchall()
 
-                    # 2. Dense vector similarity search
-                    fetch_limit = max(60, top_k * 5)
+                    # 2. Dense vector similarity search via optimized CTE
+                    fetch_limit = max(30, top_k * 3)
                     cur.execute(sql, (vector_str, vector_str, fetch_limit))
                     vector_rows = cur.fetchall()
 

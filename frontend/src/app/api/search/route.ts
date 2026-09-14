@@ -13,6 +13,11 @@ function adaptSearchResponse(raw: any, query: string): unknown {
     data.query_understanding &&
     Array.isArray(data.recommendations)
   ) {
+    data.recommendations.forEach((rec: any, idx: number) => {
+      if (!rec.id) {
+        rec.id = `rec-${rec.headword || "word"}-${idx}`;
+      }
+    });
     return raw;
   }
 
@@ -73,6 +78,17 @@ function adaptSearchResponse(raw: any, query: string): unknown {
     })
     .filter(Boolean);
 
+  // Sort recommendations so exact headword matches and startsWith are prioritized
+  recommendations.sort((a: any, b: any) => {
+    const aClean = a.headword.replace(/[-,\s]/g, "");
+    const bClean = b.headword.replace(/[-,\s]/g, "");
+    const qClean = rawQuery.replace(/[-,\s]/g, "");
+    const aExact = aClean === qClean ? 3 : aClean.startsWith(qClean) ? 2 : aClean.includes(qClean) ? 1 : 0;
+    const bExact = bClean === qClean ? 3 : bClean.startsWith(qClean) ? 2 : bClean.includes(qClean) ? 1 : 0;
+    if (aExact !== bExact) return bExact - aExact;
+    return (b.score ?? 0) - (a.score ?? 0);
+  });
+
   return {
     query_understanding: {
       raw_query: rawQuery,
@@ -96,21 +112,26 @@ export async function POST(request: Request) {
       { error: "กรุณาระบุความหมาย 1–600 ตัวอักษร" },
       { status: 400 },
     );
-  const cleanQuery = query.trim();
-  const endpoint =
+  const cleanQuery = (query as string).trim();
+  const rawEndpoint =
     process.env.THAI_CONTEXT_API_URL ?? process.env.NEXT_PUBLIC_API_URL;
   const forceMock =
     process.env.THAI_CONTEXT_USE_MOCK === "true" ||
     process.env.NEXT_PUBLIC_USE_MOCK === "true";
 
-  if (!endpoint || forceMock)
+  if (!rawEndpoint || forceMock)
     return Response.json(mockSearch(cleanQuery), {
       headers: { "Cache-Control": "no-store" },
     });
 
+  // Resolve base URL and endpoints cleanly
+  const baseUrl = rawEndpoint.trim().replace(/\/api\/.*$/, "").replace(/\/+$/, "");
+  const meaningEndpoint = `${baseUrl}/api/v1/search/meaning`;
+  const keywordUrl = `${baseUrl}/api/v1/search?q=${encodeURIComponent(cleanQuery)}`;
+
   try {
     let rawData: any = null;
-    const meaningResponse = await fetch(endpoint, {
+    const meaningResponse = await fetch(meaningEndpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query: cleanQuery }),
@@ -134,8 +155,6 @@ export async function POST(request: Request) {
         : 0;
 
     if (resultsCount === 0) {
-      const baseUrl = endpoint.replace(/\/api\/v1\/search.*$/, "");
-      const keywordUrl = `${baseUrl}/api/v1/search?q=${encodeURIComponent(cleanQuery)}`;
       const kwResponse = await fetch(keywordUrl, {
         headers: { Accept: "application/json" },
         cache: "no-store",

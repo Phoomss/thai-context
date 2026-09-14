@@ -83,10 +83,11 @@ export class SearchService {
       };
     });
 
-    const recommendations = aiResult.recommendations.map((item) => {
+    const recommendations = aiResult.recommendations.map((item, idx) => {
       const topEvidence = item.evidence[0];
       const edYear = topEvidence?.edition ? parseInt(topEvidence.edition, 10) : 2554;
       return {
+        id: `rec-${item.word}-${idx}`,
         headword: item.word,
         score: Number(Math.max(0.1, Math.min(1.0, item.score)).toFixed(2)),
         definition: topEvidence?.definition || item.reason,

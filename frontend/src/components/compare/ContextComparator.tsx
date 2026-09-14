@@ -68,7 +68,7 @@ export default function ContextComparator({
         {[leftWord, rightWord].map((word, index) => {
           const data = detail(word);
           return (
-            <article className="comparison-card" key={word.headword}>
+            <article className="comparison-card" key={`${word.headword}-${index}`}>
               <label>
                 <span>คำที่ {index ? "๒" : "๑"}</span>
                 <select
@@ -77,8 +77,8 @@ export default function ContextComparator({
                   value={word.headword}
                   onChange={(event) => change(index ? "right" : "left", event.target.value)}
                 >
-                  {options.map((option) => (
-                    <option key={option.headword}>{option.headword}</option>
+                  {options.map((option, optIdx) => (
+                    <option key={`${option.headword}-${optIdx}`}>{option.headword}</option>
                   ))}
                 </select>
               </label>
