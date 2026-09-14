@@ -40,7 +40,12 @@ class EvidenceItem(BaseModel):
     source: str
     edition: str
     definition: str
+    source_type: str = "OFFICIAL"  # 'OFFICIAL', 'AI_GENERATED', 'AI_INFERRED'
     relevance: float = 0.0
+
+class GeneratedContentItem(BaseModel):
+    type: str = "writing_suggestion"  # 'writing_suggestion', 'usage_guidance', 'context_caveat'
+    content: str
 
 class RecommendationItem(BaseModel):
     word: str
@@ -69,11 +74,18 @@ class CompareResponse(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+    word: Optional[str] = None
+    context: Optional[str] = None  # 'academic', 'business', 'formal', 'casual', 'legal', 'general'
 
 class ChatResponse(BaseModel):
     answer: str
     grounded: bool
+    abstained: bool = False
+    confidence: float = 0.0
+    confidence_level: str = "MEDIUM"  # 'HIGH', 'MEDIUM', 'LOW'
     evidence: List[EvidenceItem] = Field(default_factory=list)
+    generated_content: List[GeneratedContentItem] = Field(default_factory=list)
+    abstention_reason: Optional[str] = None
 
 # Accessibility & Multilingual Schemas
 class PhoneticsRequest(BaseModel):

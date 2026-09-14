@@ -117,7 +117,6 @@ export async function POST(request: Request) {
       cache: "no-store",
       signal: AbortSignal.any([request.signal, AbortSignal.timeout(7000)]),
     });
-
     if (meaningResponse.ok) {
       rawData = await meaningResponse.json();
     }

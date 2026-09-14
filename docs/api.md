@@ -262,34 +262,83 @@
 ## 6. Trusted AI, RAG & Feedback
 
 ### `POST /api/v1/ai/chat`
-*รองรับ FR-15, FR-16, FR-17 (Grounded RAG Assistant & Hallucination Guard)*  
-ผู้ช่วย AI ตอบคำถามโดยถูกควบคุมด้วยหลักฐานพจนานุกรม และมี Guard ปฏิเสธอย่างปลอดภัยหากไม่มีหลักฐาน
+*รองรับ FR-15, FR-16, FR-17 (Grounded RAG Writing Assistant & Hallucination Guard)*  
+ผู้ช่วย AI ตอบคำถามและให้คำปรึกษาการใช้คำ (Writing Assistant) โดยถูกควบคุมด้วยหลักฐานพจนานุกรมทางการ แยกส่วน Official Facts และ AI Writing Suggestions อย่างเด็ดขาด พร้อมคำนวณ Evidence Confidence
 
 **Request Body:**
 ```json
 {
-  "message": "คำว่า คุกกี้ มีความหมายว่าอย่างไรในพจนานุกรม"
+  "message": "คำว่า ประสิทธิภาพ ใช้ในรายงานวิชาการได้ไหม",
+  "word": "ประสิทธิภาพ",
+  "context": "academic"
 }
 ```
 
-**Response (Grounded):**
+**Response (200 OK — Grounded):**
 ```json
 {
-  "answer": "📖 **[ข้อมูลจากพจนานุกรมทางการ]**\nคำว่า **\"คุกกี้\"** ปรากฏใน สำนักงานราชบัณฑิตยสภา (ฉบับ พ.ศ. 2567)\n• **นิยามอย่างเป็นทางการ:** \"ชื่อขนมชนิดหนึ่งจำพวกขนมเค้ก แต่ทำเป็นชิ้นเล็ก ๆ แบน ๆ แล้วอบให้กรอบ\"...",
+  "answer": "📖 **[ข้อมูลจากพจนานุกรมทางการ — แหล่งอ้างอิงหลัก]**\nคำว่า **\"ประสิทธิภาพ\"** บันทึกใน สำนักงานราชบัณฑิตยสภา (ฉบับ พ.ศ. 2554)\n• **นิยามทางการ:** \"ความสามารถที่ทำให้เกิดผลในการทำงาน\"...\n\n✍️ **[ตัวอย่างประโยค/ข้อแนะนำการเรียบเรียง (สร้างโดย AI — มิใช่ตัวอย่างทางการ)]**\n> \"การบริหารจัดการโครงการอย่างเป็นระบบจะช่วยเพิ่มประสิทธิภาพในการดำเนินงานขององค์กรได้อย่างมีนัยสำคัญ\"",
   "grounded": true,
+  "abstained": false,
+  "confidence": 0.92,
+  "confidence_level": "HIGH",
   "evidence": [
     {
-      "word": "คุกกี้",
+      "word": "ประสิทธิภาพ",
       "source": "สำนักงานราชบัณฑิตยสภา",
-      "edition": "2567",
-      "definition": "ชื่อขนมชนิดหนึ่งจำพวกขนมเค้ก แต่ทำเป็นชิ้นเล็ก ๆ แบน ๆ แล้วอบให้กรอบ",
+      "edition": "2554",
+      "definition": "ความสามารถที่ทำให้เกิดผลในการทำงาน",
+      "source_type": "OFFICIAL",
       "relevance": 0.95
+    }
+  ],
+  "generated_content": [
+    {
+      "type": "writing_suggestion",
+      "content": "การบริหารจัดการโครงการอย่างเป็นระบบจะช่วยเพิ่มประสิทธิภาพในการดำเนินงานขององค์กรได้อย่างมีนัยสำคัญ"
     }
   ]
 }
 ```
 
-*(กรณีข้อความไร้ความหมาย หรือไม่มีในพจนานุกรม ระบบจะส่งคืน: `{"answer": "ไม่พบข้อมูลที่เพียงพอจากแหล่งข้อมูลพจนานุกรมที่ระบบรองรับ", "grounded": false, "evidence": []}`)*
+*(กรณีคำที่ไม่มีในพจนานุกรม หรือหลักฐานไม่เพียงพอ ระบบจะ Abstain: `{"answer": "ไม่พบข้อมูลที่เพียงพอ...", "grounded": false, "abstained": true, "confidence": 0.12, "confidence_level": "LOW", "evidence": []}`)*
+
+---
+
+### `POST /api/v1/ai/chat/stream`
+*รองรับ FR-15, FR-16, FR-17 (SSE Streaming for AI Writing Assistant)*  
+สตรีมคำตอบแบบ Server-Sent Events (SSE) สำหรับ AI Writing Assistant Consultation Drawer แบบ Real-time
+
+**Headers:**
+- `Content-Type`: `application/json`
+- `Accept`: `text/event-stream`
+
+**Request Body:**
+```json
+{
+  "message": "ช่วยเรียบเรียงประโยคโดยใช้คำว่า อนุมัติ ให้สุภาพ",
+  "word": "อนุมัติ",
+  "context": "formal"
+}
+```
+
+**SSE Event Sequence:**
+```text
+event: start
+data: {"request_id":"c4b9...","abstained":false,"word":"อนุมัติ"}
+
+event: token
+data: {"text":"📖 **[ข้อมูลจาก"}
+
+event: token
+data: {"text":"พจนานุกรมทางการ]**"}
+
+event: evidence
+data: {"word":"อนุมัติ","edition":"2554","source":"สำนักงานราชบัณฑิตยสภา","definition":"ให้อำนาจกระทำการตามหน้าที่หรือระเบียบที่กำหนดไว้","source_type":"OFFICIAL","relevance":0.95}
+
+event: complete
+data: {"confidence":0.92,"confidence_level":"HIGH","grounded":true,"abstained":false,"generated_content":[{"type":"writing_suggestion","content":"คณะกรรมการได้พิจารณาตามระเบียบแล้วมีมติอนุมัติตามข้อเสนอที่เสนอมา"}]}
+```
 
 ---
 
