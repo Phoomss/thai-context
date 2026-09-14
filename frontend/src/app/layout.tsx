@@ -1,21 +1,19 @@
-import type { Metadata } from 'next';
-import './globals.css';
-
+import type { Metadata } from "next";
+import "@fontsource/noto-sans-thai/400.css";
+import "@fontsource/noto-sans-thai/500.css";
+import "@fontsource/noto-sans-thai/600.css";
+import "./globals.css";
 export const metadata: Metadata = {
-  title: 'THAI CONTEXT — ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน',
-  description: 'Semantic Thai Language Exploration Platform for Contextual Word Discovery, Lexical Evolution & Grounded AI',
+  title: "THAI CONTEXT — โลกของคำ เริ่มที่ความหมาย",
+  description:
+    "พจนานุกรมไทยร่วมสมัย ค้นจากความหมาย เข้าใจบริบท เปรียบเทียบคำ และตรวจสอบแหล่งที่มา",
 };
-
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="th">
-      <body className="antialiased min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
