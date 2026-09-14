@@ -75,6 +75,7 @@ export class SearchService {
         word: item.word,
         score: item.score,
         reason: item.reason,
+        definition: topEvidence ? topEvidence.definition : item.reason,
         source: {
           name: topEvidence ? topEvidence.source : 'สำนักงานราชบัณฑิตยสภา',
           edition: topEvidence ? topEvidence.edition : '2554',
@@ -82,10 +83,37 @@ export class SearchService {
       };
     });
 
+    const recommendations = aiResult.recommendations.map((item) => {
+      const topEvidence = item.evidence[0];
+      const edYear = topEvidence?.edition ? parseInt(topEvidence.edition, 10) : 2554;
+      return {
+        headword: item.word,
+        score: Number(Math.max(0.1, Math.min(1.0, item.score)).toFixed(2)),
+        definition: topEvidence?.definition || item.reason,
+        ai_explanation: item.reason,
+        evidence: {
+          source_book: topEvidence?.source || 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔',
+          edition: `พ.ศ. ${topEvidence?.edition || '2554'}`,
+          edition_year: isNaN(edYear) ? 2554 : edYear,
+          quote: topEvidence?.definition || item.reason,
+          is_official: true,
+        },
+        registers: ['ทางการ'],
+        contexts: ['ทั่วไป'],
+      };
+    });
+
     return {
       query: rawQuery,
       intent: aiResult.intent || 'find_word_by_meaning',
       results: formattedResults,
+      query_understanding: {
+        raw_query: rawQuery,
+        detected_meaning: rawQuery,
+        context: aiResult.context || undefined,
+        excluded_words: aiResult.excluded_terms || [],
+      },
+      recommendations,
     };
   }
 
