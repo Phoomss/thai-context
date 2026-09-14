@@ -68,6 +68,30 @@ CURATED_TRANSLATIONS: Dict[str, Dict[str, Any]] = {
         "usage_nuance_en": "Polite formal register, preferred over the informal 'กิน' (kin) in official and etiquette contexts.",
         "provenance": "OFFICIAL_CURATED",
         "confidence_score": 1.0
+    },
+    "สวัสดี": {
+        "primary_translation": "hello / greetings",
+        "secondary_translations": ["good morning / afternoon", "good day", "prosperity (etymological)"],
+        "contextual_explanation_en": "Universal Thai greeting used at any time of day to say hello or goodbye. Derived from Sanskrit 'svasti' meaning well-being, success, and auspiciousness.",
+        "usage_nuance_en": "Standard universal greeting suitable for all polite, formal, and everyday social contexts.",
+        "provenance": "OFFICIAL_CURATED",
+        "confidence_score": 1.0
+    },
+    "คิดถึง": {
+        "primary_translation": "miss / think of",
+        "secondary_translations": ["yearn for", "long for", "reminisce"],
+        "contextual_explanation_en": "To recall or think of someone or something with affection, attachment, or concern.",
+        "usage_nuance_en": "Expresses emotional attachment or longing. Corresponds to regional dialect terms: 'กึ๊ดเติงหา' (North), 'คึดฮอด' (Isan), 'ข้องใจ' (South).",
+        "provenance": "OFFICIAL_CURATED",
+        "confidence_score": 1.0
+    },
+    "ขอบคุณ": {
+        "primary_translation": "thank you / thanks",
+        "secondary_translations": ["grateful", "appreciate"],
+        "contextual_explanation_en": "Standard Thai expression of gratitude and appreciation.",
+        "usage_nuance_en": "Standard polite register; contrasts with informal 'ขอบใจ' (used to younger people or peers) and 'ขอบพระคุณ' (high respect).",
+        "provenance": "OFFICIAL_CURATED",
+        "confidence_score": 1.0
     }
 }
 
