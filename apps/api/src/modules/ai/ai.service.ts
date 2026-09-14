@@ -93,7 +93,19 @@ export class AIService {
     }
   }
 
-  async compareWords(words: any[]): Promise<any> {
+  async compareWords(words: Array<{
+    word: string;
+    definition: string;
+    partOfSpeech: string;
+    edition: string;
+    foundInOfficial: boolean;
+  }>): Promise<{
+    comparison: {
+      meaningDifference: string;
+      contextDifference: string;
+      usageGuidance: string;
+    };
+  }> {
     try {
       const response = await firstValueFrom(
         this.httpService.post(`${this.aiServiceUrl}/ai/compare`, { words }, { timeout: 10000 })
@@ -101,18 +113,13 @@ export class AIService {
       return response.data;
     } catch (err: any) {
       this.logger.warn(`AI Service compare unavailable (${err.message}).`);
-      return {
-        words: words.map((w) => {
-          const hw = typeof w === 'string' ? w : w.word || w.headword;
-          return { headword: hw, definition: 'รอเชื่อมต่อ AI service', edition: '-' };
-        }),
-        comparison: {
-          meaningDifference: 'ไม่สามารถเรียก AI service เพื่อเปรียบเทียบได้ในขณะนี้',
-          contextDifference: '-',
-          usageGuidance: '-',
+      throw new HttpException(
+        {
+          error: 'AI_SERVICE_UNAVAILABLE',
+          message: 'AI comparison service is temporarily unavailable. Please try again.',
         },
-        evidence: [],
-      };
+        HttpStatus.SERVICE_UNAVAILABLE,
+      );
     }
   }
 

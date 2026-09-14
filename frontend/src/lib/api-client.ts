@@ -11,6 +11,11 @@ import {
   getFallbackWordEvolution,
   type WordEvolutionResponse,
 } from "./evolution-data";
+import {
+  normalizeCompareWords,
+  parseCompareResponse,
+  type CompareResponse,
+} from "./compare-types";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
@@ -260,6 +265,43 @@ export async function searchMeaning(
     raw,
     raw.mode === "demo" || raw.mode === "fallback" ? raw.mode : "live",
   );
+}
+
+export async function compareWords(
+  words: string[],
+  signal?: AbortSignal,
+): Promise<CompareResponse> {
+  const normalized = normalizeCompareWords(words);
+  const timeoutSignal = AbortSignal.timeout(12000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+  const response = await fetch("/api/v1/compare", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ words: normalized }),
+    signal: combinedSignal,
+  });
+
+  const payload: unknown = await response.json().catch(() => null);
+  if (!response.ok) {
+    const record = payload && typeof payload === "object" ? payload as Record<string, unknown> : null;
+    const nested = record?.error && typeof record.error === "object"
+      ? record.error as Record<string, unknown>
+      : null;
+    const message =
+      (typeof nested?.message === "string" && nested.message) ||
+      (typeof record?.message === "string" && record.message) ||
+      (response.status >= 500
+        ? "บริการเปรียบเทียบยังไม่พร้อม กรุณาลองอีกครั้ง"
+        : "ไม่สามารถเปรียบเทียบคำชุดนี้ได้");
+    throw new Error(message);
+  }
+
+  return parseCompareResponse(payload);
 }
 
 export async function fetchSignLanguage(
@@ -637,3 +679,28 @@ export async function searchDictionaryByKeyword(
   };
 }
 
+export async function executeWorkspace(
+  payload: import("./workspace-types").WorkspaceRequestPayload,
+  signal?: AbortSignal
+): Promise<import("./workspace-types").WorkspaceResponsePayload> {
+  const timeoutSignal = AbortSignal.timeout(12000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/ai/workspace", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Workspace request failed: ${response.status}`);
+  }
+
+  return response.json();
+}

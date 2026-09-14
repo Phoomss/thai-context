@@ -108,6 +108,13 @@ export default function MorphingNavbar({
           </button>
         )}
         <a
+          href="/workspace"
+          onClick={() => setOpen(false)}
+          className="text-cyan-400 font-semibold hover:text-cyan-300"
+        >
+          AI Workspace ✦
+        </a>
+        <a
           className="nav-search"
           href={floating ? "#persistent-meaning" : "#meaning"}
           onClick={e => {

@@ -63,15 +63,12 @@ export class CompareService {
 
     return {
       words: wordsOfficialData.map((w) => ({
-        word: w.word,
+        headword: w.word,
         definition: w.definition,
         partOfSpeech: w.partOfSpeech,
+        edition: w.edition,
       })),
-      comparison: aiComparison.comparison || {
-        meaningDifference: `${headwords[0]} และ ${headwords[1]} มีความหมายและจุดเน้นแตกต่างกันตามนิยามทางการ`,
-        contextDifference: 'ขึ้นอยู่กับระดับความเป็นทางการและวัตถุประสงค์ของการใช้งาน',
-        usageGuidance: 'ควรเลือกใช้ให้ตรงกับนิยามของราชบัณฑิตยสภา',
-      },
+      comparison: aiComparison.comparison,
       evidence,
     };
   }

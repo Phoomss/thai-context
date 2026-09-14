@@ -169,3 +169,19 @@ def test_7_confidence_calculation_weights():
     assert "evidence_coverage" in result["breakdown"]
     assert "source_reliability" in result["breakdown"]
     assert "grounding_score" in result["breakdown"]
+
+def test_8_multi_word_comparison_uses_every_word():
+    """Task 5: comparison output must cover every item in the 2-5 word contract."""
+    words = [
+        {"headword": "คำหนึ่ง", "definition": "นิยามหนึ่ง", "edition": "2554"},
+        {"headword": "คำสอง", "definition": "นิยามสอง", "edition": "2554"},
+        {"headword": "คำสาม", "definition": "นิยามสาม", "edition": "2554"},
+        {"headword": "คำสี่", "definition": "นิยามสี่", "edition": "2554"},
+        {"headword": "คำห้า", "definition": "นิยามห้า", "edition": "2554"},
+    ]
+
+    result = rag_assistant.compare_words(words)
+
+    for item in words:
+        assert item["headword"] in result.meaningDifference
+        assert item["headword"] in result.usageGuidance
