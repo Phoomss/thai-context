@@ -1,11 +1,41 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma.service';
+
+interface CacheEntry<T> {
+  data: T;
+  expiresAt: number;
+}
 
 @Injectable()
 export class DictionaryService {
+  private readonly logger = new Logger(DictionaryService.name);
+  private readonly cache = new Map<string, CacheEntry<any>>();
+  private readonly TTL_MS = 1000 * 60 * 15; // 15 minutes TTL
+
   constructor(private readonly prisma: PrismaService) {}
 
-  async getWordDetail(headword: string) {
+  private getFromCache<T = any>(key: string): T | null {
+    const item = this.cache.get(key);
+    if (!item) return null;
+    if (Date.now() > item.expiresAt) {
+      this.cache.delete(key);
+      return null;
+    }
+    return item.data as T;
+  }
+
+  private setCache<T>(key: string, data: T): void {
+    if (this.cache.size > 1000) {
+      const firstKey = this.cache.keys().next().value;
+      if (firstKey) this.cache.delete(firstKey);
+    }
+    this.cache.set(key, { data, expiresAt: Date.now() + this.TTL_MS });
+  }
+
+  async getWordDetail(headword: string): Promise<any> {
+    const cacheKey = `word_detail:${headword}`;
+    const cached = this.getFromCache(cacheKey);
+    if (cached) return cached;
     const word = await this.prisma.word.findUnique({
       where: { headword },
       include: {
@@ -108,7 +138,7 @@ export class DictionaryService {
       disclaimer: 'คำแนะนำนี้ประมวลผลโดย AI Assistance และอ้างอิงจากหลักฐานพจนานุกรมฉบับทางการ',
     };
 
-    return {
+    const result = {
       word: word.headword,
       charLength: word.charLength,
       officialData: {
@@ -118,9 +148,15 @@ export class DictionaryService {
       },
       aiAssistance,
     };
+    this.setCache(cacheKey, result);
+    return result;
   }
 
-  async getWordEvolution(headword: string) {
+  async getWordEvolution(headword: string): Promise<any> {
+    const cacheKey = `evolution:${headword}`;
+    const cached = this.getFromCache(cacheKey);
+    if (cached) return cached;
+
     const word = await this.prisma.word.findUnique({
       where: { headword },
       include: {
@@ -147,13 +183,19 @@ export class DictionaryService {
       pageNumber: entry.pageNumber,
     }));
 
-    return {
+    const result = {
       word: word.headword,
       timeline,
     };
+    this.setCache(cacheKey, result);
+    return result;
   }
 
-  async compareWordEditions(headword: string) {
+  async compareWordEditions(headword: string): Promise<any> {
+    const cacheKey = `compare_editions:${headword}`;
+    const cached = this.getFromCache(cacheKey);
+    if (cached) return cached;
+
     const editions = await this.prisma.dictionaryEdition.findMany({
       where: { isActive: true, source: { code: 'ROYAL_SOCIETY' } },
       orderBy: { editionYear: 'asc' },
@@ -198,9 +240,11 @@ export class DictionaryService {
       };
     });
 
-    return {
+    const result = {
       word: headword,
       editions: comparisons,
     };
+    this.setCache(cacheKey, result);
+    return result;
   }
 }

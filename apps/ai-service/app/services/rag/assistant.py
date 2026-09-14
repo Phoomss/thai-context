@@ -106,6 +106,40 @@ class RAGAssistantService:
         w1_def = w1.get("definition", "ไม่มีนิยาม")
         w2_def = w2.get("definition", "ไม่มีนิยาม")
 
+        # Try Gemini LLM if configured
+        if self.gemini_key and self.llm_provider == "gemini":
+            try:
+                import httpx
+                import json
+                prompt = f"""คุณคือผู้เชี่ยวชาญด้านภาษาไทยและพจนานุกรมราชบัณฑิตยสภา
+จงเปรียบเทียบความแตกต่างระหว่างสองคำนี้โดยอ้างอิงจากนิยามพจนานุกรมทางการที่กำหนดให้เท่านั้น:
+
+คำที่ 1: '{w1_name}' - นิยาม: '{w1_def}'
+คำที่ 2: '{w2_name}' - นิยาม: '{w2_def}'
+
+จงตอบเป็น JSON object ที่มี 3 คีย์ดังนี้ (ไม่ต้องใส่ markdown code fence):
+{{
+  "meaningDifference": "อธิบายความแตกต่างเชิงความหมายและจุดเน้นตามนิยาม",
+  "contextDifference": "อธิบายความแตกต่างด้านระดับภาษาหรือบริบทที่เหมาะสม",
+  "usageGuidance": "ข้อแนะนำในการเลือกว่ากรณีใดควรใช้คำใด"
+}}"""
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{settings.LLM_MODEL}:generateContent?key={self.gemini_key}"
+                res = httpx.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=12.0)
+                data = res.json()
+                raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+                if raw_text.startswith("```"):
+                    raw_text = raw_text.split("```")[1]
+                    if raw_text.startswith("json"):
+                        raw_text = raw_text[4:].strip()
+                parsed = json.loads(raw_text)
+                return WordComparisonDetail(
+                    meaningDifference=parsed.get("meaningDifference", ""),
+                    contextDifference=parsed.get("contextDifference", ""),
+                    usageGuidance=parsed.get("usageGuidance", "")
+                )
+            except Exception as e:
+                logger.warning(f"Gemini word comparison failed: {e}. Falling back to deterministic comparison.")
+
         meaning_diff = (
             f"'{w1_name}' หมายถึง \"{w1_def}\" ในขณะที่ '{w2_name}' หมายถึง \"{w2_def}\" "
             f"ทั้งสองคำมีจุดเน้นต่างกันตามนิยามมาตรฐาน"

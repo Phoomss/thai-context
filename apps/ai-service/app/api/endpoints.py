@@ -1,5 +1,8 @@
-from fastapi import APIRouter, HTTPException, Depends
+import logging
 from typing import List
+import psycopg
+from fastapi import APIRouter, HTTPException, Depends
+from app.core.config import settings
 from app.models.schemas import (
     HealthResponse,
     QueryUnderstandingRequest,
@@ -18,6 +21,8 @@ from app.services.nlp.query_parser import query_parser
 from app.services.retrieval.vector_search import vector_search_service
 from app.services.ranking.ranker import ranker_service
 from app.services.rag.assistant import rag_assistant
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -119,8 +124,8 @@ def compare_words(payload: CompareRequest):
                                     relevance=1.0
                                 ))
                                 found = True
-                except Exception:
-                    pass
+                except Exception as db_err:
+                    logger.warning(f"Database lookup for word '{word_str}' failed: {db_err}")
 
                 if not found:
                     candidates = vector_search_service.search(word_str, top_k=5)
