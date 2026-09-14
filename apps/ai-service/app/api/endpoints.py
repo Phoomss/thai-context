@@ -240,9 +240,9 @@ def bilingual_explanation(payload: BilingualTranslateRequest):
         raise HTTPException(status_code=500, detail=f"Bilingual translation failed: {str(e)}")
 
 @router.post("/tts-synthesize", response_model=TtsSynthesizeResponse)
-def tts_synthesize(payload: TtsSynthesizeRequest):
+async def tts_synthesize(payload: TtsSynthesizeRequest):
     try:
-        result = tts_engine.synthesize(
+        result = await tts_engine.synthesize(
             text=payload.text,
             voice=payload.voice or "th-TH-PremwadeeNeural",
             speed=payload.speed or 1.0

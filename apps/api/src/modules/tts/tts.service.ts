@@ -47,9 +47,10 @@ export class TtsService {
         where: { cacheKey },
       });
       if (dbCached && dbCached.audioStoragePath) {
+        const isWav = dbCached.audioStoragePath.startsWith('UklGR');
         const result: TtsSynthesizeResult = {
           audioBase64: dbCached.audioStoragePath,
-          format: 'mp3',
+          format: isWav ? 'wav' : 'mp3',
           provider: `${dbCached.providerName}_DB_CACHE`,
           cached: true,
           durationMs: dbCached.durationMs || undefined,

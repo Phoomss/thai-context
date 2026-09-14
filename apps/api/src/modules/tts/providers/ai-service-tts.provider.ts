@@ -12,7 +12,7 @@ export class AiServiceTtsProvider implements ITtsProvider {
 
   constructor(private readonly config: ConfigService) {
     this.aiServiceUrl = this.config.get<string>('aiServiceUrl', 'http://localhost:8000');
-    this.timeoutMs = this.config.get<number>('tts.timeoutMs', 3000);
+    this.timeoutMs = this.config.get<number>('tts.timeoutMs', 8000);
   }
 
   async isAvailable(): Promise<boolean> {
