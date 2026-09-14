@@ -187,7 +187,7 @@ export async function GET(request: Request) {
 
 #### Data Contract:
 ```typescript
-// Request Body
+// Request Body*/
 {
   "words": ["ประสิทธิภาพ", "ประสิทธิผล"]
 }

@@ -1,62 +1,157 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
-import type { Recommendation } from "@/lib/search-types";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { compareWords } from "@/lib/api-client";
+import {
+  normalizeCompareWords,
+  type CompareResponse,
+  type ComparisonEvidence,
+} from "@/lib/compare-types";
+import type { Recommendation, SearchResponse } from "@/lib/search-types";
 
-const detail = (word: Recommendation) => ({
-  meaning: word.definition,
-  emphasis: word.comparison?.emphasis ?? word.ai_explanation ?? "เน้นความหมายตามบริบทที่ค้นหา",
-  context: word.contexts?.join(" · ") || "บริบททั่วไป",
-  register: word.registers?.join(" · ") || "ไม่ระบุระดับภาษา",
-  useWhen: word.comparison?.use_when ?? "ใช้เมื่อความหมายตรงกับสถานการณ์ที่ต้องการสื่อ",
-  example: word.comparison?.example ?? `ตัวอย่างการใช้คำว่า “${word.headword}” ควรตรวจสอบร่วมกับบริบทของประโยค`,
-  confusion: word.comparison?.common_confusion ?? "ความหมายอาจใกล้กับคำอื่น ควรพิจารณาน้ำหนักของคำก่อนใช้",
-});
+const EMPTY_INPUTS = ["", ""];
+const MISSING_DICTIONARY_DEFINITION = "ไม่มีข้อมูลในพจนานุกรมทางการ";
+const UNSPECIFIED_PART_OF_SPEECH = "ไม่ระบุ";
 
 export default function ContextComparator({
   words,
   selected,
+  sourceMode,
   onSelect,
   onEvidence,
   onAIChat,
 }: {
   words: Recommendation[];
   selected: string[];
+  sourceMode?: SearchResponse["mode"];
   onSelect: (words: string[]) => void;
   onEvidence: (word: Recommendation) => void;
   onAIChat?: (word: Recommendation, query?: string) => void;
 }) {
   const options = useMemo(
-    () => Array.from(new Map(words.map((word) => [word.headword, word])).values()),
+    () => Array.from(new Set(words.map((word) => word.headword.trim()).filter(Boolean))),
     [words],
   );
-  const [left, setLeft] = useState("");
-  const [right, setRight] = useState("");
+  const externalInputs = useMemo(() => {
+    const external = Array.from(
+      new Set(selected.map((word) => word.trim()).filter(Boolean)),
+    ).slice(0, 5);
+    const next = external.length
+      ? external
+      : options.length >= 2
+        ? options.slice(0, 2)
+        : [...EMPTY_INPUTS];
+    if (next.length === 1) {
+      next.push(options.find((word) => word !== next[0]) ?? "");
+    }
+    return next;
+  }, [options, selected]);
+  const externalKey = JSON.stringify([options, selected]);
+  const lastExternalKey = useRef(externalKey);
+  const [inputs, setInputs] = useState<string[]>(externalInputs);
+  const [result, setResult] = useState<CompareResponse | null>(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const request = useRef<AbortController | null>(null);
+  const sequence = useRef(0);
+  const activeWords = useRef("");
 
   useEffect(() => {
-    const nextLeft = selected[0] && options.some((w) => w.headword === selected[0])
-      ? selected[0]
-      : options[0]?.headword ?? "";
-    const nextRight = selected[1] && options.some((w) => w.headword === selected[1])
-      ? selected[1]
-      : options.find((word) => word.headword !== nextLeft)?.headword ?? "";
-    setLeft(nextLeft);
-    setRight(nextRight);
-  }, [options, selected]);
-
-  if (options.length < 2) return null;
-  const leftWord = options.find((word) => word.headword === left) ?? options[0];
-  const rightWord = options.find((word) => word.headword === right) ?? options[1];
-
-  const change = (side: "left" | "right", value: string) => {
-    const next = side === "left" ? [value, rightWord.headword] : [leftWord.headword, value];
-    if (next[0] === next[1]) {
-      const replacement = options.find((word) => word.headword !== value)?.headword ?? "";
-      if (side === "left") next[1] = replacement;
-      else next[0] = replacement;
+    if (externalKey === lastExternalKey.current) return;
+    lastExternalKey.current = externalKey;
+    const nextKey = externalInputs.map((word) => word.trim()).join("\u0000");
+    if (request.current && activeWords.current && nextKey !== activeWords.current) {
+      request.current.abort();
+      request.current = null;
+      sequence.current += 1;
+      setLoading(false);
     }
-    setLeft(next[0]);
-    setRight(next[1]);
-    onSelect(next);
+    setInputs(externalInputs);
+    setResult(null);
+    setError("");
+  }, [externalInputs, externalKey]);
+
+  useEffect(() => () => request.current?.abort(), []);
+
+  const invalidateRequest = () => {
+    if (!request.current) return;
+    request.current.abort();
+    request.current = null;
+    sequence.current += 1;
+    setLoading(false);
+  };
+
+  const updateInput = (index: number, value: string) => {
+    invalidateRequest();
+    setInputs((current) => current.map((word, itemIndex) => itemIndex === index ? value : word));
+    setResult(null);
+    setError("");
+  };
+
+  const addWord = () => {
+    if (inputs.length >= 5) return;
+    invalidateRequest();
+    setInputs((current) => [...current, ""]);
+    setResult(null);
+  };
+
+  const removeWord = (index: number) => {
+    if (inputs.length <= 2) return;
+    invalidateRequest();
+    setInputs((current) => current.filter((_, itemIndex) => itemIndex !== index));
+    setResult(null);
+    setError("");
+  };
+
+  const submit = async () => {
+    let normalized: string[];
+    try {
+      normalized = normalizeCompareWords(inputs);
+    } catch (validationError) {
+      setError(validationError instanceof Error ? validationError.message : "ข้อมูลไม่ถูกต้อง");
+      return;
+    }
+
+    request.current?.abort();
+    const controller = new AbortController();
+    request.current = controller;
+    const id = ++sequence.current;
+    activeWords.current = normalized.join("\u0000");
+    setLoading(true);
+    setError("");
+    setResult(null);
+    onSelect(normalized);
+    try {
+      const response = await compareWords(normalized, controller.signal);
+      if (!controller.signal.aborted && id === sequence.current) setResult(response);
+    } catch (requestError) {
+      if (!controller.signal.aborted && id === sequence.current) {
+        setError(
+          requestError instanceof Error && requestError.message
+            ? requestError.message
+            : "ขณะนี้เปรียบเทียบคำไม่ได้ กรุณาลองอีกครั้ง",
+        );
+      }
+    } finally {
+      if (id === sequence.current) {
+        request.current = null;
+        setLoading(false);
+      }
+    }
+  };
+
+  const openEvidence = (headword: string, evidence: ComparisonEvidence) => {
+    const editionYear = Number.parseInt(evidence.edition, 10);
+    onEvidence({
+      headword,
+      definition: evidence.definition,
+      evidence: {
+        source_book: evidence.source,
+        edition: `ฉบับ พ.ศ. ${evidence.edition}`,
+        ...(Number.isFinite(editionYear) ? { edition_year: editionYear } : {}),
+        quote: evidence.definition,
+        is_official: evidence.sourceType !== "AI_GENERATED",
+      },
+    });
   };
 
   return (
@@ -64,7 +159,7 @@ export default function ContextComparator({
       <header className="section-heading">
         <p>อ่านความต่างในไม่กี่วินาที</p>
         <h2 id="compare-title">เปรียบเทียบคำในบริบท</h2>
-        <span>เลือกคำสองคำ แล้วดูว่าน้ำหนักและจังหวะการใช้ต่างกันอย่างไร</span>
+        <span>เลือกหรือกรอกคำภาษาไทย 2–5 คำ แล้วดูว่าน้ำหนักและจังหวะการใช้ต่างกันอย่างไร</span>
       </header>
 
       {/* Nuance Delta Summary Banner */}
