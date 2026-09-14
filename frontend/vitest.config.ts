@@ -5,7 +5,7 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     include: ["tests/**/*.test.{ts,tsx}"],
-    setupFiles: ["./tests/setup.ts"],
+    setupFiles: [fileURLToPath(new URL("./tests/setup.ts", import.meta.url))],
     pool: "forks",
   },
 });
