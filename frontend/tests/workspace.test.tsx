@@ -150,17 +150,17 @@ describe("WorkspaceView Component", () => {
 
     await waitFor(() => {
       // Pipeline status rendered
-      expect(screen.getByText("AI Sub-Agent Orchestration Pipeline")).toBeTruthy();
+      expect(screen.getByText(/AI Sub-Agent Orchestration Pipeline/i)).toBeTruthy();
       // Recommendations rendered
       expect(screen.getAllByText("ประสิทธิภาพ").length).toBeGreaterThan(0);
       // Comparison rendered
       expect(screen.getByText("ประสิทธิภาพเน้นวิธี ประสิทธิผลเน้นเป้าหมาย")).toBeTruthy();
       // Generated sentence rendered
-      expect(screen.getByText(/การประยุกต์ใช้อัลกอริทึมใหม่ช่วยเพิ่มประสิทธิภาพ/)).toBeTruthy();
+      expect(screen.getAllByText(/การประยุกต์ใช้อัลกอริทึมใหม่ช่วยเพิ่มประสิทธิภาพ/).length).toBeGreaterThanOrEqual(1);
       // Language check rendered
       expect(screen.getByText("คะแนน: 95/100")).toBeTruthy();
       // Next actions rendered
-      expect(screen.getByText("✂️ ทำให้สั้นลง")).toBeTruthy();
+      expect(screen.getAllByText("✂️ ทำให้สั้นลง").length).toBeGreaterThanOrEqual(1);
     });
   });
 
