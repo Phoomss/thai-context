@@ -43,6 +43,7 @@ export default function HeroSection({
 }) {
   const [state, setState] = useState<HeroState>("idle");
   const [reduced, setReduced] = useState(false);
+  const [motionPreferenceReady, setMotionPreferenceReady] = useState(false);
   const [ready, setReady] = useState(false);
   const [inView, setInView] = useState(true);
   const [failed, setFailed] = useState(false);
@@ -54,6 +55,8 @@ export default function HeroSection({
   const overlay = useRef<HTMLDivElement>(null);
   const bloom = useRef<HTMLDivElement>(null);
   const root = useRef<HTMLElement>(null);
+  const backgroundVideo = useRef<HTMLVideoElement>(null);
+  const videoWasInView = useRef(true);
 
   useEffect(() => {
     // R3F initializes asynchronously; a React boundary cannot catch every
@@ -67,7 +70,10 @@ export default function HeroSection({
   }, []);
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(media.matches);
+    const update = () => {
+      setReduced(media.matches);
+      setMotionPreferenceReady(true);
+    };
     update();
     media.addEventListener("change", update);
     return () => {
@@ -83,6 +89,20 @@ export default function HeroSection({
     observer.observe(root.current);
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    const video = backgroundVideo.current;
+    if (!video || reduced) return;
+    if (!inView) video.pause();
+    else if (!videoWasInView.current) {
+      try {
+        const playback = video.play();
+        if (playback) void playback.catch(() => undefined);
+      } catch {
+        // Autoplay can be rejected by browser policy; the poster remains visible.
+      }
+    }
+    videoWasInView.current = inView;
+  }, [inView, motionPreferenceReady, reduced]);
   const onReady = useCallback(() => setReady(true), []);
   const onFail = useCallback(() => {
     setFailed(true);
@@ -176,7 +196,30 @@ export default function HeroSection({
       data-scene={failed ? "fallback" : ready ? "ready" : "loading"}
       aria-label="ค้นหาคำจากความหมาย"
     >
-      <div className="hero-background" aria-hidden="true" />
+      <div className="hero-background" aria-hidden="true">
+        {motionPreferenceReady && !reduced && (
+          <video
+            ref={backgroundVideo}
+            className="hero-background-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/assets/thai-context-hero-poster.webp"
+            tabIndex={-1}
+          >
+            <source
+              src="/assets/thai-context-hero-bg.webm"
+              type="video/webm"
+            />
+            <source
+              src="/assets/thai-context-hero-bg.mp4"
+              type="video/mp4"
+            />
+          </video>
+        )}
+      </div>
       <div
         className="book-shadow"
         aria-hidden="true"
