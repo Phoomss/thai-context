@@ -71,6 +71,7 @@ assert_endpoint "AI Service Health" "GET" "${AI_URL}/health" "" "ok"
 
 # 2. Keyword Search
 assert_endpoint "Keyword Search (Exact/Partial)" "GET" "${API_URL}/api/v1/search?q=%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%97%E0%B8%98%E0%B8%B4%E0%B8%A0%E0%B8%B2%E0%B8%9E" "" "ประสิทธิภาพ"
+assert_endpoint "Keyword & Edition Search (Task 6: edition=2554 & source=ROYAL_SOCIETY)" "GET" "${API_URL}/api/v1/search?q=%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%97%E0%B8%98%E0%B8%B4%E0%B8%A0%E0%B8%B2%E0%B8%9E&edition=2554&source=ROYAL_SOCIETY" "" "2554"
 
 # 3. Meaning-First Search
 assert_endpoint "Meaning-first Search (ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน)" "POST" "${API_URL}/api/v1/search/meaning" \
@@ -106,6 +107,10 @@ assert_endpoint "Grounded RAG Assistant (Anti-Hallucination)" "POST" "${API_URL}
 # 12. Feedback Submission
 assert_endpoint "User Feedback Submission" "POST" "${API_URL}/api/v1/feedback" \
   '{"queryText": "ทำงานสำเร็จ", "userAction": "THUMBS_UP", "rating": 5}' "success"
+
+# 13. AI Language Workspace (Multi-Agent Architecture)
+assert_endpoint "AI Language Workspace Multi-Agent Pipeline" "POST" "${API_URL}/api/v1/ai/workspace" \
+  '{"message": "หาคำที่หมายถึงทำงานได้ดีและใช้ทรัพยากรน้อย"}' "recommendations"
 
 echo -e "\n=================================================================="
 echo -e "${YELLOW}📊 Smoke Test Results:${NC}"

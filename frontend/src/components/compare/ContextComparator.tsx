@@ -18,12 +18,14 @@ export default function ContextComparator({
   sourceMode,
   onSelect,
   onEvidence,
+  onAIChat,
 }: {
   words: Recommendation[];
   selected: string[];
   sourceMode?: SearchResponse["mode"];
   onSelect: (words: string[]) => void;
   onEvidence: (word: Recommendation) => void;
+  onAIChat?: (word: Recommendation, query?: string) => void;
 }) {
   const options = useMemo(
     () => Array.from(new Set(words.map((word) => word.headword.trim()).filter(Boolean))),
@@ -160,92 +162,109 @@ export default function ContextComparator({
         <span>เลือกหรือกรอกคำภาษาไทย 2–5 คำ แล้วดูว่าน้ำหนักและจังหวะการใช้ต่างกันอย่างไร</span>
       </header>
 
-      <div className="comparison-inputs">
-        <datalist id="comparison-word-options">
-          {options.map((option) => <option value={option} key={option} />)}
-        </datalist>
-        {inputs.map((word, index) => (
-          <label key={index}>
-            <span>คำที่ {index + 1}</span>
-            <span className="comparison-input-row">
-              <input
-                className="font-thai-reading"
-                aria-label={`คำที่ ${index + 1}`}
-                list="comparison-word-options"
-                value={word}
-                maxLength={100}
-                onChange={(event) => updateInput(index, event.target.value)}
-              />
-              {inputs.length > 2 && (
-                <button type="button" onClick={() => removeWord(index)} aria-label={`ลบคำที่ ${index + 1}`}>×</button>
-              )}
-            </span>
-          </label>
-        ))}
-        <div className="comparison-actions">
-          {inputs.length < 5 && <button type="button" onClick={addWord}>+ เพิ่มคำ</button>}
-          <button type="button" className="comparison-submit" disabled={loading} onClick={submit}>
-            {loading ? "กำลังเปรียบเทียบ…" : "เปรียบเทียบคำ"}
-          </button>
-        </div>
+      {/* Nuance Delta Summary Banner */}
+      {leftWord && rightWord && leftWord.headword !== rightWord.headword && (
+        <aside
+          className="nuance-delta-banner"
+          aria-label="สรุปจุดต่างสำคัญ"
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto 24px",
+            padding: "16px 20px",
+            background: "#eff6ff",
+            borderRadius: "14px",
+            border: "1px solid #bfdbfe",
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "12px",
+          }}
+        >
+          <span style={{ fontSize: "20px", flexShrink: 0 }}>💡</span>
+          <div>
+            <strong
+              style={{
+                display: "block",
+                color: "#1e40af",
+                fontSize: "14px",
+                marginBottom: "4px",
+              }}
+            >
+              สรุปจุดต่างสำคัญ (Nuance Delta):
+            </strong>
+            <p
+              className="font-thai-reading"
+              style={{
+                margin: 0,
+                fontSize: "14px",
+                color: "#1e3a8a",
+                lineHeight: 1.6,
+              }}
+            >
+              คำว่า <strong>&ldquo;{leftWord.headword}&rdquo;</strong>{" "}
+              {leftWord.comparison?.emphasis
+                ? `เน้น${leftWord.comparison.emphasis}`
+                : `เน้น${leftWord.definition}`}{" "}
+              — ในขณะที่คำว่า <strong>&ldquo;{rightWord.headword}&rdquo;</strong>{" "}
+              {rightWord.comparison?.emphasis
+                ? `เน้น${rightWord.comparison.emphasis}`
+                : `เน้น${rightWord.definition}`}
+            </p>
+          </div>
+        </aside>
+      )}
+
+      <div className="comparison-surface">
+        {[leftWord, rightWord].map((word, index) => {
+          const data = detail(word);
+          return (
+            <article className="comparison-card" key={`${word.headword}-${index}`}>
+              <label>
+                <span>คำที่ {index ? "๒" : "๑"}</span>
+                <select
+                  className="font-thai-reading"
+                  aria-label={`เลือกคำที่ ${index ? "สอง" : "หนึ่ง"}`}
+                  value={word.headword}
+                  onChange={(event) => change(index ? "right" : "left", event.target.value)}
+                >
+                  {options.map((option, optIdx) => (
+                    <option key={`${option.headword}-${optIdx}`}>{option.headword}</option>
+                  ))}
+                </select>
+              </label>
+              <h3 className="font-thai-reading">{word.headword}</h3>
+              <dl>
+                <div><dt>ความหมาย</dt><dd className="font-thai-reading">{data.meaning}</dd></div>
+                <div className="difference-row"><dt>เน้นอะไร</dt><dd className="font-thai-reading">{data.emphasis}</dd></div>
+                <div><dt>บริบท</dt><dd className="font-thai-reading">{data.context}</dd></div>
+                <div><dt>ระดับภาษา</dt><dd className="font-thai-reading">{data.register}</dd></div>
+                <div><dt>ใช้เมื่อไร</dt><dd className="font-thai-reading">{data.useWhen}</dd></div>
+                <div><dt>ตัวอย่าง</dt><dd className="font-thai-reading">{data.example}</dd></div>
+                <div><dt>จุดที่มักสับสน</dt><dd className="font-thai-reading">{data.confusion}</dd></div>
+              </dl>
+              <button className="source-shortcut" type="button" onClick={() => onEvidence(word)}>
+                {word.evidence ? "ดูหลักฐานของคำนี้ ↗" : "ตรวจสถานะหลักฐาน ↗"}
+              </button>
+            </article>
+          );
+        })}
       </div>
-
-      {error && <div className="comparison-error" role="alert"><p>{error}</p><button type="button" onClick={submit}>ลองอีกครั้ง</button></div>}
-      {loading && <div className="comparison-loading" role="status">กำลังวิเคราะห์นิยามและบริบทจากข้อมูลพจนานุกรม…</div>}
-
-      {result && (
-        <div className="comparison-result">
-          <div className="comparison-surface" data-word-count={result.words.length}>
-            {result.words.map((word, index) => {
-              const evidence = result.evidence.find((item) => item.word === word.headword);
-              const liveRecommendation = sourceMode === "live"
-                ? words.find((item) => item.headword.trim() === word.headword.trim())
-                : undefined;
-              const definition = word.definition === MISSING_DICTIONARY_DEFINITION
-                ? liveRecommendation?.definition ?? word.definition
-                : word.definition;
-              const partOfSpeech = word.partOfSpeech === UNSPECIFIED_PART_OF_SPEECH
-                ? liveRecommendation?.pos
-                : word.partOfSpeech;
-              return (
-                <article className="comparison-card" key={`${word.headword}-${index}`}>
-                  <p className="comparison-word-number">คำที่ {index + 1}</p>
-                  <h3 className="font-thai-reading">{word.headword}</h3>
-                  <dl>
-                    <div><dt>ความหมาย</dt><dd className="font-thai-reading">{definition}</dd></div>
-                    {partOfSpeech && <div><dt>ชนิดคำ</dt><dd className="font-thai-reading">{partOfSpeech}</dd></div>}
-                    {(word.edition || evidence?.edition) && <div><dt>ฉบับ</dt><dd>พ.ศ. {word.edition ?? evidence?.edition}</dd></div>}
-                  </dl>
-                  {evidence && (
-                    <button className="source-shortcut" type="button" onClick={() => openEvidence(word.headword, evidence)}>
-                      ดูหลักฐานของคำนี้ ↗
-                    </button>
-                  )}
-                </article>
-              );
-            })}
-          </div>
-
-          <div className="comparison-summary">
-            <section className="difference-row"><h3>ความแตกต่างด้านความหมาย</h3><p className="font-thai-reading">{result.comparison.meaningDifference}</p></section>
-            <section><h3>ความแตกต่างด้านบริบท</h3><p className="font-thai-reading">{result.comparison.contextDifference}</p></section>
-            <section><h3>คำแนะนำการใช้</h3><p className="font-thai-reading">{result.comparison.usageGuidance}</p></section>
-          </div>
-
-          {result.evidence.length > 0 && (
-            <section className="comparison-evidence" aria-labelledby="comparison-evidence-title">
-              <h3 id="comparison-evidence-title">หลักฐานอ้างอิงจาก API</h3>
-              <ul>
-                {result.evidence.map((item, index) => (
-                  <li key={`${item.word ?? "evidence"}-${index}`}>
-                    <strong>{item.word ?? "คำอ้างอิง"}</strong>
-                    <span>{item.source} · พ.ศ. {item.edition}</span>
-                    <p className="font-thai-reading">{item.definition}</p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+      {onAIChat && leftWord && rightWord && (
+        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center" }}>
+          <button
+            type="button"
+            className="ai-consult-btn font-thai-reading"
+            onClick={() =>
+              onAIChat(
+                leftWord,
+                `คำว่า '${leftWord.headword}' ต่างกับ '${rightWord.headword}' ในงานวิจัยอย่างไร`
+              )
+            }
+          >
+            <span aria-hidden="true">✨</span>
+            <span>
+              ปรึกษาผู้ช่วย AI เพื่อวิเคราะห์ความต่างระหว่าง "{leftWord.headword}" กับ "{rightWord.headword}"
+            </span>
+          </button>
         </div>
       )}
     </section>

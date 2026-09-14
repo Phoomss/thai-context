@@ -8,10 +8,9 @@ import {
 } from "./accessibility-types";
 import { encodeThaiToBraille, decodeBrailleToThai } from "./braille-encoder";
 import {
-  normalizeCompareWords,
-  parseCompareResponse,
-  type CompareResponse,
-} from "./compare-types";
+  getFallbackWordEvolution,
+  type WordEvolutionResponse,
+} from "./evolution-data";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
@@ -519,4 +518,184 @@ export async function sendFeedback(
     feedbackId: `fb_offline_${Date.now()}`,
     message: "บันทึกข้อเสนอแนะในโหมดออฟไลน์เรียบร้อยแล้ว",
   };
+}
+
+export async function fetchWordEvolution(
+  word: string,
+  signal?: AbortSignal
+): Promise<WordEvolutionResponse> {
+  const cleanWord = word.trim();
+  if (!cleanWord) {
+    return getFallbackWordEvolution("คำที่เลือก");
+  }
+
+  const timeoutSignal = AbortSignal.timeout(5000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  try {
+    const response = await fetch(
+      `/api/v1/dictionary/words/${encodeURIComponent(cleanWord)}/evolution`,
+      {
+        headers: { Accept: "application/json" },
+        signal: combinedSignal,
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data && typeof data === "object" && Array.isArray(data.timeline)) {
+        return data as WordEvolutionResponse;
+      }
+    }
+  } catch {
+    // Network / offline fallback below
+  }
+
+  return getFallbackWordEvolution(cleanWord);
+}
+
+export interface KeywordSearchFilter {
+  edition?: string;
+  source?: string;
+  exact?: boolean;
+  page?: number;
+  limit?: number;
+}
+
+export interface KeywordSearchResultItem {
+  word: string;
+  headwordClean: string;
+  definition: string;
+  partOfSpeech: string;
+  source: string;
+  sourceCode: string;
+  edition: string;
+  editionTitle: string;
+  editionCode: string;
+  subjectDomain: string | null;
+  pageNumber: number | null;
+  metadata?: Record<string, any> | null;
+}
+
+export interface KeywordSearchResponse {
+  query: string;
+  total: number;
+  page: number;
+  limit: number;
+  filters: {
+    edition: string | null;
+    source: string | null;
+    exact: boolean;
+  };
+  results: KeywordSearchResultItem[];
+}
+
+export async function searchDictionaryByKeyword(
+  query: string,
+  filters?: KeywordSearchFilter,
+  signal?: AbortSignal
+): Promise<KeywordSearchResponse> {
+  const cleanQuery = query.trim();
+  if (!cleanQuery) {
+    return {
+      query: "",
+      total: 0,
+      page: 1,
+      limit: 20,
+      filters: {
+        edition: filters?.edition || null,
+        source: filters?.source || null,
+        exact: Boolean(filters?.exact),
+      },
+      results: [],
+    };
+  }
+
+  const timeoutSignal = AbortSignal.timeout(6000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const params = new URLSearchParams();
+  params.set("q", cleanQuery);
+  if (filters?.edition) params.set("edition", filters.edition);
+  if (filters?.source) params.set("source", filters.source);
+  if (filters?.exact) params.set("exact", "true");
+  if (filters?.page) params.set("page", String(filters.page));
+  if (filters?.limit) params.set("limit", String(filters.limit));
+
+  try {
+    const response = await fetch(`/api/v1/search?${params.toString()}`, {
+      headers: { Accept: "application/json" },
+      signal: combinedSignal,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data && Array.isArray(data.results)) {
+        return data as KeywordSearchResponse;
+      }
+    }
+  } catch {
+    // Offline / fallback below
+  }
+
+  // Graceful fallback for offline mode
+  return {
+    query: cleanQuery,
+    total: 1,
+    page: 1,
+    limit: 20,
+    filters: {
+      edition: filters?.edition || null,
+      source: filters?.source || null,
+      exact: Boolean(filters?.exact),
+    },
+    results: [
+      {
+        word: cleanQuery,
+        headwordClean: cleanQuery,
+        definition: `ความหมายของคำว่า "${cleanQuery}" ตามพจนานุกรมราชบัณฑิตยสถาน`,
+        partOfSpeech: "น.",
+        source: "สำนักงานราชบัณฑิตยสภา",
+        sourceCode: "ROYAL_SOCIETY",
+        edition: filters?.edition || "2554",
+        editionTitle: filters?.edition
+          ? `พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ${filters.edition}`
+          : "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+        editionCode: filters?.edition ? `ROYAL_${filters.edition}` : "ROYAL_2554",
+        subjectDomain: "ทั่วไป",
+        pageNumber: 1,
+        metadata: null,
+      },
+    ],
+  };
+}
+
+export async function executeWorkspace(
+  payload: import("./workspace-types").WorkspaceRequestPayload,
+  signal?: AbortSignal
+): Promise<import("./workspace-types").WorkspaceResponsePayload> {
+  const timeoutSignal = AbortSignal.timeout(12000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/ai/workspace", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Workspace request failed: ${response.status}`);
+  }
+
+  return response.json();
 }

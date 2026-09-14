@@ -22,8 +22,8 @@ class Settings(BaseSettings):
     VECTOR_DIMENSION: int = int(os.getenv("VECTOR_DIMENSION", "1536"))
 
     # LLM Settings
-    LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "local")  # local, gemini, openai
-    LLM_MODEL: str = os.getenv("LLM_MODEL", "gemini-1.5-flash")
+    LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "gemini")  # local, gemini, openai
+    LLM_MODEL: str = os.getenv("LLM_MODEL", "gemini-2.5-flash-lite")
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
 

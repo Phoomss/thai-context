@@ -16,6 +16,18 @@ export class KeywordSearchQueryDto {
   @IsOptional()
   @IsString()
   source?: string;
+
+  @ApiPropertyOptional({ description: 'Exact headword match only', example: false })
+  @IsOptional()
+  exact?: boolean | string;
+
+  @ApiPropertyOptional({ description: 'Max results (default 20, max 100)', example: 20 })
+  @IsOptional()
+  limit?: number | string;
+
+  @ApiPropertyOptional({ description: 'Page number (default 1)', example: 1 })
+  @IsOptional()
+  page?: number | string;
 }
 
 export class MeaningSearchDto {

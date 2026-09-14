@@ -11,11 +11,38 @@ logger = logging.getLogger(__name__)
 class VectorSearchService:
     def __init__(self, db_url: Optional[str] = None):
         self.db_url = db_url or settings.DATABASE_URL
+        self._db_offline = False
+        self._last_db_check = 0.0
+
+    def _is_db_reachable(self) -> bool:
+        import time, socket
+        now = time.time()
+        if self._db_offline and (now - self._last_db_check < 60.0):
+            return False
+        try:
+            from urllib.parse import urlparse
+            p = urlparse(self.db_url)
+            host = p.hostname or "localhost"
+            port = p.port or 5432
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(0.08)
+            s.connect((host, port))
+            s.close()
+            self._db_offline = False
+            self._last_db_check = now
+            return True
+        except Exception:
+            self._db_offline = True
+            self._last_db_check = now
+            return False
 
     def search(self, query_text: str, top_k: int = 10) -> List[SemanticSearchResult]:
         query_vector = embedding_provider.embed_text(query_text)
         vector_str = f"[{','.join(f'{x:.6f}' for x in query_vector)}]"
         
+        if not self._is_db_reachable():
+            return self._fallback_in_memory_search(query_text, query_vector, top_k)
+
         sql = """
             WITH top_emb AS (
                 SELECT entity_id, 1 - (embedding <=> %s::vector) AS similarity
@@ -38,7 +65,7 @@ class VectorSearchService:
         """
 
         try:
-            with psycopg.connect(self.db_url) as conn:
+            with psycopg.connect(self.db_url, connect_timeout=1) as conn:
                 with conn.cursor() as cur:
                     from app.services.nlp.tokenizer import ThaiNLPTokenizer
                     cleaned_q = query_text.strip()
@@ -119,97 +146,144 @@ class VectorSearchService:
                                 score=calibrated_score
                             )
                         )
+                    if not results:
+                        logger.info("Database returned 0 vector results. Using in-memory fallback search.")
+                        return self._fallback_in_memory_search(query_text, query_vector, top_k)
+
                     results.sort(key=lambda x: x.score, reverse=True)
                     return results[:top_k]
         except Exception as e:
             logger.warning(f"Database vector query failed ({e}). Returning fallback search.")
             return self._fallback_in_memory_search(query_text, query_vector, top_k)
 
-    def _fallback_in_memory_search(self, query_text: str, query_vector: List[float], top_k: int) -> List[SemanticSearchResult]:
-        # Fallback reading real dictionary data if DB connection is not established yet
+    def _get_in_memory_dict(self):
+        """Loads and caches dictionary in-memory once for fast sub-millisecond retrieval."""
+        global _CACHED_DICT_DATA
+        if "_CACHED_DICT_DATA" in globals() and _CACHED_DICT_DATA is not None:
+            return _CACHED_DICT_DATA
+
         import os
         candidate_paths = [
-            os.path.join(os.getcwd(), "data/processed/dict/dict_2554.json"),
-            "/app/data/processed/dict/dict_2554.json",
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../data/processed/dict/dict_2554.json")),
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../data/processed/dict/dict_2554.json")),
+            os.path.join(os.getcwd(), "data/processed/dict/dict_all_editions.json"),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../data/processed/dict/dict_all_editions.json")),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../data/processed/dict/dict_all_editions.json")),
+            "/app/data/processed/dict/dict_all_editions.json",
             os.path.join(os.getcwd(), "data/seed/demo_dictionary.json"),
+            os.path.join(os.getcwd(), "apps/api/prisma/demo_dictionary.json"),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../data/seed/demo_dictionary.json")),
             "/app/data/seed/demo_dictionary.json",
         ]
         seed_path = next((p for p in candidate_paths if os.path.exists(p)), None)
         if not seed_path:
-            logger.warning("No dictionary data found for fallback search.")
-            return []
+            logger.warning("No dictionary data found for in-memory index.")
+            _CACHED_DICT_DATA = {}
+            return _CACHED_DICT_DATA
 
         try:
             with open(seed_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+                raw = json.load(f)
 
-            scored = []
-            if isinstance(data, list):
-                # Real processed dictionary format (dict_2554.json / dict_all_editions.json)
-                for item in data:
-                    word = item.get("headword") or item.get("raw_headword") or ""
-                    def_text = item.get("definition") or ""
-                    if not word or not def_text:
-                        continue
-                    ed_year = item.get("edition") or "2554"
-                    
-                    # Quick prefilter: exact match or keyword overlap
-                    is_match = word in query_text or query_text in word
-                    
-                    text = f"{word}: {def_text}"
-                    vec = embedding_provider.embed_text(text)
-                    
-                    # Cosine similarity
-                    dot = sum(a * b for a, b in zip(query_vector, vec))
-                    norm_a = sum(a * a for a in query_vector) ** 0.5
-                    norm_b = sum(b * b for b in vec) ** 0.5
-                    sim = dot / (norm_a * norm_b) if (norm_a * norm_b) > 0 else 0.0
+            index_map: Dict[str, List[dict]] = {}
+            if isinstance(raw, list):
+                for item in raw:
+                    hw = (item.get("headword") or item.get("raw_headword") or "").strip()
+                    df = item.get("definition") or ""
+                    if hw and df:
+                        if hw not in index_map:
+                            index_map[hw] = []
+                        index_map[hw].append({
+                            "id": str(item.get("index") or hw),
+                            "word": hw,
+                            "definition": df,
+                            "edition": str(item.get("edition") or "2554"),
+                        })
+            elif isinstance(raw, dict):
+                words_map = {w["id"]: w["headword"] for w in raw.get("words", [])}
+                entry_to_word = {e["id"]: words_map.get(e["wordId"], "") for e in raw.get("wordEntries", [])}
+                entry_to_ed = {e["id"]: e.get("editionId", "") for e in raw.get("wordEntries", [])}
+                editions_map = {ed["id"]: ed.get("editionYear", "") for ed in raw.get("editions", [])}
 
-                    if is_match:
-                        sim = max(sim, 0.92)
+                for d in raw.get("definitions", []):
+                    word = entry_to_word.get(d["entryId"], "").strip()
+                    ed_year = editions_map.get(entry_to_ed.get(d["entryId"], ""), "2554")
+                    def_text = d.get("definitionText", "")
+                    if word and def_text:
+                        if word not in index_map:
+                            index_map[word] = []
+                        index_map[word].append({
+                            "id": d["id"],
+                            "word": word,
+                            "definition": def_text,
+                            "edition": str(ed_year),
+                        })
 
-                    scored.append(
-                        SemanticSearchResult(
-                            id=str(item.get("index") or word),
-                            word=word,
-                            definition=def_text,
-                            edition=ed_year,
-                            score=round(float(sim), 4)
-                        )
-                    )
-            else:
-                words_map = {w["id"]: w["headword"] for w in data["words"]}
-                entry_to_word = {e["id"]: words_map.get(e["wordId"], "") for e in data["wordEntries"]}
-                entry_to_ed = {e["id"]: e.get("editionId", "") for e in data["wordEntries"]}
-                editions_map = {ed["id"]: ed.get("editionYear", "") for ed in data["editions"]}
+            _CACHED_DICT_DATA = index_map
+            logger.info(f"Loaded {len(index_map)} unique dictionary headwords into in-memory index from {seed_path}")
+            return _CACHED_DICT_DATA
+        except Exception as err:
+            logger.error(f"Failed to load in-memory dictionary: {err}")
+            _CACHED_DICT_DATA = {}
+            return _CACHED_DICT_DATA
 
-                for d in data["definitions"]:
-                    word = entry_to_word.get(d["entryId"], "")
-                    ed_year = editions_map.get(entry_to_ed.get(d["entryId"], ""), "")
-                    text = f"{word}: {d['definitionText']}"
-                    vec = embedding_provider.embed_text(text)
-                    
-                    dot = sum(a * b for a, b in zip(query_vector, vec))
-                    norm_a = sum(a * a for a in query_vector) ** 0.5
-                    norm_b = sum(b * b for b in vec) ** 0.5
-                    sim = dot / (norm_a * norm_b) if (norm_a * norm_b) > 0 else 0.0
-
-                    scored.append(
-                        SemanticSearchResult(
-                            id=d["id"],
-                            word=word,
-                            definition=d["definitionText"],
-                            edition=ed_year,
-                            score=round(float(sim), 4)
-                        )
-                    )
-
-            scored.sort(key=lambda x: x.score, reverse=True)
-            return scored[:top_k]
-        except Exception as ex:
-            logger.error(f"Fallback search error: {ex}")
+    def _fallback_in_memory_search(self, query_text: str, query_vector: List[float], top_k: int) -> List[SemanticSearchResult]:
+        dict_index = self._get_in_memory_dict()
+        if not dict_index:
             return []
 
+        from app.services.nlp.tokenizer import ThaiNLPTokenizer
+        cleaned_q = query_text.strip()
+        tokens = [t for t in ThaiNLPTokenizer.extract_keywords(query_text) if len(t) > 1]
+        search_terms = list(dict.fromkeys([cleaned_q] + tokens))
+
+        scored: List[SemanticSearchResult] = []
+        seen_words = set()
+
+        # 1. Exact match on cleaned query
+        if cleaned_q in dict_index:
+            for entry in dict_index[cleaned_q]:
+                seen_words.add(cleaned_q)
+                scored.append(SemanticSearchResult(
+                    id=entry["id"],
+                    word=entry["word"],
+                    definition=entry["definition"],
+                    edition=entry["edition"],
+                    score=0.98
+                ))
+
+        # 2. Exact match on extracted keywords
+        for tok in tokens:
+            if tok in dict_index and tok not in seen_words:
+                seen_words.add(tok)
+                for entry in dict_index[tok]:
+                    scored.append(SemanticSearchResult(
+                        id=entry["id"],
+                        word=entry["word"],
+                        definition=entry["definition"],
+                        edition=entry["edition"],
+                        score=0.94
+                    ))
+
+        # 3. Substring matching if fewer than top_k
+        if len(scored) < top_k:
+            for hw, entries in dict_index.items():
+                if hw in seen_words:
+                    continue
+                is_sub = (cleaned_q in hw) or (hw in cleaned_q and len(hw) >= 4 and len(hw) >= len(cleaned_q) * 0.6)
+                if is_sub and len(hw) >= 2:
+                    seen_words.add(hw)
+                    for entry in entries:
+                        scored.append(SemanticSearchResult(
+                            id=entry["id"],
+                            word=entry["word"],
+                            definition=entry["definition"],
+                            edition=entry["edition"],
+                            score=0.88
+                        ))
+                if len(scored) >= top_k * 3:
+                    break
+
+        scored.sort(key=lambda x: x.score, reverse=True)
+        return scored[:top_k]
+
+_CACHED_DICT_DATA = None
 vector_search_service = VectorSearchService()
