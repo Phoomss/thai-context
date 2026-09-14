@@ -22,6 +22,7 @@
 | **09** | [**09-judge-alignment-and-validation.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/09-judge-alignment-and-validation.md) | **Judge Alignment & System Audit:** ตารางแมปเกณฑ์คะแนนกรรมการละเอียดทุกข้อ, ระเบียบปฏิบัติ Single Source of Truth (SSOT), ตารางตรวจสอบความสมบูรณ์ 17 ข้อ (17-Point Audit Checklist) และรายงาน Gap Analysis |
 | **10** | [**10-hackathon-execution-summary.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/10-hackathon-execution-summary.md) | **Hackathon Master Execution Summary:** สรุปพิมพ์เขียวฉบับสมบูรณ์ โครงสร้างทีม 3 คน, Vertical Slice, Tech Stack, ข้อเปรียบเทียบ ORM, Extreme Performance & Perfection |
 | **11** | [**real-data-guide.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/real-data-guide.md) | **Real Data Architecture & Usage Guide:** คู่มือการรันฐานข้อมูลจริง (PostgreSQL + pgvector), การ Ingestion คำศัพท์ 57,000+ คำ, การตั้งค่า Frontend, การสลับโหมด และการตรวจสอบความถูกต้อง |
+| **12** | [**12-api-audit-and-team-handoff.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/12-api-audit-and-team-handoff.md) | **API Audit & Engineering Team Handoff:** รายการตรวจสอบ API ที่ยังไม่ได้เชื่อมต่อ, ตารางสถานะ Matrix, และ 6 แผนงาน Actionable Tasks พร้อม Data Contract สำหรับทีมพัฒนาต่อยอด |
 | 📑 | [**final-requriment.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/final-requriment.md) | **Master PRD (Original All-in-One):** เอกสารข้อกำหนดระบบฉบับรวมสมบูรณ์ในไฟล์เดียว |
 
 ---
