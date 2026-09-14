@@ -9,6 +9,7 @@ import EvidenceDrawer from "./evidence/EvidenceDrawer";
 import ContextComparator from "./compare/ContextComparator";
 import EvolutionExplorer from "./evolution/EvolutionExplorer";
 import DialectExplorer from "./dialect/DialectExplorer";
+import DictionaryBrowser from "./dictionary/DictionaryBrowser";
 import Footer from "./layout/Footer";
 import { mockSearch } from "@/lib/mock-search";
 import type { Recommendation } from "@/lib/search-types";
@@ -241,6 +242,7 @@ export default function SearchExperience() {
           />
           <EvolutionExplorer word={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
           <DialectExplorer currentWord={model.result?.recommendations[0]?.headword} />
+          <DictionaryBrowser initialWord={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
           <Footer />
         </div>
       )}

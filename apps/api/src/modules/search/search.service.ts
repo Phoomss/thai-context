@@ -14,23 +14,41 @@ export class SearchService {
 
   async keywordSearch(queryDto: KeywordSearchQueryDto) {
     const q = queryDto.q.trim();
+    const isExact = queryDto.exact === true || queryDto.exact === 'true';
+    const take = queryDto.limit ? Math.min(100, Math.max(1, parseInt(String(queryDto.limit), 10))) : 20;
+    const page = queryDto.page ? Math.max(1, parseInt(String(queryDto.page), 10)) : 1;
+
+    const editionConditions: any = {};
+    if (queryDto.edition) {
+      editionConditions.editionYear = queryDto.edition;
+    }
+    if (queryDto.source) {
+      editionConditions.source = { code: queryDto.source };
+    }
+
+    const whereConditions: any = {
+      ...(Object.keys(editionConditions).length > 0
+        ? { entry: { edition: editionConditions } }
+        : {}),
+    };
+
+    if (isExact) {
+      whereConditions.OR = [
+        { entry: { word: { headword: { equals: q, mode: 'insensitive' } } } },
+        { entry: { word: { headwordClean: { equals: q, mode: 'insensitive' } } } },
+      ];
+    } else {
+      whereConditions.OR = [
+        { entry: { word: { headword: { contains: q, mode: 'insensitive' } } } },
+        { entry: { word: { headwordClean: { contains: q, mode: 'insensitive' } } } },
+        { definitionText: { contains: q, mode: 'insensitive' } },
+        { subjectDomain: { contains: q, mode: 'insensitive' } },
+      ];
+    }
 
     // Query official words and definitions
     const definitions = await this.prisma.definition.findMany({
-      where: {
-        OR: [
-          { entry: { word: { headword: { contains: q, mode: 'insensitive' } } } },
-          { entry: { word: { headwordClean: { contains: q, mode: 'insensitive' } } } },
-          { definitionText: { contains: q, mode: 'insensitive' } },
-          { subjectDomain: { contains: q, mode: 'insensitive' } },
-        ],
-        ...(queryDto.edition
-          ? { entry: { edition: { editionYear: queryDto.edition } } }
-          : {}),
-        ...(queryDto.source
-          ? { entry: { edition: { source: { code: queryDto.source } } } }
-          : {}),
-      },
+      where: whereConditions,
       include: {
         pos: true,
         entry: {
@@ -42,24 +60,58 @@ export class SearchService {
           },
         },
       },
-      take: 20,
+      take: take * 2,
     });
 
-    const results = definitions.map((d) => ({
-      word: d.entry.word.headword,
-      definition: d.definitionText,
-      partOfSpeech: d.pos ? d.pos.abbrThai : 'ไม่ระบุ',
-      source: d.entry.edition.source.name,
-      edition: d.entry.edition.editionYear,
-      editionTitle: d.entry.edition.title,
-      editionCode: d.entry.edition.editionCode,
-      subjectDomain: d.subjectDomain,
-      metadata: d.entry.metadata,
-    }));
+    const mapped = definitions.map((d) => {
+      const rawDef = d.definitionText || '';
+      const cleanDef = rawDef.replace(/^\[SAMPLE DEFINITION\s*—\s*\d+\]\s*/i, '').trim();
+      return {
+        word: d.entry.word.headword,
+        headwordClean: d.entry.word.headwordClean,
+        definition: cleanDef,
+        partOfSpeech: d.pos ? d.pos.abbrThai : 'ไม่ระบุ',
+        source: d.entry.edition.source.name,
+        sourceCode: d.entry.edition.source.code,
+        edition: d.entry.edition.editionYear,
+        editionTitle: d.entry.edition.title,
+        editionCode: d.entry.edition.editionCode,
+        subjectDomain: d.subjectDomain,
+        pageNumber: d.entry.pageNumber,
+        metadata: d.entry.metadata,
+      };
+    });
+
+    // Re-rank results: Exact headword match > startsWith > contains in headword > definition text
+    const qLower = q.toLowerCase();
+    mapped.sort((a, b) => {
+      const aHead = a.word.toLowerCase();
+      const bHead = b.word.toLowerCase();
+
+      const aRank = aHead === qLower ? 4 : aHead.startsWith(qLower) ? 3 : aHead.includes(qLower) ? 2 : 1;
+      const bRank = bHead === qLower ? 4 : bHead.startsWith(qLower) ? 3 : bHead.includes(qLower) ? 2 : 1;
+
+      if (aRank !== bRank) return bRank - aRank;
+
+      // Secondary sort: latest edition year first
+      const aYear = parseInt(a.edition, 10) || 0;
+      const bYear = parseInt(b.edition, 10) || 0;
+      return bYear - aYear;
+    });
+
+    const paginatedResults = mapped.slice(0, take);
 
     return {
       query: q,
-      results,
+      total: mapped.length,
+      page,
+      limit: take,
+      filters: {
+        edition: queryDto.edition || null,
+        source: queryDto.source || null,
+        exact: isExact,
+      },
+      results: paginatedResults,
     };
   }
 
