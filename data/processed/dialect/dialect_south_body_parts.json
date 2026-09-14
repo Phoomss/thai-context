@@ -1,0 +1,4867 @@
+{
+  "title": "หมวดอวัยวะของคนและสัตว์",
+  "region": "south",
+  "category": "body_parts",
+  "entry_count": 346,
+  "entries": [
+    {
+      "id": "south_body_parts_0001",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กก",
+      "transcriptions": [
+        "กก",
+        "kok^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "กก [กก] [kok^6^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0002",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กงแล็บ",
+      "transcriptions": [
+        "กง-แหฺล็บ",
+        "koŋ^6^-lɛp^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กงแล็บ [กง-แหฺล็บ] [koŋ^6^-lɛp^2^]\nน. กรงเล็บ, กลุ่มเล็บของแมวหรือนกเป็นต้นเมื่อขยุ้มเหยื่อ มีเค้าคล้ายกรง."
+    },
+    {
+      "id": "south_body_parts_0003",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กม",
+      "transcriptions": [
+        "กม",
+        "kom^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเดือก"
+      ],
+      "raw_text": "กม [กม] [kom^6^]\nดู ลูกเดือก."
+    },
+    {
+      "id": "south_body_parts_0004",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ก้อนขี้หมา",
+      "transcriptions": [
+        "กอน-คี้-หม้า",
+        "kɔːn^1^-k^h^iː^4^-maː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้อนขี้หมา [กอน-คี้-หม้า] [kɔːn^1^-k^h^iː^4^-maː^3^]\nน. ก้อนขี้หมา, ก้อนบนปลายจมูกของจระเข้."
+    },
+    {
+      "id": "south_body_parts_0005",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ก้อนเส้า",
+      "transcriptions": [
+        "กอน-เซ้า",
+        "kɔːn^1^-saw^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หนอก ความหมายที่ ๑"
+      ],
+      "raw_text": "ก้อนเส้า [กอน-เซ้า] [kɔːn^1^-saw^4^]\n~~๑. ดู หนอก ความหมายที่ ๑.\n๒.~~ น. ตะพอง, ส่วนที่นูนบนหัวช้าง; น้ำเต้า ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0006",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะดอ",
+      "transcriptions": [
+        "กะ-ดอ",
+        "ka^1^-dɔː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่ ความหมายที่ ๑"
+      ],
+      "raw_text": "กะดอ [กะ-ดอ] [ka^1^-dɔː^6^]\nดู ไข่ ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0007",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะโดกหัว",
+      "transcriptions": [
+        "กะ-โดก-หั้ว",
+        "ka^1^-doːk^1^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "กะโดกหัว [กะ-โดก-หั้ว] [ka^1^-doːk^1^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0008",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะทงเหิน",
+      "transcriptions": [
+        "กะ-ทง-เหิ้น",
+        "ka^1^-t^h^oŋ^7^-həːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พวม"
+      ],
+      "raw_text": "กะทงเหิน [กะ-ทง-เหิ้น] [ka^1^-t^h^oŋ^7^-həːn^3^]\nดู พวม."
+    },
+    {
+      "id": "south_body_parts_0009",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะโปก",
+      "transcriptions": [
+        "กะ-โปก",
+        "ka^1^-poːk^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กะโปก [กะ-โปก] [ka^1^-poːk^1^]\nน. ลูกอัณฑะ, ส่วนหนึ่งของอวัยวะลับชาย, แล็ดไข่ หรือ ลูกไข่ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0010",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะหลก",
+      "transcriptions": [
+        "กะ-ลก",
+        "ka^1^-lok^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "กะหลก [กะ-ลก] [ka^1^-lok^4^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0011",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะแหฺมฺล",
+      "transcriptions": [
+        "กะ-แหฺมฺล้",
+        "ka^1^-mlɛː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แหม"
+      ],
+      "raw_text": "กะแหฺมฺล [กะ-แหฺมฺล้] [ka^1^-mlɛː^3^]\nดู แหม."
+    },
+    {
+      "id": "south_body_parts_0012",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะโหลก",
+      "transcriptions": [
+        "กะ-โล้ก",
+        "ka^1^-loːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "กะโหลก [กะ-โล้ก] [ka^1^-loːk^4^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0013",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กะโหลกหัว",
+      "transcriptions": [
+        "กะ-โล้ก-หั้ว",
+        "ka^1^-loːk^4^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "กะโหลกหัว [กะ-โล้ก-หั้ว] [ka^1^-loːk^4^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0014",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ก้าง",
+      "transcriptions": [
+        "กาง",
+        "kaːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้าง [กาง] [kaːŋ^1^]\nน. ก้าง, ส่วนแข็งที่ประกอบเป็นโครงร่างของปลา โดยปรกติหมายเอาชิ้นที่แหลม\nเล็ก ๆ."
+    },
+    {
+      "id": "south_body_parts_0015",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ก้านคอ",
+      "transcriptions": [
+        "กาน-คอ",
+        "kaːn^1^-k^h^ɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คอต่อ"
+      ],
+      "raw_text": "ก้านคอ [กาน-คอ] [kaːn^1^-k^h^ɔː^7^]\nดู คอต่อ."
+    },
+    {
+      "id": "south_body_parts_0016",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กาบ",
+      "transcriptions": [
+        "กาบ",
+        "kaːp^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กาบ [กาบ] [kaːp^1^]\nน. กาบ, เปลือกของหอยที่มีฝาประกบสองข้าง."
+    },
+    {
+      "id": "south_body_parts_0017",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ก้าม",
+      "transcriptions": [
+        "กาม",
+        "kaːm^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้าม [กาม] [kaːm^1^]\nน. ก้าม, ส่วนของมือจับแบบหนีบของสัตว์จำพวกกุ้ง ปู แมงป่อง เป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0018",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กาล้วงหม้อ",
+      "transcriptions": [
+        "กา-หฺล่วง-ม้อ",
+        "kaː^6^-luaŋ^2^-mɔː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กาล้วงหม้อ [กา-หฺล่วง-ม้อ] [kaː^6^-luaŋ^2^-mɔː^4^]\nน. ไหปลาร้า, หลุมข้างคอถัดกระดูกไหปลาร้าขึ้นไป; คลักนกจอก หรือ บ่อนกจอก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0019",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กำด้น",
+      "transcriptions": [
+        "กำ-ดน",
+        "kam^6^-don^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ท้ายด้น"
+      ],
+      "raw_text": "กำด้น [กำ-ดน] [kam^6^-don^1^]\nดู ท้ายด้น."
+    },
+    {
+      "id": "south_body_parts_0020",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กิ๊บ",
+      "transcriptions": [
+        "กิ๊บ",
+        "kip^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กีบ"
+      ],
+      "raw_text": "กิ๊บ [กิ๊บ] [kip^4^]\nดู กีบ."
+    },
+    {
+      "id": "south_body_parts_0021",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กีบ",
+      "transcriptions": [
+        "กีบ",
+        "kiːp^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กีบ [กีบ] [kiːp^1^]\nน. กีบ, เล็บเท้าสัตว์บางชนิดในพวกกินหญ้าอย่างม้าและวัว; กิ๊บ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0022",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "กุน",
+      "transcriptions": [
+        "กุน",
+        "kun^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตากใบ"
+      ],
+      "cross_references": [],
+      "raw_text": "กุน [กุน] [kun^6^]\nน. มดลูก, อวัยวะภายในอันเป็นที่ตั้งครรภ์; (ถิ่น-ตากใบ) สกุน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0023",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เกล็ด",
+      "transcriptions": [
+        "เกล็ด, เเกล็ด",
+        "klet^6^, klɛt^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เกล็ด [เกล็ด, เเกล็ด] [klet^6^, klɛt^6^]\n๑. น. เกล็ด, ส่วนที่เป็นแผ่น ๆ ซ้อนเหลื่อมกันห่อหุ้มตัวปลาและสัตว์เลื้อยคลานบางชนิด.\n๒. น. ลักษณะคล้ายเกล็ดที่หน้าแข้งไก่ นกเขา เป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0024",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แก้ม",
+      "transcriptions": [
+        "แกม",
+        "kɛːm^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แก้ม [แกม] [kɛːm^1^]\nน. แก้ม, บริเวณหน้าทั้ง ๒ ข้างถัดตาลงมา."
+    },
+    {
+      "id": "south_body_parts_0025",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แก้วหู",
+      "transcriptions": [
+        "แกว-หู้",
+        "kԑːw^1^-huː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แก้วหู [แกว-หู้] [kԑːw^1^-huː^3^]\nน. แก้วหู, เยื่อในหูสำหรับรับเสียง."
+    },
+    {
+      "id": "south_body_parts_0026",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โก้งกก",
+      "transcriptions": [
+        "โกง-กก",
+        "koːŋ^1^-kok^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โก้งกก [โกง-กก] [koːŋ^1^-kok^6^]\nน. กระดูกสันหลัง, กระดูกที่อยู่ในแนวกึ่งกลางทางด้านหลังของลำตัว เป็นแกนของร่างกาย\nมีลักษณะเป็นข้อ ๆ ต่อกันเป็นแนวตั้งแต่บริเวณคอต่อจนถึงบริเวณด้านหลังของทวารหนัก\nทำหน้าที่ป้องกันอันตรายให้แก่ไขสันหลัง."
+    },
+    {
+      "id": "south_body_parts_0027",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขน",
+      "transcriptions": [
+        "ข้น",
+        "k^h^on^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขน [ข้น] [k^h^on^3^]\nน. ขน, สิ่งเป็นเส้นขึ้นบนผิวหนังคนและสัตว์."
+    },
+    {
+      "id": "south_body_parts_0028",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนกล้อง",
+      "transcriptions": [
+        "ข้น-กฺลอง",
+        "k^h^on^3^-klɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนอุย"
+      ],
+      "raw_text": "ขนกล้อง [ข้น-กฺลอง] [k^h^on^3^-klɔːŋ^1^]\nดู ขนอุย."
+    },
+    {
+      "id": "south_body_parts_0029",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนแขน",
+      "transcriptions": [
+        "ข้น-แข้น",
+        "k^h^on^3^-k^h^ԑːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนแขน [ข้น-แข้น] [k^h^on^3^-k^h^ԑːn^3^]\nน. ขนแขน, ขนที่ขึ้นบริเวณแขน."
+    },
+    {
+      "id": "south_body_parts_0030",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนคา",
+      "transcriptions": [
+        "ข้น-คา",
+        "k^h^on^3^-k^h^aː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนอุย"
+      ],
+      "raw_text": "ขนคา [ข้น-คา] [k^h^on^3^-k^h^aː^7^]\nดู ขนอุย."
+    },
+    {
+      "id": "south_body_parts_0031",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนคิ้ว",
+      "transcriptions": [
+        "ข้น-ขิ่ว",
+        "k^h^on^3^-k^h^iw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนคิ้ว [ข้น-ขิ่ว] [k^h^on^3^-k^h^iw^2^]\nน. ขนคิ้ว, ขนที่ขึ้นบนส่วนโค้งขอบกระบอกตาทั้งสองข้าง."
+    },
+    {
+      "id": "south_body_parts_0032",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนงอกครั้งแรก",
+      "transcriptions": [
+        "ข้น-ฮ๋อก-ครั่ง-แร๋ก",
+        "k^h^on^3^-hɔːk^5^-k^h^raŋ^2^-rɛːk^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนอุย"
+      ],
+      "raw_text": "ขนงอกครั้งแรก [ข้น-ฮ๋อก-ครั่ง-แร๋ก]\n[k^h^on^3^-hɔːk^5^-k^h^raŋ^2^-rɛːk^5^]\nดู ขนอุย."
+    },
+    {
+      "id": "south_body_parts_0033",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนไช",
+      "transcriptions": [
+        "ข้น-ไช",
+        "k^h^on^3^-c^h^ay^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนไช [ข้น-ไช] [k^h^on^3^-c^h^ay^7^]\nน. หางกะลวย, ขนหางไก่ตัวผู้ที่ยาวกว่าเพื่อน; ขนหางไช ขนลวย หรือ ขนลาย ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0034",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนดอกกล้อง",
+      "transcriptions": [
+        "ข้น-ดอก-กฺลอง",
+        "k^h^on^3^-dɔːk^1^-klɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนอุย"
+      ],
+      "raw_text": "ขนดอกกล้อง [ข้น-ดอก-กฺลอง] [k^h^on^3^-dɔːk^1^-klɔːŋ^1^]\nดู ขนอุย."
+    },
+    {
+      "id": "south_body_parts_0035",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนตา",
+      "transcriptions": [
+        "ข้น-ตา",
+        "k^h^on^3^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนตา [ข้น-ตา] [k^h^on^3^-taː^6^]\nน. ขนตา, ขนที่ขึ้นบนเปลือกตาบนและเปลือกตาล่าง."
+    },
+    {
+      "id": "south_body_parts_0036",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนแต้",
+      "transcriptions": [
+        "ข้น-แต",
+        "k^h^on^3^-tɛː^1^"
+      ],
+      "notes": [
+        "ถิ่น-พัทลุง"
+      ],
+      "cross_references": [
+        "ขนแปรง"
+      ],
+      "raw_text": "ขนแต้ [ข้น-แต] [k^h^on^3^-tɛː^1^]\n(ถิ่น-พัทลุง) ดู ขนแปรง."
+    },
+    {
+      "id": "south_body_parts_0037",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนแปรง",
+      "transcriptions": [
+        "ข้น-แปฺรง",
+        "k^h^on^3^-prɛːŋ^6^"
+      ],
+      "notes": [
+        "ถิ่น-พัทลุง"
+      ],
+      "cross_references": [],
+      "raw_text": "ขนแปรง [ข้น-แปฺรง] [k^h^on^3^-prɛːŋ^6^]\nน. ขนแข็งบนสันคอหมู; (ถิ่น-พัทลุง) ขนแต้ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0038",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนยาโหด",
+      "transcriptions": [
+        "ข้น-ยา-โฮ้ด",
+        "k^h^on^3^-yaː^7^-hoːt^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนยาโหด [ข้น-ยา-โฮ้ด] [k^h^on^3^-yaː^7^-hoːt^4^]\nน. ขนที่ขึ้นเป็นกระจุกเหนือลูกกระเดือก บางคนเชื่อว่าถ้าโกนออกจะทำให้เจ้าของมีอันเป็นไป."
+    },
+    {
+      "id": "south_body_parts_0039",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนรักแร้",
+      "transcriptions": [
+        "ข้น-หฺรัก-แหฺร่",
+        "k^h^on^3^-rak^2^-rԑː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนรักแร้ [ข้น-หฺรัก-แหฺร่] [k^h^on^3^-rak^2^-rԑː^2^]\nน. ขนรักแร้, ขนที่ขึ้นบริเวณรักแร้."
+    },
+    {
+      "id": "south_body_parts_0040",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนลวย",
+      "transcriptions": [
+        "ข้น-ลวย",
+        "k^h^on^3^-luay^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนไช"
+      ],
+      "raw_text": "ขนลวย [ข้น-ลวย] [k^h^on^3^-luay^7^]\nดู ขนไช."
+    },
+    {
+      "id": "south_body_parts_0041",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนลาย",
+      "transcriptions": [
+        "ข้น-ไช",
+        "k^h^on^3^-chay^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนไช"
+      ],
+      "raw_text": "ขนลาย [ข้น-ไช] [k^h^on^3^-chay^7^]\n๑. ดู ขนไช.\n๒. น. ขนของลูกสัตว์ปีกที่ขึ้นใหม่ต่อจากขนอ่อน."
+    },
+    {
+      "id": "south_body_parts_0042",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนวาน",
+      "transcriptions": [
+        "ข้น-วาน",
+        "k^h^on^3^-waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนวาน [ข้น-วาน] [k^h^on^3^-waːn^7^]\nน. ขนตูด, ขนที่ขึ้นบริเวณทวารหนัก."
+    },
+    {
+      "id": "south_body_parts_0043",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนเสียบ",
+      "transcriptions": [
+        "ข้น-เซี้ยบ",
+        "k^h^on^3^-siap^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนเสียบ [ข้น-เซี้ยบ] [k^h^on^3^-siap^4^]\nน. รอยต่อด้านหลังกะโหลกไก่ ถ้าไก่ชนถูกตีหรือแทงที่จุดนี้จะตายทันที."
+    },
+    {
+      "id": "south_body_parts_0044",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนหน้าแข้ง",
+      "transcriptions": [
+        "ข้น-น้า-แค้ง",
+        "k^h^on^3^-naː^4^-k^h^ԑːŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนหน้าแข้ง [ข้น-น้า-แค้ง] [k^h^on^3^-naː^4^-k^h^ԑːŋ^4^]\nน. ขนหน้าแข้ง, ขนที่ขึ้นบริเวณหน้าแข้ง."
+    },
+    {
+      "id": "south_body_parts_0045",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนหน้าอก",
+      "transcriptions": [
+        "ข้น-น้า-อ็อก",
+        "k^h^on^3^-naː^4^-Ɂɔk^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนหน้าอก [ข้น-น้า-อ็อก] [k^h^on^3^-naː^4^-Ɂɔk^6^]\nน. ขนหน้าอก, ขนที่ขึ้นบริเวณหน้าอก."
+    },
+    {
+      "id": "south_body_parts_0046",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนหมอย",
+      "transcriptions": [
+        "ข้น-หฺม้อย",
+        "k^h^on^3^-mɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนหมอย [ข้น-หฺม้อย] [k^h^on^3^-mɔːy^3^]\nน. ขนหมอย, ขนที่ของลับ, หมอย ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0047",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนหมูก",
+      "transcriptions": [
+        "ข้น-มู้ก",
+        "k^h^on^3^-muːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนหมูก [ข้น-มู้ก] [k^h^on^3^-muːk^4^]\nน. ขนจมูก, ขนที่ขึ้นในรูจมูก."
+    },
+    {
+      "id": "south_body_parts_0048",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนหางไช",
+      "transcriptions": [
+        "ข้น-ห้าง-ไช",
+        "k^h^on^3^-haːŋ^3^-c^h^ay^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนไช"
+      ],
+      "raw_text": "ขนหางไช [ข้น-ห้าง-ไช] [k^h^on^3^-haːŋ^3^-c^h^ay^7^]\nดู ขนไช."
+    },
+    {
+      "id": "south_body_parts_0049",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนอ่อน",
+      "transcriptions": [
+        "ข้น-ออน",
+        "k^h^on^3^-ʔɔːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนอุย"
+      ],
+      "raw_text": "ขนอ่อน [ข้น-ออน] [k^h^on^3^-ʔɔːn^6^]\nดู ขนอุย."
+    },
+    {
+      "id": "south_body_parts_0050",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนอุย",
+      "transcriptions": [
+        "ข้น-อุย",
+        "k^h^on^3^-ʔuy^6^"
+      ],
+      "notes": [
+        "ถิ่น-พังงา,\nภูเก็ต"
+      ],
+      "cross_references": [],
+      "raw_text": "ขนอุย [ข้น-อุย] [k^h^on^3^-ʔuy^6^]\nน. ขนอุย, ขนอ่อน; ขนคา ขนงอกครั้งแรก ขนกล้อง ขนดอกกล้อง หรือ (ถิ่น-พังงา,\nภูเก็ต) ขนอูย ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0051",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขนอูย",
+      "transcriptions": [
+        "ข้น-อูย",
+        "k^h^on^3^-ʔuːy^6^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต"
+      ],
+      "cross_references": [
+        "ขนอุย"
+      ],
+      "raw_text": "ขนอูย [ข้น-อูย] [k^h^on^3^-ʔuːy^6^]\n(ถิ่น-ภูเก็ต) ดู ขนอุย."
+    },
+    {
+      "id": "south_body_parts_0052",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขลิก",
+      "transcriptions": [
+        "คฺลิก",
+        "k^h^lik^4^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [
+        "ไข่ ความหมายที่ ๑"
+      ],
+      "raw_text": "ขลิก [คฺลิก] [k^h^lik^4^]\n(ถิ่น-สุราษฎร์ธานี) ดู ไข่ ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0053",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขวดมัน",
+      "transcriptions": [
+        "ค้วด-มัน",
+        "k^h^uat^4^-man^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขวดมัน [ค้วด-มัน] [k^h^uat^4^-man^7^]\nน. ต่อมน้ำมันที่อยู่ที่ส่วนท้ายของก้นสัตว์ปีก สำหรับใช้จะงอยปากแตะแล้วนำมาไซ้ขนให้ลื่นมัน."
+    },
+    {
+      "id": "south_body_parts_0054",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ข้อ",
+      "transcriptions": [
+        "ค้อ",
+        "k^h^ɔː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ข้อ [ค้อ] [k^h^ɔː^4^]\nน. อวัยวะที่เป็นส่วนต่อและงอได้."
+    },
+    {
+      "id": "south_body_parts_0055",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขอบด้ง",
+      "transcriptions": [
+        "ข้อบ-ดง",
+        "k^h^ɔːp^3^-doŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขอบด้ง [ข้อบ-ดง] [k^h^ɔːp^3^-doŋ^1^]\n๑. น. ขอบกระด้ง, กระเพาะอาหารกระเพาะแรกของสัตว์เคี้ยวเอื้องเช่นวัวควาย\nมีขนาดใหญ่ที่สุดในจำนวน ๔ กระเพาะ เยื่อบุภายในมีสันคล้ายขอบกระด้ง.\n๒. น. อวัยวะเครื่องในสัตว์จำพวกวัวควาย ส่วนที่เป็นปมหนารอบนอกของผ้าขี้ริ้ว; ขอบนาง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0056",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขอบนาง",
+      "transcriptions": [
+        "ข้อบ",
+        "k^h^ɔːp^3^-naːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขอบด้ง ความหมายที่ ๒"
+      ],
+      "raw_text": "ขอบนาง [ข้อบ] [k^h^ɔːp^3^-naːŋ^7^]\nดู ขอบด้ง ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0057",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ข้อมือ",
+      "transcriptions": [
+        "ค้อ-มือ",
+        "k^h^ɔː^4^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ค่อมือ"
+      ],
+      "raw_text": "ข้อมือ [ค้อ-มือ] [k^h^ɔː^4^-mɨː^7^]\nดู ค่อมือ."
+    },
+    {
+      "id": "south_body_parts_0058",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขา",
+      "transcriptions": [
+        "ข้า",
+        "k^h^aː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขา [ข้า] [k^h^aː^3^]\nน. ขา, อวัยวะตั้งแต่ตะโพกถึงข้อเท้า สำหรับยันกายและเดินเป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0059",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขาไกร",
+      "transcriptions": [
+        "ข้า-ไกฺร",
+        "k^h^aː^3^-kray^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขาไตร"
+      ],
+      "raw_text": "ขาไกร [ข้า-ไกฺร] [k^h^aː^3^-kray^6^]\nดู ขาไตร."
+    },
+    {
+      "id": "south_body_parts_0060",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ข้างพุง",
+      "transcriptions": [
+        "ค้าง-พุง",
+        "k^h^aːŋ^4^-p^h^uŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เดียดน้ำ"
+      ],
+      "raw_text": "ข้างพุง [ค้าง-พุง] [k^h^aːŋ^4^-p^h^uŋ^7^]\nดู เดียดน้ำ."
+    },
+    {
+      "id": "south_body_parts_0061",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขาไตร",
+      "transcriptions": [
+        "ข้า",
+        "k^h^aː^3^-tray^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขาไตร [ข้า] [k^h^aː^3^-tray^6^]\nน. ขากรรไกร, กระดูกต้นคางที่อ้าขึ้นอ้าลง มีลักษณะอย่างกรรไกร; ขาไกร ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0062",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขิก",
+      "transcriptions": [
+        "คิก",
+        "k^h^ik^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่ ความหมายที่ ๑"
+      ],
+      "raw_text": "ขิก [คิก] [k^h^ik^4^]\nดู ไข่ ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0063",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขี้ปลา",
+      "transcriptions": [
+        "คี้-ปฺลา",
+        "k^h^iː^4^-plaː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุงปลา"
+      ],
+      "raw_text": "ขี้ปลา [คี้-ปฺลา] [k^h^iː^4^-plaː^6^]\nดู พุงปลา."
+    },
+    {
+      "id": "south_body_parts_0064",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ขุ้ม",
+      "transcriptions": [
+        "คุ้ม",
+        "k^h^um^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ขุ้ม [คุ้ม] [k^h^um^4^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0065",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เขอ",
+      "transcriptions": [
+        "เข้อ",
+        "k^h^әː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เขอ [เข้อ] [k^h^әː^3^]\nน. กระดูกเชิงกราน, กระดูกตะโพกที่มีสัณฐานอย่างเชิงกราน."
+    },
+    {
+      "id": "south_body_parts_0066",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เขอวาน",
+      "transcriptions": [
+        "เข้อ-วาน",
+        "k^h^әː^3^-waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เขอวาน [เข้อ-วาน] [k^h^әː^3^-waːn^7^]\nน. ก้นกบ, ส่วนล่างสุดของกระดูกสันหลัง; บับวาน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0067",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เขอหมูก",
+      "transcriptions": [
+        "เข้อ-มู้ก",
+        "k^h^әː^3^-muːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เขอหมูก [เข้อ-มู้ก] [k^h^әː^3^-muːk^4^]\nน. ขื่อจมูก, แกนกลางระหว่างช่องจมูก."
+    },
+    {
+      "id": "south_body_parts_0068",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แข้งบ้อง",
+      "transcriptions": [
+        "แค้ง-บอง",
+        "k^h^ԑːŋ^4^-bɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้งป้อง"
+      ],
+      "raw_text": "แข้งบ้อง [แค้ง-บอง] [k^h^ԑːŋ^4^-bɔːŋ^1^]\nดู แข้งป้อง."
+    },
+    {
+      "id": "south_body_parts_0069",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แข้งป้อง",
+      "transcriptions": [
+        "แค้ง-ปอง",
+        "k^h^ԑːŋ^4^-pɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้งป้อง [แค้ง-ปอง] [k^h^ԑːŋ^4^-pɔːŋ^1^]\nน. กล้ามเนื้อที่อยู่ด้านหลังหน้าแข้ง; แข้งบ้อง น่อง พุงแข้ง หรือ ล่อง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0070",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แข้งแห้ง",
+      "transcriptions": [
+        "แค้ง-แฮ้ง",
+        "k^h^ԑːŋ^4^-hԑːŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้งแห้ง [แค้ง-แฮ้ง] [k^h^ԑːŋ^4^-hԑːŋ^4^]\nน. สันหน้าแข้ง; หน้าแข้งแห้ง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0071",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไข่",
+      "transcriptions": [
+        "ไข้",
+        "k^h^ay^3^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี",
+        "ถิ่น-ภูเก็ต, พังงา",
+        "ถิ่น-ภูเก็ต, พังงา"
+      ],
+      "cross_references": [],
+      "raw_text": "ไข่ [ไข้] [k^h^ay^3^]\n๑. น. อวัยวะเพศชาย; กะดอ ขิก คุย ดอ บัก หยัก หัวบัก หัวหยัก หัวดอ หัวอยัก อยัก ไอ้ขิก\nไอ้เจียว (ถิ่น-สุราษฎร์ธานี) ขลิก ไอ้ขลิก (ถิ่น-ภูเก็ต, พังงา) เจี้ยว\nหรือ (ถิ่น-ภูเก็ต, พังงา) ไอ้เจี้ยว ก็ว่า.\n๒. น. อวัยวะเพศของสัตว์ตัวผู้.\n๓. น. ไข่, ตัวสืบพันธุ์ประกอบด้วยเซลล์สืบพันธุ์เพศเมีย อาหาร\nและสิ่งห่อหุ้มซึ่งอาจจะเป็นไข่ขาว วุ้น เยื่อถุงไข่ หรือเปลือก ส่วนมากมีรูปร่างกลม\nจะมีตัวอ่อนภายในหรือไม่ก็ได้."
+    },
+    {
+      "id": "south_body_parts_0072",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไข่ดัน",
+      "transcriptions": [
+        "ไข้-ดัน",
+        "k^h^ay^3^-dan^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกดัน"
+      ],
+      "raw_text": "ไข่ดัน [ไข้-ดัน] [k^h^ay^3^-dan^6^]\nดู ลูกดัน."
+    },
+    {
+      "id": "south_body_parts_0073",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไขผา",
+      "transcriptions": [
+        "ไข้-ผ้า",
+        "k^h^ay^3^-phaː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ไขผา [ไข้-ผ้า] [k^h^ay^3^-phaː^3^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0074",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คก",
+      "transcriptions": [
+        "ข็อก",
+        "k^h^ɔk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "คก [ข็อก] [k^h^ɔk^2^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0075",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คร่อม",
+      "transcriptions": [
+        "ขฺร๋อม",
+        "k^h^rɔːm^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "บัก ๑"
+      ],
+      "raw_text": "คร่อม [ขฺร๋อม] [k^h^rɔːm^5^]\nดู บัก ๑."
+    },
+    {
+      "id": "south_body_parts_0076",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คลักนกจอก",
+      "transcriptions": [
+        "ขฺลัก-หฺน็อก-จอก",
+        "k^h^lak^2^-nɔk^2^-cɔːk^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กาล้วงหม้อ"
+      ],
+      "raw_text": "คลักนกจอก [ขฺลัก-หฺน็อก-จอก] [k^h^lak^2^-nɔk^2^-cɔːk^6^]\n๑. ดู กาล้วงหม้อ.\n๒. น. จุดต่อระหว่างหัวกับคอสัตว์จำพวกวัว ลักษณะเป็นรอยบุ๋ม เป็นส่วนที่หุ้มก้านสมอง;\nนกจอกคลัก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0077",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ควม",
+      "transcriptions": [
+        "ควม",
+        "k^h^uam^7^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [],
+      "raw_text": "ควม [ควม] [k^h^uam^7^]\nน. เต้านมผู้หญิง; (ถิ่น-สุราษฎร์ธานี) พวม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0078",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ควย",
+      "transcriptions": [
+        "ควย",
+        "k^h^uay^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "ควย [ควย] [k^h^uay^7^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0079",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คอ",
+      "transcriptions": [
+        "คอ",
+        "k^h^ɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คอ [คอ] [k^h^ɔː^7^]\nน. คอ, ส่วนของร่างกายที่ต่อศีรษะกับตัว."
+    },
+    {
+      "id": "south_body_parts_0080",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คอต่อ",
+      "transcriptions": [
+        "คอ-ตอ",
+        "k^h^ɔː^7^-tɔː^6^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [],
+      "raw_text": "คอต่อ [คอ-ตอ] [k^h^ɔː^7^-tɔː^6^]\nน. ก้านคอ, ลำคอด้านข้างและด้านหลัง; ก้านคอ หรือ (ถิ่น-สุราษฎร์ธานี) ต้นคอ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0081",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ค่อมือ",
+      "transcriptions": [
+        "ขอ-มือ",
+        "k^h^ɔː^5^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ค่อมือ [ขอ-มือ] [k^h^ɔː^5^-mɨː^7^]\nน. ข้อมือ, ส่วนของมือที่มีข้อต่อและงอได้; ข้อมือ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0082",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คอหอย",
+      "transcriptions": [
+        "คอ-ห้อย",
+        "k^h^ɔː^7^-hɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คอหอย [คอ-ห้อย] [k^h^ɔː^7^-hɔːy^3^]\nน. คอหอย, อวัยวะภายในลำคอ\nเป็นทางร่วมของระบบทางเดินอาหารและระบบทางเดินอากาศหายใจ เริ่มตั้งแต่หลังโพรงจมูก\nหลังช่องปากลงไปจนถึงหลังกล่องเสียง."
+    },
+    {
+      "id": "south_body_parts_0083",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คอหอยน้ำ",
+      "transcriptions": [
+        "คอ-ห้อย-หฺน่าม",
+        "k^h^ɔː^7^-hɔːy^3^-naːm^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เอ็นคอหอย"
+      ],
+      "raw_text": "คอหอยน้ำ [คอ-ห้อย-หฺน่าม] [k^h^ɔː^7^-hɔːy^3^-naːm^2^]\nดู เอ็นคอหอย."
+    },
+    {
+      "id": "south_body_parts_0084",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คาก",
+      "transcriptions": [
+        "ข๋าก",
+        "k^h^aːk^5^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต"
+      ],
+      "cross_references": [
+        "พวม"
+      ],
+      "raw_text": "คาก [ข๋าก] [k^h^aːk^5^]\n๑. ดู พวม.\n๒. น. หัวตะคาก, แง่กระดูกเชิงกรานที่อยู่ใต้บั้นเอว; (ถิ่น-ภูเก็ต) หัวคะ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0085",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คาก",
+      "transcriptions": [
+        "ข๋าก",
+        "k^h^aːk^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พวม"
+      ],
+      "raw_text": "คาก [ข๋าก] [k^h^aːk^5^]\nดู พวม."
+    },
+    {
+      "id": "south_body_parts_0086",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คาง",
+      "transcriptions": [
+        "คาง",
+        "k^h^aːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คาง [คาง] [k^h^aːŋ^7^]\nน. คาง, ส่วนหน้าสุดของขากรรไกร อยู่ใต้ปาก."
+    },
+    {
+      "id": "south_body_parts_0087",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คิ้ว",
+      "transcriptions": [
+        "ขิ่ว",
+        "k^h^iw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คิ้ว [ขิ่ว] [k^h^iw^2^]\nน. คิ้ว, ส่วนโค้งขอบกระบอกตาข้างบนซึ่งมีขนขึ้นที่โค้งนั้น."
+    },
+    {
+      "id": "south_body_parts_0088",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "คุย",
+      "transcriptions": [
+        "คุย",
+        "k^h^uy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "คุย [คุย] [k^h^uy^7^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0089",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เคย",
+      "transcriptions": [
+        "เคย",
+        "k^h^әːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "เคย [เคย] [k^h^әːy^7^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0090",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เครา",
+      "transcriptions": [
+        "เคฺรา",
+        "k^h^raw^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เครา [เคฺรา] [k^h^raw^7^]\nน. เครา, ขนที่ขึ้นตามแก้มหรือขากรรไกร."
+    },
+    {
+      "id": "south_body_parts_0091",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เครื่องใน",
+      "transcriptions": [
+        "เขฺรือง-ไน",
+        "k^h^rɨaŋ^5^-nay^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เครื่องใน [เขฺรือง-ไน] [k^h^rɨaŋ^5^-nay^7^]\nน. เครื่องใน, อวัยวะภายในของสัตว์ยกเว้นปลา."
+    },
+    {
+      "id": "south_body_parts_0092",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โคนหู",
+      "transcriptions": [
+        "โคน-หู้",
+        "k^h^oːn^7^-huː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โคนหู [โคน-หู้] [k^h^oːn^7^-huː^3^]\nน. กกหู, บริเวณโคนหูส่วนหลังที่ติดกับศีรษะ; หลักหู ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0093",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โคบ",
+      "transcriptions": [
+        "โข๋บ",
+        "k^h^oːp^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "โคบ [โข๋บ] [k^h^oːp^5^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0094",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "งวง",
+      "transcriptions": [
+        "ฮวง",
+        "huaŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "งวง [ฮวง] [huaŋ^7^]\n๑. น. งวงช้าง, จมูกช้างที่ยาวยื่นออกไป ปลายสุดมีจะงอยจับอย่างมือ.\n๒. น. งวง, อวัยวะของสัตว์บางชนิดที่มีลักษณะยาวยื่นออกไปคล้ายงวง."
+    },
+    {
+      "id": "south_body_parts_0095",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "งอแต้",
+      "transcriptions": [
+        "ฮอ-แต",
+        "hɔː^7^-tɛː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นอแต้"
+      ],
+      "raw_text": "งอแต้ [ฮอ-แต] [hɔː^7^-tɛː^1^]\nดู นอแต้."
+    },
+    {
+      "id": "south_body_parts_0096",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "งา",
+      "transcriptions": [
+        "ฮา",
+        "haː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "งา [ฮา] [haː^7^]\nน. งา, ฟันตัดแถวบนที่งอกออกมาจากปากช้าง."
+    },
+    {
+      "id": "south_body_parts_0097",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ง่ามวาน",
+      "transcriptions": [
+        "หาม-วาน",
+        "haːm^5^-waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปางวาน"
+      ],
+      "raw_text": "ง่ามวาน [หาม-วาน] [haːm^5^-waːn^7^]\nดู ปางวาน."
+    },
+    {
+      "id": "south_body_parts_0098",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เงี่ยง ๑",
+      "transcriptions": [
+        "เหียง",
+        "hiaŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เงี่ยง ๑ [เหียง] [hiaŋ^5^]\nน. เงี่ยง, กระดูกแหลมของปลาบางชนิด อย่างปลากระเบนมีเงี่ยงที่โคนหาง\nหรือปลาดุกมีเงี่ยงที่ครีบอก; แง่ง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0099",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เงี่ยง ๒",
+      "transcriptions": [
+        "เหียง",
+        "hiaŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "เงี่ยง ๒ [เหียง] [hiaŋ^5^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0100",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แง่ง",
+      "transcriptions": [
+        "แหง",
+        "hɛːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เงี่ยง ๑"
+      ],
+      "raw_text": "แง่ง [แหง] [hɛːŋ^5^]\nดู เงี่ยง ๑."
+    },
+    {
+      "id": "south_body_parts_0101",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "จ้อน",
+      "transcriptions": [
+        "จอน",
+        "cɔːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "จอน"
+      ],
+      "raw_text": "จ้อน [จอน] [cɔːn^1^]\nดู จอน."
+    },
+    {
+      "id": "south_body_parts_0102",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "จอน",
+      "transcriptions": [
+        "จอน",
+        "cɔːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "จอน [จอน] [cɔːn^6^]\nน. จอน, ชายผมข้างหูที่ระลงมาที่แก้ม; จ้อน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0103",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "จุงอุด",
+      "transcriptions": [
+        "จุง-อุด",
+        "cuŋ^6^-Ɂut^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตรัง"
+      ],
+      "cross_references": [
+        "อุด ความหมายที่ ๒"
+      ],
+      "raw_text": "จุงอุด [จุง-อุด] [cuŋ^6^-Ɂut^6^]\n(ถิ่น-ตรัง) ดู อุด ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0104",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เจียว",
+      "transcriptions": [
+        "เจียว",
+        "ciaw^6^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต, พังงา"
+      ],
+      "cross_references": [],
+      "raw_text": "เจียว [เจียว] [ciaw^6^]\n(ถิ่น-ภูเก็ต, พังงา) น. เจี๊ยว, อวัยวะเพศเด็กผู้ชาย."
+    },
+    {
+      "id": "south_body_parts_0105",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฉ้วน",
+      "transcriptions": [
+        "ช้วน",
+        "c^h^uan^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "ฉ้วน [ช้วน] [c^h^uan^4^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0106",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฉับโผง",
+      "transcriptions": [
+        "ชับ-โผ้ง",
+        "c^h^ap^4^-p^h^oːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฉับโผง [ชับ-โผ้ง] [c^h^ap^4^-p^h^oːŋ^3^]\nน. ถุงลมของปลา."
+    },
+    {
+      "id": "south_body_parts_0107",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฉิม",
+      "transcriptions": [
+        "ฉิ้ม",
+        "c^h^im^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ฉิม [ฉิ้ม] [c^h^im^3^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0108",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ช่อตีน",
+      "transcriptions": [
+        "ฉอ-ตีน",
+        "c^h^ɔː^5^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ช่อตีน [ฉอ-ตีน] [c^h^ɔː^5^-tiːn^6^]\nน. ส่วนตีนของสัตว์กีบ."
+    },
+    {
+      "id": "south_body_parts_0109",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ชายโครง",
+      "transcriptions": [
+        "ชาย-โคฺรง",
+        "c^h^aːy^7^-k^h^roːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ชายโครง [ชาย-โคฺรง] [c^h^aːy^7^-k^h^roːŋ^7^]\nน. สีข้าง, ข้างทั้ง ๒ ของร่างกาย ถัดรักแร้ลงมาถึงสะเอว."
+    },
+    {
+      "id": "south_body_parts_0110",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดอ",
+      "transcriptions": [
+        "ดอ",
+        "dɔː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่ ความหมายที่ ๑"
+      ],
+      "raw_text": "ดอ [ดอ] [dɔː^6^]\nดู ไข่ ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0111",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดอง",
+      "transcriptions": [
+        "ดอง",
+        "dɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดอง [ดอง] [dɔːŋ^6^]\nน. กระดอง, กระดองของปูและเต่า."
+    },
+    {
+      "id": "south_body_parts_0112",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดองหมึก",
+      "transcriptions": [
+        "ดอง-มึก",
+        "dɔːŋ^6^-mɨk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดองหมึก [ดอง-มึก] [dɔːŋ^6^-mɨk^4^]\n๑. น. ลิ้นทะเล, กระดองปลาหมึกชนิดหนึ่ง สำหรับใช้ทำยาและขัดสิ่งของเป็นต้น; ลิ้นเล\nก็ว่า.\n๒. น. ส่วนแข็งคล้ายกระดูกที่อยู่ในตัวหมึก."
+    },
+    {
+      "id": "south_body_parts_0113",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดั้ง",
+      "transcriptions": [
+        "ดัง",
+        "daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดั้ง [ดัง] [daŋ^1^]\nน. ดั้ง, สันจมูก; ดั้งหมูก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0114",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดั้งหมูก",
+      "transcriptions": [
+        "ดัง-มู้ก",
+        "daŋ^1^-muːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดั้ง"
+      ],
+      "raw_text": "ดั้งหมูก [ดัง-มู้ก] [daŋ^1^-muːk^4^]\nดู ดั้ง."
+    },
+    {
+      "id": "south_body_parts_0115",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดาก",
+      "transcriptions": [
+        "ดาก",
+        "daːk^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดาก [ดาก] [daːk^1^]\n๑. น. ดาก, ปลายลำไส้บริเวณทวารหนัก; ทวยอุด ท้ายอุด หรือ อุด ก็ว่า.\n๒. น. ปากมดลูก."
+    },
+    {
+      "id": "south_body_parts_0116",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดากลีง",
+      "transcriptions": [
+        "ดาก-ลีง",
+        "daːk^1^-liːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดากลีง [ดาก-ลีง] [daːk^1^-liːŋ^1^]\nน. บริเวณก้นที่แข็งของลิง."
+    },
+    {
+      "id": "south_body_parts_0117",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดี",
+      "transcriptions": [
+        "ดี",
+        "diː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดี [ดี] [diː^6^]\nน. ดี, อวัยวะคนและสัตว์บางชนิดที่เก็บน้ำดีไว้สำหรับย่อยอาหาร."
+    },
+    {
+      "id": "south_body_parts_0118",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดือ",
+      "transcriptions": [
+        "ดือ",
+        "dɨː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดือ [ดือ] [dɨː^6^]\nน. สะดือ, ส่วนของร่างกายอยู่ตรงกลางพื้นท้องเป็นรูหวำเข้าไป."
+    },
+    {
+      "id": "south_body_parts_0119",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ดูก",
+      "transcriptions": [
+        "ดูก",
+        "โดก",
+        "duːk^1^",
+        "doːk^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูก [ดูก], [โดก] [duːk^1^], [doːk^1^]\nน. กระดูก, โครงร่างกายมีลักษณะแข็ง, ส่วนใดส่วนหนึ่งของโครงร่างกาย."
+    },
+    {
+      "id": "south_body_parts_0120",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เดียดน้ำ",
+      "transcriptions": [
+        "เดียด-หฺน่าม",
+        "diat^1^-naːm^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เดียดน้ำ [เดียด-หฺน่าม] [diat^1^-naːm^2^]\nน. ข้างสะเอว, ส่วนที่อยู่เหนือกระดูกเชิงกรานด้านข้าง; ข้างพุง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0121",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เดือก",
+      "transcriptions": [
+        "เดือก",
+        "dɨak^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเดือก"
+      ],
+      "raw_text": "เดือก [เดือก] [dɨak^1^]\nดู ลูกเดือก."
+    },
+    {
+      "id": "south_body_parts_0122",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เดือย",
+      "transcriptions": [
+        "เดือย",
+        "dɨay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เดือย [เดือย] [dɨay^6^]\nน. เดือย, อวัยวะของไก่ตัวผู้และนกบางชนิด มีรูปเรียวแหลม\nงอกขึ้นที่เหนือข้อตีนเบื้องหลัง."
+    },
+    {
+      "id": "south_body_parts_0123",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โดกหัว",
+      "transcriptions": [
+        "โดก-หั้ว",
+        "doːk^1^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "โดกหัว [โดก-หั้ว] [doːk^1^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0124",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โดง",
+      "transcriptions": [
+        "โดง",
+        "doːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โดง [โดง] [doːŋ^6^]\nน. กระโดง, ส่วนที่อยู่บนหลังปลาบางชนิด เช่นปลาฉลาม ปลากด ปลาแป้น\nมีลักษณะเป็นแผ่นตั้งคล้ายใบเรือ."
+    },
+    {
+      "id": "south_body_parts_0125",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ต้นคอ",
+      "transcriptions": [
+        "ตน-คอ",
+        "ton^1^-k^h^ɔː^7^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [
+        "คอต่อ"
+      ],
+      "raw_text": "ต้นคอ [ตน-คอ] [ton^1^-k^h^ɔː^7^]\n๑. น. ต้นคอ, ส่วนโคนของลำคอด้านหลัง.\n๒. (ถิ่น-สุราษฎร์ธานี) ดู คอต่อ."
+    },
+    {
+      "id": "south_body_parts_0126",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตับ",
+      "transcriptions": [
+        "ตับ",
+        "tap^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตับ [ตับ] [tap^6^]\nน. ตับ, อวัยวะประเภทต่อมของระบบทางเดินอาหารของคนและสัตว์ อยู่ในช่องท้อง\nทำหน้าที่ทำลายพิษ สร้างนํ้าดีและโปรตีนบางชนิด เป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0127",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตับเหล็ก",
+      "transcriptions": [
+        "ตับ-เล็ก",
+        "tap^6^-lek^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เหนียวดำ"
+      ],
+      "raw_text": "ตับเหล็ก [ตับ-เล็ก] [tap^6^-lek^4^]\nดู เหนียวดำ."
+    },
+    {
+      "id": "south_body_parts_0128",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตับอ่อน",
+      "transcriptions": [
+        "ตับ-ออน",
+        "tap^6^-Ɂɔːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตับอ่อน [ตับ-ออน] [tap^6^-Ɂɔːn^6^]\nน. ตับอ่อน, อวัยวะประเภทต่อมของระบบทางเดินอาหารของคน อยู่ในช่องท้อง\nทำหน้าที่สร้างและขับนํ้าย่อยอาหาร สร้างฮอร์โมน เช่น อินซูลิน."
+    },
+    {
+      "id": "south_body_parts_0129",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตา",
+      "transcriptions": [
+        "ตา",
+        "taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตา [ตา] [taː^6^]\nน. ตา, ส่วนหนึ่งของร่างกายคนและสัตว์ ทำหน้าที่ดู."
+    },
+    {
+      "id": "south_body_parts_0130",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตาขาว",
+      "transcriptions": [
+        "ตา-ข้าว",
+        "taː^6^-k^h^aːw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตาขาว [ตา-ข้าว] [taː^6^-k^h^aːw^3^]\nน. ตาขาว, ส่วนของลูกตาที่เป็นสีขาว."
+    },
+    {
+      "id": "south_body_parts_0131",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตาดำ",
+      "transcriptions": [
+        "ตา-ดำ",
+        "taː^6^-dam^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตาดำ [ตา-ดำ] [taː^6^-dam^6^]\nน. ตาดำ, ส่วนของลูกตาที่เป็นสีดำ."
+    },
+    {
+      "id": "south_body_parts_0132",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตีน",
+      "transcriptions": [
+        "ตีน",
+        "tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตีน [ตีน] [tiːn^6^]\nน. ตีน, อวัยวะส่วนล่างสุดของคนหรือสัตว์ นับตั้งแต่ใต้ข้อเท้าลงไป\nสำหรับยืนหรือเดินเป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0133",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตุ้งอุด",
+      "transcriptions": [
+        "ตุง-อุด",
+        "tuŋ^1^-Ɂut^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อุด ความหมายที่ ๒"
+      ],
+      "raw_text": "ตุ้งอุด [ตุง-อุด] [tuŋ^1^-Ɂut^6^]\nดู อุด ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0134",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตุ้ย",
+      "transcriptions": [
+        "ตุย",
+        "tuy^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เคย"
+      ],
+      "raw_text": "ตุ้ย [ตุย] [tuy^1^]\nดู เคย."
+    },
+    {
+      "id": "south_body_parts_0135",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ตุ้ย",
+      "transcriptions": [
+        "ตุย",
+        "tuy^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ตุ้ย [ตุย] [tuy^1^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0136",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เต็มตบ",
+      "transcriptions": [
+        "เต็ม-ต็อบ",
+        "tem^6^-tɔp^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หัวบับ"
+      ],
+      "raw_text": "เต็มตบ [เต็ม-ต็อบ] [tem^6^-tɔp^6^]\nดู หัวบับ."
+    },
+    {
+      "id": "south_body_parts_0137",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แตด",
+      "transcriptions": [
+        "แตด",
+        "tԑːt^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แตด [แตด] [tԑːt^1^]\nน. แตด, ส่วนของอวัยวะเพศหญิง; หลิด หรือ เหม็ดหมุด ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0138",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไต",
+      "transcriptions": [
+        "ไต",
+        "tay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไต [ไต] [tay^6^]\nน. ไต, อวัยวะคู่หนึ่งของคนและสัตว์ อยู่ในช่องท้องใกล้กระดูกสันหลัง\nทำหน้าที่ขับของเสียออกมากับนํ้าปัสสาวะ."
+    },
+    {
+      "id": "south_body_parts_0139",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ทวยอุด",
+      "transcriptions": [
+        "ทวย-อุด",
+        "t^h^uay^7^-Ɂut^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดาก ความหมายที่ ๑",
+        "อุด ความหมายที่ ๒"
+      ],
+      "raw_text": "ทวยอุด [ทวย-อุด] [t^h^uay^7^-Ɂut^6^]\n๑. ดู ดาก ความหมายที่ ๑.\n๒. ดู อุด ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0140",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ท้อง",
+      "transcriptions": [
+        "ทอง",
+        "t^h^ɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุง"
+      ],
+      "raw_text": "ท้อง [ทอง] [t^h^ɔːŋ^1^]\nดู พุง."
+    },
+    {
+      "id": "south_body_parts_0141",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ทัดดอกไม้",
+      "transcriptions": [
+        "ถัด-ดอก-หฺม่าย",
+        "t^h^at^2^-dɔːk^2^-maːy^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ทัดดอกไม้ [ถัด-ดอก-หฺม่าย] [t^h^at^2^-dɔːk^2^-maːy^2^]\nน. ทัดดอกไม้, ส่วนอวัยวะบริเวณเหนือใบหู."
+    },
+    {
+      "id": "south_body_parts_0142",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ทับ",
+      "transcriptions": [
+        "ถับ",
+        "t^h^ap^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ทับ [ถับ] [t^h^ap^2^]\nน. เปลือกปิดปากฝาหอย."
+    },
+    {
+      "id": "south_body_parts_0143",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ท้าย",
+      "transcriptions": [
+        "ถ่าย",
+        "t^h^aːy^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "ท้าย [ถ่าย] [t^h^aːy^2^]\nดู วาน."
+    },
+    {
+      "id": "south_body_parts_0144",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ท้ายด้น",
+      "transcriptions": [
+        "ถ่าย-ด็อน",
+        "t^h^aːy^2^-dɔn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ท้ายด้น [ถ่าย-ด็อน] [t^h^aːy^2^-dɔn^1^]\nน. ท้ายทอย, ส่วนสุดของกะโหลกศีรษะด้านหลัง, กำด้น ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0145",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ท้ายตุ้งอุด",
+      "transcriptions": [
+        "ถ่าย-ตุง-อุด",
+        "taːy^2^-tuŋ^1^-Ɂut^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อุด ความหมายที่ ๒"
+      ],
+      "raw_text": "ท้ายตุ้งอุด [ถ่าย-ตุง-อุด] [taːy^2^-tuŋ^1^-Ɂut^6^]\nดู อุด ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0146",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ท้ายอุด",
+      "transcriptions": [
+        "ถ่าย-อุด",
+        "t^h^aːy^2^-Ɂut^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดาก ความหมายที่ ๑",
+        "อุด ความหมายที่ ๒"
+      ],
+      "raw_text": "ท้ายอุด [ถ่าย-อุด] [t^h^aːy^2^-Ɂut^6^]\n๑. ดู ดาก ความหมายที่ ๑.\n๒. ดู อุด ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0147",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ทุ้งพร้า",
+      "transcriptions": [
+        "ถุ่ง-ผฺร่า",
+        "t^h^uŋ^2^-p^h^raː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เอ็นทุ่มพร้า"
+      ],
+      "raw_text": "ทุ้งพร้า [ถุ่ง-ผฺร่า] [t^h^uŋ^2^-p^h^raː^2^]\nดู เอ็นทุ่มพร้า."
+    },
+    {
+      "id": "south_body_parts_0148",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ทุ้ย",
+      "transcriptions": [
+        "ถุ่ย",
+        "tuy^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ทุ้ย [ถุ่ย] [tuy^2^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0149",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นกขุ้ม",
+      "transcriptions": [
+        "หฺนก-คุ้ม",
+        "nok^2^-k^h^um^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "นกขุ้ม [หฺนก-คุ้ม] [nok^2^-k^h^um^4^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0150",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นกจอกคลัก",
+      "transcriptions": [
+        "หฺนก-จอก-ขฺลัก",
+        "nok^2^-cɔːk^1^-k^h^lak^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คลักนกจอก ความหมายที่ ๒"
+      ],
+      "raw_text": "นกจอกคลัก [หฺนก-จอก-ขฺลัก] [nok^2^-cɔːk^1^-k^h^lak^2^]\nดู คลักนกจอก ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0151",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นม",
+      "transcriptions": [
+        "นม",
+        "nom^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นม [นม] [nom^7^]\nน. นม, ส่วนของร่างกาย อยู่บริเวณหน้าอก มี ๒ เต้า; นุม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0152",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นอ",
+      "transcriptions": [
+        "นอ",
+        "nɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นอ [นอ] [nɔː^7^]\nน. นอ, สิ่งที่งอกขึ้นเหนือจมูกแรด ยาวประมาณ ๑๒-๑๕ เซนติเมตร แข็งเหมือนเขาสัตว์."
+    },
+    {
+      "id": "south_body_parts_0153",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นอคาง",
+      "transcriptions": [
+        "นอ-คาง",
+        "nɔː^7^-k^h^aːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นอคาง [นอ-คาง] [nɔː^7^-k^h^aːŋ^7^]\nน. ปลายคาง, ลูกคาง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0154",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "น่อง",
+      "transcriptions": [
+        "หฺนอง",
+        "nɔːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้งป่อง"
+      ],
+      "raw_text": "น่อง [หฺนอง] [nɔːŋ^5^]\nดู แข้งป่อง."
+    },
+    {
+      "id": "south_body_parts_0155",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นอแต้",
+      "transcriptions": [
+        "นอ-แต",
+        "nɔː^7^-tԑː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นอแต้ [นอ-แต] [nɔː^7^-tԑː^1^]\nน. เนื้อวงกลมรอบปลายจมูกหมู ใช้ดุนดินหาอาหาร; นอแตะ หรือ งอแต้ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0156",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นอแตะ",
+      "transcriptions": [
+        "นอ-แตะ",
+        "nɔː^7^-tԑɁ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นอแต้"
+      ],
+      "raw_text": "นอแตะ [นอ-แตะ] [nɔː^7^-tԑɁ^6^]\nดู นอแต้."
+    },
+    {
+      "id": "south_body_parts_0157",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "น้ำเต้า",
+      "transcriptions": [
+        "หฺน่าม-เตา",
+        "naːm^2^-taw^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้อนเส้า ความหมายที่ ๒"
+      ],
+      "raw_text": "น้ำเต้า [หฺน่าม-เตา] [naːm^2^-taw^1^]\nดู ก้อนเส้า ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0158",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้ว",
+      "transcriptions": [
+        "หฺนิ่ว",
+        "niw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้ว [หฺนิ่ว] [niw^2^]\nน. นิ้ว, ส่วนสุดของมือหรือเท้าแต่ละข้าง."
+    },
+    {
+      "id": "south_body_parts_0159",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้วกลาง",
+      "transcriptions": [
+        "หฺนิ่ว-กฺลาง",
+        "niw^2^-klaːŋ^6^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต"
+      ],
+      "cross_references": [],
+      "raw_text": "นิ้วกลาง [หฺนิ่ว-กฺลาง] [niw^2^-klaːŋ^6^]\nน. นิ้วกลาง, นิ้วที่ ๓ ของมือ, (ถิ่น-ภูเก็ต) นิ้วผี ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0160",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้วก้อย",
+      "transcriptions": [
+        "หฺนิ่ว-กอย",
+        "niw^2^-kɔːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วก้อย [หฺนิ่ว-กอย] [niw^2^-kɔːy^6^]\nน. นิ้วก้อย, นิ้วที่ ๕ ของมือ."
+    },
+    {
+      "id": "south_body_parts_0161",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้วขลก",
+      "transcriptions": [
+        "หฺนิ่ว-คฺลก",
+        "niw^2^-k^h^lok^4^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [
+        "นิ้วชี้"
+      ],
+      "raw_text": "นิ้วขลก [หฺนิ่ว-คฺลก] [niw^2^-k^h^lok^4^]\n(ถิ่น-สุราษฎร์ธานี) ดู นิ้วชี้."
+    },
+    {
+      "id": "south_body_parts_0162",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้วชี้",
+      "transcriptions": [
+        "หฺนิ่ว-ฉี่",
+        "niw^2^-c^h^iː^2^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [],
+      "raw_text": "นิ้วชี้ [หฺนิ่ว-ฉี่] [niw^2^-c^h^iː^2^]\nน. นิ้วชี้, นิ้วที่ ๒ ของมือ, (ถิ่น-สุราษฎร์ธานี) นิ้วขลก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0163",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้วนาง",
+      "transcriptions": [
+        "หฺนิ่ว-นาง",
+        "niw^2^-naːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วนาง [หฺนิ่ว-นาง] [niw^2^-naːŋ^7^]\nน. นิ้วนาง, นิ้วที่ ๔ ของมือ."
+    },
+    {
+      "id": "south_body_parts_0164",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นิ้วผี",
+      "transcriptions": [
+        "หฺนิ่ว-ผี้",
+        "niw^2^-p^h^iː^3^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต"
+      ],
+      "cross_references": [
+        "นิ้วกลาง"
+      ],
+      "raw_text": "นิ้วผี [หฺนิ่ว-ผี้] [niw^2^-p^h^iː^3^]\n(ถิ่น-ภูเก็ต) ดู นิ้วกลาง."
+    },
+    {
+      "id": "south_body_parts_0165",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "นุม",
+      "transcriptions": [
+        "นุม",
+        "num^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นม"
+      ],
+      "raw_text": "นุม [นุม] [num^7^]\nดู นม."
+    },
+    {
+      "id": "south_body_parts_0166",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เนื้อ",
+      "transcriptions": [
+        "เหฺนื่อ",
+        "nɨa^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เนื้อ [เหฺนื่อ] [nɨa^2^]\nน. เนื้อ, ส่วนของร่างกายคนและสัตว์อยู่ถัดหนังเข้าไป."
+    },
+    {
+      "id": "south_body_parts_0167",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บอกหัว",
+      "transcriptions": [
+        "บอก-หั้ว",
+        "bɔːk^1^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "บอกหัว [บอก-หั้ว] [bɔːk^1^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0168",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บ้องตา",
+      "transcriptions": [
+        "บอง-ตา",
+        "bɔːŋ^1^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บ้องตา [บอง-ตา] [bɔːŋ^1^-taː^6^]\nน. เบ้าตา, กระบอกตา."
+    },
+    {
+      "id": "south_body_parts_0169",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บ้องหู",
+      "transcriptions": [
+        "บอง-หู้",
+        "bɔːŋ^1^-huː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "บั้งหู"
+      ],
+      "raw_text": "บ้องหู [บอง-หู้] [bɔːŋ^1^-huː^3^]\nดู บั้งหู."
+    },
+    {
+      "id": "south_body_parts_0170",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บ่อนกจอก",
+      "transcriptions": [],
+      "notes": [],
+      "cross_references": [
+        "กาล้วงหม้อ"
+      ],
+      "raw_text": "บ่อนกจอก ดู กาล้วงหม้อ."
+    },
+    {
+      "id": "south_body_parts_0171",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บัก ๑",
+      "transcriptions": [
+        "บัก",
+        "bak^6^"
+      ],
+      "notes": [
+        "ถิ่น-สงขลา"
+      ],
+      "cross_references": [],
+      "raw_text": "บัก ๑ [บัก] [bak^6^]\nน. กระดูกไหปลาร้า, กระดูกทั้งคู่ที่อยู่ต้นคอข้างหน้า; (ถิ่น-สงขลา) คร่อม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0172",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บัก ๒",
+      "transcriptions": [
+        "บัก",
+        "bak^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "บัก ๒ [บัก] [bak^6^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0173",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บั้งหู",
+      "transcriptions": [
+        "บัง-หู้",
+        "baŋ^1^-huː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บั้งหู [บัง-หู้] [baŋ^1^-huː^3^]\nน. บ้องหู, ช่องหู, รูหู; บ้องหู ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0174",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บั้นเอว",
+      "transcriptions": [
+        "บัน-เอว",
+        "ban^1^-ʔeːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บั้นเอว [บัน-เอว] [ban^1^-ʔeːw^6^]\nน. บั้นเอว, ส่วนกลางของร่างกายระหว่างชายโครงกับกระดูกตะโพก; หวั้นเอว หรือ เอว ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0175",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บับ",
+      "transcriptions": [
+        "บับ",
+        "bap^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หัวบับ"
+      ],
+      "raw_text": "บับ [บับ] [bap^6^]\nดู หัวบับ."
+    },
+    {
+      "id": "south_body_parts_0176",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บับวาน",
+      "transcriptions": [
+        "บับ-วาน",
+        "bap^6^-waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เขอวาน"
+      ],
+      "raw_text": "บับวาน [บับ-วาน] [bap^6^-waːn^7^]\nดู เขอวาน."
+    },
+    {
+      "id": "south_body_parts_0177",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บ่า",
+      "transcriptions": [
+        "บา",
+        "baː^6^",
+        "บา"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บ่า [บา] [baː^6^]\n[บา] น. บ่า, ส่วนของร่างกายระหว่างคอกับหัวไหล่."
+    },
+    {
+      "id": "south_body_parts_0178",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "บาลหัว",
+      "transcriptions": [
+        "บาน-หั้ว",
+        "baːn^6^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "บาลหัว [บาน-หั้ว] [baːn^6^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0179",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เบื้องหัว",
+      "transcriptions": [
+        "เบือง-หั้ว",
+        "bɨaŋ^1^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "เบื้องหัว [เบือง-หั้ว] [bɨaŋ^1^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0180",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แบ็ดหัว",
+      "transcriptions": [
+        "แบ็ด-หั้ว",
+        "bet^6^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "แบ็ดหัว [แบ็ด-หั้ว] [bet^6^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0181",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปลาโคบ",
+      "transcriptions": [
+        "ปฺลา-โข๋บ",
+        "plaː^6^-k^h^oːp^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ปลาโคบ [ปฺลา-โข๋บ] [plaː^6^-k^h^oːp^5^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0182",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปลาโคบ",
+      "transcriptions": [
+        "ปฺลา-โค๋บ",
+        "plaː^6^-k^h^oːp^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ปลาโคบ [ปฺลา-โค๋บ] [plaː^6^-k^h^oːp^5^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0183",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปอด",
+      "transcriptions": [
+        "ปอด",
+        "pɔːt^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปอด [ปอด] [pɔːt^1^]\nน. ปอด,\nอวัยวะทำหน้าที่เกี่ยวกับการหายใจอยู่ภายในร่างกายของคนหรือสัตว์ที่มีกระดูกสันหลังเป็นส่วนมาก."
+    },
+    {
+      "id": "south_body_parts_0184",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ป็อม",
+      "transcriptions": [
+        "ป็อม",
+        "pɔm^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หนอก"
+      ],
+      "raw_text": "ป็อม [ป็อม] [pɔm^6^]\nดู หนอก."
+    },
+    {
+      "id": "south_body_parts_0185",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปาก",
+      "transcriptions": [
+        "ปาก",
+        "paːk^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปาก [ปาก] [paːk^1^]\nน. ปาก, ส่วนหนึ่งของร่างกายคนและสัตว์ อยู่ที่บริเวณใบหน้า\nมีลักษณะเป็นช่องสำหรับกินอาหารและใช้สำหรับเปล่งเสียงได้ด้วย."
+    },
+    {
+      "id": "south_body_parts_0186",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ป้าง",
+      "transcriptions": [
+        "ปาง",
+        "paːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ป้าง [ปาง] [paːŋ^1^]\nน. ม้าม, อวัยวะภายในร่างกายของคน อยู่ริมกระเพาะอาหารข้างซ้าย\nมีหน้าที่ทำลายเม็ดเลือดแดง สร้างเม็ดนํ้าเหลืองและสร้างภูมิคุ้มกันของร่างกาย."
+    },
+    {
+      "id": "south_body_parts_0187",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปางวาน",
+      "transcriptions": [
+        "ปาง-วาน",
+        "paːŋ^6^-waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปางวาน [ปาง-วาน] [paːŋ^6^-waːn^7^]\nน. ง่ามก้น, แก้มตะโพกส่วนที่แยกจากกัน; ง่ามวาน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0188",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปีก",
+      "transcriptions": [
+        "ปีก",
+        "piːk^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปีก [ปีก] [piːk^1^]\nน. ปีก, อวัยวะสำหรับบินของนกหรือแมลงเป็นต้น, อวัยวะเช่นนั้นของสัตว์บางชนิด\nแต่ใช้บินไม่ได้."
+    },
+    {
+      "id": "south_body_parts_0189",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปีกไก่",
+      "transcriptions": [
+        "ปีก-ไก",
+        "piːk^1^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หัวบับ"
+      ],
+      "raw_text": "ปีกไก่ [ปีก-ไก] [piːk^1^-kay^6^]\nดู หัวบับ."
+    },
+    {
+      "id": "south_body_parts_0190",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ปุ้ย",
+      "transcriptions": [
+        "ปุย",
+        "puy^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "ปุ้ย [ปุย] [puy^1^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0191",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เปลือกไข่",
+      "transcriptions": [
+        "เปฺลือก-ไข้",
+        "plɨak^1^-kay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เปลือกไข่ [เปฺลือก-ไข้] [plɨak^1^-kay^3^]\nน. หนังหุ้มอวัยวะเพศชาย."
+    },
+    {
+      "id": "south_body_parts_0192",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เปลือกตา",
+      "transcriptions": [
+        "เปฺลือก-ตา",
+        "plɨak^1^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เปลือกตา [เปฺลือก-ตา] [plɨak^1^-taː^6^]\nน. เปลือกตา, หนังตา, หนังเป็นชั้น ๆ ที่หุ้มนัยน์ตา."
+    },
+    {
+      "id": "south_body_parts_0193",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เปลือกปาก",
+      "transcriptions": [
+        "เปฺลือก-ปาก",
+        "plɨak^1^-paːk^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เปลือกปาก [เปฺลือก-ปาก] [plɨak^1^-paːk^1^]\nน. ริมฝีปาก, เนื้อส่วนที่เป็นขอบรอบปาก."
+    },
+    {
+      "id": "south_body_parts_0194",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แป็ด",
+      "transcriptions": [
+        "เเป็ด",
+        "pɛt^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "แป็ด [เเป็ด] [pɛt^6^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0195",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ผม",
+      "transcriptions": [
+        "ผ้ม",
+        "p^h^om^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ผม [ผ้ม] [p^h^om^3^]\nน. ผม, ขนที่ขึ้นอยู่บนศีรษะ โดยปรกติเป็นเส้นยาว."
+    },
+    {
+      "id": "south_body_parts_0196",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ผ้าร้าย",
+      "transcriptions": [
+        "พ้า-หฺร่าย",
+        "p^h^aː^4^-raːy^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ผ้าร้าย [พ้า-หฺร่าย] [p^h^aː^4^-raːy^2^]\nน. ผ้าขี้ริ้ว, ชื่อเรียกกระเพาะอาหารกระเพาะที่ ๓ ของสัตว์เคี้ยวเอื้องเช่นวัวควาย\nเยื่อภายในมีแผ่นเนื้อเยื่อขนาดสั้นและยาวคล้ายกลีบอัดแน่นกันอยู่; สามสิบกลีบ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0197",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ผิว",
+      "transcriptions": [
+        "ผิ้ว",
+        "p^h^iw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ผิว [ผิ้ว] [p^h^iw^3^]\nน. ผิว, ส่วนที่มีลักษณะบาง ๆ เป็นพื้นหุ้มอยู่ภายนอกสุดของหนังและเปลือกเป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0198",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฝาตีน",
+      "transcriptions": [
+        "ฝ้า-ตีน, ขฺว้า-ตีน",
+        "faː^3^-tiːn^6^, k^h^waː^3^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฝาตีน [ฝ้า-ตีน, ขฺว้า-ตีน] [faː^3^-tiːn^6^, k^h^waː^3^-tiːn^6^]\nน. ฝ่าตีน, พื้นของเท้า."
+    },
+    {
+      "id": "south_body_parts_0199",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฝามือ",
+      "transcriptions": [
+        "ฝ้า-มือ, ขว้า-มือ",
+        "faː^3^-mɨː^7^, k^h^waː^3^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฝามือ [ฝ้า-มือ, ขว้า-มือ] [faː^3^-mɨː^7^, k^h^waː^3^-mɨː^7^]\nน. ฝ่ามือ, พื้นของมือ."
+    },
+    {
+      "id": "south_body_parts_0200",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พรกตีน",
+      "transcriptions": [
+        "ผฺร็อก-ตีน",
+        "p^h^rɔk^2^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พรกตีน [ผฺร็อก-ตีน] [p^h^rɔk^2^-tiːn^6^]\nน. อุ้งตีน, ส่วนกลางของฝ่าเท้า."
+    },
+    {
+      "id": "south_body_parts_0201",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พรกมือ",
+      "transcriptions": [
+        "ผฺร็อก-มือ",
+        "p^h^rɔk^2^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พรกมือ [ผฺร็อก-มือ] [p^h^rɔk^2^-mɨː^7^]\nน. อุ้งมือ, ส่วนกลางของฝ่ามือ; อางมือ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0202",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พรกหัว",
+      "transcriptions": [
+        "ผฺร็อก-หั้ว",
+        "p^h^rɔk^2^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "พรกหัว [ผฺร็อก-หั้ว] [p^h^rɔk^2^-hua^3^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0203",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พวม",
+      "transcriptions": [
+        "พวม",
+        "p^h^uam^7^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [
+        "ควม"
+      ],
+      "raw_text": "พวม [พวม] [p^h^uam^7^]\n๑. น. หัวหน่าว, ส่วนนูนเหนืออวัยวะเพศบริเวณใต้ท้องน้อยของคน; กะทงเหิน คาก หรือ\nเหฺมฺรา ก็ว่า.\n๒. (ถิ่น-สุราษฎร์ธานี) ดู ควม."
+    },
+    {
+      "id": "south_body_parts_0204",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พุง",
+      "transcriptions": [
+        "พุง",
+        "p^h^uŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พุง [พุง] [p^h^uŋ^7^]\nน. ท้อง, ส่วนของร่างกายด้านหน้า ตั้งแต่ลิ้นปี่จนถึงบริเวณต้นขา มีสะดืออยู่ตรงกลาง\nมีกระเพาะและไส้อยู่ภายใน; ท้อง ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0205",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พุงแข้ง",
+      "transcriptions": [
+        "พุง-แค้ง",
+        "p^h^uŋ^7^-k^h^ԑŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้งป้อง"
+      ],
+      "raw_text": "พุงแข้ง [พุง-แค้ง] [p^h^uŋ^7^-k^h^ԑŋ^4^]\nดู แข้งป้อง."
+    },
+    {
+      "id": "south_body_parts_0206",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พุงควาย",
+      "transcriptions": [
+        "พุง-คฺวาย",
+        "p^h^uŋ^7^-k^h^waːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พุงควาย [พุง-คฺวาย] [p^h^uŋ^7^-k^h^waːy^7^]\nน. เครื่องในควาย."
+    },
+    {
+      "id": "south_body_parts_0207",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พุงปลา",
+      "transcriptions": [
+        "พุง-ปฺลา",
+        "p^h^uŋ^7^-plaː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พุงปลา [พุง-ปฺลา] [p^h^uŋ^7^-plaː^6^]\nน. เครื่องในปลา; ขี้ปลา ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0208",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "พุงวัว",
+      "transcriptions": [
+        "พุง-วัว",
+        "p^h^uŋ^7^-wua^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พุงวัว [พุง-วัว] [p^h^uŋ^7^-wua^7^]\nน. เครื่องในวัว."
+    },
+    {
+      "id": "south_body_parts_0209",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เพาะ",
+      "transcriptions": [
+        "เผาะ",
+        "p^h^ɔɁ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เพาะ [เผาะ] [p^h^ɔɁ^2^]\nน. กระเพาะ, อวัยวะภายในของคนและสัตว์ ลักษณะคล้ายถุง ได้แก่\nกระเพาะอาหารและกระเพาะปัสสาวะ."
+    },
+    {
+      "id": "south_body_parts_0210",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โพก",
+      "transcriptions": [
+        "โผ๋ก",
+        "p^h^oːk^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โพก [โผ๋ก] [p^h^oːk^5^]\nน. สะโพก, ส่วนของร่างกายเบื้องหลังถัดบั้นเอวลงไป มีเนื้อเป็นกระพุ้งทั้ง ๒ ข้าง;\nหัววาน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0211",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฟัน",
+      "transcriptions": [
+        "ฟัน, คฺวัน",
+        "fan^7^, k^h^wan^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฟัน [ฟัน, คฺวัน] [fan^7^, k^h^wan^7^]\nน. ฟัน, กระดูกเป็นซี่ ๆ อยู่ในปากสำหรับกัด ฉีกเคี้ยวอาหาร"
+    },
+    {
+      "id": "south_body_parts_0212",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฟันกราม",
+      "transcriptions": [
+        "ฟัน-กฺราม, คฺวัน-กฺราม",
+        "fan^7^-kraːm^6^,\nk^h^wan^7^-kraːm^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฟันกราม [ฟัน-กฺราม, คฺวัน-กฺราม] [fan^7^-kraːm^6^,\nk^h^wan^7^-kraːm^6^]\nน. ฟันกราม, ฟันที่ใช้บดเคี้ยวอาหาร."
+    },
+    {
+      "id": "south_body_parts_0213",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฟันเขี้ยว",
+      "transcriptions": [
+        "ฟัน-เคี้ยว, คฺวัน-เคี้ยว",
+        "fan^7^-k^h^iaw^4^,\nk^h^wan^7^-k^h^iaw^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฟันเขี้ยว [ฟัน-เคี้ยว, คฺวัน-เคี้ยว] [fan^7^-k^h^iaw^4^,\nk^h^wan^7^-k^h^iaw^4^]\nน. ฟันเขี้ยว, ฟันที่อยู่ระหว่างฟันหน้ากับฟันกราม; เขี้ยว ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0214",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฟันจอบ",
+      "transcriptions": [
+        "ฟัน-จอบ, คฺวัน-จอบ",
+        "fan^7^-cɔːp^1^, k^h^wan^7^-cɔːp^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฟันจอบ [ฟัน-จอบ, คฺวัน-จอบ] [fan^7^-cɔːp^1^, k^h^wan^7^-cɔːp^1^]\nน. ฟันจอบ, ลักษณะของฟันบน ๒ ซี่หน้าที่ใหญ่กว่าปรกติ."
+    },
+    {
+      "id": "south_body_parts_0215",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฟันแท้",
+      "transcriptions": [
+        "ฟัน-แท, คฺวัน-แท",
+        "fan^7^-thɛː^1^, k^h^wan^7^-thɛː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฟันแท้ [ฟัน-แท, คฺวัน-แท] [fan^7^-thɛː^1^, k^h^wan^7^-thɛː^1^]\nน. ฟันแท้, ฟันชุดที่ ๒ ซึ่งขึ้นภายหลังฟันนํ้านม."
+    },
+    {
+      "id": "south_body_parts_0216",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ฟันน้ำนม",
+      "transcriptions": [
+        "ฟัน-หฺน่าม-นม, คฺวัน-หฺน่าม-นม",
+        "fan^7^-naːm^2^-nom^7^",
+        "k^h^wan^7^-naːm^2^-nom^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฟันน้ำนม [ฟัน-หฺน่าม-นม, คฺวัน-หฺน่าม-นม]\n[fan^7^-naːm^2^-nom^7^], [k^h^wan^7^-naːm^2^-nom^7^]\nน. ฟันน้ำนม, ฟันชุดแรก."
+    },
+    {
+      "id": "south_body_parts_0217",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "มือ",
+      "transcriptions": [
+        "มือ",
+        "mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "มือ [มือ] [mɨː^7^]\nน. มือ, อวัยวะส่วนหนึ่งของร่างกายอยู่ต่อจากปลายแขนประกอบด้วยฝ่ามือและนิ้วมือ\nสำหรับจับเป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0218",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โมง",
+      "transcriptions": [
+        "โมง",
+        "moːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "โมง [โมง] [moːŋ^7^]\nดู วาน."
+    },
+    {
+      "id": "south_body_parts_0219",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โมงใน",
+      "transcriptions": [
+        "โมง-ไน",
+        "moːŋ^7^-nay^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โมงใน [โมง-ไน] [moːŋ^7^-nay^7^]\nน. ลำไส้เล็กของวัวหรือควาย."
+    },
+    {
+      "id": "south_body_parts_0220",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โมงส้ม",
+      "transcriptions": [
+        "โมง-ซ้ม",
+        "moːŋ^7^-som^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "โมงส้ม [โมง-ซ้ม] [moːŋ^7^-som^4^]\n๑. น. ลำไส้ใหญ่ของวัวหรือควาย.\n๒. ดู วาน."
+    },
+    {
+      "id": "south_body_parts_0221",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ยอดอก",
+      "transcriptions": [
+        "ย๋อด-อ็อก",
+        "yɔːt^5^-ʔɔk^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ยอดอก [ย๋อด-อ็อก] [yɔːt^5^-ʔɔk^6^]\nน. ยอดอก, ส่วนบนสุดของอก."
+    },
+    {
+      "id": "south_body_parts_0222",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รก",
+      "transcriptions": [
+        "หฺร็อก",
+        "rɔk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รก [หฺร็อก] [rɔk^2^]\nน. รก, เครื่องสำหรับหล่อเลี้ยงตัวอ่อนในครรภ์แนบอยู่กับมดลูก\nมีสายล่ามมาที่สะดือของตัวอ่อน."
+    },
+    {
+      "id": "south_body_parts_0223",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รกขี้",
+      "transcriptions": [
+        "หฺร็อก-คี้",
+        "rɔk^2^-k^h^iː^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "รกขี้ [หฺร็อก-คี้] [rɔk^2^-k^h^iː^4^]\nดู วาน."
+    },
+    {
+      "id": "south_body_parts_0224",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ระอาง",
+      "transcriptions": [
+        "ระ-อาง",
+        "ra^1^-ʔaːŋ^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตากใบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ระอาง [ระ-อาง] [ra^1^-ʔaːŋ^6^]\n(ถิ่น-ตากใบ) น. เพดานปาก, ส่วนบนของอุ้งปาก."
+    },
+    {
+      "id": "south_body_parts_0225",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รักแร้",
+      "transcriptions": [
+        "หฺรัก-แร",
+        "rak^2^-rɛː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รักแร้ [หฺรัก-แร] [rak^2^-rɛː^1^]\nน. รักแร้, ส่วนร่างกายที่อยู่ใต้โคนแขนเหนือสีข้างขึ้นไป."
+    },
+    {
+      "id": "south_body_parts_0226",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รักแร้แดง",
+      "transcriptions": [
+        "หฺรัก-แหฺร่-แดง",
+        "rak^2^-rɛː^2^-dɛːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รักแร้แดง [หฺรัก-แหฺร่-แดง] [rak^2^-rɛː^2^-dɛːŋ^6^]\nน. บริเวณที่ติดหลังโคนขาหน้าข้างซ้ายของสัตว์ประเภทเคี้ยวเอื้องเช่นวัวควาย\nเป็นตำแหน่งที่ตรงกับหัวใจ."
+    },
+    {
+      "id": "south_body_parts_0227",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รังไข่",
+      "transcriptions": [
+        "รัง-ไข้",
+        "raŋ^7^-k^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รังไข่ [รัง-ไข้] [raŋ^7^-k^h^ay^3^]\nน. ถุงอัณฑะ, ถุงที่ห่อหุ้มส่วนหนึ่งของอวัยวะลับชาย."
+    },
+    {
+      "id": "south_body_parts_0228",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รังท้อง",
+      "transcriptions": [
+        "รัง-ถ่อง",
+        "raŋ^7^-t^h^ɔːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ช้างท้อง"
+      ],
+      "raw_text": "รังท้อง [รัง-ถ่อง] [raŋ^7^-t^h^ɔːŋ^2^]\nดู ช้างท้อง."
+    },
+    {
+      "id": "south_body_parts_0229",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รางท้อง",
+      "transcriptions": [
+        "ราง-ถ่อง",
+        "raːŋ^7^-t^h^ɔːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ช้างท้อง"
+      ],
+      "raw_text": "รางท้อง [ราง-ถ่อง] [raːŋ^7^-t^h^ɔːŋ^2^]\nดู ช้างท้อง."
+    },
+    {
+      "id": "south_body_parts_0230",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ริ้งไร",
+      "transcriptions": [
+        "หฺริ่ง-ไร",
+        "riŋ^2^-ray^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ริ้งไร [หฺริ่ง-ไร] [riŋ^2^-ray^7^]\nน. เส้นสองสลึง, เอ็นใต้ส่วนหัวของอวัยวะเพศชาย."
+    },
+    {
+      "id": "south_body_parts_0231",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รุกขี้",
+      "transcriptions": [
+        "หฺรุก-คี้",
+        "ruk^2^-k^h^iː^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "รุกขี้ [หฺรุก-คี้] [ruk^2^-k^h^iː^4^]\nดู วาน."
+    },
+    {
+      "id": "south_body_parts_0232",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "รูขี้",
+      "transcriptions": [
+        "รู-คี้",
+        "ruː^7^-k^h^iː^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "รูขี้ [รู-คี้] [ruː^7^-k^h^iː^4^]\nดู วาน."
+    },
+    {
+      "id": "south_body_parts_0233",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แร้ง",
+      "transcriptions": [
+        "แหฺร่ง",
+        "rɛːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แร้ง [แหฺร่ง] [rɛːŋ^2^]\n๑. น. เหนียง, เนื้อหรือหนังที่ห้อยอยู่บริเวณใต้คอของวัว.\n๒. น. เหนียง, เนื้อหรือหนังที่ห้อยอยู่บริเวณใต้คางทั้ง ๒ ข้างของไก่; หูน้ำ หรือ เหนียง\nก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0234",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ล่อง",
+      "transcriptions": [
+        "หฺลอง",
+        "lɔːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้งป่อง"
+      ],
+      "raw_text": "ล่อง [หฺลอง] [lɔːŋ^5^]\nดู แข้งป่อง."
+    },
+    {
+      "id": "south_body_parts_0235",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลักยิ้ม",
+      "transcriptions": [
+        "หฺลัก-หฺยิ่ม",
+        "lak^2^-yim^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลักยิ้ม [หฺลัก-หฺยิ่ม] [lak^2^-yim^2^]\nน. ลักยิ้ม, รอยเล็ก ๆ ที่บุ๋มลงไปที่แก้ม."
+    },
+    {
+      "id": "south_body_parts_0236",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายขี้หวาย",
+      "transcriptions": [
+        "ลาย-คี้-หฺว้าย",
+        "laːy^7^-k^h^iː^4^-waːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลายพับหวาย"
+      ],
+      "raw_text": "ลายขี้หวาย [ลาย-คี้-หฺว้าย] [laːy^7^-k^h^iː^4^-waːy^3^]\nดู ลายพับหวาย."
+    },
+    {
+      "id": "south_body_parts_0237",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายขี้หอย",
+      "transcriptions": [
+        "ลาย-คี้-ห้อย",
+        "laːy^7^-k^h^iː^4^-hɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลายขี้หอย [ลาย-คี้-ห้อย] [laːy^7^-k^h^iː^4^-hɔːy^3^]\nน. ลายนิ้วมือที่เป็นรูปก้นหอย; ลายเวียนลุกขี้หอย หรือ ลายเวียนรูขี้หอย ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0238",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายพับหวาย",
+      "transcriptions": [
+        "ลาย-ผับ-หฺว้าย",
+        "laːy^7^-p^h^ap^2^-waːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลายพับหวาย [ลาย-ผับ-หฺว้าย] [laːy^7^-p^h^ap^2^-waːy^3^]\nน. ลายนิ้วมือที่มีลักษณะพับทบเข้าชิดกัน; ลายมัดหวาย หรือ ลายขี้หวาย ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0239",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายมัดหวาย",
+      "transcriptions": [
+        "ลาย-หฺมัด-หฺว้าย",
+        "laːy^7^-mat^2^-waːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลายพับหวาย"
+      ],
+      "raw_text": "ลายมัดหวาย [ลาย-หฺมัด-หฺว้าย] [laːy^7^-mat^2^-waːy^3^]\nดู ลายพับหวาย."
+    },
+    {
+      "id": "south_body_parts_0240",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายมือ",
+      "transcriptions": [
+        "ลาย-มือ",
+        "laːy^7^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลายมือ [ลาย-มือ] [laːy^7^-mɨː^7^]\n๑. น. ลายมือ, รอยเส้นที่ฝ่ามือ.\n๒. น. ลายมือ, ลายนิ้วมือ."
+    },
+    {
+      "id": "south_body_parts_0241",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายเวียนรูขี้หอย",
+      "transcriptions": [
+        "ลาย-เวียน-รู-คี้-ห้อย",
+        "laːy^7^-wian^7^-ruː^7^-k^h^iː^4^-hɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลายขี้หอย"
+      ],
+      "raw_text": "ลายเวียนรูขี้หอย [ลาย-เวียน-รู-คี้-ห้อย]\n[laːy^7^-wian^7^-ruː^7^-k^h^iː^4^-hɔːy^3^]\nดู ลายขี้หอย."
+    },
+    {
+      "id": "south_body_parts_0242",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลายเวียนลุกขี้หอย",
+      "transcriptions": [
+        "ลาย-เวียน-หฺลุก-คี้-ห้อย",
+        "laːy^7^-wian^7^-luk^2^-k^h^iː^4^-hɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลายขี้หอย"
+      ],
+      "raw_text": "ลายเวียนลุกขี้หอย [ลาย-เวียน-หฺลุก-คี้-ห้อย]\n[laːy^7^-wian^7^-luk^2^-k^h^iː^4^-hɔːy^3^]\nดู ลายขี้หอย."
+    },
+    {
+      "id": "south_body_parts_0243",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลิ้น",
+      "transcriptions": [
+        "หฺลิ่น",
+        "lin^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลิ้น [หฺลิ่น] [lin^2^]\nน. ลิ้น, อวัยวะที่อยู่ในปาก มีหน้าที่ ๑. กลั้วอาหารให้เข้ากันแล้วส่งลงในลำคอ ๒.\nช่วยในการออกเสียง ๓. ให้รู้รส, ลิ้นสัตว์บางจำพวกเช่นจำพวกที่มีขน\nใช้ลิ้นเลียขนเลียแผลเพื่อทำความสะอาดได้"
+    },
+    {
+      "id": "south_body_parts_0244",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลิ้นไก่",
+      "transcriptions": [
+        "หฺลิ่น-ไก",
+        "lin^2^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลิ้นไก่ [หฺลิ่น-ไก] [lin^2^-kay^6^]\nน. ลิ้นไก่, ติ่งบนเพดานอ่อนที่ยื่นลงมาในช่องปาก; อางไก่ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0245",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลิ้นปี่",
+      "transcriptions": [
+        "หฺลิ่น-ปี",
+        "lin^2^-piː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลิ้นปี่ [หฺลิ่น-ปี] [lin^2^-piː^6^]\nน. ลิ้นปี่, ส่วนปลายล่างของกระดูกอกที่ย้อยลงมาในผนังหน้าท้องส่วนบน."
+    },
+    {
+      "id": "south_body_parts_0246",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลิ้นเล",
+      "transcriptions": [
+        "หฺลิ่น-เล",
+        "lin^2^-leː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดองหมึก ความหมายที่ ๑"
+      ],
+      "raw_text": "ลิ้นเล [หฺลิ่น-เล] [lin^2^-leː^7^]\nดู ดองหมึก ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0247",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลุกขี้",
+      "transcriptions": [
+        "หฺลุก-คี้",
+        "luk^2^-kiː^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "วาน"
+      ],
+      "raw_text": "ลุกขี้ [หฺลุก-คี้] [luk^2^-kiː^4^]\nดู วาน."
+    },
+    {
+      "id": "south_body_parts_0248",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกขลุด",
+      "transcriptions": [
+        "โหฺล๋ก-คฺลุด",
+        "loːk^5^-k^h^lut^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขลุด"
+      ],
+      "raw_text": "ลูกขลุด [โหฺล๋ก-คฺลุด] [loːk^5^-k^h^lut^4^]\nดู ขลุด."
+    },
+    {
+      "id": "south_body_parts_0249",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกไข่",
+      "transcriptions": [
+        "โล๋ก-ไข้",
+        "loːk^5^-k^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะโปก"
+      ],
+      "raw_text": "ลูกไข่ [โล๋ก-ไข้] [loːk^5^-k^h^ay^3^]\nดู กะโปก."
+    },
+    {
+      "id": "south_body_parts_0250",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกคาง",
+      "transcriptions": [
+        "โหฺล๋ก-คาง",
+        "loːk^5^-k^h^aːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นอคาง"
+      ],
+      "raw_text": "ลูกคาง [โหฺล๋ก-คาง] [loːk^5^-k^h^aːŋ^7^]\nดู นอคาง."
+    },
+    {
+      "id": "south_body_parts_0251",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกดัน",
+      "transcriptions": [
+        "โหฺล๋ก-ดัน",
+        "loːk^5^-dan^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกดัน [โหฺล๋ก-ดัน] [loːk^5^-dan^6^]\nน. ไข่ดัน, ต่อมนํ้าเหลืองที่อยู่ใต้ผิวหนังของบริเวณขาหนีบ\nซึ่งเป็นแนวต่อระหว่างลำตัวกับต้นขา มีหน้าที่กักและทำลายเชื้อโรคที่อาจผ่านเข้าในร่างกายท่อนบน;\nไข่ดัน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0252",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกเดือก",
+      "transcriptions": [
+        "โล๋ก-เดือก",
+        "loːk^5^-dɨak^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเดือก [โล๋ก-เดือก] [loːk^5^-dɨak^1^]\nน. ลูกกระเดือก, ส่วนของกล่องเสียง มีลักษณะโปนออกมากลางลำคอเหนือท่อลม\nเห็นได้ชัดในผู้ชาย; กม หรือ เดือก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0253",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกตา",
+      "transcriptions": [
+        "โล๋ก-ตา",
+        "loːk^5^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตา"
+      ],
+      "raw_text": "ลูกตา [โล๋ก-ตา] [loːk^5^-taː^6^]\nดู ตา."
+    },
+    {
+      "id": "south_body_parts_0254",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกบ้า",
+      "transcriptions": [
+        "โหฺล๋ก-บา",
+        "loːk^5^-baː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกบ้าหัวเข่า"
+      ],
+      "raw_text": "ลูกบ้า [โหฺล๋ก-บา] [loːk^5^-baː^1^]\nดู ลูกบ้าหัวเข่า."
+    },
+    {
+      "id": "south_body_parts_0255",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ลูกบ้าหัวเข่า",
+      "transcriptions": [
+        "โหฺล๋ก-บา-หั้ว-เข้า",
+        "loːk^5^-baː^1^-hua^3^-k^h^aw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกบ้าหัวเข่า [โหฺล๋ก-บา-หั้ว-เข้า] [loːk^5^-baː^1^-hua^3^-k^h^aw^3^]\nน. สะบ้าหัวเข่า, กระดูกมีลักษณะกลม ๆ แบน ๆ คล้ายลูกสะบ้า\nมีเอ็นยึดระหว่างกล้ามเนื้อต้นขาด้านหน้ากับกระดูกหน้าแข้ง\nประกอบเป็นส่วนนูนสุดของกระดูกหัวเข่า; ลูกบ้า ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0256",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แล็ดไข่",
+      "transcriptions": [
+        "แหฺล็ด-ไข้",
+        "let^2^-k^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะโปก"
+      ],
+      "raw_text": "แล็ดไข่ [แหฺล็ด-ไข้] [let^2^-k^h^ay^3^]\nดู กะโปก."
+    },
+    {
+      "id": "south_body_parts_0257",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เเล็บ",
+      "transcriptions": [
+        "แหฺล็บ",
+        "lԑp^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เเล็บ [แหฺล็บ] [lԑp^2^]\nน. เล็บ, สิ่งที่มีลักษณะแข็งอย่างเขาสัตว์อยู่ปลายนิ้วมือและเท้า."
+    },
+    {
+      "id": "south_body_parts_0258",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "วาน",
+      "transcriptions": [
+        "วาน",
+        "waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "วาน [วาน] [waːn^7^]\n๑. น. ก้น, ส่วนเบื้องล่างของลำตัวของคนหรือส่วนท้ายของลำตัวของสัตว์; ท้าย รกขี้ รุกขี้\nรูขี้ ลุกขี้ ลูกขี้ โมง หรือ โมงส้ม ก็ว่า.\n๒. น. ทวารหนัก, ช่องสำหรับขับถ่ายอุจจาระ; ท้าย รกขี้ รุกขี้ รูขี้ ลุกขี้ ลูกขี้ โมง หรือ\nโมงส้ม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0259",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ศอก",
+      "transcriptions": [
+        "ซ้อก",
+        "sɔːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หัวศอก"
+      ],
+      "raw_text": "ศอก [ซ้อก] [sɔːk^4^]\nดู หัวศอก."
+    },
+    {
+      "id": "south_body_parts_0260",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "สกุน",
+      "transcriptions": [
+        "สะ-กุน",
+        "sa^1^-kun^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตากใบ"
+      ],
+      "cross_references": [
+        "กุน"
+      ],
+      "raw_text": "สกุน [สะ-กุน] [sa^1^-kun^6^]\n(ถิ่น-ตากใบ) ดู กุน."
+    },
+    {
+      "id": "south_body_parts_0261",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ส้น",
+      "transcriptions": [
+        "ซ้น",
+        "son^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ส้น [ซ้น] [son^4^]\nน. ส้นเท้า, ส่วนท้ายของเท้า; หัวส้น หรือ ส้นตีน ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0262",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ส้นตีน",
+      "transcriptions": [
+        "ซ้น-ตีน",
+        "son^4^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้น"
+      ],
+      "raw_text": "ส้นตีน [ซ้น-ตีน] [son^4^-tiːn^6^]\nดู ส้น."
+    },
+    {
+      "id": "south_body_parts_0263",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ส้นมือ",
+      "transcriptions": [
+        "ซ้น-มือ",
+        "son^4^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ส้นมือ [ซ้น-มือ] [son^4^-mɨː^7^]\nน. ส้นมือ, ส่วนท้ายของฝ่ามือ."
+    },
+    {
+      "id": "south_body_parts_0264",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "สร้อย",
+      "transcriptions": [
+        "ซ้อย",
+        "sɔːy^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สร้อย [ซ้อย] [sɔːy^4^]\n๑. น. สร้อย, ขนคอสัตว์บางชนิดอย่างไก่ นก.\n๒. น. ครีบที่คอปลากัด."
+    },
+    {
+      "id": "south_body_parts_0265",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "สอบหมากช้าง",
+      "transcriptions": [
+        "ส้อบ-ม้าก-ฉ่าง",
+        "sɔːp^3^-maːk^3^-c^h^aːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สอบหมากช้าง [ส้อบ-ม้าก-ฉ่าง] [sɔːp^3^-maːk^3^-c^h^aːŋ^2^]\nน. อวัยวะเพศของช้างพัง."
+    },
+    {
+      "id": "south_body_parts_0266",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "สามสิบกลีบ",
+      "transcriptions": [
+        "ส้าม-ซิบ-กฺลีบ",
+        "saːm^3^-sip^4^-kliːp^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ผ้าร้าย"
+      ],
+      "raw_text": "สามสิบกลีบ [ส้าม-ซิบ-กฺลีบ] [saːm^3^-sip^4^-kliːp^1^]\nดู ผ้าร้าย."
+    },
+    {
+      "id": "south_body_parts_0267",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แส็ด",
+      "transcriptions": [
+        "แซ็ด",
+        "sɛt^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แส็ด [แซ็ด] [sɛt^4^]\nน. ครีบ, อวัยวะที่เป็นแผ่นติดกันเป็นพืดอยู่ใต้ท้องและสันหลังของปลาเป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0268",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "แส้ม้า",
+      "transcriptions": [
+        "แซ้-หฺม่า",
+        "sɛː^4^-maː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แส้ม้า [แซ้-หฺม่า] [sɛː^4^-maː^2^]\nน. แผงคอ, แผงขนคอม้า."
+    },
+    {
+      "id": "south_body_parts_0269",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไส้",
+      "transcriptions": [
+        "ไซ้",
+        "say^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไส้ [ไซ้] [say^4^]\nน. ไส้, ส่วนของทางเดินอาหารซึ่งอยู่ระหว่างกระเพาะอาหารกับทวารหนัก\nเป็นท่อยาวขดไปขดมาอยู่ในช่องท้อง มีหน้าที่ย่อย ดูดซึมอาหารและนํ้า พักและขับถ่ายกากอาหาร."
+    },
+    {
+      "id": "south_body_parts_0270",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หงอน",
+      "transcriptions": [
+        "ห้อน",
+        "hɔːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หงอน [ห้อน] [hɔːn^3^]\nน. หงอน, เนื้อบนสันหัวสัตว์ปีกมีไก่เป็นต้น."
+    },
+    {
+      "id": "south_body_parts_0271",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หนวด",
+      "transcriptions": [
+        "น้วด",
+        "nuat4"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หนวด [น้วด] [nuat4]\nน. หนวด, ขนที่ขึ้นเหนือริมฝีปากบนของคน, สิ่งที่มีลักษณะเป็นเส้นยาว ๆ\nขึ้นตามบริเวณปากของสัตว์บางชนิด."
+    },
+    {
+      "id": "south_body_parts_0272",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หน่วยตา",
+      "transcriptions": [
+        "หฺน้วย-ตา",
+        "nuay^3^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตา"
+      ],
+      "raw_text": "หน่วยตา [หฺน้วย-ตา] [nuay^3^-taː^6^]\nดู ตา."
+    },
+    {
+      "id": "south_body_parts_0273",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หนอก",
+      "transcriptions": [
+        "นอก",
+        "nɔːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หนอก [นอก] [nɔːk^3^]\n๑. น. ตะโหงก, ก้อนเนื้อที่ต้นคอของสัตว์บางชนิดเช่นวัว; ~~ก้อนเส้า~~ ป็อม หรือ โหนก\nก็ว่า.\n๒. น. ก้อนเนื้อที่นูนขึ้นมาที่ต้นคอของคนบางคน; ป็อม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0274",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หนัง",
+      "transcriptions": [
+        "หฺนั้ง",
+        "naŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หนัง [หฺนั้ง] [naŋ^3^]\nน. หนัง, ส่วนของร่างกายที่หุ้มเนื้ออยู่."
+    },
+    {
+      "id": "south_body_parts_0275",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หน้า",
+      "transcriptions": [
+        "น้า",
+        "naː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้า [น้า] [naː^4^]\nน. หน้า, ส่วนของศีรษะตั้งแต่หน้าผากลงมาจดคาง."
+    },
+    {
+      "id": "south_body_parts_0276",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หน้าผาก",
+      "transcriptions": [
+        "น้า-พ้าก",
+        "naː^4^-p^h^aːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้าผาก [น้า-พ้าก] [naː^4^-p^h^aːk^4^]\nน. หน้าผาก, ส่วนเบื้องบนของใบหน้าอยู่เหนือคิ้วขึ้นไป."
+    },
+    {
+      "id": "south_body_parts_0277",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หน้าโพ",
+      "transcriptions": [
+        "น้า-โพ",
+        "naː^4^-p^h^oː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้าโพ [น้า-โพ] [naː^4^-p^h^oː^7^]\nน. บริเวณหน้าผากวัวที่มีลักษณะคล้ายใบโพ."
+    },
+    {
+      "id": "south_body_parts_0278",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หน้าอก",
+      "transcriptions": [
+        "น้า-อ็อก",
+        "naː^4^-ʔɔk^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้าอก [น้า-อ็อก] [naː^4^-ʔɔk^6^]\nน. หน้าอก, ส่วนภายนอกของอก."
+    },
+    {
+      "id": "south_body_parts_0279",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หม่อม",
+      "transcriptions": [
+        "หฺม้อม",
+        "mɔːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เหม้งหัว"
+      ],
+      "raw_text": "หม่อม [หฺม้อม] [mɔːm^3^]\nดู เหม้งหัว."
+    },
+    {
+      "id": "south_body_parts_0280",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หมอย",
+      "transcriptions": [
+        "หฺม้อย",
+        "mɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนหมอย"
+      ],
+      "raw_text": "หมอย [หฺม้อย] [mɔːy^3^]\nดู ขนหมอย."
+    },
+    {
+      "id": "south_body_parts_0281",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หมับ",
+      "transcriptions": [
+        "มับ",
+        "map^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หมับ [มับ] [map^4^]\nน. ขมับ, ส่วนที่อยู่หางคิ้วเหนือกระดูกแก้มทั้ง ๒ ข้าง; หัวหมับ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0282",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หมูก",
+      "transcriptions": [
+        "มู้ก",
+        "muːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หมูก [มู้ก] [muːk^4^]\nน. จมูก, อวัยวะส่วนหนึ่งที่ยื่นออกมา อยู่เหนือปาก มีรู ๒ รู\nสำหรับดมกลิ่นและหายใจเข้าหายใจออก."
+    },
+    {
+      "id": "south_body_parts_0283",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หมูกควาย",
+      "transcriptions": [
+        "มู้ก-คฺวาย",
+        "muːk^4^-k^h^waːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เอ็นหมกควาย"
+      ],
+      "raw_text": "หมูกควาย [มู้ก-คฺวาย] [muːk^4^-k^h^waːy^7^]\nดู เอ็นหมกควาย."
+    },
+    {
+      "id": "south_body_parts_0284",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หยัก",
+      "transcriptions": [
+        "ยัก",
+        "yak^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "หยัก [ยัก] [yak^4^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0285",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หลักหู",
+      "transcriptions": [
+        "ลัก-หู้",
+        "lak^4^-huː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โคนหู"
+      ],
+      "raw_text": "หลักหู [ลัก-หู้] [lak^4^-huː^3^]\nดู โคนหู."
+    },
+    {
+      "id": "south_body_parts_0286",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หลิด",
+      "transcriptions": [
+        "ลิด",
+        "lit^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แตด"
+      ],
+      "raw_text": "หลิด [ลิด] [lit^4^]\nดู แตด."
+    },
+    {
+      "id": "south_body_parts_0287",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หวั้นเอว",
+      "transcriptions": [
+        "วั้น-เอว",
+        "wan^4^-Ɂeːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "บั้นเอว"
+      ],
+      "raw_text": "หวั้นเอว [วั้น-เอว] [wan^4^-Ɂeːw^6^]\nดู บั้นเอว."
+    },
+    {
+      "id": "south_body_parts_0288",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หอยขม",
+      "transcriptions": [
+        "ห้อย-ข้ม",
+        "hɔːy^3^-k^h^om^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หอยขม [ห้อย-ข้ม] [hɔːy^3^-k^h^om^3^]\nน. อวัยวะเพศของสัตว์เพศเมีย; ใช้แก่สุนัขและแมว."
+    },
+    {
+      "id": "south_body_parts_0289",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัว",
+      "transcriptions": [
+        "หั้ว",
+        "hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัว [หั้ว] [hua^3^]\nน. หัว, ส่วนบนสุดของร่างกายของคนหรือสัตว์."
+    },
+    {
+      "id": "south_body_parts_0290",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวข้อ",
+      "transcriptions": [
+        "หั้ว-ค้อ",
+        "hua^3^-k^h^ɔː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวข้อ [หั้ว-ค้อ] [hua^3^-k^h^ɔː^4^]\nน. ด้านหลังของข้อนิ้วมือที่งอเข้าด้วยกัน."
+    },
+    {
+      "id": "south_body_parts_0291",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวคะ",
+      "transcriptions": [
+        "หั้ว-ขะ",
+        "hua^3^-k^h^aɁ^2^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต"
+      ],
+      "cross_references": [
+        "คาก"
+      ],
+      "raw_text": "หัวคะ [หั้ว-ขะ] [hua^3^-k^h^aɁ^2^]\n(ถิ่น-ภูเก็ต) ดู คาก."
+    },
+    {
+      "id": "south_body_parts_0292",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวใจ",
+      "transcriptions": [
+        "หั้ว-ไจ",
+        "hua^3^-cay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวใจ [หั้ว-ไจ] [hua^3^-cay^6^]\nน. หัวใจ, อวัยวะภายในสำหรับฉีดเลือดให้หมุนเวียนเลี้ยงร่างกาย."
+    },
+    {
+      "id": "south_body_parts_0293",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวดอ",
+      "transcriptions": [
+        "หั้ว-ดอ",
+        "hua^3^-dɔː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่ ความหมายที่ ๑"
+      ],
+      "raw_text": "หัวดอ [หั้ว-ดอ] [hua^3^-dɔː^6^]\nดู ไข่ ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0294",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวบัก",
+      "transcriptions": [
+        "หั้ว-บัก",
+        "hua^3^-bak^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "หัวบัก [หั้ว-บัก] [hua^3^-bak^6^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0295",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวบับ",
+      "transcriptions": [
+        "หั้ว-บับ",
+        "hua^3^-bap^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวบับ [หั้ว-บับ] [hua^3^-bap^6^]\nน. สะบัก, กระดูกส่วนที่เป็นฐานรองรับต้นแขน อยู่ถัดบ่าลงไปข้างหลัง\nปลายด้านนอกเป็นที่หัวกระดูกต้นแขนเกาะยึด; เต็มตบ บับ ปีกไก่ หรือ หัวปีกไก่ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0296",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวบ่า",
+      "transcriptions": [
+        "หั้ว-บา",
+        "hua^3^-baː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวบ่า [หั้ว-บา] [hua^3^-baː^6^]\nน. ไหล่, ส่วนของบ่าตอนที่ติดกับต้นแขน."
+    },
+    {
+      "id": "south_body_parts_0297",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวปีกไก่",
+      "transcriptions": [
+        "หั้ว-ปีก-ไก",
+        "hua^3^-piːk^1^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หัวบับ"
+      ],
+      "raw_text": "หัวปีกไก่ [หั้ว-ปีก-ไก] [hua^3^-piːk^1^-kay^6^]\nดู หัวบับ."
+    },
+    {
+      "id": "south_body_parts_0298",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวโพก",
+      "transcriptions": [
+        "หั้ว-โผ๋ก",
+        "hua^3^-p^h^oːk^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวโพก [หั้ว-โผ๋ก] [hua^3^-p^h^oːk^5^]\nน. ส่วนต้นของสะโพก."
+    },
+    {
+      "id": "south_body_parts_0299",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวแม่ตีน",
+      "transcriptions": [
+        "หั้ว-แหฺม-ตีน",
+        "hua^3^-mԑː^5^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวแม่ตีน [หั้ว-แหฺม-ตีน] [hua^3^-mԑː^5^-tiːn^6^]\nน. นิ้วหัวแม่ตีน, นิ้วต้นของเท้า."
+    },
+    {
+      "id": "south_body_parts_0300",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวแม่มือ",
+      "transcriptions": [
+        "หั้ว-แหฺม-มือ",
+        "hua^3^-mԑː^5^-mɨː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวแม่มือ [หั้ว-แหฺม-มือ] [hua^3^-mԑː^5^-mɨː^6^]\nน. นิ้วหัวแม่มือ, นิ้วต้นของมือ."
+    },
+    {
+      "id": "south_body_parts_0301",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัววาน",
+      "transcriptions": [
+        "หั้ว-วาน",
+        "hua^3^-waːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โพก"
+      ],
+      "raw_text": "หัววาน [หั้ว-วาน] [hua^3^-waːn^7^]\nดู โพก."
+    },
+    {
+      "id": "south_body_parts_0302",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวศอก",
+      "transcriptions": [
+        "หั้ว-ส้อก",
+        "hua^3^-sɔːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวศอก [หั้ว-ส้อก] [hua^3^-sɔːk^3^]\nน. ข้อศอก, ส่วนของแขนตรงข้ามกับข้อพับ; ศอก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0303",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวส้น",
+      "transcriptions": [
+        "หั้ว-ซ้น",
+        "hua^3^-son^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้น"
+      ],
+      "raw_text": "หัวส้น [หั้ว-ซ้น] [hua^3^-son^4^]\nดู ส้น."
+    },
+    {
+      "id": "south_body_parts_0304",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวหมับ",
+      "transcriptions": [
+        "หั้ว-มับ",
+        "hua^3^-map^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หมับ"
+      ],
+      "raw_text": "หัวหมับ [หั้ว-มับ] [hua^3^-map^4^]\nดู หมับ."
+    },
+    {
+      "id": "south_body_parts_0305",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวหมูก",
+      "transcriptions": [
+        "หั้ว-หฺมู๋ก",
+        "hua^3^-muːk^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวหมูก [หั้ว-หฺมู๋ก] [hua^3^-muːk^5^]\nน. ปลายจมูก."
+    },
+    {
+      "id": "south_body_parts_0306",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวโหลก",
+      "transcriptions": [
+        "หั้ว-โล้ก",
+        "hua^3^-loːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โหลก"
+      ],
+      "raw_text": "หัวโหลก [หั้ว-โล้ก] [hua^3^-loːk^4^]\nดู โหลก."
+    },
+    {
+      "id": "south_body_parts_0307",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวอยัก",
+      "transcriptions": [
+        "หั้ว-ยัก",
+        "hua^3^-yak^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "หัวอยัก [หั้ว-ยัก] [hua^3^-yak^6^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0308",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หัวอัก",
+      "transcriptions": [
+        "หั้ว-อัก",
+        "hua^3^-Ɂak^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวอัก [หั้ว-อัก] [hua^3^-Ɂak^6^]\n๑. น. กระดูกอ่อนที่ทรวงอกของคนและสัตว์; อัก ก็ว่า.\n๒. น. เนื้อส่วนอกของสัตว์จำพวกวัว ควาย กวาง ม้า."
+    },
+    {
+      "id": "south_body_parts_0309",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หาง",
+      "transcriptions": [
+        "ห้าง",
+        "haːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หาง [ห้าง] [haːŋ^3^]\nน. ส่วนที่ยื่นออกจากส่วนท้ายแห่งลำตัวสัตว์, ขนสัตว์จำพวกนก เช่น กา ไก่\nที่ยื่นยาวออกทางก้น."
+    },
+    {
+      "id": "south_body_parts_0310",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หางตา",
+      "transcriptions": [
+        "ห้าง-ตา",
+        "haːŋ^3^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หางตา [ห้าง-ตา] [haːŋ^3^-taː^6^]\nน. หางตา, ส่วนสุดของตา."
+    },
+    {
+      "id": "south_body_parts_0311",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หางเต่า",
+      "transcriptions": [
+        "ห้าง-เตา",
+        "haːŋ^3^-taw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หางเต่า [ห้าง-เตา] [haːŋ^3^-taw^6^]\nน. หางเต่า, ปอยผมในร่องเล็กที่ท้ายทอย มีรูปแหลม."
+    },
+    {
+      "id": "south_body_parts_0312",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หี",
+      "transcriptions": [
+        "หี้",
+        "hiː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หี [หี้] [hiː^3^]\nน. หี, อวัยวะเพศหญิง, กก ขุ้ม ไขผา คก เคย โคบ ฉิม ตุ้ย ทุ้ย นกขุ้ม ปลาโคบ เป็ด ปุ้ย\nหรือ อีหมุ้ม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0313",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หู",
+      "transcriptions": [
+        "หู้",
+        "huː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หู [หู้] [huː^3^]\nน. หู, ส่วนหนึ่งของร่างกายคนและสัตว์ ทำหน้าที่สำหรับฟังเสียง."
+    },
+    {
+      "id": "south_body_parts_0314",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "หูน้ำ",
+      "transcriptions": [
+        "หู้-หฺน่าม",
+        "huː^3^-naːm^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แร้ง ความหมายที่ ๒"
+      ],
+      "raw_text": "หูน้ำ [หู้-หฺน่าม] [huː^3^-naːm^2^]\n๑. ดู แร้ง ความหมายที่ ๒.\n๒. น. ครีบหูของปลา."
+    },
+    {
+      "id": "south_body_parts_0315",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหงือก",
+      "transcriptions": [
+        "เฮื้อก",
+        "hɨak^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหงือก [เฮื้อก] [hɨak^4^]\n๑. น. เหงือก, เนื้อที่หุ้มโคนฟัน.\n๒. น. เหงือก, อวัยวะของสัตว์ที่ใช้หายใจในนํ้า."
+    },
+    {
+      "id": "south_body_parts_0316",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหนียง ๑",
+      "transcriptions": [
+        "เหฺนี้ยง",
+        "niaŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหนียง ๑ [เหฺนี้ยง] [niaŋ^3^]\nน. กระเพาะพักอาหารของสัตว์ปีก."
+    },
+    {
+      "id": "south_body_parts_0317",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหนียง ๒",
+      "transcriptions": [
+        "เหฺนี้ยง",
+        "niaŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แร้ง ความหมายที่ ๒"
+      ],
+      "raw_text": "เหนียง ๒ [เหฺนี้ยง] [niaŋ^3^]\nดู แร้ง ความหมายที่ ๒."
+    },
+    {
+      "id": "south_body_parts_0318",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหนียวดำ",
+      "transcriptions": [
+        "เหฺนี้ยว-ดำ",
+        "niaw^3^-dam^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหนียวดำ [เหฺนี้ยว-ดำ] [niaw^3^-dam^6^]\nน. ม้ามของหมู วัว และควาย; ตับเหล็ก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0319",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหม้งหัว",
+      "transcriptions": [
+        "เม้ง-หั้ว",
+        "meŋ^4^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหม้งหัว [เม้ง-หั้ว] [meŋ^4^-hua^3^]\nน. กระหม่อม, ส่วนบนสุดของหัว; เหมงหัว หรือ หม่อม ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0320",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหมงหัว",
+      "transcriptions": [
+        "เหฺม้ง-หั้ว",
+        "meŋ^3^-hua^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เหม้งหัว"
+      ],
+      "raw_text": "เหมงหัว [เหฺม้ง-หั้ว] [meŋ^3^-hua^3^]\nดู เหม้งหัว."
+    },
+    {
+      "id": "south_body_parts_0321",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหม็ดหมุด",
+      "transcriptions": [
+        "เม็ด-มุด",
+        "met^4^-mut^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แตด"
+      ],
+      "raw_text": "เหม็ดหมุด [เม็ด-มุด] [met^4^-mut^4^]\nดู แตด."
+    },
+    {
+      "id": "south_body_parts_0322",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหมี้ยง",
+      "transcriptions": [
+        "เมี้ยง",
+        "miaŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหมี้ยง [เมี้ยง] [miaŋ^4^]\nน. กระพุ้งแก้ม, ส่วนของแก้มที่ป่องออก."
+    },
+    {
+      "id": "south_body_parts_0323",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เหฺมฺรา",
+      "transcriptions": [
+        "เหฺมฺร้า",
+        "mraw^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พวม"
+      ],
+      "raw_text": "เหฺมฺรา [เหฺมฺร้า] [mraw^3^]\nดู พวม."
+    },
+    {
+      "id": "south_body_parts_0324",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โหนก",
+      "transcriptions": [
+        "โน้ก",
+        "noːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หนอก ความหมายที่ ๑"
+      ],
+      "raw_text": "โหนก [โน้ก] [noːk^4^]\nดู หนอก ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0325",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "โหลก",
+      "transcriptions": [
+        "โล้ก",
+        "loːk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โหลก [โล้ก] [loːk^4^]\nน. กระโหลกศีรษะ, กระดูกที่หุ้มมันสมอง; กะโดกหัว กะหลก กะโหลก กะโหลกหัว โดกหัว\nบอกหัว บาลหัว แบ็ดหัว เบื้องหัว พรกหัว หรือ หัวโหลก ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0326",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อก",
+      "transcriptions": [
+        "อ็อก",
+        "ʔɔk^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อก [อ็อก] [ʔɔk^6^]\nน. หน้าอก, ส่วนของร่างกายด้านหน้าอยู่ระหว่างคอกับท้อง."
+    },
+    {
+      "id": "south_body_parts_0327",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อยัก",
+      "transcriptions": [
+        "อฺยัก",
+        "yak^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "อยัก [อฺยัก] [yak^6^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0328",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อัก",
+      "transcriptions": [
+        "อัก",
+        "Ɂak^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หัวอัก ความหมายที่ ๑"
+      ],
+      "raw_text": "อัก [อัก] [Ɂak^6^]\nดู หัวอัก ความหมายที่ ๑."
+    },
+    {
+      "id": "south_body_parts_0329",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อาง",
+      "transcriptions": [
+        "อาง",
+        "ʔaːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อาง [อาง] [ʔaːŋ^6^]\nน. เพดานปาก."
+    },
+    {
+      "id": "south_body_parts_0330",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อางไก่",
+      "transcriptions": [
+        "อาง-ไก",
+        "ʔaːŋ^6^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลิ้นไก่"
+      ],
+      "raw_text": "อางไก่ [อาง-ไก] [ʔaːŋ^6^-kay^6^]\nดู ลิ้นไก่."
+    },
+    {
+      "id": "south_body_parts_0331",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อางมือ",
+      "transcriptions": [
+        "อาง-มือ",
+        "Ɂaːŋ^6^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พรกมือ"
+      ],
+      "raw_text": "อางมือ [อาง-มือ] [Ɂaːŋ^6^-mɨː^7^]\nดู พรกมือ."
+    },
+    {
+      "id": "south_body_parts_0332",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อีหมุ้ม",
+      "transcriptions": [
+        "อี-มุ้ม",
+        "Ɂiː^6^-mum^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หี"
+      ],
+      "raw_text": "อีหมุ้ม [อี-มุ้ม] [Ɂiː^6^-mum^4^]\nดู หี."
+    },
+    {
+      "id": "south_body_parts_0333",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "อุด",
+      "transcriptions": [
+        "อุด",
+        "Ɂut^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตรัง"
+      ],
+      "cross_references": [
+        "ดาก ความหมายที่ ๑"
+      ],
+      "raw_text": "อุด [อุด] [Ɂut^6^]\n๑. ดู ดาก ความหมายที่ ๑.\n๒. น. ตุ่มเนื้อต่อจากก้นของสัตว์ปีก; ทวยอุด ท้ายอุด ท้ายตุ้งอุด ตุ้งอุด หรือ (ถิ่น-ตรัง) จุงอุด\nก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0334",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็น",
+      "transcriptions": [
+        "เอ็น",
+        "Ɂen^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็น [เอ็น] [Ɂen^6^]\nน. เอ็น, กลุ่มหรือมัดเส้นใยเนื้อเยื่อเกี่ยวพัน ซึ่งเรียงตัวในทิศทางเดียวเห็นได้ชัด\nและไม่มีกล้ามเนื้อยึดที่ปลาย."
+    },
+    {
+      "id": "south_body_parts_0335",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นคอหอย",
+      "transcriptions": [
+        "เอ็น-คอ-ห้อย",
+        "Ɂen^6^-k^h^ɔː^7^-hɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็นคอหอย [เอ็น-คอ-ห้อย] [Ɂen^6^-k^h^ɔː^7^-hɔːy^3^]\nน. เอ็นใต้คอของวัว; คอหอยน้ำ ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0336",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นชักไถ",
+      "transcriptions": [
+        "เอ็น-ฉัก-ไถ้",
+        "Ɂen^6^-c^h^ak^2^-t^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็นชักไถ [เอ็น-ฉัก-ไถ้] [Ɂen^6^-c^h^ak^2^-t^h^ay^3^]\nน. เอ็นจากกลางหัวไปจนถึงโหนก; ใช้แก่วัว."
+    },
+    {
+      "id": "south_body_parts_0337",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นทุ้งพร้า",
+      "transcriptions": [
+        "เอ็น-ถุ่ง-ผฺร่า",
+        "ʔen^6^-t^h^uŋ^2^-p^h^raː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เอ็นทุ้มพร้า"
+      ],
+      "raw_text": "เอ็นทุ้งพร้า [เอ็น-ถุ่ง-ผฺร่า] [ʔen^6^-t^h^uŋ^2^-p^h^raː^2^]\nดู เอ็นทุ้มพร้า."
+    },
+    {
+      "id": "south_body_parts_0338",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นทุ่มพร้า",
+      "transcriptions": [
+        "เอ็น-ถุ่ม-ผฺร่า",
+        "ʔen^6^-t^h^um^2^-p^h^raː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็นทุ่มพร้า [เอ็น-ถุ่ม-ผฺร่า] [ʔen^6^-t^h^um^2^-p^h^raː^2^]\nน. เอ็นที่ข้อศอก; ทุ้งพร้า เอ็นทุ่งพร้า ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0339",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นหมกควาย",
+      "transcriptions": [
+        "เอ็น-มก-คฺวาย",
+        "Ɂen^6^-mok^4^-k^h^waːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็นหมกควาย [เอ็น-มก-คฺวาย] [Ɂen^6^-mok^4^-k^h^waːy^7^]\nน. เอ็นร้อยหวาย; หมูกควาย หรือ เอ็นหมูกควาย ก็ว่า."
+    },
+    {
+      "id": "south_body_parts_0340",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นหมาหยุก",
+      "transcriptions": [
+        "เอ็น-หฺม้า-ญุก",
+        "Ɂen^6^-maː^3^-ñuk^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็นหมาหยุก [เอ็น-หฺม้า-ญุก] [Ɂen^6^-maː^3^-ñuk^4^]\nน. เอ็นบริเวณคอ อยู่ใกล้ไหปลาร้า."
+    },
+    {
+      "id": "south_body_parts_0341",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอ็นหมูกควาย",
+      "transcriptions": [
+        "เอ็น-มู้ก-คฺวาย",
+        "Ɂen^6^-muːk^4^-k^h^waːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เอ็นหมกควาย"
+      ],
+      "raw_text": "เอ็นหมูกควาย [เอ็น-มู้ก-คฺวาย] [Ɂen^6^-muːk^4^-k^h^waːy^7^]\nดู เอ็นหมกควาย."
+    },
+    {
+      "id": "south_body_parts_0342",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "เอว",
+      "transcriptions": [
+        "เอว",
+        "Ɂeːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "บั้นเอว"
+      ],
+      "raw_text": "เอว [เอว] [Ɂeːw^6^]\nดู บั้นเอว."
+    },
+    {
+      "id": "south_body_parts_0343",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไอ้ขลิก",
+      "transcriptions": [
+        "ไอ-คฺลิก",
+        "Ɂay^1^-k^h^lik^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "ไอ้ขลิก [ไอ-คฺลิก] [Ɂay^1^-k^h^lik^4^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0344",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไอ้ขิก",
+      "transcriptions": [
+        "ไอ-คิก",
+        "Ɂay^1^-k^h^ik^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "ไอ้ขิก [ไอ-คิก] [Ɂay^1^-k^h^ik^4^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0345",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไอ้เจี้ยว",
+      "transcriptions": [
+        "ไอ-เจียว",
+        "Ɂay^1^-ciaw^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "ไอ้เจี้ยว [ไอ-เจียว] [Ɂay^1^-ciaw^1^]\nดู ไข่."
+    },
+    {
+      "id": "south_body_parts_0346",
+      "region": "south",
+      "category": "body_parts",
+      "headword": "ไอ้เจียว",
+      "transcriptions": [
+        "ไอ-เจียว",
+        "Ɂay^1^-ciaw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไข่"
+      ],
+      "raw_text": "ไอ้เจียว [ไอ-เจียว] [Ɂay^1^-ciaw^6^]\nดู ไข่."
+    }
+  ]
+}

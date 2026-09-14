@@ -1,0 +1,4842 @@
+{
+  "title": "หมวดอวัยวะของคนและสัตว์",
+  "region": "isaan",
+  "category": "body_parts",
+  "entry_count": 343,
+  "entries": [
+    {
+      "id": "isaan_body_parts_0001",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกขา",
+      "transcriptions": [
+        "ก๊ก-ขา",
+        "kok^4^-k^h^aː^5^"
+      ],
+      "notes": [
+        "ใช้เฉพาะกับสัตว์ เช่น\nขาอ้งกบ ขาอ้งไก่"
+      ],
+      "cross_references": [],
+      "raw_text": "กกขา ก฿กฯขา ก฿กขา [ก๊ก-ขา] [kok^4^-k^h^aː^5^]\nน. ต้นขา, โคนขา, ส่วนต้นของขาอยู่เหนือหัวเข่า; ขาอ้ง (ใช้เฉพาะกับสัตว์ เช่น\nขาอ้งกบ ขาอ้งไก่) ขาโต้ หรือ ขาโต้ย ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0002",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกแขน",
+      "transcriptions": [
+        "ก๊ก-แขน",
+        "kok^4^-k^h^ԑːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กกแขน ก฿กฯแขนฯ ก฿กแขน [ก๊ก-แขน] [kok^4^-k^h^ԑːn^5^]\nน. ต้นแขน, โคนแขน."
+    },
+    {
+      "id": "isaan_body_parts_0003",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกแข้ว",
+      "transcriptions": [
+        "ก๊ก-แข่ว",
+        "kok^4^-k^h^ԑːw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กกแข้ว ก฿กฯแข้วฯ ก฿กแข้ว [ก๊ก-แข่ว] [kok^4^-k^h^ԑːw^2^]\nน. โคนฟันรวมรากฟัน."
+    },
+    {
+      "id": "isaan_body_parts_0004",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกคอ",
+      "transcriptions": [
+        "ก๊ก-ค่อ",
+        "kok^4^-k^h^ɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กกคอ ก฿กฯคํ ก฿กคํ [ก๊ก-ค่อ] [kok^4^-k^h^ɔː^7^]\nน. ต้นคอ, โคนคอ."
+    },
+    {
+      "id": "isaan_body_parts_0005",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกลิ้น",
+      "transcriptions": [
+        "ก๊ก-ลิ่น",
+        "kok^4^-lin^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กกลิ้น ก฿กฯลินฯ้ฯ ก฿กลิ้น [ก๊ก-ลิ่น] [kok^4^-lin^3^]\nน. โคนลิ้น."
+    },
+    {
+      "id": "isaan_body_parts_0006",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกหู",
+      "transcriptions": [
+        "ก๊ก-หู",
+        "kok^4^-huː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กกหู ก฿กฯหู ก฿กหู [ก๊ก-หู] [kok^4^-huː^5^]\nน. บริเวณโคนหูส่วนหลังที่ติดกับศีรษะ."
+    },
+    {
+      "id": "isaan_body_parts_0007",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกเหงือก",
+      "transcriptions": [
+        "ก๊ก-เหฺงือก",
+        "kok^4^-ŋɨak^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กกเหงือก ก฿กฯเหึงฯฯอฯก ก฿กเหงึอก [ก๊ก-เหฺงือก] [kok^4^-ŋɨak^2^]\nน. ลิ้นไก่, ติ่งบนเพดานอ่อนที่ยื่นลงมาในช่องปาก; กกเหือก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0008",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กกเหือก",
+      "transcriptions": [
+        "ก๊ก-เหือก",
+        "kok^4^-hɨak^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กกเหงือก"
+      ],
+      "raw_text": "กกเหือก ก฿กฯเหึอฯก ก฿กเหึอก [ก๊ก-เหือก] [kok^4^-hɨak^2^]\nดู กกเหงือก."
+    },
+    {
+      "id": "isaan_body_parts_0009",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้น",
+      "transcriptions": [
+        "ก้น",
+        "kon^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้น ก฿นฯ้ฯ ก฿้น [ก้น] [kon^3^]\nน. ก้น, อวัยวะส่วนล่างสุดของลำตัว; ก้นดาก ดาก หรือ ตูด ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0010",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้นกบ",
+      "transcriptions": [
+        "ก้น-ก๊บ",
+        "kon^3^-kop^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้นกบ ก฿นฯ้ฯก฿บฯฯ ก฿้นก฿บ [ก้น-ก๊บ] [kon^3^-kop^4^]\nน. ก้นกบ, ปลายกระดูกสันหลังที่สุดลงมาข้างล่าง; ก้นฮวก กะนนดาก หรือ กะโนนดาก\nก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0011",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้นขี้",
+      "transcriptions": [
+        "ก้น-ขี่",
+        "kon^3^-k^h^iː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "รูขี้"
+      ],
+      "raw_text": "ก้นขี้ ก฿้ฯนฯขี้ ก฿้นขี้ [ก้น-ขี่] [kon^3^-k^h^iː^2^]\nดู รูขี้."
+    },
+    {
+      "id": "isaan_body_parts_0012",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้นดาก",
+      "transcriptions": [
+        "ก้น-ดาก",
+        "kon^3^-daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้น"
+      ],
+      "raw_text": "ก้นดาก ก฿้ฯนฯดากฯ ก฿้นดาก [ก้น-ดาก] [kon^3^-daːk^2^]\nดู ก้น."
+    },
+    {
+      "id": "isaan_body_parts_0013",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้นฮวก",
+      "transcriptions": [
+        "ก้น-ฮวก",
+        "kon^3^-huak^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้นกบ"
+      ],
+      "raw_text": "ก้นฮวก ก฿นฯ้ฯฮวฯก ก฿้นฮวก [ก้น-ฮวก] [kon^3^-huak^3^]\nดู ก้นกบ."
+    },
+    {
+      "id": "isaan_body_parts_0014",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระดอง",
+      "transcriptions": [
+        "กะ-ดอง",
+        "ka^1^-dɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กระดอง กรฯดอฯง กะดอง [กะ-ดอง] [ka^1^-dɔːŋ^1^]\nน. กระดอง, อวัยวะส่วนแข็งที่หุ้มตัวสัตว์ เช่น กระดองเต่า กระดองปู; ออง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0015",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระดูกคางกระไต",
+      "transcriptions": [
+        "กะ-ดูก-คาง-กะ-ไต",
+        "ka^1^-duːk^2^-k^h^aːŋ^7^-ka^1^-tay^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คางกะไต"
+      ],
+      "raw_text": "กระดูกคางกระไต กรฯดูกคางฯฯกรฯไต กะดูกคางกะไต [กะ-ดูก-คาง-กะ-ไต]\n[ka^1^-duːk^2^-k^h^aːŋ^7^-ka^1^-tay^1^]\nดู คางกะไต."
+    },
+    {
+      "id": "isaan_body_parts_0016",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระดูกด้ามพร้า",
+      "transcriptions": [
+        "กะ-ดูก-ด้าม-ผ้า",
+        "ka^1^-duːk^2^-daːm^3^-p^h^aː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดูกมีด"
+      ],
+      "raw_text": "กระดูกด้ามพร้า กรฯดูกด้ามฯพรฯ้า กะดูกด้ามพ้า [กะ-ดูก-ด้าม-ผ้า]\n[ka^1^-duːk^2^-daːm^3^-p^h^aː^3^]\nดู ดูกมีด."
+    },
+    {
+      "id": "isaan_body_parts_0017",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระดูกด้ามมีด",
+      "transcriptions": [
+        "กะ-ดูก-ด้าม-มีด",
+        "ka^1^-duːk^2^-daːm^3^-miːt^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดูกมีด"
+      ],
+      "raw_text": "กระดูกด้ามมีด กรฯดูัดามฯมีดฯ กะดูกด้ามมีด [กะ-ดูก-ด้าม-มีด]\n[ka^1^-duːk^2^-daːm^3^-miːt^3^]\nดู ดูกมีด."
+    },
+    {
+      "id": "isaan_body_parts_0018",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระดูกหัว",
+      "transcriptions": [
+        "กะ-ดูก-หัว",
+        "ka^1^-duːk^2^-hua^5^"
+      ],
+      "notes": [
+        "วรรณ"
+      ],
+      "cross_references": [
+        "กะโหลก"
+      ],
+      "raw_text": "กระดูกหัว กรฯดูัห฿วฯ กะดูกห฿ว [กะ-ดูก-หัว] [ka^1^-duːk^2^-hua^5^]\n(วรรณ) ดู กะโหลก."
+    },
+    {
+      "id": "isaan_body_parts_0019",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระไต",
+      "transcriptions": [
+        "กะ-ไต",
+        "ka^1^-tay^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คางกะไต"
+      ],
+      "raw_text": "กระไต กรฯไต กะไต [กะ-ไต] [ka^1^-tay^1^]\nดู คางกะไต."
+    },
+    {
+      "id": "isaan_body_parts_0020",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระโปก",
+      "transcriptions": [
+        "กะ-โปก",
+        "ka^1^-poːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หำ"
+      ],
+      "raw_text": "กระโปก กรฯโบกฯ กะโปก [กะ-โปก] [ka^1^-poːk^2^]\nดู หำ."
+    },
+    {
+      "id": "isaan_body_parts_0021",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระเพาะ",
+      "transcriptions": [
+        "กะ-เพาะ",
+        "ka^1^-p^h^ɔɁ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุง"
+      ],
+      "raw_text": "กระเพาะ กรฯเพาะ กะเพาะ [กะ-เพาะ] [ka^1^-p^h^ɔɁ^1^]\nดู พุง."
+    },
+    {
+      "id": "isaan_body_parts_0022",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระหมอง",
+      "transcriptions": [
+        "กะ-หฺมอง",
+        "ka^1^-mɔːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขมอง"
+      ],
+      "raw_text": "กระหมอง กรฯหมฯอฯง กะหมฯอง [กะ-หฺมอง] [ka^1^-mɔːŋ^5^]\nดู ขมอง."
+    },
+    {
+      "id": "isaan_body_parts_0023",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระหม่อม",
+      "transcriptions": [
+        "ขะ-มอม",
+        "k^h^a^1^-mɔːm^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กระหม่อม กรฯห่มฯอฯม กะหมฯ่อม [ขะ-มอม] [k^h^a^1^-mɔːm^6^]\nน. กระหม่อม, ส่วนของกะโหลกอยู่ตรงแนวกลางศีรษะลงมาใกล้หน้าผาก; ขะหม่อม ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0024",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กระหมับ",
+      "transcriptions": [
+        "กะ-มับ",
+        "ka^1^-map^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กระหมับ กรฯหมฯับ กะหมฯับ [กะ-มับ] [ka^1^-map^4^]\nน. ขมับ, ส่วนที่อยู่หางคิ้วเหนือกระดูกแก้มทั้ง ๒ ข้าง; ขมับ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0025",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กล้าม",
+      "transcriptions": [
+        "ก้าม",
+        "kaːm^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "กล้าม กลฯ้ามฯ ก้าม [ก้าม] [kaːm^3^]\n(ทก.) น. กล้าม, มัดเนื้อที่รวมกันเป็นก้อน ๆ ในกายคนและสัตว์."
+    },
+    {
+      "id": "isaan_body_parts_0026",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะด้น",
+      "transcriptions": [
+        "กะ-ด้น",
+        "ka^1^-don^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ง่อน"
+      ],
+      "raw_text": "กะด้น กะด้ฯ฿นฯ กะด฿้น [กะ-ด้น] [ka^1^-don^3^] \nดู ง่อน."
+    },
+    {
+      "id": "isaan_body_parts_0027",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะดัน",
+      "transcriptions": [
+        "กะ-ดัน",
+        "ka^1^-dan^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะดันขา"
+      ],
+      "raw_text": "กะดัน กะดันฯ กะดัน [กะ-ดัน] [ka^1^-dan^2^]\nดู กะดันขา."
+    },
+    {
+      "id": "isaan_body_parts_0028",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะดันขา",
+      "transcriptions": [
+        "กะ-ดัน-ขา",
+        "ka^1^-dan^1^-k^h^aː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "กะดันขา กะดันฯขา กะดันขา [กะ-ดัน-ขา] [ka^1^-dan^1^-k^h^aː^5^]\nน. ไข่ดัน, ต่อมนํ้าเหลืองที่อยู่ใต้ผิวหนังของบริเวณขาหนีบ\nซึ่งเป็นแนวต่อระหว่างลำตัวกับต้นขา\nมีหน้าที่กักและทำลายเชื้อโรคที่อาจผ่านเข้าในร่างกายท่อนบน; กะดัน หมากกะดัน\nหมากกะดันขา หรือ หมากไข่ดัน ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0029",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะนนดาก",
+      "transcriptions": [
+        "กะ-น่น-ดาก",
+        "ka^1^-non^7^-daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้นกบ"
+      ],
+      "raw_text": "กะนนดาก กะน฿นฯดากฯ กะน฿นดาก [กะ-น่น-ดาก] [ka^1^-non^7^-daːk^2^]\nดู ก้นกบ."
+    },
+    {
+      "id": "isaan_body_parts_0030",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะน่อง",
+      "transcriptions": [
+        "กะ-นอง",
+        "ka^1^-nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้นน่อง"
+      ],
+      "raw_text": "กะน่อง กะน่อฯง กะน่อง [กะ-นอง] [ka^1^-nɔːŋ^6^]\nดู ส้นน่อง."
+    },
+    {
+      "id": "isaan_body_parts_0031",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโนนดาก",
+      "transcriptions": [
+        "กะ-โน่น-ดาก",
+        "ka^1^-noːn^7^-daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้นกบ"
+      ],
+      "raw_text": "กะโนนดาก กะโนนฯดากฯ กะโนนดาก [กะ-โน่น-ดาก]\n[ka^1^-noːn^7^-daːk^2^]\nดู ก้นกบ."
+    },
+    {
+      "id": "isaan_body_parts_0032",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะบงตา",
+      "transcriptions": [
+        "กะ-บง-ตา",
+        "ka^1^-boŋ^1^-taː^1^"
+      ],
+      "notes": [
+        "เสียว."
+      ],
+      "cross_references": [],
+      "raw_text": "กะบงตา กะบ฿งฯฯตา กะบ฿งตา [กะ-บง-ตา] [ka^1^-boŋ^1^-taː^1^]\nน. กระบอกตา, เบ้าตา, เช่น แนใส่ก้นไปถืกกะบงตา พระเทวีผวาตก อยู่เทิงปลายไม้\n(เสียว.); กะโบงตา กะโบกตา หรือ ขุมตา ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0033",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโบกดาก",
+      "transcriptions": [
+        "กะ-โบก-ดาก",
+        "ka^1^-boːk^2^-daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดูกเกนเก",
+        "รูขี้"
+      ],
+      "raw_text": "กะโบกดาก กรฯโบกฯดากฯ กะโบกดาก [กะ-โบก-ดาก]\n[ka^1^-boːk^2^-daːk^2^]\n๑. ดู ดูกเกนเก.\n๒. ดู รูขี้."
+    },
+    {
+      "id": "isaan_body_parts_0034",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโบกตา",
+      "transcriptions": [
+        "กะ-โบก-ตา",
+        "ka^1^-boːk^2^-taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะบงตา"
+      ],
+      "raw_text": "กะโบกตา กะโบกฯตา กะโบกตา [กะ-โบก-ตา] [ka^1^-boːk^2^-taː^1^]\nดู กะบงตา."
+    },
+    {
+      "id": "isaan_body_parts_0035",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโบงตา",
+      "transcriptions": [
+        "กะ-โบง-ตา",
+        "ka^1^-boːŋ^1^-taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะบงตา"
+      ],
+      "raw_text": "กะโบงตา กะโบงฯฯตา กะโบงตา [กะ-โบง-ตา] [ka^1^-boːŋ^1^-taː^1^]\nดู กะบงตา."
+    },
+    {
+      "id": "isaan_body_parts_0036",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโบมหัว",
+      "transcriptions": [
+        "กะ-โบม-หัว",
+        "ka^1^-boːm^1^-hua^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "กะโหลก"
+      ],
+      "raw_text": "กะโบมหัว กะโบมฯห฿วฯ กะโบมห฿ว [กะ-โบม-หัว] [ka^1^-boːm^1^-hua^5^]\n(โบ) ดู กะโหลก."
+    },
+    {
+      "id": "isaan_body_parts_0037",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโพก",
+      "transcriptions": [
+        "กะ-โพก",
+        "ka^1^-p^h^oːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตะโพก"
+      ],
+      "raw_text": "กะโพก กะโพกฯ กะโพก [กะ-โพก] [ka^1^-p^h^oːk^3^]\nดู ตะโพก."
+    },
+    {
+      "id": "isaan_body_parts_0038",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโมม",
+      "transcriptions": [
+        "กะ-โม่ม",
+        "ka^1^-moːm^7^"
+      ],
+      "notes": [
+        "ข."
+      ],
+      "cross_references": [],
+      "raw_text": "กะโมม กะโมมฯ กะโมม [กะ-โม่ม] [ka^1^-moːm^7^]\nน. หัวหน่าว, ส่วนของร่างกายอยู่ระหว่างท้องน้อยกับอวัยวะสืบพันธุ์. (ข.)."
+    },
+    {
+      "id": "isaan_body_parts_0039",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กะโหลก",
+      "transcriptions": [
+        "กะ-โหฺลก",
+        "ka^1^-loːk^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "กะโหลก กะโหลฯก กะโหลก [กะ-โหฺลก] [ka^1^-loːk^2^]\nน. กะโหลกศีรษะ, กระดูกที่หุ้มมันสมอง; (โบ) กะโบมหัว ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0040",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้าง",
+      "transcriptions": [
+        "ก้าง",
+        "kaːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้าง ก้างฯฯ ก้าง [ก้าง] [kaːŋ^3^]\nน. ก้าง, ส่วนแข็งที่ประกอบเป็นโครงร่างของปลา โดยปรกติหมายเอาชิ้นที่แหลมเล็ก ๆ."
+    },
+    {
+      "id": "isaan_body_parts_0041",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้านคอ",
+      "transcriptions": [
+        "ก้าน-ค่อ",
+        "kaːn^3^-k^h^ɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้านคอ ก้านฯคํ ก้านคํ [ก้าน-ค่อ] [kaːn^3^-k^h^ɔː^7^]\nน. ก้านคอ, ลำคอด้านหลัง."
+    },
+    {
+      "id": "isaan_body_parts_0042",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ก้าม",
+      "transcriptions": [
+        "ก้าม",
+        "kaːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ก้าม ก้ามฯ ก้าม [ก้าม] [kaːm^3^]\nน. ก้าม, อวัยวะของสัตว์บางชนิดเช่นปูและกุ้ง สำหรับหนีบอาหารเป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0043",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กิ่ง",
+      "transcriptions": [
+        "กิง",
+        "kiŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นิ้วก้อย"
+      ],
+      "raw_text": "กิ่ง กิ่งฯฯ กิ่ง [กิง] [kiŋ^6^]\nดู นิ้วก้อย."
+    },
+    {
+      "id": "isaan_body_parts_0044",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "กิ่งก้อย",
+      "transcriptions": [
+        "กิง-ก้อย",
+        "kiŋ^6^-kɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นิ้วก้อย"
+      ],
+      "raw_text": "กิ่งก้อย กิ่งฯฯกอฯยฯฯ้ฯ กิ่งก้อยฯ [กิง-ก้อย] [kiŋ^6^-kɔːy^3^]\nดู นิ้วก้อย."
+    },
+    {
+      "id": "isaan_body_parts_0045",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เกล็ด",
+      "transcriptions": [
+        "เก๊ด",
+        "ket^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เกล็ด เกลฯัด เกัด [เก๊ด] [ket^4^]\nน. เกล็ด, ส่วนที่เป็นแผ่น ๆ ซ้อนเหลื่อมกันห่อหุ้มตัวปลาและสัตว์เลื้อยคลานบางชนิด."
+    },
+    {
+      "id": "isaan_body_parts_0046",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เกื้อง",
+      "transcriptions": [
+        "เกื้อง",
+        "kɨaŋ^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "เกื้อง เกึ้อฯง เกึ้อง [เกื้อง] [kɨaŋ^3^]\nน. ส่วนของร่างกายถัดจากบ่าลงไปข้างหลัง; เตื้อง เปื้อง หรือ (ทก.) สะบัก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0047",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แก้ม",
+      "transcriptions": [
+        "แก้ม",
+        "kԑːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แก้ม แกมฯ้ แก้ม [แก้ม] [kԑːm^3^]\nน. แก้ม, บริเวณหน้าทั้ง ๒ ข้างถัดตาลงมา."
+    },
+    {
+      "id": "isaan_body_parts_0048",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โกก",
+      "transcriptions": [
+        "โกก",
+        "koːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โกก โกกฯ โกก [โกก] [koːk^2^]\nน. ไหล่ทั้งสองข้างที่ติดกับต้นคอ."
+    },
+    {
+      "id": "isaan_body_parts_0049",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขน",
+      "transcriptions": [
+        "ขน",
+        "k^h^on^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขน ข฿นฯ ข฿น [ขน] [k^h^on^5^]\nน. ขน, สิ่งที่เป็นเส้นขึ้นตามผิวหนังของคนและสัตว์."
+    },
+    {
+      "id": "isaan_body_parts_0050",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนขา",
+      "transcriptions": [
+        "ขน-ขา",
+        "k^h^on^5^-k^h^aː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนขา ข฿นฯขา ข฿นขา [ขน-ขา] [k^h^on^5^-k^h^aː^5^]\nน. ขนขา, ขนที่ขึ้นที่ขา."
+    },
+    {
+      "id": "isaan_body_parts_0051",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนขี้คร้าน",
+      "transcriptions": [
+        "ขน-ขี่-ข้าน",
+        "k^h^on^5^-k^h^iː^2^-k^h^aːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนขี้คร้าน ข฿นฯขี้ครฯ้านฯ ข฿นขี้ค้าน [ขน-ขี่-ข้าน]\n[k^h^on^5^-k^h^iː^2^-k^h^aːn^3^]\nน. ขนกลางหลังที่ยาวผิดปรกติ เชื่อว่าเป็นลักษณะของคนขี้เกียจ."
+    },
+    {
+      "id": "isaan_body_parts_0052",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนขี้แร้",
+      "transcriptions": [
+        "ขน-ขี่-แห้",
+        "k^h^on^5^-k^h^iː^2^-hԑː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนขี้แร้ ข฿นฯขี้แร้ ข฿นขี้แร้ [ขน-ขี่-แห้] [k^h^on^5^-k^h^iː^2^-hԑː^3^]\nน. ขนรักแร้."
+    },
+    {
+      "id": "isaan_body_parts_0053",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนแข้ง",
+      "transcriptions": [
+        "ขน-แข่ง",
+        "k^h^on^5^-k^h^ԑŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนแข้ง ข฿นฯแขงฯฯ้ ข฿นแข้ง [ขน-แข่ง] [k^h^on^5^-k^h^ԑŋ^2^]\nน. ขนหน้าแข้ง, ขนที่ขึ้นตามหน้าแข้ง."
+    },
+    {
+      "id": "isaan_body_parts_0054",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนแขน",
+      "transcriptions": [
+        "ขน-แขน",
+        "k^h^on^5^-k^h^ԑːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนแขน ข฿นฯแขนฯ ข฿นแขน [ขน-แขน] [k^h^on^5^-k^h^ԑːn^5^]\nน. ขนแขน, ขนที่ขึ้นที่แขน."
+    },
+    {
+      "id": "isaan_body_parts_0055",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนคาง",
+      "transcriptions": [
+        "ขน-ค่าง",
+        "k^h^on5-k^h^aːŋ^7^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ขนคาง ข฿นฯคางฯฯ ข฿นคาง [ขน-ค่าง] [k^h^on5-k^h^aːŋ^7^]\nน. เครา, ขนที่ขึ้นตามข้างแก้มหรือขากรรไกร; (ทก.) เครา ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0056",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนคิ้ว",
+      "transcriptions": [
+        "ขน-คิ่ว",
+        "k^h^on^5^-k^h^iw^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ขนคิ้ว ข฿นฯคิ้วฯ ข฿นคิ้ว [ขน-คิ่ว] [k^h^on^5^-k^h^iw^2^]\nน. ขนคิ้ว, ขนที่ขึ้นอยู่ที่ส่วนโค้งขอบกระบอกตาข้างบน, (โบ) หมอยตาใหญ่ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0057",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนคิว",
+      "transcriptions": [
+        "ขน-คิ่ว",
+        "k^h^on^5^-k^h^iw^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนจิว"
+      ],
+      "raw_text": "ขนคิว ข฿นฯคิวฯ ข฿นคิว [ขน-คิ่ว] [k^h^on^5^-k^h^iw^7^]\nดู ขนจิว."
+    },
+    {
+      "id": "isaan_body_parts_0058",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนคีง",
+      "transcriptions": [
+        "ขน-คี่ง",
+        "k^h^on^5^-k^h^iːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนคีง ข฿นฯคีงฯฯ ข฿นคีง [ขน-คี่ง] [k^h^on^5^-k^h^iːŋ^7^]\nน. ขนที่ขึ้นตามร่างกาย."
+    },
+    {
+      "id": "isaan_body_parts_0059",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนจิว",
+      "transcriptions": [
+        "ขน-จิว",
+        "k^h^on^5^-ciw^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนจิว ข฿นฯจิวฯ ข฿นจิว [ขน-จิว] [k^h^on^5^-ciw^1^]\nน. ขนเพชร, ขนสีขาวที่ขึ้นแปลกเป็นพิเศษ มีลักษณะยาวกว่าปรกติ มักขึ้นตามคางหรือแก้ม;\nขนคิว ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0060",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนดัง",
+      "transcriptions": [
+        "ขน-ดัง",
+        "k^h^on^5^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนดัง ข฿นฯดังฯฯ ข฿นดัง [ขน-ดัง] [k^h^on^5^-daŋ^1^]\nน. ขนจมูก; ขนรูดัง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0061",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนตา",
+      "transcriptions": [
+        "ขน-ตา",
+        "k^h^on^5^-taː^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ขนตา ข฿นฯตา ข฿นตา [ขน-ตา] [k^h^on^5^-taː^5^]\nน. ขนตา, ขนที่ขึ้นอยู่ริมเปลือกตาล่างและเปลือกตาบน; (โบ) หมอยตาน้อย ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0062",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนนม",
+      "transcriptions": [
+        "ขน-น่ม",
+        "k^h^on^5^-nom^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนนม ข฿นฯน฿มฯ ข฿นน฿ม [ขน-น่ม] [k^h^on^5^-nom^7^]\nน. ขนที่ขึ้นที่ลานนมของผู้ชาย."
+    },
+    {
+      "id": "isaan_body_parts_0063",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนบั่ว",
+      "transcriptions": [
+        "ขน-บัว",
+        "k^h^on^5^-bua^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนบั่ว ข฿นฯบ฿่ฯวฯ ข฿นบ฿่ว [ขน-บัว] [k^h^on^5^-bua^6^]\n๑. น. ขนอุย, ขนอ่อนที่ขึ้นตามร่างกายของคน.\n๒. น. ขนอ่อนของสัตว์."
+    },
+    {
+      "id": "isaan_body_parts_0064",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนรูดัง",
+      "transcriptions": [
+        "ขน-ฮู่-ดัง",
+        "k^h^on^5^-huː^7^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขนดัง"
+      ],
+      "raw_text": "ขนรูดัง ข฿นฯรูดังฯฯ ข฿นรูดัง [ขน-ฮู่-ดัง] [k^h^on^5^-huː^7^-daŋ^1^]\nดู ขนดัง."
+    },
+    {
+      "id": "isaan_body_parts_0065",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนหมอย",
+      "transcriptions": [
+        "ขน-หฺมอย",
+        "k^h^on^5^-mɔːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หมอย"
+      ],
+      "raw_text": "ขนหมอย ข฿นฯหมฯอยฯ ข฿นหมฯอยฯ [ขน-หฺมอย] [k^h^on^5^-mɔːy^5^]\nดู หมอย."
+    },
+    {
+      "id": "isaan_body_parts_0066",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนหัว",
+      "transcriptions": [
+        "ขน-หัว",
+        "k^h^on^5^-hua^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ผม"
+      ],
+      "raw_text": "ขนหัว ข฿นฯห฿วฯ ข฿นห฿ว [ขน-หัว] [k^h^on^5^-hua^5^]\n(โบ) ดู ผม."
+    },
+    {
+      "id": "isaan_body_parts_0067",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขนเอิก",
+      "transcriptions": [
+        "ขน-เอิ๊ก",
+        "k^h^on^5^-Ɂək^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขนเอิก ข฿นฯเอิกฯ ข฿นเอิก [ขน-เอิ๊ก] [k^h^on^5^-Ɂək^4^]\nน. ขนอก, ขนหน้าอก."
+    },
+    {
+      "id": "isaan_body_parts_0068",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขมอง",
+      "transcriptions": [
+        "ขะ-หฺมอง",
+        "k^h^a^1^-mɔːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขมอง ขมฯองฯฯ ขมฯอง [ขะ-หฺมอง] [k^h^a^1^-mɔːŋ^5^]\nน. สมอง, อวัยวะที่อยู่ภายในกะโหลกศีรษะ เนื้อนุ่ม หยุ่น ลักษณะเป็นลอน\nเป็นศูนย์รวมระบบประสาท; กระหมอง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0069",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขมับ",
+      "transcriptions": [
+        "ขะ-มับ",
+        "k^h^a^1^-map^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กระหมับ"
+      ],
+      "raw_text": "ขมับ ขมฯับ ขมฯับ [ขะ-มับ] [k^h^a^1^-map^4^]\nดู กระหมับ."
+    },
+    {
+      "id": "isaan_body_parts_0070",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขวยตุม",
+      "transcriptions": [
+        "ขวย-ตุม",
+        "k^h^uay^5^-tum^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ลักยิ้ม"
+      ],
+      "raw_text": "ขวยตุม ขวฯยตุม ขวยตุม [ขวย-ตุม] [k^h^uay^5^-tum^1^]\n(โบ) ดู ลักยิ้ม."
+    },
+    {
+      "id": "isaan_body_parts_0071",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขวยตูม",
+      "transcriptions": [
+        "ขวย-ตูม",
+        "k^h^uay^5^-tuːm^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ลักยิ้ม"
+      ],
+      "raw_text": "ขวยตูม ขวฯยตูม ขวยตูม [ขวย-ตูม] [k^h^uay^5^-tuːm^1^]\n(โบ) ดู ลักยิ้ม."
+    },
+    {
+      "id": "isaan_body_parts_0072",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขวยตูมขุมผี",
+      "transcriptions": [
+        "ขวย-ตูม-ขุม-ผี",
+        "k^h^uay^5^-tuːm^1^-k^h^um^5^-p^h^iː^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขุมผี"
+      ],
+      "raw_text": "ขวยตูมขุมผี ขวฯยตูมขุมผี ขวยตูมขุมผี [ขวย-ตูม-ขุม-ผี]\n[k^h^uay^5^-tuːm^1^-k^h^um^5^-p^h^iː^5^]\nดู ขุมผี."
+    },
+    {
+      "id": "isaan_body_parts_0073",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขวัญ",
+      "transcriptions": [
+        "ขวน",
+        "k^h^wuan^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "จอมขวัญ"
+      ],
+      "raw_text": "ขวัญ ขวฯัร ขวัน [ขวน] [k^h^wuan^5^]\nดู จอมขวัญ."
+    },
+    {
+      "id": "isaan_body_parts_0074",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ข้อ",
+      "transcriptions": [
+        "ข่อ",
+        "k^h^ɔː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ข้อมือ"
+      ],
+      "raw_text": "ข้อ ขํ้ ขํ้ [ข่อ] [k^h^ɔː^2^]\nดู ข้อมือ."
+    },
+    {
+      "id": "isaan_body_parts_0075",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขอบกระด้ง",
+      "transcriptions": [
+        "ขอบ-กะ-ด้ง",
+        "k^h^ɔːp^2^-ka^1^-doŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขอบกระด้ง ขอฯบกรฯด฿งฯฯ้ฯ ขอบกะด฿้ง [ขอบ-กะ-ด้ง]\n[k^h^ɔːp^2^-ka^1^-doŋ^3^]\nน. ขอบกระด้ง, ชื่อเรียกกระเพาะอาหารกระเพาะแรกของสัตว์เคี้ยวเอื้องเช่นวัวควาย\nมีขนาดใหญ่ที่สุดในจำนวน ๔ กระเพาะ เยื่อบุภายในมีสันคล้ายขอบกระด้ง."
+    },
+    {
+      "id": "isaan_body_parts_0076",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ข้อมือ",
+      "transcriptions": [
+        "ข่อ-มื่อ",
+        "k^h^ɔː^2^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ข้อมือ ขํ้มึ ขํ้มึ [ข่อ-มื่อ] [k^h^ɔː^2^-mɨː^7^]\nน. ข้อมือ, ส่วนที่เป็นข้อต่อระหว่างมือกับแขน; ข้อ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0077",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขะหม่อม",
+      "transcriptions": [
+        "ขะ-มอม",
+        "k^h^a^1^-mɔːm^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กระหม่อม"
+      ],
+      "raw_text": "ขะหม่อม ขะห่มฯอมฯ ขะหมฯ่อม [ขะ-มอม] [k^h^a^1^-mɔːm^6^]\nดู กระหม่อม."
+    },
+    {
+      "id": "isaan_body_parts_0078",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขา",
+      "transcriptions": [
+        "ขา",
+        "k^h^a^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขา ขา ขา [ขา] [k^h^a^5^]\nน. ขา, อวัยวะตั้งแต่ตะโพกถึงข้อเท้า สำหรับยันกายและเดินเป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0079",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขากะไต",
+      "transcriptions": [
+        "ขา-กะ-ไต",
+        "k^h^aː^5^-ka^1^-tay^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คางกะไต"
+      ],
+      "raw_text": "ขากะไต ขากะไต ขากะไต [ขา-กะ-ไต] [k^h^aː^5^-ka^1^-tay^1^]\nดู คางกะไต."
+    },
+    {
+      "id": "isaan_body_parts_0080",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขางดัง",
+      "transcriptions": [
+        "ขาง-ดัง",
+        "k^h^aːŋ^5^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขางดัง ขางฯฯดังฯฯ ขางดัง [ขาง-ดัง] [k^h^aːŋ^5^-daŋ^1^]\nน. ดั้งจมูก, สันจมูก."
+    },
+    {
+      "id": "isaan_body_parts_0081",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขาตะไก",
+      "transcriptions": [
+        "ขา-ตะ-ไก",
+        "k^h^aː^5^-ta^1^-kay^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คางกะไต"
+      ],
+      "raw_text": "ขาตะไก ขาตะไก ขาตะไก [ขา-ตะ-ไก] [k^h^aː^5^-ta^1^-kay^1^]\nดู คางกะไต."
+    },
+    {
+      "id": "isaan_body_parts_0082",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขาโต้",
+      "transcriptions": [
+        "ขา-โต้",
+        "k^h^aː^5^-toː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กกขา"
+      ],
+      "raw_text": "ขาโต้ ขาโต้ ขาโต้ [ขา-โต้] [k^h^aː^5^-toː^3^]\nดู กกขา."
+    },
+    {
+      "id": "isaan_body_parts_0083",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขาโต้ย",
+      "transcriptions": [
+        "ขา-โต้ย",
+        "k^h^aː^5^-toːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กกขา"
+      ],
+      "raw_text": "ขาโต้ย ขาโต้ยฯ ขาโต้ย [ขา-โต้ย] [k^h^aː^5^-toːy^3^]\nดู กกขา."
+    },
+    {
+      "id": "isaan_body_parts_0084",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขาอ้ง",
+      "transcriptions": [
+        "ขา-อ้ง",
+        "k^h^aː^5^-Ɂoŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กกขา"
+      ],
+      "raw_text": "ขาอ้ง ขาอ฿้ฯงฯฯ ขาอ฿้ง [ขา-อ้ง] [k^h^aː^5^-Ɂoŋ^3^]\nดู กกขา."
+    },
+    {
+      "id": "isaan_body_parts_0085",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขี้กะแร้",
+      "transcriptions": [
+        "ขี่-กะ-แห้",
+        "k^h^iː^2^-ka^1^-hԑː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขี้แร้"
+      ],
+      "raw_text": "ขี้กะแร้ ขี้กะแร้ ขี้กะแร้ [ขี่-กะ-แห้] [k^h^iː^2^-ka^1^-hԑː^3^]\nดู ขี้แร้."
+    },
+    {
+      "id": "isaan_body_parts_0086",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขี้ตะแร้",
+      "transcriptions": [
+        "ขี่-ตะ-แห้"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขี้แร้"
+      ],
+      "raw_text": "ขี้ตะแร้ ขี้ตะแร้ ขี้ตะแร้ [ขี่-ตะ-แห้] [k^h^iː^2^-ta^1^-hԑː^3^[\nดู ขี้แร้."
+    },
+    {
+      "id": "isaan_body_parts_0087",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขี้โผ้",
+      "transcriptions": [
+        "ขี่-โผ่",
+        "khiː^2^-phoː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขี้โผ้ ขี้โผ้ ขี้โผ้ [ขี่-โผ่] [khiː^2^-phoː^2^]\nน. พุงที่ยื่นออกมา; ท้อง พุง หรือ โผ้ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0088",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขี้แมงวัน",
+      "transcriptions": [
+        "ขี่-แม้ง-วั่น",
+        "k^h^iː^2^-mԑːŋ^4^-wan^7^"
+      ],
+      "notes": [
+        "ท้าวคำสอน"
+      ],
+      "cross_references": [],
+      "raw_text": "ขี้แมงวัน ขี้แมงฯฯวันฯ ขี้แมงวัน [ขี่-แม้ง-วั่น] [k^h^iː^2^-mԑːŋ^4^-wan^7^]\nน. ขี้แมลงวัน, จุดหรือเม็ดเล็ก ๆ สีดำหรือสีแดงเกิดตามผิวหนังของคน, เช่น\nยิงใดขี้แมงวันจับเต้าในระหว่างตีนนม นั้นนา แม่นสิดำปานตอก็ให้ควรเอาแท้ (ท้าวคำสอน)."
+    },
+    {
+      "id": "isaan_body_parts_0089",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขี้แร้",
+      "transcriptions": [
+        "ขี่-แห้",
+        "k^h^iː^2^-hԑː^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ขี้แร้ ขี้แร้ ขี้แร้ [ขี่-แห้] [k^h^iː^2^-hԑː^3^]\nน. รักแร้, ส่วนร่างกายที่อยู่ใต้โคนแขนเหนือสีข้างขึ้นไป; ขี้ตะแร้ ขี้กะแร้ หรือ (ทก.)\nจักกะแร้ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0090",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขุมตา",
+      "transcriptions": [
+        "ขุม-ตา",
+        "k^h^um^5^-taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะบงตา"
+      ],
+      "raw_text": "ขุมตา ขุมตา ขุมตา [ขุม-ตา] [k^h^um^5^-taː^1^]\nดู กะบงตา."
+    },
+    {
+      "id": "isaan_body_parts_0091",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ขุมผี",
+      "transcriptions": [
+        "ขุม-ผี",
+        "k^h^um^5^-phiː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ขุมผี ขุมผี ขุมผี [ขุม-ผี] [k^h^um^5^-phiː^5^]\nน. รอยบุ๋มที่สะโพกทั้ง ๒ ข้างหรือรอยบุ๋มที่ไหล่ ถือเป็นลักษณะไม่ดี; ขวยตูมขุมผี ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0092",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เข่า",
+      "transcriptions": [
+        "เคา",
+        "k^h^aw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เข่า เข฿่ฯา เข฿่า [เคา] [k^h^aw^6^]\nน. เข่า, ส่วนที่ต่อระหว่างขาส่วนบนกับขาส่วนล่าง สำหรับคู้ขาเข้าและเหยียดขาออก."
+    },
+    {
+      "id": "isaan_body_parts_0093",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้ง",
+      "transcriptions": [
+        "แข่ง",
+        "k^h^ԑːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้ง แข้งฯฯ แข้ง [แข่ง] [k^h^ԑːŋ^2^]\nน. แข้ง, ส่วนหน้าของขา ใต้เข่าลงไปถึงข้อเท้า; หน้าแข้ง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0094",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้งกิ่ว",
+      "transcriptions": [
+        "แข่ง-กิว",
+        "k^h^ԑːŋ^2^-kiw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้งกิ่ว แข้งฯฯกิ่วฯ แข้งกิ่ว [แข่ง-กิว] [k^h^ԑːŋ^2^-kiw^6^]\nน. ส่วนที่คอดเหนือตาตุ่ม."
+    },
+    {
+      "id": "isaan_body_parts_0095",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แขน",
+      "transcriptions": [
+        "แขน",
+        "k^h^ԑːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แขน แขนฯ แขน [แขน] [k^h^ԑːn^5^]\nน. แขน, อวัยวะที่ต่อจากไหล่ทั้ง ๒ ข้าง."
+    },
+    {
+      "id": "isaan_body_parts_0096",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แขนสอก",
+      "transcriptions": [
+        "แขน-สอก",
+        "k^h^ɛːn^5^-sɔːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แขนสอก แขนฯสอฯก แขนสอก [แขน-สอก] [k^h^ɛːn^5^-sɔːk^2^]\nน. ช่วงของแขนตั้งแต่ปลายสุดของข้อพับไปถึงปลายนิ้วกลาง."
+    },
+    {
+      "id": "isaan_body_parts_0097",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้ว",
+      "transcriptions": [
+        "แข่ว",
+        "k^h^ԑːw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้ว แขวฯ้ แข้ว [แข่ว] [k^h^ԑːw^2^]\nน. ฟัน, กระดูกเป็นซี่ ๆ อยู่ในปากสำหรับกัด ฉีกเคี้ยวอาหาร."
+    },
+    {
+      "id": "isaan_body_parts_0098",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วกก",
+      "transcriptions": [
+        "แข่ว-ก๊ก",
+        "k^h^ԑːw^2^-kok^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้วโคก"
+      ],
+      "raw_text": "แข้วกก แข้วฯก฿กฯ แข้วก฿ก [แข่ว-ก๊ก] [k^h^ԑːw^2^-kok^4^]\nดู แข้วโคก"
+    },
+    {
+      "id": "isaan_body_parts_0099",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วขบ",
+      "transcriptions": [
+        "แข่ว-คบ",
+        "k^h^ԑːw^2^-k^h^op^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้วยิ่ง"
+      ],
+      "raw_text": "แข้วขบ แข้วฯข฿บฯฯ แข้วข฿บ [แข่ว-คบ] [k^h^ԑːw^2^-k^h^op^4^]\nดู แข้วยิ่ง."
+    },
+    {
+      "id": "isaan_body_parts_0100",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วโคก",
+      "transcriptions": [
+        "แข่ว-โคก",
+        "k^h^ԑːw^2^-k^h^oːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้วโคก แข้วฯโคกฯ แข้วโคก [แข่ว-โคก] [k^h^ԑːw^2^-k^h^oːk^3^]\nน. ฟันกราม, ฟันที่ใช้บดเคี้ยวอาหาร; แข้วโคบ หรือ แข้วกก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0101",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วโคบ",
+      "transcriptions": [
+        "แข่ว-โคบ",
+        "k^h^ԑːw^2^-k^h^oːp^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้วโคก"
+      ],
+      "raw_text": "แข้วโคบ แข้วฯโคบฯฯ แข้วโคบ [แข่ว-โคบ] [k^h^ԑːw^2^-k^h^oːp^3^]\nดู แข้วโคก."
+    },
+    {
+      "id": "isaan_body_parts_0102",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วซาว",
+      "transcriptions": [
+        "แข่ว-ซ่าว",
+        "k^h^ԑːw^2^-saːw^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้วซาว แข้วฯชาวฯ แข้วซาว [แข่ว-ซ่าว] [k^h^ԑːw^2^-saːw^7^]\nน. ฟันแท้ที่เป็นฟันกรามซี่ในสุดซึ่งมักขึ้นเมื่ออายุ ๒๐ ปี."
+    },
+    {
+      "id": "isaan_body_parts_0103",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วน้ำนม",
+      "transcriptions": [
+        "แข่ว-น่าม-น่ม",
+        "k^h^ԑw^2^-naːm^3^-nom^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้วน้ำนม แขวฯ้นาฯํ้ฯน฿มฯ แข้วน้ำน฿ม [แข่ว-น่าม-น่ม]\n[k^h^ԑw^2^-naːm^3^-nom^7^]\nน. ฟันน้ำนม, ฟันชุดแรก."
+    },
+    {
+      "id": "isaan_body_parts_0104",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วบักแง",
+      "transcriptions": [
+        "แข่ว-บั๋ก-แง่",
+        "k^h^ɛw^2^-bak^5^-ŋɛː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้วหมากแง"
+      ],
+      "raw_text": "แข้วบักแง แขวฯ้บักฯแง แข้วบักแง [แข่ว-บั๋ก-แง่] [k^h^ɛw^2^-bak^5^-ŋɛː^7^]\nดู แข้วหมากแง."
+    },
+    {
+      "id": "isaan_body_parts_0105",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วยิ่ง",
+      "transcriptions": [
+        "แข่ว-ญิง",
+        "k^h^ԑːw^2^-ñiŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้วยิ่ง แข้วฯยิ่งฯฯ แข้วยิ่ง [แข่ว-ญิง] [k^h^ԑːw^2^-ñiŋ^6^]\nน. ฟันหน้า, แข้วขบ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0106",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แข้วหมากแง",
+      "transcriptions": [
+        "แข่ว-หฺมาก-แง่",
+        "k^h^ԑːw^2^-maːk^2^-ŋԑː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แข้วหมากแง แข้วฯหมฯากฯแง แข้วหมฯากแง [แข่ว-หฺมาก-แง่]\n[k^h^ԑːw^2^-maːk^2^-ŋԑː^7^]\nน. ฟันเขี้ยว, ฟันแหลมคมสำหรับฉีกเนื้อและอาหาร อยู่ระหว่างฟันหน้ากับกราม; แข้วบักแง\nก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0107",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไข",
+      "transcriptions": [
+        "ไข",
+        "k^h^ay^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไข ไข ไข [ไข] [k^h^ay^5^]\nน. ไข, มันข้นที่อยู่ในร่างกายคนและสัตว์."
+    },
+    {
+      "id": "isaan_body_parts_0108",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไขข้อ",
+      "transcriptions": [
+        "ไข-ข่อ",
+        "k^h^ay^5^-k^h^ɔː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไขข้อ ไขขํ ไขขํ้ [ไข-ข่อ] [k^h^ay^5^-k^h^ɔː^2^]\nน. ไขข้อ, น้ำมันที่อยู่ตามข้อต่อสำหรับหล่อลื่นตามธรรมชาติของร่างกาย."
+    },
+    {
+      "id": "isaan_body_parts_0109",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไข่หลัง",
+      "transcriptions": [
+        "ไค-หฺลัง",
+        "k^h^ay^6^-laŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หมากไข่หลัง"
+      ],
+      "raw_text": "ไข่หลัง ไข่หลฯัง ไข่หลัง [ไค-หฺลัง] [k^h^ay^6^-laŋ^5^]\nดู หมากไข่หลัง."
+    },
+    {
+      "id": "isaan_body_parts_0110",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไข่หำ",
+      "transcriptions": [
+        "ไค-หำ",
+        "k^h^ay^6^-ham^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หำ"
+      ],
+      "raw_text": "ไข่หำ ไขหำ ไข่หำ [ไค-หำ] [k^h^ay^6^-ham^5^]\nดู หำ."
+    },
+    {
+      "id": "isaan_body_parts_0111",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คราบ",
+      "transcriptions": [
+        "คาบ",
+        "khaːp^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คราบ ครฯาบฯฯ คาบ [คาบ] [khaːp^3^]\n๑. น. ร่างของคนที่ตายแล้ว.\n๒. น. คราบ, หนังหรือเปลือกนอกของแมลงหรือสัตว์บางชนิดที่ลอกออกได้ เช่น คราบงู\nคราบกุ้ง."
+    },
+    {
+      "id": "isaan_body_parts_0112",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ครีบ",
+      "transcriptions": [
+        "คีบ",
+        "k^h^iːp^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ครุย"
+      ],
+      "raw_text": "ครีบ ครฯีบ คีบ [คีบ] [k^h^iːp^3^]\nดู ครุย."
+    },
+    {
+      "id": "isaan_body_parts_0113",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ครุย",
+      "transcriptions": [
+        "คุ่ย",
+        "k^h^uy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ครุย ครฯุยฯ คุย [คุ่ย] [k^h^uy^7^]\nน. ครีบ, ครีบหลังของปลา; ครุยหลัง ครีบ หรือ แผง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0114",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ครุยหลัง",
+      "transcriptions": [
+        "คุ่ย-หฺลัง",
+        "k^h^uy^7^-laŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ครุย"
+      ],
+      "raw_text": "ครุยหลัง ครฯุยฯหลฯัง คุยหลัง [คุ่ย-หฺลัง] [k^h^uy^7^-laŋ^5^]\nดู ครุย."
+    },
+    {
+      "id": "isaan_body_parts_0115",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คอหอย",
+      "transcriptions": [
+        "ค่อ-หอย",
+        "k^h^ɔː^7^-hɔːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เดือกไก่"
+      ],
+      "raw_text": "คอหอย คํหอฯยฯฯ คํหอยฯ [ค่อ-หอย] [k^h^ɔː^7^-hɔːy^5^]\nดู เดือกไก่."
+    },
+    {
+      "id": "isaan_body_parts_0116",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คะน่อง",
+      "transcriptions": [
+        "คะ-นอง",
+        "k^h^a^1^-nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้นน่อง"
+      ],
+      "raw_text": "คะน่อง คะนอฯ่ง คะน่อง [คะ-นอง] [k^h^a^1^-nɔːŋ^6^]\nดู ส้นน่อง."
+    },
+    {
+      "id": "isaan_body_parts_0117",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คาง",
+      "transcriptions": [
+        "ค่าง",
+        "k^h^aːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คาง คางฯฯ คาง [ค่าง] [k^h^aːŋ^7^]\nน. คาง, ส่วนหน้าสุดของขากรรไกร อยู่ใต้ปาก."
+    },
+    {
+      "id": "isaan_body_parts_0118",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คางกระไต",
+      "transcriptions": [
+        "ค่าง-กะ-ไต",
+        "k^h^aːŋ^7^-ka^1^-tay^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คางกระไต คางฯฯกรฯไต คางกะไต [ค่าง-กะ-ไต]\n[k^h^aːŋ^7^-ka^1^-tay^1^]\nน. ขากรรไกร, กระดูกต้นคางที่อ้าขึ้นอ้าลง มีลักษณะอย่างกรรไกร; กระไต ขากะไต\nขาตะไก กระดูกคางกระไต ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0119",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คิ้ว",
+      "transcriptions": [
+        "คิ่ว",
+        "k^h^iw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คิ้ว คิวฯ้ฯ คิ้ว [คิ่ว] [k^h^iw^3^]\nน. คิ้ว, ส่วนโค้งขอบกระบอกตาข้างบนซึ่งมีขนขึ้นที่โค้งนั้น."
+    },
+    {
+      "id": "isaan_body_parts_0120",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คีง",
+      "transcriptions": [
+        "คี่ง",
+        "k^h^iːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คีง คีงฯฯ คีง [คี่ง] [k^h^iːŋ^7^]\nน. ร่างกาย, ลำตัว, เลาคีง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0121",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "คูบ",
+      "transcriptions": [
+        "คูบ",
+        "k^h^uːp^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "คูบ คูบ คูบ [คูบ] [k^h^uːp^3^]\nน. กระดูกที่นูนขึ้นบนสันหลังด้านหน้าที่ต่อกับคอของสัตว์บางชนิดเช่นวัว ควาย ช้าง."
+    },
+    {
+      "id": "isaan_body_parts_0122",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เครา",
+      "transcriptions": [
+        "เค่า",
+        "k^h^aw^7^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ขนคาง"
+      ],
+      "raw_text": "เครา เครฯ฿า เคา [เค่า] [k^h^aw^7^]\n(ทก.) ดู ขนคาง."
+    },
+    {
+      "id": "isaan_body_parts_0123",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โคย",
+      "transcriptions": [
+        "โค่ย",
+        "k^h^oːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โคย โคยฯ โคย [โค่ย] [k^h^oːy^7^]\nน. ควย, อวัยวะสืบพันธุ์ของคนหรือสัตว์เพศผู้."
+    },
+    {
+      "id": "isaan_body_parts_0124",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โครง",
+      "transcriptions": [
+        "โค่ง",
+        "k^h^oːŋ^7^"
+      ],
+      "notes": [
+        "สินไซ"
+      ],
+      "cross_references": [],
+      "raw_text": "โครง โครฯง โคง [โค่ง] [k^h^oːŋ^7^]\nน. โครงกระดูก เช่น สูนี้ คือคู่โกกาแฮ้งโฮมโครง ควายเน่า ฮู้ว่าโฮมเฮ่วไว้ มาม้วยเทื่อเดียว\nแลนอ\n(สินไซ)."
+    },
+    {
+      "id": "isaan_body_parts_0125",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "งวง",
+      "transcriptions": [
+        "ง่วง",
+        "ŋuaŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "งวง งวฯง งวง [ง่วง] [ŋuaŋ^7^]\nน. งวง, จมูกของช้าง."
+    },
+    {
+      "id": "isaan_body_parts_0126",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ง่อน",
+      "transcriptions": [
+        "งอน",
+        "ŋɔːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ง่อน ง่อฯร ง่อน [งอน] [ŋɔːn^6^]\nน. ท้ายทอย, ส่วนสุดของกะโหลกศีรษะด้านหลัง; กะด้น หรือ ง่อนต่อ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0127",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ง่อนต่อ",
+      "transcriptions": [
+        "งอน-ตอ",
+        "ŋɔːn^6^-tɔː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ง่อน"
+      ],
+      "raw_text": "ง่อนต่อ ง่อฯรตํ่ ง่อนตํ่ [งอน-ตอ] [ŋɔːn^6^-tɔː^6^]\nดู ง่อน."
+    },
+    {
+      "id": "isaan_body_parts_0128",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "งอยดัง",
+      "transcriptions": [
+        "ง่อย-ดัง",
+        "ŋɔːy^4^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "งอยดัง งอฯยฯฯดังฯฯ งอยดัง [ง่อย-ดัง] [ŋɔːy^4^-daŋ^1^]\nน. ปลายจมูก."
+    },
+    {
+      "id": "isaan_body_parts_0129",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "งา",
+      "transcriptions": [
+        "ง่า",
+        "ŋaː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "งา งา งา [ง่า] [ŋaː^7^]\nน. งา, ฟันที่งอกยาวออกจากปากช้าง."
+    },
+    {
+      "id": "isaan_body_parts_0130",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ง่ามดาก",
+      "transcriptions": [
+        "งาม-ดาก",
+        "ŋaːm^6^-daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ง่ามดาก ง่ามฯดากฯ ง่ามดาก [งาม-ดาก] [ŋaːm^6^-daːk^2^]\nน. ง่ามก้น, แก้มตะโพกส่วนที่แยกจากกัน."
+    },
+    {
+      "id": "isaan_body_parts_0131",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ง่ามตีน",
+      "transcriptions": [
+        "งาม-ตีน",
+        "ŋaːm^6^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ง่ามตีน ง่ามฯตีนฯ ง่ามตีน [งาม-ตีน] [ŋaːm^6^-tiːn^1^]\nน. ซอกนิ้วเท้า."
+    },
+    {
+      "id": "isaan_body_parts_0132",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ง่ามมือ",
+      "transcriptions": [
+        "งาม-มื่อ",
+        "ŋaːm^6^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ง่ามมือ ง่ามฯมื ง่ามมื [งาม-มื่อ] [ŋaːm^6^-mɨː^7^]\nน. ซอกนิ้วมือ."
+    },
+    {
+      "id": "isaan_body_parts_0133",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เงี่ยง",
+      "transcriptions": [
+        "เงียง",
+        "ŋiaŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เงี่ยง ง่ยฯง ง่ยง [เงียง] [ŋiaŋ^6^]\nน. เงี่ยง, กระดูกแหลมของปลาบางชนิด อย่างปลาดุก ปลากด."
+    },
+    {
+      "id": "isaan_body_parts_0134",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จอกหลอกคอ",
+      "transcriptions": [
+        "จอก-หฺลอก-ค่อ",
+        "cɔːk^2^-lɔːk^2^-k^h^ɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "จอกหลอกคอ จอฯกหลฯอฯกคํ จอกหลอกคํ [จอก-หฺลอก-ค่อ]\n[cɔːk^2^-lɔːk^2^-k^h^ɔː^7^]\nน. หลุมคอ, ส่วนที่อยู่ใต้ลูกกระเดือก ระหว่างกระดูกไหปลาร้า เห็นได้ชัดในคนผอม."
+    },
+    {
+      "id": "isaan_body_parts_0135",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จอน",
+      "transcriptions": [
+        "จอน",
+        "cɔːn^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ยอย"
+      ],
+      "raw_text": "จอน จอฯร จอน [จอน] [cɔːn^1^]\n(ทก.) ดู ยอย."
+    },
+    {
+      "id": "isaan_body_parts_0136",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จอม",
+      "transcriptions": [
+        "จอม",
+        "cɔːm^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "จอมขวัญ"
+      ],
+      "raw_text": "จอม จอฯม จอม [จอม] [cɔːm^1^]\nดู จอมขวัญ."
+    },
+    {
+      "id": "isaan_body_parts_0137",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จอมขวัญ",
+      "transcriptions": [
+        "จอม-ขวน",
+        "cɔːm^1^-k^h^wuan^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "จอมขวัญ จอฯมขวฯัร จอมขวัน [จอม-ขวน] [cɔːm^1^-k^h^wuan^5^]\nน. ขวัญ, ขนที่เวียนเป็นก้นหอยบนศีรษะ; ขวัญ จอม หรือ จอมหัว ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0138",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จอมหัว",
+      "transcriptions": [
+        "จอม-หัว",
+        "cɔːm^1^-hua^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "จอมขวัญ"
+      ],
+      "raw_text": "จอมหัว จอฯมห฿วฯ จอมห฿ว [จอม-หัว] [cɔːm^1^-hua^5^]\nดู จอมขวัญ."
+    },
+    {
+      "id": "isaan_body_parts_0139",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จักกะแร้",
+      "transcriptions": [
+        "จัก-กะ-แห้",
+        "cak^2^-ka^1^-hԑː^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ขี้แร้"
+      ],
+      "raw_text": "จักกะแร้ จักฯกะแร้ จักกะแร้ [จัก-กะ-แห้] [cak^2^-ka^1^-hԑː^3^]\n(ทก.) ดู ขี้แร้."
+    },
+    {
+      "id": "isaan_body_parts_0140",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "จู้",
+      "transcriptions": [
+        "จู้",
+        "cuː^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "นม"
+      ],
+      "raw_text": "จู้ จู้ จู้ [จู้] [cuː^3^]\n(โบ) ดู นม."
+    },
+    {
+      "id": "isaan_body_parts_0141",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เจี้ยหู",
+      "transcriptions": [
+        "เจี้ย-หู",
+        "cia^3^-huː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เจี้ยหู เจั้ยฯหู เจั้ยหู [เจี้ย-หู] [cia^3^-huː^5^]\nน. แก้วหู, เยื่อในหูสำหรับรับเสียง."
+    },
+    {
+      "id": "isaan_body_parts_0142",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ใจ",
+      "transcriptions": [
+        "ไจ",
+        "cay^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ใจ ไจ ไจ [ไจ] [cay^1^]\nน. หัวใจ, อวัยวะภายในสำหรับฉีดเลือดให้หมุนเวียนเลี้ยงร่างกาย; (ทก.) หัวใจ."
+    },
+    {
+      "id": "isaan_body_parts_0143",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ใจมือ",
+      "transcriptions": [
+        "ไจ-มื้อ",
+        "cay^1^-mɨː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ใจมือ ไจมึ ไจมึ [ไจ-มื้อ] [cay^1^-mɨː^4^]\nน. ใจมือ, กลางฝ่ามือ."
+    },
+    {
+      "id": "isaan_body_parts_0144",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ชานดัง",
+      "transcriptions": [
+        "ซ่าน-ดัง",
+        "saːn^4^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ชานดัง ชานฯดังฯฯ ชานดัง [ซ่าน-ดัง] [saːn^4^-daŋ^1^]\nน. บริเวณใต้จมูกเหนือริมฝีปาก."
+    },
+    {
+      "id": "isaan_body_parts_0145",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ชี้น",
+      "transcriptions": [
+        "ซี่น",
+        "siːn^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ชี้น ชี้นฯ ชี้น [ซี่น] [siːn^3^]\nน. เนื้อ, ส่วนของร่างกายคนและสัตว์อยู่ถัดหนังเข้าไป; (ทก.) เนื้อ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0146",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดัง",
+      "transcriptions": [
+        "ดัง",
+        "daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดัง ดังฯฯ ดัง [ดัง] [daŋ^1^]\nน. จมูก, อวัยวะส่วนหนึ่งที่ยื่นออกมา อยู่เหนือปาก มีรู ๒ รู\nสำหรับดมกลิ่นและหายใจเข้าหายใจออก."
+    },
+    {
+      "id": "isaan_body_parts_0147",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดาก",
+      "transcriptions": [
+        "ดาก",
+        "daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้น"
+      ],
+      "raw_text": "ดาก ดากฯ ดาก [ดาก] [daːk^2^]\n๑. น. ดาก, ปลายลำไส้ใหญ่ที่ทวารหนัก.\n๒. ดู ก้น."
+    },
+    {
+      "id": "isaan_body_parts_0148",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูก",
+      "transcriptions": [
+        "ดูก",
+        "duːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูก ดูก ดูก [ดูก] [duːk^2^]\nน. กระดูก, โครงร่างกายมีลักษณะแข็ง, ส่วนใดส่วนหนึ่งของโครงร่างกาย."
+    },
+    {
+      "id": "isaan_body_parts_0149",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกเกนเก",
+      "transcriptions": [
+        "ดูก-เกน-เก",
+        "duːk^2^-keːn^1^-keː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูกเกนเก ดูกเกนฯเก ดูกเกนเก [ดูก-เกน-เก] [duːk^2^-keːn^1^-keː^1^]\nน. กระดูกเชิงกราน, กระดูกตะโพกที่มีสัณฐานอย่างเชิงกราน; กะโบกดาก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0150",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกข้าง",
+      "transcriptions": [
+        "ดูก-ข่าง",
+        "duk^2^-khaːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดูกสว้าง"
+      ],
+      "raw_text": "ดูกข้าง ดูกข้างฯฯ ดูกข้าง [ดูก-ข่าง] [duk^2^-khaːŋ^2^]\nดู ดูกสว้าง."
+    },
+    {
+      "id": "isaan_body_parts_0151",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกมีด",
+      "transcriptions": [
+        "ดูก-มีด",
+        "duːk^2^-miːt^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูกมีด ดูกมีดฯ ดูกมีด [ดูก-มีด] [duːk^2^-miːt^3^]\nน. กระดูกไหปลาร้า, กระดูกตะโพกที่มีสัณฐานอย่างเชิงกราน; กระดูกด้ามมีด\nกระดูกด้ามพร้า ดูกอัก หรือ ดูกเอิก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0152",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกสว้าง",
+      "transcriptions": [
+        "ดูก-ส่วง",
+        "duːk^2^-suaŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูกสว้าง ดูกส้วฯางฯฯ ดูกสว้าง [ดูก-ส่วง] [duːk^2^-suaŋ^2^]\nน. กระดูกซี่โครง, กระดูกโครงอกลักษณะเป็นท่อนแบนยาวและโค้ง เรียงเป็นคู่ ๆ ลงมา๑๒\nคู่ ส่วนโคนติดกับด้านข้างของกระดูกสันหลังแต่ละข้อ ส่วนปลาย ๑๐ คู่\nติดกับด้านข้างของกระดูกหน้าอก; ดูกข้าง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0153",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกสันหลัง",
+      "transcriptions": [
+        "ดูก-สัน-หฺลัง",
+        "duːk^2^-san^5^-laŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูกสันหลัง ดูกสันฯหลฯัง ดูกสันหลัง [ดูก-สัน-หฺลัง] [duːk^2^-san^5^-laŋ^5^]\nน. กระดูกสันหลัง, ส่วนของร่างกายด้านหลัง ซึ่งมีกระดูกเป็นแนวนูนลงมาตลอดหลัง."
+    },
+    {
+      "id": "isaan_body_parts_0154",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกหัว",
+      "transcriptions": [
+        "ดูก-หัว",
+        "duːk^2^-hua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ดูกหัว ดูกห฿วฯ ดูกห฿ว [ดูก-หัว] [duːk^2^-hua^5^]\nน. กะโหลกศีรษะ, กระดูกที่หุ้มมันสมอง."
+    },
+    {
+      "id": "isaan_body_parts_0155",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกอัก",
+      "transcriptions": [
+        "ดูก-อั๊ก",
+        "duːk^2^-Ɂak^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดูกมีด"
+      ],
+      "raw_text": "ดูกอัก ดูกอักฯ ดูกอัก [ดูก-อั๊ก] [duːk^2^-Ɂak^4^]\n๑. ดู ดูกมีด.\n๒. น. กระดูกบริเวณหน้าอก; ดูกเอิก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0156",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ดูกเอิก",
+      "transcriptions": [
+        "ดูก-เอิ๊ก",
+        "duːk^2^-Ɂək^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ดูกมีด",
+        "ดูกอัก ความหมายที่ ๒"
+      ],
+      "raw_text": "ดูกเอิก ดูกเอิกฯ ดูกเอิก [ดูก-เอิ๊ก] [duːk^2^-Ɂək^4^]\n๑. ดู ดูกมีด.\n๒. ดู ดูกอัก ความหมายที่ ๒."
+    },
+    {
+      "id": "isaan_body_parts_0157",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เดี้ยง",
+      "transcriptions": [
+        "เดี้ยง",
+        "diaŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "สว้าง"
+      ],
+      "raw_text": "เดี้ยง ด้ยฯง ด้ยง [เดี้ยง] [diaŋ^3^]\nดู สว้าง."
+    },
+    {
+      "id": "isaan_body_parts_0158",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เดือกไก่",
+      "transcriptions": [
+        "เดือก-ไก",
+        "dɨak^2^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เดือกไก่ เดึอฯกไก่ เดึอกไก่ [เดือก-ไก] [dɨak^2^-kay^6^]\nน. ลูกกระเดือกและคอหอย; คอหอย หรือ เหลือกไก่ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0159",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เดือย",
+      "transcriptions": [
+        "เดือย",
+        "dɨay^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เดือย เดึยฯ เดึอย [เดือย] [dɨay^1^]\nน. เดือย, อวัยวะของไก่ตัวผู้หรือนกบางชนิด มีรูปเรียวแหลม\nงอกขึ้นที่เหนือข้อตีนเบื้องหลัง."
+    },
+    {
+      "id": "isaan_body_parts_0160",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ต่อม",
+      "transcriptions": [
+        "ตอม",
+        "tɔːm^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ต่อม ต่อฯม ต่อม [ตอม] [tɔːm^6^]\n(ทก.) น. ต่อม, อวัยวะของคนและสัตว์\nทำหน้าที่สร้างและหลั่งสารที่มีประโยชน์และมีโทษต่อร่างกาย มี ๒ ชนิด คือ ต่อมไร้ท่อ และ\nต่อมมีท่อ."
+    },
+    {
+      "id": "isaan_body_parts_0161",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ต่อมน้ำมัน",
+      "transcriptions": [
+        "ตอม-หฺน้าม-มั่น",
+        "tɔːm^6^-naːm^3^-man^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ต่อมน้ำมัน ต่อฯมนาฯํ้ฯมันฯ ต่อมน้ำมัน [ตอม-หฺน้าม-มั่น]\n[tɔːm^6^-naːm^3^-man^7^]\nน. ต่อมตรงโคนหางของไก่."
+    },
+    {
+      "id": "isaan_body_parts_0162",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตะโพก",
+      "transcriptions": [
+        "ตะ-โพก",
+        "ta^1^-p^h^oːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตะโพก ตะโพกฯ ตะโพก [ตะ-โพก] [ta^1^-p^h^oːk^3^]\nน. สะโพก, ตะโพก, ส่วนของร่างกายเบื้องหลังถัดบั้นเอวลงไปมีเนื้อเป็นกระพุ้งทั้ง ๒\nข้าง เช่น มื้อนี้ข้อยบ่มีแรง หมอฉีดยาเข้าตะโพกให้เข็มหนึ่ง เซาออดหลอดแล้ว; กะโพก หรือ\nสะโพก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0163",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตัดติ่น",
+      "transcriptions": [
+        "ตั๊ด-ติน",
+        "tat^4^-tin^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตัดติ่น ตัดฯติ่นฯ ตัดติ่น [ตั๊ด-ติน] [tat^4^-tin^6^]\nน. เล็บอ่อนของลูกควายหรือลูกวัวเกิดใหม่; เล็บนาง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0164",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตับ",
+      "transcriptions": [
+        "ตั๊บ",
+        "tap^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตับ ตับฯฯ ตับ [ตั๊บ] [tap^4^]\nน. ตับ, อวัยวะประเภทต่อมของระบบทางเดินอาหารของคนและสัตว์ อยู่ในช่องท้อง\nทำหน้าที่ทำลายพิษ สร้างน้ำดีและโปรตีนบางชนิด เป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0165",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตา",
+      "transcriptions": [
+        "ตา",
+        "taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตา ตา ตา [ตา] [taː^1^]\nน. ตา, ส่วนหนึ่งของร่างกายคนและสัตว์ ทำหน้าที่ดู."
+    },
+    {
+      "id": "isaan_body_parts_0166",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตาเขิง",
+      "transcriptions": [
+        "ตา-เขิง",
+        "taː^1^-k^h^әːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตาเขิง ตาเขิงฯฯ ตาเชิง [ตา-เขิง] [taː^1^-k^h^әːŋ^5^]\nน. ดอกจอก, ชื่อเรียกกระเพาะอาหารกระเพาะที่ ๒ ของสัตว์เคี้ยวเอื้องเช่นวัวควาย\nเยื่อบุภายในมีลักษณะเป็นกระเปาะ ๆ มีหลายเหลี่ยม คล้ายดอกจอก."
+    },
+    {
+      "id": "isaan_body_parts_0167",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ต้าง",
+      "transcriptions": [
+        "ต้าง",
+        "taːŋ^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ต้าง ต้างฯฯ ต้าง [ต้าง] [taːŋ^3^]\nน. เหนียง, เนื้อหรือหนังที่ห้อยอยู่บริเวณคอของสัตว์บางชนิด เช่น ไก่ นก วัว; (ทก.)\nเหนียง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0168",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตาบข้าง",
+      "transcriptions": [
+        "ตาบ-ข่าง",
+        "taːp^2^-k^h^aːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "สว้าง"
+      ],
+      "raw_text": "ตาบข้าง ตาบฯฯข้างฯฯ ตาบข้าง [ตาบ-ข่าง] [taːp^2^-k^h^aːŋ^2^]\nดู สว้าง."
+    },
+    {
+      "id": "isaan_body_parts_0169",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตาบเอิก",
+      "transcriptions": [
+        "ตาบ-เอิ๊ก",
+        "taːp^2^-Ɂək^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หน้าเอิก"
+      ],
+      "raw_text": "ตาบเอิก ตาบฯฯเอิกฯ ตาบเอิก [ตาบ-เอิ๊ก] [taːp^2^-Ɂək^4^]\nดู หน้าเอิก."
+    },
+    {
+      "id": "isaan_body_parts_0170",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตีน",
+      "transcriptions": [
+        "ตีน",
+        "tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตีน ตีนฯ ตีน [ตีน] [tiːn^1^]\nน. ตีน, อวัยวะส่วนล่างสุดของคนหรือสัตว์ นับตั้งแต่ใต้ข้อเท้าลงไป\nสำหรับยืนหรือเดินเป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0171",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตุ้มฆ้อง",
+      "transcriptions": [
+        "ตุ้ม-ค่อง",
+        "tum^3^-k^h^ɔːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตุ่มม่อง"
+      ],
+      "raw_text": "ตุ้มฆ้อง ตุ้มฆ้อฯง ตุ้มค้อง [ตุ้ม-ค่อง] [tum^3^-k^h^ɔːŋ^3^]\nดู ตุ่มม่อง."
+    },
+    {
+      "id": "isaan_body_parts_0172",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตุ่มม่อง",
+      "transcriptions": [
+        "ตุม-มอง",
+        "tum^6^-mɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตุ่มม่อง ตุ่มม่อฯง ตุ่มม่อง [ตุม-มอง] [tum^6^-mɔːŋ^6^]\nน. ตาตุ่ม, อวัยวะส่วนที่เป็นปุ่มกลม ๆ ที่ข้อเท้าทั้ง ๒ ข้าง; ตุ้มฆ้อง หรือ ทุ้มม่อง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0173",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตู้",
+      "transcriptions": [
+        "ตู้",
+        "tuː^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "นม"
+      ],
+      "raw_text": "ตู้ ตู้ ตู้ [ตู้] [tuː^3^]\n(โบ) ดู นม."
+    },
+    {
+      "id": "isaan_body_parts_0174",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ตูด",
+      "transcriptions": [
+        "ตูด",
+        "tuːt^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้น",
+        "รูขี้"
+      ],
+      "raw_text": "ตูด ตูด ตูด [ตูด] [tuːt^2^]\n๑. ดู ก้น.\n๒. ดู รูขี้."
+    },
+    {
+      "id": "isaan_body_parts_0175",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เตื้อง",
+      "transcriptions": [
+        "เตื้อง",
+        "tɨaŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เกื้อง"
+      ],
+      "raw_text": "เตื้อง เตึ้อฯง เตึ้อง [เตื้อง] [tɨaŋ^3^]\nดู เกื้อง."
+    },
+    {
+      "id": "isaan_body_parts_0176",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แต้",
+      "transcriptions": [
+        "แต้",
+        "tԑː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แต้ แต้ แต้ [แต้] [tԑː^3^]\n๑. น. ติ่งหู, ส่วนล่างของใบหูที่ย้อยลงมา; แต้หู หรือ หมากกะแต้ ก็ว่า.\n๒. น. แผ่นเนื้อสีขาวหรือสีแดงที่ติดอยู่กับหูของสัตว์ปีก; แต้หู หรือ หมากกะแต้ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0177",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แตด",
+      "transcriptions": [
+        "แตด",
+        "tԑːt^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แตด แตดฯ แตด [แตด] [tԑːt^2^]\nน. แตด, ส่วนแห่งอวัยวะเพศของหญิง อยู่ระหว่างแคมในตอนบน."
+    },
+    {
+      "id": "isaan_body_parts_0178",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แต้หู",
+      "transcriptions": [
+        "แต้-หู",
+        "tԑː^3^-huː^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แต้"
+      ],
+      "raw_text": "แต้หู แต้หู แต้หู [แต้-หู] [tԑː^3^-huː^5^]\nดู แต้."
+    },
+    {
+      "id": "isaan_body_parts_0179",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โต",
+      "transcriptions": [
+        "โต",
+        "toː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โต โต โต [โต] [toː^1^]\nน. ตัว, ร่างกาย."
+    },
+    {
+      "id": "isaan_body_parts_0180",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไต ๑",
+      "transcriptions": [
+        "ไต",
+        "tay^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "หมากไข่หลัง"
+      ],
+      "raw_text": "ไต ๑ ไต ไต [ไต] [tay^1^]\n(ทก.) ดู หมากไข่หลัง."
+    },
+    {
+      "id": "isaan_body_parts_0181",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไต ๒",
+      "transcriptions": [
+        "ไต",
+        "tay^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไต ๒ ไต ไต [ไต] [tay^1^]\nน. กึ๋น, กระเพาะที่ ๒ ของสัตว์ปีก มีหน้าที่ย่อยอาหารต่อจากกระเพาะที่ ๑\nผนังมีกล้ามเนื้อหนาและเหนียวสำหรับบดอาหาร โดยมีหินก้อนเล็ก ๆ ที่กลืนเข้าไปเป็นเครื่องช่วย."
+    },
+    {
+      "id": "isaan_body_parts_0182",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "\\",
+      "transcriptions": [],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": ""
+    },
+    {
+      "id": "isaan_body_parts_0183",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ท้อง",
+      "transcriptions": [
+        "ท่อง",
+        "t^h^ɔːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขี้โผ้"
+      ],
+      "raw_text": "ท้อง ท้อฯง ท้อง [ท่อง] [t^h^ɔːŋ^3^]\n๑. น. ท้อง, ส่วนของร่างกายด้านหน้า ตั้งแต่ลิ้นปี่จนถึงบริเวณต้นขา มีสะดืออยู่ตรงกลาง\nมีกระเพาะและไส้อยู่ภายใน.\n๒. ดู ขี้โผ้."
+    },
+    {
+      "id": "isaan_body_parts_0184",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ท้องแขน",
+      "transcriptions": [
+        "ท่อง-แขน",
+        "t^h^ɔːŋ^3^-k^h^ԑːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ท้องแขน ทอฯ้งแขนฯ ท้องแขน [ท่อง-แขน] [t^h^ɔːŋ^3^-k^h^ԑːn^5^]\nน. ท้องแขน, ส่วนของแขนด้านใน."
+    },
+    {
+      "id": "isaan_body_parts_0185",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ท้องน้อย",
+      "transcriptions": [
+        "ท่อง-น่อย",
+        "t^h^ɔːŋ^3^-nɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ท้องน้อย ทอฯ้งน้อฯยฯฯ ท้องน้อย [ท่อง-น่อย] [t^h^ɔːŋ^3^-nɔːy^3^]\nน. ท้องน้อย, ส่วนของท้องระหว่างสะดือกับหัวหน่าว."
+    },
+    {
+      "id": "isaan_body_parts_0186",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ทุ้มม่อง",
+      "transcriptions": [
+        "ถุ้ม-มอง",
+        "t^h^um^3^-mɔŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตุ่มม่อง"
+      ],
+      "raw_text": "ทุ้มม่อง ทุ้มม่อฯง ทุ้มม่อง [ถุ้ม-มอง] [t^h^um^3^-mɔŋ^6^]\nดู ตุ่มม่อง."
+    },
+    {
+      "id": "isaan_body_parts_0187",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นม",
+      "transcriptions": [
+        "น่ม",
+        "nom^7^"
+      ],
+      "notes": [
+        "โบ",
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "นม น฿มฯ น฿ม [น่ม] [nom^7^]\nน. นม, อวัยวะส่วนที่อยู่บริเวณหน้าอก โดยปรกติมี ๒ เต้า ในสัตว์บางชนิดอาจมีหลายเต้า;\n(โบ) ตู้ หรือ (โบ) จู้ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0188",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นอ",
+      "transcriptions": [
+        "น่อ",
+        "nɔː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นอ นํ นํ [น่อ] [nɔː^7^]\n๑. น. นอ, สิ่งที่งอกขึ้นเหนือจมูกแรด แข็งเหมือนเขาสัตว์.\n๒. น. เขาที่คุดของกวางหรือเก้ง."
+    },
+    {
+      "id": "isaan_body_parts_0189",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "น่อง",
+      "transcriptions": [
+        "นอง",
+        "nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้นน่อง"
+      ],
+      "raw_text": "น่อง น่อฯง น่อง [นอง] [nɔːŋ^6^]\nดู ส้นน่อง."
+    },
+    {
+      "id": "isaan_body_parts_0190",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "น้อง",
+      "transcriptions": [
+        "หฺน้อง",
+        "nɔːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้อง นอฯ้ง น้อง [หฺน้อง] [nɔːŋ^3^]\nน. รกของสัตว์บางชนิด เช่น น้องวัว น้องควาย น้องช้าง."
+    },
+    {
+      "id": "isaan_body_parts_0191",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้ว",
+      "transcriptions": [
+        "หฺนิ้ว",
+        "niw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้ว นิวฯ้ฯ นิ้ว [หฺนิ้ว] [niw^3^]\nน. นิ้ว, ส่วนสุดของมือหรือเท้าแต่ละข้าง แยกออกเป็น ๕ กิ่ง คือ นิ้วหัวแม่มือ นิ้วชี้ นิ้วกลาง\nนิ้วนาง นิ้วก้อย."
+    },
+    {
+      "id": "isaan_body_parts_0192",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วกลาง",
+      "transcriptions": [
+        "หฺนิ้ว-กาง",
+        "niw^3^-kaːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วกลาง นิ้วฯกลฯางฯฯ นิ้วกาง [หฺนิ้ว-กาง] [niw^3^-kaːŋ^1^]\nน. นิ้วกลาง, นิ้วที่ ๓ นับแต่หัวแม่มือ."
+    },
+    {
+      "id": "isaan_body_parts_0193",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วก้อย",
+      "transcriptions": [
+        "หฺนิ้ว-ก้อย",
+        "niw^3^-kɔːy^3^"
+      ],
+      "notes": [
+        "วรรณ"
+      ],
+      "cross_references": [],
+      "raw_text": "นิ้วก้อย นิ้วฯก้ฯอฯยฯฯ นิ้วก้อยฯ [หฺนิ้ว-ก้อย] [niw^3^-kɔːy^3^]\nน. นิ้วก้อย, นิ้วที่ ๕ นับแต่หัวแม่มือหรือหัวแม่เท้า; กิ่ง กิ่งก้อย นิ้วน้อย หรือ (วรรณ)\nนิ้วหล้า ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0194",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วก้อยตีน",
+      "transcriptions": [
+        "นิ่ว-ก้อย-ตีน",
+        "niw^3^-kɔːy^3^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วก้อยตีน นิ้วฯก้ฯอฯยฯฯตีนฯ นิ้วก้อยฯตีน [นิ่ว-ก้อย-ตีน]\n[niw^3^-kɔːy^3^-tiːn^1^]\nน. นิ้วก้อยตีน, นิ้วที่ ๕ นับแต่หัวแม่เท้า."
+    },
+    {
+      "id": "isaan_body_parts_0195",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วก้อยมือ",
+      "transcriptions": [
+        "นิ่ว-ก้อย-มื่อ",
+        "niw^3^-kɔːy^3^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วก้อยมือ นิวฯ้ฯก้ฯอฯยฯฯมื นิ้วก้อยฯมื [นิ่ว-ก้อย-มื่อ]\n[niw^3^-kɔːy^3^-mɨː^7^]\nน. นิ้วก้อยมือ, นิ้วที่ ๕ นับแต่หัวแม่มือ."
+    },
+    {
+      "id": "isaan_body_parts_0196",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วข้อมือ",
+      "transcriptions": [
+        "หฺนิ้ว-ข่อ-มื่อ",
+        "niw^2^-k^h^ɔː^2^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วข้อมือ นิ้วฯขํ้มึ นิ้วขํ้มึ [หฺนิ้ว-ข่อ-มื่อ] [niw^2^-k^h^ɔː^2^-mɨː^7^]\nน. ข้อนิ้ว."
+    },
+    {
+      "id": "isaan_body_parts_0197",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วชี้",
+      "transcriptions": [
+        "หฺนิ้ว-ซี่",
+        "niw^3^-siː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วชี้ นิ้วฯชี้ นิ้วชี้ [หฺนิ้ว-ซี่] [niw^3^-siː^3^]\nน. นิ้วชี้, นิ้วที่ ๒ นับแต่หัวแม่มือ."
+    },
+    {
+      "id": "isaan_body_parts_0198",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วน้อย",
+      "transcriptions": [
+        "หฺนิ้ว-หฺน้อย",
+        "niw^3^-nɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นิ้วก้อย"
+      ],
+      "raw_text": "นิ้วน้อย นิ้วฯน้ฯอฯยฯฯ นิ้วน้อยฯ [หฺนิ้ว-หฺน้อย] [niw^3^-nɔːy^3^]\nดู นิ้วก้อย."
+    },
+    {
+      "id": "isaan_body_parts_0199",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วนาง",
+      "transcriptions": [
+        "หฺนิ้ว-น่าง",
+        "niw^3^-naːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วนาง นิวฯ้ฯนาฯฯงฯฯ นิ้วนาง [หฺนิ้ว-น่าง] [niw^3^-naːŋ^7^]\nน. นิ้วนาง, นิ้วที่ ๔ นับแต่หัวแม่มือ."
+    },
+    {
+      "id": "isaan_body_parts_0200",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วโป้",
+      "transcriptions": [
+        "หฺนิ้ว-โป้",
+        "niw^3^-poː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "นิ้วโป้ นิ้วฯโบ้ นิ้วโป้ [หฺนิ้ว-โป้] [niw^3^-poː^3^]\n๑. น. นิ้วหัวแม่มือ, นิ้วมือนิ้วแรก เป็นนิ้วที่ใหญ่ที่สุด; นิ้วหัวแม่โป้ หรือ โป้มือ ก็ว่า\n๒. น. นิ้วหัวแม่เท้า, นิ้วเท้านิ้วแรก เป็นนิ้วที่ใหญ่ที่สุด; นิ้วหัวแม่โป้ หรือ โป้ตีน ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0201",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วหล้า",
+      "transcriptions": [
+        "หฺนิ้ว-หฺล่า",
+        "niw^3^-laː^2^"
+      ],
+      "notes": [
+        "วรรณ"
+      ],
+      "cross_references": [
+        "นิ้วก้อย"
+      ],
+      "raw_text": "นิ้วหล้า นิ้วฯห้ลฯา นิ้วหล้า [หฺนิ้ว-หฺล่า] [niw^3^-laː^2^]\n(วรรณ) ดู นิ้วก้อย."
+    },
+    {
+      "id": "isaan_body_parts_0202",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "นิ้วหัวแม่โป้",
+      "transcriptions": [
+        "หฺนิ้ว-หัว-แม-โป้",
+        "niw^3^-hua^5^-mԑː^6^-poː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นิ้วโป้"
+      ],
+      "raw_text": "นิ้วหัวแม่โป้ นิ้วฯห฿วฯแม่โบ้ นิ้วห฿วแม่โป้ [หฺนิ้ว-หัว-แม-โป้]\n[niw^3^-hua^5^-mԑː^6^-poː^3^]\nดู นิ้วโป้."
+    },
+    {
+      "id": "isaan_body_parts_0203",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เนื้อ",
+      "transcriptions": [
+        "เหฺนื้อ, เหฺนี้ย",
+        "nɨa^3^, nia^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ชี้น"
+      ],
+      "raw_text": "เนื้อ เนึ้อฯ เนึ้อ [เหฺนื้อ, เหฺนี้ย] [nɨa^3^, nia^3^]\n(ทก.) ดู ชี้น."
+    },
+    {
+      "id": "isaan_body_parts_0204",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไน",
+      "transcriptions": [
+        "ไน่",
+        "nay^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไล"
+      ],
+      "raw_text": "ไน ไน ไน [ไน่] [nay^7^]\nดู ไล."
+    },
+    {
+      "id": "isaan_body_parts_0205",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บ้องหู",
+      "transcriptions": [
+        "บ้อง-หู",
+        "bɔːŋ^3^-huː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บ้องหู บ้อฯงหู บ้องหู [บ้อง-หู] [bɔːŋ^3^-huː^5^]\nน. ช่องหู, รูหู."
+    },
+    {
+      "id": "isaan_body_parts_0206",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บักแอว",
+      "transcriptions": [
+        "บัก-แอว",
+        "bak^2^-Ɂԑːw^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แอว"
+      ],
+      "raw_text": "บักแอว บักฯแอวฯ บักแอว [บัก-แอว] [bak^2^-Ɂԑːw^1^]\nดู แอว."
+    },
+    {
+      "id": "isaan_body_parts_0207",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บ่า",
+      "transcriptions": [
+        "บา",
+        "baː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บ่า บ่า บ่า [บา] [baː^6^]\nน. บ่า, ส่วนของร่างกายระหว่างคอกับหัวไหล่; บ่าไหล่ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0208",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บ่าไหล่",
+      "transcriptions": [
+        "บา-ไล",
+        "baː^6^-lay^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "บ่า"
+      ],
+      "raw_text": "บ่าไหล่ บ่าไหลฯ่ บ่าไหล่ [บา-ไล] [baː^6^-lay^6^]\nดู บ่า."
+    },
+    {
+      "id": "isaan_body_parts_0209",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บี",
+      "transcriptions": [
+        "บี",
+        "biː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บี บี บี [บี] [biː^1^]\nน. ดี, ถุงน้ำดี."
+    },
+    {
+      "id": "isaan_body_parts_0210",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บีแข้ง",
+      "transcriptions": [
+        "บี-แข่ง",
+        "biː^1^-k^h^ԑːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "บีแข้ง บีแข้งฯฯ บีแข้ง [บี-แข่ง] [biː^1^-k^h^ԑːŋ^2^]\nน. น่อง, ปลีน่อง."
+    },
+    {
+      "id": "isaan_body_parts_0211",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "บือ",
+      "transcriptions": [
+        "บือ",
+        "bɨː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "สายบือ"
+      ],
+      "raw_text": "บือ บื บื [บือ] [bɨː^1^]\nดู สายบือ."
+    },
+    {
+      "id": "isaan_body_parts_0212",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ปอด",
+      "transcriptions": [
+        "ปอด",
+        "pɔːt^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปอด บอฯด ปอด [ปอด] [pɔːt^2^]\nน. ปอด, อวัยวะทำหน้าที่เกี่ยวกับการหายใจ\nอยู่ภายในร่างกายของคนหรือสัตว์ที่มีกระดูกสันหลังเป็นส่วนมาก."
+    },
+    {
+      "id": "isaan_body_parts_0213",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ปาก",
+      "transcriptions": [
+        "ปาก",
+        "paːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปาก บากฯ ปาก [ปาก] [paːk^2^]\nน. ปาก, ส่วนหนึ่งของร่างกายคนและสัตว์ อยู่ที่บริเวณใบหน้า\nมีลักษณะเป็นช่องสำหรับกินอาหารและใช้สำหรับเปล่งเสียงได้ด้วย."
+    },
+    {
+      "id": "isaan_body_parts_0214",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ปีก",
+      "transcriptions": [
+        "ปีก",
+        "piːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปีก บีกฯ ปีก [ปีก] [piːk^2^]\nน. ปีก, อวัยวะสำหรับบินของสัตว์หรือแมลงเป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0215",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ปูม",
+      "transcriptions": [
+        "ปูม",
+        "puːm^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "พุง"
+      ],
+      "raw_text": "ปูม บูม ปูม [ปูม] [puːm^1^]\n(โบ) ดู พุง."
+    },
+    {
+      "id": "isaan_body_parts_0216",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เปลือกตา",
+      "transcriptions": [
+        "เปือก-ตา",
+        "pɨak^2^-taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เปลือกตา เบึลฯอกฯตา เปึอกตา [เปือก-ตา] [pɨak^2^-taː^1^]\nน. เปลือกตา, หนังเป็นชั้น ๆ ที่หุ้มนัยน์ตา."
+    },
+    {
+      "id": "isaan_body_parts_0217",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เปื้อง",
+      "transcriptions": [
+        "เปื้อง",
+        "pɨaŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เกื้อง"
+      ],
+      "raw_text": "เปื้อง เบึ้อฯง เปึ้อง [เปื้อง] [pɨaŋ^3^]\nดู เกื้อง."
+    },
+    {
+      "id": "isaan_body_parts_0218",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โป้ตีน",
+      "transcriptions": [
+        "โป้-ตีน",
+        "poː^3^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นิ้วโป้ ความหมายที่ ๒"
+      ],
+      "raw_text": "โป้ตีน โบ้ตีนฯ โป้ตีน [โป้-ตีน] [poː^3^-tiːn^1^]\nดู นิ้วโป้ ความหมายที่ ๒."
+    },
+    {
+      "id": "isaan_body_parts_0219",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โป้มือ",
+      "transcriptions": [
+        "โป-มื่อ",
+        "poː^3^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "นิ้วโป้ ความหมายที่ ๑"
+      ],
+      "raw_text": "โป้มือ โบ้มื โป้มื [โป-มื่อ] [poː^3^-mɨː^7^]\nดู นิ้วโป้ ความหมายที่ ๑."
+    },
+    {
+      "id": "isaan_body_parts_0220",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ผ้งแก้ม",
+      "transcriptions": [
+        "ผ่ง-แก้ม",
+        "p^h^oŋ^2^-kԑːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โผ้งแก้ม"
+      ],
+      "raw_text": "ผ้งแก้ม ผ฿งฯฯ้ฯแก้มฯ ผ฿้งแก้ม [ผ่ง-แก้ม] [p^h^oŋ^2^-kԑːm^3^]\nดู โผ้งแก้ม."
+    },
+    {
+      "id": "isaan_body_parts_0221",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ผม",
+      "transcriptions": [
+        "ผม",
+        "p^h^om^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ผม ผ฿มฯ ผ฿ม [ผม] [p^h^om^5^]\nน. ผม, ขนที่ขึ้นอยู่บนศีรษะ โดยปรกติเป็นเส้นยาว; (โบ) ขนหัว ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0222",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ผ้าขี้ริ้ว",
+      "transcriptions": [
+        "ผ่า-ขี่-หฺลิ้ว",
+        "p^h^aː^2^-k^h^iː^2^-liw^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หย้อ"
+      ],
+      "raw_text": "ผ้าขี้ริ้ว ผ้าขี้ริ้วฯ ผ้าขี้ริ้ว [ผ่า-ขี่-หฺลิ้ว] [p^h^aː^2^-k^h^iː^2^-liw^3^]\nดู หย้อ."
+    },
+    {
+      "id": "isaan_body_parts_0223",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ผิว",
+      "transcriptions": [
+        "ผิว",
+        "p^h^iw^5^"
+      ],
+      "notes": [
+        "โบ; วรรณ",
+        "เวสสันดรคำกลอน"
+      ],
+      "cross_references": [],
+      "raw_text": "ผิว ผิวฯ ผิว [ผิว] [p^h^iw^5^]\n(โบ; วรรณ) น. ผิว, ส่วนที่มีลักษณะบาง ๆ\nเป็นพื้นหุ้มอยู่ภายนอกสุดของหลังและเปลือกเป็นต้น เช่น สุขุมัจฉวีเนื้อเกลี้ยงอ่อนผิวนวล\nคือทองทาทั่วโตเต็มเนื้อ ขอให้สีใสเหลื้อมนวลในผิวผ่อง ใผเห็นแล้วอยากต้องใจสบั้นท่าวทวง\n(เวสสันดรคำกลอน)."
+    },
+    {
+      "id": "isaan_body_parts_0224",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ผีสบ",
+      "transcriptions": [
+        "ผี-ซบ",
+        "p^h^iː^5^-sop^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "สีสบ"
+      ],
+      "raw_text": "ผีสบ ผีส฿บฯฯ ผีส฿บ [ผี-ซบ] [p^h^iː^5^-sop^4^]\nดู สีสบ."
+    },
+    {
+      "id": "isaan_body_parts_0225",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แผง",
+      "transcriptions": [
+        "แผง",
+        "p^h^ԑːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ครุย"
+      ],
+      "raw_text": "แผง แผงฯฯ แผง [แผง] [p^h^ԑːŋ^5^]\n๑. น. ขนแข็งที่สันคอม้าหรือหมูเป็นต้น.\n๒. ดู ครุย."
+    },
+    {
+      "id": "isaan_body_parts_0226",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โผ้",
+      "transcriptions": [
+        "โผ่",
+        "p^h^oː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ขี้โผ้"
+      ],
+      "raw_text": "โผ้ โผ้ โผ้ [โผ่] [p^h^oː^2^]\nดู ขี้โผ้."
+    },
+    {
+      "id": "isaan_body_parts_0227",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โผ้งแก้ม",
+      "transcriptions": [
+        "โผ่ง-แก้ม",
+        "p^h^oːŋ^2^-kԑːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โผ้งแก้ม โผ้งฯฯแก้มฯ โผ้งแก้ม [โผ่ง-แก้ม] [p^h^oːŋ^2^-kԑːm^3^]\nน. กระพุ้งแก้ม, ส่วนของแก้มที่ป่องออก; ผ้งแก้ม ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0228",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โผ้งขี้",
+      "transcriptions": [
+        "โผ่ง-ขี่",
+        "p^h^oːŋ^2^-khiː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุง ความหมายที่ ๓"
+      ],
+      "raw_text": "โผ้งขี้ โผงฯฯ้ขี้ โผ้งขี้ [โผ่ง-ขี่] [p^h^oːŋ^2^-khiː^2^]\nดู พุง ความหมายที่ ๓."
+    },
+    {
+      "id": "isaan_body_parts_0229",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โผ้งเยี่ยว",
+      "transcriptions": [
+        "โผ่ง-เญียว",
+        "p^h^oːŋ^2^-ñiaw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โผ้งเยี่ยว โผงฯฯ้ย่ยฯว โผ้งย่ยว [โผ่ง-เญียว] [p^h^oːŋ^2^-ñiaw^6^]\nน. กระเพาะปัสสาวะ; พกเยี่ยว ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0230",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "พกขี้",
+      "transcriptions": [
+        "พก-ขี่",
+        "p^h^ok^1^-k^h^iː^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุง ความหมายที่ ๓"
+      ],
+      "raw_text": "พกขี้ พกฯ฿ขี้ พ฿กขี้ [พก-ขี่] [p^h^ok^1^-k^h^iː^2^]\nดู พุง ความหมายที่ ๓."
+    },
+    {
+      "id": "isaan_body_parts_0231",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "พกเยี่ยว",
+      "transcriptions": [
+        "พก-เญียว",
+        "p^h^ok^1^-ñiaw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โผ้งเยี่ยว"
+      ],
+      "raw_text": "พกเยี่ยว พกฯ฿ย่ยฯว พ฿กย่ยว [พก-เญียว] [p^h^ok^1^-ñiaw^6^]\nดู โผ้งเยี่ยว."
+    },
+    {
+      "id": "isaan_body_parts_0232",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "พุง",
+      "transcriptions": [
+        "พุ่ง",
+        "p^h^uŋ^7^"
+      ],
+      "notes": [
+        "โบ",
+        "ผญา",
+        "ทก."
+      ],
+      "cross_references": [
+        "ขี้โผ้"
+      ],
+      "raw_text": "พุง พุง พุง [พุ่ง] [p^h^uŋ^7^]\n๑. ดู ขี้โผ้.\n๒. น. ท้อง, ส่วนของร่างกายด้านหน้า ตั้งแต่ลิ้นปี่จนถึงบริเวณต้นขา มีสะดืออยู่ตรงกลาง\nมีกระเพาะและไส้อยู่ภายใน, พุงพะวาย โพ่น หรือ (โบ) ปูม ก็ว่า เช่น\nเงินเต็มพาบ่ท่อผญาเต็มปูม (ผญา).\n๓. น. กระเพาะอาหาร, อวัยวะภายในของคนและสัตว์ ลักษณะคล้ายถุง; โผ้งขี้ พกขี้ โพ่น\nหรือ (ทก.) กระเพาะ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0233",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "พุงพะวาย",
+      "transcriptions": [
+        "พุ่ง-พะ-ว่าย",
+        "p^h^uŋ^7^-p^h^a^1^-waːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุง ความหมายที่ ๒"
+      ],
+      "raw_text": "พุงพะวาย พุงพะวายฯ พุงพะวาย [พุ่ง-พะ-ว่าย]\n[p^h^uŋ^7^-p^h^a^1^-waːy^7^]\nดู พุง ความหมายที่ ๒."
+    },
+    {
+      "id": "isaan_body_parts_0234",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โพ่น",
+      "transcriptions": [
+        "โพน",
+        "p^h^oːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พุง ความหมายที่ ๒",
+        "พุง ความหมายที่ ๓"
+      ],
+      "raw_text": "โพ่น โพนฯ่ โพ่น [โพน] [p^h^oːn^6^]\n๑. ดู พุง ความหมายที่ ๒.\n๒. ดู พุง ความหมายที่ ๓."
+    },
+    {
+      "id": "isaan_body_parts_0235",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "มัน",
+      "transcriptions": [
+        "มั่น",
+        "man^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "มัน มันฯ มัน [มั่น] [man^7^]\nน. มัน, เนื้อเยื่อชนิดหนึ่งในร่างกายคนและสัตว์ มีลักษณะนุ่ม ๆ หยุ่น ๆ มีไขมันอยู่ในตัว."
+    },
+    {
+      "id": "isaan_body_parts_0236",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "มันออง",
+      "transcriptions": [
+        "มั่น-ออง",
+        "man^7^-ʔɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "มันออง มันฯออฯง มันออง [มั่น-ออง] [man^7^-ʔɔːŋ^1^]\nน. มันสมอง, อวัยวะที่อยู่ภายในกะโหลกศีรษะ เนื้อนุ่ม หยุ่น ลักษณะเป็นลอน\nเป็นศูนย์รวมระบบประสาท."
+    },
+    {
+      "id": "isaan_body_parts_0237",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ม้าม",
+      "transcriptions": [
+        "หฺม้าม",
+        "maːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ม้าม ม้ามฯ ม้าม [หฺม้าม] [maːm^3^]\nน. ม้าม, อวัยวะภายในร่างกายของคนและสัตว์เลี้ยงลูกด้วยนม\nอยู่ริมกระเพาะอาหารข้างซ้าย มีหน้าที่ทำลายเม็ดเลือดแดง\nสร้างเม็ดนํ้าเหลืองและสร้างภูมิคุ้มกันของร่างกาย."
+    },
+    {
+      "id": "isaan_body_parts_0238",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "มือ",
+      "transcriptions": [
+        "มื่อ",
+        "mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "มือ มึ มึ [มื่อ] [mɨː^7^]\nน. มือ, อวัยวะส่วนหนึ่งของร่างกายอยู่ต่อจากปลายแขนประกอบด้วยฝ่ามือและนิ้วมือ\nสำหรับจับเป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0239",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ยอดเอิก",
+      "transcriptions": [
+        "ญอด-เอิ๊ก",
+        "ñɔːt^3^-Ɂək^4^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ยอดเอิก ยอฯดเอิกฯ ยอดเอิก [ญอด-เอิ๊ก] [ñɔːt^3^-Ɂək^4^]\nน. ลิ้นปี่, ส่วนปลายล่างของกระดูกอกที่ย้อยลงมาในผนังหน้าท้องส่วนบน; (ทก.) ลิ้นปี่ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0240",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ยอย",
+      "transcriptions": [
+        "ญ่อย",
+        "ñɔːy^7^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ยอย ยอฯยฯฯ ยอย [ญ่อย] [ñɔːy^7^]\nน. จอน, ชายผมข้างหูที่ระลงมาที่แก้ม, (ทก.) จอน ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0241",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รอยโป้ตีน",
+      "transcriptions": [
+        "ฮ้อย-โป้-ตีน",
+        "hɔːy^4^-poː^3^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รอยโป้ตีน รอฯยฯฯโบ้ตีนฯ รอยฯโป้ตีน [ฮ้อย-โป้-ตีน]\n[hɔːy^4^-poː^3^-tiːn^1^]\nน. ลายนิ้วหัวแม่เท้า."
+    },
+    {
+      "id": "isaan_body_parts_0242",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รอยโป้มือ",
+      "transcriptions": [
+        "ฮ้อย-โป้-มื่อ",
+        "hɔːy^4^-poː^3^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รอยโป้มือ รอฯยฯฯโบ้มื รอยฯโป้มื [ฮ้อย-โป้-มื่อ] [hɔːy^4^-poː^3^-mɨː^7^]\nน. ลายนิ้วหัวแม่มือ."
+    },
+    {
+      "id": "isaan_body_parts_0243",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รูขี้",
+      "transcriptions": [
+        "ฮู่-ขี่",
+        "huː^7^-k^h^iː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รูขี้ รูขี้ รูขี้ [ฮู่-ขี่] [huː^7^-k^h^iː^2^]\nน. ทวารหนัก, ช่องสำหรับถ่ายอุจจาระ; กะโบกดาก ก้นขี้ ก้นดาก รูดาก หรือ ตูด ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0244",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รูดัง",
+      "transcriptions": [
+        "ฮู่-ดัง",
+        "huː^7^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รูดัง รูดังฯฯ รูดัง [ฮู่-ดัง] [huː^7^-daŋ^1^]\nน. รูจมูก, รูที่จมูก มี ๒ รู สำหรับดมกลิ่นและหายใจเข้าหายใจออก."
+    },
+    {
+      "id": "isaan_body_parts_0245",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รูดาก",
+      "transcriptions": [
+        "ฮู่-ดาก",
+        "huː^7^-daːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "รูขี้"
+      ],
+      "raw_text": "รูดาก รูดากฯ รูดาก [ฮู่-ดาก] [huː^7^-daːk^2^]\nดู รูขี้."
+    },
+    {
+      "id": "isaan_body_parts_0246",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รูเยี่ยว",
+      "transcriptions": [
+        "ฮู่-เญียว",
+        "huː^7^-ñiaw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รูเยี่ยว รูย่ยฯว รูย่ยว [ฮู่-เญียว] [huː^7^-ñiaw^6^]\nน. ทวารเบา, ช่องสำหรับถ่ายปัสสาวะ."
+    },
+    {
+      "id": "isaan_body_parts_0247",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รูหี",
+      "transcriptions": [
+        "ฮู่-หี",
+        "huː^7^-hiː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รูหี รูหี รูหี [ฮู่-หี] [huː^7^-hiː^5^]\nน. ช่องคลอด, ส่วนของอวัยวะสืบพันธุ์ของเพศหญิง เป็นช่องที่ต่อมาจากปากมดลูก\nและเป็นทางที่ทารกคลอดออกมา."
+    },
+    {
+      "id": "isaan_body_parts_0248",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "รูหู",
+      "transcriptions": [
+        "ฮู่-หู",
+        "huː^7^-huː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "รูหู รูหู รูหู [ฮู่-หู] [huː^7^-huː^5^]\nน. ช่องหู."
+    },
+    {
+      "id": "isaan_body_parts_0249",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ลักยิ้ม",
+      "transcriptions": [
+        "ลัก-หฺญิ้ม",
+        "lak^1^-ñim^3^"
+      ],
+      "notes": [
+        "ทก.",
+        "โบ",
+        "การะศัพท์"
+      ],
+      "cross_references": [],
+      "raw_text": "ลักยิ้ม ลกฯัยิมฯ้ฯ ลักยิ้ม [ลัก-หฺญิ้ม] [lak^1^-ñim^3^]\n(ทก.) น. ลักยิ้ม, รอยเล็ก ๆ ที่บุ๋มลงไปที่แก้ม; (โบ) ขวยตูม หรือ ขวยตุม (การะศัพท์)\nก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0250",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ลายตีน",
+      "transcriptions": [
+        "ล่าย-ตีน",
+        "laːy^7^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลายตีน ลายฯตีนฯ ลายตีน [ล่าย-ตีน] [laːy^7^-tiːn^1^]\nน. ลายตีน, รอยเส้นที่ฝ่าเท้า; เส้นตีน ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0251",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ลายมือ",
+      "transcriptions": [
+        "ล่าย-มื่อ",
+        "laːy^7^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลายมือ ลายฯมื ลายมื [ล่าย-มื่อ] [laːy^7^-mɨː^7^]\nน. ลายมือ, รอยเส้นที่ฝ่ามือและนิ้ว; เส้นมือ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0252",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ลิ้น",
+      "transcriptions": [
+        "หฺลิ้น",
+        "lin^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลิ้น ลินฯ้ฯ ลิ้น [หฺลิ้น] [lin^3^]\nน. ลิ้น, อวัยวะที่อยู่ในปาก มีหน้าที่ ๑. กลั้วอาหารให้เข้ากันแล้วส่งลงในลำคอ ๒.\nช่วยในการออกเสียง ๓. ให้รู้รส, ลิ้นสัตว์บางจำพวกเช่นจำพวกที่มีขน\nใช้ลิ้นเลียขนเลียแผลเพื่อทำความสะอาดได้"
+    },
+    {
+      "id": "isaan_body_parts_0253",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ลิ้นไก่",
+      "transcriptions": [
+        "หลิ้น-ไก",
+        "lin^3^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลิ้นไก่ ลิ้นฯไก่ ลิ้นไก่ [หลิ้น-ไก] [lin^3^-kay^6^]\nน. ลิ้นไก่, ติ่งบนเพดานอ่อนที่ยื่นลงมาในช่องปาก; เหลือกไก่ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0254",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ลิ้นปี่",
+      "transcriptions": [
+        "หลิ้น-ปี",
+        "lin^3^-piː^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ยอดเอิก"
+      ],
+      "raw_text": "ลิ้นปี่ ลิ้นฯบี่ ลิ้นปี่ [หลิ้น-ปี] [lin^3^-piː^6^]\n(ทก.) ดู ยอดเอิก."
+    },
+    {
+      "id": "isaan_body_parts_0255",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เล็บ",
+      "transcriptions": [
+        "เล็บ",
+        "lep^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เล็บ เลับฯฯ เลับ [เล็บ] [lep^6^]\nน. เล็บ,\nสิ่งที่มีลักษณะแข็งอย่างเขาสัตว์อยู่ปลายนิ้วสำหรับป้องกันส่วนปลายนิ้วหรือหยิบจับเป็นต้น."
+    },
+    {
+      "id": "isaan_body_parts_0256",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เล็บนาง",
+      "transcriptions": [
+        "เล็บ-น่าง",
+        "lep^4^-naːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตัดติ่น"
+      ],
+      "raw_text": "เล็บนาง เลับฯฯนาฯงฯฯ เลับนาง [เล็บ-น่าง] [lep^4^-naːŋ^7^]\nดู ตัดติ่น."
+    },
+    {
+      "id": "isaan_body_parts_0257",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เลาคีง",
+      "transcriptions": [
+        "เล่า-คี่ง",
+        "law^7^-k^h^iːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "คีง"
+      ],
+      "raw_text": "เลาคีง เล฿าคีงฯฯ เล฿าคีง [เล่า-คี่ง] [law^7^-k^h^iːŋ^7^]\nดู คีง."
+    },
+    {
+      "id": "isaan_body_parts_0258",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไล",
+      "transcriptions": [
+        "ไล่",
+        "lay^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไล ไล ไล [ไล่] [lay^7^]\nน. เหล็กใน, เดือยแหลมที่มีในก้นหรือปลายหางสัตว์บางชนิด มีผึ้ง แมงป่อง เป็นต้น;\nเหล็กใน หรือ ไน ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0259",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ส้นตีน",
+      "transcriptions": [
+        "ส่น-ตีน",
+        "son^2^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้นน่อง"
+      ],
+      "raw_text": "ส้นตีน ส฿นฯ้ฯตีนฯ ส฿้นตีน [ส่น-ตีน] [son^2^-tiːn^6^]\nดู ส้นน่อง."
+    },
+    {
+      "id": "isaan_body_parts_0260",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ส้นน่อง",
+      "transcriptions": [
+        "ส่น-นอง",
+        "son^2^-nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ส้นน่อง ส฿นฯ้ฯน่อฯง ส฿้นน่อง [ส่น-นอง] [son^2^-nɔːŋ^6^]\nน. ส้นเท้า, ส่วนท้ายของเท้า; ส้นตีน สะน่อง คะน่อง กะน่อง น่อง หรือ แอกน่อง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0261",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สบ",
+      "transcriptions": [
+        "ซบ",
+        "sop^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "สีสบ"
+      ],
+      "raw_text": "สบ ส฿บฯฯ ส฿บ [ซบ] [sop^4^]\nดู สีสบ."
+    },
+    {
+      "id": "isaan_body_parts_0262",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สว้าง",
+      "transcriptions": [
+        "ส่วง",
+        "suaŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สว้าง สวฯ้างฯฯ ส่วง [ส่วง] [suaŋ^2^]\nน. สีข้าง, ชายโครง; เดี้ยง หรือ ตาบข้าง ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0263",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สอก",
+      "transcriptions": [
+        "สอก",
+        "sɔːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สอก สอฯก สอก [สอก] [sɔːk^2^]\nน. ศอก, ส่วนของแขน ตรงข้ามกับข้อพับ."
+    },
+    {
+      "id": "isaan_body_parts_0264",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สะน่อง",
+      "transcriptions": [
+        "สะ-นอง",
+        "sa^1^-nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้นน่อง"
+      ],
+      "raw_text": "สะน่อง สะน่อฯง สะน่อง [สะ-นอง] [sa^1^-nɔːŋ^6^]\nดู ส้นน่อง."
+    },
+    {
+      "id": "isaan_body_parts_0265",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สะบัก",
+      "transcriptions": [
+        "สะ-บั๊ก",
+        "sa^1^-bak^4^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "เกื้อง"
+      ],
+      "raw_text": "สะบัก สะบักฯ สะบัก [สะ-บั๊ก] [sa^1^-bak^4^]\n(ทก.) ดู เกื้อง."
+    },
+    {
+      "id": "isaan_body_parts_0266",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สะโพก",
+      "transcriptions": [
+        "สะ-โพก",
+        "sa^1^-p^h^oːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ตะโพก"
+      ],
+      "raw_text": "สะโพก สะโพกฯ สะโพก [สะ-โพก] [sa^1^-p^h^oːk^3^]\nดู ตะโพก."
+    },
+    {
+      "id": "isaan_body_parts_0267",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สันแข้ง",
+      "transcriptions": [
+        "สัน-แข่ง",
+        "san^5^-k^h^ɛŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สันแข้ง สันฯแขงฯฯ้ สันแข้ง [สัน-แข่ง] [san^5^-k^h^ɛŋ^2^]\nน. หน้าแข้ง, ส่วนหน้าของขา ใต้เข่าลงไปถึงข้อเท้า."
+    },
+    {
+      "id": "isaan_body_parts_0268",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สันดัง",
+      "transcriptions": [
+        "สัน-ดัง",
+        "san^1^-daŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สันดัง สันฯดังฯฯ สันดัง [สัน-ดัง] [san^1^-daŋ^1^]\nน. ดั้ง, สันจมูก."
+    },
+    {
+      "id": "isaan_body_parts_0269",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สันหลัง",
+      "transcriptions": [
+        "สัน-หฺลัง",
+        "san^5^-laŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สันหลัง สันฯหลฯัง สันหลัง [สัน-หฺลัง] [san^5^-laŋ^5^]\nน. สันหลัง, ส่วนของร่างกายด้านหลัง ซึ่งมีกล้ามเนื้อและกระดูกเป็นแนวนูนลงมาตลอดหลัง."
+    },
+    {
+      "id": "isaan_body_parts_0270",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สามสิบกลีบ",
+      "transcriptions": [
+        "สาม-ซิบ-กีบ",
+        "saːm^5^-sip^4^-kiːp^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หย้อ"
+      ],
+      "raw_text": "สามสิบกลีบ สามฯสิบฯฯกีลฯบ สามสิบกีบ [สาม-ซิบ-กีบ]\n[saːm^5^-sip^4^-kiːp^2^]\nดู หย้อ."
+    },
+    {
+      "id": "isaan_body_parts_0271",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สายดือ",
+      "transcriptions": [
+        "สาย-ดือ",
+        "saːy^5^-dɨː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "สายบือ"
+      ],
+      "raw_text": "สายดือ สายฯดื สายดื [สาย-ดือ] [saːy^5^-dɨː^1^]\nดู สายบือ."
+    },
+    {
+      "id": "isaan_body_parts_0272",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สายบือ",
+      "transcriptions": [
+        "สาย-บือ",
+        "saːy^5^-bɨː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สายบือ สายฯบื สายบื [สาย-บือ] [saːy^5^-bɨː^1^]\nน. สะดือ, ส่วนของร่างกายอยู่ตรงกลางพื้นท้อง; บือ หรือ สายดือ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0273",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สายแฮ่",
+      "transcriptions": [
+        "สาย-แฮ",
+        "saːy^5^-hԑː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สายแฮ่ สายฯแฮ่ สายแฮ่ [สาย-แฮ] [saːy^5^-hԑː^6^]\nน. รก, เครื่องสำหรับหล่อเลี้ยงเด็กในครรภ์แนบอยู่กับมดลูก มีสายต่อมาที่สะดือเด็ก."
+    },
+    {
+      "id": "isaan_body_parts_0274",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "สีสบ",
+      "transcriptions": [
+        "สี-ซบ",
+        "siː^5^-sop^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สีสบ สีส฿บฯฯ สีส฿บ [สี-ซบ] [siː^5^-sop^4^]\nน. ริมฝีปาก, เนื้อส่วนที่เป็นขอบรอบปาก; สบ หรือ ผีสบ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0275",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เส้น",
+      "transcriptions": [
+        "เส่น",
+        "sen^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เส้น เสนฯ้ เส้น [เส่น] [sen^2^]\nน. เอ็น, กลุ่มหรือมัดเส้นใยเนื้อเยื่อเกี่ยวพัน ซึ่งเรียงตัวในทิศทางเดียวเห็นได้ชัด\nและไม่มีกล้ามเนื้อยึดที่ปลาย; ใช้แก่คน; เอ็น ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0276",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เส้นตีน",
+      "transcriptions": [
+        "เส่น-ตีน",
+        "sen^2^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลายตีน"
+      ],
+      "raw_text": "เส้นตีน เส้นฯตีนฯ เส้นตีน [เส่น-ตีน] [sen^2^-tiːn^1^]\nดู ลายตีน."
+    },
+    {
+      "id": "isaan_body_parts_0277",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เส้นมือ",
+      "transcriptions": [
+        "เส่น-มื่อ",
+        "sen^2^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลายมือ"
+      ],
+      "raw_text": "เส้นมือ เสนฯ้มื เส้นมื [เส่น-มื่อ] [sen^2^-mɨː^7^]\nดู ลายมือ."
+    },
+    {
+      "id": "isaan_body_parts_0278",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไส้",
+      "transcriptions": [
+        "ไส่",
+        "say^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไส้ ไส้ ไส้ [ไส่] [say^2^]\nน. ไส้, ส่วนของทางเดินอาหารซึ่งอยู่ระหว่างกระเพาะอาหารกับทวารหนัก\nเป็นท่อยาวขดไปขดมาอยู่ในช่องท้อง มีหน้าที่ย่อย ดูดซึมอาหารและนํ้า พักและขับถ่ายกากอาหาร."
+    },
+    {
+      "id": "isaan_body_parts_0279",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไส้ตัน",
+      "transcriptions": [
+        "ไส่-ตัน",
+        "say^2^-tan^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ไส้ตัน ไส้ตันฯ ไส้ตัน [ไส่-ตัน] [say^2^-tan^1^]\nน. ไส้ตัน, มดลูกหมู."
+    },
+    {
+      "id": "isaan_body_parts_0280",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไส้ติ่ง",
+      "transcriptions": [
+        "ไส่-ติง",
+        "say^2^-tiŋ^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ไส้ติ่ง ไส้ติ่งฯฯ ไส้ติ่ง [ไส่-ติง] [say^2^-tiŋ^6^]\n(ทก.) ไส้ติ่ง, ไส้ที่เป็นติ่งย้อยจากลำไส้ใหญ่ของคน."
+    },
+    {
+      "id": "isaan_body_parts_0281",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "\\",
+      "transcriptions": [],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": ""
+    },
+    {
+      "id": "isaan_body_parts_0282",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หนวด",
+      "transcriptions": [
+        "หฺนวด",
+        "nuat^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "หนวด หนฯวฯด หนฯวด [หฺนวด] [nuat^2^]\nน. ขนที่ขึ้นเหนือริมฝีปากบนของคน, สิ่งที่มีลักษณะเป็นเส้นยาว ๆ ขึ้นตามบริเวณปากของสัตว์;\n(โบ) หมอยปาก."
+    },
+    {
+      "id": "isaan_body_parts_0283",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน่วยตา",
+      "transcriptions": [
+        "นวย-ตา",
+        "nuay^6^-taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน่วยตา ห่นฯวฯยตา หนฯ่วยตา [นวย-ตา] [nuay^6^-taː^1^]\nน. ลูกตา."
+    },
+    {
+      "id": "isaan_body_parts_0284",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน่วยตาขาว",
+      "transcriptions": [
+        "นวย-ตา-ขาว",
+        "nuay^6^-taː^1^-k^h^aːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน่วยตาขาว ห่นฯวฯยตาขาวฯ หนฯ่วยตาขาว [นวย-ตา-ขาว]\n[nuay^6^-taː^1^-k^h^aːw^5^]\nน. ตาขาว."
+    },
+    {
+      "id": "isaan_body_parts_0285",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน่วยตาดำ",
+      "transcriptions": [
+        "นวย-ตา-ดำ",
+        "nuay^6^-taː^1^-dam^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน่วยตาดำ ห่นฯวฯยตาดำ หนฯ่วยตาดำ [นวย-ตา-ดำ]\n[nuay^6^-taː^1^-dam^1^]\nน. ตาดำ."
+    },
+    {
+      "id": "isaan_body_parts_0286",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หนอก",
+      "transcriptions": [
+        "หฺนอก",
+        "nɔːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หนอก หนฯอกฯ หนฯอก [หฺนอก] [nɔːk^2^]\nน. หนอก, ก้อนเนื้อที่ต้นคอของสัตว์บางชนิด เช่น หนอกงัว."
+    },
+    {
+      "id": "isaan_body_parts_0287",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน่อแตด",
+      "transcriptions": [
+        "นอ-แตด",
+        "nɔː^6^-tԑːt^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน่อแตด หนฯํ่ฯแตดฯ หนฯํ่แตด [นอ-แตด] [nɔː^6^-tԑːt^2^]\nน. แตด, ส่วนแห่งอวัยเพศของหญิง อยู่ระหว่างแคมในตอนบน."
+    },
+    {
+      "id": "isaan_body_parts_0288",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หนัง",
+      "transcriptions": [
+        "หฺนัง",
+        "naŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หนัง หนฯัง หนฯัง [หฺนัง] [naŋ^5^]\nน. หนัง, ส่วนของร่างกายที่หุ้มเนื้ออยู่."
+    },
+    {
+      "id": "isaan_body_parts_0289",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หนังกำพร้า",
+      "transcriptions": [
+        "หฺนัง-กำ-ผ้า",
+        "naŋ^5^-kam^1^-p^h^aː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หนังกำพร้า หันฯงกำพรฯ้า หนฯังกำพ้า [หฺนัง-กำ-ผ้า]\n[naŋ^5^-kam^1^-p^h^aː^3^]\nน. หนังกำพร้า, หนังที่เป็นผิวชั้นนอกสุดของคนและสัตว์."
+    },
+    {
+      "id": "isaan_body_parts_0290",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน้า",
+      "transcriptions": [
+        "หฺน่า",
+        "naː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้า หนฯ้า หนฯ้า [หฺน่า] [naː^2^]\n๑. น. หน้า, ส่วนของศีรษะตั้งแต่หน้าผากลงมาจดคาง.\n๒. น. หน้า, ซีกของกายที่ตรงข้ามกับหลัง."
+    },
+    {
+      "id": "isaan_body_parts_0291",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน้าแข้ง",
+      "transcriptions": [
+        "หฺน่า-แข่ง",
+        "naː^2^-k^h^ɛːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แข้ง"
+      ],
+      "raw_text": "หน้าแข้ง หนฯ้าแข้งฯฯ หนฯ้าแข้ง [หฺน่า-แข่ง] [naː^2^-k^h^ɛːŋ^2^]\nดู แข้ง."
+    },
+    {
+      "id": "isaan_body_parts_0292",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน้าแง",
+      "transcriptions": [
+        "หฺน่า-แง่",
+        "naː^2^-ŋԑː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้าแง หนฯ้าแง หนฯ้าแง [หฺน่า-แง่] [naː^2^-ŋԑː^7^]\nน. ส่วนหน้าผากกึ่งกลางระหว่างคิ้ว."
+    },
+    {
+      "id": "isaan_body_parts_0293",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน้าผาก",
+      "transcriptions": [
+        "หฺน่า-ผาก",
+        "naː^2^-p^h^aːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หน้าผาก หนฯ้าผากฯ หนฯ้าผาก [หฺน่า-ผาก] [naː^2^-p^h^aːk^2^]\nน. หน้าผาก, ส่วนเบื้องบนของใบหน้าอยู่เหนือคิ้วขึ้นไป."
+    },
+    {
+      "id": "isaan_body_parts_0294",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หน้าเอิก",
+      "transcriptions": [
+        "หฺน่า-เอิ๊ก",
+        "naː^2^-Ɂəːk^4^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "หน้าเอิก หนฯ้าเอิกฯ หนฯ้าเอิก [หฺน่า-เอิ๊ก] [naː^2^-Ɂəːk^4^]\nน. หน้าอก, ส่วนภายนอกของอก, (โบ) ตาบเอิก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0295",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมอย",
+      "transcriptions": [
+        "หฺมอย",
+        "mɔːy^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "หมอย หมฯอยฯ หมฯอย [หฺมอย] [mɔːy^5^]\n๑. (โบ) น. ขนที่ยาวกว่าปรกติ.\n๒. น. หมอย, ขนที่ของลับ, ขนหมอย ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0296",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมอยตาน้อย",
+      "transcriptions": [
+        "หฺมอย-ตา-หฺน้อย",
+        "mɔːy^5^-taː^1^-nɔːy^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ขนตา"
+      ],
+      "raw_text": "หมอยตาน้อย หมฯอยฯตานอฯยฯฯ้ฯ หมฯอยตาน้อย [หฺมอย-ตา-หฺน้อย]\n[mɔːy^5^-taː^1^-nɔːy^3^]\n(โบ) ดู ขนตา."
+    },
+    {
+      "id": "isaan_body_parts_0297",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมอยตาใหญ่",
+      "transcriptions": [
+        "หฺมอย-ตา-ไญ",
+        "mɔːy^5^-taː^1^-ñay^6^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ขนคิ้ว"
+      ],
+      "raw_text": "หมอยตาใหญ่ หมฯอยฯตาไหยฯ่ฯ หมฯอยตาไหย่ [หฺมอย-ตา-ไญ]\n[mɔːy^5^-taː^1^-ñay^6^]\n(โบ) ดู ขนคิ้ว."
+    },
+    {
+      "id": "isaan_body_parts_0298",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมอยปาก",
+      "transcriptions": [
+        "หฺมอย-ปาก",
+        "mɔːy^5^-paːk^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "หนวด"
+      ],
+      "raw_text": "หมอยปาก หมฯอยฯบากฯ หมฯอยฯปาก [หฺมอย-ปาก] [mɔːy^5^-paːk^2^]\n(โบ) ดู หนวด."
+    },
+    {
+      "id": "isaan_body_parts_0299",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากกะดัน",
+      "transcriptions": [
+        "หฺมาก-กะ-ดัน",
+        "maːk^2^-ka^1^-dan^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะดันขา"
+      ],
+      "raw_text": "หมากกะดัน หมฯากฯกะดันฯ หมฯากกะดัน [หฺมาก-กะ-ดัน]\n[maːk^2^-ka^1^-dan^1^]\nดู กะดันขา."
+    },
+    {
+      "id": "isaan_body_parts_0300",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากกะดันขา",
+      "transcriptions": [
+        "หฺมาก-กะ-ดัน-ขา",
+        "maːk^2^-ka^1^-dan^1^-k^h^aː^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะดันขา"
+      ],
+      "raw_text": "หมากกะดันขา หมฯากฯกะดันฯขา หมฯากกะดันขา [หฺมาก-กะ-ดัน-ขา]\n[maːk^2^-ka^1^-dan^1^-k^h^aː^5^]\nดู กะดันขา."
+    },
+    {
+      "id": "isaan_body_parts_0301",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากกะแต้",
+      "transcriptions": [
+        "หฺมาก-กะ-แต้",
+        "maːk^2^-ka^1^-tɛː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แต้"
+      ],
+      "raw_text": "หมากกะแต้ หมฯากฯกะแต้ หมฯากกะแต้ [หฺมาก-กะ-แต้]\n[maːk^2^-ka^1^-tɛː^3^]\nดู แต้."
+    },
+    {
+      "id": "isaan_body_parts_0302",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากไข่ดัน",
+      "transcriptions": [
+        "หฺมาก-ไค-ดัน",
+        "maːk^2^-k^h^ay^6^-dan^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กะดันขา"
+      ],
+      "raw_text": "หมากไข่ดัน หมฯากฯไข่ดันฯ หมฯากไข่ดัน [หฺมาก-ไค-ดัน]\n[maːk^2^-k^h^ay^6^-dan^1^]\nดู กะดันขา."
+    },
+    {
+      "id": "isaan_body_parts_0303",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากไข่สา",
+      "transcriptions": [
+        "หฺมาก-ไค-สา",
+        "maːk^2^-k^h^ay^6^-saː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หมากไข่สา หมฯากฯไข่สา หมฯากไข่สา [หฺมาก-ไค-สา]\n[maːk^2^-k^h^ay^6^-saː^5^]\nน. ส่วนหนึ่งของรกสัตว์เช่นวัวควาย."
+    },
+    {
+      "id": "isaan_body_parts_0304",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากไข่หลัง",
+      "transcriptions": [
+        "หฺมาก-ไค-หฺลัง",
+        "maːk^2^-k^h^ay^6^-laŋ^5^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "หมากไข่หลัง หมฯากไข่หลฯัง หมฯากไข่หลัง [หฺมาก-ไค-หฺลัง]\n[maːk^2^-k^h^ay^6^-laŋ^5^]\nน. ไต, อวัยวะคู่หนึ่งของคนและสัตว์ อยู่ในช่องท้องใกล้กระดูกสันหลัง\nทำหน้าที่ขับของเสียออกมากับน้ำปัสสาวะ; ไข่หลัง หรือ (ทก.) ไต ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0305",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากไข่หำ",
+      "transcriptions": [
+        "หฺมาก-ไค-หำ",
+        "maːk^2^-k^h^ay^6^-ham^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หำ"
+      ],
+      "raw_text": "หมากไข่หำ หมฯากไข่หำ หมฯากไข่หำ [หฺมาก-ไค-หำ]\n[maːk^2^-k^h^ay^6^-ham^5^]\nดู หำ."
+    },
+    {
+      "id": "isaan_body_parts_0306",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หมากบ้าหัวเข่า",
+      "transcriptions": [
+        "หฺมาก-บ้า-หัว-เคา",
+        "maːk^2^-baː^3^-hua^5^-k^h^aw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หมากบ้าหัวเข่า หมฯากฯบ้าห฿วฯเข฿่ฯา หมฯากบ้าห฿วเข฿่า [หฺมาก-บ้า-หัว-เคา]\n[maːk^2^-baː^3^-hua^5^-k^h^aw^6^]\nน. สะบ้าหัวเข่า, กระดูกมีลักษณะกลม ๆ แบน ๆ คล้ายลูกสะบ้า\nมีเอ็นยึดระหว่างกล้ามเนื้อต้นขาด้านหน้ากับกระดูกหน้าแข้ง\nประกอบเป็นส่วนนูนสุดของกระดูกหัวเข่า."
+    },
+    {
+      "id": "isaan_body_parts_0307",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หย้อ",
+      "transcriptions": [
+        "หฺญ่อ",
+        "ñɔː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หย้อ หํยฯ้ฯ หยํ้ [หฺญ่อ] [ñɔː^2^]\nน. กระเพาะอาหารกระเพาะที่ ๓ ของสัตว์เคี้ยวเอื้องเช่นวัวควาย\nเยื่อภายในมีแผ่นเนื้อเยื่อขนาดสั้นและยาวคล้ายกลีบอัดแน่นกันอยู่; ผ้าขี้ริ้ว หรือ สามสิบกลีบ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0308",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หลอดลม",
+      "transcriptions": [
+        "หฺลอด-ล่ม",
+        "lɔːt^2^-lom^7^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "หลอดลม หลฯอฯดล฿มฯ หลอดล฿ม [หฺลอด-ล่ม] [lɔːt^2^-lom^7^]\n(ทก.) น. หลอดลม, ทางเดินอากาศหายใจส่วนล่าง อยู่ระหว่างท่อลมส่วนอกกับถุงลมปอด."
+    },
+    {
+      "id": "isaan_body_parts_0309",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หลัง",
+      "transcriptions": [
+        "หฺลัง",
+        "laŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลัง หลฯัง หลัง [หฺลัง] [laŋ^5^]\n๑. น. หลัง, ซีกของกายที่ตรงข้ามกับหน้าอก.\n๒. น. หลัง, ด้านที่อยู่ตรงข้ามกับด้านหน้าของสิ่งใดสิ่งหนึ่ง."
+    },
+    {
+      "id": "isaan_body_parts_0310",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หลังตีน",
+      "transcriptions": [
+        "หฺลัง-ตีน",
+        "laŋ^5^-tiːn^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลังตีน หัลฯงตีนฯ หลังตีน [หฺลัง-ตีน] [laŋ^5^-tiːn^6^]\nน. หลังตีน, ส่วนบนของเท้า."
+    },
+    {
+      "id": "isaan_body_parts_0311",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หลังมือ",
+      "transcriptions": [
+        "หฺลัง-มื่อ",
+        "laŋ^5^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลังมือ หลฯังมึ หลังมึ [หฺลัง-มื่อ] [laŋ^5^-mɨː^7^]\nน. หลังมือ, ส่วนบนของมือ."
+    },
+    {
+      "id": "isaan_body_parts_0312",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หอน",
+      "transcriptions": [
+        "หฺอน",
+        "hɔːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หอน หอฯร หอน [หฺอน] [hɔːn^5^]\nน. หงอน, ขนหรือเนื้อที่งอกขึ้นบนหัวไก่หรือนกบางชนิด."
+    },
+    {
+      "id": "isaan_body_parts_0313",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หัว",
+      "transcriptions": [
+        "หัว",
+        "hua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัว ห฿วฯ ห฿ว [หัว] [hua^5^]\nน. หัว, ส่วนบนสุดของร่างกาย."
+    },
+    {
+      "id": "isaan_body_parts_0314",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หัวเข่า",
+      "transcriptions": [
+        "หัว-เคา",
+        "hua^5^-k^h^aw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวเข่า ห฿วฯเข฿่ฯา ห฿วเข฿่า [หัว-เคา] [hua^5^-k^h^aw^6^]\nน. หัวเข่า, อวัยวะตรงที่ปลายกระดูกต้นขากับหัวกระดูกแข้งต่อกัน."
+    },
+    {
+      "id": "isaan_body_parts_0315",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หัวใจ",
+      "transcriptions": [
+        "หัว-ไจ",
+        "hua^5^-cay^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "หัวใจ ห฿วฯไจ ห฿วไจ [หัว-ไจ] [hua^5^-cay^1^]\n(ทก.) ดูใจ."
+    },
+    {
+      "id": "isaan_body_parts_0316",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หัวนม",
+      "transcriptions": [
+        "หัว-น่ม",
+        "hua^5^-nom^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หัวนม ห฿วฯน฿มฯ ห฿วน฿ม [หัว-น่ม] [hua^5^-nom^7^]\nน. หัวนม, อวัยวะส่วนที่อยู่ตอนยอดของนมมนุษย์หรือสัตว์."
+    },
+    {
+      "id": "isaan_body_parts_0317",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หาง",
+      "transcriptions": [
+        "หาง",
+        "haːŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หาง หางฯฯ หาง [หาง] [haːŋ^5^]\nน. หาง, ส่วนที่ยื่นออกจากส่วนท้ายแห่งลำตัวสัตว์, ขนสัตว์จำพวกนกที่ยื่นยาวออกทางก้น."
+    },
+    {
+      "id": "isaan_body_parts_0318",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หำ",
+      "transcriptions": [
+        "หำ",
+        "ham^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หำ หำ หำ [หำ] [ham^5^]\nน. ลูกอัณฑะ, ส่วนหนึ่งของอวัยวะสืบพันธุ์ภายนอกของชายหรือสัตว์ตัวผู้; กระโปก ไข่หำ หรือ\nหมากไข่หำ ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0319",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หี",
+      "transcriptions": [
+        "หี",
+        "hiː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หี หี หี [หี] [hiː^5^]\nน. หี, อวัยวะเพศหญิง."
+    },
+    {
+      "id": "isaan_body_parts_0320",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หีตา",
+      "transcriptions": [
+        "หี-ตา",
+        "hiː^5^-taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หีตา หีตา หีตา [หี-ตา] [hiː^5^-taː^1^]\nน. รูน้ำตา."
+    },
+    {
+      "id": "isaan_body_parts_0321",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "หู",
+      "transcriptions": [
+        "หู",
+        "huː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หู หู หู [หู] [huː^5^]\nน. หู, อวัยวะของคนและสัตว์ ทำหน้าที่สำหรับฟังเสียง."
+    },
+    {
+      "id": "isaan_body_parts_0322",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เหงือก",
+      "transcriptions": [
+        "เหฺงือก",
+        "เหฺงียก",
+        "ŋɨak^2^",
+        "ŋiak^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหงือก เหึงฯฯอกฯ เหงึอก [เหฺงือก], [เหฺงียก] [ŋɨak^2^], [ŋiak^2^]\n๑. น. เหงือก, เนื้อที่หุ้มโคนฟัน; เหงือกแข้ว ก็ว่า.\n๒. น. เหงือก, อวัยวะของสัตว์ที่ใช้หายใจในน้ำ."
+    },
+    {
+      "id": "isaan_body_parts_0323",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เหงือกแข้ว",
+      "transcriptions": [
+        "เหฺงือก-แข่ว",
+        "เหฺงียก-แข่ว",
+        "ŋɨak^2^-k^h^ԑw^2^",
+        "ŋiak^2^-k^h^ԑw^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เหงือก ความหมายที่ ๑"
+      ],
+      "raw_text": "เหงือกแข้ว เหึงฯฯอกฯแข้วฯ เหงึอกแข้ว [เหฺงือก-แข่ว], [เหฺงียก-แข่ว]\n[ŋɨak^2^-k^h^ԑw^2^], [ŋiak^2^-k^h^ԑw^2^]\nดู เหงือก ความหมายที่ ๑."
+    },
+    {
+      "id": "isaan_body_parts_0324",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เหนียง",
+      "transcriptions": [
+        "เหฺนียง",
+        "niaŋ^5^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ต้าง"
+      ],
+      "raw_text": "เหนียง หนฯยฯง หนฯยง [เหฺนียง] [niaŋ^5^]\n(ทก.) ดู ต้าง."
+    },
+    {
+      "id": "isaan_body_parts_0325",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เหล็กใน",
+      "transcriptions": [
+        "เหฺล๋ก-ไน่",
+        "lek^5^-nay^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไล"
+      ],
+      "raw_text": "เหล็กใน เหลฯักไน เหลักไน [เหฺล๋ก-ไน่] [lek^5^-nay^7^]\nดู ไล."
+    },
+    {
+      "id": "isaan_body_parts_0326",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เหลือกไก่",
+      "transcriptions": [
+        "เหฺลือก-ไก",
+        "lɨak^2^-kay^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เดือกไก่",
+        "ลิ้นไก่"
+      ],
+      "raw_text": "เหลือกไก่ เหึลฯอฯกไก่ เหลึอกไก่ [เหฺลือก-ไก] [lɨak^2^-kay^6^]\n๑. ดู เดือกไก่.\n๒. ดู ลิ้นไก่."
+    },
+    {
+      "id": "isaan_body_parts_0327",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "โหนกแก้ม",
+      "transcriptions": [
+        "โหฺนก-แก้ม",
+        "noːk^2^-kԑːm^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "โหนกแก้ม โหนฯกแกมฯ้ โหนฯกแก้ม [โหฺนก-แก้ม] [noːk^2^-kԑːm^3^]\nน. โหนกแก้ม, ส่วนของแก้มตรงที่มีกระดูกนูนออกมา."
+    },
+    {
+      "id": "isaan_body_parts_0328",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไหปลาแดก",
+      "transcriptions": [
+        "ไห-ปา-แดก",
+        "hay^5^-paː^1^-dԑːk^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ไหปลาร้า"
+      ],
+      "raw_text": "ไหปลาแดก ไหบลฯาแดก ไหปาแดก [ไห-ปา-แดก] [hay^5^-paː^1^-dԑːk^2^]\nดู ไหปลาร้า."
+    },
+    {
+      "id": "isaan_body_parts_0329",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ไหปลาร้า",
+      "transcriptions": [
+        "ไห-ปา-หล้า",
+        "hay^5^-paː^1^-raː^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ไหปลาร้า ไหบลฯาร้า ไหปาร้า [ไห-ปา-หล้า] [hay^5^-paː^1^-raː^3^]\n(ทก.) น. ไหปลาร้า, หลุมข้างคอถัดกระดูกไหปลาร้าขึ้นไป; ไหปลาแดก ก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0330",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "อ้งตีน",
+      "transcriptions": [
+        "อ้ง-ตีน",
+        "Ɂoŋ^3^-tiːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อ้งตีน อ฿งฯฯ้ฯตีนฯ อ฿้งตีน [อ้ง-ตีน] [Ɂoŋ^3^-tiːn^1^]\nน. อุ้งเท้า, ส่วนกลางของฝ่าเท้า."
+    },
+    {
+      "id": "isaan_body_parts_0331",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "อ้งมือ",
+      "transcriptions": [
+        "อ้ง-มื่อ",
+        "Ɂoŋ^3^-mɨː^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อ้งมือ อ฿งฯฯ้ฯมื อ฿้งมื [อ้ง-มื่อ] [Ɂoŋ^3^-mɨː^7^]\nน. อุ้งมือ, ส่วนกลางของฝ่ามือ."
+    },
+    {
+      "id": "isaan_body_parts_0332",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ออง",
+      "transcriptions": [
+        "ออง",
+        "Ɂɔːŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กระดอง"
+      ],
+      "raw_text": "ออง ออฯง ออง [ออง] [Ɂɔːŋ^1^]\nดู กระดอง."
+    },
+    {
+      "id": "isaan_body_parts_0333",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เอ็น",
+      "transcriptions": [
+        "เอ็น",
+        "Ɂen^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "เส้น"
+      ],
+      "raw_text": "เอ็น เอนฯั เอัน [เอ็น] [Ɂen^1^]\nดู เส้น."
+    },
+    {
+      "id": "isaan_body_parts_0334",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เอ็นน่อง",
+      "transcriptions": [
+        "เอ็น-นอง",
+        "ʔen^1^-nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอ็นน่อง เอันฯน่อฯง เอันน่อง [เอ็น-นอง] [ʔen^1^-nɔːŋ^6^]\nน. เอ็นร้อยหวาย, เอ็นเหนือส้นเท้า."
+    },
+    {
+      "id": "isaan_body_parts_0335",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "เอิก",
+      "transcriptions": [
+        "เอิ๊ก",
+        "ʔək^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เอิก เอิกฯ เอิก [เอิ๊ก] [ʔək^4^]\nน. อก, หน้าอก."
+    },
+    {
+      "id": "isaan_body_parts_0336",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แอกน่อง",
+      "transcriptions": [
+        "แอก-นอง",
+        "ʔԑːk^2^-nɔːŋ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ส้นน่อง",
+        "แอบแอขา ความหมายที่ ๑"
+      ],
+      "raw_text": "แอกน่อง แอกฯนอฯ่ง แอกน่อง [แอก-นอง] [ʔԑːk^2^-nɔːŋ^6^]\n๑. ดู ส้นน่อง.\n๒. ดู แอบแอขา ความหมายที่ ๑."
+    },
+    {
+      "id": "isaan_body_parts_0337",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แอกน่องทก",
+      "transcriptions": [
+        "แอก-นอง-ทก",
+        "ʔԑːk^2^-nɔːŋ^6^-t^h^ok^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แอบแอขา ความหมายที่ ๑"
+      ],
+      "raw_text": "แอกน่องทก แอกฯนอฯ่งทกฯ฿ เอกน่องท฿ก [แอก-นอง-ทก]\n[ʔԑːk^2^-nɔːŋ^6^-t^h^ok^6^]\nดู แอบแอขา ความหมายที่ ๑."
+    },
+    {
+      "id": "isaan_body_parts_0338",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แอกน่องทบ",
+      "transcriptions": [
+        "แอก-นอง-ทบ",
+        "ʔԑːk^2^-nɔːŋ^6^-t^h^op^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แอบแอขา ความหมายที่ ๑"
+      ],
+      "raw_text": "แอกน่องทบ แอกฯนอฯงท฿บฯฯ แอกน่องท฿บ [แอก-นอง-ทบ]\n[ʔԑːk^2^-nɔːŋ^6^-t^h^op^6^]\nดู แอบแอขา ความหมายที่ ๑."
+    },
+    {
+      "id": "isaan_body_parts_0339",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แอบแอขา",
+      "transcriptions": [
+        "แอบ-แอ-ขา",
+        "Ɂԑːp^2^-Ɂԑː^1^-k^h^aː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แอบแอขา แอบฯฯแอขา แอบแอขา [แอบ-แอ-ขา]\n[Ɂԑːp^2^-Ɂԑː^1^-k^h^aː^5^]\n๑. น. ขาพับ, ส่วนของขาที่พับได้อยู่หลังเข่า; แอกน่อง แอกน่องทก หรือ แอกน่องทบ\nก็ว่า.\n๒. น. ขาหนีบ, บริเวณโคนขาด้านหน้าตรงส่วนที่ต่อกับลำตัว."
+    },
+    {
+      "id": "isaan_body_parts_0340",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แอ้ปลา",
+      "transcriptions": [
+        "แอ้-ปา",
+        "ʔԑː^3^-paː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แอ้ปลา แอ้บลฯา แอ้ปา [แอ้-ปา] [ʔԑː^3^-paː^1^]\nน. ถุงลมของปลา."
+    },
+    {
+      "id": "isaan_body_parts_0341",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "แอว",
+      "transcriptions": [
+        "แอว",
+        "Ɂԑːw^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แอว แอวฯ แอว [แอว] [Ɂԑːw^1^]\nน. เอว, ส่วนกลางของร่างกายระหว่างชายโครงกับกระดูกตะโพกทั้ง ๒ ข้าง; บักแอว\nก็ว่า."
+    },
+    {
+      "id": "isaan_body_parts_0342",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ฮวายไข่",
+      "transcriptions": [
+        "ฮ้วย-ไค",
+        "huay^4^-k^h^ay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฮวายไข่ ฮวฯายฯไข่ ฮวายไข่ [ฮ้วย-ไค] [huay^4^-k^h^ay^6^]\nน. รังไข่ของสัตว์ที่ออกลูกเป็นไข่."
+    },
+    {
+      "id": "isaan_body_parts_0343",
+      "region": "isaan",
+      "category": "body_parts",
+      "headword": "ฮวายลูก",
+      "transcriptions": [
+        "ฮ้วย-ลูก",
+        "huay^4^-luːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ฮวายลูก ฮวฯายฯลูก ฮวายลูก [ฮ้วย-ลูก] [huay^4^-luːk^3^]\nน. รังไข่, รังไข่ของคน, รังไข่ของสัตว์ที่ออกลูกเป็นตัว."
+    }
+  ]
+}

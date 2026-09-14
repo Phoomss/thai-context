@@ -1,0 +1,1590 @@
+{
+  "title": "หมวดคำเรียกญาติและคำเรียกบุคคลตามช่วงอายุ",
+  "region": "south",
+  "category": "kinship",
+  "entry_count": 106,
+  "entries": [
+    {
+      "id": "south_kinship_0001",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ก้ง",
+      "transcriptions": [
+        "ก็อง",
+        "kɔŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปู่",
+        "ตา"
+      ],
+      "raw_text": "ก้ง [ก็อง] [kɔŋ^1^]\n๑. ดู ปู่.\n๒. ดู ตา."
+    },
+    {
+      "id": "south_kinship_0002",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ก้อ",
+      "transcriptions": [
+        "กอ",
+        "kɔː^1^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต, พังงา",
+        "จ.",
+        "จ."
+      ],
+      "cross_references": [
+        "ป้า",
+        "น้าสาว ความหมายที่ ๒"
+      ],
+      "raw_text": "ก้อ [กอ] [kɔː^1^]\n(ถิ่น-ภูเก็ต, พังงา) ๑. ดู ป้า. (จ.).\n๒. ดู น้าสาว ความหมายที่ ๒. (จ.)."
+    },
+    {
+      "id": "south_kinship_0003",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กะ",
+      "transcriptions": [
+        "กะ",
+        "kaɁ^6^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต, พังงา",
+        "ถิ่น-ภูเก็ต, พังงา",
+        "ถิ่น-ยะลา,\nปัตตานี, นราธิวาส"
+      ],
+      "cross_references": [],
+      "raw_text": "กะ [กะ] [kaɁ^6^]\n(ถิ่น-ภูเก็ต, พังงา) น. พี่สาว; ใช้แก่สตรีมุสลิม; (ถิ่น-ภูเก็ต, พังงา) จะ หรือ (ถิ่น-ยะลา,\nปัตตานี, นราธิวาส) กะนิ หรือ กานิ ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0004",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กะนิ",
+      "transcriptions": [
+        "กะ-หฺนิ",
+        "ka^1^-niɁ^2^"
+      ],
+      "notes": [
+        "ถิ่น-ยะลา, ปัตตานี, นราธิวาส"
+      ],
+      "cross_references": [
+        "กะ"
+      ],
+      "raw_text": "กะนิ [กะ-หฺนิ] [ka^1^-niɁ^2^]\n(ถิ่น-ยะลา, ปัตตานี, นราธิวาส) ดู กะ."
+    },
+    {
+      "id": "south_kinship_0005",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กานิ",
+      "transcriptions": [
+        "กา-หฺนิ",
+        "kaː^4^-niɁ^2^"
+      ],
+      "notes": [
+        "ถิ่น-ยะลา, ปัตตานี, นราธิวาส"
+      ],
+      "cross_references": [
+        "กะ"
+      ],
+      "raw_text": "กานิ [กา-หฺนิ] [kaː^4^-niɁ^2^]\n(ถิ่น-ยะลา, ปัตตานี, นราธิวาส) ดู กะ."
+    },
+    {
+      "id": "south_kinship_0006",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กิ่ม",
+      "transcriptions": [
+        "กิม",
+        "kim^6^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "น้าใภ้ (จ"
+      ],
+      "raw_text": "กิ่ม [กิม] [kim^6^]\nดู น้าใภ้ (จ.)."
+    },
+    {
+      "id": "south_kinship_0007",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กิว",
+      "transcriptions": [
+        "กิว",
+        "kiw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "กู่"
+      ],
+      "raw_text": "กิว [กิว] [kiw^6^]\nดู กู่."
+    },
+    {
+      "id": "south_kinship_0008",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กิ๊ว",
+      "transcriptions": [
+        "กิ๊ว",
+        "kiw^4^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "น้าบ่าว ความหมายที่ ๑"
+      ],
+      "raw_text": "กิ๊ว [กิ๊ว] [kiw^4^]\nดู น้าบ่าว ความหมายที่ ๑. (จ.)."
+    },
+    {
+      "id": "south_kinship_0009",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กู่",
+      "transcriptions": [
+        "กู",
+        "kuː^6^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "ลุง",
+        "น้าบ่าว ความหมายที่ ๑"
+      ],
+      "raw_text": "กู่ [กู] [kuː^6^]\n๑. ดู ลุง.\n๒. ดู น้าบ่าว ความหมายที่ ๑. (จ.)."
+    },
+    {
+      "id": "south_kinship_0010",
+      "region": "south",
+      "category": "kinship",
+      "headword": "กู๋",
+      "transcriptions": [
+        "กู๋",
+        "kuː^5^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "น้าบ่าว ความหมายที่ ๑"
+      ],
+      "raw_text": "กู๋ [กู๋] [kuː^5^]\nดู น้าบ่าว ความหมายที่ ๑. (จ.)."
+    },
+    {
+      "id": "south_kinship_0011",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แก่",
+      "transcriptions": [
+        "แก",
+        "kɛ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อเถ้า",
+        "แม่เถ้า"
+      ],
+      "raw_text": "แก่ [แก] [kɛ^6^]\n๑. ดู พ่อเถ้า.\n๒. ดู แม่เถ้า."
+    },
+    {
+      "id": "south_kinship_0012",
+      "region": "south",
+      "category": "kinship",
+      "headword": "โก",
+      "transcriptions": [
+        "โก",
+        "koː^6^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พี่บาว"
+      ],
+      "raw_text": "โก [โก] [koː^6^]\nดู พี่บาว. (จ.)."
+    },
+    {
+      "id": "south_kinship_0013",
+      "region": "south",
+      "category": "kinship",
+      "headword": "โก้",
+      "transcriptions": [
+        "โก",
+        "koː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่บาว"
+      ],
+      "raw_text": "โก้ [โก] [koː^1^]\nดู พี่บาว."
+    },
+    {
+      "id": "south_kinship_0014",
+      "region": "south",
+      "category": "kinship",
+      "headword": "จะ",
+      "transcriptions": [
+        "จะ",
+        "caɁ^6^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต, พังงา"
+      ],
+      "cross_references": [
+        "กะ"
+      ],
+      "raw_text": "จะ [จะ] [caɁ^6^]\n(ถิ่น-ภูเก็ต, พังงา) ดู กะ."
+    },
+    {
+      "id": "south_kinship_0015",
+      "region": "south",
+      "category": "kinship",
+      "headword": "จี้",
+      "transcriptions": [
+        "จี",
+        "ciː^1^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พี่สาว"
+      ],
+      "raw_text": "จี้ [จี] [ciː^1^]\nดู พี่สาว. (จ.)."
+    },
+    {
+      "id": "south_kinship_0016",
+      "region": "south",
+      "category": "kinship",
+      "headword": "จี",
+      "transcriptions": [
+        "จี",
+        "ciː^6^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พี่สาว"
+      ],
+      "raw_text": "จี [จี] [ciː^6^]\nดู พี่สาว. (จ.)."
+    },
+    {
+      "id": "south_kinship_0017",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เจก",
+      "transcriptions": [
+        "เจก",
+        "ceːk^1^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "น้าบ่าว ความหมายที่ ๒"
+      ],
+      "raw_text": "เจก [เจก] [ceːk^1^]\nดู น้าบ่าว ความหมายที่ ๒. (จ.)."
+    },
+    {
+      "id": "south_kinship_0018",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ฉี",
+      "transcriptions": [
+        "ฉี้",
+        "c^h^iː^3^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พี่สาว"
+      ],
+      "raw_text": "ฉี [ฉี้] [c^h^iː^3^]\nดู พี่สาว. (จ.)."
+    },
+    {
+      "id": "south_kinship_0019",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ชวด",
+      "transcriptions": [
+        "ช๋วด",
+        "c^h^uat^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ชวด [ช๋วด] [c^h^uat^5^]\nน. พ่อหรือแม่ของทวด; เทียด ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0020",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แช็ก",
+      "transcriptions": [
+        "แฉ็ก",
+        "c^h^ɛk^2^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "น้าบ่าว ความหมายที่ ๒"
+      ],
+      "raw_text": "แช็ก [แฉ็ก] [c^h^ɛk^2^]\nดู น้าบ่าว ความหมายที่ ๒. (จ.)."
+    },
+    {
+      "id": "south_kinship_0021",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เด",
+      "transcriptions": [
+        "เด",
+        "deː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อ"
+      ],
+      "raw_text": "เด [เด] [deː^6^]\nดู พ่อ."
+    },
+    {
+      "id": "south_kinship_0022",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ตา",
+      "transcriptions": [
+        "ตา",
+        "taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ตา [ตา] [taː^6^]\n๑. น. น้องชายหรือพี่ชายของปู่หรือตา\n๒. น. น้องชายหรือพี่ชายของย่าหรือยาย."
+    },
+    {
+      "id": "south_kinship_0023",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เตี่ย",
+      "transcriptions": [
+        "เตีย",
+        "tia^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อ"
+      ],
+      "raw_text": "เตี่ย [เตีย] [tia^6^]\nดู พ่อ."
+    },
+    {
+      "id": "south_kinship_0024",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เตี่ยว",
+      "transcriptions": [
+        "เตียว",
+        "tiaw^6^"
+      ],
+      "notes": [
+        "จ.",
+        "จ."
+      ],
+      "cross_references": [
+        "น้าเขย",
+        "ลุงเขย"
+      ],
+      "raw_text": "เตี่ยว [เตียว] [tiaw^6^]\n๑. ดู น้าเขย. (จ.).\n๒. ดู ลุงเขย. (จ.)."
+    },
+    {
+      "id": "south_kinship_0025",
+      "region": "south",
+      "category": "kinship",
+      "headword": "โตะตา",
+      "transcriptions": [
+        "โตะ-ตา",
+        "toɁ^6^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลวงตา"
+      ],
+      "raw_text": "โตะตา [โตะ-ตา] [toɁ^6^-taː^6^]\nดู หลวงตา."
+    },
+    {
+      "id": "south_kinship_0026",
+      "region": "south",
+      "category": "kinship",
+      "headword": "โตะแนแหนะ",
+      "transcriptions": [
+        "โตะ-แน-แนะ",
+        "toɁ^6^-nԑː^7^-nԑɁ^4^"
+      ],
+      "notes": [
+        "ม."
+      ],
+      "cross_references": [],
+      "raw_text": "โตะแนแหนะ [โตะ-แน-แนะ] [toɁ^6^-nԑː^7^-nԑɁ^4^]\nน. พ่อของทวด. (ม.)."
+    },
+    {
+      "id": "south_kinship_0027",
+      "region": "south",
+      "category": "kinship",
+      "headword": "โตะยาย",
+      "transcriptions": [
+        "โตะ-ยาย",
+        "toɁ^6^-yaːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลวงยาย"
+      ],
+      "raw_text": "โตะยาย [โตะ-ยาย] [toɁ^6^-yaːy^7^]\nดู หลวงยาย."
+    },
+    {
+      "id": "south_kinship_0028",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เถ้า",
+      "transcriptions": [
+        "เท้า",
+        "t^h^aw^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อเถ้า",
+        "แม่เถ้า"
+      ],
+      "raw_text": "เถ้า [เท้า] [t^h^aw^4^]\n๑. ดู พ่อเถ้า.\n๒. ดู แม่เถ้า."
+    },
+    {
+      "id": "south_kinship_0029",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ทวด",
+      "transcriptions": [
+        "ถ๋วด",
+        "t^h^uat^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ทวด [ถ๋วด] [t^h^uat^5^]\n๑. น. ทวด, พ่อแม่ของปู่ย่าตายาย.\n๒. น. บรรพบุรุษเหนือชั้นปู่ย่าตายายขึ้นไป."
+    },
+    {
+      "id": "south_kinship_0030",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เทียด",
+      "transcriptions": [
+        "เถี๋ยด",
+        "t^h^iat^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ชวด"
+      ],
+      "raw_text": "เทียด [เถี๋ยด] [t^h^iat^5^]\nดู ชวด."
+    },
+    {
+      "id": "south_kinship_0031",
+      "region": "south",
+      "category": "kinship",
+      "headword": "นม",
+      "transcriptions": [
+        "นม",
+        "nom^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่"
+      ],
+      "raw_text": "นม [นม] [nom^7^]\n๑. ดู แม่."
+    },
+    {
+      "id": "south_kinship_0032",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้อง",
+      "transcriptions": [
+        "หฺน่อง",
+        "nɔːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้อง [หฺน่อง] [nɔːŋ^2^]\n๑. น. น้อง, ผู้ร่วมบิดาหรือมารดาเดียวกันและเกิดทีหลัง.\n๒. น. น้อง, ลูกของอาหรือของน้า."
+    },
+    {
+      "id": "south_kinship_0033",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้องเขย",
+      "transcriptions": [
+        "หฺน่อง-เข้ย",
+        "nɔːŋ^2^-k^h^əːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องเขย [หฺน่อง-เข้ย] [nɔːŋ^2^-k^h^əːy^3^]\nน. น้องเขย, ชายที่แต่งงานกับน้องสาว."
+    },
+    {
+      "id": "south_kinship_0034",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้องบ่าว",
+      "transcriptions": [
+        "หฺน่อง-บาว",
+        "nɔːŋ^2^-baːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องบ่าว [หฺน่อง-บาว] [nɔːŋ^2^-baːw^6^]\nน. น้องชาย, น้องที่เป็นผู้ชาย."
+    },
+    {
+      "id": "south_kinship_0035",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้องเพื่อน",
+      "transcriptions": [
+        "หฺน่อง-เผือน",
+        "nɔːŋ^2^-p^h^ɨan^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องเพื่อน [หฺน่อง-เผือน] [nɔːŋ^2^-p^h^ɨan^5^]\nน. น้องคนเล็ก, น้องคนสุดท้อง."
+    },
+    {
+      "id": "south_kinship_0036",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้องใภ้",
+      "transcriptions": [
+        "หฺน่อง-ไผ่",
+        "nɔːŋ^2^-p^h^ay^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องใภ้ [หฺน่อง-ไผ่] [nɔːŋ^2^-p^h^ay^2^]\nน. น้องสะใภ้, หญิงที่แต่งงานกับน้องชาย."
+    },
+    {
+      "id": "south_kinship_0037",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้องสาว",
+      "transcriptions": [
+        "หฺน่อง-ส้าว",
+        "nɔːŋ^2^-saːw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องสาว [หฺน่อง-ส้าว] [nɔːŋ^2^-saːw^3^]\nน. น้องสาว, น้องที่เป็นผู้หญิง."
+    },
+    {
+      "id": "south_kinship_0038",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้า",
+      "transcriptions": [
+        "หฺน่า",
+        "naː^2^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "น้า [หฺน่า] [naː^2^]\n๑. น. น้า, น้องของแม่.\n๒. น. อา, น้องของพ่อ, (ทก.) อา ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0039",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้าเขย",
+      "transcriptions": [
+        "หฺน่า-เข้ย",
+        "naː^2^-k^h^əːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าเขย [หฺน่า-เข้ย] [naː^2^-k^h^əːy^3^]\nน. น้าเขย, ชายที่แต่งงานกับน้องสาวของพ่อหรือแม่; เตี่ยว ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0040",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้าบ่าว",
+      "transcriptions": [
+        "หฺน่า-บาว",
+        "naː^2^-baːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าบ่าว [หฺน่า-บาว] [naː^2^-baːw^6^]\n๑. น. น้าผู้ชาย; กู่ กู๋ หรือ กิ๊ว ก็ว่า.\n๒. น. อาผู้ชาย; เจก หรือ แช็ก ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0041",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้าใภ้",
+      "transcriptions": [
+        "หฺน่า-ไผ่",
+        "naː^2^-p^h^ay^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าใภ้ [หฺน่า-ไผ่] [naː^2^-p^h^ay^2^]\nน. น้าสะใภ้, หญิงที่แต่งงานกับน้องชายของพ่อหรือแม่; กิ่ม ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0042",
+      "region": "south",
+      "category": "kinship",
+      "headword": "น้าสาว",
+      "transcriptions": [
+        "หฺน่า-ส้าว",
+        "naː^2^-saːw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าสาว [หฺน่า-ส้าว] [naː^2^-saːw^3^]\nน. น้าผู้หญิง; ยี้ อาอี่ หรือ อี้ ก็ว่า.\nน. อาผู้หญิง; ก้อ ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0043",
+      "region": "south",
+      "category": "kinship",
+      "headword": "นุม",
+      "transcriptions": [
+        "นุม",
+        "num^7^"
+      ],
+      "notes": [
+        "ถิ่น-พัทลุง"
+      ],
+      "cross_references": [
+        "แม่"
+      ],
+      "raw_text": "นุม [นุม] [num^7^]\n(ถิ่น-พัทลุง) ดู แม่."
+    },
+    {
+      "id": "south_kinship_0044",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ปะ",
+      "transcriptions": [
+        "ปะ",
+        "paʔ^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อ"
+      ],
+      "raw_text": "ปะ [ปะ] [paʔ^6^]\nดู พ่อ."
+    },
+    {
+      "id": "south_kinship_0045",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ป้า",
+      "transcriptions": [
+        "ปา",
+        "paː^1^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต, พังงา"
+      ],
+      "cross_references": [],
+      "raw_text": "ป้า [ปา] [paː^1^]\nน. ป้า, พี่สาวของพ่อหรือแม่; (ถิ่น-ภูเก็ต, พังงา) ก้อ ก็ว่า ."
+    },
+    {
+      "id": "south_kinship_0046",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ป๋า",
+      "transcriptions": [
+        "ป๋า",
+        "paː^5^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พ่อ"
+      ],
+      "raw_text": "ป๋า [ป๋า] [paː^5^]\nดู พ่อ. (จ.)."
+    },
+    {
+      "id": "south_kinship_0047",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ปู่",
+      "transcriptions": [
+        "ปู, โป",
+        "puː^6^, poː^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตากใบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ปู่ [ปู, โป] [puː^6^, poː^6^]\nน. ปู่, พ่อของพ่อ; พ่อปู่ หรือ (ถิ่น-ตากใบ) พ่อแก่ ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0048",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เปาะ",
+      "transcriptions": [
+        "เปาะ"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อ"
+      ],
+      "raw_text": "เปาะ [เปาะ] [pɔʔ^6^[\nดู พ่อ."
+    },
+    {
+      "id": "south_kinship_0049",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แปะ",
+      "transcriptions": [
+        "แปะ",
+        "pɛʔ^6^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "ลุง"
+      ],
+      "raw_text": "แปะ [แปะ] [pɛʔ^6^]\nดู ลุง. (จ.)."
+    },
+    {
+      "id": "south_kinship_0050",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อ",
+      "transcriptions": [
+        "ผอ",
+        "p^h^ɔː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อ [ผอ] [p^h^ɔː^5^]\nน. พ่อ, ชายผู้ให้กำเนิด; เตี่ย ปะ ป๋า เปาะ หรือ เด ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0051",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อแก่",
+      "transcriptions": [
+        "ผอ-แก",
+        "p^h^ɔː^5^-kɛː^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตรัง, พัทลุง",
+        "ถิ่น-ตากใบ",
+        "ถิ่น-ภูเก็ต"
+      ],
+      "cross_references": [
+        "พ่อเถ้า",
+        "ปู่"
+      ],
+      "raw_text": "พ่อแก่ [ผอ-แก] [p^h^ɔː^5^-kɛː^6^]\n๑. (ถิ่น-ตรัง, พัทลุง) ดู พ่อเถ้า.\n๒. (ถิ่น-ตากใบ) ดู ปู่.\n๓. (ถิ่น-ภูเก็ต) น. พ่อของปู่ ย่า ตา ยาย."
+    },
+    {
+      "id": "south_kinship_0052",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อตา ๑",
+      "transcriptions": [
+        "ผอ-ตา",
+        "p^h^ɔː^5^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลวงตา"
+      ],
+      "raw_text": "พ่อตา ๑ [ผอ-ตา] [p^h^ɔː^5^-taː^6^]\nดู หลวงตา."
+    },
+    {
+      "id": "south_kinship_0053",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อตา ๒",
+      "transcriptions": [
+        "ผอ-ตา",
+        "p^h^ɔː^5^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ทวด ความหมาย ๓"
+      ],
+      "raw_text": "พ่อตา ๒ [ผอ-ตา] [p^h^ɔː^5^-taː^6^]\nดู ทวด ความหมาย ๓."
+    },
+    {
+      "id": "south_kinship_0054",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อเถ้า",
+      "transcriptions": [
+        "ผอ-ท้าว",
+        "p^h^ɔː^5^-t^h^aːw^4^"
+      ],
+      "notes": [
+        "ถิ่น-ตรัง, พัทลุง"
+      ],
+      "cross_references": [],
+      "raw_text": "พ่อเถ้า [ผอ-ท้าว] [p^h^ɔː^5^-t^h^aːw^4^]\nน. ตา, พ่อของแม่; แก่ เถ้า หรือ (ถิ่น-ตรัง, พัทลุง) พ่อแก่ ก็ว่า"
+    },
+    {
+      "id": "south_kinship_0055",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อปู่",
+      "transcriptions": [
+        "ผอ-โป",
+        "p^h^ɔː^5^-poː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปู่"
+      ],
+      "raw_text": "พ่อปู่ [ผอ-โป] [p^h^ɔː^5^-poː^6^]\nดู ปู่."
+    },
+    {
+      "id": "south_kinship_0056",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อผัว",
+      "transcriptions": [
+        "ผอ-ผั้ว",
+        "p^h^ɔː^5^-p^h^ua^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อผัว [ผอ-ผั้ว] [p^h^ɔː^5^-p^h^ua^3^]\nน. พ่อสามี, พ่อของสามี."
+    },
+    {
+      "id": "south_kinship_0057",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พ่อลุง",
+      "transcriptions": [
+        "ผอ-ลุง",
+        "p^h^ɔː^5^-luŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลุง"
+      ],
+      "raw_text": "พ่อลุง [ผอ-ลุง] [p^h^ɔː^5^-luŋ^7^]\nดู ลุง."
+    },
+    {
+      "id": "south_kinship_0058",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พี่",
+      "transcriptions": [
+        "ผี",
+        "p^h^iː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่ [ผี] [p^h^iː^5^]\nน. ผู้ร่วมบิดาหรือมารดาเดียวกันและเกิดก่อน."
+    },
+    {
+      "id": "south_kinship_0059",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พี่เขย",
+      "transcriptions": [
+        "ผี-เข้ย",
+        "p^h^iː^5^-k^h^əːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่เขย [ผี-เข้ย] [p^h^iː^5^-k^h^əːy^3^]\nน. พี่เขย, ชายที่แต่งงานกับพี่สาว."
+    },
+    {
+      "id": "south_kinship_0060",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พี่บ่าว",
+      "transcriptions": [
+        "ผี-บาว",
+        "p^h^iː^5^-baːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่บ่าว [ผี-บาว] [p^h^iː^5^-baːw^6^]\n๑. น. พี่ชาย, พี่ที่เป็นผู้ชาย; โก โก้ หรือ เฮีย ก็ว่า.\n๒. น. ชายลูกพี่ลูกน้องผู้มีศักดิ์เป็นพี่; โก โก้ หรือ เฮีย ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0061",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พี่เพื่อน",
+      "transcriptions": [
+        "ผี-เผือน",
+        "p^h^iː^5^-p^h^ɨan^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่เพื่อน [ผี-เผือน] [p^h^iː^5^-p^h^ɨan^5^]\nน. พี่คนโต, พี่คนหัวปี."
+    },
+    {
+      "id": "south_kinship_0062",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พี่ใภ้",
+      "transcriptions": [
+        "ผี-ไผ่",
+        "p^h^iː^5^-p^h^ay^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่ใภ้ [ผี-ไผ่] [p^h^iː^5^-p^h^ay^2^]\nน. พี่สะใภ้, หญิงที่แต่งงานกับพี่ชาย; ส่อ หรือ โส่ ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0063",
+      "region": "south",
+      "category": "kinship",
+      "headword": "พี่สาว",
+      "transcriptions": [
+        "ผี-ส้าว",
+        "p^h^iː^5^-saːw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่สาว [ผี-ส้าว] [p^h^iː^5^-saːw^3^]\n๑. น. พี่สาว, พี่ที่เป็นผู้หญิง; จี จี้ หรือ ฉี ก็ว่า.\n๒. น. หญิงลูกพี่ลูกน้องผู้มีศักดิ์เป็นพี่; จี จี้ หรือ ฉี ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0064",
+      "region": "south",
+      "category": "kinship",
+      "headword": "มะ",
+      "transcriptions": [
+        "หฺมะ",
+        "maʔ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่"
+      ],
+      "raw_text": "มะ [หฺมะ] [maʔ^2^]\nดู แม่."
+    },
+    {
+      "id": "south_kinship_0065",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เมาะ",
+      "transcriptions": [
+        "เหฺมาะ",
+        "mɔʔ^2^"
+      ],
+      "notes": [
+        "ม."
+      ],
+      "cross_references": [
+        "แม่"
+      ],
+      "raw_text": "เมาะ [เหฺมาะ] [mɔʔ^2^]\nดู แม่. (ม.)"
+    },
+    {
+      "id": "south_kinship_0066",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่",
+      "transcriptions": [
+        "แหฺม",
+        "mԑː^5^"
+      ],
+      "notes": [
+        "ถิ่น-พัทลุง"
+      ],
+      "cross_references": [],
+      "raw_text": "แม่ [แหฺม] [mԑː^5^]\nน. หญิงผู้ให้กำเนิด; นม เมาะ อีบู มะ หรือ (ถิ่น-พัทลุง) นุม ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0067",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่แก่",
+      "transcriptions": [
+        "แหฺม-แก",
+        "mԑː^5^-kԑː^6^"
+      ],
+      "notes": [
+        "ถิ่น-ตากใบ"
+      ],
+      "cross_references": [
+        "แม่เถ้า"
+      ],
+      "raw_text": "แม่แก่ [แหฺม-แก] [mԑː^5^-kԑː^6^]\n๑. น. ดู แม่เถ้า.\n๒. (ถิ่น-ตากใบ) น. ย่า, แม่ของพ่อ."
+    },
+    {
+      "id": "south_kinship_0068",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่เติน",
+      "transcriptions": [
+        "แหฺม-เติน",
+        "mɛː^5^-tən^6^"
+      ],
+      "notes": [
+        "ถิ่น-สุราษฎร์ธานี"
+      ],
+      "cross_references": [],
+      "raw_text": "แม่เติน [แหฺม-เติน] [mɛː^5^-tən^6^]\n(ถิ่น-สุราษฎร์ธานี) น. ย่า, ยาย."
+    },
+    {
+      "id": "south_kinship_0069",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่เถ้า",
+      "transcriptions": [
+        "แหฺม-ท้าว",
+        "mԑː^5^-t^h^aːw^4^"
+      ],
+      "notes": [
+        "นิราศชื่นคำกลอน"
+      ],
+      "cross_references": [],
+      "raw_text": "แม่เถ้า [แหฺม-ท้าว] [mԑː^5^-t^h^aːw^4^]\nน. ยาย, แม่ของแม่; ในคำประพันธ์เขียนเป็น แม่เฒ่า ก็มี เช่น ถึงแม่เฒ่าเฝ้าอยู่นั่งดูแล\nไม่เหมือนแม่กำเนิดเกิดเกศี เฝ้าวิงวอนป้อนยาทุกนาที ไม่ให้มีความสะดุ้งบำรุงใจ\n(นิราศชื่นคำกลอน); แม่แก่ ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0070",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่ทวด",
+      "transcriptions": [
+        "แหฺม-ท๋วด",
+        "mɛː^5^-t^h^uat^5^"
+      ],
+      "notes": [
+        "ถิ่น-ภูเก็ต, ตากใบ"
+      ],
+      "cross_references": [],
+      "raw_text": "แม่ทวด [แหฺม-ท๋วด] [mɛː^5^-t^h^uat^5^]\n(ถิ่น-ภูเก็ต, ตากใบ) น. แม่ของปู่ ย่า ตา ยาย."
+    },
+    {
+      "id": "south_kinship_0071",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่ผัว",
+      "transcriptions": [
+        "แหฺม-ผั้ว",
+        "mԑː^5^-p^h^ua^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่ผัว [แหฺม-ผั้ว] [mԑː^5^-p^h^ua^3^]\nน. แม่สามี, แม่ของสามี."
+    },
+    {
+      "id": "south_kinship_0072",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่ย่า",
+      "transcriptions": [
+        "แหฺม-หฺยา",
+        "mԑː^5^-yaː^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่ย่า [แหฺม-หฺยา] [mԑː^5^-yaː^5^]\nน. ย่า, แม่ของพ่อ."
+    },
+    {
+      "id": "south_kinship_0073",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่ยาย",
+      "transcriptions": [
+        "แหฺม-ยาย",
+        "mԑː^5^-yaːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลวงยาย"
+      ],
+      "raw_text": "แม่ยาย [แหฺม-ยาย] [mԑː^5^-yaːy^7^]\nดู หลวงยาย."
+    },
+    {
+      "id": "south_kinship_0074",
+      "region": "south",
+      "category": "kinship",
+      "headword": "แม่โยด",
+      "transcriptions": [
+        "แหฺม-โย๋ด",
+        "mԑː^5^-yoːt^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่โยด [แหฺม-โย๋ด] [mԑː^5^-yoːt^5^]\nน. ผู้อาวุโสสูงสุดในตระกูล."
+    },
+    {
+      "id": "south_kinship_0075",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ยาย",
+      "transcriptions": [
+        "ยาย",
+        "yaːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ยาย [ยาย] [yaːy^7^]\n๑. น. น้องสาวหรือพี่สาวของปู่หรือตา\n๒. น. น้องสาวหรือพี่สาวของย่าหรือยาย."
+    },
+    {
+      "id": "south_kinship_0076",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ยี้",
+      "transcriptions": [
+        "หฺยี่",
+        "yiː^2^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "น้าสาว (จ"
+      ],
+      "raw_text": "ยี้ [หฺยี่] [yiː^2^]\nดู น้าสาว (จ.)."
+    },
+    {
+      "id": "south_kinship_0077",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เยีย",
+      "transcriptions": [
+        "เยีย",
+        "yia^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้ง"
+      ],
+      "raw_text": "เยีย [เยีย] [yia^7^]\nดู ก้ง."
+    },
+    {
+      "id": "south_kinship_0078",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลุง",
+      "transcriptions": [
+        "ลุง",
+        "luŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลุง [ลุง] [luŋ^7^]\nน. ลุง, พี่ชายของพ่อหรือแม่; พ่อลุง กู่ หรือ แปะ ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0079",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลุงเขย",
+      "transcriptions": [
+        "ลุง-เข้ย",
+        "luŋ^7^-k^h^əːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลุงเขย [ลุง-เข้ย] [luŋ^7^-k^h^əːy^3^]\nน. ชายที่แต่งงานกับพี่สาวของพ่อหรือแม่; เตี่ยว ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0080",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกขลุด",
+      "transcriptions": [
+        "โล๋ก-คฺลุด",
+        "loːk^5^-k^h^ut^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกนุ้ย"
+      ],
+      "raw_text": "ลูกขลุด [โล๋ก-คฺลุด] [loːk^5^-k^h^ut^4^]\nดู ลูกนุ้ย."
+    },
+    {
+      "id": "south_kinship_0081",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกโทน",
+      "transcriptions": [
+        "โล๋ก-โทน",
+        "loːk^5^-toːn^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกโทน [โล๋ก-โทน] [loːk^5^-toːn^7^]\nน. ลูกคนเดียวของพ่อแม่."
+    },
+    {
+      "id": "south_kinship_0082",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกนึ้ย",
+      "transcriptions": [
+        "โล๋ก-หฺนึ่ย",
+        "loːk^5^-nɨy^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกนุ้ย"
+      ],
+      "raw_text": "ลูกนึ้ย [โล๋ก-หฺนึ่ย] [loːk^5^-nɨy^2^]\nดู ลูกนุ้ย."
+    },
+    {
+      "id": "south_kinship_0083",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกนุ้ย",
+      "transcriptions": [
+        "โล๋ก-หฺนุ่ย",
+        "loːk^5^-nuy^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกนุ้ย [โล๋ก-หฺนุ่ย] [loːk^5^-nuy^2^]\nน. ลูกคนเล็ก, ลูกคนสุดท้อง; ลูกขลุด ลูกพ้องท้าย ลูกนึ้ย หรือ ลูกเอียด ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0084",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกบ่าว",
+      "transcriptions": [
+        "โล๋ก-บาว",
+        "loːk^5^-baːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกบ่าว [โล๋ก-บาว] [loːk^5^-baːw^6^]\nน. ลูกชาย, ลูกที่เป็นผู้ชาย."
+    },
+    {
+      "id": "south_kinship_0085",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกพ้องท้อง",
+      "transcriptions": [
+        "โล๋ก-ผ่อง-ถ่อง",
+        "loːk^5^-p^h^ɔŋ^2^-t^h^ɔŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกหัวปี"
+      ],
+      "raw_text": "ลูกพ้องท้อง [โล๋ก-ผ่อง-ถ่อง] [loːk^5^-p^h^ɔŋ^2^-t^h^ɔŋ^2^]\nดู ลูกหัวปี."
+    },
+    {
+      "id": "south_kinship_0086",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกสาว",
+      "transcriptions": [
+        "โล๋ก-ส้าว",
+        "loːk^5^-saːw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาว [โล๋ก-ส้าว] [loːk^5^-saːw^3^]\nน. ลูกที่เป็นผู้หญิง."
+    },
+    {
+      "id": "south_kinship_0087",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกหัวปี",
+      "transcriptions": [
+        "โล๋ก-หั้ว-ปี",
+        "loːk^5^-hua^3^-piː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกหัวปี [โล๋ก-หั้ว-ปี] [loːk^5^-hua^3^-piː^6^]\nน. ลูกคนแรก, ลูกพ้องท้อง ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0088",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ลูกเอียด",
+      "transcriptions": [
+        "โหฺล๋ก-เอียด",
+        "loːk^5^-Ɂiat^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกนุ้ย"
+      ],
+      "raw_text": "ลูกเอียด [โหฺล๋ก-เอียด] [loːk^5^-Ɂiat^1^]\nดู ลูกนุ้ย."
+    },
+    {
+      "id": "south_kinship_0089",
+      "region": "south",
+      "category": "kinship",
+      "headword": "ส่อ",
+      "transcriptions": [
+        "ส้อ",
+        "sɔː^3^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พี่ใภ้ (จ"
+      ],
+      "raw_text": "ส่อ [ส้อ] [sɔː^3^]\nดู พี่ใภ้ (จ.)."
+    },
+    {
+      "id": "south_kinship_0090",
+      "region": "south",
+      "category": "kinship",
+      "headword": "สุก",
+      "transcriptions": [
+        "ซุก",
+        "suk^4^"
+      ],
+      "notes": [
+        "ถิ่น-ตรัง",
+        "จ."
+      ],
+      "cross_references": [],
+      "raw_text": "สุก [ซุก] [suk^4^]\n(ถิ่น-ตรัง) น. อาผู้ชาย, น้องชายของพ่อ. (จ.)."
+    },
+    {
+      "id": "south_kinship_0091",
+      "region": "south",
+      "category": "kinship",
+      "headword": "สู",
+      "transcriptions": [
+        "สู้",
+        "suː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "สู [สู้] [suː^3^]\nน. คำเรียกญาติของชาวไทยมุสลิม หมายถึง น้า หรือ อา."
+    },
+    {
+      "id": "south_kinship_0092",
+      "region": "south",
+      "category": "kinship",
+      "headword": "โส่",
+      "transcriptions": [
+        "โส้",
+        "soː^3^"
+      ],
+      "notes": [
+        "จ."
+      ],
+      "cross_references": [
+        "พี่ใภ้ (จ"
+      ],
+      "raw_text": "โส่ [โส้] [soː^3^]\nดู พี่ใภ้ (จ.)."
+    },
+    {
+      "id": "south_kinship_0093",
+      "region": "south",
+      "category": "kinship",
+      "headword": "หลวงตา",
+      "transcriptions": [
+        "หฺล้วง-ตา",
+        "luaŋ^3^-taː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลวงตา [หฺล้วง-ตา] [luaŋ^3^-taː^6^]\nน. พ่อตา, พ่อของภรรยา, เช่น แรกวาหลวงตาล้มยักหงาย; พ่อตา โตะตา ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0094",
+      "region": "south",
+      "category": "kinship",
+      "headword": "หลวงยาย",
+      "transcriptions": [
+        "หฺล้วง-ยาย",
+        "luaŋ^3^-yaːy^7^"
+      ],
+      "notes": [
+        "ภาษิตร้อยแปด"
+      ],
+      "cross_references": [],
+      "raw_text": "หลวงยาย [หฺล้วง-ยาย] [luaŋ^3^-yaːy^7^]\nน. แม่ยาย, แม่ของภรรยา, เช่น มีเมียรักร่วมรู้ อย่าได้อยู่กับหลวงยาย ไม่มีความสบาย\nมีแต่ให้ได้ยากใจ (ภาษิตร้อยแปด); แม่ยาย หรือ โตะยาย ก็ว่า."
+    },
+    {
+      "id": "south_kinship_0095",
+      "region": "south",
+      "category": "kinship",
+      "headword": "หลาน",
+      "transcriptions": [
+        "หฺล้าน",
+        "laːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลาน [หฺล้าน] [laːn^3^]\n๑. น. หลาน, ลูกของลูก.\n๒. น. หลาน, ลูกของพี่หรือของน้อง."
+    },
+    {
+      "id": "south_kinship_0096",
+      "region": "south",
+      "category": "kinship",
+      "headword": "หลิน",
+      "transcriptions": [
+        "หลิ้น",
+        "lin^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลิน [หลิ้น] [lin^3^]\nน. ลื่อ, ลูกของเหลน."
+    },
+    {
+      "id": "south_kinship_0097",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อา",
+      "transcriptions": [
+        "อา",
+        "ʔaː^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "น้า ความหมายที่ ๒"
+      ],
+      "raw_text": "อา [อา] [ʔaː^6^]\n(ทก.) ดู น้า ความหมายที่ ๒."
+    },
+    {
+      "id": "south_kinship_0098",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อาก๋ง",
+      "transcriptions": [
+        "อา-ก๋ง",
+        "ʔaː^6^-koŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ก้ง"
+      ],
+      "raw_text": "อาก๋ง [อา-ก๋ง] [ʔaː^6^-koŋ^5^]\nดู ก้ง."
+    },
+    {
+      "id": "south_kinship_0099",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อ้ายนึ้ย",
+      "transcriptions": [
+        "อาย-หฺนึ่ย",
+        "ʔaːy^1^-nɨy^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อ้ายนุ้ย"
+      ],
+      "raw_text": "อ้ายนึ้ย [อาย-หฺนึ่ย] [ʔaːy^1^-nɨy^2^]\nดู อ้ายนุ้ย."
+    },
+    {
+      "id": "south_kinship_0100",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อาเหนาะ",
+      "transcriptions": [
+        "อา-เนาะ",
+        "ʔaː^6^-nɔʔ^4^"
+      ],
+      "notes": [
+        "ม."
+      ],
+      "cross_references": [],
+      "raw_text": "อาเหนาะ [อา-เนาะ] [ʔaː^6^-nɔʔ^4^]\nน. ลูก. (ม.)."
+    },
+    {
+      "id": "south_kinship_0101",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อาเหนาะตีนอ",
+      "transcriptions": [
+        "อา-เนาะ-ตี-นอ",
+        "ʔaː^6^-nɔʔ^4^-tiː^6^-nɔː^7^"
+      ],
+      "notes": [
+        "ม."
+      ],
+      "cross_references": [],
+      "raw_text": "อาเหนาะตีนอ [อา-เนาะ-ตี-นอ] [ʔaː^6^-nɔʔ^4^-tiː^6^-nɔː^7^]\nน. ลูกผู้หญิง, ลูกสาว. (ม.)."
+    },
+    {
+      "id": "south_kinship_0102",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อาเหนาะยาแต",
+      "transcriptions": [
+        "อา-เนาะ-ยา-แต",
+        "ʔaː^6^-nɔʔ^4^-yaː^7^-tɛː^6^"
+      ],
+      "notes": [
+        "ม."
+      ],
+      "cross_references": [],
+      "raw_text": "อาเหนาะยาแต [อา-เนาะ-ยา-แต] [ʔaː^6^-nɔʔ^4^-yaː^7^-tɛː^6^]\nน. ลูกชาย. (ม.)."
+    },
+    {
+      "id": "south_kinship_0103",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อาอี่",
+      "transcriptions": [
+        "อา-อี",
+        "ʔaː^6^-ʔiː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้าสาว ความหมายที่ ๑"
+      ],
+      "raw_text": "อาอี่ [อา-อี] [ʔaː^6^-ʔiː^6^]\nดู น้าสาว ความหมายที่ ๑."
+    },
+    {
+      "id": "south_kinship_0104",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อี้",
+      "transcriptions": [
+        "อี",
+        "ʔiː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้าสาว ความหมายที่ ๑"
+      ],
+      "raw_text": "อี้ [อี] [ʔiː^1^]\nดู น้าสาว ความหมายที่ ๑."
+    },
+    {
+      "id": "south_kinship_0105",
+      "region": "south",
+      "category": "kinship",
+      "headword": "อีบู",
+      "transcriptions": [
+        "อี-บู",
+        "ʔiː^6^-buː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่"
+      ],
+      "raw_text": "อีบู [อี-บู] [ʔiː^6^-buː^6^]\nดู แม่."
+    },
+    {
+      "id": "south_kinship_0106",
+      "region": "south",
+      "category": "kinship",
+      "headword": "เฮีย",
+      "transcriptions": [
+        "เหีย",
+        "hia^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "โก"
+      ],
+      "raw_text": "เฮีย [เหีย] [hia^7^]\nดู โก."
+    }
+  ]
+}
