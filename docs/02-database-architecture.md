@@ -5,13 +5,14 @@
 
 ## 1. Important Data Model Principles
 
-การออกแบบฐานข้อมูล THAI CONTEXT ยึดถือหลักการ **5 Data Layers Separation** เพื่อให้ระบบมีเสถียรภาพและอธิบายต่อกรรมการได้ชัดเจน:
+การออกแบบฐานข้อมูล THAI CONTEXT ยึดถือหลักการ **6 Data Layers Separation** เพื่อให้ระบบมีเสถียรภาพและอธิบายต่อกรรมการได้ชัดเจน:
 
 1. **Source & Edition Layer (Immutable Catalog):** บันทึกแหล่งที่มา (ราชบัณฑิตยสถาน, สถาบันภาษาถิ่น) และฉบับพิมพ์ (2542, 2554, 2569) ห้ามบันทึกทับข้อมูลประวัติศาสตร์
 2. **Canonical Lexical Layer (Normalized Lexicon):** แยกคำศัพท์หลัก (`words`) ออกจากรูปจำเพาะในแต่ละฉบับ (`word_entries`) และนิยามความหมาย (`definitions`) เพื่อตรวจจับความเปลี่ยนแปลงข้ามยุคสมัย
 3. **Semantic Layer (Dense Vectors):** จัดเก็บ Vector Embeddings ของคำและความหมายแยกต่างหาก รองรับการค้นหาเชิงความหมายผ่านส่วนขยาย `pgvector`
 4. **Grounded AI & Audit Layer:** คำตอบของ AI จะไม่เขียนทับข้อมูลจริงในพจนานุกรม แต่บันทึกในตาราง `ai_explanations` และเชื่อมโยงผ่าน `rag_evidence`
-5. **User Feedback Layer:** จัดเก็บพฤติกรรมการค้นหาและการให้คะแนนเพื่อนำมาพัฒนา Ranking Algorithm
+5. **Accessibility & Multilingual Layer:** จัดเก็บคำอ่านสัทอักษร, อักษรโรมัน RTGS, คำแปลภาษาอังกฤษ และคลังภาษามือไทย (TSL) พร้อมระบุสถานะ Verification
+6. **User Feedback Layer:** จัดเก็บพฤติกรรมการค้นหาและการให้คะแนนเพื่อนำมาพัฒนา Ranking Algorithm
 
 ---
 
@@ -33,7 +34,12 @@
 | **`search_embeddings`** | Semantic | คอลัมน์ Vector รองรับการทำ Dense Cosine Similarity ด้วย HNSW Index |
 | **`ai_explanations`** | Grounded AI | บันทึกคำอธิบายเปรียบเทียบและการแนะนำที่สร้างโดย LLM |
 | **`rag_evidence`** | Grounded AI | เก็บ Foreign Key ชี้ชัดว่าคำตอบของ AI อ้างอิงมาจากข้อความใดในพจนานุกรมเล่มไหน |
-| **`search_feedback`** | Feedback | บันทึกคะแนนและการประเมินของผู้ใช้เพื่อนำมาปรับจูน Ranking Weight |
+| **`word_pronunciations`**| Accessibility| สัทอักษร คำอ่านภาษาไทย ระบบถอดอักษรโรมัน RTGS และ IPA Notation |
+| **`word_translations`**  | Multilingual | คำแปลและคำอธิบายภาษาอังกฤษ แยกชัดเจนระหว่าง Official Curated กับ AI Generated |
+| **`sign_language_entries`**| Inclusion  | คลังข้อมูลภาษามือไทย (TSL) อธิบายท่าทางมือ ภาค และสถานะการรับรอง |
+| **`sign_media`**         | Inclusion  | สื่อวิดีโอ/ภาพเคลื่อนไหวสาธิตท่าภาษามือไทย พร้อม Attribution ลิขสิทธิ์ |
+| **`tts_cache`**          | Audio/Cache| แคชผลลัพธ์การสังเคราะห์เสียงอ่านด้วย SHA-256 ป้องกัน Latency และ API Quota |
+| **`search_feedback`**    | Feedback   | บันทึกคะแนนและการประเมินของผู้ใช้เพื่อนำมาปรับจูน Ranking Weight |
 
 ---
 

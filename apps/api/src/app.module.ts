@@ -10,6 +10,8 @@ import { CompareModule } from './modules/compare/compare.module';
 import { EvolutionModule } from './modules/evolution/evolution.module';
 import { DialectModule } from './modules/dialect/dialect.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
+import { TtsModule } from './modules/tts/tts.module';
+import { AccessibilityModule } from './modules/accessibility/accessibility.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { FeedbackModule } from './modules/feedback/feedback.module';
     EvolutionModule,
     DialectModule,
     FeedbackModule,
+    TtsModule,
+    AccessibilityModule,
   ],
 })
 export class AppModule {}

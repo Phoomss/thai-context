@@ -15,12 +15,21 @@ from app.models.schemas import (
     CompareResponse,
     ChatRequest,
     ChatResponse,
-    EvidenceItem
+    EvidenceItem,
+    PhoneticsRequest,
+    PhoneticsResponse,
+    BilingualTranslateRequest,
+    BilingualTranslateResponse,
+    TtsSynthesizeRequest,
+    TtsSynthesizeResponse
 )
 from app.services.nlp.query_parser import query_parser
+from app.services.nlp.phonetics import phonetics_service
 from app.services.retrieval.vector_search import vector_search_service
 from app.services.ranking.ranker import ranker_service
 from app.services.rag.assistant import rag_assistant
+from app.services.rag.bilingual_translator import bilingual_translator
+from app.services.audio.tts_engine import tts_engine
 
 logger = logging.getLogger(__name__)
 
@@ -176,3 +185,40 @@ def rag_chat(payload: ChatRequest):
         return rag_assistant.answer_query(payload.message, evidences)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"RAG chat failed: {str(e)}")
+
+@router.post("/phonetics", response_model=PhoneticsResponse)
+def get_phonetics(payload: PhoneticsRequest):
+    try:
+        result = phonetics_service.get_phonetics(payload.word, payload.known_spelling)
+        return PhoneticsResponse(**result)
+    except Exception as e:
+        logger.error(f"Phonetics extraction failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Phonetics processing failed: {str(e)}")
+
+@router.post("/bilingual-explanation", response_model=BilingualTranslateResponse)
+def bilingual_explanation(payload: BilingualTranslateRequest):
+    try:
+        result = bilingual_translator.translate_and_explain(
+            headword=payload.word,
+            definition_text=payload.definition,
+            pos=payload.pos,
+            domain=payload.domain
+        )
+        return BilingualTranslateResponse(**result)
+    except Exception as e:
+        logger.error(f"Bilingual translation failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Bilingual translation failed: {str(e)}")
+
+@router.post("/tts-synthesize", response_model=TtsSynthesizeResponse)
+def tts_synthesize(payload: TtsSynthesizeRequest):
+    try:
+        result = tts_engine.synthesize(
+            text=payload.text,
+            voice=payload.voice or "th-TH-PremwadeeNeural",
+            speed=payload.speed or 1.0
+        )
+        return TtsSynthesizeResponse(**result)
+    except Exception as e:
+        logger.error(f"TTS synthesis failed: {e}")
+        raise HTTPException(status_code=500, detail=f"TTS synthesis failed: {str(e)}")
+

@@ -196,6 +196,67 @@ CREATE TABLE search_feedback (
 );
 
 -- ----------------------------------------------------------------------------
+-- 7.1 TABLES: ACCESSIBILITY, PRONUNCIATION, MULTILINGUAL & SIGN LANGUAGE
+-- ----------------------------------------------------------------------------
+CREATE TABLE word_pronunciations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    entry_id UUID NOT NULL REFERENCES word_entries(id) ON DELETE CASCADE,
+    phonetic_spelling VARCHAR(255) NOT NULL,     -- เช่น "ประ-สิด-ทิ-พาบ"
+    transliteration_rtgs VARCHAR(255) NOT NULL,  -- เช่น "pra-sit-thi-phap"
+    ipa_notation VARCHAR(255),
+    tone_pattern VARCHAR(100),
+    source_type VARCHAR(50) NOT NULL DEFAULT 'OFFICIAL_DATA',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    CONSTRAINT chk_pronunciation_source CHECK (source_type IN ('OFFICIAL_DATA', 'AI_INFERRED'))
+);
+
+CREATE TABLE word_translations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    word_id UUID NOT NULL REFERENCES words(id) ON DELETE CASCADE,
+    language_code VARCHAR(10) NOT NULL DEFAULT 'en',
+    translated_word VARCHAR(255) NOT NULL,
+    contextual_explanation TEXT,
+    provenance VARCHAR(50) NOT NULL DEFAULT 'OFFICIAL_CURATED',
+    confidence_score NUMERIC(5,4) DEFAULT 1.0000,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    CONSTRAINT chk_trans_provenance CHECK (provenance IN ('OFFICIAL_CURATED', 'AI_GENERATED', 'COMMUNITY'))
+);
+
+CREATE TABLE sign_language_entries (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    word_id UUID NOT NULL REFERENCES words(id) ON DELETE CASCADE,
+    sign_name VARCHAR(255) NOT NULL,
+    handshape_description TEXT,
+    dialect_region VARCHAR(50) NOT NULL DEFAULT 'CENTRAL',
+    verification_status VARCHAR(50) NOT NULL DEFAULT 'VERIFIED',
+    source_attribution VARCHAR(255),
+    license VARCHAR(100) DEFAULT 'CC-BY-SA 4.0',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    CONSTRAINT chk_sign_verification CHECK (verification_status IN ('OFFICIAL', 'VERIFIED', 'COMMUNITY', 'AI_INFERRED'))
+);
+
+CREATE TABLE sign_media (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    sign_id UUID NOT NULL REFERENCES sign_language_entries(id) ON DELETE CASCADE,
+    media_type VARCHAR(50) NOT NULL DEFAULT 'VIDEO_MP4',
+    media_url TEXT NOT NULL,
+    thumbnail_url TEXT,
+    is_primary BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    CONSTRAINT chk_media_type CHECK (media_type IN ('VIDEO_MP4', 'GIF', 'SVG'))
+);
+
+CREATE TABLE tts_cache (
+    cache_key VARCHAR(64) PRIMARY KEY,          -- SHA-256(text + provider + voice)
+    text_content TEXT NOT NULL,
+    provider_name VARCHAR(50) NOT NULL,
+    voice_id VARCHAR(100) NOT NULL,
+    audio_storage_path TEXT NOT NULL,
+    duration_ms INT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- ----------------------------------------------------------------------------
 -- 8. INDEXES FOR HIGH PERFORMANCE
 -- ----------------------------------------------------------------------------
 -- B-Tree Indexes
@@ -210,6 +271,10 @@ CREATE INDEX idx_semantic_mappings_std ON semantic_mappings(standard_entry_id);
 CREATE INDEX idx_semantic_mappings_dia ON semantic_mappings(dialect_entry_id);
 CREATE INDEX idx_rag_evidence_explanation ON rag_evidence(explanation_id);
 CREATE INDEX idx_rag_evidence_entry ON rag_evidence(entry_id);
+CREATE INDEX idx_word_pronunciations_entry ON word_pronunciations(entry_id);
+CREATE INDEX idx_word_translations_word_lang ON word_translations(word_id, language_code);
+CREATE INDEX idx_sign_language_entries_word ON sign_language_entries(word_id);
+CREATE INDEX idx_sign_media_sign ON sign_media(sign_id);
 
 -- Trigram GIN Indexes (Fuzzy & Keyword Search)
 CREATE INDEX idx_words_headword_trgm ON words USING gin (headword gin_trgm_ops);
@@ -308,3 +373,27 @@ INSERT INTO rag_evidence (explanation_id, entry_id, definition_id, relevance_sco
 'def69001-0000-0000-0000-000000000001', 
 0.9420, 
 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๖๙: "ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร..."');
+
+-- ----------------------------------------------------------------------------
+-- 9. ACCESSIBILITY & MULTILINGUAL DEMO SEEDS
+-- ----------------------------------------------------------------------------
+-- Pronunciations & RTGS
+INSERT INTO word_pronunciations (id, entry_id, phonetic_spelling, transliteration_rtgs, ipa_notation, tone_pattern, source_type) VALUES
+('pro00001-0000-0000-0000-000000000001', 'e2569001-0000-0000-0000-000000000001', 'ประ-สิด-ทิ-พาบ', 'pra-sit-thi-phap', 'praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰaːp̚˥˩', 'L-L-H-L', 'OFFICIAL_DATA'),
+('pro00002-0000-0000-0000-000000000002', 'e2569003-0000-0000-0000-000000000003', 'อะ-หฺร่อย', 'a-roi', 'ʔaʔ˨˩.rɔːj˨˩', 'L-L', 'OFFICIAL_DATA');
+
+-- Translations & English Bridge
+INSERT INTO word_translations (id, word_id, language_code, translated_word, contextual_explanation, provenance, confidence_score) VALUES
+('tra00001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'en', 'efficiency', 'The capacity to deliver maximum productive output with the least consumption of inputs (time, budget, energy).', 'OFFICIAL_CURATED', 1.0000),
+('tra00002-0000-0000-0000-000000000002', 'w0000002-0000-0000-0000-000000000002', 'en', 'effectiveness', 'The degree to which objectives are achieved and targeted problems are resolved.', 'OFFICIAL_CURATED', 1.0000),
+('tra00003-0000-0000-0000-000000000003', 'w0000003-0000-0000-0000-000000000003', 'en', 'delicious', 'Having a delightful and savory taste that appeals to the palate.', 'OFFICIAL_CURATED', 1.0000);
+
+-- Thai Sign Language (TSL) Metadata & Media
+INSERT INTO sign_language_entries (id, word_id, sign_name, handshape_description, dialect_region, verification_status, source_attribution) VALUES
+('tsl00001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'ประสิทธิภาพ', 'มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย', 'CENTRAL', 'OFFICIAL', 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล'),
+('tsl00002-0000-0000-0000-000000000002', 'w0000003-0000-0000-0000-000000000003', 'อร่อย', 'ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย', 'CENTRAL', 'OFFICIAL', 'สมาคมคนหูหนวกแห่งประเทศไทย');
+
+INSERT INTO sign_media (id, sign_id, media_type, media_url, thumbnail_url, is_primary) VALUES
+('med00001-0000-0000-0000-000000000001', 'tsl00001-0000-0000-0000-000000000001', 'VIDEO_MP4', 'https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4', 'https://assets.thai-context.org/tsl/thumbs/prasitthiphap.jpg', TRUE),
+('med00002-0000-0000-0000-000000000002', 'tsl00002-0000-0000-0000-000000000002', 'VIDEO_MP4', 'https://assets.thai-context.org/tsl/videos/aroi.mp4', 'https://assets.thai-context.org/tsl/thumbs/aroi.jpg', TRUE);
+

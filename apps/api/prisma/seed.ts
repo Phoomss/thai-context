@@ -373,6 +373,248 @@ async function main() {
     }
   }
 
+  console.log('Inserting Accessibility & Multilingual Data...');
+  const accessibilitySeedMap: Record<string, {
+    pronunciation: { phonetic: string; rtgs: string; ipa: string; tone: string };
+    translation: { en: string; secondary?: string[]; explanation: string; provenance: string };
+    sign?: { name: string; description: string; source: string; videoUrl: string };
+  }> = {
+    'ประสิทธิภาพ': {
+      pronunciation: {
+        phonetic: 'ประ-สิด-ทิ-พาบ',
+        rtgs: 'pra-sit-thi-phap',
+        ipa: 'praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰaːp̚˥˩',
+        tone: 'L-L-H-L',
+      },
+      translation: {
+        en: 'efficiency',
+        secondary: ['competence', 'productivity', 'performance'],
+        explanation: 'The ability to produce maximum productive output with the least waste of time, resources, or energy.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+      sign: {
+        name: 'ประสิทธิภาพ',
+        description: 'มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย',
+        source: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+        videoUrl: 'https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4',
+      },
+    },
+    'ประสิทธิผล': {
+      pronunciation: {
+        phonetic: 'ประ-สิด-ทิ-ผน',
+        rtgs: 'pra-sit-thi-phon',
+        ipa: 'praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰon˩˩˦',
+        tone: 'L-L-H-R',
+      },
+      translation: {
+        en: 'effectiveness',
+        secondary: ['efficacy', 'fruitfulness'],
+        explanation: 'The degree to which objectives are achieved and targeted problems are resolved.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+    },
+    'ศักยภาพ': {
+      pronunciation: {
+        phonetic: 'สัก-กะ-ยะ-พาบ',
+        rtgs: 'sak-ka-ya-phap',
+        ipa: 'sak̚˨˩.kaʔ˨˩.jaʔ˦˥.pʰaːp̚˥˩',
+        tone: 'L-L-H-L',
+      },
+      translation: {
+        en: 'potential',
+        secondary: ['capability', 'capacity'],
+        explanation: 'Latent qualities or abilities that may be developed and lead to future success or usefulness.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+    },
+    'ปัญญาประดิษฐ์': {
+      pronunciation: {
+        phonetic: 'ปัน-ยา-ปฺระ-ดิด',
+        rtgs: 'pan-ya-pra-dit',
+        ipa: 'pan˧˧.jaː˧˧.praʔ˨˩.dit̚˨˩',
+        tone: 'M-M-L-L',
+      },
+      translation: {
+        en: 'artificial intelligence (AI)',
+        secondary: ['machine intelligence'],
+        explanation: 'The branch of computer science emphasizing the simulation of human intelligence processes by machines.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+      sign: {
+        name: 'ปัญญาประดิษฐ์',
+        description: 'ชี้นิ้วชี้ขวาที่ขมับ แตะเบาๆ แล้วกางมือทั้งสองขยับนิ้วคล้ายวงจรอิเล็กทรอนิกส์',
+        source: 'สมาคมคนหูหนวกแห่งประเทศไทย',
+        videoUrl: 'https://assets.thai-context.org/tsl/videos/ai.mp4',
+      },
+    },
+    'นวัตกรรม': {
+      pronunciation: {
+        phonetic: 'นะ-วัด-ตะ-กำ',
+        rtgs: 'na-wat-ta-kam',
+        ipa: 'naʔ˦˥.wat̚˨˩.taʔ˨˩.kam˧˧',
+        tone: 'H-L-L-M',
+      },
+      translation: {
+        en: 'innovation',
+        secondary: ['novelty', 'modernization'],
+        explanation: 'A new method, idea, or product newly introduced into society or commerce.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+    },
+    'บูรณาการ': {
+      pronunciation: {
+        phonetic: 'บู-ระ-นา-กาน',
+        rtgs: 'bu-ra-na-kan',
+        ipa: 'buː˧˧.raʔ˦˥.naː˧˧.kaːn˧˧',
+        tone: 'M-H-M-M',
+      },
+      translation: {
+        en: 'integration',
+        secondary: ['holistic coordination'],
+        explanation: 'Combining various components or sectors into a cohesive and harmonious whole.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+    },
+    'อร่อย': {
+      pronunciation: {
+        phonetic: 'อะ-หฺร่อย',
+        rtgs: 'a-roi',
+        ipa: 'ʔaʔ˨˩.rɔːj˨˩',
+        tone: 'L-L',
+      },
+      translation: {
+        en: 'delicious',
+        secondary: ['tasty', 'flavorful', 'savory'],
+        explanation: 'Having a delightful and savory taste that appeals to the palate.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+      sign: {
+        name: 'อร่อย',
+        description: 'ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย',
+        source: 'สมาคมคนหูหนวกแห่งประเทศไทย',
+        videoUrl: 'https://assets.thai-context.org/tsl/videos/aroi.mp4',
+      },
+    },
+    'รับประทาน': {
+      pronunciation: {
+        phonetic: 'รับ-ปฺระ-ทาน',
+        rtgs: 'rap-pra-than',
+        ipa: 'rap̚˦˥.praʔ˨˩.tʰaːn˧˧',
+        tone: 'H-L-M',
+      },
+      translation: {
+        en: 'dine / partake (formal)',
+        secondary: ['consume'],
+        explanation: 'Polite formal term for eating food in official contexts.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+    },
+    'มิตรภาพ': {
+      pronunciation: {
+        phonetic: 'มิด-ตฺระ-พาบ',
+        rtgs: 'mit-tra-phap',
+        ipa: 'mit̚˦˥.traʔ˨˩.pʰaːp̚˥˩',
+        tone: 'H-L-F',
+      },
+      translation: {
+        en: 'friendship',
+        secondary: ['amity', 'fellowship'],
+        explanation: 'A state of mutual trust, support, and warmth between individuals.',
+        provenance: 'OFFICIAL_CURATED',
+      },
+      sign: {
+        name: 'มิตรภาพ',
+        description: 'ประสานนิ้วก้อยทั้งสองมือเข้าด้วยกัน แล้วดึงเข้ามาใกล้หน้าอกอย่างอ่อนโยน',
+        source: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+        videoUrl: 'https://assets.thai-context.org/tsl/videos/friendship.mp4',
+      },
+    },
+  };
+
+  for (const [headword, data] of Object.entries(accessibilitySeedMap)) {
+    const wordRecord = await prisma.word.findUnique({
+      where: { headword },
+      include: { entries: { take: 1 } },
+    });
+    if (!wordRecord) continue;
+
+    // 1. Seed Pronunciation
+    if (wordRecord.entries.length > 0) {
+      const entryId = wordRecord.entries[0].id;
+      const existingPron = await prisma.wordPronunciation.findFirst({
+        where: { entryId },
+      });
+      if (!existingPron) {
+        await prisma.wordPronunciation.create({
+          data: {
+            entryId,
+            phoneticSpelling: data.pronunciation.phonetic,
+            transliterationRtgs: data.pronunciation.rtgs,
+            ipaNotation: data.pronunciation.ipa,
+            tonePattern: data.pronunciation.tone,
+            sourceType: 'OFFICIAL_DATA',
+          },
+        });
+      }
+    }
+
+    // 2. Seed Translation
+    const existingTrans = await prisma.wordTranslation.findFirst({
+      where: { wordId: wordRecord.id, languageCode: 'en' },
+    });
+    if (!existingTrans) {
+      await prisma.wordTranslation.create({
+        data: {
+          wordId: wordRecord.id,
+          languageCode: 'en',
+          translatedWord: data.translation.en,
+          contextualExplanation: data.translation.explanation,
+          provenance: data.translation.provenance,
+          confidenceScore: 1.0,
+        },
+      });
+    }
+
+    // 3. Seed Sign Language (if any)
+    if (data.sign) {
+      const existingSign = await prisma.signLanguageEntry.findFirst({
+        where: { wordId: wordRecord.id },
+      });
+      let signId = existingSign?.id;
+      if (!existingSign) {
+        const createdSign = await prisma.signLanguageEntry.create({
+          data: {
+            wordId: wordRecord.id,
+            signName: data.sign.name,
+            handshapeDescription: data.sign.description,
+            dialectRegion: 'CENTRAL',
+            verificationStatus: 'OFFICIAL',
+            sourceAttribution: data.sign.source,
+            license: 'CC-BY-SA 4.0',
+          },
+        });
+        signId = createdSign.id;
+      }
+
+      if (signId) {
+        const existingMedia = await prisma.signMedia.findFirst({
+          where: { signId },
+        });
+        if (!existingMedia) {
+          await prisma.signMedia.create({
+            data: {
+              signId,
+              mediaType: 'VIDEO_MP4',
+              mediaUrl: data.sign.videoUrl,
+              isPrimary: true,
+            },
+          });
+        }
+      }
+    }
+  }
+
+  console.log('✅ Accessibility & Multilingual data successfully seeded!');
   console.log('✅ Seed completed successfully!');
 }
 

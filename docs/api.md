@@ -315,3 +315,166 @@
   "message": "Feedback recorded successfully"
 }
 ```
+
+---
+
+## 7. Accessibility & Multilingual Intelligence
+
+### `GET /api/v1/dictionary/words/:word/accessibility`
+ดึงข้อมูลแพ็กรวมสำหรับการเข้าถึงภาษาไทยแบบครบวงจร (Universal Accessibility Pack) สำหรับคำศัพท์ที่ระบุ ประกอบด้วย:
+- คำอ่านภาษาไทยและระบบถอดอักษรโรมัน RTGS (ราชบัณฑิตยสภา) + IPA
+- คำแปลและคำอธิบายภาษาอังกฤษ (ระบุ Provenance ชัดเจน)
+- ภาษามือไทย (TSL) พร้อมคำบรรยายท่ามือและคลิปวิดีโออ้างอิง
+- สถานะระบบเสียงสังเคราะห์ (TTS)
+
+**Example Request:**  
+`GET /api/v1/dictionary/words/ประสิทธิภาพ/accessibility`
+
+**Response (200 OK):**
+```json
+{
+  "headword": "ประสิทธิภาพ",
+  "pronunciation": {
+    "phoneticSpelling": "ประ-สิด-ทิ-พาบ",
+    "transliterationRtgs": "pra-sit-thi-phap",
+    "ipaNotation": "praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰaːp̚˥˩",
+    "tonePattern": "L-L-H-L",
+    "syllables": ["pra", "sit", "thi", "phap"],
+    "sourceType": "OFFICIAL_DATA"
+  },
+  "translations": [
+    {
+      "translatedWord": "efficiency",
+      "languageCode": "en",
+      "secondaryTranslations": ["competence", "productivity", "performance"],
+      "contextualExplanation": "The ability to produce maximum productive output with the least waste of time, resources, or energy.",
+      "provenance": "OFFICIAL_CURATED",
+      "confidenceScore": 1.0
+    }
+  ],
+  "signLanguage": [
+    {
+      "signName": "ประสิทธิภาพ",
+      "handshapeDescription": "มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย",
+      "dialectRegion": "CENTRAL",
+      "verificationStatus": "OFFICIAL",
+      "sourceAttribution": "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      "media": [
+        {
+          "mediaType": "VIDEO_MP4",
+          "mediaUrl": "https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4",
+          "isPrimary": true
+        }
+      ]
+    }
+  ],
+  "tts": {
+    "supported": true,
+    "synthesizeEndpoint": "/api/v1/tts/synthesize"
+  }
+}
+```
+
+---
+
+### `GET /api/v1/dictionary/words/:word/pronunciation`
+ดึงเฉพาะข้อมูลคำอ่านและการถอดอักษรโรมัน RTGS
+
+**Response (200 OK):**
+```json
+{
+  "phoneticSpelling": "ประ-สิด-ทิ-พาบ",
+  "transliterationRtgs": "pra-sit-thi-phap",
+  "ipaNotation": "praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰaːp̚˥˩",
+  "tonePattern": "L-L-H-L",
+  "syllables": ["pra", "sit", "thi", "phap"],
+  "sourceType": "OFFICIAL_DATA"
+}
+```
+
+---
+
+### `GET /api/v1/dictionary/words/:word/translations`
+ดึงเฉพาะข้อมูลคำแปลและคำอธิบายภาษาอังกฤษ
+
+**Response (200 OK):**
+```json
+[
+  {
+    "translatedWord": "efficiency",
+    "languageCode": "en",
+    "contextualExplanation": "The ability to produce maximum productive output with least consumption of inputs.",
+    "provenance": "OFFICIAL_CURATED",
+    "confidenceScore": 1.0
+  }
+]
+```
+
+---
+
+### `GET /api/v1/dictionary/words/:word/sign-language`
+ดึงเฉพาะข้อมูลภาษามือไทย (Thai Sign Language)
+
+**Response (200 OK):**
+```json
+[
+  {
+    "signName": "ประสิทธิภาพ",
+    "handshapeDescription": "มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย",
+    "dialectRegion": "CENTRAL",
+    "verificationStatus": "OFFICIAL",
+    "sourceAttribution": "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+    "media": [
+      {
+        "mediaType": "VIDEO_MP4",
+        "mediaUrl": "https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4",
+        "isPrimary": true
+      }
+    ]
+  }
+]
+```
+
+---
+
+## 8. Text-to-Speech (TTS) Engine
+
+### `POST /api/v1/tts/synthesize`
+แปลงข้อความภาษาไทยหรือคำศัพท์เป็นไฟล์เสียง (Base64 Encoded Audio) โดยมีกลไก Multi-Provider Sequence และ Local Fallback อัตโนมัติ (Zero-Crash Guarantee)
+
+**Request Body:**
+```json
+{
+  "text": "ประสิทธิภาพ",
+  "voice": "th-TH-PremwadeeNeural",
+  "speed": 1.0
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "audioBase64": "UklGRiQAAABXQVZFZm10IBAAAAABAAEA...",
+  "format": "wav",
+  "provider": "AI_SERVICE_TTS",
+  "cached": false,
+  "durationMs": 1320
+}
+```
+
+---
+
+### `GET /api/v1/tts/status`
+ตรวจสอบความพร้อมของ TTS Engine Providers และสถานะ Fallback
+
+**Response (200 OK):**
+```json
+{
+  "providers": [
+    { "name": "AI_SERVICE_TTS", "available": true },
+    { "name": "LOCAL_MOCK_FALLBACK", "available": true }
+  ],
+  "activeDefault": "AI_SERVICE"
+}
+```
+
