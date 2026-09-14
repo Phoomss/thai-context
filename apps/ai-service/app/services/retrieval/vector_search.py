@@ -41,7 +41,9 @@ class VectorSearchService:
             with psycopg.connect(self.db_url) as conn:
                 with conn.cursor() as cur:
                     from app.services.nlp.tokenizer import ThaiNLPTokenizer
-                    q_tokens = [t for t in ThaiNLPTokenizer.extract_keywords(query_text) if len(t) > 1]
+                    cleaned_q = query_text.strip()
+                    tokens = [t for t in ThaiNLPTokenizer.extract_keywords(query_text) if len(t) > 1]
+                    q_tokens = list(dict.fromkeys([cleaned_q] + tokens))
 
                     # 1. Exact/Keyword retrieval for tokens in query
                     exact_rows = []
@@ -117,51 +119,85 @@ class VectorSearchService:
             return self._fallback_in_memory_search(query_text, query_vector, top_k)
 
     def _fallback_in_memory_search(self, query_text: str, query_vector: List[float], top_k: int) -> List[SemanticSearchResult]:
-        # Fallback reading seed data if DB connection is not established yet
+        # Fallback reading real dictionary data if DB connection is not established yet
         import os
         candidate_paths = [
+            os.path.join(os.getcwd(), "data/processed/dict/dict_2554.json"),
+            "/app/data/processed/dict/dict_2554.json",
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../data/processed/dict/dict_2554.json")),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../data/processed/dict/dict_2554.json")),
             os.path.join(os.getcwd(), "data/seed/demo_dictionary.json"),
             "/app/data/seed/demo_dictionary.json",
-            "/Users/mac/Desktop/workspace/thai-context/data/seed/demo_dictionary.json",
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../../data/seed/demo_dictionary.json")),
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../data/seed/demo_dictionary.json")),
         ]
         seed_path = next((p for p in candidate_paths if os.path.exists(p)), None)
         if not seed_path:
-            logger.warning("No seed data found for fallback search.")
+            logger.warning("No dictionary data found for fallback search.")
             return []
 
         try:
             with open(seed_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
-            words_map = {w["id"]: w["headword"] for w in data["words"]}
-            entry_to_word = {e["id"]: words_map.get(e["wordId"], "") for e in data["wordEntries"]}
-            entry_to_ed = {e["id"]: e.get("editionId", "") for e in data["wordEntries"]}
-            editions_map = {ed["id"]: ed.get("editionYear", "") for ed in data["editions"]}
-
             scored = []
-            for d in data["definitions"]:
-                word = entry_to_word.get(d["entryId"], "")
-                ed_year = editions_map.get(entry_to_ed.get(d["entryId"], ""), "")
-                text = f"{word}: {d['definitionText']}"
-                vec = embedding_provider.embed_text(text)
-                
-                # Cosine similarity
-                dot = sum(a * b for a, b in zip(query_vector, vec))
-                norm_a = sum(a * a for a in query_vector) ** 0.5
-                norm_b = sum(b * b for b in vec) ** 0.5
-                sim = dot / (norm_a * norm_b) if (norm_a * norm_b) > 0 else 0.0
+            if isinstance(data, list):
+                # Real processed dictionary format (dict_2554.json / dict_all_editions.json)
+                for item in data:
+                    word = item.get("headword") or item.get("raw_headword") or ""
+                    def_text = item.get("definition") or ""
+                    if not word or not def_text:
+                        continue
+                    ed_year = item.get("edition") or "2554"
+                    
+                    # Quick prefilter: exact match or keyword overlap
+                    is_match = word in query_text or query_text in word
+                    
+                    text = f"{word}: {def_text}"
+                    vec = embedding_provider.embed_text(text)
+                    
+                    # Cosine similarity
+                    dot = sum(a * b for a, b in zip(query_vector, vec))
+                    norm_a = sum(a * a for a in query_vector) ** 0.5
+                    norm_b = sum(b * b for b in vec) ** 0.5
+                    sim = dot / (norm_a * norm_b) if (norm_a * norm_b) > 0 else 0.0
 
-                scored.append(
-                    SemanticSearchResult(
-                        id=d["id"],
-                        word=word,
-                        definition=d["definitionText"],
-                        edition=ed_year,
-                        score=round(float(sim), 4)
+                    if is_match:
+                        sim = max(sim, 0.92)
+
+                    scored.append(
+                        SemanticSearchResult(
+                            id=str(item.get("index") or word),
+                            word=word,
+                            definition=def_text,
+                            edition=ed_year,
+                            score=round(float(sim), 4)
+                        )
                     )
-                )
+            else:
+                words_map = {w["id"]: w["headword"] for w in data["words"]}
+                entry_to_word = {e["id"]: words_map.get(e["wordId"], "") for e in data["wordEntries"]}
+                entry_to_ed = {e["id"]: e.get("editionId", "") for e in data["wordEntries"]}
+                editions_map = {ed["id"]: ed.get("editionYear", "") for ed in data["editions"]}
+
+                for d in data["definitions"]:
+                    word = entry_to_word.get(d["entryId"], "")
+                    ed_year = editions_map.get(entry_to_ed.get(d["entryId"], ""), "")
+                    text = f"{word}: {d['definitionText']}"
+                    vec = embedding_provider.embed_text(text)
+                    
+                    dot = sum(a * b for a, b in zip(query_vector, vec))
+                    norm_a = sum(a * a for a in query_vector) ** 0.5
+                    norm_b = sum(b * b for b in vec) ** 0.5
+                    sim = dot / (norm_a * norm_b) if (norm_a * norm_b) > 0 else 0.0
+
+                    scored.append(
+                        SemanticSearchResult(
+                            id=d["id"],
+                            word=word,
+                            definition=d["definitionText"],
+                            edition=ed_year,
+                            score=round(float(sim), 4)
+                        )
+                    )
 
             scored.sort(key=lambda x: x.score, reverse=True)
             return scored[:top_k]
