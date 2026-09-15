@@ -7,6 +7,7 @@ datasource db {
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["postgresqlExtensions"]
+  binaryTargets   = ["native", "linux-musl-openssl-3.0.x", "linux-musl-arm64-openssl-3.0.x"]
 }
 
 model DictionarySource {
@@ -62,6 +63,8 @@ model Word {
   relationshipsAsSource WordRelationship[] @relation("SourceWord")
   relationshipsAsTarget WordRelationship[] @relation("TargetWord")
   feedback      SearchFeedback[]
+  translations  WordTranslation[]
+  signEntries   SignLanguageEntry[]
 
   @@index([headword])
   @@index([headwordClean])
@@ -83,6 +86,7 @@ model WordEntry {
   definitions    Definition[]
   semanticMappings SemanticMapping[]
   ragEvidences   RagEvidence[]
+  pronunciations WordPronunciation[]
 
   @@unique([wordId, editionId], name: "uq_word_edition")
   @@index([wordId])
@@ -248,3 +252,77 @@ model SearchFeedback {
   @@index([recommendedWordId])
   @@map("search_feedback")
 }
+
+model WordPronunciation {
+  id                  String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  entryId             String     @map("entry_id") @db.Uuid
+  phoneticSpelling    String     @map("phonetic_spelling") @db.VarChar(255)
+  transliterationRtgs String     @map("transliteration_rtgs") @db.VarChar(255)
+  ipaNotation         String?    @map("ipa_notation") @db.VarChar(255)
+  tonePattern         String?    @map("tone_pattern") @db.VarChar(100)
+  sourceType          String     @default("OFFICIAL_DATA") @map("source_type") @db.VarChar(50) // 'OFFICIAL_DATA' | 'AI_INFERRED'
+  createdAt           DateTime   @default(now()) @map("created_at") @db.Timestamptz
+  entry               WordEntry  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+
+  @@index([entryId])
+  @@map("word_pronunciations")
+}
+
+model WordTranslation {
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  wordId                String   @map("word_id") @db.Uuid
+  languageCode          String   @default("en") @map("language_code") @db.VarChar(10)
+  translatedWord        String   @map("translated_word") @db.VarChar(255)
+  contextualExplanation String?  @map("contextual_explanation") @db.Text
+  provenance            String   @default("OFFICIAL_CURATED") @map("provenance") @db.VarChar(50) // 'OFFICIAL_CURATED' | 'AI_GENERATED' | 'COMMUNITY'
+  confidenceScore       Decimal? @default(1.0000) @map("confidence_score") @db.Decimal(5, 4)
+  createdAt             DateTime @default(now()) @map("created_at") @db.Timestamptz
+  word                  Word     @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  @@index([wordId, languageCode])
+  @@map("word_translations")
+}
+
+model SignLanguageEntry {
+  id                   String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  wordId               String        @map("word_id") @db.Uuid
+  signName             String        @map("sign_name") @db.VarChar(255)
+  handshapeDescription String?       @map("handshape_description") @db.Text
+  dialectRegion        String        @default("CENTRAL") @map("dialect_region") @db.VarChar(50)
+  verificationStatus   String        @default("VERIFIED") @map("verification_status") @db.VarChar(50) // 'OFFICIAL' | 'VERIFIED' | 'COMMUNITY' | 'AI_INFERRED'
+  sourceAttribution    String?       @map("source_attribution") @db.VarChar(255)
+  license              String?       @default("CC-BY-SA 4.0") @db.VarChar(100)
+  createdAt            DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  word                 Word          @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  mediaList            SignMedia[]
+
+  @@index([wordId])
+  @@map("sign_language_entries")
+}
+
+model SignMedia {
+  id           String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  signId       String            @map("sign_id") @db.Uuid
+  mediaType    String            @default("VIDEO_MP4") @map("media_type") @db.VarChar(50) // 'VIDEO_MP4' | 'GIF' | 'SVG'
+  mediaUrl     String            @map("media_url") @db.Text
+  thumbnailUrl String?           @map("thumbnail_url") @db.Text
+  isPrimary    Boolean           @default(true) @map("is_primary")
+  createdAt    DateTime          @default(now()) @map("created_at") @db.Timestamptz
+  signEntry    SignLanguageEntry @relation(fields: [signId], references: [id], onDelete: Cascade)
+
+  @@index([signId])
+  @@map("sign_media")
+}
+
+model TtsCache {
+  cacheKey         String   @id @map("cache_key") @db.VarChar(64) // SHA-256
+  textContent      String   @map("text_content") @db.Text
+  providerName     String   @map("provider_name") @db.VarChar(50)
+  voiceId          String   @map("voice_id") @db.VarChar(100)
+  audioStoragePath String   @map("audio_storage_path") @db.Text
+  durationMs       Int?     @map("duration_ms")
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("tts_cache")
+}
+

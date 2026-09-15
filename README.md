@@ -11,6 +11,13 @@
 - **Traditional:** รู้คำ → ค้นคำ → อ่านความหมาย
 - **THAI CONTEXT:** รู้สิ่งที่อยากสื่อ → อธิบายความหมาย/บริบท → ระบบค้นพบคำ → เปรียบเทียบ → เข้าใจการใช้ → ตรวจสอบหลักฐาน
 
+### 📊 Current Database Scale (Real Thai Dataset):
+- **29,544 แม่คำภาษาไทย** (Ingested from Wiktextract & Royal Society Editions)
+- **36,398 รายการความหมาย** พร้อมระบุชนิดของคำ (POS) และลำดับ Sense
+- **29,612 เวกเตอร์ความหมาย** (1536-dim HNSW Index บน pgvector)
+- **84 รายการคำภาษาถิ่น** (เหนือ, อีสาน, ใต้)
+- **100% Functional Requirements Compliance (18/18 FRs Passed)**
+
 ---
 
 ## 🏗️ Architecture
@@ -35,11 +42,19 @@ PostgreSQL 16 + pgvector   FastAPI AI/NLP Service (apps/ai-service)
   - Dictionary Engine (2542, 2554, 2569, DIALECT)
   - Word Evolution & Change Detection
   - Dialect Explorer & Standard ↔ Dialect Mappings
+  - **Language Accessibility Module** (`/api/v1/dictionary/words/:word/accessibility`)
+  - **Pronunciation & RTGS Transliteration** (`/api/v1/dictionary/words/:word/pronunciation`)
+  - **Multilingual Bridge & Translation** (`/api/v1/dictionary/words/:word/translations`)
+  - **Thai Sign Language (TSL) Metadata & Media** (`/api/v1/dictionary/words/:word/sign-language`)
+  - **Text-to-Speech (TTS) Abstraction Layer** (`/api/v1/tts/synthesize`) with Multi-provider Fallback
   - AI Orchestration
   - Swagger Documentation (`/api/docs`)
 
 - **`apps/ai-service` (FastAPI AI/NLP):**
-  - PyThaiNLP Thai Text Processing & Tokenization
+  - PyThaiNLP Thai Text Processing, Tokenization & G2P
+  - Royal Society RTGS Romanization (`pythainlp.transliterate.romanize(engine="royin")`)
+  - Grounded Bilingual Translation & Nuance Engine (with Strict Source Provenance)
+  - Synthetic Zero-Crash Audio Synthesis Engine with SHA-256 Caching
   - Query Understanding (Meaning, Excluded Words, Context Intent)
   - Pluggable Dense Embedding (Local Deterministic, Gemini, OpenAI)
   - pgvector Semantic Search
@@ -47,7 +62,7 @@ PostgreSQL 16 + pgvector   FastAPI AI/NLP Service (apps/ai-service)
   - Grounded RAG & Hallucination Guard
 
 - **`PostgreSQL 16 + pgvector`:**
-  - 15 Relational Tables with Vector Indexing
+  - 19 Relational Tables with Vector Indexing & Caching Layers
 
 ---
 
@@ -97,6 +112,13 @@ pip install -r requirements.txt
 python -m app.main
 ```
 
+### 5. Setup Next.js Frontend (`frontend`)
+```bash
+cd frontend
+pnpm install
+pnpm dev
+```
+
 ---
 
 ## 🧪 Testing
@@ -105,6 +127,12 @@ python -m app.main
 ```bash
 cd apps/api
 npm test
+```
+
+### Run Automated Smoke Test (All 12 Core Endpoints):
+```bash
+./scripts/smoke_test.sh
+# หรือ cd apps/api && npm run test:smoke
 ```
 
 ### Run FastAPI AI Service Tests:

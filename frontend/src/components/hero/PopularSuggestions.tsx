@@ -17,6 +17,7 @@ export default function PopularSuggestions({
       <div>
         {suggestions.map(([label, query]) => (
           <button
+            className="font-thai-reading"
             type="button"
             disabled={disabled}
             onClick={() => onSelect(query)}

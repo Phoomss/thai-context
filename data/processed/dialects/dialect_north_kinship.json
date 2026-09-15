@@ -1,0 +1,1916 @@
+{
+  "title": "หมวดคำเรียกญาติ",
+  "region": "north",
+  "category": "kinship",
+  "entry_count": 133,
+  "entries": [
+    {
+      "id": "north_kinship_0001",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ตา",
+      "transcriptions": [
+        "ต๋า",
+        "taː^5^",
+        "ตา",
+        "taː^1^"
+      ],
+      "notes": [
+        "โบ",
+        "จารึกวัดช้างค้ำ นน. ๓",
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ตา ๑. ตา [ต๋า] [taː^5^]\n(โบ) น. ตา, พ่อของแม่, เช่น\nอุดมราชพันธุ์พงศ์วงศาทั้งหลายเป็นต้นว่าพ่อแลแม่ปู่ย่าตายายลุงป้าน้าอาอาวพี่น้องลูกหลานเหลนหลีดหลี้\n(จารึกวัดช้างค้ำ นน. ๓).\n๒. ตา [ตา] [taː^1^]\n(ทก.) น. ตา, พ่อของแม่."
+    },
+    {
+      "id": "north_kinship_0002",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้อง",
+      "transcriptions": [
+        "น้อง",
+        "nɔː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้อง น้อฯง [น้อง] [nɔː^4^]\nน. น้อง, ผู้ร่วมบิดามารดาเดียวกัน ร่วมบิดาหรือมารดาเดียวกันและเกิดทีหลัง."
+    },
+    {
+      "id": "north_kinship_0003",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องเขย",
+      "transcriptions": [
+        "น้อง-เขย",
+        "nɔːŋ^4^-k^h^əːy^5^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "น้องชาย ๑"
+      ],
+      "raw_text": "น้องเขย น้อฯงเขิยฯ [น้อง-เขย] [nɔːŋ^4^-k^h^əːy^5^]\n(ทก.) ดู น้องชาย ๑."
+    },
+    {
+      "id": "north_kinship_0004",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องชาย ๑",
+      "transcriptions": [
+        "น้อง-จาย",
+        "nɔːŋ^4^-caːy^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "น้องชาย ๑ น้อฯงชายฯ [น้อง-จาย] [nɔːŋ^4^-caːy^1^]\nน. น้องเขย, ผู้ชายที่มาแต่งงานกับน้องสาวหรือญาติที่มีศักดิ์เป็นน้องสาว; (ทก.) น้องเขย\nก็ว่า."
+    },
+    {
+      "id": "north_kinship_0005",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องชาย ๒",
+      "transcriptions": [
+        "น้อง-จาย",
+        "nɔːŋ^4^-caːy^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "น้องบ่าว"
+      ],
+      "raw_text": "น้องชาย ๒ น้อฯงชายฯ [น้อง-จาย] [nɔːŋ^4^-caːy^1^]\n(ทก.) ดู น้องบ่าว."
+    },
+    {
+      "id": "north_kinship_0006",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องบ่าว",
+      "transcriptions": [
+        "น้อง-บ่าว",
+        "nɔːŋ^4^-baːw^2^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "น้องบ่าว น้อฯงบ่าวฯ [น้อง-บ่าว] [nɔːŋ^4^-baːw^2^]\nน. น้องชาย, ผู้ชายที่ร่วมบิดามารดาเดียวกัน ร่วมบิดาหรือมารดาเดียวกันและเกิดทีหลัง;\n(ทก.) น้องชาย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0007",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องผัว",
+      "transcriptions": [
+        "น้อง-ผัว",
+        "nɔːŋ^4^-p^h^ua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องผัว น้อฯงผ฿วฯ [น้อง-ผัว] [nɔːŋ^4^-p^h^ua^5^]\nน. น้องผัว, น้องของสามี."
+    },
+    {
+      "id": "north_kinship_0008",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องใพ้",
+      "transcriptions": [
+        "น้อง-ไป๊",
+        "nɔːŋ^4^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องใพ้ น้อฯงไพ้ [น้อง-ไป๊] [nɔːŋ^4^-pay^4^]\nน. น้องสะใภ้, ผู้หญิงที่มาแต่งงานกับน้องชาย; น้องยิง ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0009",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องเมีย",
+      "transcriptions": [
+        "น้อง-เมีย",
+        "nɔːŋ^4^-mia^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องเมีย น้อฯงเมยฯ [น้อง-เมีย] [nɔːŋ^4^-mia^1^]\nน. น้องเมีย, น้องของภรรยา."
+    },
+    {
+      "id": "north_kinship_0010",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องยิง",
+      "transcriptions": [
+        "น้อง-ญิง",
+        "nɔːŋ^4^-ñiŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้องใพ้"
+      ],
+      "raw_text": "น้องยิง น้อฯงยิงฯ [น้อง-ญิง] [nɔːŋ^4^-ñiŋ^1^]\nดู น้องใพ้."
+    },
+    {
+      "id": "north_kinship_0011",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องสาว",
+      "transcriptions": [
+        "น้อง-สาว",
+        "nɔːŋ^4^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องสาว น้อฯงสาวฯ [น้อง-สาว] [nɔːŋ^4^-saːw^5^]\nน. น้องสาว, ผู้หญิงที่ร่วมบิดามารดาเดียวกัน ร่วมบิดาหรือมารดาเดียวกัน และเกิดทีหลัง"
+    },
+    {
+      "id": "north_kinship_0012",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้องหล้า",
+      "transcriptions": [
+        "น้อง-หฺล้า",
+        "nɔːŋ^4^-laː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องหล้า น้อฯงห้ลฯฯา [น้อง-หฺล้า] [nɔːŋ^4^-laː^6^]\nน. น้องคนสุดท้อง."
+    },
+    {
+      "id": "north_kinship_0013",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้า",
+      "transcriptions": [
+        "น้า",
+        "naː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้า นาฯ้ [น้า] [naː^4^]\nน. น้า, น้องของแม่; บางถิ่นใช้เรียกเฉพาะน้องชายของแม่."
+    },
+    {
+      "id": "north_kinship_0014",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้าชาย",
+      "transcriptions": [
+        "น้า-จาย",
+        "naː^4^-caːy^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "น้าชาย นาฯ้ชายฯ [น้า-จาย] [naː^4^-caːy^1^]\n๑. น. น้าเขย, ผู้ชายที่มาแต่งงานกับน้าสาว.\n๒. (ทก.) น. น้องของแม่ที่เป็นผู้ชาย."
+    },
+    {
+      "id": "north_kinship_0015",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้าใพ้",
+      "transcriptions": [
+        "น้า-ไป๊",
+        "naː^4^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าใพ้ นาฯ้ไพ้ [น้า-ไป๊] [naː^4^-pay^4^]\nน. น้าสะใภ้, ผู้หญิงที่มาแต่งงานกับน้าชาย; น้ายิง ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0016",
+      "region": "north",
+      "category": "kinship",
+      "headword": "น้ายิง",
+      "transcriptions": [
+        "น้า-ญิง",
+        "naː^4^-ñiŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้าใพ้"
+      ],
+      "raw_text": "น้ายิง นาฯ้ยิงฯ [น้า-ญิง] [naː^4^-ñiŋ^1^]\nดู น้าใพ้."
+    },
+    {
+      "id": "north_kinship_0017",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ป้า",
+      "transcriptions": [
+        "ป้า",
+        "paː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ป้า ป้า [ป้า] [paː^6^]\nน. ป้า, พี่สาวของพ่อหรือแม่ หรือหญิงที่มีวัยไล่เลี่ยแต่แก่กว่าพ่อหรือแม่."
+    },
+    {
+      "id": "north_kinship_0018",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ป้าใพ้",
+      "transcriptions": [
+        "ป้า-ไป๊",
+        "paː^6^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ป้าใพ้ ป้าไพ้ [ป้า-ไป๊] [paː^6^-pay^4^]\nน. ป้าสะใภ้, ผู้หญิงที่มาแต่งงานกับลุง."
+    },
+    {
+      "id": "north_kinship_0019",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ปู่",
+      "transcriptions": [
+        "ปู่",
+        "puː^2^"
+      ],
+      "notes": [
+        "โบ",
+        "จารึกวัดช้างค้ำ นน. ๓",
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ปู่ ปู่ [ปู่] [puː^2^]\n๑. (โบ) น. ปู่, พ่อของพ่อ เช่น\nอุดมราชพันธุ์พงศ์วงศาทั้งหลายเป็นต้นว่าพ่อแลแม่ปู่ย่าตายายลุงป้าน้าอาอาวพี่น้องลูกหลานเหลนหลีดหลี้\n(จารึกวัดช้างค้ำ นน. ๓).\n๒. (ทก.) ปู่, พ่อของพ่อ."
+    },
+    {
+      "id": "north_kinship_0020",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ปู่ย่าตานาย",
+      "transcriptions": [
+        "ปู่-ญ่า-ต๋า-นาย",
+        "puː^2^-ñaː^3^-taː^5^-naːy^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปู่ย่าตายาย"
+      ],
+      "raw_text": "ปู่ย่าตานาย ปู่ย่าตานาฯยฯ [ปู่-ญ่า-ต๋า-นาย]\n[puː^2^-ñaː^3^-taː^5^-naːy^1^]\nดู ปู่ย่าตายาย."
+    },
+    {
+      "id": "north_kinship_0021",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ปู่ย่าตายาย",
+      "transcriptions": [
+        "ปู่-ญ่า-ต๋า-ญาย",
+        "puː^2^-ñaː^3^-taː^5^-ñaːy^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปู่ย่าตายาย ปู่ย่าตายายฯ [ปู่-ญ่า-ต๋า-ญาย] [puː^2^-ñaː^3^-taː^5^-ñaːy^1^]\nน. บรรพบุรุษ; ปู่ย่าตานาย พ่อเค้าแม่เดิม พ่อหม่อนแม่หม่อน หรือ ปู่หม่อนย่าหม่อน ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0022",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ปู่หม่อนย่าหม่อน",
+      "transcriptions": [
+        "ปู่-หฺม่อน-ญ่า-หฺม่อน",
+        "puː^2^-mɔn^2^-ñaː^3^-mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปู่ย่าตายาย"
+      ],
+      "raw_text": "ปู่หม่อนย่าหม่อน ปู่ห่มฯอฯรย่าห่มฯอฯร [ปู่-หฺม่อน-ญ่า-หฺม่อน]\n[puː^2^-mɔn^2^-ñaː^3^-mɔn^2^]\nดู ปู่ย่าตายาย."
+    },
+    {
+      "id": "north_kinship_0023",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ผัว",
+      "transcriptions": [
+        "ผัว",
+        "p^h^ua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ผัว ผ฿วฯ [ผัว] [p^h^ua^5^]\nน. ผัว, ชายที่เป็นคู่ครองของหญิง."
+    },
+    {
+      "id": "north_kinship_0024",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อ",
+      "transcriptions": [
+        "ป้อ",
+        "pɔː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อ พํ่อฯ [ป้อ] [pɔː^3^]\nน. พ่อ, ชายผู้ให้กำเนิดแก่ลูก."
+    },
+    {
+      "id": "north_kinship_0025",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเก็บ",
+      "transcriptions": [
+        "ป้อ-เก๋บ",
+        "pɔː^3^-kep^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อเก็บ พํ่อฯเกับฯฯ [ป้อ-เก๋บ] [pɔː^3^-kep^5^]\nน. พ่อบุญธรรม."
+    },
+    {
+      "id": "north_kinship_0026",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเค้าแม่เดิม",
+      "transcriptions": [
+        "ป้อ-เก๊า-แม่-เดิม",
+        "pɔː^3^-kaw^4^-mԑː^3^-dǝːm^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปู่ย่าตายาย"
+      ],
+      "raw_text": "พ่อเค้าแม่เดิม พํ่อฯเคั้าฯแม่เดิมฯ [ป้อ-เก๊า-แม่-เดิม]\n[pɔː^3^-kaw^4^-mԑː^3^-dǝːm^1^]\nดู ปู่ย่าตายาย."
+    },
+    {
+      "id": "north_kinship_0027",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อโต้",
+      "transcriptions": [
+        "ป้อ-โต้",
+        "pɔː^3^-toː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่ออุ้ย",
+        "อุ้ย ความหมายที่ ๑"
+      ],
+      "raw_text": "พ่อโต้ พํ่อฯโต้ [ป้อ-โต้] [pɔː^3^-toː^6^]\n๑. ดู พ่ออุ้ย.\n๒. ดู อุ้ย ความหมายที่ ๑."
+    },
+    {
+      "id": "north_kinship_0028",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเถ้า",
+      "transcriptions": [
+        "ป้อ-เถ้า",
+        "pɔː^3^-t^h^aw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่ออุ้ย",
+        "พ่อผัว และ พ่อเมีย",
+        "อุ้ย ความหมายที่ ๑"
+      ],
+      "raw_text": "พ่อเถ้า พํ่อฯเถั้า [ป้อ-เถ้า] [pɔː^3^-t^h^aw^6^]\n๑. ดู พ่ออุ้ย.\n๒. ดู พ่อผัว และ พ่อเมีย.\n๓. ดู อุ้ย ความหมายที่ ๑."
+    },
+    {
+      "id": "north_kinship_0029",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเถ้าแม่หม่อน",
+      "transcriptions": [
+        "ป้อ-เถ้า-แม่-หฺม่อน",
+        "pɔː^3^-t^h^aw^6^-mɛː^3^-mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อเถ้าแม่หม่อน พํ่อฯเถั้าแม่ห่มฯอฯร [ป้อ-เถ้า-แม่-หฺม่อน]\n[pɔː^3^-t^h^aw^6^-mɛː^3^-mɔn^2^]\nน. ผู้เฒ่าผู้แก่."
+    },
+    {
+      "id": "north_kinship_0030",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเถ้าหม่อน",
+      "transcriptions": [
+        "ป้อ-เถ้า-หฺม่อน",
+        "pɔː^3^-t^h^aw^6^-mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อหม่อน"
+      ],
+      "raw_text": "พ่อเถ้าหม่อน พํ่อฯเถั้าห่มฯอฯร [ป้อ-เถ้า-หฺม่อน] [pɔː^3^-t^h^aw^6^-mɔn^2^]\nดู พ่อหม่อน."
+    },
+    {
+      "id": "north_kinship_0031",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อนม",
+      "transcriptions": [
+        "ป้อ-นม",
+        "pɔː^3^-nom^1^"
+      ],
+      "notes": [
+        "แม่ฟ้าหลวง"
+      ],
+      "cross_references": [],
+      "raw_text": "พ่อนม พํ่อฯน฿มฯ [ป้อ-นม] [pɔː^3^-nom^1^]\nน. พ่อแท้ ๆ, พ่อโดยสายเลือด. (แม่ฟ้าหลวง)."
+    },
+    {
+      "id": "north_kinship_0032",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อน้า",
+      "transcriptions": [
+        "ป้อ-น้า",
+        "pɔː^3^-naː^4^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "พ่อน้า พํ่อฯนาฯ้ [ป้อ-น้า] [pɔː^3^-naː^4^]\nน. พ่อเลี้ยง, สามีของแม่ที่ไม่ใช่พ่อตัว; พ่อใหม่ หรือ (ทก.) พ่อเลี้ยง ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0033",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อผัว",
+      "transcriptions": [
+        "ป้อ-ผัว",
+        "pɔː^3^-p^h^ua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อผัว พํ่อฯผ฿วฯฯ [ป้อ-ผัว] [pɔː^3^-p^h^ua^5^]\nน. พ่อผัว, พ่อของสามี; พ่อเถ้า ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0034",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเมีย",
+      "transcriptions": [
+        "ป้อ-เมีย",
+        "pɔː^3^-mia^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อเมีย พํ่อฯเมยฯฯ [ป้อ-เมีย] [pɔː^3^-mia^1^]\nน. พ่อตา, พ่อของภรรยา; พ่อเถ้า ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0035",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อเลี้ยง",
+      "transcriptions": [
+        "ป้อ-เลี้ยง",
+        "pɔː^3^-liaŋ^4^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "พ่อน้า"
+      ],
+      "raw_text": "พ่อเลี้ยง พํ่อฯล้ยฯง [ป้อ-เลี้ยง] [pɔː^3^-liaŋ^4^]\n(ทก.) ดู พ่อน้า."
+    },
+    {
+      "id": "north_kinship_0036",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อหม่อน",
+      "transcriptions": [
+        "ป้อ-หฺม่อน",
+        "pɔː^3^-mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อหม่อน พํ่อฯห่มฯอฯร [ป้อ-หฺม่อน] [pɔː^3^-mɔn^2^]\nน. ปู่ทวด, ตาทวด; พ่อเฒ่าหม่อน ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0037",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อหม่อนแม่หม่อน",
+      "transcriptions": [
+        "ป้อ-หฺม่อน-แม่-หฺม่อน",
+        "pɔː^3^-mɔn^2^-mɛː^3^-mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หม่อน",
+        "ปู่ย่าตายาย"
+      ],
+      "raw_text": "พ่อหม่อนแม่หม่อน พํ่อฯห่มฯอฯรแม่ห่มฯอฯร [ป้อ-หฺม่อน-แม่-หฺม่อน]\n[pɔː^3^-mɔn^2^-mɛː^3^-mɔn^2^]\n๑. ดู หม่อน.\n๒. ดู ปู่ย่าตายาย."
+    },
+    {
+      "id": "north_kinship_0038",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อหลวง",
+      "transcriptions": [
+        "ป้อ-หลวง",
+        "pɔː^3^-luaŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่ออุ้ย"
+      ],
+      "raw_text": "พ่อหลวง พํ่อฯหลฯวงฯ [ป้อ-หลวง] [pɔː^3^-luaŋ^5^]\nดู พ่ออุ้ย."
+    },
+    {
+      "id": "north_kinship_0039",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อใหญ่",
+      "transcriptions": [
+        "ป้อ-ไหญ่",
+        "pɔː^3^-ñay^2^"
+      ],
+      "notes": [
+        "ถิ่น-แพร่"
+      ],
+      "cross_references": [
+        "พ่ออุ้ย"
+      ],
+      "raw_text": "พ่อใหญ่ พํ่อฯฯไห่ยฯ [ป้อ-ไหญ่] [pɔː^3^-ñay^2^]\n(ถิ่น-แพร่) ดู พ่ออุ้ย."
+    },
+    {
+      "id": "north_kinship_0040",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่อใหม่",
+      "transcriptions": [
+        "ป้อ-ไหฺม่",
+        "pɔː^3^-may^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อน้า"
+      ],
+      "raw_text": "พ่อใหม่ พํ่อฯไหมฯ่ [ป้อ-ไหฺม่] [pɔː^3^-may^2^]\nดู พ่อน้า."
+    },
+    {
+      "id": "north_kinship_0041",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่ออาว",
+      "transcriptions": [
+        "ป้อ-อาว",
+        "pɔː^3^-Ɂaːw^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อาว"
+      ],
+      "raw_text": "พ่ออาว พํ่อฯอาวฯ [ป้อ-อาว] [pɔː^3^-Ɂaːw^1^]\nดู อาว."
+    },
+    {
+      "id": "north_kinship_0042",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พ่ออุ้ย",
+      "transcriptions": [
+        "ป้อ-อุ๊ย",
+        "pɔː^3^-ʔuy^4^"
+      ],
+      "notes": [
+        "ถิ่น-แพร่"
+      ],
+      "cross_references": [],
+      "raw_text": "พ่ออุ้ย พํ่อฯอุ้ยฯ [ป้อ-อุ๊ย] [pɔː^3^-ʔuy^4^]\nน. ปู่, ตา; พ่อหลวง พ่อโต้ พ่อเถ้า หรือ (ถิ่น-แพร่) พ่อใหญ่ ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0043",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่",
+      "transcriptions": [
+        "ปี้",
+        "piː^3^"
+      ],
+      "notes": [
+        "ถิ่น-แพร่",
+        "ถิ่น-แพร่, น่าน"
+      ],
+      "cross_references": [],
+      "raw_text": "พี่ พี่ [ปี้] [piː^3^]\n๑. น. พี่ผู้หญิง; เอ้ย พี่เอ้ย (ถิ่น-แพร่) เอย้ย หรือ ไอย้ ก็ว่า.\n๒. (ถิ่น-แพร่, น่าน) น. พี่ผู้ชาย."
+    },
+    {
+      "id": "north_kinship_0044",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่เขย",
+      "transcriptions": [
+        "ปี้-เขย",
+        "piː^3^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อ้ายเขย"
+      ],
+      "raw_text": "พี่เขย พี่เขิยฯ [ปี้-เขย] [piː^3^-k^h^əːy^5^]\nดู อ้ายเขย."
+    },
+    {
+      "id": "north_kinship_0045",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่ชาย",
+      "transcriptions": [
+        "ปี้-จาย",
+        "piː^3^-caːy^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "อ้ายเขย",
+        "อ้าย"
+      ],
+      "raw_text": "พี่ชาย พี่ชายฯ [ปี้-จาย] [piː^3^-caːy^1^]\n๑. ดู อ้ายเขย.\n๒. (ทก.) ดู อ้าย."
+    },
+    {
+      "id": "north_kinship_0046",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่น้อง",
+      "transcriptions": [
+        "ปี้-น้อง",
+        "piː^3^-nɔːŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่น้อง พี่น้อฯง [ปี้-น้อง] [piː^3^-nɔːŋ^4^]\n๑. น. ญาติ.\n๒. น. ผู้เกิดร่วมบิดามารดาเดียวกัน, ผู้เกิดร่วมบิดาเดียวกัน, ผู้เกิดร่วมมารดาเดียวกัน."
+    },
+    {
+      "id": "north_kinship_0047",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่ผัว",
+      "transcriptions": [
+        "ปี้-ผัว",
+        "piː^3^-p^h^ua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่ผัว พี่ผ฿วฯ [ปี้-ผัว] [piː^3^-p^h^ua^5^]\nน. พี่ของสามี."
+    },
+    {
+      "id": "north_kinship_0048",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่ใพ้",
+      "transcriptions": [
+        "ปี้-ไป๊",
+        "piː^3^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่ใพ้ พี่ไพ้ [ปี้-ไป๊] [piː^3^-pay^4^]\nน. พี่สะใภ้, หญิงที่แต่งงานกับพี่ชายหรือญาติที่มีศักดิ์เป็นพี่ชาย; พี่ยิง ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0049",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่เมีย",
+      "transcriptions": [
+        "ปี้-เมีย",
+        "piː^3^-mia^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่เมีย พี่เมยฯฯฯ [ปี้-เมีย] [piː^3^-mia^1^]\nน. พี่ของภรรยา."
+    },
+    {
+      "id": "north_kinship_0050",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่ยิง",
+      "transcriptions": [
+        "ปี้-ญิง",
+        "piː^3^-ñiŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่ใพ้"
+      ],
+      "raw_text": "พี่ยิง พี่ยิงฯ [ปี้-ญิง] [piː^3^-ñiŋ^1^]\nดู พี่ใพ้."
+    },
+    {
+      "id": "north_kinship_0051",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่อ้าย",
+      "transcriptions": [
+        "ปี้-อ้าย",
+        "piː^3^-Ɂaːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่อ้าย พี่อ้ายฯ [ปี้-อ้าย] [piː^3^-Ɂaːy^6^]\nน. พี่ชายคนโต."
+    },
+    {
+      "id": "north_kinship_0052",
+      "region": "north",
+      "category": "kinship",
+      "headword": "พี่เอ้ย",
+      "transcriptions": [
+        "ปี้-เอ้ย",
+        "piː^3^-ʔəːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่ ความหมายที่ ๑"
+      ],
+      "raw_text": "พี่เอ้ย พี่เอิ้ยฯ [ปี้-เอ้ย] [piː^3^-ʔəːy^6^]\n๑. น. พี่สาวคนโต.\n๒. ดู พี่ ความหมายที่ ๑."
+    },
+    {
+      "id": "north_kinship_0053",
+      "region": "north",
+      "category": "kinship",
+      "headword": "เมีย",
+      "transcriptions": [
+        "เมีย",
+        "mia^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เมีย เมยฯฯ [เมีย] [mia^1^]\nน. เมีย, หญิงที่เป็นคู่ครองของชาย."
+    },
+    {
+      "id": "north_kinship_0054",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่",
+      "transcriptions": [
+        "แม่",
+        "mɛː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่ แม่ [แม่] [mɛː^3^]\nน. แม่, หญิงผู้ให้กำเนิดหรือเลี้ยงดูลูก."
+    },
+    {
+      "id": "north_kinship_0055",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่โต้",
+      "transcriptions": [
+        "แม่-โต้",
+        "mɛː^3^-toː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อุ้ย ความหมายที่ ๒"
+      ],
+      "raw_text": "แม่โต้ แม่โต้ [แม่-โต้] [mɛː^3^-toː^6^]\nดู อุ้ย ความหมายที่ ๒."
+    },
+    {
+      "id": "north_kinship_0056",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่เถ้า",
+      "transcriptions": [
+        "แม่-เถ้า",
+        "mɛː^3^-t^h^aw^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อุ้ย ความหมายที่ ๒",
+        "แม่อุ้ย",
+        "แม่ผัว และ ดู แม่เมีย"
+      ],
+      "raw_text": "แม่เถ้า แม่เถั้า [แม่-เถ้า] [mɛː^3^-t^h^aw^6^]\n๑. ดู อุ้ย ความหมายที่ ๒.\n๒. ดู แม่อุ้ย.\n๓. ดู แม่ผัว และ ดู แม่เมีย."
+    },
+    {
+      "id": "north_kinship_0057",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่เถ้าหม่อน",
+      "transcriptions": [
+        "แม่-เถ้า-หฺม่อน",
+        "mɛː^3^-t^h^aw^6^-mɔːn^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่หม่อน"
+      ],
+      "raw_text": "แม่เถ้าหม่อน แม่อฯเถั้าห่มฯอฯร [แม่-เถ้า-หฺม่อน]\n[mɛː^3^-t^h^aw^6^-mɔːn^2^]\nดู แม่หม่อน."
+    },
+    {
+      "id": "north_kinship_0058",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่น้า",
+      "transcriptions": [
+        "แม่-น้า",
+        "mɛː^3^-naː^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่น้า แม่นาฯ้ [แม่-น้า] [mɛː^3^-naː^4^]\nน. แม่เลี้ยง."
+    },
+    {
+      "id": "north_kinship_0059",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่ผัว",
+      "transcriptions": [
+        "แม่-ผัว",
+        "mɛː^3^-p^h^ua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่ผัว แม่ผวฯ฿ [แม่-ผัว] [mɛː^3^-p^h^ua^5^]\nน. แม่ผัว, แม่ของสามี; แม่เถ้าก็ว่า."
+    },
+    {
+      "id": "north_kinship_0060",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่เมีย",
+      "transcriptions": [
+        "แม่-เมีย",
+        "mɛː^3^-mia^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่เมีย แม่เมยฯฯ [แม่-เมีย] [mɛː^3^-mia^2^]\nน. แม่ยาย, แม่ของภรรยา; แม่เถ้า ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0061",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่เลี้ยง",
+      "transcriptions": [
+        "แม่-เลี้ยง",
+        "mԑː^3^-liaŋ^4^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "แม่น้า"
+      ],
+      "raw_text": "แม่เลี้ยง แม่ลยฯ้ง [แม่-เลี้ยง] [mԑː^3^-liaŋ^4^]\nน. (ทก.) ดู แม่น้า."
+    },
+    {
+      "id": "north_kinship_0062",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่หม่อน",
+      "transcriptions": [
+        "แม่-หฺม่อน",
+        "mɛː^3^-mɔːn^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่หม่อน แม่ห่มฯอฯร [แม่-หฺม่อน] [mɛː^3^-mɔːn^2^]\nน. ย่าทวด, ยายทวด; แม่เถ้าหม่อน ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0063",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่หลวง",
+      "transcriptions": [
+        "แม่-หฺลวง",
+        "mɛː^3^-luaŋ^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อุ้ย ความหมายที่ ๒"
+      ],
+      "raw_text": "แม่หลวง แม่หลฯวงฯ [แม่-หฺลวง] [mɛː^3^-luaŋ^5^]\nดู อุ้ย ความหมายที่ ๒."
+    },
+    {
+      "id": "north_kinship_0064",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่ใหญ่",
+      "transcriptions": [
+        "แม่-ไหญ่",
+        "mɛː^3^-ñay^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่อุ้ย",
+        "อุ้ย ความหมายที่ ๒"
+      ],
+      "raw_text": "แม่ใหญ่ แม่ไห่ยฯ [แม่-ไหญ่] [mɛː^3^-ñay^2^]\n๑. ดู แม่อุ้ย.\n๒. ดู อุ้ย ความหมายที่ ๒."
+    },
+    {
+      "id": "north_kinship_0065",
+      "region": "north",
+      "category": "kinship",
+      "headword": "แม่อุ้ย",
+      "transcriptions": [
+        "แม่-อุ๊ย",
+        "mɛː^3^-ʔuy^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่อุ้ย แม่อุ้ยฯ [แม่-อุ๊ย] [mɛː^3^-ʔuy^4^]\nน. ย่า, ยาย, แม่ของพ่อหรือแม่ของแม่, ญาติชั้นเดียวกับแม่ของพ่อหรือแม่ของแม่;\nแม่ใหญ่ แม่หลวง แม่โต้ หรือ แม่เถ้า ก็ว่า"
+    },
+    {
+      "id": "north_kinship_0066",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ย่า",
+      "transcriptions": [
+        "ญ่า",
+        "ñaː^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ย่า ย่า [ญ่า] [ñaː^3^]\n(ทก.) น. ย่า, แม่ของพ่อ, เมียของปู่."
+    },
+    {
+      "id": "north_kinship_0067",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ยาย",
+      "transcriptions": [
+        "ญาย",
+        "ñaːy^1^",
+        "ยาย",
+        "yaːy^1^"
+      ],
+      "notes": [
+        "โบ",
+        "จารึกวัดช้างค้ำ นน. ๓",
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ยาย ๑. ยายฯ [ญาย] [ñaːy^1^]\n(โบ) น. ยาย, แม่ของแม่, เมียของตา, เช่น\nอุดมราชพันธุ์พงศ์วงศาทั้งหลายเป็นต้นว่าพ่อแลแม่ปู่ย่าตายายลุงป้าน้าอาอาวพี่น้องลูกหลานเหลนหลีดหลี้\n(จารึกวัดช้างค้ำ นน. ๓).\n๒. ยายฯ [ยาย] [yaːy^1^]\n(ทก.) ยาย, แม่ของแม่, เมียของตา."
+    },
+    {
+      "id": "north_kinship_0068",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ละอ่อน",
+      "transcriptions": [
+        "ละ-อ่อน",
+        "la^1^-Ɂɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ละอ่อน ละอ่อฯร [ละ-อ่อน] [la^1^-Ɂɔn^2^]\nน. ลูกหลาน เช่น ที่บ้านมีละอ่อนกี่คน."
+    },
+    {
+      "id": "north_kinship_0069",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลุง",
+      "transcriptions": [
+        "ลุง",
+        "luŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลุง ลุง [ลุง] [luŋ^1^]\nน. ลุง, พี่ชายของพ่อหรือแม่."
+    },
+    {
+      "id": "north_kinship_0070",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูก",
+      "transcriptions": [
+        "ลูก",
+        "luːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูก ลูก [ลูก] [luːk^3^]\nน. ลูก, ผู้มีกำเนิดจากพ่อแม่."
+    },
+    {
+      "id": "north_kinship_0071",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกกก",
+      "transcriptions": [
+        "ลูก-ก๋ก",
+        "luːk^3^-kok^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ลูกคนเค้า"
+      ],
+      "raw_text": "ลูกกก ลูกก฿กฯฯ [ลูก-ก๋ก] [luːk^3^-kok^5^]\n(โบ) ดู ลูกคนเค้า."
+    },
+    {
+      "id": "north_kinship_0072",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเก็บ",
+      "transcriptions": [
+        "ลูก-เก๋บ",
+        "luːk^3^-kep^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเลี้ยง ความหมายที่ ๒"
+      ],
+      "raw_text": "ลูกเก็บ ลูกเกับฯฯ [ลูก-เก๋บ] [luːk^3^-kep^5^]\nดู ลูกเลี้ยง ความหมายที่ ๒."
+    },
+    {
+      "id": "north_kinship_0073",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเขย",
+      "transcriptions": [
+        "ลูก-เขย",
+        "luːk^3^-k^h^əːy^5^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ลูกชาย"
+      ],
+      "raw_text": "ลูกเขย ลูกเขิยฯ [ลูก-เขย] [luːk^3^-k^h^əːy^5^]\n(ทก.) ดู ลูกชาย."
+    },
+    {
+      "id": "north_kinship_0074",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเขยห่าง",
+      "transcriptions": [
+        "ลูก-เขย-ห่าง",
+        "luːk^3^-k^h^ǝːy^5^-haːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเขยห่าง ลูกเขิยฯห่างฯ [ลูก-เขย-ห่าง] [luːk^3^-k^h^ǝːy^5^-haːŋ^2^]\nน. ลูกเขยที่เป็นหม้ายและแยกเรือนออกไป."
+    },
+    {
+      "id": "north_kinship_0075",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกคนเค้า ฯ",
+      "transcriptions": [
+        "ลูก-คน-เก๊า",
+        "luːk^3^-k^h^on^1^-kaw^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกคนเค้า ฯลูกฅ฿นฯเคั้า [ลูก-คน-เก๊า] [luːk^3^-k^h^on^1^-kaw^4^]\nน. ลูกคนโต; ลูกกก ลูกเค้า หรือ ลูกเค้าลูกกก ก็ว่า ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0076",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกคนเดียว",
+      "transcriptions": [
+        "ลูก-คน-เดียว",
+        "luːk^3^-k^h^on^2^-diaw^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกโทน"
+      ],
+      "raw_text": "ลูกคนเดียว ลูกฅนฯ฿ฑยฯว [ลูก-คน-เดียว] [luːk^3^-k^h^on^2^-diaw^2^]\nดู ลูกโทน."
+    },
+    {
+      "id": "north_kinship_0077",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกครึ่ง ฯ",
+      "transcriptions": [
+        "ลูก-คึ่ง",
+        "luːk^3^-k^h^ɨŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกน้ำผ่า"
+      ],
+      "raw_text": "ลูกครึ่ง ฯลูกครฯึงฯ [ลูก-คึ่ง] [luːk^3^-k^h^ɨŋ^3^]\nดู ลูกน้ำผ่า."
+    },
+    {
+      "id": "north_kinship_0078",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเค้า",
+      "transcriptions": [
+        "ลูก-เก๊า",
+        "luːk^3^-kaw^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกคนเค้า"
+      ],
+      "raw_text": "ลูกเค้า ลูกเคั้าฯฯ [ลูก-เก๊า] [luːk^3^-kaw^4^]\nดู ลูกคนเค้า."
+    },
+    {
+      "id": "north_kinship_0079",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเค้าลูกกก",
+      "transcriptions": [
+        "ลูก-เก๊า-ลูก-ก๋ก",
+        "luːk^3^-kaw^4^-luːk^3^-kok^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกคนเค้า"
+      ],
+      "raw_text": "ลูกเค้าลูกกก ลูกเคั้าฯฯฯลูกก฿กฯ [ลูก-เก๊า-ลูก-ก๋ก]\n[luːk^3^-kaw^4^-luːk^3^-kok^5^]\nดู ลูกคนเค้า."
+    },
+    {
+      "id": "north_kinship_0080",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกชาย",
+      "transcriptions": [
+        "ลูก-จาย",
+        "luːk^3^-caːy^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ลูกชาย ฯลูกชายฯ [ลูก-จาย] [luːk^3^-caːy^1^]\nน. ลูกเขย, ชายซึ่งเป็นสามีของลูกสาว; (ทก.) ลูกเขย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0081",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกซ้อย",
+      "transcriptions": [
+        "ลูก-ซ้อย",
+        "luːk^3^-sɔːy ^4^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ลูกหลง"
+      ],
+      "raw_text": "ลูกซ้อย ลูกซ้อฯยฯ [ลูก-ซ้อย] [luːk^3^-sɔːy ^4^]\n(โบ) ดู ลูกหลง."
+    },
+    {
+      "id": "north_kinship_0082",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกติด",
+      "transcriptions": [
+        "ลูก-ติ๋ด",
+        "luːk^3^-tit^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกติด ลูกติฑฯ [ลูก-ติ๋ด] [luːk^3^-tit^5^]\nน. ลูกติด, ลูกที่ติดมากับสามีหรือภรรยา; ลูกเลี้ยง ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0083",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเต้า",
+      "transcriptions": [
+        "ลูก-เต้า",
+        "luːk^3^-taw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเต้า ลูกเตั้า [ลูก-เต้า] [luːk^3^-taw^6^]\nน. ลูกเต้า, ลูกผู้มีกำเนิดจากพ่อแม่."
+    },
+    {
+      "id": "north_kinship_0084",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกทาง",
+      "transcriptions": [
+        "ลูก-ตาง",
+        "luːk^3^-taːŋ^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [
+        "ลูกบ่มีพ่อ"
+      ],
+      "raw_text": "ลูกทาง ลูกทางฯ [ลูก-ตาง] [luːk^3^-taːŋ^1^]\n(โบ) ดู ลูกบ่มีพ่อ."
+    },
+    {
+      "id": "north_kinship_0085",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกโทน ฯ",
+      "transcriptions": [
+        "ลูก-โตน",
+        "luːk^3^-toːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกโทน ฯลูกโทนฯ ฯ[ลูก-โตน] [luːk^3^-toːn^1^]\nน. ลูกโทน, ลูกคนเดียวของพ่อแม่; ลูกคนเดียว ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0086",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกในไส้",
+      "transcriptions": [
+        "ลูก-ไน-ไส้",
+        "luːk^3^-nay^1^-say^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกในไส้ ลูกไนไส้ [ลูก-ไน-ไส้] [luːk^3^-nay^1^-say^6^]\nน. ลูกในไส้, ลูกแท้ ๆ ของพ่อหรือแม่."
+    },
+    {
+      "id": "north_kinship_0087",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกบ่าว",
+      "transcriptions": [
+        "ลูก-บ่าว",
+        "luːk^3^-baːw^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกบ่าว ลูกบ่าฯวฯฯ [ลูก-บ่าว] [luːk^3^-baːw^3^]\nน. ลูกชาย, ลูกที่เป็นผู้ชาย."
+    },
+    {
+      "id": "north_kinship_0088",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกบ่าวเค้า",
+      "transcriptions": [
+        "ลูก-บ่าว-เก๊า",
+        "luːk^3^-baːw^3^-kaw^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกบ่าวเค้า ลูกบ่าฯวฯเคั้าฯฯ [ลูก-บ่าว-เก๊า] [luːk^3^-baːw^3^-kaw^4^]\nน. ลูกชายคนแรก."
+    },
+    {
+      "id": "north_kinship_0089",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกบ่าวโทน",
+      "transcriptions": [
+        "ลูก-บ่าว-โตน",
+        "luːk^3^-baːw^2^-toːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกบ่าวโทน ลูกบ่าฯวฯโทนฯ [ลูก-บ่าว-โตน] [luːk^3^-baːw^2^-toːn^1^]\nน. ลูกชายคนเดียวของครอบครัว."
+    },
+    {
+      "id": "north_kinship_0090",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกผู้น้อง",
+      "transcriptions": [
+        "ลูก-ผู้-น้อง",
+        "luːk^3^-p^h^uː^6^-nɔːŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกผู้น้อง ลูกผู้น้อฯง [ลูก-ผู้-น้อง] [luːk^3^-p^h^uː^6^-nɔːŋ^4^]\nน. ลูกผู้น้อง, ญาติที่เป็นลูกของน้าหรืออา."
+    },
+    {
+      "id": "north_kinship_0091",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกผู้พี่",
+      "transcriptions": [
+        "ลูก-ผู้-ปี้",
+        "luːk^3^-p^h^uː^6^-piː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกผู้พี่ ลูกผู้พี่ [ลูก-ผู้-ปี้] [luːk^3^-p^h^uː^6^-piː^3^]\nน. ลูกผู้พี่, ญาติที่เป็นลูกของลุงหรือป้า."
+    },
+    {
+      "id": "north_kinship_0092",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกพี่ลูกน้อง",
+      "transcriptions": [
+        "ลูก-ปี้-ลูก-น้อง",
+        "luːk^3^-piː^3^-luːk^3^-nɔːŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกพี่ลูกน้อง ลูกพี่ลูกน้อฯง [ลูก-ปี้-ลูก-น้อง]\n[luːk^3^-piː^3^-luːk^3^-nɔːŋ^4^]\nน. ลูกพี่ลูกน้อง, ญาติที่เป็นลูกของลุง ป้า น้า หรืออา."
+    },
+    {
+      "id": "north_kinship_0093",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกใพ้",
+      "transcriptions": [
+        "ลูก-ไป๊",
+        "luːk^3^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกยิง"
+      ],
+      "raw_text": "ลูกใพ้ ลูกไพ้ [ลูก-ไป๊] [luːk^3^-pay^4^]\nดู ลูกยิง."
+    },
+    {
+      "id": "north_kinship_0094",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกใพ้ห่าง",
+      "transcriptions": [
+        "ลูก-ไป๊-ห่าง",
+        "luːk^3^-pay^4^-haːŋ^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกใพ้ห่าง ลูกไพ้ห่างฯ [ลูก-ไป๊-ห่าง] [luːk^3^-pay^4^-haːŋ^2^]\nน. ลูกสะใภ้ที่เป็นหม้ายและแยกเรือนออกไป."
+    },
+    {
+      "id": "north_kinship_0095",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกยิง",
+      "transcriptions": [
+        "ลูก-ญิง",
+        "luːk^3^-ñiŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกยิง ลูกยิงฯ [ลูก-ญิง] [luːk^3^-ñiŋ^1^]\nน. ลูกสะใภ้, หญิงซึ่งเป็นภรรยาของลูกชาย; ลูกใพ้ ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0096",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเลี้ยง",
+      "transcriptions": [
+        "ลูก-เลี้ยง",
+        "luːk^3^-liaŋ^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเลี้ยง ลูกล้ยฯง [ลูก-เลี้ยง] [luːk^3^-liaŋ^4^]\n๑. น. ลูกเลี้ยง, ลูกที่ติดสามีหรือภรรยามา; ลูกติด ก็ว่า.\n๒. น. ลูกเลี้ยง, ลูกของคนอื่นซึ่งเอามาเลี้ยงต่างลูก; ลูกเก็บ ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0097",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกสาว",
+      "transcriptions": [
+        "ลูก-สาว",
+        "luːk^3^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาว ลูกสาวฯ [ลูก-สาว] [luːk^3^-saːw^5^]\nน. ลูกสาว, ลูกที่เป็นผู้หญิง."
+    },
+    {
+      "id": "north_kinship_0098",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกสาวเค้า",
+      "transcriptions": [
+        "ลูก-สาว-เก๊า",
+        "luːk^3^-saːw^5^-kaw^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาวเค้า ลูกสาวฯเคั้าฯฯ [ลูก-สาว-เก๊า] [luːk^3^-saːw^5^-kaw^4^]\nน. ลูกสาวคนแรก."
+    },
+    {
+      "id": "north_kinship_0099",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกสาวโทน",
+      "transcriptions": [
+        "ลูก-สาว-โตน",
+        "luːk^3^-saːw^5^-toːn^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาวโทน ลูกสาวฯโทนฯ [ลูก-สาว-โตน] [luːk^3^-saːw^5^-toːn^1^]\nน. ลูกสาวคนเดียวของครอบครัว."
+    },
+    {
+      "id": "north_kinship_0100",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกหน้อย",
+      "transcriptions": [
+        "ลูก-หฺน้อย",
+        "luːk^3^-nɔːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้องหน้อย"
+      ],
+      "raw_text": "ลูกหน้อย ลูกห้นฯอฯยฯ [ลูก-หฺน้อย] [luːk^3^-nɔːy^6^]\nดู น้องหน้อย."
+    },
+    {
+      "id": "north_kinship_0101",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกหลง",
+      "transcriptions": [
+        "ลูก-หฺลง",
+        "luːk^3^-loŋ^5^"
+      ],
+      "notes": [
+        "ทก.",
+        "โบ",
+        "ถิ่น-แพร่"
+      ],
+      "cross_references": [],
+      "raw_text": "ลูกหลง ลูกห฿ลฯง [ลูก-หฺลง] [luːk^3^-loŋ^5^]\n(ทก.) น. ลูกหลง, ลูกคนสุดท้องที่มีอายุห่างกับลูกคนก่อนมาก\nซึ่งพ่อแม่ไม่คาดว่าจะมีลูกคนนี้อีก; (โบ) ลูกซ้อย หรือ (ถิ่น-แพร่) ลูกหลำ ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0102",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกหล้า ฯ",
+      "transcriptions": [
+        "ลูก-หล้า",
+        "luːk^3^-laː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกหล้า ฯลูกห้ลฯา [ลูก-หล้า] [luːk^3^-laː^6^]\nน. ลูกคนเล็ก, ลูกสุดท้อง."
+    },
+    {
+      "id": "north_kinship_0103",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกหลาน",
+      "transcriptions": [
+        "ลูก-หฺลาน",
+        "luːk^3^-laːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกหลาน ลูกหลฯานฯ [ลูก-หฺลาน] [luːk^3^-laːn^5^]\n๑. น. ลูกหลาน, ผู้มีอายุคราวลูกหรือหลานที่เป็นญาติห่าง ๆ หรือที่นับว่าเป็นญาติ.\n๒. น. ผู้สืบเชื้อสาย."
+    },
+    {
+      "id": "north_kinship_0104",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกหลำ",
+      "transcriptions": [
+        "ลูก-หฺลำ",
+        "luːk^3^-lam^5^"
+      ],
+      "notes": [
+        "ถิ่น-แพร่"
+      ],
+      "cross_references": [
+        "ลูกหลง"
+      ],
+      "raw_text": "ลูกหลำ ลูกหลฯำ [ลูก-หฺลำ] [luːk^3^-lam^5^]\n(ถิ่น-แพร่) ดู ลูกหลง."
+    },
+    {
+      "id": "north_kinship_0105",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกหัวปี",
+      "transcriptions": [
+        "ลูก-หัว-ปี๋",
+        "luːk^3^-hua^5^-piː^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเค้า"
+      ],
+      "raw_text": "ลูกหัวปี ลูกห฿วฯปี [ลูก-หัว-ปี๋] [luːk^3^-hua^5^-piː^5^]\nดู ลูกเค้า."
+    },
+    {
+      "id": "north_kinship_0106",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกอ่อน",
+      "transcriptions": [
+        "ลูก-อ่อน",
+        "luːk^3^-ʔɔːn^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกหน้อย"
+      ],
+      "raw_text": "ลูกอ่อน ลูัอ่อฯร [ลูก-อ่อน] [luːk^3^-ʔɔːn^2^]\nดู ลูกหน้อย."
+    },
+    {
+      "id": "north_kinship_0107",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกอ้าย",
+      "transcriptions": [
+        "ลูก-อ้าย",
+        "luːk^3^-ʔaːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกอ้าย ลูกอ้ายฯ [ลูก-อ้าย] [luːk^3^-ʔaːy^6^]\nน. ลูกชายคนโต, ลูกชายคนแรก ของพ่อแม่ อาจมีพี่สาวหรือไม่มีก็ได้."
+    },
+    {
+      "id": "north_kinship_0108",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเอ้ย",
+      "transcriptions": [
+        "ลูก-เอ้ย",
+        "luːk^3^-Ɂəːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเอ้ย ฯลูกเอิ้ยฯ [ลูก-เอ้ย] [luːk^3^-Ɂəːy^6^]\nน. ลูกสาวคนโต, ลูกสาวคนแรกของพ่อแม่ อาจมีพี่ชายหรือไม่มีก็ได้; ลูกเอื้อย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0109",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ลูกเอื้อย",
+      "transcriptions": [
+        "ลูก-เอื้อย",
+        "luːk^3^-Ɂɨay^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเอ้ย"
+      ],
+      "raw_text": "ลูกเอื้อย ลูกเอิ้อฯยฯ [ลูก-เอื้อย] [luːk^3^-Ɂɨay^6^]\nดู ลูกเอ้ย."
+    },
+    {
+      "id": "north_kinship_0110",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หม่อน",
+      "transcriptions": [
+        "หฺม่อน",
+        "mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หม่อน ห่มฯอฯร [หฺม่อน] [mɔn^2^]\n๑. น. ทวด.\n๒. น. บรรพบุรุษนับแต่ทวดขึ้นไป."
+    },
+    {
+      "id": "north_kinship_0111",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลาน",
+      "transcriptions": [
+        "หฺลาน",
+        "laːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลาน หลฯานฯ [หฺลาน] [laːn^5^]\nน. หลาน, ลูกของลูก, ลูกของพี่หรือของน้อง."
+    },
+    {
+      "id": "north_kinship_0112",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลานเขย",
+      "transcriptions": [
+        "หฺลาน-เขย",
+        "laːn^5^-k^h^əːy^5^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "หลานชาย"
+      ],
+      "raw_text": "หลานเขย หลฯานฯเขิยฯ [หฺลาน-เขย] [laːn^5^-k^h^əːy^5^]\n(ทก.) ดู หลานชาย."
+    },
+    {
+      "id": "north_kinship_0113",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลานชาย",
+      "transcriptions": [
+        "หฺลาน-จาย",
+        "laːn^5^-caːy^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "หลานชาย หลฯานฯชายฯ [หฺลาน-จาย] [laːn^5^-caːy^1^]\nน. หลานเขย, ชายที่มาแต่งงานกับหลานสาว; (ทก.) หลานเขย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0114",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลานใพ้",
+      "transcriptions": [
+        "หฺลาน-ไป๊",
+        "laːn^5^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลานใพ้ หลฯานฯไพ้ [หฺลาน-ไป๊] [laːn^5^-pay^4^]\nน. หลานสะใภ้, ภรรยาของหลาน; หลานยิง ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0115",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลานยิง",
+      "transcriptions": [
+        "หฺลาน-ญิง",
+        "laːn^5^-ñiŋ^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลานใพ้"
+      ],
+      "raw_text": "หลานยิง หลฯานฯยิงฯ [หฺลาน-ญิง] [laːn^5^-ñiŋ^1^]\nดู หลานใพ้."
+    },
+    {
+      "id": "north_kinship_0116",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลานสาว",
+      "transcriptions": [
+        "หฺลาน-สาว",
+        "laːn^5^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลานสาว หลฯานฯสาวฯ [หฺลาน-สาว] [laːn^5^-saːw^5^]\nน. หลานที่เป็นผู้หญิง."
+    },
+    {
+      "id": "north_kinship_0117",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลี้",
+      "transcriptions": [
+        "หลี้",
+        "liː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลี้ หี้ลฯ [หลี้] [liː^6^]\nน. ลืบ, ลูกของลื่อ."
+    },
+    {
+      "id": "north_kinship_0118",
+      "region": "north",
+      "category": "kinship",
+      "headword": "หลีด",
+      "transcriptions": [
+        "หฺลีด",
+        "liːt^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลีด หีลฯฑ [หฺลีด] [liːt^2^]\nน. ลื่อ, ลูกของเหลน."
+    },
+    {
+      "id": "north_kinship_0119",
+      "region": "north",
+      "category": "kinship",
+      "headword": "เหมาะ",
+      "transcriptions": [
+        "เหฺม๋าะ",
+        "mɔɁ^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหมาะ เหมฯัาะ [เหฺม๋าะ] [mɔɁ^5^]\nน. เทียด, พ่อหรือแม่ของทวด."
+    },
+    {
+      "id": "north_kinship_0120",
+      "region": "north",
+      "category": "kinship",
+      "headword": "เหลน",
+      "transcriptions": [
+        "เหฺลน",
+        "leːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหลน เหลฯร [เหฺลน] [leːn^5^]\nน. เหลน, ลูกของหลานปู่ ย่า ตา ยาย."
+    },
+    {
+      "id": "north_kinship_0121",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อา",
+      "transcriptions": [
+        "อา",
+        "Ɂaː^1^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "อา อา [อา] [Ɂaː^1^]\n๑. น. น้องสาวของพ่อ; บางถิ่นใช้เรียกน้องสาวของแม่.\n๒. (ทก.) น. อา, น้องชายหรือน้องสาวของพ่อ."
+    },
+    {
+      "id": "north_kinship_0122",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อาเขย",
+      "transcriptions": [
+        "อา-เขย",
+        "Ɂaː^1^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อาเขย อาเขิยฯ [อา-เขย] [Ɂaː^1^-k^h^əːy^5^]\nน. อาเขย, ชายที่มาแต่งงานกับอาผู้หญิง; อาวเขย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0123",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อาใพ้",
+      "transcriptions": [
+        "อา-ไป๊",
+        "Ɂaː^1^-pay^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อาใพ้ อาไพ้ [อา-ไป๊] [Ɂaː^1^-pay^4^]\nน. อาสะใภ้, หญิงที่มาแต่งงานกับอาผู้ชาย."
+    },
+    {
+      "id": "north_kinship_0124",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อ้าย",
+      "transcriptions": [
+        "อ้าย",
+        "ʔaːy^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "อ้าย อ้ายฯ [อ้าย] [ʔaːy^6^]\nน. พี่ผู้ชาย เช่น เป็นใดอ้ายบ่ไปโรงเรียน; (ทก.) พี่ชาย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0125",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อ้ายเขย",
+      "transcriptions": [
+        "อ้าย-เขย",
+        "ʔaːy^6^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อ้ายเขย อ้ายฯเขิยฯ [อ้าย-เขย] [ʔaːy^6^-k^h^əːy^5^]\nน. พี่เขย, ชายที่มาแต่งงานกับพี่สาว; อ้ายชาย พี่ชาย หรือ พี่เขย ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0126",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อ้ายชาย",
+      "transcriptions": [
+        "อ้าย-จาย",
+        "ʔaːy^6^-caːy^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อ้ายเขย"
+      ],
+      "raw_text": "อ้ายชาย อ้ายฯชายฯ [อ้าย-จาย] [ʔaːy^6^-caːy^1^]\nดู อ้ายเขย."
+    },
+    {
+      "id": "north_kinship_0127",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อาว",
+      "transcriptions": [
+        "อาว",
+        "Ɂaːw^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อาว อาวฯ [อาว] [Ɂaːw^1^]\nน. น้องชายพ่อ; บางถิ่นใช้เรียกน้องชายของแม่."
+    },
+    {
+      "id": "north_kinship_0128",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อาวเขย",
+      "transcriptions": [
+        "อาว-เขย",
+        "Ɂaːw^1^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "อาเขย"
+      ],
+      "raw_text": "อาวเขย อาวฯเขิยฯ [อาว-เขย] [Ɂaːw^1^-k^h^əːy^5^]\nดู อาเขย."
+    },
+    {
+      "id": "north_kinship_0129",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อุ้ย",
+      "transcriptions": [
+        "อุ๊ย",
+        "ʔuy^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อุ้ย อุ้ยฯ [อุ๊ย] [ʔuy^4^]\n๑. น. ปู่, ตา, พ่อของพ่อหรือพ่อของแม่, ญาติชั้นเดียวกับพ่อของพ่อหรือพ่อของแม่;\nพ่ออุ้ย พ่อใหญ่ พ่อหลวง พ่อโต้ หรือ พ่อเถ้า ก็ว่า.\n๒. น. ย่า, ยาย, แม่ของพ่อหรือแม่ของแม่, ญาติชั้นเดียวกับแม่ของพ่อหรือแม่ของแม่;\nแม่อุ้ย แม่ใหญ่ แม่หลวง แม่โต้ หรือ แม่เถ้า ก็ว่า."
+    },
+    {
+      "id": "north_kinship_0130",
+      "region": "north",
+      "category": "kinship",
+      "headword": "อุ้ยหม่อน",
+      "transcriptions": [
+        "อุ๊ย-หฺม่อน",
+        "ʔuy^4^-mɔn^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หม่อน"
+      ],
+      "raw_text": "อุ้ยหม่อน อุ้ยฯห่มฯอฯร [อุ๊ย-หฺม่อน] [ʔuy^4^-mɔn^2^]\nดู หม่อน."
+    },
+    {
+      "id": "north_kinship_0131",
+      "region": "north",
+      "category": "kinship",
+      "headword": "เอ้ย",
+      "transcriptions": [
+        "เอ้ย",
+        "ʔəːy^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่ ความหมายที่ ๑"
+      ],
+      "raw_text": "เอ้ย เอิ้ยฯ [เอ้ย] [ʔəːy^6^]\nดู พี่ ความหมายที่ ๑."
+    },
+    {
+      "id": "north_kinship_0132",
+      "region": "north",
+      "category": "kinship",
+      "headword": "เอย้ย",
+      "transcriptions": [
+        "เหฺย้ย",
+        "yəːy^6^"
+      ],
+      "notes": [
+        "ถิ่น-แพร่"
+      ],
+      "cross_references": [
+        "พี่ ความหมายที่ ๑"
+      ],
+      "raw_text": "เอย้ย เอยฯิ้ฯยฯ [เหฺย้ย] [yəːy^6^]\n(ถิ่น-แพร่) ดู พี่ ความหมายที่ ๑."
+    },
+    {
+      "id": "north_kinship_0133",
+      "region": "north",
+      "category": "kinship",
+      "headword": "ไอย้",
+      "transcriptions": [
+        "ไหฺย้",
+        "yay^6^"
+      ],
+      "notes": [
+        "ถิ่น-แพร่"
+      ],
+      "cross_references": [
+        "พี่ ความหมายที่ ๑"
+      ],
+      "raw_text": "ไอย้ ไอยฯ้ [ไหฺย้] [yay^6^]\n(ถิ่น-แพร่) ดู พี่ ความหมายที่ ๑."
+    }
+  ]
+}

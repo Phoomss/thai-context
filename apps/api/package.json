@@ -18,7 +18,8 @@
     "seed": "ts-node prisma/seed.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "test:smoke": "bash ../../scripts/smoke_test.sh"
   },
   "dependencies": {
     "@nestjs/axios": "^3.0.2",

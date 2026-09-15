@@ -3,16 +3,31 @@ import { ValidationPipe, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/filters/http-exception.filter';
+import { CorrelationIdInterceptor } from './common/interceptors/correlation-id.interceptor';
+import { RateLimiterGuard } from './common/guards/rate-limiter.guard';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
   const app = await NestFactory.create(AppModule);
 
+  // Security Headers Middleware
+  app.use((req: any, res: any, next: () => void) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('X-XSS-Protection', '1; mode=block');
+    next();
+  });
+
   // Enable CORS
   app.enableCors({
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    exposedHeaders: ['X-Request-Id', 'Retry-After'],
   });
+
+  // Global Interceptors & Guards
+  app.useGlobalInterceptors(new CorrelationIdInterceptor());
+  app.useGlobalGuards(new RateLimiterGuard());
 
   // Global Validation & Exception Handling
   app.useGlobalPipes(
@@ -45,7 +60,7 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   const port = process.env.PORT || 3001;
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   logger.log(`🚀 THAI CONTEXT Core API running on http://localhost:${port}`);
   logger.log(`📚 Swagger documentation available at http://localhost:${port}/api/docs`);
 }

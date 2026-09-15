@@ -17,11 +17,13 @@ export default function ContextComparator({
   selected,
   onSelect,
   onEvidence,
+  onAIChat,
 }: {
   words: Recommendation[];
   selected: string[];
   onSelect: (words: string[]) => void;
   onEvidence: (word: Recommendation) => void;
+  onAIChat?: (word: Recommendation, query?: string) => void;
 }) {
   const options = useMemo(
     () => Array.from(new Map(words.map((word) => [word.headword, word])).values()),
@@ -68,28 +70,29 @@ export default function ContextComparator({
         {[leftWord, rightWord].map((word, index) => {
           const data = detail(word);
           return (
-            <article className="comparison-card" key={word.headword}>
+            <article className="comparison-card" key={`${word.headword}-${index}`}>
               <label>
                 <span>คำที่ {index ? "๒" : "๑"}</span>
                 <select
+                  className="font-thai-reading"
                   aria-label={`เลือกคำที่ ${index ? "สอง" : "หนึ่ง"}`}
                   value={word.headword}
                   onChange={(event) => change(index ? "right" : "left", event.target.value)}
                 >
-                  {options.map((option) => (
-                    <option key={option.headword}>{option.headword}</option>
+                  {options.map((option, optIdx) => (
+                    <option key={`${option.headword}-${optIdx}`}>{option.headword}</option>
                   ))}
                 </select>
               </label>
-              <h3>{word.headword}</h3>
+              <h3 className="font-thai-reading">{word.headword}</h3>
               <dl>
-                <div><dt>ความหมาย</dt><dd>{data.meaning}</dd></div>
-                <div className="difference-row"><dt>เน้นอะไร</dt><dd>{data.emphasis}</dd></div>
-                <div><dt>บริบท</dt><dd>{data.context}</dd></div>
-                <div><dt>ระดับภาษา</dt><dd>{data.register}</dd></div>
-                <div><dt>ใช้เมื่อไร</dt><dd>{data.useWhen}</dd></div>
-                <div><dt>ตัวอย่าง</dt><dd>{data.example}</dd></div>
-                <div><dt>จุดที่มักสับสน</dt><dd>{data.confusion}</dd></div>
+                <div><dt>ความหมาย</dt><dd className="font-thai-reading">{data.meaning}</dd></div>
+                <div className="difference-row"><dt>เน้นอะไร</dt><dd className="font-thai-reading">{data.emphasis}</dd></div>
+                <div><dt>บริบท</dt><dd className="font-thai-reading">{data.context}</dd></div>
+                <div><dt>ระดับภาษา</dt><dd className="font-thai-reading">{data.register}</dd></div>
+                <div><dt>ใช้เมื่อไร</dt><dd className="font-thai-reading">{data.useWhen}</dd></div>
+                <div><dt>ตัวอย่าง</dt><dd className="font-thai-reading">{data.example}</dd></div>
+                <div><dt>จุดที่มักสับสน</dt><dd className="font-thai-reading">{data.confusion}</dd></div>
               </dl>
               <button className="source-shortcut" type="button" onClick={() => onEvidence(word)}>
                 {word.evidence ? "ดูหลักฐานของคำนี้ ↗" : "ตรวจสถานะหลักฐาน ↗"}
@@ -99,7 +102,25 @@ export default function ContextComparator({
         })}
         <span className="versus" aria-hidden="true">เทียบ</span>
       </div>
+      {onAIChat && leftWord && rightWord && (
+        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center" }}>
+          <button
+            type="button"
+            className="ai-consult-btn font-thai-reading"
+            onClick={() =>
+              onAIChat(
+                leftWord,
+                `คำว่า '${leftWord.headword}' ต่างกับ '${rightWord.headword}' ในงานวิจัยอย่างไร`
+              )
+            }
+          >
+            <span aria-hidden="true">✨</span>
+            <span>
+              ปรึกษาผู้ช่วย AI เพื่อวิเคราะห์ความต่างระหว่าง "{leftWord.headword}" กับ "{rightWord.headword}"
+            </span>
+          </button>
+        </div>
+      )}
     </section>
   );
 }
-

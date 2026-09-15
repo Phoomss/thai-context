@@ -40,7 +40,12 @@ class EvidenceItem(BaseModel):
     source: str
     edition: str
     definition: str
+    source_type: str = "OFFICIAL"  # 'OFFICIAL', 'AI_GENERATED', 'AI_INFERRED'
     relevance: float = 0.0
+
+class GeneratedContentItem(BaseModel):
+    type: str = "writing_suggestion"  # 'writing_suggestion', 'usage_guidance', 'context_caveat'
+    content: str
 
 class RecommendationItem(BaseModel):
     word: str
@@ -69,8 +74,57 @@ class CompareResponse(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+    word: Optional[str] = None
+    context: Optional[str] = None  # 'academic', 'business', 'formal', 'casual', 'legal', 'general'
 
 class ChatResponse(BaseModel):
     answer: str
     grounded: bool
+    abstained: bool = False
+    confidence: float = 0.0
+    confidence_level: str = "MEDIUM"  # 'HIGH', 'MEDIUM', 'LOW'
     evidence: List[EvidenceItem] = Field(default_factory=list)
+    generated_content: List[GeneratedContentItem] = Field(default_factory=list)
+    abstention_reason: Optional[str] = None
+
+# Accessibility & Multilingual Schemas
+class PhoneticsRequest(BaseModel):
+    word: str = Field(..., description="Thai headword")
+    known_spelling: Optional[str] = Field(None, description="Known pronunciation from dictionary entry if available")
+
+class PhoneticsResponse(BaseModel):
+    headword: str
+    phonetic_spelling: str
+    transliteration_rtgs: str
+    ipa_notation: str
+    tone_pattern: str
+    syllables: List[str]
+    source_type: str
+
+class BilingualTranslateRequest(BaseModel):
+    word: str = Field(..., description="Thai headword")
+    definition: Optional[str] = Field(None, description="Official dictionary definition text")
+    pos: Optional[str] = Field(None, description="Part of speech")
+    domain: Optional[str] = Field(None, description="Subject domain")
+
+class BilingualTranslateResponse(BaseModel):
+    headword: str
+    primary_translation: str
+    secondary_translations: List[str] = Field(default_factory=list)
+    contextual_explanation_en: str
+    usage_nuance_en: str
+    provenance: str
+    confidence_score: float
+
+class TtsSynthesizeRequest(BaseModel):
+    text: str = Field(..., description="Text to synthesize to speech")
+    voice: Optional[str] = Field("th-TH-PremwadeeNeural", description="Voice identifier")
+    speed: Optional[float] = Field(1.0, description="Speech rate multiplier")
+
+class TtsSynthesizeResponse(BaseModel):
+    audio_base64: str
+    format: str = "mp3"
+    provider: str
+    cached: bool
+    duration_ms: Optional[int] = None
+

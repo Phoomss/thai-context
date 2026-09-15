@@ -5,10 +5,12 @@ export default function MorphingNavbar({
   navRef,
   busy,
   onHome,
+  onAIChat,
 }: {
   navRef: RefObject<HTMLElement | null>;
   busy: boolean;
   onHome: (event: MouseEvent<HTMLAnchorElement>) => void;
+  onAIChat?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const [floating, setFloating] = useState(false);
@@ -60,8 +62,8 @@ export default function MorphingNavbar({
         <Image
           className="brand-logo"
           src="/assets/thai-context-logo.png"
-          width={38}
-          height={32}
+          width={46}
+          height={40}
           alt=""
           aria-hidden="true"
         />
@@ -78,6 +80,33 @@ export default function MorphingNavbar({
         <a href="#compare" onClick={() => setOpen(false)}>เปรียบเทียบคำ</a>
         <a href="#evolution" onClick={() => setOpen(false)}>สำรวจคำ</a>
         <a href="#dialects" onClick={() => setOpen(false)}>ภาษาถิ่น</a>
+        <a href="#dictionary" onClick={() => setOpen(false)}>ค้นตามเล่ม</a>
+        {onAIChat && (
+          <button
+            type="button"
+            className="nav-ai-button font-thai-reading"
+            onClick={() => {
+              setOpen(false);
+              onAIChat();
+            }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              background: "#eff6ff",
+              color: "#1d4ed8",
+              border: "1px solid #bfdbfe",
+              borderRadius: "16px",
+              padding: "4px 12px",
+              fontSize: "13px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            <span aria-hidden="true">✨</span>
+            <span>ผู้ช่วย AI</span>
+          </button>
+        )}
         <a
           className="nav-search"
           href={floating ? "#persistent-meaning" : "#meaning"}

@@ -1,75 +1,119 @@
-# THAI CONTEXT — Architecture Overview
+# THAI CONTEXT — System Architecture
 
-> **Tagline:** “ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน”  
-> **Platform:** Thai Context Intelligence Platform (Hackathon “เปิดคลังคำ พลิกคลังคิด”)
-
----
-
-## 1. System Philosophy
-
-Traditional Dictionary:
-> รู้คำ → ค้นคำ → อ่านความหมาย
-
-**THAI CONTEXT:**
-> รู้สิ่งที่อยากสื่อ → อธิบายความหมาย/บริบท → ระบบค้นพบคำ → เปรียบเทียบ → เข้าใจการใช้ → ตรวจสอบหลักฐาน
-
-ระบบ THAI CONTEXT ถูกออกแบบให้เป็น **Dictionary Intelligence Platform** ที่ใช้ AI ช่วยให้ผู้ใช้ค้นพบคำ เข้าใจบริบท เปรียบเทียบคำ และตรวจสอบหลักฐานจากคลังคำทางการ โดยไม่ใช่แชตบอตทั่วไปที่คิดคำตอบขึ้นมาเองโดยไม่มีหลักฐานอ้างอิง
+เอกสารสรุปสถาปัตยกรรมระบบ THAI CONTEXT (“ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน”)
 
 ---
 
-## 2. High-Level Architecture Diagram
+## 1. ปรัชญาและหลักการของระบบ (Core Principles)
+
+1. **Meaning-First over Keyword-First**: พลิกโฉมจาก Dictionary แบบเดิมที่ต้องรู้คำก่อน เป็นการค้นพบคำจากความหมายและเจตนา
+2. **Immutable Official Dictionary**: ข้อมูลพจนานุกรมราชบัณฑิตยสถานและพจนานุกรมทางการ ถือเป็น Source of Truth ที่ไม่สามารถถูกแก้ไขหรือเขียนทับโดย AI ได้
+3. **Strict 4-Tier Data Classification**:
+   - `OFFICIAL`: ข้อมูลอย่างเป็นทางการจากพจนานุกรม
+   - `AI_GENERATED`: ข้อความอธิบายความแตกต่างและการวิเคราะห์ที่สร้างโดย AI
+   - `AI_INFERRED`: การอนุมานระดับภาษา นัยยะความรู้สึก และคู่เทียบเคียง
+   - `SEARCH_DATA`: คำค้นหาและข้อมูลการโต้ตอบของผู้ใช้
+4. **Safe Abstention / Anti-Hallucination**: AI จะไม่ตอบหากไม่มีหลักฐานพจนานุกรมรองรับอย่างชัดเจน
+5. **Deterministic Offline Capability**: ระบบสามารถรันแบบ Offline ได้สมบูรณ์ 100% โดยไม่ต้องพึ่งพา API ภายนอก
+
+---
+
+## 2. แผนภาพสถาปัตยกรรมระดับสูง (High-Level Architecture)
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                    Next.js (Web Frontend)                   │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ HTTP / REST
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│                apps/api (NestJS Core Backend)               │
-│  - REST API Routing & Input Validation                      │
-│  - Dictionary Multi-Edition Catalog Engine                  │
-│  - Word Evolution & Change Detection (2542, 2554, 2569)     │
-│  - Dialect Explorer & Standard-to-Dialect Mapping           │
-│  - AI Orchestration & RAG Evidence Formatting               │
-│  - Prisma ORM & Database Connection Pooling                 │
-│  - OpenAPI / Swagger Documentation (/api/docs)              │
-└──────────────┬──────────────────────────────┬───────────────┘
-               │                              │ Internal HTTP
-               │ Prisma Queries               ▼
-               │              ┌──────────────────────────────────────────────┐
-               │              │        apps/ai-service (FastAPI AI/NLP)      │
-               │              │  - PyThaiNLP Tokenization & Processing       │
-               │              │  - Query Understanding (Intent & Exclusions) │
-               │              │  - Configurable Embedding Vectorization      │
-               │              │  - Hybrid Retrieval (Dense pgvector + Sparse)│
-               │              │  - Context-Aware Ranking (Configurable)      │
-               │              │  - Grounded RAG Synthesis                    │
-               │              │  - Hallucination Guard (Strict Verification) │
-               │              └───────────────────────┬──────────────────────┘
-               ▼                                      │
-┌─────────────────────────────────────────────────────▼───────┐
-│            PostgreSQL 16 + pgvector (thai_context_db)       │
-│  - 15 Relational Tables (Catalog, Dialects, Embeddings)     │
-│  - Extensions: vector, pg_trgm, pgcrypto                    │
-│  - HNSW / Cosine Index for Dense Semantic Search            │
-└─────────────────────────────────────────────────────────────┘
+                               ┌─────────────────────────────────────────┐
+                               │        Frontend Web Application         │
+                               │        Next.js 14 + Tailwind CSS        │
+                               │              (Port 3000)                │
+                               └────────────────────┬────────────────────┘
+                                                    │
+                                                    │ HTTP / JSON REST
+                                                    ▼
+                               ┌─────────────────────────────────────────┐
+                               │           Core API Gateway              │
+                               │          NestJS 10 + Prisma             │
+                               │              (Port 3001)                │
+                               │       Swagger: /api/docs                │
+                               └───────────┬─────────────────┬───────────┘
+                                           │                 │
+                           Internal REST   │                 │ Prisma ORM &
+                           (Port 8000)     │                 │ Raw SQL Query
+                                           ▼                 │
+                ┌──────────────────────────────────────┐     │
+                │        AI & NLP Microservice         │     │
+                │          FastAPI + PyThaiNLP         │     │
+                │              (Port 8000)             │     │
+                │  • Query Understanding & Constraints │     │
+                │  • Dense Vector & Hybrid Retrieval   │     │
+                │  • Context-Aware Ranker Engine       │     │
+                │  • Grounded RAG & Hallucination Guard│     │
+                └──────────────────┬───────────────────┘     │
+                                   │                         │
+                                   │ Direct pgvector Read    │
+                                   ▼                         ▼
+                ┌────────────────────────────────────────────────────────┐
+                │          PostgreSQL 16 + pgvector Database             │
+                │                 (Port 5433 Host / 5432 Docker)         │
+                │  • 15 Relational Tables (3NF Design)                   │
+                │  • 29,544 Words / 36,398 Definitions                   │
+                │  • 29,612 Semantic Embeddings (1536-dim HNSW Index)    │
+                │  • B-Tree & Trigram GIN Indexes                        │
+                └────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 3. Core Responsibilities Separation
+## 3. โครงสร้างโฟลเดอร์โปรเจกต์ (Repository Structure)
 
-| Service | Technology | Role & Responsibilities |
-| :--- | :--- | :--- |
-| **apps/api** | NestJS, TypeScript, Prisma | Core application backend, business logic, multi-edition catalog, database owner, security, validation, OpenAPI docs |
-| **apps/ai-service** | FastAPI, Python 3.11, PyThaiNLP | Thai NLP tokenization, semantic embedding, query understanding, context ranking, grounded RAG, hallucination guard |
-| **PostgreSQL** | pgvector 16 | Single source of truth, official immutable catalog, dense vector storage |
+```text
+thai-context/
+├── apps/
+│   ├── api/                          # NestJS Core Backend Gateway
+│   │   ├── prisma/
+│   │   │   ├── schema.prisma         # 15 Relational Tables with pgvector
+│   │   │   └── seed.ts               # Master Seed Script
+│   │   ├── src/
+│   │   │   ├── modules/
+│   │   │   │   ├── search/           # Keyword & Context Search Module
+│   │   │   │   ├── dictionary/       # Word Detail & Catalog Module
+│   │   │   │   ├── evolution/        # 3-Edition Timeline & Change Diff
+│   │   │   │   ├── compare/          # Word Comparison Module
+│   │   │   │   ├── dialect/          # Dialect Explorer & Mapping
+│   │   │   │   ├── ai/               # AI Orchestration Module
+│   │   │   │   ├── feedback/         # User Feedback Collection
+│   │   │   │   └── health/           # Health Check Endpoints
+│   │   │   └── main.ts
+│   │   └── Dockerfile
+│   └── ai-service/                   # FastAPI NLP & AI Microservice
+│       ├── app/
+│       │   ├── api/endpoints.py      # AI Endpoints (semantic-search, recommend, chat)
+│       │   ├── services/
+│       │   │   ├── nlp/              # PyThaiNLP Tokenizer & Query Parser
+│       │   │   ├── embedding/        # Deterministic, Gemini, OpenAI Providers
+│       │   │   ├── retrieval/        # Hybrid Dense+Keyword Vector Search
+│       │   │   ├── ranking/          # Multi-Factor Context Ranker
+│       │   │   └── rag/              # Grounded Assistant & Hallucination Guard
+│       │   └── scripts/
+│       │       └── import_wiktextract.py # Bulk Data Ingestion Pipeline
+│       └── Dockerfile
+├── data/
+│   ├── raw/                          # Large Datasets (gitignored)
+│   │   └── raw-wiktextract-data.json # 1.62 GB Wiktextract Thai Dump
+│   └── seed/                         # Canonical Seed Data & Generator
+│       ├── demo_dictionary.json
+│       └── generate_demo_data.py
+├── frontend/                         # Next.js Frontend Application
+├── docs/                             # Full Technical Documentation (18 files)
+├── docker-compose.yml                # Multi-Container Orchestration
+└── README.md
+```
 
 ---
 
-## 4. Key Architectural Guarantees
+## 4. สถานะความพร้อมและการทดสอบ (Testing & Compliance)
 
-1. **Official Data Integrity:** AI will **never** overwrite or mutate official dictionary definitions. All AI inferences and explanations are explicitly tagged with `AI_INFERRED` or presented in dedicated AI Assistance sections.
-2. **Safe Abstention:** If dictionary evidence relevance falls below `SIMILARITY_THRESHOLD`, the system abstains safely with: `"ไม่พบข้อมูลที่เพียงพอจากแหล่งข้อมูลพจนานุกรมที่ระบบรองรับ"` rather than hallucinating definitions.
-3. **Multi-Edition Coexistence:** Editions 2542, 2554, 2569, and DIALECT exist concurrently without collision.
+- **Functional Requirements**: ผ่านครบถ้วนทั้ง **18/18 FRs (100%)**
+- **Unit Test Coverage**:
+  - NestJS Services: ผ่าน 5/5 ชุดการทดสอบ (`npm test`)
+  - FastAPI NLP & Guardrails: ผ่าน 6/6 ชุดการทดสอบ (`pytest`)
+- **Docker Compose Status**: คอนเทนเนอร์ทั้ง 3 ตัว (`thai_context_db`, `thai_context_ai`, `thai_context_api`) อยู่ในสถานะ `healthy` และเชื่อมต่อกันแบบ Bridge Network

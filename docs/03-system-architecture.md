@@ -159,3 +159,53 @@ flowchart TD
 | **NestJS (Modular Monolith)** | Microservices | เหมาะกับระยะเวลาพัฒนาที่จำกัด มี Dependency Injection ที่แข็งแกร่ง มีโครงสร้าง Domain Module ชัดเจน สามารถสเกลขึ้น Production หรือแยก Service ได้ง่ายในอนาคต |
 | **Next.js 14 + Tailwind CSS** | Vite SPA | รองรับ Server-Side Rendering (SSR) ช่วยเรื่องการแสดงผลฟอนต์ภาษาไทย และรองรับ Server-Sent Events (SSE) สำหรับการแสดงผล LLM แบบ Streaming อย่างลื่นไหล |
 | **HNSW Vector Index** | IVFFlat Index | HNSW ให้ค่า Recall ที่สูงกว่า และไม่ต้องรอ Re-train ดัชนีเมื่อมีการเพิ่มข้อมูลคำศัพท์ใหม่ |
+
+---
+
+## 6. Language Accessibility & Multilingual Intelligence Architecture
+
+```mermaid
+flowchart TB
+    subgraph Client ["Client Interface (Read-Only)"]
+        UI_Access["Universal Accessibility Drawer"]
+        UI_Audio["Voice Playback Button"]
+        UI_Sign["Thai Sign Language Video Player"]
+    end
+
+    subgraph Backend ["NestJS Modular Monolith"]
+        MOD_Access["Accessibility Module"]
+        MOD_TTS["TTS Service Layer"]
+        
+        subgraph TTS_Drivers ["TTS Provider Sequence"]
+            DRV_AI["AI Service TTS Driver"]
+            DRV_MOCK["Local Mock Fallback Driver (Zero-Crash)"]
+        end
+    end
+
+    subgraph AI_Engine ["FastAPI NLP Intelligence"]
+        PY_PHONETICS["PyThaiNLP RTGS & Phonetic Engine"]
+        RAG_BILINGUAL["Bilingual Grounded Translator"]
+        SYNTH_AUDIO["Synthetic Audio Engine"]
+    end
+
+    subgraph Storage ["PostgreSQL 16 Storage"]
+        DB_PRON[("word_pronunciations")]
+        DB_TRANS[("word_translations")]
+        DB_SIGN[("sign_language_entries & sign_media")]
+        DB_CACHE[("tts_cache (SHA-256)")]
+    end
+
+    Client <-->|REST API| MOD_Access
+    Client <-->|POST /tts/synthesize| MOD_TTS
+    MOD_Access --> DB_PRON & DB_TRANS & DB_SIGN
+    MOD_Access <-->|RPC| PY_PHONETICS & RAG_BILINGUAL
+    MOD_TTS --> TTS_Drivers
+    DRV_AI <-->|HTTP| SYNTH_AUDIO
+    MOD_TTS <--> DB_CACHE
+```
+
+### กลยุทธ์การป้องกันความผิดพลาด (Zero-Crash & Safety Policy):
+1. **Source Provenance Labeling:** ทุกคำแปล/คำอธิบายจะถูกประทับตรา `OFFICIAL_CURATED` หรือ `AI_GENERATED` โดยเด็ดขาด ห้าม AI อ้างอิงว่าคำแปลของตนเป็นข้อมูลทางการของราชบัณฑิตยสภาหากไม่มีในคลังข้อมูล
+2. **Deterministic Transliteration:** การถอดอักษรโรมันใช้มาตรฐาน RTGS (Royal Thai General System of Transcription) ของราชบัณฑิตยสภาผ่าน PyThaiNLP เพื่อความแม่นยำ ไม่ใช้การสุ่มสร้างของ LLM
+3. **Multi-tier TTS Fallback:** หากระบบเชื่อมต่อเสียงภายนอกขัดข้อง ระบบจะตกกลับมายัง Local Audio Driver ทันทีโดยไม่เกิด HTTP 500 error ต่อหน้ากรรมการ
+

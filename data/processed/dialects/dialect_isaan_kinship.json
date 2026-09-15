@@ -1,0 +1,1509 @@
+{
+  "title": "หมวดคำเรียกญาติ",
+  "region": "isaan",
+  "category": "kinship",
+  "entry_count": 107,
+  "entries": [
+    {
+      "id": "isaan_kinship_0001",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "งั่ว",
+      "transcriptions": [
+        "งัว",
+        "ŋua^6^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "งั่ว ง฿่ฯวฯ ง฿่ว [งัว] [ŋua^6^]\n(โบ) น. คำเรียกลูกชายคนที่ ๕."
+    },
+    {
+      "id": "isaan_kinship_0002",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "จ๋ง",
+      "transcriptions": [
+        "จ๋ง",
+        "coŋ^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "จ๋ง จ฿งฯฯ จ฿๋ง [จ๋ง] [coŋ^5^]\n(โบ) น. คำเรียกลูกชายคนที่ ๑๐."
+    },
+    {
+      "id": "isaan_kinship_0003",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เจ็ด",
+      "transcriptions": [
+        "เจ๊ด",
+        "cet^4^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "เจ็ด เจัดฯ เจัด [เจ๊ด] [cet^4^]\n(โบ) น. คำเรียกลูกชายคนที่ ๗."
+    },
+    {
+      "id": "isaan_kinship_0004",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เจ้า",
+      "transcriptions": [
+        "เจ้า",
+        "caw^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "เจ้า เจ฿้ฯา เจ฿้า [เจ้า] [caw^3^]\n(โบ) น. คำเรียกลูกชายคนที่ ๙."
+    },
+    {
+      "id": "isaan_kinship_0005",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ตวด",
+      "transcriptions": [
+        "ตวด",
+        "tuat^2^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ทวด"
+      ],
+      "raw_text": "ตวด ตวฯด ตวด [ตวด] [tuat^2^]\nดู ทวด."
+    },
+    {
+      "id": "isaan_kinship_0006",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ตา",
+      "transcriptions": [
+        "ตา",
+        "taː^1^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อใหญ่"
+      ],
+      "raw_text": "ตา ตา ตา [ตา] [taː^1^]\nดู พ่อใหญ่"
+    },
+    {
+      "id": "isaan_kinship_0007",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ทวด",
+      "transcriptions": [
+        "ทวด",
+        "t^h^uat^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ทวด ทวฯด ทวด [ทวด] [t^h^uat^3^]\nน. พ่อหรือแม่ของ ปู่ ย่า ตา ยาย, ตวด ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0008",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้อง",
+      "transcriptions": [
+        "หฺน้อง",
+        "nɔŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้อง น้อฯง น้อง [หฺน้อง] [nɔŋ^3^]\n๑. น. น้อง, ผู้ร่วมบิดาหรือมารดาเดียวกันและเกิดทีหลัง.\n๒. น. น้อง, ลูกของอาหรือของน้า."
+    },
+    {
+      "id": "isaan_kinship_0009",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้องเขย",
+      "transcriptions": [
+        "หฺน้อง-เขย",
+        "nɔŋ^3^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องเขย น้อฯงเขิยฯ น้องเขิย [หฺน้อง-เขย] [nɔŋ^3^-k^h^əːy^5^]\nน. น้องเขย, ชายที่แต่งงานกับน้องสาวหรือญาติที่มีศักดิ์เป็นน้องสาว."
+    },
+    {
+      "id": "isaan_kinship_0010",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้องชาย",
+      "transcriptions": [
+        "หฺน้อง-ซ่าย",
+        "nɔŋ^3^-saːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องชาย น้อฯงชายฯ น้องชาย [หฺน้อง-ซ่าย] [nɔŋ^3^-saːy^7^]\nน. น้องที่เป็นผู้ชาย."
+    },
+    {
+      "id": "isaan_kinship_0011",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้องใภ้",
+      "transcriptions": [
+        "หฺน้อง-ไผ้",
+        "nɔŋ^3^-p^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องใภ้ น้อฯงไภ้ น้องไพ้ [หฺน้อง-ไผ้] [nɔŋ^3^-p^h^ay^3^]\nน. น้องสะใภ้, หญิงที่แต่งงานกับน้องชายหรือญาติที่มีศักดิ์เป็นน้องชาย."
+    },
+    {
+      "id": "isaan_kinship_0012",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้องแม่ยิง",
+      "transcriptions": [
+        "หฺน้อง-แม-ญิ่ง",
+        "nɔŋ^3^-mԑː^6^-ñiŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้องสาว"
+      ],
+      "raw_text": "น้องแม่ยิง น้อฯงแม่ยิงฯฯ น้องแม่ยิง [หฺน้อง-แม-ญิ่ง] [nɔŋ^3^-mԑː^6^-ñiŋ^7^]\nดู น้องสาว."
+    },
+    {
+      "id": "isaan_kinship_0013",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้องยิง",
+      "transcriptions": [
+        "หฺน้อง-ญิ่ง",
+        "nɔŋ^3^-ñiŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "น้องสาว"
+      ],
+      "raw_text": "น้องยิง น้อฯงยิงฯฯ น้องยิง [หฺน้อง-ญิ่ง] [nɔŋ^3^-ñiŋ^7^]\nดู น้องสาว."
+    },
+    {
+      "id": "isaan_kinship_0014",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้องสาว",
+      "transcriptions": [
+        "หฺน้อง-สาว",
+        "nɔŋ^3^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้องสาว น้อฯงสาวฯ น้องสาว [หฺน้อง-สาว] [nɔŋ^3^-saːw^5^]\nน. น้องที่เป็นผู้หญิง; น้องยิง หรือ น้องแม่ยิง ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0015",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้า",
+      "transcriptions": [
+        "หฺน้า",
+        "naː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้า นาฯ้ น้า [หฺน้า] [naː^3^]\nน. น้องของแม่."
+    },
+    {
+      "id": "isaan_kinship_0016",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้าเขย",
+      "transcriptions": [
+        "หฺน้า-เขย",
+        "naː^3^-k^h^әːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าเขย นาฯ้เขิยฯ น้าเขิย [หฺน้า-เขย] [naː^3^-k^h^әːy^5^]\nน. น้าเขย, ชายที่แต่งงานกับน้องสาวของแม่."
+    },
+    {
+      "id": "isaan_kinship_0017",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้าบ่าว",
+      "transcriptions": [
+        "หฺน้า-บาว",
+        "naː^3^-baːw^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าบ่าว นาฯ้บ่าวฯ น้าบ่าว [หฺน้า-บาว] [naː^3^-baːw^6^]\nน. น้องชายของแม่."
+    },
+    {
+      "id": "isaan_kinship_0018",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้าใภ้",
+      "transcriptions": [
+        "หฺน้า-ไผ้",
+        "naː^3^-p^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าใภ้ นาฯ้ไภ้ น้าไพ้ [หฺน้า-ไผ้] [naː^3^-p^h^ay^3^]\nน. น้าสะใภ้, หญิงที่แต่งงานกับน้องชายของแม่."
+    },
+    {
+      "id": "isaan_kinship_0019",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "น้าสาว",
+      "transcriptions": [
+        "หฺน้า-สาว",
+        "naː^3^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "น้าสาว นาฯ้สาวฯ น้าสาว [หฺน้า-สาว] [naː^3^-saːw^5^]\nน. น้องสาวของแม่."
+    },
+    {
+      "id": "isaan_kinship_0020",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "นิง",
+      "transcriptions": [
+        "นิ่ง",
+        "niŋ^7^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "นิง นิงฯฯ นิง [นิ่ง] [niŋ^7^]\n(โบ) น. คำเรียกลูกชายคนที่ ๑๑."
+    },
+    {
+      "id": "isaan_kinship_0021",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ป้า",
+      "transcriptions": [
+        "ป้า",
+        "paː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ป้า บ้า ป้า [ป้า] [paː^3^]\nน. พี่สาวของพ่อและแม่; แม่ป้า ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0022",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ปู่",
+      "transcriptions": [
+        "ปู",
+        "puː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ปู่ บู่ ปู่ [ปู] [puː^6^]\n๑. น. ปู่, พ่อของพ่อ; พ่อปู่ ก็ว่า.\n๒. น. พ่อสามี, พ่อของสามี; พ่อปู่ ก็ว่า.\n๓. น. ญาติผู้ชายชั้นปู่; พ่อปู่ ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0023",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แปด",
+      "transcriptions": [
+        "แปด",
+        "pɛːt^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "แปด แบดฯ แปด [แปด] [pɛːt^2^]\n(โบ) น. คำเรียกลูกชายคนที่ ๘."
+    },
+    {
+      "id": "isaan_kinship_0024",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ผัว",
+      "transcriptions": [
+        "ผัว",
+        "p^h^ua^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ผัว ผ฿วฯ ผ฿ว [ผัว] [p^h^ua^5^]\nน. สามี, ชายที่เป็นคู่ครองของหญิง; คู่กับ เมีย."
+    },
+    {
+      "id": "isaan_kinship_0025",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อ",
+      "transcriptions": [
+        "พอ",
+        "p^h^ɔː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อ พํ่ พํ่ [พอ] [p^h^ɔː^6^]\nน. พ่อ, ชายผู้ให้กำเนิดแก่ลูก."
+    },
+    {
+      "id": "isaan_kinship_0026",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อคีง",
+      "transcriptions": [
+        "พอ-คี่ง",
+        "p^h^ɔː^6^-k^h^iːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อคีง พํ่คีงฯฯ พํ่คีง [พอ-คี่ง] [p^h^ɔː^6^-k^h^iːŋ^7^]\nน. พ่อตัว, พ่อของตนเอง."
+    },
+    {
+      "id": "isaan_kinship_0027",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อโช้น",
+      "transcriptions": [
+        "พอ-โส้น",
+        "p^h^ɔː^6^-soːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อตู้"
+      ],
+      "raw_text": "พ่อโช้น พํ่โช้นฯ พํ่โซ้น [พอ-โส้น] [p^h^ɔː^6^-soːn^3^]\nดู พ่อตู้."
+    },
+    {
+      "id": "isaan_kinship_0028",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อตู้",
+      "transcriptions": [
+        "พอ-ตู้",
+        "p^h^ɔː^6^-tuː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อตู้ พํ่ตู้ พํ่ตู้ [พอ-ตู้] [p^h^ɔː^6^-tuː^3^]\nน. ปู่ทวด, ตาทวด; พ่อโช้น ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0029",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อเถ้า",
+      "transcriptions": [
+        "พอ-เถ่า",
+        "p^h^ɔː^6^-t^h^aw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อเถ้า พํ่เถ฿้ฯา พํ่เถ้า [พอ-เถ่า] [p^h^ɔː^6^-t^h^aw^2^]\nน. พ่อตา, พ่อของภรรยา."
+    },
+    {
+      "id": "isaan_kinship_0030",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อน้า",
+      "transcriptions": [
+        "พอ-หฺน้า",
+        "p^h^ɔː^6^-naː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พ่อน้า พํ่นาฯ้ พํ่น้า [พอ-หฺน้า] [p^h^ɔː^6^-naː^3^]\nน. สามีของแม่ที่ไม่ใช่พ่อตัว; พ่อใหม่ ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0031",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อปู่",
+      "transcriptions": [
+        "พอ-ปู",
+        "p^h^ɔː^6^-puː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ปู่"
+      ],
+      "raw_text": "พ่อปู่ พํ่บู่ พํ่ปู่ [พอ-ปู] [p^h^ɔː^6^-puː^6^]\nดู ปู่."
+    },
+    {
+      "id": "isaan_kinship_0032",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อลุง",
+      "transcriptions": [
+        "พอ-ลุ่ง",
+        "p^h^ɔː^6^-luŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลุง"
+      ],
+      "raw_text": "พ่อลุง พํ่ลุง พํ่ลุง [พอ-ลุ่ง] [p^h^ɔː^6^-luŋ^7^]\nดู ลุง."
+    },
+    {
+      "id": "isaan_kinship_0033",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อใหญ่",
+      "transcriptions": [
+        "พอ-ไญ",
+        "p^h^ɔː^6^-ñay^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "พ่อใหญ่ พํ่ไหยฯ่ฯ พํ่ไหย่ [พอ-ไญ] [p^h^ɔː^6^-ñay^6^]\nน. ตา, พ่อของแม่; (ทก.) ตา ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0034",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พ่อใหม่",
+      "transcriptions": [
+        "พอ-ไม",
+        "p^h^ɔː^6^-may^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พ่อน้า"
+      ],
+      "raw_text": "พ่อใหม่ พํ่ไหมฯ่ พํ่ไหมฯ่ [พอ-ไม] [p^h^ɔː^6^-may^6^]\nดู พ่อน้า."
+    },
+    {
+      "id": "isaan_kinship_0035",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พี่น้อง",
+      "transcriptions": [
+        "พี-หฺน้อง",
+        "p^h^iː^6^-nɔːŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่น้อง พี่น้อฯง พี่น้อง [พี-หฺน้อง] [p^h^iː^6^-nɔːŋ^3^]\nน. บุคคลที่เกิดจากพ่อแม่เดียวกัน."
+    },
+    {
+      "id": "isaan_kinship_0036",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พี่นาง",
+      "transcriptions": [
+        "พี-น่าง",
+        "p^h^iː^6^-naːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่นาง พี่นาฯงฯฯ พี่นาง [พี-น่าง] [p^h^iː^6^-naːŋ^7^]\nน. พี่สะใภ้, หญิงที่แต่งงานกับพี่ชายหรือญาติที่มีศักดิ์เป็นพี่ชาย; เอื้อยใภ้ หรือ พี่เอื้อย ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0037",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พี่อ้าย",
+      "transcriptions": [
+        "พี-อ้าย",
+        "p^h^iː^6^-Ɂaːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "พี่อ้าย พี่อ้ายฯ พี่อ้าย [พี-อ้าย] [p^h^iː^6^-Ɂaːy^3^]\nน. พี่เขย, ชายที่แต่งงานกับพี่สาวหรือญาติที่มีศักดิ์เป็นพี่สาว; อ้ายเขย ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0038",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "พี่เอื้อย",
+      "transcriptions": [
+        "พี-เอื้อย",
+        "p^h^iː^6^-Ɂɨay^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่นาง"
+      ],
+      "raw_text": "พี่เอื้อย พี่เอึ้อฯย พี่เอึ้อย [พี-เอื้อย] [p^h^iː^6^-Ɂɨay^3^]\nดู พี่นาง."
+    },
+    {
+      "id": "isaan_kinship_0039",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เมีย",
+      "transcriptions": [
+        "เมี่ย",
+        "mia^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เมีย เมยฯ เมย [เมี่ย] [mia^7^]\nน. ภรรยา, หญิงที่เป็นคู่ครองของชาย; คู่กับ ผัว."
+    },
+    {
+      "id": "isaan_kinship_0040",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่",
+      "transcriptions": [
+        "แม",
+        "mԑː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่ แม่ แม่ [แม] [mԑː^6^]\nน. แม่, หญิงผู้ให้กำเนิดหรือเลี้ยงดูลูก."
+    },
+    {
+      "id": "isaan_kinship_0041",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่คีง",
+      "transcriptions": [
+        "แม-คี่ง",
+        "mԑː^6^-k^h^iːŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่คีง แม่คีงฯฯ แม่คีง [แม-คี่ง] [mԑː^6^-k^h^iːŋ^7^]\nน. แม่ตัว, แม่ของตนเอง."
+    },
+    {
+      "id": "isaan_kinship_0042",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่โช้น",
+      "transcriptions": [
+        "แม-โส้น",
+        "mԑː^6^-soːn^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่ตู้"
+      ],
+      "raw_text": "แม่โช้น แม่โช้นฯ แม่โซ้น [แม-โส้น] [mԑː^6^-soːn^3^]\nดู แม่ตู้."
+    },
+    {
+      "id": "isaan_kinship_0043",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่ตู้",
+      "transcriptions": [
+        "แม-ตู้",
+        "mԑː^6^-tuː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่ตู้ แม่ตู้ แม่ตู้ [แม-ตู้] [mԑː^6^-tuː^3^]\nน. ยายทวด, ย่าทวด; แม่โช้น ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0044",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่เถ้า",
+      "transcriptions": [
+        "แม-เถ่า",
+        "mԑː^6^-t^h^aw^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่เถ้า แม่เถ฿้ฯา แม่เถ฿้า [แม-เถ่า] [mԑː^6^-t^h^aw^2^]\nน. แม่ยาย, แม่ของภรรยา."
+    },
+    {
+      "id": "isaan_kinship_0045",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่น้า",
+      "transcriptions": [
+        "แม-หฺน้า",
+        "mɛː^6^-naː^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "แม่น้า แม่นาฯ้ แม่น้า [แม-หฺน้า] [mɛː^6^-naː^3^]\nน. ภรรยาของพ่อที่ไม่ใช่แม่ตัว; แม่ใหม่ ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0046",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่ป้า",
+      "transcriptions": [
+        "แม-ปา",
+        "mԑː^6^-paː^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ป้า"
+      ],
+      "raw_text": "แม่ป้า แม่บ้า แม่ป้า [แม-ปา] [mԑː^6^-paː^3^]\nดู ป้า."
+    },
+    {
+      "id": "isaan_kinship_0047",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่ย่า",
+      "transcriptions": [
+        "แม-ญา",
+        "mԑː^6^-ñaː^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ย่า"
+      ],
+      "raw_text": "แม่ย่า แม่ย่า แม่ย่า [แม-ญา] [mԑː^6^-ñaː^6^]\nดู ย่า."
+    },
+    {
+      "id": "isaan_kinship_0048",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่ใหญ่",
+      "transcriptions": [
+        "แม-ไญ",
+        "mԑː^6^-ñay^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "แม่ใหญ่ แม่ไหยฯ่ฯ แม่ไหย่ [แม-ไญ] [mԑː^6^-ñay^6^]\nน. ยาย, แม่ของแม่; (ทก.) ยาย ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0049",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แม่ใหม่",
+      "transcriptions": [
+        "แม-ไม",
+        "mɛː^6^-may^6^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "แม่น้า"
+      ],
+      "raw_text": "แม่ใหม่ แม่ไหมฯ่ แม่ไหมฯ่ [แม-ไม] [mɛː^6^-may^6^]\nดู แม่น้า."
+    },
+    {
+      "id": "isaan_kinship_0050",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ย่า",
+      "transcriptions": [
+        "ญา",
+        "ñaː^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ย่า ย่า ย่า [ญา] [ñaː^6^]\n๑. น. ย่า, แม่ของพ่อ; แม่ย่า ก็ว่า.\n๒. น. แม่สามี, แม่ของสามี; แม่ย่า ก็ว่า.\n๓. น. ญาติผู้หญิงชั้นย่า; แม่ย่า ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0051",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ยาย",
+      "transcriptions": [
+        "ญ่าย",
+        "ñaːy^7^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "แม่ใหญ่"
+      ],
+      "raw_text": "ยาย ยายฯ ยาย [ญ่าย] [ñaːy^7^]\n(ทก.) ดู แม่ใหญ่."
+    },
+    {
+      "id": "isaan_kinship_0052",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ยี่",
+      "transcriptions": [
+        "ญี",
+        "ñiː^6^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ยี่ ยี่ ยี่ [ญี] [ñiː^6^]\n(โบ) น. คำเรียกลูกชายคนที่ ๒."
+    },
+    {
+      "id": "isaan_kinship_0053",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลก",
+      "transcriptions": [
+        "ลก",
+        "lok^6^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ลก ล฿กฯ ล฿ก [ลก] [lok^6^]\n(โบ) น. คำเรียกลูกชายคนที่ ๖."
+    },
+    {
+      "id": "isaan_kinship_0054",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลุง",
+      "transcriptions": [
+        "ลุ่ง",
+        "luŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลุง ลุง ลุง [ลุ่ง] [luŋ^7^]\nน. ลุง, พี่ชายของพ่อหรือแม่; พ่อลุง ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0055",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูก",
+      "transcriptions": [
+        "ลูก",
+        "luːk^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูก ลูก ลูก [ลูก] [luːk^3^]\nน. ลูก, ผู้มีกำเนิดจากพ่อแม่."
+    },
+    {
+      "id": "isaan_kinship_0056",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกกก",
+      "transcriptions": [
+        "ลูก-ก๊ก",
+        "luːk^3^-kok^4^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกกก ลูกก฿กฯ ลูกก฿ก [ลูก-ก๊ก] [luːk^3^-kok^4^]\nน. ลูกหัวปี, ลูกคนแรก."
+    },
+    {
+      "id": "isaan_kinship_0057",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกขอมาเลี้ยง",
+      "transcriptions": [
+        "ลูก-ขอ-ม่า-เหฺลี้ยง",
+        "luːk^3^-k^h^ɔː^5^-maː^7^-liaŋ^3^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ลูกขอมาเลี้ยง ลูกขํมาลยฯ้ฯง ลูกขํมาล้ยง [ลูก-ขอ-ม่า-เหฺลี้ยง]\n[luːk^3^-k^h^ɔː^5^-maː^7^-liaŋ^3^]\nน. ลูกบุญธรรม, ลูกของคนอื่นซึ่งเอามาเลี้ยงเป็นลูกของตัว; (ทก.) ลูกบุญธรรม ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0058",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกเขย",
+      "transcriptions": [
+        "ลูก-เขย",
+        "luːk^3^-khəːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเขย ลูกเขิยฯ ลูกเขิย [ลูก-เขย] [luːk^3^-khəːy^5^]\nน. ลูกเขย, ชายที่แต่งงานกับลูกสาว."
+    },
+    {
+      "id": "isaan_kinship_0059",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกเขยกก",
+      "transcriptions": [
+        "ลูก-เขย-ก๊ก",
+        "luːk^3^-khəːy^5^-kok^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเขยใหญ่"
+      ],
+      "raw_text": "ลูกเขยกก ลูกเขิยฯก฿กฯ ลูกเขิยก฿ก [ลูก-เขย-ก๊ก]\n[luːk^3^-khəːy^5^-kok^4^]\nดู ลูกเขยใหญ่."
+    },
+    {
+      "id": "isaan_kinship_0060",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกเขยน้อย",
+      "transcriptions": [
+        "ลูก-เขย-หฺน้อย",
+        "luːk^3^-khəːy^5^-nɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกเขยหล้า"
+      ],
+      "raw_text": "ลูกเขยน้อย ฯลูกเขิยฯนอฯยฯฯ้ฯ ลูกเขิยน้อยฯ [ลูก-เขย-หฺน้อย]\n[luːk^3^-khəːy^5^-nɔːy^3^]\nดู ลูกเขยหล้า."
+    },
+    {
+      "id": "isaan_kinship_0061",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกเขยหล้า",
+      "transcriptions": [
+        "ลูก-เขย-หล่า",
+        "luːk^3^-khəːy^5^-laː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเขยหล้า ลูกเขิยฯหลฯ้า ลูกเขิยหล้า [ลูก-เขย-หล่า]\n[luːk^3^-khəːy^5^-laː^2^]\nน. ลูกเขยคนเล็ก, ชายที่แต่งงานกับลูกสาวคนเล็ก; ลูกเขยน้อย ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0062",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกเขยใหญ่",
+      "transcriptions": [
+        "ลูก-เขย-ไญ",
+        "luːk^3^-khəːy^5^-ñay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกเขยใหญ่ ลูกเขิยฯไหยฯ่ฯ ลูกเขิยไหย่ [ลูก-เขย-ไญ]\n[luːk^3^-khəːy^5^-ñay^6^]\nน. ลูกเขยคนโต, ชายที่แต่งงานกับลูกสาวคนแรก; ลูกเขยกก ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0063",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกชาย",
+      "transcriptions": [
+        "ลูก-ซ่าย",
+        "luːk^3^-saːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกชาย ลูกชายฯ ลูกชาย [ลูก-ซ่าย] [luːk^3^-saːy^7^]\nน. ลูกชาย, ลูกที่เป็นผู้ชาย."
+    },
+    {
+      "id": "isaan_kinship_0064",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกชายหล้า",
+      "transcriptions": [
+        "ลูก-ซ่าย-หฺล่า",
+        "luːk^3^-saːy^7^-laː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกชายหล้า ลูกชายฯหลฯ้า ลูกชายหล้า [ลูก-ซ่าย-หฺล่า]\n[luːk^3^-saːy^7^-laː^2^]\nน. ลูกชายคนสุดท้อง."
+    },
+    {
+      "id": "isaan_kinship_0065",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกชายใหญ่",
+      "transcriptions": [
+        "ลูก-ซ่าย-ไญ",
+        "luːk^3^-saːy^7^-ñay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกชายใหญ่ ลูกชายฯไหยฯ่ฯ ลูกชายไหย่ [ลูก-ซ่าย-ไญ]\n[luːk^3^-saːy^7^-ñay^6^]\nน. ลูกชายคนโต."
+    },
+    {
+      "id": "isaan_kinship_0066",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกติดพ่อ",
+      "transcriptions": [
+        "ลูก-ติ๊ด-พอ",
+        "luːk^3^-tit^4^-p^h^ɔː^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ลูกติดพ่อ ลูกติดฯพํ่ ลูกติดพํ่ [ลูก-ติ๊ด-พอ] [luːk^3^-tit^4^-p^h^ɔː^6^]\nน. ลูกที่ติดสามีมา; (ทก.) ลูกเลี้ยง ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0067",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกติดแม่",
+      "transcriptions": [
+        "ลูก-ติ๊ด-แม",
+        "luːk^3^-tit^4^-mɛː^6^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [],
+      "raw_text": "ลูกติดแม่ ลูกติดฯแม่ ลูกติดแม่ [ลูก-ติ๊ด-แม] [luːk^3^-tit^4^-mɛː^6^]\nน. ลูกที่ติดภรรยามา; (ทก.) ลูกเลี้ยง ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0068",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกบุญธรรม",
+      "transcriptions": [
+        "ลูก-บุน-ท่ำ",
+        "luːk^3^-bun^4^-t^h^am^7^"
+      ],
+      "notes": [
+        "ทก."
+      ],
+      "cross_references": [
+        "ลูกขอมาเลี้ยง"
+      ],
+      "raw_text": "ลูกบุญธรรม ลูกบุรธัมมฯ์ ลูกบุนทำ [ลูก-บุน-ท่ำ]\n[luːk^3^-bun^4^-t^h^am^7^]\n(ทก.) ดู ลูกขอมาเลี้ยง."
+    },
+    {
+      "id": "isaan_kinship_0069",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกใภ้",
+      "transcriptions": [
+        "ลูก-ไผ้",
+        "luːk^3^-p^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกใภ้ ลูกไภ้ ลูกไพ้ [ลูก-ไผ้] [luːk^3^-p^h^ay^3^]\nน. ลูกสะใภ้, หญิงที่แต่งงานกับลูกชาย."
+    },
+    {
+      "id": "isaan_kinship_0070",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกใภ้กก",
+      "transcriptions": [
+        "ลูก-ไผ้-ก๊ก",
+        "luːk^3^-p^h^ay^3^-kok^4^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกใภ้ใหญ่"
+      ],
+      "raw_text": "ลูกใภ้กก ลูกไภ้ก฿กฯ ลูกไพ้ก฿ก [ลูก-ไผ้-ก๊ก] [luːk^3^-p^h^ay^3^-kok^4^]\nดู ลูกใภ้ใหญ่."
+    },
+    {
+      "id": "isaan_kinship_0071",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกใภ้น้อย",
+      "transcriptions": [
+        "ลูก-ไผ้-หฺน้อย",
+        "luːk^3^-p^h^ay^3^-nɔːy^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "ลูกใภ้หล้า"
+      ],
+      "raw_text": "ลูกใภ้น้อย ลูกไภ้นอฯยฯฯ้ฯ ลูกไพ้น้อยฯ [ลูก-ไผ้-หฺน้อย]\n[luːk^3^-p^h^ay^3^-nɔːy^3^]\nดู ลูกใภ้หล้า."
+    },
+    {
+      "id": "isaan_kinship_0072",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกใภ้หล้า",
+      "transcriptions": [
+        "ลูก-ไผ้-หฺล่า",
+        "luːk^3^-p^h^ay^3^-laː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกใภ้หล้า ลูกไภ้หลฯ้า ลูกไพ้หล้า [ลูก-ไผ้-หฺล่า] [luːk^3^-p^h^ay^3^-laː^2^]\nน. ลูกสะใภ้คนเล็ก, หญิงที่แต่งงานกับลูกชายคนเล็ก; ลูกใภ้น้อย ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0073",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกใภ้ใหญ่",
+      "transcriptions": [
+        "ลูก-ไผ้-ไญ",
+        "luːk^3^-p^h^ay^3^-ñay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกใภ้ใหญ่ ลูกไภ้ไหยฯ่ฯ ลูกไพ้ไหย่ [ลูก-ไผ้-ไญ] [luːk^3^-p^h^ay^3^-ñay^6^]\nน. ลูกสะใภ้คนโต, หญิงที่แต่งงานกับลูกชายคนโต; ลูกใภ้กก ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0074",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกเลี้ยง",
+      "transcriptions": [
+        "ลูก-เหฺลี้ยง",
+        "luːk^3^-liaŋ^3^"
+      ],
+      "notes": [
+        "ทก.",
+        "ทก."
+      ],
+      "cross_references": [
+        "ลูกติดพ่อ",
+        "ลูกติดแม่"
+      ],
+      "raw_text": "ลูกเลี้ยง ลูกลยฯ้ฯง ลูกล้ยง [ลูก-เหฺลี้ยง] [luːk^3^-liaŋ^3^]\n๑. (ทก.) ดู ลูกติดพ่อ.\n๒. (ทก.) ดู ลูกติดแม่."
+    },
+    {
+      "id": "isaan_kinship_0075",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกสาว",
+      "transcriptions": [
+        "ลูก-สาว",
+        "luːk^3^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาว ลูกสาวฯ ลูกสาว [ลูก-สาว] [luːk^3^-saːw^5^]\nน. ลูกที่เป็นผู้หญิง."
+    },
+    {
+      "id": "isaan_kinship_0076",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกสาวหล้า",
+      "transcriptions": [
+        "ลูก-สาว-หฺล่า",
+        "luːk^3^-saːw^5^-laː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาวหล้า ลูกสาวฯหลฯ้า ลูกสาวหล้า [ลูก-สาว-หฺล่า]\n[luːk^3^-saːw^5^-laː^2^]\nน. ลูกสาวคนสุดท้อง."
+    },
+    {
+      "id": "isaan_kinship_0077",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกสาวใหญ่",
+      "transcriptions": [
+        "ลูก-สาว-ไญ",
+        "luːk^3^-saːw^5^-ñay^6^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกสาวใหญ่ ลูกสาวฯไหยฯ่ฯ ลูกสาวไหย่ [ลูก-สาว-ไญ]\n[luːk^3^-saːw^5^-ñay^6^]\nน. ลูกสาวคนโต."
+    },
+    {
+      "id": "isaan_kinship_0078",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกหล้า",
+      "transcriptions": [
+        "ลูก-หฺล่า",
+        "luːk^3^-laː^2^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกหล้า ลูกหลฯ้า ลูกหล้า [ลูก-หฺล่า] [luːk^3^-laː^2^]\nน. ลูกคนสุดท้อง."
+    },
+    {
+      "id": "isaan_kinship_0079",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ลูกอ้ายลูกน้อง",
+      "transcriptions": [
+        "ลูก-อ้าย-ลูก-หฺน้อง",
+        "luːk^3^-Ɂaːy^3^-luːk^3^-nɔŋ^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "ลูกอ้ายลูกน้อง ลูกอ้ายฯลูกน้อฯง ลูกอ้ายลูกน้อง [ลูก-อ้าย-ลูก-หฺน้อง]\n[luːk^3^-Ɂaːy^3^-luːk^3^-nɔŋ^3^]\nน. ลูกพี่ลูกน้อง."
+    },
+    {
+      "id": "isaan_kinship_0080",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "สอง",
+      "transcriptions": [
+        "สอง",
+        "sɔːŋ^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "สอง สอฯง สอง [สอง] [sɔːŋ^5^]\n(โบ) น. คำเรียกลูกชายคนที่ ๑๒."
+    },
+    {
+      "id": "isaan_kinship_0081",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "สาม",
+      "transcriptions": [
+        "สาม",
+        "saːm^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "สาม สามฯ สาม [สาม] [saːm^5^]\n(โบ) น. คำเรียกลูกชายคนที่ ๓."
+    },
+    {
+      "id": "isaan_kinship_0082",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ไส",
+      "transcriptions": [
+        "ไส",
+        "say^5^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ไส ไส ไส [ไส] [say^5^]\n(โบ) น. คำเรียกลูกชายคนที่ ๔."
+    },
+    {
+      "id": "isaan_kinship_0083",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลาน",
+      "transcriptions": [
+        "หฺลาน",
+        "laːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลาน หลฯานฯ หลาน [หฺลาน] [laːn^5^]\n๑. น. หลาน, ลูกของลูก.\n๒. น. หลาน, ลูกของพี่หรือของน้อง."
+    },
+    {
+      "id": "isaan_kinship_0084",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลานเขย",
+      "transcriptions": [
+        "หฺลาน-เขย",
+        "laːn^5^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลานเขย หลฯานฯเขิยฯ หลานเขิย [หฺลาน-เขย] [laːn^5^-k^h^əːy^5^]\nน. หลานเขย, ชายที่แต่งงานกับหลานสาว."
+    },
+    {
+      "id": "isaan_kinship_0085",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลานชาย",
+      "transcriptions": [
+        "หฺลาน-ซ่าย",
+        "laːn^5^-saːy^7^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลานชาย หลฯานฯชายฯ หลานชาย [หฺลาน-ซ่าย] [laːn^5^-saːy^7^]\nน. หลานชาย, หลานที่เป็นผู้ชาย."
+    },
+    {
+      "id": "isaan_kinship_0086",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลานใภ้",
+      "transcriptions": [
+        "หฺลาน-ไผ้",
+        "laːn^5^-p^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลานใภ้ หลฯานฯไภ้ หลานไพ้ [หฺลาน-ไผ้] [laːn^5^-p^h^ay^3^]\nน. หลานสะใภ้, หญิงที่แต่งงานกับหลานชาย."
+    },
+    {
+      "id": "isaan_kinship_0087",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลานแม่ยิง",
+      "transcriptions": [
+        "หฺลาน-แม-ญิ่ง",
+        "laːn^5^-mԑː^6^-ñiŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลานสาว"
+      ],
+      "raw_text": "หลานแม่ยิง หลฯานฯแม่ยิงฯฯ หลานแม่ยิง [หฺลาน-แม-ญิ่ง]\n[laːn^5^-mԑː^6^-ñiŋ^7^]\nดู หลานสาว."
+    },
+    {
+      "id": "isaan_kinship_0088",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลานยิง",
+      "transcriptions": [
+        "หฺลาน-ญิ่ง",
+        "laːn^5^-ñiŋ^7^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "หลานสาว"
+      ],
+      "raw_text": "หลานยิง หลฯานฯยิงฯฯ หลานยิง [หฺลาน-ญิ่ง] [laːn^5^-ñiŋ^7^]\nดู หลานสาว."
+    },
+    {
+      "id": "isaan_kinship_0089",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "หลานสาว",
+      "transcriptions": [
+        "หฺลาน-สาว",
+        "laːn^5^-saːw^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "หลานสาว หลฯานฯสาวฯ หลานสาว [หฺลาน-สาว] [laːn^5^-saːw^5^]\nน. หลานสาว, หลานที่เป็นผู้หญิง; หลานยิง หรือ หลานแม่ยิง ก็ว่า."
+    },
+    {
+      "id": "isaan_kinship_0090",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เหลน",
+      "transcriptions": [
+        "เหลน",
+        "leːn^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหลน เหลฯร เหลน [เหลน] [leːn^5^]\nน. เหลน, ลูกของหลาน."
+    },
+    {
+      "id": "isaan_kinship_0091",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เหลนเขย",
+      "transcriptions": [
+        "เหลน-เขย",
+        "leːn^5^-k^h^əːy^5^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหลนเขย เหลฯรเขิยฯ เหลนเขิย [เหลน-เขย] [leːn^5^-k^h^əːy^5^]\nน. เหลนเขย, ชายที่แต่งงานกับเหลนสาว."
+    },
+    {
+      "id": "isaan_kinship_0092",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เหลนใภ้",
+      "transcriptions": [
+        "เหลน-ไผ้",
+        "leːn^5^-p^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "เหลนใภ้ เหลฯรไภ้ เหลนไพ้ [เหลน-ไผ้] [leːn^5^-p^h^ay^3^]\nน. เหลนสะใภ้, หญิงที่แต่งงานกับเหลนชาย."
+    },
+    {
+      "id": "isaan_kinship_0093",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อก",
+      "transcriptions": [
+        "อ๊ก",
+        "Ɂok^4^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "อก อ฿กฯ อ฿ก [อ๊ก] [Ɂok^4^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๖."
+    },
+    {
+      "id": "isaan_kinship_0094",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อัง",
+      "transcriptions": [
+        "อัง",
+        "Ɂaŋ^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "อัง อังฯฯ อัง [อัง] [Ɂaŋ^1^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๑๐."
+    },
+    {
+      "id": "isaan_kinship_0095",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อั้ว",
+      "transcriptions": [
+        "อั้ว",
+        "Ɂua^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "อั้ว อ฿้ฯวฯ อ฿้ว [อั้ว] [Ɂua^3^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๕."
+    },
+    {
+      "id": "isaan_kinship_0096",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อา",
+      "transcriptions": [
+        "อา",
+        "Ɂaː^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อา อา อา [อา] [Ɂaː^1^]\n๑. น. น้องสาวของพ่อ.\n๒. น. อาสะใภ้, หญิงที่มาแต่งงานกับน้องชายของพ่อ."
+    },
+    {
+      "id": "isaan_kinship_0097",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อาม",
+      "transcriptions": [
+        "อาม",
+        "Ɂaːm^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "อาม อามฯ อาม [อาม] [Ɂaːm^1^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๓."
+    },
+    {
+      "id": "isaan_kinship_0098",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อ้าย",
+      "transcriptions": [
+        "อ้าย",
+        "Ɂaːy^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "อ้าย อ้ายฯ อ้าย [อ้าย] [Ɂaːy^3^]\n๑. น. พี่ชาย.\n๒. (โบ) น. คำเรียกลูกชายคนโต."
+    },
+    {
+      "id": "isaan_kinship_0099",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อ้ายเขย",
+      "transcriptions": [
+        "อ้าย-เขย",
+        "Ɂaːy^3^-k^h^əy^5^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่อ้าย"
+      ],
+      "raw_text": "อ้ายเขย อ้ายฯเขิยฯ อ้ายเขิย [อ้าย-เขย] [Ɂaːy^3^-k^h^əy^5^]\nดู พี่อ้าย."
+    },
+    {
+      "id": "isaan_kinship_0100",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อาว",
+      "transcriptions": [
+        "อาว",
+        "Ɂaːw^1^"
+      ],
+      "notes": [],
+      "cross_references": [],
+      "raw_text": "อาว อาวฯ อาว [อาว] [Ɂaːw^1^]\n๑. น. น้องชายของพ่อ.\n๒. น. อาเขย, ชายที่มาแต่งงานกับน้องสาวของพ่อ."
+    },
+    {
+      "id": "isaan_kinship_0101",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "อี่",
+      "transcriptions": [
+        "อี",
+        "Ɂiː^6^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "อี่ อี่ อี่ [อี] [Ɂiː^6^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๒."
+    },
+    {
+      "id": "isaan_kinship_0102",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เอก",
+      "transcriptions": [
+        "เอก",
+        "Ɂeːk^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "เอก เอกฯ เอก [เอก] [Ɂeːk^2^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๗."
+    },
+    {
+      "id": "isaan_kinship_0103",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เอา",
+      "transcriptions": [
+        "เอา",
+        "Ɂaw^1^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "เอา เอ฿า เอ฿า [เอา] [Ɂaw^1^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๙."
+    },
+    {
+      "id": "isaan_kinship_0104",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เอื้อย",
+      "transcriptions": [
+        "เอื้อย",
+        "Ɂɨay^3^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "เอื้อย เอึ้ยฯ เอึ้ย [เอื้อย] [Ɂɨay^3^]\n๑. น. พี่สาว.\n๒. (โบ) น. คำเรียกลูกสาวคนโต."
+    },
+    {
+      "id": "isaan_kinship_0105",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "เอื้อยใภ้",
+      "transcriptions": [
+        "เอื้อย-ไผ้",
+        "Ɂɨay^3^-p^h^ay^3^"
+      ],
+      "notes": [],
+      "cross_references": [
+        "พี่นาง"
+      ],
+      "raw_text": "เอื้อยใภ้ เอึ้ยฯไภ้ เอึ้ยไพ้ [เอื้อย-ไผ้] [Ɂɨay^3^-p^h^ay^3^]\nดู พี่นาง."
+    },
+    {
+      "id": "isaan_kinship_0106",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "แอก",
+      "transcriptions": [
+        "แอก",
+        "Ɂɛːk^2^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "แอก แอกฯ แอก [แอก] [Ɂɛːk^2^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๘."
+    },
+    {
+      "id": "isaan_kinship_0107",
+      "region": "isaan",
+      "category": "kinship",
+      "headword": "ไอ่",
+      "transcriptions": [
+        "ไอ",
+        "Ɂay^6^"
+      ],
+      "notes": [
+        "โบ"
+      ],
+      "cross_references": [],
+      "raw_text": "ไอ่ ไอ่ ไอ่ [ไอ] [Ɂay^6^]\n(โบ) น. คำเรียกลูกสาวคนที่ ๔."
+    }
+  ]
+}

@@ -70,7 +70,28 @@ describe('DictionaryService', () => {
     expect(res.aiAssistance.summary).toContain('ประสิทธิภาพ');
   });
 
-  it('should throw NotFoundException if word does not exist', async () => {
-    await expect(service.getWordDetail('คำไม่มีอยู่จริง')).rejects.toThrow(NotFoundException);
+  it('should return evolution timeline with editionYear and status', async () => {
+    const res = await service.getWordEvolution('ประสิทธิภาพ');
+    expect(res.word).toBe('ประสิทธิภาพ');
+    expect(res.timeline).toBeDefined();
+    expect(res.timeline.length).toBeGreaterThan(0);
+    expect(res.timeline[0].editionYear).toBe('2569');
+    expect(res.timeline[0].status).toBe('ADDED');
+  });
+
+  it('should return curated evolution timeline for สมานฉันท์', async () => {
+    const res = await service.getWordEvolution('สมานฉันท์');
+    expect(res.word).toBe('สมานฉันท์');
+    expect(res.timeline).toHaveLength(3);
+    expect(res.timeline[0].editionYear).toBe('2542');
+    expect(res.timeline[0].status).toBe('ORIGINAL');
+    expect(res.timeline[1].editionYear).toBe('2554');
+    expect(res.timeline[1].status).toBe('CHANGED');
+    expect(res.timeline[2].editionYear).toBe('2569');
+    expect(res.timeline[2].status).toBe('EXPANDED');
+  });
+
+  it('should throw NotFoundException if word does not exist in evolution', async () => {
+    await expect(service.getWordEvolution('คำไม่มีอยู่จริง_xyz')).rejects.toThrow(NotFoundException);
   });
 });

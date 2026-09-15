@@ -15,6 +15,10 @@ import ParsedIntent from "./ParsedIntent";
 import SmartFilters, { type SmartFilterValue } from "./SmartFilters";
 import PronunciationButton from "../pronunciation/PronunciationButton";
 import ShareResultButton from "../share/ShareResultButton";
+import SignLanguageModal from "../tsl/SignLanguageModal";
+import BrailleModal from "../braille/BrailleModal";
+import WordTranslations from "../translations/WordTranslations";
+import SearchResultFeedback from "../feedback/SearchResultFeedback";
 import Icon from "../ui/Icon";
 
 type SearchResultsProps = {
@@ -26,6 +30,7 @@ type SearchResultsProps = {
   onCompare: (word: Recommendation) => void;
   onRetry: () => void;
   sharedWord?: string;
+  onAIChat?: (word: Recommendation) => void;
 };
 
 export default function SearchResults({
@@ -37,9 +42,12 @@ export default function SearchResults({
   onCompare,
   onRetry,
   sharedWord = "",
+  onAIChat,
 }: SearchResultsProps) {
   const { result, loading, error, revealed, revision, query } = experience;
   const [selection, setSelection] = useState("");
+  const [signLanguageOpen, setSignLanguageOpen] = useState(false);
+  const [brailleOpen, setBrailleOpen] = useState(false);
   const [filters, setFilters] = useState<SmartFilterValue>({
     register: "",
     context: "",
@@ -50,6 +58,8 @@ export default function SearchResults({
   useLayoutEffect(() => {
     setFilters({ register: "", context: "", excluded: "" });
     setSelection(sharedWord);
+    setSignLanguageOpen(false);
+    setBrailleOpen(false);
     audioManager.stop();
   }, [revision, sharedWord]);
 
@@ -64,6 +74,8 @@ export default function SearchResults({
   const word = words.find((candidate) => candidate.headword === selection) ?? words[0];
 
   useEffect(() => {
+    setSignLanguageOpen(false);
+    setBrailleOpen(false);
     audioManager.stop();
   }, [word?.headword]);
 
@@ -164,8 +176,8 @@ export default function SearchResults({
                 <div className="candidate-list">
                   {words.map((candidate, index) => (
                     <button
-                      key={candidate.id ?? candidate.headword}
-                      className="candidate-row"
+                      key={candidate.id ? `${candidate.id}-${index}` : `${candidate.headword}-${index}`}
+                      className="candidate-row font-thai-reading"
                       aria-pressed={candidate.headword === word.headword}
                       disabled={loading}
                       onClick={() => select(candidate)}
@@ -174,7 +186,14 @@ export default function SearchResults({
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>
-                        <strong>{candidate.headword}</strong>
+                        <strong>
+                          {candidate.headword}
+                          {(candidate.english || candidate.translations?.[0]?.translatedWord) && (
+                            <span className="candidate-english font-ui">
+                              {" "}· {candidate.english || candidate.translations?.[0]?.translatedWord}
+                            </span>
+                          )}
+                        </strong>
                         <small>{candidate.registers?.join(" · ") || "คำใกล้เคียง"}</small>
                         {candidate.score !== undefined && (
                           <small>
@@ -191,14 +210,39 @@ export default function SearchResults({
               <article data-reveal className="word-detail" aria-labelledby="word-title">
                 <div key={word.headword} className="detail-content">
                   <p className="detail-kicker">ความหมายของคำ</p>
-                  <h3 id="word-title" tabIndex={-1}>
+                  <h3 id="word-title" className="font-thai-reading thai-headword" tabIndex={-1}>
                     {word.headword}
+                    {(word.english || word.translations?.[0]?.translatedWord) && (
+                      <span className="detail-english-inline font-ui">
+                        {" "}({word.english || word.translations?.[0]?.translatedWord})
+                      </span>
+                    )}
                   </h3>
-                  <p className="word-phonetic">
+                  <p className="word-phonetic font-thai-reading">
                     {word.pronunciation?.phonetic} {word.pos && <span>{word.pos}</span>}
                   </p>
                   <div className="word-utilities">
                     <PronunciationButton word={word} />
+                    <button
+                      type="button"
+                      className="icon-button tsl-trigger-btn font-thai-reading"
+                      onClick={() => setSignLanguageOpen(true)}
+                      aria-haspopup="dialog"
+                      aria-expanded={signLanguageOpen}
+                      aria-label={`ดูภาษามือไทยสำหรับคำว่า ${word.headword}`}
+                    >
+                      <span className="tsl-btn-text">[ภาษามือไทย 🤟]</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="icon-button braille-trigger-btn font-thai-reading"
+                      onClick={() => setBrailleOpen(true)}
+                      aria-haspopup="dialog"
+                      aria-expanded={brailleOpen}
+                      aria-label={`ดูอักษรเบรลล์สำหรับคำว่า ${word.headword}`}
+                    >
+                      <span className="braille-btn-text">[Braille ⠃]</span>
+                    </button>
                     <ShareResultButton
                       word={word}
                       query={result?.query_understanding.raw_query ?? query}
@@ -208,19 +252,23 @@ export default function SearchResults({
 
                   <section>
                     <h4>ความหมาย</h4>
-                    <p className="definition">{word.definition}</p>
+                    <p className="definition font-thai-reading">{word.definition}</p>
                   </section>
+                  <WordTranslations
+                    headword={word.headword}
+                    initialTranslations={word.translations}
+                  />
                   {!!examples.length && (
                     <section>
                       <h4>ตัวอย่างการใช้</h4>
                       {examples.map((example) => (
-                        <blockquote key={example}>{example}</blockquote>
+                        <blockquote className="font-thai-reading" key={example}>{example}</blockquote>
                       ))}
                     </section>
                   )}
                   <section>
                     <h4>เหมาะกับบริบท</h4>
-                    <div className="word-tags">
+                    <div className="word-tags font-thai-reading">
                       {[...(word.registers ?? []), ...(word.contexts ?? [])].map(
                         (tag, index) => <span key={tag + index}>{tag}</span>,
                       )}
@@ -229,7 +277,7 @@ export default function SearchResults({
                   {(word.related_words?.length || words.length > 1) && (
                     <section>
                       <h4>คำใกล้เคียง</h4>
-                      <div className="related-words">
+                      <div className="related-words font-thai-reading">
                         {(word.related_words ??
                           words
                             .filter((candidate) => candidate !== word)
@@ -266,11 +314,27 @@ export default function SearchResults({
                       ? "เลือกเทียบแล้ว"
                       : "เลือกเปรียบเทียบ"}
                   </button>
+                  {onAIChat && (
+                    <button
+                      type="button"
+                      className="ai-consult-btn font-thai-reading"
+                      disabled={loading}
+                      onClick={() => onAIChat(word)}
+                      title={`ปรึกษาผู้ช่วย AI เกี่ยวกับคำว่า "${word.headword}"`}
+                    >
+                      <span aria-hidden="true">✨</span>
+                      <span>ปรึกษาผู้ช่วย AI เกี่ยวกับคำนี้</span>
+                    </button>
+                  )}
                   {!!compareSelected.length && (
                     <a className="source-shortcut" href="#compare">
                       ไปยังตารางเปรียบเทียบ →
                     </a>
                   )}
+                  <SearchResultFeedback
+                    query={result?.query_understanding.raw_query ?? query}
+                    word={word.headword}
+                  />
                 </div>
               </article>
 
@@ -278,7 +342,7 @@ export default function SearchResults({
                 <section className="context-guidance">
                   <Icon name="book" />
                   <h3>บริบทการใช้</h3>
-                  <p>
+                  <p className="font-thai-reading">
                     {word.contextual_explanation ??
                       word.ai_explanation ??
                       "พิจารณาความหมายและระดับภาษาให้ตรงกับสถานการณ์ที่ต้องการสื่อ"}
@@ -296,8 +360,8 @@ export default function SearchResults({
                   <h3>แหล่งข้อมูล</h3>
                   {word.evidence ? (
                     <>
-                      <p>{word.evidence.source_book}</p>
-                      <small>
+                      <p className="font-thai-reading">{word.evidence.source_book}</p>
+                      <small className="font-thai-reading">
                         {word.evidence.edition}{" "}
                         {word.evidence.edition_year &&
                           `พ.ศ. ${word.evidence.edition_year}`}
@@ -309,7 +373,7 @@ export default function SearchResults({
                       </p>
                     </>
                   ) : (
-                    <p>ยังไม่มีหลักฐานเพียงพอสำหรับยืนยันข้อมูลนี้</p>
+                    <p className="font-thai-reading">ยังไม่มีหลักฐานเพียงพอสำหรับยืนยันข้อมูลนี้</p>
                   )}
                   <button
                     className="evidence-button"
@@ -319,6 +383,18 @@ export default function SearchResults({
                     {word.evidence ? "ตรวจสอบหลักฐาน" : "สถานะหลักฐานอ้างอิง"}
                     <Icon name="arrow" />
                   </button>
+                  {onAIChat && (
+                    <button
+                      type="button"
+                      className="ai-consult-btn font-thai-reading"
+                      style={{ marginTop: "10px", width: "100%", justifyContent: "center" }}
+                      disabled={loading}
+                      onClick={() => onAIChat(word)}
+                    >
+                      <span aria-hidden="true">✨</span>
+                      <span>ปรึกษาผู้ช่วย AI</span>
+                    </button>
+                  )}
                 </section>
               </aside>
             </>
@@ -349,6 +425,20 @@ export default function SearchResults({
           )}
         </div>
       </div>
+      {word && (
+        <SignLanguageModal
+          word={word.headword}
+          isOpen={signLanguageOpen}
+          onClose={() => setSignLanguageOpen(false)}
+        />
+      )}
+      {word && (
+        <BrailleModal
+          word={word.headword}
+          isOpen={brailleOpen}
+          onClose={() => setBrailleOpen(false)}
+        />
+      )}
     </section>
   );
 }
