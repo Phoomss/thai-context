@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, type RefObject, type MouseEvent } from "react";
 import Image from "next/image";
+import Link from "next/link";
 export default function MorphingNavbar({
   navRef,
   busy,
@@ -83,32 +84,28 @@ export default function MorphingNavbar({
         <a href="#word-scrambler" onClick={() => setOpen(false)} style={{ color: "#b45309", fontWeight: 600 }}>
           Word Scrambler 🔀
         </a>
-        {onAIChat && (
-          <button
-            type="button"
-            className="nav-ai-button font-thai-reading"
-            onClick={() => {
-              setOpen(false);
-              onAIChat();
-            }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "5px",
-              background: "#eff6ff",
-              color: "#1d4ed8",
-              border: "1px solid #bfdbfe",
-              borderRadius: "16px",
-              padding: "4px 12px",
-              fontSize: "13px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
-          >
-            <span aria-hidden="true">✨</span>
-            <span>ผู้ช่วย AI</span>
-          </button>
-        )}
+        <Link
+          href="/ai-assistant"
+          onClick={() => setOpen(false)}
+          className="nav-ai-button font-thai-reading"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "5px",
+            background: "#eff6ff",
+            color: "#1d4ed8",
+            border: "1px solid #bfdbfe",
+            borderRadius: "16px",
+            padding: "4px 12px",
+            fontSize: "13px",
+            fontWeight: 600,
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
+        >
+          <span aria-hidden="true">✨</span>
+          <span>ผู้ช่วย AI</span>
+        </Link>
         <a
           href="/workspace"
           onClick={() => setOpen(false)}
