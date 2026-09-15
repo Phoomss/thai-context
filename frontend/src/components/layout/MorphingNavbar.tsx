@@ -183,15 +183,6 @@ export default function MorphingNavbar({
           AI Workspace ✦
         </Link>
         <Link
-          href="/translate"
-          onClick={() => setOpen(false)}
-          className="nav-btn-pill nav-translate-btn font-thai-reading"
-          aria-label="แปลภาษาสำหรับชาวต่างชาติ (Translator)"
-        >
-          <span aria-hidden="true">🌐</span>
-          <span>แปลภาษา (EN/TH)</span>
-        </Link>
-        <Link
           href="/ai-assistant"
           role="button"
           onClick={() => {
