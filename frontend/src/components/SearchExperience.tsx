@@ -208,13 +208,21 @@ export default function SearchExperience() {
     );
   }
   const comparisonWords = model.result?.recommendations ?? EMPTY_RECOMMENDATIONS;
-  // Assistant is an existing modal and Workspace owns its own route. Derive the
-  // selected mode from the actual interface, rather than keeping a second state.
+  const assistantHref = model.query?.trim()
+    ? `/ai-assistant?word=${encodeURIComponent(model.query.trim())}`
+    : "/ai-assistant";
+
   const modeSwitcher = (
     <SearchModeSwitcher
-      mode={aiAssistantOpen ? "ai-assistant" : "context-search"}
-      onContextSearch={() => setAiAssistantOpen(false)}
-      onAssistant={() => handleOpenAIChat()}
+      mode="context-search"
+      onContextSearch={() => {
+        setAiAssistantOpen(false);
+        const input =
+          document.getElementById("meaning") ||
+          document.getElementById("persistent-meaning");
+        input?.focus();
+      }}
+      assistantHref={assistantHref}
       disabled={isCinematic(model.state) || (model.hasResults && !model.revealed)}
     />
   );
