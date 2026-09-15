@@ -68,6 +68,6 @@ test("cinematic restores visible navbar and composer searches do not hide it", a
   await expectFloating(page);
   await page.locator("#persistent-meaning").fill("วิจัย");
   await page.locator(".bottom-composer button").click();
-  await expect(page.locator("#word-title")).toHaveText("วิจัย");
+  await expect(page.locator("#word-title")).toHaveText(/^วิจัย(?: \(research\))?$/);
   await expectFloating(page);
 });

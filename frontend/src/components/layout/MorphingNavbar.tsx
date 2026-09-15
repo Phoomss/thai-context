@@ -6,12 +6,10 @@ export default function MorphingNavbar({
   navRef,
   busy,
   onHome,
-  onAIChat,
 }: {
   navRef: RefObject<HTMLElement | null>;
   busy: boolean;
   onHome: (event: MouseEvent<HTMLAnchorElement>) => void;
-  onAIChat?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const [floating, setFloating] = useState(false);
