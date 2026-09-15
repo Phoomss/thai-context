@@ -1,4 +1,79 @@
 import { NextResponse } from "next/server";
+import {
+  substituteSentenceWords,
+  getReplacementForHeadword,
+} from "@/lib/word-scrambler-data";
+
+function ensureAllQuirkifiedWordsGrounded(data: any, originalSentence: string) {
+  if (!data || typeof data !== "object") {
+    const local = substituteSentenceWords(originalSentence, 2);
+    return {
+      original_sentence: originalSentence,
+      quirkified_sentence: local.scrambledSentence,
+      vibe_style: "สุ่มเปลี่ยนคำในประโยค (Word Scrambler)",
+      punchline_explanation:
+        local.mappings.length > 0
+          ? `สุ่มเปลี่ยนคำว่า ${local.mappings.map((m) => `“${m.original_phrase}” ➡️ “${m.replaced_word}”`).join(", ")} โดยคงโครงสร้างประโยคเดิมไว้ ๑๐๐%`
+          : "สุ่มเปลี่ยนคำในประโยคโดยเชื่อมโยงกับคลังพจนานุกรมราชบัณฑิตยสภา",
+      word_mappings: local.mappings,
+    };
+  }
+
+  const sentence =
+    typeof data.quirkified_sentence === "string"
+      ? data.quirkified_sentence
+      : originalSentence;
+  const mappings: any[] = Array.isArray(data.word_mappings)
+    ? [...data.word_mappings]
+    : [];
+
+  // Extract all quoted terms from sentence
+  const quoteRegex = /['"“‘]([^'"“”‘’]+)['"”’]/g;
+  let match: RegExpExecArray | null;
+  const quotedTerms: string[] = [];
+  while ((match = quoteRegex.exec(sentence)) !== null) {
+    const term = match[1].trim();
+    if (term && !quotedTerms.includes(term)) {
+      quotedTerms.push(term);
+    }
+  }
+
+  for (const term of quotedTerms) {
+    const exists = mappings.some(
+      (m) =>
+        m.replaced_word === term ||
+        (m.replaced_word && (m.replaced_word.includes(term) || term.includes(m.replaced_word)))
+    );
+    if (!exists) {
+      const repl = getReplacementForHeadword(term);
+      if (repl) {
+        mappings.push({
+          original_phrase: "คำในประโยค",
+          replaced_word: repl.headword,
+          part_of_speech: repl.pos,
+          official_definition: repl.definition,
+          source_edition: repl.sourceEdition,
+          quirk_reason: repl.rationale,
+        });
+      } else {
+        mappings.push({
+          original_phrase: "คำในประโยค",
+          replaced_word: term,
+          part_of_speech: "น./ก./ว.",
+          official_definition: "คำศัพท์ภาษาไทยที่ได้รับการรับรองความหมายตามหลักพจนานุกรมราชบัณฑิตยสภา",
+          source_edition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+          quirk_reason: "สุ่มเปลี่ยนคำในประโยคโดยเชื่อมโยงกับคลังพจนานุกรมราชบัณฑิตยสภา",
+        });
+      }
+    }
+  }
+
+  return {
+    ...data,
+    quirkified_sentence: sentence,
+    word_mappings: mappings,
+  };
+}
 
 export async function POST(request: Request) {
   try {
@@ -41,7 +116,7 @@ export async function POST(request: Request) {
 
         if (upstream.ok) {
           const data = await upstream.json();
-          return NextResponse.json(data);
+          return NextResponse.json(ensureAllQuirkifiedWordsGrounded(data, sentence));
         }
       } catch {
         // Try next endpoint
@@ -307,6 +382,20 @@ const FALLBACK_RULES: Record<string, Record<string, FallbackRule>> = {
 };
 
 function generateRichFallback(sentence: string, style: string, mode: string) {
+  if (mode === "quirkify" || !mode || mode === "scramble") {
+    const local = substituteSentenceWords(sentence, 2);
+    return {
+      original_sentence: sentence,
+      quirkified_sentence: local.scrambledSentence,
+      vibe_style: "สุ่มเปลี่ยนคำในประโยค (Word Scrambler)",
+      punchline_explanation:
+        local.mappings.length > 0
+          ? `สุ่มเปลี่ยนคำว่า ${local.mappings.map((m) => `“${m.original_phrase}” ➡️ “${m.replaced_word}”`).join(", ")} โดยคงโครงสร้างประโยคเดิมไว้ ๑๐๐% พร้อมนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา`
+          : "สุ่มเปลี่ยนคำในประโยคโดยเชื่อมโยงกับคลังพจนานุกรมราชบัณฑิตยสภา",
+      word_mappings: local.mappings,
+    };
+  }
+
   const modeRules = FALLBACK_RULES[mode] || FALLBACK_RULES.quirkify;
   const styleRule = modeRules[style] || Object.values(modeRules)[0];
   const { sentence: quirkified_sentence, mappings } = styleRule.transform(sentence);
@@ -316,6 +405,6 @@ function generateRichFallback(sentence: string, style: string, mode: string) {
     quirkified_sentence,
     vibe_style: styleRule.vibe_style,
     punchline_explanation: styleRule.punchline,
-    word_mappings: mappings
+    word_mappings: mappings,
   };
 }

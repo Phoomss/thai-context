@@ -59,7 +59,17 @@ const clearSpeech = () => {
     utterance.onerror = null;
     utterance = null;
   }
-  speechApi()?.cancel();
+  const speech = speechApi();
+  if (speech) {
+    try {
+      speech.cancel();
+      if (typeof speech.resume === "function") {
+        speech.resume();
+      }
+    } catch {
+      // Ignore cancel error
+    }
+  }
 };
 
 const complete = (token: number) => {
@@ -85,8 +95,9 @@ const browserFallback = (word: Recommendation, token: number, reason: unknown) =
   clearAudio();
   console.warn("[TTS] Server audio failed; trying browser speech fallback.", reason);
 
+  const speech = speechApi();
   if (
-    !speechApi() ||
+    !speech ||
     typeof SpeechSynthesisUtterance === "undefined"
   ) {
     fail(token);
@@ -94,9 +105,28 @@ const browserFallback = (word: Recommendation, token: number, reason: unknown) =
   }
 
   try {
+    speech.cancel();
+    if (typeof speech.resume === "function") {
+      speech.resume();
+    }
+
     utterance = new SpeechSynthesisUtterance(word.headword);
-    utterance.lang = word.pronunciation?.locale ?? "th-TH";
+    const targetLocale = word.pronunciation?.locale ?? "th-TH";
+    utterance.lang = targetLocale;
     utterance.rate = 0.85;
+
+    try {
+      const voices = speech.getVoices?.() || [];
+      const match = voices.find(
+        (v) =>
+          v.lang?.toLowerCase() === targetLocale.toLowerCase() ||
+          v.lang?.toLowerCase().startsWith("th"),
+      );
+      if (match) utterance.voice = match;
+    } catch {
+      // Ignore voice lookup error
+    }
+
     utterance.onstart = () => {
       if (generation !== token) return;
       if (requestTimer) clearTimeout(requestTimer);
@@ -108,7 +138,10 @@ const browserFallback = (word: Recommendation, token: number, reason: unknown) =
     requestTimer = setTimeout(() => {
       if (generation === token && status === "loading") fail(token);
     }, 4000);
-    speechApi()?.speak(utterance);
+    speech.speak(utterance);
+    if (speech.paused && typeof speech.resume === "function") {
+      speech.resume();
+    }
   } catch (error) {
     console.warn("[TTS] Browser speech fallback failed.", error);
     fail(token);
@@ -176,9 +209,20 @@ export const audioManager = {
     activeWord = headword;
     notify("loading");
 
+    // Initialize HTMLAudioElement synchronously within the user gesture context
+    let pendingAudio: HTMLAudioElement | null = null;
+    if (typeof Audio !== "undefined") {
+      try {
+        pendingAudio = new Audio();
+        audio = pendingAudio;
+      } catch {
+        // Fall back if Audio constructor fails in test/headless environment
+      }
+    }
+
     const controller = new AbortController();
     requestController = controller;
-    requestTimer = setTimeout(() => controller.abort(), 8000);
+    requestTimer = setTimeout(() => controller.abort(), 15000);
 
     try {
       const result = await synthesizeSpeech(headword, controller.signal);
@@ -188,17 +232,22 @@ export const audioManager = {
       requestController = null;
 
       objectUrl = URL.createObjectURL(result.blob);
-      audio = new Audio(objectUrl);
-      audio.preload = "auto";
-      audio.onplaying = () => {
+      const targetAudio = pendingAudio ?? (typeof Audio !== "undefined" ? new Audio() : null);
+      if (!targetAudio) {
+        throw new Error("HTML Audio not supported");
+      }
+      audio = targetAudio;
+      targetAudio.preload = "auto";
+      targetAudio.src = objectUrl;
+      targetAudio.onplaying = () => {
         if (generation === token) notify("playing");
       };
-      audio.onended = () => complete(token);
-      audio.onerror = () =>
+      targetAudio.onended = () => complete(token);
+      targetAudio.onerror = () =>
         browserFallback(word, token, new Error("Audio decoding failed"));
 
       try {
-        await audio.play();
+        await targetAudio.play();
         if (generation === token) notify("playing");
       } catch (error) {
         browserFallback(word, token, error);

@@ -77,8 +77,7 @@ THAI CONTEXT เป็นแพลตฟอร์มพจนานุกรม�
 
 - **Context Comparator**: เปรียบเทียบคำพร้อมกันได้สูงสุด 3–5 คำ แสดงจุดเน้น วิธีใช้ และจุดที่มักสับสน พร้อม Nuance Delta
 - **Evolution Explorer**: สำหรับดูตัวอย่างวิวัฒนาการของคำหรือความหมายตามยุคสมัย
-- **Dialect Explorer**: สำหรับสำรวจคำถิ่น 4 ภาค พร้อมฟังเสียงอ่านสำเนียงท้องถิ่น
-- **AI Co-Thinking Partner**: ผู้ช่วย AI วิเคราะห์เจตนาและแนะนำการต่อยอด พร้อม Context Chips และ Action Buttons
+- **AI Agent Workspace (✨ ผู้ช่วย AI ภาษาไทย)**: ระบบตัวแทนอัจฉริยะแบบมัลติเอเจนต์ (Multi-Agent System) พร้อมหน้าแยกเฉพาะ (`/ai-assistant`) และเมนูสลับหน้า (Navbar Toggle) รองรับ 6 บทบาท Agent (Writing, Rewrite, Compare, Discovery, Proofread, Auto), แสดง Traces ขั้นตอนการทำงานแบบเรียลไทม์ และแถบเครื่องมือ 1-Click Copy / Quick Refine Actions บนชิ้นงานที่สร้างจริง
 
 ### Pronunciation และเสียง
 

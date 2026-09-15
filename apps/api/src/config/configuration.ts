@@ -6,7 +6,7 @@ export default () => ({
   tts: {
     activeProvider: process.env.TTS_ACTIVE_PROVIDER || 'AI_SERVICE', // 'AI_SERVICE' | 'LOCAL_MOCK'
     voiceThai: process.env.TTS_VOICE_THAI || 'th-TH-PremwadeeNeural',
-    timeoutMs: parseInt(process.env.TTS_TIMEOUT_MS || '3000', 10),
+    timeoutMs: parseInt(process.env.TTS_TIMEOUT_MS || '12000', 10),
     cacheDir: process.env.TTS_CACHE_DIR || '/tmp/thai-context/tts-cache',
   },
 });

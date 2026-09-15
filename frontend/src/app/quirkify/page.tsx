@@ -5,9 +5,9 @@ import SentenceQuirkifier from "@/components/quirkify/SentenceQuirkifier";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Word Scrambler & ปั่นคำภาษาไทย | THAI CONTEXT",
+  title: "Word Scrambler — สุ่มเปลี่ยนคำในประโยค | THAI CONTEXT",
   description:
-    "เครื่องมือปั่นคำปริศนา อักษรสลับ (Anagram), คำผวนชวนคิด, และคลังคำแปลงประโยคปั่น พร้อมนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ",
+    "เครื่องมือสุ่มเปลี่ยนเฉพาะคำในประโยคภาษาไทย พร้อมนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ",
 };
 
 export default function QuirkifyPage() {
@@ -35,18 +35,24 @@ export default function QuirkifyPage() {
             </div>
             <span
               className="workspace-badge-tag"
-              style={{ background: "#fef3c7", color: "#b45309", borderColor: "#fde68a" }}
+              style={{ background: "#eaf4fe", color: "var(--accent)", borderColor: "#c8e0fa" }}
             >
-              ✦ Word Scrambler & Quirkifier
+              ✦ สุ่มเปลี่ยนคำ
             </span>
           </Link>
 
           <div className="workspace-nav-actions">
+            <Link href="/translate" className="workspace-nav-btn font-thai-reading" style={{ color: "#15803d", fontWeight: 600 }}>
+              🌐 แปลภาษา
+            </Link>
+            <Link href="/ai-assistant" className="workspace-nav-btn font-thai-reading" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              ✨ ผู้ช่วย AI
+            </Link>
             <Link href="/workspace" className="workspace-nav-btn">
               ⚡ AI Workspace
             </Link>
-            <Link href="/#compare" className="workspace-nav-btn" style={{ display: "none" }}>
-              เปรียบเทียบคำ
+            <Link href="/#dictionary" className="workspace-nav-btn">
+              📖 ค้นตามเล่ม
             </Link>
             <Link href="/" className="workspace-nav-btn" style={{ fontWeight: 600, color: "var(--accent)" }}>
               ← กลับสู่หน้าหลัก
