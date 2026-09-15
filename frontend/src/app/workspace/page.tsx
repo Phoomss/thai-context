@@ -39,11 +39,8 @@ export default function WorkspacePage() {
           </Link>
 
           <div className="workspace-nav-actions">
-            <Link href="/ai-assistant" className="workspace-nav-btn font-thai-reading" style={{ fontWeight: 600, color: "#1d4ed8" }}>
-              ✨ ผู้ช่วย AI
-            </Link>
-            <Link href="/#compare" className="workspace-nav-btn" style={{ display: "none" }}>
-              เปรียบเทียบคำ
+            <Link href="/word-scrambler" className="workspace-nav-btn">
+              🔀 Word Scrambler
             </Link>
             <Link href="/#dictionary" className="workspace-nav-btn">
               📖 ค้นตามเล่ม

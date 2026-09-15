@@ -1,7 +1,327 @@
 /**
- * Thai Word Scrambler & Anagram & Spoonerism Data & Utilities
- * Grounded in Royal Society Dictionary (ราชบัณฑิตยสภา)
+ * Thai Word Scrambler Data & Sentence Utilities
+ * Grounded in Royal Society Dictionary (ราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ)
  */
+
+import type { QuirkifyWordMapping } from "./api-client";
+
+export interface SentencePreset {
+  id: string;
+  text: string;
+  category: string;
+  label: string;
+}
+
+export const SENTENCE_PRESETS: SentencePreset[] = [
+  {
+    id: "p-1",
+    text: "วันนี้เหนื่อยมาก อยากกลับไปนอนแล้ว",
+    category: "ชีวิตประจำวัน",
+    label: "เหนื่อยมากอยากนอน",
+  },
+  {
+    id: "p-2",
+    text: "หิวข้าวมาก เที่ยงนี้ไปกินอะไรกันดี",
+    category: "อาหารการกิน",
+    label: "หิวข้าวเที่ยง",
+  },
+  {
+    id: "p-3",
+    text: "อากาศร้อนขนาดนี้ ไม่อยากก้าวเท้าออกจากห้องเลย",
+    category: "สภาพอากาศ",
+    label: "อากาศร้อนอบอ้าว",
+  },
+  {
+    id: "p-4",
+    text: "ขอบใจมากนะแก ช่วยชีวิตไว้แท้ๆ",
+    category: "มิตรภาพ",
+    label: "ขอบคุณเพื่อนแท้",
+  },
+  {
+    id: "p-5",
+    text: "อย่าคิดมากเลย เดี๋ยวทุกอย่างก็ดีขึ้นเอง",
+    category: "ความรู้สึก",
+    label: "ให้กำลังใจ",
+  },
+  {
+    id: "p-6",
+    text: "เบื่องานประจำ อยากลาออกไปเปิดร้านกาแฟ",
+    category: "การทำงาน",
+    label: "อยากเปิดร้านกาแฟ",
+  },
+];
+
+export interface DictionaryReplacementWord {
+  headword: string;
+  pos: string;
+  definition: string;
+  sourceEdition: string;
+  rationale: string;
+  triggerWords: string[];
+}
+
+export const DICTIONARY_REPLACEMENTS: DictionaryReplacementWord[] = [
+  {
+    headword: "ระโหย",
+    pos: "ว.",
+    definition: "อ่อนเพลียหมดกำลัง, อ่อนระโหย, อ่อนแรงลงเรื่อยๆ",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าเหนื่อยด้วยคำวิเศษณ์วรรณศิลป์อันสื่อถึงความอ่อนเพลียอย่างนุ่มนวล",
+    triggerWords: ["เหนื่อย", "เพลีย", "เมื่อย", "ล้า"],
+  },
+  {
+    headword: "จำศีล",
+    pos: "ก.",
+    definition: "ถือศีล, การที่สัตว์บางชนิดหลบอยู่นิ่ง ๆ ในที่พักช่วงหนึ่งเพื่อสงวนพลังงาน",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่านอนเป็นการกบดานพักผ่อนอย่างสงบเสงี่ยม",
+    triggerWords: ["นอน", "หลับ", "พักผ่อน", "พัก"],
+  },
+  {
+    headword: "โอชาหาร",
+    pos: "น.",
+    definition: "อาหารอันมีรสอร่อย, อาหารที่น่าพึงใจและทรงคุณค่า",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่ากินข้าวด้วยนามศัพท์อันหมายถึงอาหารอันเลิศรส",
+    triggerWords: ["กินข้าว", "ข้าว", "อาหาร", "กิน", "ของกิน"],
+  },
+  {
+    headword: "กรณียกิจ",
+    pos: "น.",
+    definition: "กิจที่พึงทำ, กิจธุระหรือหน้าที่การงานที่ต้องกระทำให้ลุล่วง",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่างานด้วยคำศัพท์ทางการอันทรงเกียรติ",
+    triggerWords: ["งาน", "ทำงาน", "การงาน", "โปรเจกต์"],
+  },
+  {
+    headword: "สหายสนิท",
+    pos: "น.",
+    definition: "เพื่อนร่วมใจ, มิตรแท้ผู้ร่วมทุกข์ร่วมสุขและเข้าใจกัน",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าแกหรือเพื่อนเป็นคำเรียกมิตรภาพอันงดงาม",
+    triggerWords: ["แก", "เพื่อน", "เธอ", "มึง"],
+  },
+  {
+    headword: "เร่าร้อน",
+    pos: "ว.",
+    definition: "ร้อนรุ่ม, ร้อนจัดอย่างยิ่ง, กระวนกระวายเพราะความร้อน",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าร้อนด้วยคำคุณศัพท์ที่สื่ออุณหภูมิอันเดือดพล่าน",
+    triggerWords: ["ร้อน", "อบอ้าว", "ร้อนมาก"],
+  },
+  {
+    headword: "วิตกจริต",
+    pos: "น.",
+    definition: "ความกังวลใจเกินกว่าเหตุ, ภาวะจิตใจที่ครุ่นคิดว้าวุ่น",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าคิดมากด้วยศัพท์จิตวิทยาและพจนานุกรม",
+    triggerWords: ["คิดมาก", "กังวล", "เครียด", "ฟุ้งซ่าน"],
+  },
+  {
+    headword: "สุคนธโอสถ",
+    pos: "น.",
+    definition: "เครื่องหอมและโอสถที่ให้กลิ่นหอมจรุงใจ ชวนให้สดชื่นแจ่มใส",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่ากาแฟด้วยคำโบราณหมายถึงเครื่องดื่มหอมละมุน",
+    triggerWords: ["กาแฟ", "ชานม", "น้ำ", "เครื่องดื่ม"],
+  },
+  {
+    headword: "ยาตรา",
+    pos: "ก.",
+    definition: "เดิน, เคลื่อนที่ไปข้างหน้าอย่างมีท่วงท่าและจังหวะ",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าเดินหรือก้าวเท้าด้วยคำกริยาวรรณคดี",
+    triggerWords: ["ก้าวเท้า", "เดิน", "ออก", "ไป"],
+  },
+  {
+    headword: "กมล",
+    pos: "น.",
+    definition: "ดอกบัว, จิตใจ, หัวใจอันบริสุทธิ์",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าใจด้วยคำไวพจน์เปี่ยมความหมายลึกซึ้ง",
+    triggerWords: ["ใจ", "จิตใจ", "หัวใจ"],
+  },
+  {
+    headword: "ชีวา",
+    pos: "น.",
+    definition: "ชีวิต, ลมหายใจ, ความเป็นอยู่",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าชีวิตด้วยคำไวพจน์กวี",
+    triggerWords: ["ชีวิต", "ความเป็นอยู่"],
+  },
+  {
+    headword: "วิจิตร",
+    pos: "ว.",
+    definition: "งามประณีต, งามแปลกตา, สวยสดงดงามอย่างมีชั้นเชิง",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าสวยงามด้วยคำคุณศัพท์ชั้นสูง",
+    triggerWords: ["สวย", "งาม", "สวยงาม", "ดี"],
+  },
+];
+
+/**
+ * Segment a Thai sentence into words using Intl.Segmenter or fallback word boundary regex.
+ */
+export function segmentThaiWords(sentence: string): string[] {
+  const trimmed = sentence.trim();
+  if (!trimmed) return [];
+
+  if (typeof Intl !== "undefined" && (Intl as any).Segmenter) {
+    try {
+      const segmenter = new (Intl as any).Segmenter("th", { granularity: "word" });
+      const words: string[] = [];
+      for (const item of segmenter.segment(trimmed)) {
+        if (item.segment) {
+          words.push(item.segment);
+        }
+      }
+      if (words.length > 0) return words;
+    } catch {
+      // Fallback below
+    }
+  }
+
+  // Regex fallback
+  return trimmed.split(/(\s+|[，,。！？!?])/g).filter((w) => w.length > 0);
+}
+
+/**
+ * Randomly shuffles the words within a Thai sentence while keeping spaces/punctuation in natural flow.
+ */
+export function shuffleSentenceWords(sentence: string): string {
+  const tokens = segmentThaiWords(sentence);
+  const isContentWord = (w: string) => !/^\s+$/.test(w) && !/^[，,。！？!?.,]+$/.test(w);
+  const contentWords = tokens.filter(isContentWord);
+
+  if (contentWords.length <= 1) return sentence;
+
+  const shuffledWords = [...contentWords];
+  for (let i = shuffledWords.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledWords[i], shuffledWords[j]] = [shuffledWords[j], shuffledWords[i]];
+  }
+
+  if (shuffledWords.join("") === contentWords.join("") && shuffledWords.length >= 2) {
+    [shuffledWords[0], shuffledWords[1]] = [shuffledWords[1], shuffledWords[0]];
+  }
+
+  let shuffleIdx = 0;
+  return tokens
+    .map((t) => {
+      if (isContentWord(t)) {
+        return shuffledWords[shuffleIdx++];
+      }
+      return t;
+    })
+    .join(" ");
+}
+
+/**
+ * In-Sentence Word Scrambler:
+ * Randomly substitutes 1-3 words in a sentence with grounded Royal Society Dictionary words,
+ * strictly maintaining the original sentence structure.
+ */
+export function substituteSentenceWords(
+  sentence: string,
+  maxSwaps: number = 2
+): {
+  scrambledSentence: string;
+  mappings: QuirkifyWordMapping[];
+} {
+  const trimmed = sentence.trim();
+  if (!trimmed) {
+    return { scrambledSentence: sentence, mappings: [] };
+  }
+
+  const mappings: QuirkifyWordMapping[] = [];
+  let result = trimmed;
+
+  const matchedReplacements: Array<{
+    matchWord: string;
+    replacement: DictionaryReplacementWord;
+  }> = [];
+
+  for (const item of DICTIONARY_REPLACEMENTS) {
+    for (const trig of item.triggerWords) {
+      if (result.includes(trig) && !matchedReplacements.some((m) => m.matchWord === trig)) {
+        matchedReplacements.push({ matchWord: trig, replacement: item });
+      }
+    }
+  }
+
+  if (matchedReplacements.length === 0) {
+    const words = segmentThaiWords(trimmed).filter((w) => w.length >= 2 && !/^\s+$/.test(w));
+    if (words.length > 0) {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      const randomRepl =
+        DICTIONARY_REPLACEMENTS[Math.floor(Math.random() * DICTIONARY_REPLACEMENTS.length)];
+      matchedReplacements.push({ matchWord: randomWord, replacement: randomRepl });
+    }
+  }
+
+  const shuffledMatches = [...matchedReplacements].sort(() => 0.5 - Math.random());
+  const selected = shuffledMatches.slice(0, maxSwaps);
+
+  for (const item of selected) {
+    if (result.includes(item.matchWord)) {
+      result = result.replace(item.matchWord, `'${item.replacement.headword}'`);
+      mappings.push({
+        original_phrase: item.matchWord,
+        replaced_word: item.replacement.headword,
+        part_of_speech: item.replacement.pos,
+        official_definition: item.replacement.definition,
+        source_edition: item.replacement.sourceEdition,
+        quirk_reason: item.replacement.rationale,
+      });
+    }
+  }
+
+  return {
+    scrambledSentence: result,
+    mappings,
+  };
+}
+
+// --------------------------------------------------------------------------
+// Backward-compatible cluster & challenge exports
+// --------------------------------------------------------------------------
+
+export function segmentThaiClusters(text: string): string[] {
+  const trimmed = text.trim();
+  if (!trimmed) return [];
+  if (typeof Intl !== "undefined" && (Intl as any).Segmenter) {
+    try {
+      const segmenter = new (Intl as any).Segmenter("th", { granularity: "grapheme" });
+      const segments: string[] = [];
+      for (const item of segmenter.segment(trimmed)) {
+        if (item.segment && item.segment.trim()) segments.push(item.segment);
+      }
+      if (segments.length > 0) return segments;
+    } catch {
+      // fallback
+    }
+  }
+  const thaiClusterPattern = /[\u0E01-\u0E2E][\u0E30-\u0E3A\u0E47-\u0E4E]*/g;
+  const matches = trimmed.match(thaiClusterPattern);
+  return matches && matches.length > 0 ? matches : trimmed.split("");
+}
+
+export function scrambleClusters(clusters: string[]): string[] {
+  if (clusters.length <= 1) return [...clusters];
+  const originalStr = clusters.join("");
+  let attempts = 0;
+  let result = [...clusters];
+  while (attempts < 10) {
+    attempts++;
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    if (result.join("") !== originalStr) return result;
+  }
+  if (result.length >= 2) [result[0], result[1]] = [result[1], result[0]];
+  return result;
+}
 
 export interface ChallengeWord {
   id: string;
@@ -83,7 +403,7 @@ export const CHALLENGE_WORDS: ChallengeWord[] = [
     hint: "วัตถุท้องฟ้าที่มีแสงทอดยาวเป็นหางยามค่ำคืน",
   },
 
-  // --- Literary & Rare Thai ---
+  // --- Literary ---
   {
     id: "lit-1",
     headword: "ประสิทธิภาพ",
@@ -116,24 +436,8 @@ export const CHALLENGE_WORDS: ChallengeWord[] = [
     category: "literary",
     hint: "มวลดอกไม้ที่ส่งกลิ่นหอมเฉพาะยามค่ำคืน",
   },
-  {
-    id: "lit-5",
-    headword: "สุวรรณภูมิ",
-    pos: "น.",
-    definition: "แผ่นดินทอง ดินแดนอันอุดมสมบูรณ์ในภูมิภาคเอเชียตะวันออกเฉียงใต้",
-    category: "literary",
-    hint: "แผ่นดินทองคำอันเปี่ยมด้วยความรุ่มรวยทางวัฒนธรรม",
-  },
-  {
-    id: "lit-6",
-    headword: "ทัศนศิลป์",
-    pos: "น.",
-    definition: "ศิลปะที่รับรู้ได้ด้วยการมองเห็น ได้แก่ จิตรกรรม ประติมากรรม และสถาปัตยกรรม",
-    category: "literary",
-    hint: "ศาสตร์แห่งความงามที่สัมผัสได้ผ่านสายตา",
-  },
 
-  // --- Food & Culinary ---
+  // --- Food ---
   {
     id: "food-1",
     headword: "ต้มยำกุ้ง",
@@ -158,24 +462,8 @@ export const CHALLENGE_WORDS: ChallengeWord[] = [
     category: "food",
     hint: "ของหวานคู่หน้าร้อน ข้าวเหนียวมูนกับมะม่วงสุกหอมหวาน",
   },
-  {
-    id: "food-4",
-    headword: "ชาไทยไข่มุก",
-    pos: "น.",
-    definition: "เครื่องดื่มชาสีส้มใส่นม รสชาติหวานมันเข้มข้น ใส่เม็ดแป้งมันสำปะหลังเคี้ยวหนึบ",
-    category: "food",
-    hint: "เครื่องดื่มสีส้มยอดฮิตพร้อมท็อปปิ้งเคี้ยวหนึบ",
-  },
-  {
-    id: "food-5",
-    headword: "แกงมัสมั่น",
-    pos: "น.",
-    definition: "แกงกะทิรสชาติเข้มข้น หวาน มัน เค็ม กลมกล่อม หอมกลิ่นเครื่องเทศเทศและถั่วลิสงคั่ว",
-    category: "food",
-    hint: "แกงไทยที่ได้รับการยกย่องว่าอร่อยติดอันดับหนึ่งของโลก",
-  },
 
-  // --- Kham Puan (Spoonerisms) ---
+  // --- Spoonerisms ---
   {
     id: "puan-1",
     headword: "น่ารัก",
@@ -241,87 +529,8 @@ export const CHALLENGE_WORDS: ChallengeWord[] = [
       funMeaning: "ดวงใจที่มีค่า กลายร่างเป็นไหใส่ของสุดวินเทจ!",
     },
   },
-  {
-    id: "puan-6",
-    headword: "สวัสดี",
-    pos: "น./ก.",
-    definition: "คำทักทายและอวยพรอันเป็นเอกลักษณ์ของคนไทย มีความหมายถึงความดีงามและความเจริญ",
-    category: "spoonerism",
-    hint: "คำทักทายประจำชาติไทยเวลาพบเจอกัน",
-    spoonerism: {
-      puanResult: "สะหรีดั๊ด",
-      explanation: "ผวนแบบ ๓ พยางค์สไตล์ไทยคลาสสิก",
-      funMeaning: "คำทักทายวัยรุ่นยุคเก่าที่กวนโอ๊ยและชวนหัวเราะ",
-    },
-  },
 ];
 
-/**
- * Segment Thai text into natural grapheme clusters.
- * Ensures vowels, tone marks, and thanthakhat stay bound to their base consonant
- * so Thai orthography is preserved without broken or floating marks.
- */
-export function segmentThaiClusters(text: string): string[] {
-  const trimmed = text.trim();
-  if (!trimmed) return [];
-
-  if (typeof Intl !== "undefined" && (Intl as any).Segmenter) {
-    try {
-      const segmenter = new (Intl as any).Segmenter("th", { granularity: "grapheme" });
-      const segments: string[] = [];
-      for (const item of segmenter.segment(trimmed)) {
-        if (item.segment && item.segment.trim()) {
-          segments.push(item.segment);
-        }
-      }
-      if (segments.length > 0) return segments;
-    } catch {
-      // fallback below
-    }
-  }
-
-  // Regex fallback: Consonant + optional vowels/tone marks
-  const thaiClusterPattern = /[\u0E01-\u0E2E][\u0E30-\u0E3A\u0E47-\u0E4E]*/g;
-  const matches = trimmed.match(thaiClusterPattern);
-  if (matches && matches.length > 0) {
-    return matches;
-  }
-
-  return trimmed.split("");
-}
-
-/**
- * Fisher-Yates shuffle that ensures the result is different from original order
- * (unless original length <= 1).
- */
-export function scrambleClusters(clusters: string[]): string[] {
-  if (clusters.length <= 1) return [...clusters];
-
-  const originalStr = clusters.join("");
-  let attempts = 0;
-  let result = [...clusters];
-
-  while (attempts < 10) {
-    attempts++;
-    for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
-    }
-    if (result.join("") !== originalStr) {
-      return result;
-    }
-  }
-
-  // If still same, swap first two
-  if (result.length >= 2) {
-    [result[0], result[1]] = [result[1], result[0]];
-  }
-  return result;
-}
-
-/**
- * Formats a challenge string ready to copy and share on social media.
- */
 export function formatChallengeShare(
   word: string,
   hint: string,
