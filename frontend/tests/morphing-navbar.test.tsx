@@ -35,35 +35,9 @@ describe("MorphingNavbar Component", () => {
     expect(screen.getByText("เปรียบเทียบคำ")).toBeTruthy();
     expect(screen.getByText("สำรวจคำ")).toBeTruthy();
     expect(screen.getByText("ภาษาถิ่น")).toBeTruthy();
-    expect(screen.getByText("สุ่มเปลี่ยนคำ 🔀")).toBeTruthy();
-    expect(screen.getByText("AI Workspace ✦")).toBeTruthy();
-
-    // 3. AI Assistant button must exist
-    expect(screen.getByText("ผู้ช่วย AI")).toBeTruthy();
-  });
-
-  it("positions AI Assistant button on the right after navigation links", () => {
-    const navRef = createRef<HTMLElement | null>();
-    const onHome = vi.fn();
-    const onAIChat = vi.fn();
-
-    const { container } = render(
-      <MorphingNavbar
-        navRef={navRef}
-        busy={false}
-        onHome={onHome}
-        onAIChat={onAIChat}
-      />
-    );
-
-    const primaryNav = container.querySelector("#primary-navigation");
-    expect(primaryNav).toBeTruthy();
-
-    const children = Array.from(primaryNav!.children);
-    const lastChild = children[children.length - 1];
-
-    // The AI Assistant button should be the last child inside #primary-navigation
-    expect(lastChild.textContent).toContain("ผู้ช่วย AI");
+    expect(screen.queryByText("สุ่มเปลี่ยนคำ 🔀")).toBeNull();
+    expect(screen.queryByText("AI Workspace ✦")).toBeNull();
+    expect(screen.queryByText("ผู้ช่วย AI")).toBeNull();
   });
 
   it("highlights the active section on click and sets aria-current='page'", () => {
@@ -84,10 +58,6 @@ describe("MorphingNavbar Component", () => {
     const compareLink = screen.getByText("เปรียบเทียบคำ");
     const evolutionLink = screen.getByText("สำรวจคำ");
     const dialectLink = screen.getByText("ภาษาถิ่น");
-    const scramblerLink = screen.getByText("สุ่มเปลี่ยนคำ 🔀");
-
-    // Word Scrambler links to its own dedicated page
-    expect(scramblerLink.getAttribute("href")).toBe("/word-scrambler");
 
     // Initially, home is active
     expect(homeLink.getAttribute("aria-current")).toBe("page");
@@ -110,25 +80,6 @@ describe("MorphingNavbar Component", () => {
     expect(evolutionLink.getAttribute("aria-current")).toBe("page");
     expect(evolutionLink.classList.contains("active")).toBe(true);
     expect(dialectLink.getAttribute("aria-current")).toBeNull();
-  });
-
-  it("calls onAIChat when clicking the AI Assistant button", () => {
-    const navRef = createRef<HTMLElement | null>();
-    const onHome = vi.fn();
-    const onAIChat = vi.fn();
-
-    render(
-      <MorphingNavbar
-        navRef={navRef}
-        busy={false}
-        onHome={onHome}
-        onAIChat={onAIChat}
-      />
-    );
-
-    const aiButton = screen.getByRole("button", { name: /ผู้ช่วย AI/i });
-    fireEvent.click(aiButton);
-    expect(onAIChat).toHaveBeenCalledTimes(1);
   });
 
   it("updates active section highlight on scroll when section enters view", () => {
@@ -175,36 +126,5 @@ describe("MorphingNavbar Component", () => {
     heroEl.remove();
     compareEl.remove();
     dialectsEl.remove();
-  });
-
-  it("handles clicking AI Assistant button safely without crashing when onAIChat is undefined", () => {
-    const navRef = createRef<HTMLElement | null>();
-    render(
-      <MorphingNavbar
-        navRef={navRef}
-        busy={false}
-        onHome={vi.fn()}
-      />
-    );
-
-    const aiButton = screen.getByText("ผู้ช่วย AI");
-    expect(() => fireEvent.click(aiButton)).not.toThrow();
-  });
-
-  it("calls onAIChat when onAIChat prop is provided", () => {
-    const navRef = createRef<HTMLElement | null>();
-    const onAIChat = vi.fn();
-    render(
-      <MorphingNavbar
-        navRef={navRef}
-        busy={false}
-        onHome={vi.fn()}
-        onAIChat={onAIChat}
-      />
-    );
-
-    const aiButton = screen.getByText("ผู้ช่วย AI");
-    fireEvent.click(aiButton);
-    expect(onAIChat).toHaveBeenCalledTimes(1);
   });
 });
