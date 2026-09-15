@@ -39,7 +39,7 @@ test("ambient scene, reversible transitions, footer shortcut and reduced motion"
   await expect(page.locator(".composer-wrap")).toHaveCSS("visibility", "hidden");
   await page.evaluate(() => scrollTo({ top: document.body.scrollHeight, behavior: "instant" }));
   await expect(page.locator(".composer-wrap")).toHaveCSS("visibility", "hidden");
-  await page.locator(".nav-search").click();
+  await page.locator(".wordmark").click();
   await expect(page.locator("#meaning")).toBeFocused();
 });
 

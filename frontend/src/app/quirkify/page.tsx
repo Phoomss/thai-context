@@ -5,9 +5,9 @@ import SentenceQuirkifier from "@/components/quirkify/SentenceQuirkifier";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Word Scrambler & ปั่นคำภาษาไทย | THAI CONTEXT",
+  title: "Word Scrambler — สุ่มเปลี่ยนคำในประโยค | THAI CONTEXT",
   description:
-    "เครื่องมือปั่นคำปริศนา อักษรสลับ (Anagram), คำผวนชวนคิด, และคลังคำแปลงประโยคปั่น พร้อมนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ",
+    "เครื่องมือสุ่มเปลี่ยนเฉพาะคำในประโยคภาษาไทย พร้อมนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ",
 };
 
 export default function QuirkifyPage() {
@@ -37,7 +37,7 @@ export default function QuirkifyPage() {
               className="workspace-badge-tag"
               style={{ background: "#fef3c7", color: "#b45309", borderColor: "#fde68a" }}
             >
-              ✦ Word Scrambler & Quirkifier
+              ✦ Word Scrambler
             </span>
           </Link>
 

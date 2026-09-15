@@ -14,6 +14,8 @@ export default function MorphingNavbar({
 }) {
   const [open, setOpen] = useState(false);
   const [floating, setFloating] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+
   useEffect(() => {
     const hero = document.getElementById("hero");
     if (!hero) return;
@@ -31,9 +33,61 @@ export default function MorphingNavbar({
       window.removeEventListener("pageshow", update);
     };
   }, []);
+
+  useEffect(() => {
+    const sectionIds = ["hero", "compare", "evolution", "dialects", "word-scrambler"];
+    let ticking = false;
+
+    const updateActive = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const isBottom =
+        scrollHeight > window.innerHeight &&
+        window.innerHeight + window.scrollY >= scrollHeight - 80;
+
+      if (isBottom) {
+        setActiveSection("word-scrambler");
+        return;
+      }
+
+      let current = "hero";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 180) {
+            current = id;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActive();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    updateActive();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    window.addEventListener("hashchange", updateActive);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("hashchange", updateActive);
+    };
+  }, []);
+
   useEffect(() => {
     if (!floating) setOpen(false);
   }, [floating]);
+
   useEffect(() => {
     if (!open) return;
     const dismiss = (event: PointerEvent | FocusEvent) => {
@@ -46,6 +100,7 @@ export default function MorphingNavbar({
       document.removeEventListener("focusin", dismiss);
     };
   }, [open, navRef]);
+
   return (
     <header
       ref={navRef}
@@ -56,7 +111,11 @@ export default function MorphingNavbar({
       <a
         className="wordmark"
         href="#hero"
-        onClick={e => { setOpen(false); onHome(e); }}
+        onClick={e => {
+          setOpen(false);
+          setActiveSection("hero");
+          onHome(e);
+        }}
         aria-label="THAI CONTEXT หน้าแรก"
       >
         <Image
@@ -76,12 +135,56 @@ export default function MorphingNavbar({
         </span>
       </a>
       <nav id="primary-navigation" className={`nav-links ${open ? "is-open" : ""}`} aria-label="เมนูหลัก" onKeyDown={e => { if (e.key === "Escape") { setOpen(false); document.getElementById("menu-toggle")?.focus(); } }}>
-        <a href="#hero" aria-current={!floating ? "page" : undefined} onClick={e => { setOpen(false); onHome(e); }}>หน้าหลัก</a>
-        <a href="#compare" onClick={() => setOpen(false)}>เปรียบเทียบคำ</a>
-        <a href="#evolution" onClick={() => setOpen(false)}>สำรวจคำ</a>
-        <a href="#dialects" onClick={() => setOpen(false)}>ภาษาถิ่น</a>
-        <a href="#word-scrambler" onClick={() => setOpen(false)} style={{ color: "#b45309", fontWeight: 600 }}>
+        <a
+          href="#hero"
+          aria-current={activeSection === "hero" ? "page" : undefined}
+          className={activeSection === "hero" ? "active" : ""}
+          onClick={e => { setOpen(false); setActiveSection("hero"); onHome(e); }}
+        >
+          หน้าหลัก
+        </a>
+        <a
+          href="#compare"
+          aria-current={activeSection === "compare" ? "page" : undefined}
+          className={activeSection === "compare" ? "active" : ""}
+          onClick={() => { setOpen(false); setActiveSection("compare"); }}
+        >
+          เปรียบเทียบคำ
+        </a>
+        <a
+          href="#evolution"
+          aria-current={activeSection === "evolution" ? "page" : undefined}
+          className={activeSection === "evolution" ? "active" : ""}
+          onClick={() => { setOpen(false); setActiveSection("evolution"); }}
+        >
+          สำรวจคำ
+        </a>
+        <a
+          href="#dialects"
+          aria-current={activeSection === "dialects" ? "page" : undefined}
+          className={activeSection === "dialects" ? "active" : ""}
+          onClick={() => { setOpen(false); setActiveSection("dialects"); }}
+        >
+          ภาษาถิ่น
+        </a>
+        <a
+          href="#word-scrambler"
+          aria-current={activeSection === "word-scrambler" ? "page" : undefined}
+          className={`nav-link-scrambler ${activeSection === "word-scrambler" ? "active" : ""}`}
+          onClick={() => { setOpen(false); setActiveSection("word-scrambler"); }}
+          style={{
+            color: activeSection === "word-scrambler" ? "#b45309" : "#d97706",
+            fontWeight: activeSection === "word-scrambler" ? 700 : 600,
+          }}
+        >
           Word Scrambler 🔀
+        </a>
+        <a
+          href="/workspace"
+          onClick={() => setOpen(false)}
+          className="text-cyan-400 font-semibold hover:text-cyan-300"
+        >
+          AI Workspace ✦
         </a>
         {onAIChat && (
           <button
@@ -91,43 +194,11 @@ export default function MorphingNavbar({
               setOpen(false);
               onAIChat();
             }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "5px",
-              background: "#eff6ff",
-              color: "#1d4ed8",
-              border: "1px solid #bfdbfe",
-              borderRadius: "16px",
-              padding: "4px 12px",
-              fontSize: "13px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
           >
             <span aria-hidden="true">✨</span>
             <span>ผู้ช่วย AI</span>
           </button>
         )}
-        <a
-          href="/workspace"
-          onClick={() => setOpen(false)}
-          className="text-cyan-400 font-semibold hover:text-cyan-300"
-        >
-          AI Workspace ✦
-        </a>
-        <a
-          className="nav-search"
-          href={floating ? "#persistent-meaning" : "#meaning"}
-          onClick={e => {
-            e.preventDefault(); setOpen(false);
-            const composer = document.querySelector('.composer-wrap[data-visible="true"]');
-            if (floating && composer) document.getElementById("persistent-meaning")?.focus({ preventScroll: true });
-            else onHome(e);
-          }}
-        >
-          เริ่มค้นหาความหมาย <span aria-hidden="true">↗</span>
-        </a>
       </nav>
       {(
         <button

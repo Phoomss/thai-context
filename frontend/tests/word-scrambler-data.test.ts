@@ -5,6 +5,10 @@ import {
   formatChallengeShare,
   CHALLENGE_WORDS,
   CHALLENGE_CATEGORIES,
+  segmentThaiWords,
+  shuffleSentenceWords,
+  substituteSentenceWords,
+  SENTENCE_PRESETS,
 } from "@/lib/word-scrambler-data";
 
 describe("Word Scrambler Data & Utilities", () => {
@@ -81,4 +85,44 @@ describe("Word Scrambler Data & Utilities", () => {
       expect(sp.spoonerism?.funMeaning).toBeTruthy();
     }
   });
+
+  it("segments Thai sentences into words correctly", () => {
+    const words = segmentThaiWords("วันนี้เหนื่อยมาก อยากกลับไปนอนแล้ว");
+    expect(words.length).toBeGreaterThan(3);
+    expect(words.some((w) => w.includes("เหนื่อย") || w.includes("นอน"))).toBe(true);
+  });
+
+  it("shuffles word positions in a sentence", () => {
+    const original = "วันนี้ เหนื่อย มาก อยาก นอน";
+    const shuffled = shuffleSentenceWords(original);
+    expect(shuffled).toBeTruthy();
+    const origWords = segmentThaiWords(original).filter((w) => !/^\s+$/.test(w)).sort();
+    const shufWords = segmentThaiWords(shuffled).filter((w) => !/^\s+$/.test(w)).sort();
+    expect(shufWords).toEqual(origWords);
+  });
+
+  it("substitutes targeted words in sentence while keeping structure intact", () => {
+    const input = "วันนี้เหนื่อยมาก อยากกลับไปนอนแล้ว";
+    const { scrambledSentence, mappings } = substituteSentenceWords(input, 2);
+
+    expect(scrambledSentence).toBeTruthy();
+    expect(mappings.length).toBeGreaterThan(0);
+    // Replaced words should be enclosed in quotes
+    expect(scrambledSentence).toContain("'");
+    for (const m of mappings) {
+      expect(m.original_phrase).toBeTruthy();
+      expect(m.replaced_word).toBeTruthy();
+      expect(m.official_definition).toBeTruthy();
+    }
+  });
+
+  it("provides sentence presets with categories and labels", () => {
+    expect(SENTENCE_PRESETS.length).toBeGreaterThanOrEqual(5);
+    for (const p of SENTENCE_PRESETS) {
+      expect(p.id).toBeTruthy();
+      expect(p.text).toBeTruthy();
+      expect(p.category).toBeTruthy();
+    }
+  });
 });
+
