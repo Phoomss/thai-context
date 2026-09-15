@@ -141,6 +141,14 @@ cd apps/ai-service
 pytest
 ```
 
+### Run Frontend Unit & Integration Tests (185 tests):
+```bash
+cd frontend
+pnpm test
+# ตรวจสอบ Typecheck และ Production build
+pnpm run typecheck && pnpm run build
+```
+
 ---
 
 ## 📖 API Documentation & Endpoints
@@ -153,6 +161,11 @@ pytest
 | `POST` | `/api/v1/search/context` | Context-aware Search with excluded words |
 | `GET` | `/api/v1/dictionary/words/:word` | Word Detail (Official Data vs AI Guidance) |
 | `GET` | `/api/v1/dictionary/words/:word/evolution`| Evolution Timeline (2542, 2554, 2569) |
+| `GET` | `/api/v1/dictionary/words/:word/translations`| Bilingual & Coined Terms (Royal Society vs AI) |
+| `GET` | `/api/v1/dictionary/words/:word/sign-language`| Thai Sign Language (TSL) 3D Kinematics & Media |
+| `GET` | `/api/v1/dictionary/words/:word/braille`| Thai Braille Unicode & 6-Dot Cell Patterns |
+| `POST` | `/api/v1/dictionary/braille/decode`| Reverse Braille Keypad Decoder |
+| `POST` | `/api/v1/tts/synthesize` | Multi-Provider Server-Side TTS Synthesis |
 | `GET` | `/api/v1/dictionary/compare/:word` | Detect Edition Changes (ADDED, CHANGED, UNCHANGED) |
 | `POST` | `/api/v1/compare` | Compare words with grounded evidence |
 | `GET` | `/api/v1/dialect` | Regional Dialect Explorer with filters |
