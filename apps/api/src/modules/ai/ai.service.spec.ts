@@ -3,6 +3,7 @@ import { AIService } from './ai.service';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { of } from 'rxjs';
+import { HttpException } from '@nestjs/common';
 
 describe('AIService', () => {
   let service: AIService;
@@ -37,6 +38,32 @@ describe('AIService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  describe('compareWords', () => {
+    const words = [
+      { word: 'ประสิทธิภาพ', definition: 'นิยามหนึ่ง', partOfSpeech: 'น.', edition: '2554', foundInOfficial: true },
+      { word: 'ประสิทธิผล', definition: 'นิยามสอง', partOfSpeech: 'น.', edition: '2554', foundInOfficial: true },
+    ];
+
+    it('returns the real AI comparison response', async () => {
+      const upstream = {
+        comparison: {
+          meaningDifference: 'ต่างกัน',
+          contextDifference: 'คนละบริบท',
+          usageGuidance: 'เลือกให้ตรงความหมาย',
+        },
+      };
+      httpService.post.mockReturnValue(of({ data: upstream }));
+      await expect(service.compareWords(words)).resolves.toEqual(upstream);
+    });
+
+    it('propagates AI unavailability as HTTP 503', async () => {
+      httpService.post.mockImplementation(() => { throw new Error('Connection refused'); });
+      await expect(service.compareWords(words)).rejects.toMatchObject({
+        status: 503,
+      });
+    });
   });
 
   describe('chatRAG', () => {

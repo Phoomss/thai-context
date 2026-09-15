@@ -11,6 +11,13 @@ class ContextRankerService:
         self.w_source = settings.WEIGHT_SOURCE
 
     def compute_keyword_score(self, query: str, word: str, definition: str) -> float:
+        cleaned_q = query.strip()
+        cleaned_w = word.strip()
+        if cleaned_q == cleaned_w:
+            return 1.0
+        if cleaned_q in cleaned_w or cleaned_w in cleaned_q:
+            return 0.85
+
         query_tokens = set(ThaiNLPTokenizer.extract_keywords(query))
         if not query_tokens:
             return 0.5
@@ -52,6 +59,7 @@ class ContextRankerService:
         excluded_set = set(t.strip() for t in (excluded_terms or []) if t.strip())
         results: List[RecommendationItem] = []
 
+        cleaned_query = query.strip()
         seen_words = set()
         for cand in candidates:
             # 1. Exclusion filter: strictly avoid excluded words
@@ -68,13 +76,26 @@ class ContextRankerService:
             ctx_score = self.compute_context_score(context, cand.definition)
             src_score = 1.0  # Official royal society source
 
+            # Filter low-confidence noise: if not matching query headword and no keyword overlap and low similarity
+            is_direct_match = (
+                cleaned_query == cand.word.strip()
+                or cleaned_query in cand.word
+                or cand.word in cleaned_query
+            )
+            if not is_direct_match and kw_score < 0.20 and sem_score < 0.60:
+                continue
+
             final_score = (
                 sem_score * self.w_semantic
                 + kw_score * self.w_keyword
                 + ctx_score * self.w_context
                 + src_score * self.w_source
             )
-            final_score = round(min(0.99, max(0.50, final_score)), 2)
+            # Boost exact headword match
+            if cand.word.strip() == cleaned_query:
+                final_score = max(final_score, 0.98)
+
+            final_score = round(min(0.99, max(0.01, final_score)), 2)
 
             # 3. Reason generation grounded in dictionary definition
             context_note = f" เหมาะสำหรับบริบท '{context}'" if context else ""

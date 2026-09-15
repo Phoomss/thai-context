@@ -62,8 +62,10 @@ async function main() {
   console.log('🌱 Starting THAI CONTEXT database seed...');
   const candidatePaths = [
     path.resolve(__dirname, './demo_dictionary.json'),
+    path.resolve(__dirname, '../data/seed/demo_dictionary.json'),
     path.resolve(__dirname, '../../../data/seed/demo_dictionary.json'),
     path.resolve(__dirname, '../../data/seed/demo_dictionary.json'),
+    '/app/data/seed/demo_dictionary.json',
     '/app/prisma/demo_dictionary.json',
   ];
   const dataPath = candidatePaths.find((p) => fs.existsSync(p));

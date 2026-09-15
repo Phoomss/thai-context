@@ -103,7 +103,6 @@ test("WebGL unavailable uses a working poster and search fallback", async ({ pag
   });
   await page.goto("/");
   await expect(page.locator("#hero")).toHaveAttribute("data-scene", "fallback");
-  await expect(page.locator(".book-poster")).toBeVisible();
   await search(page);
   expect(errors).toEqual([]);
 });

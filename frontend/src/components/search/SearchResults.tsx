@@ -16,7 +16,10 @@ import SmartFilters, { type SmartFilterValue } from "./SmartFilters";
 import PronunciationButton from "../pronunciation/PronunciationButton";
 import ShareResultButton from "../share/ShareResultButton";
 import SignLanguageModal from "../tsl/SignLanguageModal";
+import SignLanguageSection from "../tsl/SignLanguageSection";
 import BrailleModal from "../braille/BrailleModal";
+import LanguageRepresentationCard from "../accessibility/LanguageRepresentationCard";
+import { getSignResource } from "@/lib/sign-motion-data";
 import WordTranslations from "../translations/WordTranslations";
 import SearchResultFeedback from "../feedback/SearchResultFeedback";
 import Icon from "../ui/Icon";
@@ -53,7 +56,33 @@ export default function SearchResults({
     context: "",
     excluded: "",
   });
+  const [copiedWord, setCopiedWord] = useState(false);
+  const [copiedSentenceIdx, setCopiedSentenceIdx] = useState<number | null>(null);
   const workspace = useRef<HTMLDivElement>(null);
+
+  const handleCopyWord = (headword: string) => {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        navigator.clipboard.writeText(headword);
+      }
+      setCopiedWord(true);
+      setTimeout(() => setCopiedWord(false), 2000);
+    } catch {
+      // Fallback
+    }
+  };
+
+  const handleCopySentence = (sentence: string, index: number) => {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        navigator.clipboard.writeText(sentence);
+      }
+      setCopiedSentenceIdx(index);
+      setTimeout(() => setCopiedSentenceIdx(null), 2000);
+    } catch {
+      // Fallback
+    }
+  };
 
   useLayoutEffect(() => {
     setFilters({ register: "", context: "", excluded: "" });
@@ -65,12 +94,20 @@ export default function SearchResults({
 
   const allWords = result?.recommendations ?? [];
   const excluded = filters.excluded.split(/[,，\s]+/).filter(Boolean);
-  const words = allWords.filter(
-    (candidate) =>
-      (!filters.register || candidate.registers?.includes(filters.register)) &&
-      (!filters.context || candidate.contexts?.includes(filters.context)) &&
-      !excluded.some((word) => candidate.headword.includes(word)),
-  );
+  const words = allWords.filter((candidate) => {
+    if (filters.register && !candidate.registers?.includes(filters.register)) return false;
+    if (filters.context && !candidate.contexts?.includes(filters.context)) return false;
+    if (excluded.some((word) => candidate.headword.includes(word))) return false;
+    if (filters.hasSignLanguage) {
+      const sign = getSignResource(candidate.headword);
+      if (sign.status !== "VERIFIED" && sign.status !== "EXTERNAL_RESOURCE") return false;
+    }
+    if (filters.hasEnglish) {
+      const hasEn = !!(candidate.english || candidate.translations?.length);
+      if (!hasEn) return false;
+    }
+    return true;
+  });
   const word = words.find((candidate) => candidate.headword === selection) ?? words[0];
 
   useEffect(() => {
@@ -194,6 +231,17 @@ export default function SearchResults({
                             </span>
                           )}
                         </strong>
+                        <span
+                          className="candidate-access-indicators"
+                          style={{ marginLeft: "6px", fontSize: "10px", color: "var(--muted, #64748b)" }}
+                          aria-label="ช่องทางการเข้าถึงที่รองรับ"
+                        >
+                          {getSignResource(candidate.headword).status === "VERIFIED" && (
+                            <span title="มีภาษามือไทย (Verified TSL)">🤟 </span>
+                          )}
+                          <span title="มีเสียงอ่าน">🔊 </span>
+                          <span title="มีอักษรเบรลล์">⠠</span>
+                        </span>
                         <small>{candidate.registers?.join(" · ") || "คำใกล้เคียง"}</small>
                         {candidate.score !== undefined && (
                           <small>
@@ -209,19 +257,36 @@ export default function SearchResults({
 
               <article data-reveal className="word-detail" aria-labelledby="word-title">
                 <div key={word.headword} className="detail-content">
-                  <p className="detail-kicker">ความหมายของคำ</p>
-                  <h3 id="word-title" className="font-thai-reading thai-headword" tabIndex={-1}>
-                    {word.headword}
-                    {(word.english || word.translations?.[0]?.translatedWord) && (
-                      <span className="detail-english-inline font-ui">
-                        {" "}({word.english || word.translations?.[0]?.translatedWord})
-                      </span>
-                    )}
-                  </h3>
-                  <p className="word-phonetic font-thai-reading">
-                    {word.pronunciation?.phonetic} {word.pos && <span>{word.pos}</span>}
-                  </p>
-                  <div className="word-utilities">
+                  {/* Header Title & Phonetics */}
+                  <div className="detail-header-zone">
+                    <p className="detail-kicker">ความหมายของคำ</p>
+                    <div className="word-title-row">
+                      <h3 id="word-title" className="font-thai-reading thai-headword" tabIndex={-1}>
+                        {word.headword}
+                        {(word.english || word.translations?.[0]?.translatedWord) && (
+                          <span className="detail-english-inline font-ui">
+                            {" "}({word.english || word.translations?.[0]?.translatedWord})
+                          </span>
+                        )}
+                      </h3>
+                      <button
+                        type="button"
+                        className="quick-copy-word-btn"
+                        aria-label={`คัดลอกคำว่า ${word.headword}`}
+                        onClick={() => handleCopyWord(word.headword)}
+                        title={`คัดลอกคำว่า ${word.headword}`}
+                      >
+                        <span aria-hidden="true">{copiedWord ? "✓" : "📋"}</span>
+                        <span>{copiedWord ? "คัดลอกแล้ว ✓" : "คัดลอกคำ"}</span>
+                      </button>
+                    </div>
+                    <p className="word-phonetic font-thai-reading">
+                      {word.pronunciation?.phonetic} {word.pos && <span className="word-pos-badge font-ui">{word.pos}</span>}
+                    </p>
+                  </div>
+
+                  {/* Multimodal Utilities Toolbar */}
+                  <div className="word-utilities" aria-label="เครื่องมือเสริมการใช้งานคำ">
                     <PronunciationButton word={word} />
                     <button
                       type="button"
@@ -250,23 +315,38 @@ export default function SearchResults({
                     />
                   </div>
 
-                  <section>
+                  {/* 1. Core Meaning */}
+                  <section className="detail-section definition-section">
                     <h4>ความหมาย</h4>
                     <p className="definition font-thai-reading">{word.definition}</p>
                   </section>
-                  <WordTranslations
-                    headword={word.headword}
-                    initialTranslations={word.translations}
-                  />
+
+                  {/* 2. Real-World Examples */}
                   {!!examples.length && (
-                    <section>
+                    <section className="detail-section examples-section">
                       <h4>ตัวอย่างการใช้</h4>
-                      {examples.map((example) => (
-                        <blockquote className="font-thai-reading" key={example}>{example}</blockquote>
-                      ))}
+                      <div className="examples-list">
+                        {examples.map((example, idx) => (
+                          <div className="example-item-wrap" key={example + idx}>
+                            <blockquote className="font-thai-reading">{example}</blockquote>
+                            <button
+                              type="button"
+                              className="copy-sentence-btn"
+                              aria-label={`คัดลอกประโยคตัวอย่าง: ${example}`}
+                              onClick={() => handleCopySentence(example, idx)}
+                              title="คัดลอกประโยคตัวอย่างนี้"
+                            >
+                              <span aria-hidden="true">{copiedSentenceIdx === idx ? "✓" : "📋"}</span>
+                              <span>{copiedSentenceIdx === idx ? "คัดลอกแล้ว ✓" : "คัดลอกประโยค"}</span>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
                     </section>
                   )}
-                  <section>
+
+                  {/* 3. Suitable Tone & Contexts */}
+                  <section className="detail-section context-tags-section">
                     <h4>เหมาะกับบริบท</h4>
                     <div className="word-tags font-thai-reading">
                       {[...(word.registers ?? []), ...(word.contexts ?? [])].map(
@@ -274,8 +354,26 @@ export default function SearchResults({
                       )}
                     </div>
                   </section>
+
+                  {/* 4. International Translations & Coined Terms */}
+                  <WordTranslations
+                    headword={word.headword}
+                    initialTranslations={word.translations}
+                  />
+
+                  {/* 5. Multimodal Accessibility Layer (Audio, Sign Language, Braille) */}
+                  <LanguageRepresentationCard
+                    word={word.headword}
+                    definition={word.definition}
+                    phonetic={word.pronunciation?.phonetic}
+                    english={word.english || word.translations?.[0]?.translatedWord}
+                    onOpenFullSignModal={() => setSignLanguageOpen(true)}
+                    onOpenFullBrailleModal={() => setBrailleOpen(true)}
+                  />
+
+                  {/* 6. Related Words & Synonyms */}
                   {(word.related_words?.length || words.length > 1) && (
-                    <section>
+                    <section className="detail-section related-words-section">
                       <h4>คำใกล้เคียง</h4>
                       <div className="related-words font-thai-reading">
                         {(word.related_words ??
@@ -303,34 +401,39 @@ export default function SearchResults({
                       </div>
                     </section>
                   )}
-                  <button
-                    className="compare-button"
-                    disabled={loading}
-                    aria-pressed={compareSelected.includes(word.headword)}
-                    onClick={() => onCompare(word)}
-                  >
-                    <Icon name="compare" />
-                    {compareSelected.includes(word.headword)
-                      ? "เลือกเทียบแล้ว"
-                      : "เลือกเปรียบเทียบ"}
-                  </button>
-                  {onAIChat && (
+
+                  {/* 7. Action Toolbar */}
+                  <div className="detail-action-bar">
                     <button
-                      type="button"
-                      className="ai-consult-btn font-thai-reading"
+                      className="compare-button"
                       disabled={loading}
-                      onClick={() => onAIChat(word)}
-                      title={`ปรึกษาผู้ช่วย AI เกี่ยวกับคำว่า "${word.headword}"`}
+                      aria-pressed={compareSelected.includes(word.headword)}
+                      onClick={() => onCompare(word)}
                     >
-                      <span aria-hidden="true">✨</span>
-                      <span>ปรึกษาผู้ช่วย AI เกี่ยวกับคำนี้</span>
+                      <Icon name="compare" />
+                      {compareSelected.includes(word.headword)
+                        ? "เลือกเทียบแล้ว"
+                        : "เลือกเปรียบเทียบ"}
                     </button>
-                  )}
-                  {!!compareSelected.length && (
-                    <a className="source-shortcut" href="#compare">
-                      ไปยังตารางเปรียบเทียบ →
-                    </a>
-                  )}
+                    {onAIChat && (
+                      <button
+                        type="button"
+                        className="ai-consult-btn font-thai-reading"
+                        disabled={loading}
+                        onClick={() => onAIChat(word)}
+                        title={`ปรึกษาผู้ช่วย AI เกี่ยวกับคำว่า "${word.headword}"`}
+                      >
+                        <span aria-hidden="true">✨</span>
+                        <span>ปรึกษาผู้ช่วย AI เกี่ยวกับคำนี้</span>
+                      </button>
+                    )}
+                    {!!compareSelected.length && (
+                      <a className="source-shortcut" href="#compare">
+                        ไปยังตารางเปรียบเทียบ →
+                      </a>
+                    )}
+                  </div>
+
                   <SearchResultFeedback
                     query={result?.query_understanding.raw_query ?? query}
                     word={word.headword}

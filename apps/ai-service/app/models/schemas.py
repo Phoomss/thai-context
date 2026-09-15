@@ -128,3 +128,24 @@ class TtsSynthesizeResponse(BaseModel):
     cached: bool
     duration_ms: Optional[int] = None
 
+# Sentence Quirkifier Schemas
+class WordMappingItem(BaseModel):
+    original_phrase: str = Field(..., description="Original word/phrase replaced")
+    replaced_word: str = Field(..., description="Quirkified replacement word")
+    part_of_speech: Optional[str] = Field(None, description="Part of speech, e.g. น., ก., ว.")
+    official_definition: str = Field(..., description="Official dictionary definition from Royal Society")
+    source_edition: str = Field("สำนักงานราชบัณฑิตยสภา", description="Dictionary edition citation")
+    quirk_reason: str = Field(..., description="Humorous rationale for choosing this word")
+
+class QuirkifyRequest(BaseModel):
+    sentence: str = Field(..., min_length=1, max_length=300, description="Original Thai sentence")
+    style: Optional[str] = Field("ancient", description="Target style: ancient, formal, meme, literary, dialect, poetic, gentle")
+    mode: Optional[str] = Field("quirkify", description="Mode: 'quirkify' (make quirky/meme) or 'beautify' (make elegant/beautiful)")
+
+class QuirkifyResponse(BaseModel):
+    original_sentence: str
+    quirkified_sentence: str
+    vibe_style: str
+    punchline_explanation: str
+    word_mappings: List[WordMappingItem] = Field(default_factory=list)
+

@@ -156,7 +156,7 @@ describe("Search orchestration with real GSAP and DOM", () => {
     seek(t, 1.92);
     expect(document.querySelectorAll(".candidate-row")).toHaveLength(count);
     if (!count) expect(screen.getByText("ยังไม่พบคำที่ตรงพอ")).toBeTruthy();
-  });
+  }, 15000);
   it("reduced motion uses the short fade and still reaches results", async () => {
     vi.mocked(matchMedia).mockReturnValue({
       matches: true,

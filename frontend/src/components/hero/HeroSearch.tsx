@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import PopularSuggestions from "./PopularSuggestions";
 import { Search } from 'lucide-react';
 export default function HeroSearch({
   busy,
   onSearch,
+  modeSwitcher,
 }: {
   busy: boolean;
   onSearch: (query: string) => void;
+  modeSwitcher: ReactNode;
 }) {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
@@ -82,9 +84,10 @@ export default function HeroSearch({
           <span aria-hidden="true"> <Search /> </span>
         </button>
       </form>
-      <p id="search-error" className="search-error" role="alert">
+      <p id="search-error" className="search-error" role="alert" hidden={!error}>
         {error}
       </p>
+      <div className="hero-mode-switcher">{modeSwitcher}</div>
       <PopularSuggestions
         disabled={busy}
         onSelect={(q) => {

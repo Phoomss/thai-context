@@ -11,6 +11,11 @@ import {
   getFallbackWordEvolution,
   type WordEvolutionResponse,
 } from "./evolution-data";
+import {
+  normalizeCompareWords,
+  parseCompareResponse,
+  type CompareResponse,
+} from "./compare-types";
 
 // Editorial mock fallback data for offline / demo environments
 export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
@@ -260,6 +265,43 @@ export async function searchMeaning(
     raw,
     raw.mode === "demo" || raw.mode === "fallback" ? raw.mode : "live",
   );
+}
+
+export async function compareWords(
+  words: string[],
+  signal?: AbortSignal,
+): Promise<CompareResponse> {
+  const normalized = normalizeCompareWords(words);
+  const timeoutSignal = AbortSignal.timeout(12000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+  const response = await fetch("/api/v1/compare", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ words: normalized }),
+    signal: combinedSignal,
+  });
+
+  const payload: unknown = await response.json().catch(() => null);
+  if (!response.ok) {
+    const record = payload && typeof payload === "object" ? payload as Record<string, unknown> : null;
+    const nested = record?.error && typeof record.error === "object"
+      ? record.error as Record<string, unknown>
+      : null;
+    const message =
+      (typeof nested?.message === "string" && nested.message) ||
+      (typeof record?.message === "string" && record.message) ||
+      (response.status >= 500
+        ? "บริการเปรียบเทียบยังไม่พร้อม กรุณาลองอีกครั้ง"
+        : "ไม่สามารถเปรียบเทียบคำชุดนี้ได้");
+    throw new Error(message);
+  }
+
+  return parseCompareResponse(payload);
 }
 
 export async function fetchSignLanguage(
@@ -636,4 +678,148 @@ export async function searchDictionaryByKeyword(
     ],
   };
 }
+
+export async function executeWorkspace(
+  payload: import("./workspace-types").WorkspaceRequestPayload,
+  signal?: AbortSignal
+): Promise<import("./workspace-types").WorkspaceResponsePayload> {
+  const timeoutSignal = AbortSignal.timeout(12000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/ai/workspace", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Workspace request failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+export interface QuirkifyWordMapping {
+  original_phrase: string;
+  replaced_word: string;
+  part_of_speech?: string;
+  official_definition: string;
+  source_edition: string;
+  quirk_reason: string;
+}
+
+export interface QuirkifyResponse {
+  original_sentence: string;
+  quirkified_sentence: string;
+  vibe_style: string;
+  punchline_explanation: string;
+  word_mappings: QuirkifyWordMapping[];
+}
+
+export async function quirkifySentence(
+  sentence: string,
+  style: string = "ancient",
+  mode: "quirkify" | "beautify" = "quirkify",
+  signal?: AbortSignal
+): Promise<QuirkifyResponse> {
+  const timeoutSignal = AbortSignal.timeout(25000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/quirkify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ sentence: sentence.trim(), style, mode }),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || err.message || `Quirkify failed (${response.status})`);
+  }
+
+  return response.json();
+}
+
+export async function fetchAccessibilityWord(
+  word: string,
+  signal?: AbortSignal
+): Promise<any> {
+  const timeoutSignal = AbortSignal.timeout(10000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch(
+    `/api/v1/accessibility/words/${encodeURIComponent(word.trim())}`,
+    {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      signal: combinedSignal,
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch accessibility info for ${word}`);
+  }
+
+  return response.json();
+}
+
+export async function convertTextToBraille(
+  text: string,
+  signal?: AbortSignal
+): Promise<any> {
+  const timeoutSignal = AbortSignal.timeout(10000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/accessibility/braille/convert", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ text }),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to convert text to Braille`);
+  }
+
+  return response.json();
+}
+
+export async function checkAccessibility(
+  text: string,
+  signal?: AbortSignal
+): Promise<any> {
+  const timeoutSignal = AbortSignal.timeout(15000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/accessibility/check", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ text }),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to perform accessibility check`);
+  }
+
+  return response.json();
+}
+
 

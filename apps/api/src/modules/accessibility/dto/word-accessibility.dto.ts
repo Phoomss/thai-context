@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class PronunciationItemDto {
   @ApiProperty({ example: 'ประ-สิด-ทิ-พาบ' })
@@ -193,5 +193,108 @@ export class DecodedBrailleResponseDto {
 
   @ApiProperty({ example: true })
   hasAmbiguity: boolean;
+}
+
+export class CreateSignResourceDto {
+  @ApiProperty({ example: 'สวัสดี' })
+  @IsString()
+  @IsNotEmpty()
+  word: string;
+
+  @ApiPropertyOptional({ example: 'สวัสดี' })
+  @IsOptional()
+  @IsString()
+  sign_name?: string;
+
+  @ApiProperty({ example: 'MOTION' })
+  @IsString()
+  @IsNotEmpty()
+  representation_type: string;
+
+  @ApiPropertyOptional({ example: 'DEMO_DATA' })
+  @IsOptional()
+  @IsString()
+  source_type?: string;
+
+  @ApiPropertyOptional({ example: 'AUTHORIZED' })
+  @IsOptional()
+  @IsString()
+  permission_status?: string;
+
+  @ApiPropertyOptional({ example: 'VERIFIED' })
+  @IsOptional()
+  @IsString()
+  verification_status?: string;
+
+  @ApiPropertyOptional({ example: 'https://example.com/signs/samanachan' })
+  @IsOptional()
+  @IsString()
+  source_url?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  motion_data?: any;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  metadata?: any;
+}
+
+export class ContributeSignResourceDto {
+  @ApiProperty({ example: 'สวัสดี' })
+  @IsString()
+  @IsNotEmpty()
+  word: string;
+
+  @ApiProperty({ example: 'https://example.com/tsl-source' })
+  @IsString()
+  @IsNotEmpty()
+  source_url: string;
+
+  @ApiPropertyOptional({ example: 'สมาคมคนหูหนวกแห่งประเทศไทย' })
+  @IsOptional()
+  @IsString()
+  provider_name?: string;
+
+  @ApiPropertyOptional({ example: 'มีบันทึกท่ามือชัดเจน' })
+  @IsOptional()
+  @IsString()
+  notes?: string;
+}
+
+export class SignResourceResponseDto {
+  @ApiProperty({ example: 'VERIFIED' })
+  status: string;
+
+  @ApiProperty({ example: 'สวัสดี' })
+  word: string;
+
+  @ApiPropertyOptional()
+  representation?: {
+    type: string;
+    data?: any;
+  };
+
+  @ApiPropertyOptional()
+  source?: {
+    type: string;
+    name: string;
+    url?: string;
+    license?: string;
+    permission_status?: string;
+  };
+
+  @ApiPropertyOptional()
+  verification?: {
+    status: string;
+    verified_by?: string;
+    notes?: string;
+  };
+
+  @ApiPropertyOptional()
+  metadata?: any;
+
+  @ApiPropertyOptional({ example: 'ยังไม่มีข้อมูลภาษามือไทยที่ผ่านการตรวจสอบ' })
+  message?: string;
 }
 

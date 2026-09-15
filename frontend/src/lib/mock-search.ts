@@ -276,9 +276,11 @@ function getRealDictionary(): Array<{ headword: string; pos: string | null; defi
       const fs = require("fs");
       const path = require("path");
       const candidatePaths = [
+        path.resolve(process.cwd(), "data/processed/dict/dict_all_editions.json"),
+        path.resolve(process.cwd(), "../data/processed/dict/dict_all_editions.json"),
+        path.resolve(process.cwd(), "../../data/processed/dict/dict_all_editions.json"),
         path.resolve(process.cwd(), "data/processed/dict/dict_2554.json"),
         path.resolve(process.cwd(), "../data/processed/dict/dict_2554.json"),
-        "/Users/mac/Desktop/workspace/thai-context/data/processed/dict/dict_2554.json",
       ];
       for (const p of candidatePaths) {
         if (fs.existsSync(p)) {
@@ -317,33 +319,58 @@ export function mockSearch(
     if (realDict && realDict.length > 0) {
       const dynamicMatches = [];
       for (const item of realDict) {
-        const hw = item.headword || "";
+        const rawHw = item.headword || "";
         const def = item.definition || "";
-        if (!hw || excluded.includes(hw)) continue;
-        const isHeadwordMatch = hw === normalized || hw.includes(normalized) || normalized.includes(hw);
+        if (!rawHw || excluded.includes(rawHw)) continue;
+
+        const variants = [rawHw];
+        if (/[,\/;]/.test(rawHw)) {
+          variants.push(
+            ...rawHw
+              .split(/[,\/;]+/)
+              .map((v: string) => v.replace(/[\d๑-๙\s\-\.]/g, "").trim())
+              .filter(Boolean),
+          );
+        }
+
+        const isExactVariantMatch = variants.some((v: string) => v === normalized);
+        const isHeadwordMatch =
+          isExactVariantMatch ||
+          variants.some(
+            (v: string) =>
+              v.includes(normalized) ||
+              (v.length >= 3 && normalized.includes(v)),
+          );
         const isDefMatch = def.includes(normalized);
 
-        if (isHeadwordMatch || isDefMatch) {
+        if (isExactVariantMatch || isHeadwordMatch || isDefMatch) {
+          const displayHw = isExactVariantMatch ? normalized : rawHw;
+          const score = isExactVariantMatch
+            ? 0.98
+            : isHeadwordMatch
+            ? 0.88
+            : 0.72;
+
           dynamicMatches.push({
-            headword: hw,
-            score: hw === normalized ? 0.98 : isHeadwordMatch ? 0.90 : 0.82,
+            headword: displayHw,
+            score,
             pos: item.pos || undefined,
             definition: def,
-            ai_explanation: `ตรงตามนิยามในพจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔`,
+            ai_explanation: `ตรงตามนิยามในพจนานุกรม ฉบับราชบัณฑิตยสถาน (ฉบับ ${item.edition || "๒๕๕๔"})`,
             registers: ["ทางการ"],
             contexts: ["ทั่วไป"],
             evidence: {
-              source_book: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
-              edition: "พ.ศ. ๒๕๕๔",
-              edition_year: 2554,
+              source_book: "พจนานุกรม ฉบับราชบัณฑิตยสถาน",
+              edition: `พ.ศ. ${item.edition || "๒๕๕๔"}`,
+              edition_year: parseInt(String(item.edition || "2554"), 10) || 2554,
               quote: def,
               is_official: true,
             },
           });
-          if (dynamicMatches.length >= 8) break;
         }
       }
-      recommendations.push(...dynamicMatches);
+      dynamicMatches.sort((a, b) => b.score - a.score);
+      recommendations.push(...dynamicMatches.slice(0, 8));
     }
   }
 

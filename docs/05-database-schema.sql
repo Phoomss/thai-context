@@ -305,95 +305,111 @@ INSERT INTO dictionary_editions (id, source_id, edition_code, edition_year, titl
 ('dddddddd-dddd-dddd-dddd-dddddddddddd', '22222222-2222-2222-2222-222222222222', 'DIALECT_THAI', '2565', 'คลังรวบรวมพจนานุกรมภาษาถิ่นไทย ๔ ภาค', '2022-06-15');
 
 INSERT INTO parts_of_speech (id, code, abbr_thai, name_thai, name_english) VALUES
-('pos00001-0000-0000-0000-000000000001', 'N', 'น.', 'คำนาม', 'Noun'),
-('pos00002-0000-0000-0000-000000000002', 'V', 'ก.', 'คำกริยา', 'Verb'),
-('pos00003-0000-0000-0000-000000000003', 'ADJ', 'ว.', 'คำวิเศษณ์', 'Adjective');
+('00000001-0000-0000-0000-000000000001', 'N', 'น.', 'คำนาม', 'Noun'),
+('00000002-0000-0000-0000-000000000002', 'V', 'ก.', 'คำกริยา', 'Verb'),
+('00000003-0000-0000-0000-000000000003', 'ADJ', 'ว.', 'คำวิเศษณ์', 'Adjective')
+ON CONFLICT (code) DO NOTHING;
 
 INSERT INTO dialect_regions (id, code, name_thai, description) VALUES
-('reg00001-0000-0000-0000-000000000001', 'NORTH', 'ภาษาถิ่นเหนือ', 'กลุ่มภาษาล้านนา ภาคเหนือ'),
-('reg00002-0000-0000-0000-000000000002', 'NORTHEAST', 'ภาษาถิ่นอีสาน', 'กลุ่มภาษาไทย-ลาว ภาคตะวันออกเฉียงเหนือ'),
-('reg00003-0000-0000-0000-000000000003', 'SOUTH', 'ภาษาถิ่นใต้', 'กลุ่มภาษาถิ่น ๑๔ จังหวัดภาคใต้');
+('00000011-0000-0000-0000-000000000001', 'NORTH', 'ภาษาถิ่นเหนือ', 'กลุ่มภาษาล้านนา ภาคเหนือ'),
+('00000012-0000-0000-0000-000000000002', 'NORTHEAST', 'ภาษาถิ่นอีสาน', 'กลุ่มภาษาไทย-ลาว ภาคตะวันออกเฉียงเหนือ'),
+('00000013-0000-0000-0000-000000000003', 'SOUTH', 'ภาษาถิ่นใต้', 'กลุ่มภาษาถิ่น ๑๔ จังหวัดภาคใต้')
+ON CONFLICT (code) DO NOTHING;
 
 -- Words & Evolution
 INSERT INTO words (id, headword, headword_clean, char_length) VALUES
-('w0000001-0000-0000-0000-000000000001', 'ประสิทธิภาพ', 'ประสิทธิภาพ', 11),
-('w0000002-0000-0000-0000-000000000002', 'ประสิทธิผล', 'ประสิทธิผล', 10),
-('w0000003-0000-0000-0000-000000000003', 'อร่อย', 'อร่อย', 4);
+('00000021-0000-0000-0000-000000000001', 'ประสิทธิภาพ', 'ประสิทธิภาพ', 11),
+('00000022-0000-0000-0000-000000000002', 'ประสิทธิผล', 'ประสิทธิผล', 10),
+('00000023-0000-0000-0000-000000000003', 'อร่อย', 'อร่อย', 4)
+ON CONFLICT (headword) DO NOTHING;
 
 -- 'ประสิทธิภาพ' across editions
 INSERT INTO word_entries (id, word_id, edition_id, pronunciation, page_number) VALUES
-('e2542001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'ปฺระ-สิด-ทิ-พาบ', 712),
-('e2554001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'ปฺระ-สิด-ทิ-พาบ', 734),
-('e2569001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'ปฺระ-สิด-ทิ-พาบ', 820);
+('00000031-0000-0000-0000-000000000001', '00000021-0000-0000-0000-000000000001', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'ปฺระ-สิด-ทิ-พาบ', 712),
+('00000032-0000-0000-0000-000000000001', '00000021-0000-0000-0000-000000000001', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'ปฺระ-สิด-ทิ-พาบ', 734),
+('00000033-0000-0000-0000-000000000001', '00000021-0000-0000-0000-000000000001', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'ปฺระ-สิด-ทิ-พาบ', 820)
+ON CONFLICT (word_id, edition_id) DO NOTHING;
 
 INSERT INTO definitions (id, entry_id, pos_id, sense_order, definition_text, register_level, subject_domain) VALUES
-('def42001-0000-0000-0000-000000000001', 'e2542001-0000-0000-0000-000000000001', 'pos00001-0000-0000-0000-000000000001', 1, 
+('00000041-0000-0000-0000-000000000001', '00000031-0000-0000-0000-000000000001', '00000001-0000-0000-0000-000000000001', 1, 
 '[SAMPLE DEFINITION — 2542] ความสามารถที่ทำให้เกิดผลสัมฤทธิ์ในการทำงาน', 'FORMAL', 'ทั่วไป'),
-('def54001-0000-0000-0000-000000000001', 'e2554001-0000-0000-0000-000000000001', 'pos00001-0000-0000-0000-000000000001', 1, 
+('00000042-0000-0000-0000-000000000001', '00000032-0000-0000-0000-000000000001', '00000001-0000-0000-0000-000000000001', 1, 
 '[SAMPLE DEFINITION — 2554] ความสามารถที่ทำให้เกิดผลสัมฤทธิ์ในการปฏิบัติงานโดยใช้ทรัพยากรและเวลาอย่างคุ้มค่าที่สุด', 'FORMAL', 'การบริหาร'),
-('def69001-0000-0000-0000-000000000001', 'e2569001-0000-0000-0000-000000000001', 'pos00001-0000-0000-0000-000000000001', 1, 
-'[SAMPLE DEFINITION — 2569] ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร พลังงาน หรือเวลาน้อยที่สุด ครอบคลุมทั้งระบบการทำงานและเทคโนโลยี', 'FORMAL', 'การบริหารและเทคโนโลยี');
+('00000043-0000-0000-0000-000000000001', '00000033-0000-0000-0000-000000000001', '00000001-0000-0000-0000-000000000001', 1, 
+'[SAMPLE DEFINITION — 2569] ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร พลังงาน หรือเวลาน้อยที่สุด ครอบคลุมทั้งระบบการทำงานและเทคโนโลยี', 'FORMAL', 'การบริหารและเทคโนโลยี')
+ON CONFLICT (entry_id, sense_order) DO NOTHING;
 
 -- Dialects & Semantic Mappings
 INSERT INTO word_entries (id, word_id, edition_id, pronunciation, page_number) VALUES
-('e2569003-0000-0000-0000-000000000003', 'w0000003-0000-0000-0000-000000000003', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'อะ-หฺร่อย', 1420);
+('00000034-0000-0000-0000-000000000003', '00000023-0000-0000-0000-000000000003', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'อะ-หฺร่อย', 1420)
+ON CONFLICT (word_id, edition_id) DO NOTHING;
 
 INSERT INTO definitions (id, entry_id, pos_id, sense_order, definition_text, register_level) VALUES
-('def69003-0000-0000-0000-000000000003', 'e2569003-0000-0000-0000-000000000003', 'pos00003-0000-0000-0000-000000000003', 1,
-'[SAMPLE DEFINITION — 2569] มีรสดีเป็นที่ถูกปาก, มีรสชาติถูกอัธยาศัย', 'INFORMAL');
+('00000044-0000-0000-0000-000000000003', '00000034-0000-0000-0000-000000000003', '00000003-0000-0000-0000-000000000003', 1,
+'[SAMPLE DEFINITION — 2569] มีรสดีเป็นที่ถูกปาก, มีรสชาติถูกอัธยาศัย', 'INFORMAL')
+ON CONFLICT (entry_id, sense_order) DO NOTHING;
 
 INSERT INTO dialect_entries (id, region_id, edition_id, dialect_word, dialect_word_clean, local_meaning) VALUES
-('dia00001-0000-0000-0000-000000000001', 'reg00001-0000-0000-0000-000000000001', 'dddddddd-dddd-dddd-dddd-dddddddddddd', 'ลำ', 'ลำ', '[SAMPLE DIALECT] รสชาติอร่อย มีรสโอชา'),
-('dia00002-0000-0000-0000-000000000002', 'reg00002-0000-0000-0000-000000000002', 'dddddddd-dddd-dddd-dddd-dddddddddddd', 'แซ่บ', 'แซบ', '[SAMPLE DIALECT] รสชาติอร่อย เผ็ดนัวถึงใจ'),
-('dia00003-0000-0000-0000-000000000003', 'reg00003-0000-0000-0000-000000000003', 'dddddddd-dddd-dddd-dddd-dddddddddddd', 'หรอย', 'หรอย', '[SAMPLE DIALECT] รสชาติอร่อย ได้อารมณ์ สะใจ');
+('00000051-0000-0000-0000-000000000001', '00000011-0000-0000-0000-000000000001', 'dddddddd-dddd-dddd-dddd-dddddddddddd', 'ลำ', 'ลำ', '[SAMPLE DIALECT] รสชาติอร่อย มีรสโอชา'),
+('00000052-0000-0000-0000-000000000002', '00000012-0000-0000-0000-000000000002', 'dddddddd-dddd-dddd-dddd-dddddddddddd', 'แซ่บ', 'แซบ', '[SAMPLE DIALECT] รสชาติอร่อย เผ็ดนัวถึงใจ'),
+('00000053-0000-0000-0000-000000000003', '00000013-0000-0000-0000-000000000003', 'dddddddd-dddd-dddd-dddd-dddddddddddd', 'หรอย', 'หรอย', '[SAMPLE DIALECT] รสชาติอร่อย ได้อารมณ์ สะใจ')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO semantic_mappings (standard_entry_id, dialect_entry_id, relationship_type, confidence_score, source_type, curated_by) VALUES
-('e2569003-0000-0000-0000-000000000003', 'dia00001-0000-0000-0000-000000000001', 'EXACT_EQUIVALENT', 1.0000, 'OFFICIAL_DATA', 'พจนานุกรมภาษาถิ่นเปรียบเทียบ'),
-('e2569003-0000-0000-0000-000000000003', 'dia00002-0000-0000-0000-000000000002', 'EXACT_EQUIVALENT', 1.0000, 'OFFICIAL_DATA', 'พจนานุกรมภาษาถิ่นเปรียบเทียบ'),
-('e2569003-0000-0000-0000-000000000003', 'dia00003-0000-0000-0000-000000000003', 'EXACT_EQUIVALENT', 1.0000, 'OFFICIAL_DATA', 'พจนานุกรมภาษาถิ่นเปรียบเทียบ');
+('00000034-0000-0000-0000-000000000003', '00000051-0000-0000-0000-000000000001', 'EXACT_EQUIVALENT', 1.0000, 'OFFICIAL_DATA', 'พจนานุกรมภาษาถิ่นเปรียบเทียบ'),
+('00000034-0000-0000-0000-000000000003', '00000052-0000-0000-0000-000000000002', 'EXACT_EQUIVALENT', 1.0000, 'OFFICIAL_DATA', 'พจนานุกรมภาษาถิ่นเปรียบเทียบ'),
+('00000034-0000-0000-0000-000000000003', '00000053-0000-0000-0000-000000000003', 'EXACT_EQUIVALENT', 1.0000, 'OFFICIAL_DATA', 'พจนานุกรมภาษาถิ่นเปรียบเทียบ')
+ON CONFLICT (standard_entry_id, dialect_entry_id) DO NOTHING;
 
 -- Search Embedding Demo Sample
 INSERT INTO search_embeddings (entity_type, entity_id, edition_id, searchable_text, model_name, embedding) VALUES
-('DEFINITION', 'def69001-0000-0000-0000-000000000001', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 
+('DEFINITION', '00000043-0000-0000-0000-000000000001', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 
 'ประสิทธิภาพ: ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร พลังงาน หรือเวลาน้อยที่สุด', 
 'text-embedding-3-small', 
-array_fill(0.024::float4, ARRAY[1536])::vector);
+array_fill(0.024::float4, ARRAY[1536])::vector)
+ON CONFLICT (id) DO NOTHING;
 
 -- Grounded AI & Evidence
 INSERT INTO ai_explanations (id, user_query, explanation_type, generated_content, model_identifier) VALUES
-('exp00001-0000-0000-0000-000000000001', 
+('00000061-0000-0000-0000-000000000001', 
 'อยากบอกว่าทำงานได้ผลลัพธ์ดีเลิศ ใช้เวลาและงบประมาณอย่างคุ้มค่าที่สุด แต่ไม่อยากใช้คำว่าเร็ว', 
 'MEANING_RECOMMEND', 
 'ขอแนะนำคำว่า "ประสิทธิภาพ" เนื่องจากนิยามระบุถึงการกระทำที่ส่งผลสัมฤทธิ์โดยใช้ทรัพยากรและเวลาอย่างคุ้มค่า เหมาะกับบริบทการทำงานเชิงบริหาร', 
-'gemini-1.5-pro');
+'gemini-1.5-pro')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO rag_evidence (explanation_id, entry_id, definition_id, relevance_score, cited_snippet) VALUES
-('exp00001-0000-0000-0000-000000000001', 
-'e2569001-0000-0000-0000-000000000001', 
-'def69001-0000-0000-0000-000000000001', 
+('00000061-0000-0000-0000-000000000001', 
+'00000033-0000-0000-0000-000000000001', 
+'00000043-0000-0000-0000-000000000001', 
 0.9420, 
-'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๖๙: "ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร..."');
+'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๖๙: "ความสามารถในการปฏิบัติการที่ให้ผลลัพธ์สูงสุดโดยสูญเสียทรัพยากร..."')
+ON CONFLICT (id) DO NOTHING;
 
 -- ----------------------------------------------------------------------------
 -- 9. ACCESSIBILITY & MULTILINGUAL DEMO SEEDS
 -- ----------------------------------------------------------------------------
 -- Pronunciations & RTGS
 INSERT INTO word_pronunciations (id, entry_id, phonetic_spelling, transliteration_rtgs, ipa_notation, tone_pattern, source_type) VALUES
-('pro00001-0000-0000-0000-000000000001', 'e2569001-0000-0000-0000-000000000001', 'ประ-สิด-ทิ-พาบ', 'pra-sit-thi-phap', 'praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰaːp̚˥˩', 'L-L-H-L', 'OFFICIAL_DATA'),
-('pro00002-0000-0000-0000-000000000002', 'e2569003-0000-0000-0000-000000000003', 'อะ-หฺร่อย', 'a-roi', 'ʔaʔ˨˩.rɔːj˨˩', 'L-L', 'OFFICIAL_DATA');
+('00000071-0000-0000-0000-000000000001', '00000033-0000-0000-0000-000000000001', 'ประ-สิด-ทิ-พาบ', 'pra-sit-thi-phap', 'praʔ˨˩.sit̚˨˩.tʰi˦˥.pʰaːp̚˥˩', 'L-L-H-L', 'OFFICIAL_DATA'),
+('00000072-0000-0000-0000-000000000002', '00000034-0000-0000-0000-000000000003', 'อะ-หฺร่อย', 'a-roi', 'ʔaʔ˨˩.rɔːj˨˩', 'L-L', 'OFFICIAL_DATA')
+ON CONFLICT (id) DO NOTHING;
 
 -- Translations & English Bridge
 INSERT INTO word_translations (id, word_id, language_code, translated_word, contextual_explanation, provenance, confidence_score) VALUES
-('tra00001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'en', 'efficiency', 'The capacity to deliver maximum productive output with the least consumption of inputs (time, budget, energy).', 'OFFICIAL_CURATED', 1.0000),
-('tra00002-0000-0000-0000-000000000002', 'w0000002-0000-0000-0000-000000000002', 'en', 'effectiveness', 'The degree to which objectives are achieved and targeted problems are resolved.', 'OFFICIAL_CURATED', 1.0000),
-('tra00003-0000-0000-0000-000000000003', 'w0000003-0000-0000-0000-000000000003', 'en', 'delicious', 'Having a delightful and savory taste that appeals to the palate.', 'OFFICIAL_CURATED', 1.0000);
+('00000081-0000-0000-0000-000000000001', '00000021-0000-0000-0000-000000000001', 'en', 'efficiency', 'The capacity to deliver maximum productive output with the least consumption of inputs (time, budget, energy).', 'OFFICIAL_CURATED', 1.0000),
+('00000082-0000-0000-0000-000000000002', '00000022-0000-0000-0000-000000000002', 'en', 'effectiveness', 'The degree to which objectives are achieved and targeted problems are resolved.', 'OFFICIAL_CURATED', 1.0000),
+('00000083-0000-0000-0000-000000000003', '00000023-0000-0000-0000-000000000003', 'en', 'delicious', 'Having a delightful and savory taste that appeals to the palate.', 'OFFICIAL_CURATED', 1.0000)
+ON CONFLICT (id) DO NOTHING;
 
 -- Thai Sign Language (TSL) Metadata & Media
 INSERT INTO sign_language_entries (id, word_id, sign_name, handshape_description, dialect_region, verification_status, source_attribution) VALUES
-('tsl00001-0000-0000-0000-000000000001', 'w0000001-0000-0000-0000-000000000001', 'ประสิทธิภาพ', 'มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย', 'CENTRAL', 'OFFICIAL', 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล'),
-('tsl00002-0000-0000-0000-000000000002', 'w0000003-0000-0000-0000-000000000003', 'อร่อย', 'ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย', 'CENTRAL', 'OFFICIAL', 'สมาคมคนหูหนวกแห่งประเทศไทย');
+('00000091-0000-0000-0000-000000000001', '00000021-0000-0000-0000-000000000001', 'ประสิทธิภาพ', 'มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย', 'CENTRAL', 'OFFICIAL', 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล'),
+('00000092-0000-0000-0000-000000000002', '00000023-0000-0000-0000-000000000003', 'อร่อย', 'ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย', 'CENTRAL', 'OFFICIAL', 'สมาคมคนหูหนวกแห่งประเทศไทย')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO sign_media (id, sign_id, media_type, media_url, thumbnail_url, is_primary) VALUES
-('med00001-0000-0000-0000-000000000001', 'tsl00001-0000-0000-0000-000000000001', 'VIDEO_MP4', 'https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4', 'https://assets.thai-context.org/tsl/thumbs/prasitthiphap.jpg', TRUE),
-('med00002-0000-0000-0000-000000000002', 'tsl00002-0000-0000-0000-000000000002', 'VIDEO_MP4', 'https://assets.thai-context.org/tsl/videos/aroi.mp4', 'https://assets.thai-context.org/tsl/thumbs/aroi.jpg', TRUE);
+('000000a1-0000-0000-0000-000000000001', '00000091-0000-0000-0000-000000000001', 'VIDEO_MP4', 'https://assets.thai-context.org/tsl/videos/prasitthiphap.mp4', 'https://assets.thai-context.org/tsl/thumbs/prasitthiphap.jpg', TRUE),
+('000000a2-0000-0000-0000-000000000002', '00000092-0000-0000-0000-000000000002', 'VIDEO_MP4', 'https://assets.thai-context.org/tsl/videos/aroi.mp4', 'https://assets.thai-context.org/tsl/thumbs/aroi.jpg', TRUE)
+ON CONFLICT (id) DO NOTHING;
 

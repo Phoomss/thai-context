@@ -108,6 +108,10 @@ assert_endpoint "Grounded RAG Assistant (Anti-Hallucination)" "POST" "${API_URL}
 assert_endpoint "User Feedback Submission" "POST" "${API_URL}/api/v1/feedback" \
   '{"queryText": "ทำงานสำเร็จ", "userAction": "THUMBS_UP", "rating": 5}' "success"
 
+# 13. AI Language Workspace (Multi-Agent Architecture)
+assert_endpoint "AI Language Workspace Multi-Agent Pipeline" "POST" "${API_URL}/api/v1/ai/workspace" \
+  '{"message": "หาคำที่หมายถึงทำงานได้ดีและใช้ทรัพยากรน้อย"}' "recommendations"
+
 echo -e "\n=================================================================="
 echo -e "${YELLOW}📊 Smoke Test Results:${NC}"
 echo -e "  Total:  ${TOTAL_TESTS}"

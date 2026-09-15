@@ -5,6 +5,7 @@ import HeroSection, { type HeroHandle } from "./hero/HeroSection";
 import MorphingNavbar from "./layout/MorphingNavbar";
 import SearchResults from "./search/SearchResults";
 import PersistentSearchComposer from "./search/PersistentSearchComposer";
+import SearchModeSwitcher from "./search/SearchModeSwitcher";
 import EvidenceDrawer from "./evidence/EvidenceDrawer";
 import AIAssistantDrawer from "./ai/AIAssistantDrawer";
 import ContextComparator from "./compare/ContextComparator";
@@ -12,7 +13,6 @@ import EvolutionExplorer from "./evolution/EvolutionExplorer";
 import DialectExplorer from "./dialect/DialectExplorer";
 import DictionaryBrowser from "./dictionary/DictionaryBrowser";
 import Footer from "./layout/Footer";
-import { mockSearch } from "@/lib/mock-search";
 import type { Recommendation } from "@/lib/search-types";
 import {
   experienceReducer,
@@ -23,6 +23,9 @@ import { searchMeaning } from "@/lib/api-client";
 import { audioManager } from "@/lib/audio-manager";
 import CapabilityStrip from "./hero/CapabilityStrip";
 import { useSectionReveal } from "./ui/useSectionReveal";
+
+const EMPTY_RECOMMENDATIONS: Recommendation[] = [];
+
 export default function SearchExperience() {
   const chapters = useRef<HTMLDivElement>(null);
   useSectionReveal(chapters);
@@ -204,14 +207,22 @@ export default function SearchExperience() {
       },
     );
   }
-  const comparisonWords = model.result?.recommendations.length
-    ? model.result.recommendations
-    : mockSearch("ทำงาน").recommendations;
+  const comparisonWords = model.result?.recommendations ?? EMPTY_RECOMMENDATIONS;
+  // Assistant is an existing modal and Workspace owns its own route. Derive the
+  // selected mode from the actual interface, rather than keeping a second state.
+  const modeSwitcher = (
+    <SearchModeSwitcher
+      mode={aiAssistantOpen ? "ai-assistant" : "context-search"}
+      onContextSearch={() => setAiAssistantOpen(false)}
+      onAssistant={() => handleOpenAIChat()}
+      disabled={isCinematic(model.state) || (model.hasResults && !model.revealed)}
+    />
+  );
   const toggleCompare = (word: Recommendation) => {
     setCompareSelected((selected) => {
       if (selected.includes(word.headword))
         return selected.filter((item) => item !== word.headword);
-      return [...selected.slice(-1), word.headword];
+      return [...selected, word.headword].slice(0, 5);
     });
   };
   return (
@@ -219,11 +230,11 @@ export default function SearchExperience() {
       <HeroSection
         heroRef={hero}
         onSearch={(q) => startRequest(q, "hero")}
+        modeSwitcher={modeSwitcher}
       />
       <MorphingNavbar
         navRef={nav}
         busy={isCinematic(model.state)}
-        onAIChat={() => handleOpenAIChat()}
         onHome={(e) => {
           e.preventDefault();
           back();
@@ -252,8 +263,9 @@ export default function SearchExperience() {
       {(
         <div ref={chapters} className="discovery-chapters">
           <ContextComparator
-            words={comparisonWords.length >= 2 ? comparisonWords : mockSearch("ทำงาน").recommendations}
+            words={comparisonWords}
             selected={compareSelected}
+            sourceMode={model.result?.mode}
             onSelect={setCompareSelected}
             onEvidence={(word) => dispatch({ type: "OPEN_EVIDENCE", word })}
             onAIChat={handleOpenAIChat}
@@ -270,6 +282,7 @@ export default function SearchExperience() {
           query={model.query}
           busy={model.loading || !model.revealed}
           onSearch={(q) => startRequest(q, "composer")}
+          modeSwitcher={modeSwitcher}
         />
       )}
       {model.state === "evidence-open" && model.evidence && (

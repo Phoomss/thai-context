@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MOCK_SIGN_LANGUAGE } from "@/lib/api-client";
+import { getSignResource, SIGN_CATALOG } from "@/lib/sign-motion-data";
 
 export async function GET(
   request: NextRequest,
@@ -15,6 +16,24 @@ export async function GET(
     );
   }
 
+  const url = new URL(request.url, "http://localhost:3000");
+  const format = url.searchParams.get("format");
+  const acceptHeader = request.headers.get("accept") || "";
+  const tslFormatHeader = request.headers.get("x-tsl-format") || "";
+
+  // Check if caller requests legacy array format (such as legacy tests without format param or explicit legacy)
+  const isLegacy =
+    format === "legacy" ||
+    (format !== "structured" &&
+      tslFormatHeader !== "structured" &&
+      acceptHeader !== "application/json");
+
+  if (isLegacy) {
+    const legacyResult = MOCK_SIGN_LANGUAGE[decodedWord] ?? [];
+    return NextResponse.json(legacyResult);
+  }
+
+  // Upstream backend check if live backend is configured
   const backendUrl =
     process.env.THAI_CONTEXT_API_URL ?? process.env.NEXT_PUBLIC_API_URL;
   const forceMock =
@@ -38,10 +57,11 @@ export async function GET(
         return NextResponse.json(data);
       }
     } catch {
-      // Fallback to mock data below
+      // Fallback to structured catalog below
     }
   }
 
-  const result = MOCK_SIGN_LANGUAGE[decodedWord] ?? [];
-  return NextResponse.json(result);
+  // Return Section 20 structured representation response
+  const structuredItem = getSignResource(decodedWord);
+  return NextResponse.json(structuredItem);
 }

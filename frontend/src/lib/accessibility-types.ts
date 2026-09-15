@@ -83,3 +83,77 @@ export interface DecodedBrailleResult {
   hasAmbiguity: boolean;
 }
 
+export type AccessibilityProfile = "auto" | "text" | "audio" | "sign" | "braille";
+
+export interface AccessibilityWordRepresentation {
+  word: string;
+  audio: {
+    available: boolean;
+    phonetic?: string;
+    locale?: string;
+  };
+  signLanguage: {
+    available: boolean;
+    status: "VERIFIED" | "EXTERNAL_RESOURCE" | "NOT_AVAILABLE" | "PENDING_REVIEW";
+    resource?: any;
+  };
+  braille: {
+    available: boolean;
+    unicode: string;
+    cellsCount: number;
+    readingGuide?: string;
+    sourceAttribution?: string;
+  };
+  governance?: {
+    isDeterministic: boolean;
+    aiGeneratedSign: boolean;
+    aiGeneratedBraille: boolean;
+    standard: string;
+  };
+}
+
+export interface BrailleConvertResponse {
+  text: string;
+  brailleUnicode: string;
+  cellsCount: number;
+  cells: BrailleCell[];
+  readingGuide: string;
+  sourceAttribution?: string;
+  verificationStatus?: string;
+  export: {
+    rawUnicode: string;
+    textWithBraille: string;
+    accessibleFormat: string;
+  };
+}
+
+export interface AccessibilityCheckItem {
+  id: string;
+  category: "SIGN_LANGUAGE" | "BRAILLE" | "SCREEN_READER" | "READABILITY";
+  title: string;
+  status: "PASS" | "WARN" | "INFO";
+  detail: string;
+  recommendation?: string;
+}
+
+export interface AccessibilityCheckResponse {
+  text: string;
+  readinessScore: number;
+  readinessRating: "HIGH" | "MODERATE" | "NEEDS_IMPROVEMENT";
+  disclaimer: string;
+  detectedSignTerms: Array<{
+    word: string;
+    status: string;
+    hasMotion: boolean;
+    signName?: string;
+  }>;
+  braille: {
+    unicode: string;
+    cellsCount: number;
+    readingGuide: string;
+  };
+  checklist: AccessibilityCheckItem[];
+  suggestedImprovements: string[];
+}
+
+
