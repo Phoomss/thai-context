@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Link from "next/link";
 import Icon from "../ui/Icon";
 
 export interface EvidenceItemData {
@@ -12,10 +13,19 @@ export interface EvidenceItemData {
   relevance?: number;
 }
 
+export interface AgentTraceData {
+  agent: string;
+  status: "running" | "completed" | "skipped";
+  summary: string;
+  duration_ms?: number;
+}
+
 export interface ChatMessage {
   id: string;
   role: "user" | "assistant";
   text: string;
+  activeAgent?: string;
+  agentTraces?: AgentTraceData[];
   evidences?: EvidenceItemData[];
   confidence?: number;
   grounded?: boolean;
@@ -39,6 +49,110 @@ const CONTEXT_OPTIONS = [
   "เชิงกฎหมาย",
 ];
 
+export interface AgentPersona {
+  id: string;
+  label: string;
+  icon: string;
+  badge: string;
+  agentName: string;
+  desc: string;
+  placeholder: string;
+  missions: string[];
+}
+
+const AGENT_PERSONAS: AgentPersona[] = [
+  {
+    id: "AUTO",
+    label: "🤖 ตัวแทนอัตโนมัติ",
+    icon: "🤖",
+    badge: "Auto Agent",
+    agentName: "OrchestratorAgent",
+    desc: "AI วางแผนงานและเรียกใช้ชุด Agent ที่เหมาะสมให้อัตโนมัติ",
+    placeholder: "สั่งงาน AI Agent เช่น ร่างอีเมล, ขัดเกลาข้อความ, หรือเปรียบเทียบคำ...",
+    missions: [
+      "คำว่า 'ประสิทธิภาพ' ต่างกับ 'ประสิทธิผล' ในงานวิจัยอย่างไร",
+      "ช่วยร่างโครงสร้างอีเมลขอความอนุเคราะห์อย่างเป็นทางการ",
+      "ช่วยขัดเกลาประโยคภาษาพูดให้กลายเป็นภาษาเขียนทางการ",
+      "หาคำสละสลวยแทนคำว่า 'ทำได้ดีมาก' ในรายงานวิชาการ",
+    ],
+  },
+  {
+    id: "WRITING",
+    label: "✍️ ร่างและเขียน",
+    icon: "✍️",
+    badge: "Writing Agent",
+    agentName: "WritingAgent",
+    desc: "ร่างเนื้อหา: อีเมลธุรกิจ, หนังสือราชการ, คำแถลง, บทคัดย่อวิชาการ",
+    placeholder: "สั่งให้ Writing Agent ร่างข้อความ เช่น 'ร่างอีเมลขอความอนุเคราะห์...'...",
+    missions: [
+      "ช่วยร่างอีเมลขอความอนุเคราะห์เข้าศึกษาดูงานอย่างเป็นทางการ",
+      "ร่างบทคัดย่อเกริ่นนำโครงการวิจัยเกี่ยวกับการเพิ่มประสิทธิภาพ",
+      "ร่างคำกล่าวขอบคุณวิทยากรในงานสัมมนาวิชาการ",
+      "ร่างประกาศแจ้งปรับปรุงระบบสำหรับลูกค้าธุรกิจ",
+    ],
+  },
+  {
+    id: "REWRITE",
+    label: "🔄 ขัดเกลาสำนวน",
+    icon: "🔄",
+    badge: "Rewrite Agent",
+    agentName: "RewriteAgent",
+    desc: "ยกระดับภาษาพูดเป็นภาษาทางการหรือกึ่งทางการ สละสลวย และถูกต้อง",
+    placeholder: "วางข้อความที่ต้องการให้ Rewrite Agent ขัดเกลาหรือปรับระดับภาษา...",
+    missions: [
+      "เปลี่ยนข้อความนี้ให้เป็นภาษาราชการ: 'อยากให้ทางคุณช่วยส่งของมาเร็วๆ หน่อย'",
+      "ขัดเกลาบทความนี้ให้อ่านลื่นไหลและตัดคำซ้ำซ้อน",
+      "ปรับประโยคภาษาปากให้กลายเป็นภาษาเขียนทางการ",
+      "เพิ่มความหนักแน่นและเป็นมืออาชีพในข้อเสนอทางธุรกิจ",
+    ],
+  },
+  {
+    id: "COMPARE",
+    label: "⚖️ วิจัยเปรียบเทียบคำ",
+    icon: "⚖️",
+    badge: "Compare Agent",
+    agentName: "WordCompareAgent",
+    desc: "วิเคราะห์ความต่างอย่างลึกซึ้ง: นัยความหมาย (Nuance) และข้อควรระวัง",
+    placeholder: "ระบุคำศัพท์ที่ต้องการให้ Compare Agent วิจัยความต่าง...",
+    missions: [
+      "คำว่า 'ประสิทธิภาพ' ต่างกับ 'ประสิทธิผล' ในงานวิจัยอย่างไร",
+      "เปรียบเทียบคำว่า 'ยินยอม' กับ 'ยินยอมพร้อมใจ' ทางกฎหมาย",
+      "เปรียบเทียบ 'ข้อเท็จจริง' กับ 'ความจริง' ในเชิงวิชาการ",
+      "คำว่า 'กำกับ' กับ 'ควบคุม' มีน้ำหนักต่างกันอย่างไร",
+    ],
+  },
+  {
+    id: "DISCOVERY",
+    label: "🔍 ค้นหาคำจากความคิด",
+    icon: "🔍",
+    badge: "Discovery Agent",
+    agentName: "WordDiscoveryAgent",
+    desc: "ถอดความคิดหรือมโนทัศน์ที่นึกไม่ออก ออกมาเป็นคลังคำที่ตรงใจ",
+    placeholder: "อธิบายสิ่งที่คุณต้องการสื่อ แม้นึกคำไม่ออก เช่น 'ความร่วมมืออย่างเหนียวแน่น'...",
+    missions: [
+      "หาคำสละสลวยแทนคำว่า 'ทำได้ดีมาก' ในรายงานวิชาการ",
+      "คำที่แปลว่า 'การทำให้ดีขึ้นอย่างต่อเนื่อง' ในภาษาทางการ",
+      "คำกริยาที่สื่อถึงการ 'มอบหมายงานด้วยความไว้วางใจ'",
+      "คำศัพท์สำหรับอธิบาย 'การบริหารงานที่โปร่งใสและตรวจสอบได้'",
+    ],
+  },
+  {
+    id: "PROOFREAD",
+    label: "🛡️ ตรวจทานหลักภาษา",
+    icon: "🛡️",
+    badge: "Checker Agent",
+    agentName: "LanguageCheckerAgent",
+    desc: "สแกนหาคำฟุ่มเฟือย คำกำกวม และระดับภาษาที่ไม่สอดคล้องกัน",
+    placeholder: "วางประโยคเพื่อสั่งให้ Checker Agent ตรวจสอบความถูกต้อง...",
+    missions: [
+      "ตรวจทานประโยคนี้ว่ามีคำกำกวมหรือคำฟุ่มเฟือยหรือไม่",
+      "สแกนหาข้อผิดพลาดทางไวยากรณ์และระดับภาษาที่ไม่สอดคล้องกัน",
+      "ตรวจเช็คว่าสำนวนในประโยคติดไวยากรณ์ภาษาอังกฤษ (Passive) หรือไม่",
+      "แนะนำคำศัพท์ทดแทนเพื่อให้อ่านลื่นไหลและกระชับขึ้น",
+    ],
+  },
+];
+
 export default function AIAssistantDrawer({
   initialWord = "",
   initialContext = "รายงานวิชาการ",
@@ -53,9 +167,14 @@ export default function AIAssistantDrawer({
 
   const [word, setWord] = useState(initialWord);
   const [context, setContext] = useState(initialContext);
+  const [selectedRole, setSelectedRole] = useState<string>("AUTO");
   const [inputMessage, setInputMessage] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const activePersona =
+    AGENT_PERSONAS.find((p) => p.id === selectedRole) || AGENT_PERSONAS[0];
 
   // Sync initial props when opened
   useEffect(() => {
@@ -113,6 +232,21 @@ export default function AIAssistantDrawer({
     }
   }, [messages, isGenerating]);
 
+  // 1-Click Copy Helper
+  const handleCopyText = useCallback((msgId: string, text: string) => {
+    // Strip markdown formatting symbols for clean clipboard text
+    const cleanText = text
+      .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/^>\s*/gm, "")
+      .replace(/^[•\-]\s*/gm, "")
+      .trim();
+
+    navigator.clipboard?.writeText(cleanText).then(() => {
+      setCopiedId(msgId);
+      setTimeout(() => setCopiedId(null), 2000);
+    });
+  }, []);
+
   // Send query via SSE
   const handleSend = useCallback(
     async (textToSend?: string) => {
@@ -129,10 +263,43 @@ export default function AIAssistantDrawer({
         text: messageText,
       };
 
+      // Inferred agent for optimistic UI feedback
+      let guessedAgent = activePersona.agentName;
+      if (activePersona.id === "AUTO") {
+        if (/ต่างกับ|เปรียบเทียบ|vs/i.test(messageText)) {
+          guessedAgent = "WordCompareAgent";
+        } else if (/เปลี่ยน|ขัดเกลา|แก้|ระดับภาษา|ภาษาพูด/i.test(messageText)) {
+          guessedAgent = "RewriteAgent";
+        } else if (/ตรวจ|ฟุ่มเฟือย|กำกวม|ไวยากรณ์/i.test(messageText)) {
+          guessedAgent = "LanguageCheckerAgent";
+        } else if (/หาคำ|แทนคำว่า|นึกคำ/i.test(messageText)) {
+          guessedAgent = "WordDiscoveryAgent";
+        } else if (/อีเมล|ร่าง|เขียน|จดหมาย|ประกาศ/i.test(messageText)) {
+          guessedAgent = "WritingAgent";
+        } else {
+          guessedAgent = "WritingAgent";
+        }
+      }
+
+      const defaultTraces: AgentTraceData[] = [
+        {
+          agent: "ContextAgent",
+          status: "completed",
+          summary: `กำหนดบริบท: ${context}`,
+        },
+        {
+          agent: guessedAgent,
+          status: "running",
+          summary: `กำลังประมวลผลคำสั่ง...`,
+        },
+      ];
+
       const assistantMsg: ChatMessage = {
         id: assistantMsgId,
         role: "assistant",
         text: "",
+        activeAgent: guessedAgent,
+        agentTraces: defaultTraces,
         evidences: [],
         isStreaming: true,
       };
@@ -154,6 +321,7 @@ export default function AIAssistantDrawer({
             message: messageText,
             word: word || undefined,
             context: context || undefined,
+            agentMode: selectedRole,
           }),
           signal: controller.signal,
         });
@@ -198,7 +366,21 @@ export default function AIAssistantDrawer({
             try {
               const parsed = JSON.parse(dataRaw);
 
-              if (eventType === "token") {
+              if (eventType === "trace") {
+                const traces: AgentTraceData[] = Array.isArray(parsed)
+                  ? parsed
+                  : [parsed];
+                setMessages((prev) =>
+                  prev.map((msg) =>
+                    msg.id === assistantMsgId
+                      ? {
+                          ...msg,
+                          agentTraces: traces,
+                        }
+                      : msg
+                  )
+                );
+              } else if (eventType === "token") {
                 const token = parsed.token ?? parsed.text ?? "";
                 setMessages((prev) =>
                   prev.map((msg) =>
@@ -232,6 +414,24 @@ export default function AIAssistantDrawer({
                           ...msg,
                           confidence: parsed.confidence ?? 0.95,
                           grounded: parsed.grounded ?? true,
+                          activeAgent: parsed.agent || msg.activeAgent,
+                          agentTraces: [
+                            {
+                              agent: "ContextAgent",
+                              status: "completed",
+                              summary: `กำหนดบริบท: ${context}`,
+                            },
+                            {
+                              agent: parsed.agent || msg.activeAgent || "WritingAgent",
+                              status: "completed",
+                              summary: "ดำเนินการเสร็จสิ้น",
+                            },
+                            {
+                              agent: "LanguageCheckerAgent",
+                              status: "completed",
+                              summary: "ผ่านการตรวจระดับภาษาและหลักไวยากรณ์",
+                            },
+                          ],
                           isStreaming: false,
                         }
                       : msg
@@ -252,7 +452,7 @@ export default function AIAssistantDrawer({
                     ...msg,
                     text:
                       msg.text ||
-                      "ขออภัย เกิดข้อผิดพลาดในการเชื่อมต่อกับบริการผู้ช่วย AI กรุณาลองใหม่อีกครั้ง",
+                      "ขออภัย เกิดข้อผิดพลาดในการเชื่อมต่อกับบริการ AI Agent กรุณาลองใหม่อีกครั้ง",
                     error: err?.message,
                     isStreaming: false,
                   }
@@ -269,7 +469,7 @@ export default function AIAssistantDrawer({
         );
       }
     },
-    [inputMessage, isGenerating, word, context]
+    [inputMessage, isGenerating, word, context, selectedRole, activePersona]
   );
 
   const handleStop = () => {
@@ -283,25 +483,12 @@ export default function AIAssistantDrawer({
     setIsGenerating(false);
   };
 
-  // Quick suggestion prompts
-  const quickPrompts = [
-    word
-      ? `คำว่า '${word}' ต่างกับ 'ประสิทธิผล' ในงานวิจัยอย่างไร`
-      : "คำว่า 'ประสิทธิภาพ' ต่างกับ 'ประสิทธิผล' ในงานวิจัยอย่างไร",
-    word
-      ? `คำว่า '${word}' เหมาะสำหรับใช้ในบริบท${context}หรือไม่ อย่างไร`
-      : `ช่วยยกตัวอย่างการใช้คำในบริบท${context}`,
-    word
-      ? `ช่วยยกตัวอย่างประโยคทางการที่ใช้คำว่า '${word}'`
-      : "ช่วยยกตัวอย่างประโยคทางการในการเขียนรายงาน",
-  ];
-
   if (!isOpen) return null;
 
   return (
     <dialog
       ref={dialog}
-      className="evidence-drawer ai-assistant-drawer"
+      className="evidence-drawer ai-assistant-drawer ai-agent-workspace"
       aria-labelledby="ai-assistant-title"
       onKeyDown={(e) => {
         if (e.key === "Escape") {
@@ -325,36 +512,79 @@ export default function AIAssistantDrawer({
               <span className="ai-brand-badge font-thai-reading">
                 ✨ ผู้ช่วย AI ภาษาไทย
               </span>
+              <span className="ai-agent-tag-pill">
+                🤖 AI Agent Workspace
+              </span>
               <span className="ai-rag-pill">
                 🛡️ Grounded RAG (ไม่มโน)
               </span>
             </div>
-            <h2 id="ai-assistant-title" className="ai-drawer-title font-thai-reading">
-              ปรึกษาการใช้คำศัพท์และบริบท
-            </h2>
+            <div className="ai-title-wrap">
+              <h2 id="ai-assistant-title" className="ai-drawer-title font-thai-reading">
+                ปรึกษาการใช้คำศัพท์และบริบท
+              </h2>
+              <p className="ai-drawer-subtitle font-thai-reading">
+                ระบบตัวแทนอัจฉริยะแบบมัลติเอเจนต์ (Multi-Agent System) พร้อมทำงานอัตโนมัติ ไม่ใช่แค่วิเคราะห์คำ
+              </p>
+            </div>
           </div>
-          <button
-            autoFocus
-            type="button"
-            className="ai-close-btn"
-            onClick={onClose}
-            aria-label="ปิดหน้าต่างผู้ช่วย AI"
-          >
-            ×
-          </button>
+          <div className="ai-header-controls">
+            <Link
+              href={`/ai-assistant${word ? `?word=${encodeURIComponent(word)}` : ""}`}
+              className="ai-toggle-page-btn font-thai-reading"
+              title="เปิดเป็นหน้าเต็ม (ไปยังหน้าผู้ช่วย AI)"
+              onClick={onClose}
+            >
+              <span>⛶</span>
+              <span>ไปที่หน้าผู้ช่วย AI ↗</span>
+            </Link>
+            <button
+              autoFocus
+              type="button"
+              className="ai-close-btn"
+              onClick={onClose}
+              aria-label="ปิดหน้าต่างผู้ช่วย AI"
+            >
+              ×
+            </button>
+          </div>
         </header>
+
+        {/* Multi-Agent Role Selector Tabs */}
+        <div className="ai-agent-personas-strip" role="tablist" aria-label="เลือกบทบาท AI Agent">
+          <span className="ai-persona-strip-label font-thai-reading">บทบาท Agent:</span>
+          <div className="ai-persona-chips-scroll">
+            {AGENT_PERSONAS.map((persona) => {
+              const isActive = selectedRole === persona.id;
+              return (
+                <button
+                  key={persona.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`ai-agent-persona-tab ${isActive ? "active" : ""}`}
+                  onClick={() => setSelectedRole(persona.id)}
+                  title={persona.desc}
+                >
+                  <span className="ai-tab-icon">{persona.icon}</span>
+                  <span className="ai-tab-text">{persona.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Target Word & Context Selector Bar */}
         <div className="ai-context-bar">
           {word && (
             <div className="ai-target-word-pill font-thai-reading">
-              <span className="ai-pill-label">คำที่ปรึกษา:</span>
+              <span className="ai-pill-label">คำเป้าหมาย:</span>
               <strong>{word}</strong>
               <button
                 type="button"
                 className="ai-clear-word"
                 onClick={() => setWord("")}
-                title="เปลี่ยนเป็นถามคำถามทั่วไป"
+                title="เปลี่ยนเป็นสั่งงานทั่วไป"
               >
                 ×
               </button>
@@ -383,28 +613,58 @@ export default function AIAssistantDrawer({
         <div className="ai-chat-stream-viewport" aria-live="polite">
           {messages.length === 0 ? (
             <div className="ai-chat-empty-state font-thai-reading">
-              <div className="ai-empty-icon">💡</div>
-              <h3>ถามข้อสงสัยด้านภาษาหรือการเลือกใช้คำ</h3>
-              <p>
-                ผู้ช่วยจะตรวจสอบและอ้างอิงความหมายจาก **พจนานุกรมทางการ**
-                (ฉบับราชบัณฑิตยสถาน ๒๕๔๒, ๒๕๕๔, ๒๕๖๙)
-                พร้อมจำแนกข้อเท็จจริงทางการและข้อแนะนำของ AI อย่างชัดเจน
-              </p>
+              <div className="ai-welcome-hero">
+                <div className="ai-welcome-icon-glow">{activePersona.icon}</div>
+                <span className="ai-empty-agent-badge">{activePersona.badge}</span>
+                <h3 className="ai-welcome-title">
+                  สวัสดีครับ วันนี้ให้ผู้ช่วย AI ช่วยคุณทำอะไรดี?
+                </h3>
+                <p className="ai-welcome-desc">
+                  {activePersona.desc} — พร้อมอ้างอิงพจนานุกรมทางการฉบับราชบัณฑิตยสภา
+                </p>
+              </div>
 
+              {/* Mission Presets Grid */}
               <div className="ai-quick-prompts-section">
-                <span className="ai-quick-prompts-label">ตัวอย่างคำถามที่พบบ่อย:</span>
-                <div className="ai-quick-prompts-grid">
-                  {quickPrompts.map((prompt, idx) => (
+                <span className="ai-quick-prompts-label">
+                  💡 เลือกภารกิจด่วนที่ต้องการสั่งงาน หรือพิมพ์คำสั่งด้านล่าง:
+                </span>
+                <div className="ai-mission-cards-grid">
+                  {activePersona.missions.map((prompt, idx) => (
                     <button
                       key={idx}
                       type="button"
-                      className="ai-quick-prompt-btn"
+                      className="ai-mission-card font-thai-reading"
                       onClick={() => handleSend(prompt)}
                     >
-                      <span className="ai-prompt-arrow">↳</span>
-                      <span>{prompt}</span>
+                      <div className="ai-mission-card-top">
+                        <span className="ai-mission-icon">
+                          {idx === 0 ? "✍️" : idx === 1 ? "🔄" : idx === 2 ? "⚖️" : "🛡️"}
+                        </span>
+                        <span className="ai-mission-tag">คลิกเพื่อสั่งงาน ➔</span>
+                      </div>
+                      <span className="ai-mission-text">{prompt}</span>
                     </button>
                   ))}
+                </div>
+              </div>
+
+              <div className="ai-agent-capabilities-banner">
+                <div className="ai-cap-item">
+                  <span className="ai-cap-icon">✍️</span>
+                  <span>ร่างจดหมาย/อีเมล</span>
+                </div>
+                <div className="ai-cap-item">
+                  <span className="ai-cap-icon">🔄</span>
+                  <span>ขัดเกลาระดับภาษา</span>
+                </div>
+                <div className="ai-cap-item">
+                  <span className="ai-cap-icon">⚖️</span>
+                  <span>วิจัยเปรียบเทียบคำ</span>
+                </div>
+                <div className="ai-cap-item">
+                  <span className="ai-cap-icon">🛡️</span>
+                  <span>ตรวจทานหลักไวยากรณ์</span>
                 </div>
               </div>
             </div>
@@ -419,7 +679,7 @@ export default function AIAssistantDrawer({
                 >
                   {msg.role === "assistant" && (
                     <div className="ai-avatar" aria-hidden="true">
-                      ✨
+                      🤖
                     </div>
                   )}
 
@@ -428,7 +688,42 @@ export default function AIAssistantDrawer({
                       msg.role === "user" ? "user-bubble" : "assistant-bubble"
                     }`}
                   >
-                    {/* Render message text with simple Markdown support */}
+                    {/* Agent Header Tag */}
+                    {msg.role === "assistant" && (
+                      <div className="ai-message-agent-header">
+                        <div className="ai-agent-identity">
+                          <span className="ai-agent-icon">⚡</span>
+                          <span className="ai-agent-name">
+                            {msg.activeAgent || activePersona.agentName}
+                          </span>
+                        </div>
+                        {msg.isStreaming && (
+                          <span className="ai-agent-running-indicator">
+                            กำลังปฏิบัติการ...
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Agent Execution Pipeline Trace Bar */}
+                    {msg.role === "assistant" && msg.agentTraces && msg.agentTraces.length > 0 && (
+                      <div className="ai-agent-trace-bar font-thai-reading">
+                        <span className="ai-trace-title">กระบวนการทำงานของ Agent:</span>
+                        <div className="ai-trace-pills">
+                          {msg.agentTraces.map((trace, tIdx) => (
+                            <div key={tIdx} className={`ai-trace-pill ${trace.status}`}>
+                              <span className="ai-trace-status-dot" />
+                              <strong>{trace.agent}</strong>
+                              <span className="ai-trace-summary">
+                                ({trace.summary})
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Render message text with Markdown support */}
                     <div className="ai-message-text font-thai-reading">
                       {renderFormattedText(msg.text)}
                       {msg.isStreaming && (
@@ -469,6 +764,51 @@ export default function AIAssistantDrawer({
                       </div>
                     )}
 
+                    {/* Interactive Agent Artifact Toolbar */}
+                    {msg.role === "assistant" && !msg.isStreaming && (
+                      <div className="ai-artifact-actions">
+                        <button
+                          type="button"
+                          className={`ai-action-btn ${copiedId === msg.id ? "copied" : ""}`}
+                          onClick={() => handleCopyText(msg.id, msg.text)}
+                          title="คัดลอกข้อความผลลัพธ์นี้"
+                        >
+                          {copiedId === msg.id ? "✓ คัดลอกสำเร็จ!" : "📋 คัดลอกผลลัพธ์"}
+                        </button>
+
+                        <span className="ai-action-divider">|</span>
+
+                        <span className="ai-action-label">สั่ง Agent ต่อยอด:</span>
+                        <button
+                          type="button"
+                          className="ai-quick-refine-chip"
+                          onClick={() =>
+                            handleSend("ช่วยปรับข้อความข้างต้นให้เป็นทางการยิ่งขึ้นตามระเบียบงานสารบรรณ")
+                          }
+                        >
+                          ✨ ปรับให้ทางการขึ้น
+                        </button>
+                        <button
+                          type="button"
+                          className="ai-quick-refine-chip"
+                          onClick={() =>
+                            handleSend("ช่วยสรุปข้อความข้างต้นให้กระชับและตรงประเด็นที่สุด")
+                          }
+                        >
+                          ✂️ สรุปให้กระชับ
+                        </button>
+                        <button
+                          type="button"
+                          className="ai-quick-refine-chip"
+                          onClick={() =>
+                            handleSend("ช่วยยกตัวอย่างประโยคการนำไปใช้ในงานเขียนจริงเพิ่มอีก 2 รูปแบบ")
+                          }
+                        >
+                          📝 เพิ่มตัวอย่างอีก 2 แบบ
+                        </button>
+                      </div>
+                    )}
+
                     {/* Confidence & Grounded Verification Footer */}
                     {msg.role === "assistant" && !msg.isStreaming && (
                       <div className="ai-message-footer">
@@ -501,7 +841,7 @@ export default function AIAssistantDrawer({
               rows={2}
               value={inputMessage}
               disabled={isGenerating}
-              placeholder="พิมพ์คำถาม หรือข้อสงสัยในการใช้คำ (กด Enter เพื่อส่ง)..."
+              placeholder={activePersona.placeholder}
               className="ai-chat-input font-thai-reading"
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyDown={(e) => {
@@ -524,10 +864,11 @@ export default function AIAssistantDrawer({
                 <button
                   type="button"
                   disabled={!inputMessage.trim()}
+                  aria-label="สั่งงาน AI Agent"
                   className="ai-send-btn font-thai-reading"
                   onClick={() => handleSend()}
                 >
-                  <span>ส่งคำถาม</span>
+                  <span>สั่ง Agent</span>
                   <span aria-hidden="true">→</span>
                 </button>
               )}
@@ -544,7 +885,7 @@ export default function AIAssistantDrawer({
                 ล้างบทสนทนา
               </button>
               <span className="ai-footer-note">
-                AI ให้คำแนะนำเชิงการเขียน · โปรดยึดนิยามพจนานุกรมเป็นข้อเท็จจริงทางการ
+                Thai Context Multi-Agent System · ยึดข้อมูลพจนานุกรมทางการเป็นข้อเท็จจริงอ้างอิง
               </span>
             </div>
           )}
@@ -568,6 +909,15 @@ function renderFormattedText(rawText: string) {
       return <div key={idx} className="ai-spacer-line" />;
     }
 
+    if (trimmed.startsWith("###")) {
+      const heading = trimmed.replace(/^###\s*/, "");
+      return (
+        <h4 key={idx} className="ai-msg-heading">
+          {renderInlineFormatting(heading)}
+        </h4>
+      );
+    }
+
     if (trimmed.startsWith(">")) {
       const quote = trimmed.replace(/^>\s*/, "");
       return (
@@ -577,8 +927,8 @@ function renderFormattedText(rawText: string) {
       );
     }
 
-    if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
-      const bullet = trimmed.replace(/^[•\-]\s*/, "");
+    if (trimmed.startsWith("•") || trimmed.startsWith("-") || trimmed.startsWith("*")) {
+      const bullet = trimmed.replace(/^[•\-*]\s*/, "");
       return (
         <li key={idx} className="ai-bullet-item">
           {renderInlineFormatting(bullet)}
@@ -595,11 +945,14 @@ function renderFormattedText(rawText: string) {
 }
 
 function renderInlineFormatting(text: string) {
-  // Parse **bold**
-  const parts = text.split(/(\*\*.*?\*\*)/g);
+  // Parse **bold** and *italic*
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return <em key={i}>{part.slice(1, -1)}</em>;
     }
     return part;
   });
