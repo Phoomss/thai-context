@@ -77,6 +77,34 @@ export class WorkspaceApiDto {
   selected_words?: string[];
 }
 
+export class QuirkifyDto {
+  @ApiProperty({
+    example: 'วันนี้เหนื่อยมาก อยากกลับไปนอนแล้ว',
+    description: 'Original Thai sentence (1-300 chars)',
+  })
+  @IsNotEmpty()
+  @IsString()
+  sentence: string;
+
+  @ApiProperty({
+    example: 'ancient',
+    description: 'Target style: ancient | formal | meme | literary | dialect | poetic | gentle',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  style?: string;
+
+  @ApiProperty({
+    example: 'quirkify',
+    description: 'Mode: quirkify (make quirky) | beautify (reverse: make beautiful)',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  mode?: string;
+}
+
 @ApiTags('AI Assistant')
 @Controller('api/v1/ai')
 export class AIController {
@@ -84,6 +112,14 @@ export class AIController {
     private readonly aiService: AIService,
     private readonly workspaceOrchestrator: WorkspaceOrchestratorService,
   ) {}
+
+  @Post('quirkify')
+  @ApiOperation({ summary: 'Transform ordinary sentence into quirky linguistic paraphrase' })
+  @ApiResponse({ status: 200, description: 'Quirkified sentence and grounded word mappings' })
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async quirkify(@Body() body: QuirkifyDto) {
+    return this.aiService.quirkify(body);
+  }
 
   @Post('chat')
   @ApiOperation({ summary: 'Chat with Grounded RAG AI Assistant (Synchronous)' })

@@ -11,6 +11,7 @@ import ContextComparator from "./compare/ContextComparator";
 import EvolutionExplorer from "./evolution/EvolutionExplorer";
 import DialectExplorer from "./dialect/DialectExplorer";
 import DictionaryBrowser from "./dictionary/DictionaryBrowser";
+import SentenceQuirkifier from "./quirkify/SentenceQuirkifier";
 import Footer from "./layout/Footer";
 import type { Recommendation } from "@/lib/search-types";
 import {
@@ -262,6 +263,7 @@ export default function SearchExperience() {
           <EvolutionExplorer word={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
           <DialectExplorer currentWord={model.result?.recommendations[0]?.headword} />
           <DictionaryBrowser initialWord={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
+          <SentenceQuirkifier embedded={true} />
           <Footer />
         </div>
       )}
