@@ -40,7 +40,7 @@ export default function WorkspacePage() {
 
           <div className="workspace-nav-actions">
             <Link href="/word-scrambler" className="workspace-nav-btn">
-              🔀 Word Scrambler
+              🔀 สุ่มเปลี่ยนคำ
             </Link>
             <Link href="/#dictionary" className="workspace-nav-btn">
               📖 ค้นตามเล่ม

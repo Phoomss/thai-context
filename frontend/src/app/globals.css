@@ -86,7 +86,16 @@ textarea:focus { outline:0 }
 .nav-links>a { position:relative;min-height:44px;display:flex;align-items:center;gap:8px;white-space:nowrap }
 .nav-links>a:hover::after,.nav-links>a[aria-current]::after,.nav-links>a.active::after { transform:scaleX(1) }
 .nav-links>a[aria-current],.nav-links>a.active { color:var(--accent);font-weight:700 }
-.nav-links>a.nav-link-scrambler[aria-current]::after,.nav-links>a.nav-link-scrambler.active::after { background:var(--accent) }
+.nav-btn-pill { display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:16px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all 180ms ease;white-space:nowrap;text-decoration:none;line-height:1.2 }
+.nav-links>a.nav-btn-pill { min-height:36px;padding:6px 14px }
+.nav-links>a.nav-btn-pill::after { display:none!important;content:none!important }
+.nav-links>a.nav-btn-pill[aria-current],.nav-links>a.nav-btn-pill.active { background:inherit }
+.nav-scrambler-btn { background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;margin-left:2px }
+.nav-scrambler-btn:hover { background:#dbeafe;border-color:#93c5fd;color:#1e40af;transform:translateY(-1px);box-shadow:0 3px 10px rgba(29,78,216,.15) }
+.nav-scrambler-btn:active { transform:translateY(0);box-shadow:none }
+.nav-workspace-btn { background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;margin-left:2px }
+.nav-workspace-btn:hover { background:#ede9fe;border-color:#c4b5fd;color:#5b21b6;transform:translateY(-1px);box-shadow:0 3px 10px rgba(109,40,217,.15) }
+.nav-workspace-btn:active { transform:translateY(0);box-shadow:none }
 .nav-ai-button { display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:16px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all 180ms ease;white-space:nowrap;margin-left:4px }
 .nav-ai-button:hover { background:#dbeafe;border-color:#93c5fd;transform:translateY(-1px);box-shadow:0 3px 10px rgba(29,78,216,.15) }
 .nav-ai-button:active { transform:translateY(0);box-shadow:none }
@@ -386,8 +395,9 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
   .count-1 .guidance-panel { grid-column:1 }
   .hero-copy { width:57%;left:5% }
   h1 { font-size:clamp(44px,4.7vw,62px) }
-  .nav-links { gap:18px }
+  .nav-links { gap:14px }
   .nav-links>a { font-size:11px }
+  .nav-btn-pill,.nav-ai-button { padding:5px 12px;font-size:12px }
   .dialect-grid { grid-template-columns:repeat(2,minmax(0,1fr)) }
 }
 @media(max-width:899px) {
@@ -404,7 +414,8 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
   .nav-links.is-open { opacity:1;visibility:visible;transform:none;transition-delay:0s }
   .nav-links>a { font-size:14px;padding:10px;min-height:44px }
   .nav-links>a[aria-current],.nav-links>a.active { background:#eaf4fe;border-radius:12px;color:var(--accent);font-weight:700 }
-  .nav-ai-button { width:100%;justify-content:center;margin-left:0;margin-top:8px;padding:10px;font-size:14px }
+  .nav-btn-pill,.nav-scrambler-btn,.nav-workspace-btn,.nav-ai-button { width:100%;justify-content:center;margin-left:0;margin-top:8px;padding:10px 14px;font-size:14px;border-radius:14px }
+  .nav-links>a.nav-btn-pill { min-height:44px }
   .capability-strip { grid-template-columns:repeat(3,1fr);gap:12px }
   .capability-strip a { border:0;font-size:11px }
 }

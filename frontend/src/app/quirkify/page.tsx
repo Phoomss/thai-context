@@ -37,7 +37,7 @@ export default function QuirkifyPage() {
               className="workspace-badge-tag"
               style={{ background: "#eaf4fe", color: "var(--accent)", borderColor: "#c8e0fa" }}
             >
-              ✦ Word Scrambler
+              ✦ สุ่มเปลี่ยนคำ
             </span>
           </Link>
 

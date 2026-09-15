@@ -431,8 +431,8 @@ function AIAssistantPageContent() {
             <Link href="/#dictionary" className="workspace-nav-btn">
               📖 ค้นตามเล่ม
             </Link>
-            <Link href="/word-scrambler" className="workspace-nav-btn" style={{ color: "#b45309" }}>
-              🔀 Word Scrambler
+            <Link href="/word-scrambler" className="workspace-nav-btn" style={{ color: "var(--accent)" }}>
+              🔀 สุ่มเปลี่ยนคำ
             </Link>
             <Link href="/workspace" className="workspace-nav-btn">
               ⚡ Multi-Agent Studio

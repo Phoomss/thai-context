@@ -171,18 +171,14 @@ export default function MorphingNavbar({
         <Link
           href="/word-scrambler"
           onClick={() => setOpen(false)}
-          className="nav-link-scrambler font-semibold"
-          style={{
-            color: "#d97706",
-            fontWeight: 600,
-          }}
+          className="nav-btn-pill nav-scrambler-btn nav-link-scrambler font-thai-reading"
         >
-          Word Scrambler 🔀
+          สุ่มเปลี่ยนคำ 🔀
         </Link>
         <Link
           href="/workspace"
           onClick={() => setOpen(false)}
-          className="text-cyan-400 font-semibold hover:text-cyan-300"
+          className="nav-btn-pill nav-workspace-btn font-thai-reading"
         >
           AI Workspace ✦
         </Link>
