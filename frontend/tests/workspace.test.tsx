@@ -305,9 +305,13 @@ describe("WorkspaceView Component", () => {
           message: "ช่วยตรวจสอบข้อความประกาศต้อนรับนักศึกษาสำหรับผู้พิการและแปลงเป็นอักษรเบรลล์",
         })
       );
-      // Accessibility heading rendered
-      expect(screen.getByText(/ความพร้อมด้านการเข้าถึง \(Accessibility Layer\)/)).toBeTruthy();
-      // Braille unicode rendered
+    });
+
+    await waitFor(() => {
+      // Accessibility heading rendered (h3 with id="access-heading")
+      const heading = screen.queryByRole("heading", { name: /ความพร้อมการเข้าถึง/i });
+      expect(heading).not.toBeNull();
+      // Braille unicode rendered in large display box
       expect(screen.getByText("⠅⠕⠞⠆⠕⠝⠗⠡⠃")).toBeTruthy();
       // Detected sign term rendered
       expect(screen.getByText("ต้อนรับ")).toBeTruthy();
