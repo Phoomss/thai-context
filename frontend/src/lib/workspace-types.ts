@@ -6,7 +6,8 @@ export type AgentTask =
   | 'REWRITE'
   | 'LANGUAGE_CHECK'
   | 'TRANSLATION'
-  | 'EXPLANATION';
+  | 'EXPLANATION'
+  | 'ACCESSIBILITY_CHECK';
 
 export interface ContextInfo {
   type: string;
@@ -111,6 +112,25 @@ export interface CoThinkingAnalysis {
   next_step_ideas: string[];
 }
 
+export interface WorkspaceAccessibilityLayer {
+  readiness_score: number;
+  readiness_rating: 'HIGH' | 'MODERATE' | 'NEEDS_IMPROVEMENT';
+  disclaimer: string;
+  detected_sign_terms: Array<{
+    word: string;
+    status: string;
+    has_motion: boolean;
+    sign_name?: string;
+  }>;
+  braille_unicode: string;
+  braille_guide: string;
+  checklist: Array<{
+    title: string;
+    status: 'PASS' | 'WARN' | 'INFO';
+    detail: string;
+  }>;
+}
+
 export interface WorkspaceResponsePayload {
   session_id: string;
   intent: string;
@@ -122,6 +142,7 @@ export interface WorkspaceResponsePayload {
   generated_content: GeneratedContentItem[];
   language_check?: LanguageCheckResult | null;
   language_bridge?: LanguageBridgeResult | null;
+  accessibility_layer?: WorkspaceAccessibilityLayer | null;
   co_thinking?: CoThinkingAnalysis | null;
   evidence: EvidenceItem[];
   confidence: number;

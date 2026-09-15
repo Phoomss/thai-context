@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Recommendation, SearchResponse } from "@/lib/search-types";
+import { getSignResource } from "@/lib/sign-motion-data";
 import SearchResultFeedback from "../feedback/SearchResultFeedback";
 
 export default function WordResultCard({
@@ -86,6 +87,57 @@ export default function WordResultCard({
             ({word.english || word.translations?.[0]?.translatedWord})
           </span>
         )}
+        <span
+          className="card-accessibility-badges"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "4px",
+            marginLeft: "8px",
+            fontSize: "11px",
+            verticalAlign: "middle",
+          }}
+          aria-label="การรองรับการเข้าถึง"
+        >
+          {getSignResource(word.headword).status === "VERIFIED" && (
+            <span
+              style={{
+                padding: "1px 5px",
+                borderRadius: "4px",
+                background: "#dcfce7",
+                color: "#15803d",
+                fontWeight: 600,
+              }}
+              title="มีข้อมูลภาษามือไทย (Verified TSL)"
+            >
+              🤟 ภาษามือ
+            </span>
+          )}
+          <span
+            style={{
+              padding: "1px 5px",
+              borderRadius: "4px",
+              background: "#f1f5f9",
+              color: "#475569",
+              fontWeight: 600,
+            }}
+            title="มีเสียงออกเสียง"
+          >
+            🔊 เสียง
+          </span>
+          <span
+            style={{
+              padding: "1px 5px",
+              borderRadius: "4px",
+              background: "#f1f5f9",
+              color: "#475569",
+              fontWeight: 600,
+            }}
+            title="มีอักษรเบรลล์ไทย"
+          >
+            ⠠ เบรลล์
+          </span>
+        </span>
         <button
           type="button"
           className="quick-copy-word-btn"

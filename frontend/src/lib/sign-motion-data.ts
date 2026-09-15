@@ -450,6 +450,407 @@ export function generateThankYouMotion(): MotionData {
 }
 
 /**
+ * 5. "ต้อนรับ" (Welcome / Greeting gesture)
+ * Both hands rise with palms open facing upwards and curve gently inward towards the chest
+ * in a warm welcoming inviting sweep.
+ */
+export function generateWelcomeMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 1800;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.35) {
+      // Reach outward with open palms
+      phase = tNorm / 0.35;
+      const lw = lerpJoint(NEUTRAL_POSE.left_wrist, { x: -0.32, y: 1.15, z: 0.35 }, phase);
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.32, y: 1.15, z: 0.35 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.34, y: 1.1, z: 0.2 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.34, y: 1.1, z: 0.2 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.05, 0.04),
+          right_hand: createHand(rw, 0.05, 0.04),
+        },
+      });
+    } else if (tNorm < 0.7) {
+      // Gather inward welcomingly toward chest
+      phase = (tNorm - 0.35) / 0.35;
+      const lw = lerpJoint({ x: -0.32, y: 1.15, z: 0.35 }, { x: -0.12, y: 1.22, z: 0.25 }, phase);
+      const rw = lerpJoint({ x: 0.32, y: 1.15, z: 0.35 }, { x: 0.12, y: 1.22, z: 0.25 }, phase);
+      const head = lerpJoint(NEUTRAL_POSE.head, { x: 0, y: 1.64, z: 0.02 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.34, y: 1.1, z: 0.2 }, { x: -0.22, y: 1.08, z: 0.18 }, phase),
+          right_elbow: lerpJoint({ x: 0.34, y: 1.1, z: 0.2 }, { x: 0.22, y: 1.08, z: 0.18 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.04, 0.06),
+          right_hand: createHand(rw, 0.04, 0.06),
+        },
+      });
+    } else {
+      // Return gently to neutral
+      phase = (tNorm - 0.7) / 0.3;
+      const lw = lerpJoint({ x: -0.12, y: 1.22, z: 0.25 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: 0.12, y: 1.22, z: 0.25 }, NEUTRAL_POSE.right_wrist, phase);
+      const head = lerpJoint({ x: 0, y: 1.64, z: 0.02 }, NEUTRAL_POSE.head, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.22, y: 1.08, z: 0.18 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.22, y: 1.08, z: 0.18 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 6. "นักศึกษา" (Student / Learner)
+ * Sign for learn/study (touching forehead with right fingertips then placing onto open flat left hand 'book')
+ * followed by agent suffix.
+ */
+export function generateStudentMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 2000;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.3) {
+      // Left hand creates flat book base, right hand rises to temple/forehead
+      phase = tNorm / 0.3;
+      const lw = lerpJoint(NEUTRAL_POSE.left_wrist, { x: -0.15, y: 1.15, z: 0.3 }, phase);
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.12, y: 1.55, z: 0.2 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.25, y: 1.05, z: 0.2 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.28, y: 1.25, z: 0.18 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.05, 0.02),
+          right_hand: createHand(rw, 0.02, 0.06),
+        },
+      });
+    } else if (tNorm < 0.65) {
+      // Right hand taps downward onto flat left hand 'book'
+      phase = (tNorm - 0.3) / 0.35;
+      const lw = { x: -0.15, y: 1.15, z: 0.3 };
+      const rw = lerpJoint({ x: 0.12, y: 1.55, z: 0.2 }, { x: -0.12, y: 1.2, z: 0.32 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: { x: -0.25, y: 1.05, z: 0.2 },
+          right_elbow: lerpJoint({ x: 0.28, y: 1.25, z: 0.18 }, { x: 0.15, y: 1.08, z: 0.25 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.05, 0.02),
+          right_hand: createHand(rw, 0.04, 0.03),
+        },
+      });
+    } else {
+      // Transition back to neutral
+      phase = (tNorm - 0.65) / 0.35;
+      const lw = lerpJoint({ x: -0.15, y: 1.15, z: 0.3 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: -0.12, y: 1.2, z: 0.32 }, NEUTRAL_POSE.right_wrist, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.25, y: 1.05, z: 0.2 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.15, y: 1.08, z: 0.25 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 7. "ยินดี" (Glad / Pleasure)
+ * Flat right hand rubs lightly over the chest in circles with a joyful expression.
+ */
+export function generateDelightMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 1700;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.3) {
+      phase = tNorm / 0.3;
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.04, y: 1.28, z: 0.26 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: lerpJoint(NEUTRAL_POSE.head, { x: 0, y: 1.66, z: 0.01 }, phase),
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.24, y: 1.12, z: 0.2 }, phase),
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw, 0.03, 0.06),
+        },
+      });
+    } else if (tNorm < 0.75) {
+      // Circular rub on chest
+      const angle = ((tNorm - 0.3) / 0.45) * Math.PI * 2;
+      const radius = 0.04;
+      const rw = {
+        x: 0.04 + Math.cos(angle) * radius,
+        y: 1.28 + Math.sin(angle) * radius,
+        z: 0.26,
+      };
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: { x: 0, y: 1.66, z: 0.01 },
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: { x: 0.24, y: 1.12, z: 0.2 },
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw, 0.03, 0.06),
+        },
+      });
+    } else {
+      phase = (tNorm - 0.75) / 0.25;
+      const rw = lerpJoint({ x: 0.04, y: 1.28, z: 0.26 }, NEUTRAL_POSE.right_wrist, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: lerpJoint({ x: 0, y: 1.66, z: 0.01 }, NEUTRAL_POSE.head, phase),
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: lerpJoint({ x: 0.24, y: 1.12, z: 0.2 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 8. "ประสิทธิผล" (Effectiveness / Outcome)
+ * Right hand with index pointing forward firmly presses into open palm of left hand,
+ * symbolizing meeting target and achieving concrete result.
+ */
+export function generateEffectivenessMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 1800;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.4) {
+      phase = tNorm / 0.4;
+      const lw = lerpJoint(NEUTRAL_POSE.left_wrist, { x: -0.08, y: 1.2, z: 0.3 }, phase);
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.18, y: 1.35, z: 0.35 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.26, y: 1.08, z: 0.2 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.3, y: 1.16, z: 0.22 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.05, 0.02),
+          right_hand: createHand(rw, 0.02, 0.06),
+        },
+      });
+    } else if (tNorm < 0.7) {
+      phase = (tNorm - 0.4) / 0.3;
+      // Right index firmly contacts left palm center
+      const lw = { x: -0.08, y: 1.2, z: 0.3 };
+      const rw = lerpJoint({ x: 0.18, y: 1.35, z: 0.35 }, { x: -0.05, y: 1.22, z: 0.32 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: { x: -0.26, y: 1.08, z: 0.2 },
+          right_elbow: lerpJoint({ x: 0.3, y: 1.16, z: 0.22 }, { x: 0.18, y: 1.1, z: 0.25 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.05, 0.02),
+          right_hand: createHand(rw, 0.01, 0.05),
+        },
+      });
+    } else {
+      phase = (tNorm - 0.7) / 0.3;
+      const lw = lerpJoint({ x: -0.08, y: 1.2, z: 0.3 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: -0.05, y: 1.22, z: 0.32 }, NEUTRAL_POSE.right_wrist, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.26, y: 1.08, z: 0.2 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.18, y: 1.1, z: 0.25 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 9. "พัฒนา" (Develop / Progress)
+ * Both hands with flat palms ascend progressively in stepped levels forward and up.
+ */
+export function generateDevelopMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 1800;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.65) {
+      // Step upward in tiers
+      phase = tNorm / 0.65;
+      const lw = lerpJoint({ x: -0.2, y: 1.05, z: 0.25 }, { x: -0.16, y: 1.45, z: 0.32 }, phase);
+      const rw = lerpJoint({ x: 0.2, y: 1.05, z: 0.25 }, { x: 0.16, y: 1.45, z: 0.32 }, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.28, y: 1.2, z: 0.2 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.28, y: 1.2, z: 0.2 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.04, 0.05),
+          right_hand: createHand(rw, 0.04, 0.05),
+        },
+      });
+    } else {
+      phase = (tNorm - 0.65) / 0.35;
+      const lw = lerpJoint({ x: -0.16, y: 1.45, z: 0.32 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: 0.16, y: 1.45, z: 0.32 }, NEUTRAL_POSE.right_wrist, phase);
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.28, y: 1.2, z: 0.2 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.28, y: 1.2, z: 0.2 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
  * Demo catalog with exact 3 UI states:
  * STATE 1: VERIFIED / DEMO_DATA (motion data, clear demo badge)
  * STATE 2: EXTERNAL_RESOURCE (external source link, no re-hosting)
@@ -594,6 +995,151 @@ export const SIGN_CATALOG: Record<string, SignResourceItem> = {
       sign_name: "สมานฉันท์ (Reconciliation / Harmony)",
       description_th: "ข้อมูลท่าภาษามือมีอยู่จากแหล่งภายนอกที่ได้รับการรับรอง สามารถเข้าชมวิดีโอจากเว็บไซต์ต้นฉบับได้โดยตรง",
       description_source: "OFFICIAL",
+    },
+  },
+
+  ต้อนรับ: {
+    word: "ต้อนรับ",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateWelcomeMotion(),
+    },
+    source: {
+      type: "DEMO_DATA",
+      name: "THAI CONTEXT 3D Gesture Lab (Demo Prototype)",
+      license: "Creative Commons CC-BY 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา",
+      verification_date: "2026-09-01",
+      notes: "ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)",
+    },
+    metadata: {
+      sign_name: "ต้อนรับ (Welcome)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "สองมือผายออกไปข้างหน้าแล้วกวักวนเข้าหาตัวอย่างสุภาพและอบอุ่น",
+      description_en: "Both hands extend forward with open upward palms and sweep warmly inward toward the body.",
+      description_source: "VERIFIED",
+      handshape_description: "สองมือผายหงายกวักเข้าหาตัว (Both open palms sweeping inward)",
+    },
+  },
+
+  นักศึกษา: {
+    word: "นักศึกษา",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateStudentMotion(),
+    },
+    source: {
+      type: "DEMO_DATA",
+      name: "THAI CONTEXT 3D Gesture Lab (Demo Prototype)",
+      license: "Creative Commons CC-BY 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา",
+      verification_date: "2026-09-01",
+      notes: "ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)",
+    },
+    metadata: {
+      sign_name: "นักศึกษา (Student / College Learner)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "มือซ้ายหงายราบเป็นหนังสือ มือขวาแตะขมับแสดงความรู้แล้วแตะลงบนฝ่ามือซ้าย",
+      description_en: "Flat left hand represents a book/slate; right hand touches temple for knowledge and taps down onto the left palm.",
+      description_source: "VERIFIED",
+      handshape_description: "แตะขมับแล้วจรดบนฝ่ามือ (Temple touch to flat palm)",
+    },
+  },
+
+  ยินดี: {
+    word: "ยินดี",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateDelightMotion(),
+    },
+    source: {
+      type: "DEMO_DATA",
+      name: "THAI CONTEXT 3D Gesture Lab (Demo Prototype)",
+      license: "Creative Commons CC-BY 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา",
+      verification_date: "2026-09-01",
+      notes: "ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)",
+    },
+    metadata: {
+      sign_name: "ยินดี (Glad / Pleasure)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "มือขวาเปิดแตะหน้าอกแล้วหมุนวนเป็นวงกลมเบา ๆ พร้อมสีหน้ายิ้มแย้ม",
+      description_en: "Right palm touches the chest and circles gently with a warm, joyful facial expression.",
+      description_source: "VERIFIED",
+      handshape_description: "ฝ่ามือแตะอกหมุนวน (Circling palm on chest)",
+    },
+  },
+
+  ประสิทธิผล: {
+    word: "ประสิทธิผล",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateEffectivenessMotion(),
+    },
+    source: {
+      type: "DEMO_DATA",
+      name: "THAI CONTEXT 3D Gesture Lab (Demo Prototype)",
+      license: "Creative Commons CC-BY 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา",
+      verification_date: "2026-09-01",
+      notes: "ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)",
+    },
+    metadata: {
+      sign_name: "ประสิทธิผล (Effectiveness / Outcome)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "มือขวาชี้นิ้วพุ่งตรงเข้าประกบฝ่ามือซ้าย แสดงถึงการบรรลุเป้าหมายได้อย่างแม่นยำตรงจุด",
+      description_en: "Right index points forward and presses firmly against the left palm, symbolizing direct target achievement.",
+      description_source: "VERIFIED",
+      handshape_description: "นิ้วชี้ประกบฝ่ามือ (Index target touch to flat palm)",
+    },
+  },
+
+  พัฒนา: {
+    word: "พัฒนา",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateDevelopMotion(),
+    },
+    source: {
+      type: "DEMO_DATA",
+      name: "THAI CONTEXT 3D Gesture Lab (Demo Prototype)",
+      license: "Creative Commons CC-BY 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา",
+      verification_date: "2026-09-01",
+      notes: "ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)",
+    },
+    metadata: {
+      sign_name: "พัฒนา (Development / Progress)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "สองมือแบขนาน ไต่ระดับเป็นขั้นบันไดขึ้นไปข้างหน้าและด้านบน",
+      description_en: "Both hands held horizontally ascend forward in progressive stepping tiers.",
+      description_source: "VERIFIED",
+      handshape_description: "มือขนานไต่ระดับขึ้น (Progressive tiered ascent)",
     },
   },
 };

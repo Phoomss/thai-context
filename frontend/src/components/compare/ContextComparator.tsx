@@ -1,12 +1,11 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { compareWords } from "@/lib/api-client";
-import {
-  normalizeCompareWords,
-  type CompareResponse,
-  type ComparisonEvidence,
-} from "@/lib/compare-types";
+import { normalizeCompareWords, type CompareResponse, type ComparisonEvidence } from "@/lib/compare-types";
 import type { Recommendation, SearchResponse } from "@/lib/search-types";
+import { getSignResource } from "@/lib/sign-motion-data";
+import { encodeThaiToBraille } from "@/lib/braille-encoder";
+import { audioManager } from "@/lib/audio-manager";
 
 const EMPTY_INPUTS = ["", ""];
 const MISSING_DICTIONARY_DEFINITION = "ไม่มีข้อมูลในพจนานุกรมทางการ";
@@ -270,6 +269,9 @@ export default function ContextComparator({
               const partOfSpeech = word.partOfSpeech === UNSPECIFIED_PART_OF_SPEECH
                 ? liveRecommendation?.pos
                 : word.partOfSpeech;
+              const signInfo = getSignResource(word.headword);
+              const brailleInfo = encodeThaiToBraille(word.headword);
+
               return (
                 <article className="comparison-card" key={`${word.headword}-${index}`}>
                   <p className="comparison-word-number">คำที่ {index + 1}</p>
@@ -279,6 +281,70 @@ export default function ContextComparator({
                     {partOfSpeech && <div><dt>ชนิดคำ</dt><dd className="font-thai-reading">{partOfSpeech}</dd></div>}
                     {(word.edition || evidence?.edition) && <div><dt>ฉบับ</dt><dd>พ.ศ. {word.edition ?? evidence?.edition}</dd></div>}
                   </dl>
+
+                  {/* Accessibility Comparison Box */}
+                  <div
+                    className="comparison-accessibility-box"
+                    style={{
+                      marginTop: "12px",
+                      padding: "10px 12px",
+                      background: "#f8fafc",
+                      borderRadius: "10px",
+                      border: "1px solid var(--border, #e2e8f0)",
+                    }}
+                  >
+                    <span style={{ fontSize: "11px", fontWeight: 700, color: "var(--muted, #64748b)" }}>
+                      ♿ การเข้าถึง (Accessibility):
+                    </span>
+                    <div style={{ marginTop: "6px", display: "flex", flexDirection: "column", gap: "6px", fontSize: "12px" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <span>🤟 ภาษามือไทย:</span>
+                        <span
+                          style={{
+                            padding: "2px 6px",
+                            borderRadius: "4px",
+                            fontSize: "11px",
+                            fontWeight: 600,
+                            background: signInfo.status === "VERIFIED" ? "#dcfce7" : "#fff7ed",
+                            color: signInfo.status === "VERIFIED" ? "#15803d" : "#c2410c",
+                          }}
+                        >
+                          {signInfo.status === "VERIFIED" ? "✓ มีข้อมูลรับรอง" : "ยังไม่มีข้อมูล"}
+                        </span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <span>⠠ อักษรเบรลล์:</span>
+                        <code style={{ fontSize: "14px", color: "#0284c7", background: "#e0f2fe", padding: "1px 6px", borderRadius: "4px" }}>
+                          {brailleInfo.brailleUnicode}
+                        </code>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "2px" }}>
+                        <span>🔊 สัทศาสตร์:</span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            audioManager.toggle({
+                              headword: word.headword,
+                              pronunciation: { phonetic: word.headword, locale: "th-TH" },
+                              pos: partOfSpeech || "น.",
+                              definition,
+                            } as any)
+                          }
+                          style={{
+                            padding: "2px 8px",
+                            fontSize: "11px",
+                            borderRadius: "4px",
+                            border: "1px solid var(--border, #cbd5e1)",
+                            background: "#ffffff",
+                            cursor: "pointer",
+                          }}
+                        >
+                          🔊 ฟังเสียง
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                   {evidence && (
                     <button className="source-shortcut" type="button" onClick={() => openEvidence(word.headword, evidence)}>
                       ดูหลักฐานของคำนี้ ↗
