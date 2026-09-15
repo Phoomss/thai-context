@@ -123,7 +123,7 @@ export interface WorkspaceAccessibilityLayer {
     sign_name?: string;
   }>;
   braille_unicode: string;
-  braille_guide: string;
+  braille_guide: string | any[];
   checklist: Array<{
     title: string;
     status: 'PASS' | 'WARN' | 'INFO';

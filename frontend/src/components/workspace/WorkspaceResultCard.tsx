@@ -1019,9 +1019,9 @@ export default function WorkspaceResultCard({
               <div
                 style={{
                   padding: "12px 14px",
+                  background: "#ffffff",
                   borderRadius: "10px",
-                  background: "#0f172a",
-                  color: "#38bdf8",
+                  border: "1px solid var(--border)",
                   fontSize: "24px",
                   fontFamily: "monospace",
                   letterSpacing: "3px",
@@ -1031,21 +1031,48 @@ export default function WorkspaceResultCard({
               >
                 {accessibility_layer.braille_unicode}
               </div>
-              <small style={{ color: "var(--muted)", fontSize: "11px" }}>
-                {accessibility_layer.braille_guide}
-              </small>
+              <div style={{ color: "var(--muted)", fontSize: "11px", marginBottom: "8px" }}>
+                {Array.isArray(accessibility_layer.braille_guide) ? (
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                    {accessibility_layer.braille_guide.map((item: any, idx: number) => (
+                      <span
+                        key={idx}
+                        style={{
+                          padding: "2px 6px",
+                          borderRadius: "4px",
+                          background: "#ffffff",
+                          border: "1px solid #cbd5e1",
+                          fontFamily: "monospace",
+                          fontSize: "11px",
+                        }}
+                      >
+                        {item.char}: <strong style={{ fontSize: "13px" }}>{item.braille_cell}</strong> ({item.braille_dots})
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <span>{String(accessibility_layer.braille_guide || "")}</span>
+                )}
+              </div>
 
               {/* Checklist */}
-              <div style={{ marginTop: "14px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                {accessibility_layer.checklist.map((item, idx) => (
-                  <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "6px", fontSize: "12px", color: "#334155" }}>
-                    <span style={{ color: item.status === "PASS" ? "#16a34a" : "#d97706" }}>
-                      {item.status === "PASS" ? "✓" : "⚠️"}
-                    </span>
-                    <span><strong>{item.title}:</strong> {item.detail}</span>
-                  </div>
-                ))}
-              </div>
+              {accessibility_layer.checklist && accessibility_layer.checklist.length > 0 && (
+                <div style={{ marginTop: "14px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                  {accessibility_layer.checklist.map((item: any, idx: number) => {
+                    const isPassed = item.status === "PASS" || item.passed === true;
+                    const title = item.title || item.item || "เกณฑ์การตรวจทาน";
+                    const detail = item.detail || item.note || "";
+                    return (
+                      <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "6px", fontSize: "12px", color: "#334155" }}>
+                        <span style={{ color: isPassed ? "#16a34a" : "#d97706" }}>
+                          {isPassed ? "✓" : "⚠️"}
+                        </span>
+                        <span><strong>{title}:</strong> {detail}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </section>

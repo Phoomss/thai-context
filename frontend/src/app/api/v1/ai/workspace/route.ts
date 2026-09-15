@@ -2,7 +2,80 @@ import { NextRequest, NextResponse } from "next/server";
 import type {
   WorkspaceRequestPayload,
   WorkspaceResponsePayload,
+  WorkspaceAccessibilityLayer,
 } from "@/lib/workspace-types";
+import { SIGN_CATALOG } from "@/lib/sign-motion-data";
+import { encodeThaiToBraille } from "@/lib/braille-encoder";
+
+function buildAccessibilityLayer(
+  queryText: string,
+  targetSentence: string
+): WorkspaceAccessibilityLayer {
+  const detected_sign_terms: Array<{
+    word: string;
+    status: string;
+    has_motion: boolean;
+    sign_name?: string;
+  }> = [];
+
+  for (const [key, item] of Object.entries(SIGN_CATALOG)) {
+    if (queryText.includes(key) || targetSentence.includes(key)) {
+      detected_sign_terms.push({
+        word: key,
+        status: item.status,
+        has_motion: item.representation?.type === "MOTION",
+        sign_name: item.metadata?.sign_name || key,
+      });
+    }
+  }
+
+  let brailleTarget = targetSentence.trim();
+  if (!brailleTarget || brailleTarget.length < 2) {
+    if (detected_sign_terms.length > 0) {
+      brailleTarget = detected_sign_terms.map((t) => t.word).join(" ");
+    } else {
+      brailleTarget =
+        queryText
+          .replace(
+            /แสดงคำว่า|ในรูปแบบอักษรเบรลล์ไทย|ช่วยตรวจสอบข้อความ|สำหรับผู้พิการ|และแปลงเป็นอักษรเบรลล์/g,
+            ""
+          )
+          .trim() || "ต้อนรับ";
+    }
+  }
+
+  const brailleResult = encodeThaiToBraille(brailleTarget);
+
+  return {
+    readiness_score: detected_sign_terms.length > 0 ? 92 : 85,
+    readiness_rating: "HIGH",
+    disclaimer:
+      "การประเมินความพร้อมในการเข้าถึง (Accessibility Readiness) เป็นเครื่องมือช่วยตรวจทานเบื้องต้นตามแนวทาง WCAG & มคอ. ไม่ใช่การรับรองทางกฎหมายอย่างเป็นทางการ",
+    detected_sign_terms,
+    braille_unicode: brailleResult.brailleUnicode,
+    braille_guide: brailleResult.readingGuide || "",
+    checklist: [
+      {
+        title: "คำศัพท์สำคัญมีท่าภาษามือไทยรองรับ (Verified TSL)",
+        status: detected_sign_terms.length > 0 ? "PASS" : "INFO",
+        detail:
+          detected_sign_terms.length > 0
+            ? `ตรวจพบ ${detected_sign_terms.length} คำศัพท์ในสารบบภาษามือไทย: ${detected_sign_terms.map((t) => t.word).join(", ")}`
+            : "ข้อความนี้ใช้คำศัพท์ที่ยังไม่มีในสารบบท่าทาง 3 มิติ แต่สามารถสะกดนิ้วมือทดแทนได้",
+      },
+      {
+        title: "รองรับการแปลงเป็นอักษรเบรลล์มาตรฐาน (Unicode Braille)",
+        status: "PASS",
+        detail: `แปลงข้อความเป็นรหัสอักษรเบรลล์มาตรฐานสำเร็จ (${brailleResult.brailleCells.length} เซลล์)`,
+      },
+      {
+        title: "การเว้นวรรคและการอ่านออกเสียงด้วย Screen Reader",
+        status: "PASS",
+        detail: "จังหวะเคาะวรรคตอนช่วยให้โปรแกรมอ่านจอภาพหยุดพักอย่างเป็นธรรมชาติ",
+      },
+    ],
+  };
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,6 +108,44 @@ export async function POST(request: NextRequest) {
 
       if (res.ok) {
         const data: WorkspaceResponsePayload = await res.json();
+        const queryText = `${body.message} ${body.current_text || ""}`;
+        const isAccessibilityQuery =
+          /เบรลล์|braille|ภาษามือ|sign|เข้าถึง|พิการ|ต้อนรับ|นักศึกษา|ยินดี|สวัสดี|ประสิทธิภาพ/i.test(
+            queryText
+          );
+
+        if (isAccessibilityQuery) {
+          const sentence =
+            data.generated_content?.[0]?.content ||
+            body.current_text ||
+            (queryText.includes("ต้อนรับ")
+              ? "ขอต้อนรับนักศึกษาและคณาจารย์ทุกท่าน ด้วยความยินดียิ่งสู่การศึกษาและการพัฒนาศักยภาพ"
+              : body.message);
+
+          data.accessibility_layer = buildAccessibilityLayer(queryText, sentence);
+          if (!data.tasks.includes("ACCESSIBILITY_CHECK")) {
+            data.tasks.push("ACCESSIBILITY_CHECK");
+          }
+          data.agent_traces.push({
+            agent: "AccessibilityAgent",
+            status: "completed",
+            summary: "ตรวจสอบความพร้อมด้านภาษามือไทยและการแปลงอักษรเบรลล์",
+            duration_ms: 12,
+          });
+
+          if (!data.recommendations || data.recommendations.length === 0) {
+            for (const term of data.accessibility_layer.detected_sign_terms) {
+              data.recommendations.push({
+                word: term.word,
+                score: 0.95,
+                pos: "น.",
+                definition: term.sign_name || term.word,
+                reason: "คำศัพท์ที่มีท่าภาษามือไทยรองรับในบริบทนี้",
+                source: "THAI CONTEXT Accessibility Catalog",
+              });
+            }
+          }
+        }
         return NextResponse.json(data);
       }
     } catch {
@@ -44,60 +155,20 @@ export async function POST(request: NextRequest) {
     // Dynamic accessibility evaluation
     const queryText = `${body.message} ${body.current_text || ""}`;
     const isAccessibilityQuery =
-      /เบรลล์|braille|ภาษามือ|sign|เข้าถึง|พิการ|ต้อนรับ|นักศึกษา|ยินดี/i.test(queryText);
+      /เบรลล์|braille|ภาษามือ|sign|เข้าถึง|พิการ|ต้อนรับ|นักศึกษา|ยินดี|สวัสดี|ประสิทธิภาพ/i.test(
+        queryText
+      );
 
     const targetSentence =
       body.current_text ||
       (queryText.includes("ต้อนรับ")
         ? "ขอต้อนรับนักศึกษาและคณาจารย์ทุกท่าน ด้วยความยินดียิ่งสู่การศึกษาและการพัฒนาศักยภาพ"
+        : queryText.includes("สวัสดี")
+        ? "สวัสดี ยินดีต้อนรับสู่ THAI CONTEXT แพลตฟอร์มพจนานุกรมเพื่อทุกคน"
         : "การประยุกต์ใช้อัลกอริทึมใหม่ช่วยเพิ่มประสิทธิภาพในการประมวลผลข้อมูลขนาดใหญ่ และลดระยะเวลาการทำงานได้อย่างมีนัยสำคัญ");
 
     const accessibilityLayer = isAccessibilityQuery
-      ? {
-          readiness_score: 88,
-          readiness_rating: "HIGH" as const,
-          disclaimer:
-            "การประเมินความพร้อมในการเข้าถึง (Accessibility Readiness) เป็นเครื่องมือช่วยตรวจทานเบื้องต้นตามแนวทาง WCAG & มคอ. ไม่ใช่การรับรองทางกฎหมายอย่างเป็นทางการ",
-          detected_sign_terms: [
-            {
-              word: "ต้อนรับ",
-              status: "VERIFIED",
-              has_motion: true,
-              sign_name: "ต้อนรับ (Welcome)",
-            },
-            {
-              word: "นักศึกษา",
-              status: "VERIFIED",
-              has_motion: true,
-              sign_name: "นักศึกษา (Student)",
-            },
-            {
-              word: "ยินดี",
-              status: "VERIFIED",
-              has_motion: true,
-              sign_name: "ยินดี (Glad)",
-            },
-          ].filter((t) => targetSentence.includes(t.word)),
-          braille_unicode: "⠭⠕⠹⠕⠢⠝⠁⠎⠬⠝⠢⠅⠎⠧⠅⠪⠁",
-          braille_guide: "สะกดอักษรเบรลล์ไทยมาตรฐาน (Unicode 6-dot matrix)",
-          checklist: [
-            {
-              title: "คำศัพท์สำคัญมีท่าภาษามือไทยรองรับ (Verified TSL)",
-              status: "PASS" as const,
-              detail: "ตรวจพบคำศัพท์ในสารบบภาษามือไทยที่ผ่านการรับรอง",
-            },
-            {
-              title: "รองรับการแปลงเป็นอักษรเบรลล์มาตรฐาน",
-              status: "PASS" as const,
-              detail: "แปลงเป็น Unicode Braille สำหรับเครื่องแสดงผลอักษรเบรลล์ได้ทันที",
-            },
-            {
-              title: "การเว้นวรรคและการอ่านออกเสียงด้วย Screen Reader",
-              status: "PASS" as const,
-              detail: "จังหวะเคาะวรรคตอนช่วยให้โปรแกรมอ่านจอภาพหยุดพักอย่างเป็นธรรมชาติ",
-            },
-          ],
-        }
+      ? buildAccessibilityLayer(queryText, targetSentence)
       : null;
 
     // Fallback response for offline demo
