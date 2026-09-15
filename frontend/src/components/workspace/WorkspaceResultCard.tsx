@@ -522,7 +522,7 @@ export default function WorkspaceResultCard({
                         className="workspace-draft-btn"
                         style={{ fontSize: "11px", padding: "6px 10px", color: "var(--accent)" }}
                       >
-                        นำไปใส่กล่องร่าง ➔
+                        นำไปใส่หน้าต่างตอบกลับ ➔
                       </button>
                     )}
                   </div>
@@ -713,7 +713,7 @@ export default function WorkspaceResultCard({
                         className="workspace-draft-btn"
                         style={{ fontSize: "12px", color: "var(--accent)" }}
                       >
-                        นำไปใส่กล่องร่าง ➔
+                        นำไปใส่หน้าต่างตอบกลับ ➔
                       </button>
                     )}
                   </div>
@@ -922,159 +922,303 @@ export default function WorkspaceResultCard({
         </section>
       )}
 
-      {/* Accessibility Layer Section */}
+      {/* ♿ Accessibility Layer — User-Friendly Card */}
       {(activeTab === "all" || activeTab === "access") && accessibility_layer && (
         <section aria-labelledby="access-heading" className="workspace-card" style={{ marginBottom: 0 }}>
-          <div className="workspace-card-header">
-            <h3 id="access-heading" className="workspace-card-title">
-              <span>♿</span> ความพร้อมด้านการเข้าถึง (Accessibility Layer)
-            </h3>
-            <span
-              style={{
-                padding: "3px 10px",
-                borderRadius: "999px",
-                fontSize: "12px",
-                fontWeight: 700,
-                background: accessibility_layer.readiness_score >= 80 ? "#f0fdf4" : "#fffbeb",
-                color: accessibility_layer.readiness_score >= 80 ? "#166534" : "#b45309",
-                border: `1px solid ${accessibility_layer.readiness_score >= 80 ? "#bbf7d0" : "#fde68a"}`,
-              }}
-            >
-              Readiness: {accessibility_layer.readiness_score}% ({accessibility_layer.readiness_rating})
-            </span>
-          </div>
 
-          <div
-            style={{
-              padding: "10px 14px",
-              borderRadius: "10px",
-              background: "#fffbeb",
-              border: "1px solid #fef3c7",
-              marginBottom: "16px",
-              fontSize: "12px",
-              color: "#92400e",
-              lineHeight: 1.5,
-            }}
-          >
-            🛡️ <strong>ข้อควรทราบทางกฎหมายและมาตรฐาน:</strong> {accessibility_layer.disclaimer}
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px" }}>
-            {/* 1. Thai Sign Language Terms Detected */}
-            <div style={{ padding: "16px", borderRadius: "14px", background: "#f8fafc", border: "1px solid var(--border)" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
-                <span style={{ fontSize: "18px" }}>🤟</span>
-                <h4 style={{ margin: 0, fontSize: "14px", fontWeight: 700, color: "var(--ink)" }}>
-                  ภาษามือไทยที่ตรวจพบ ({accessibility_layer.detected_sign_terms.length} คำ)
-                </h4>
+          {/* ── Header row ── */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "20px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div style={{
+                width: 40, height: 40, borderRadius: "12px",
+                background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "20px", flexShrink: 0,
+              }}>♿</div>
+              <div>
+                <h3 id="access-heading" style={{ margin: 0, fontSize: "16px", fontWeight: 700, color: "var(--ink)" }}>
+                  ความพร้อมการเข้าถึง
+                </h3>
+                <p style={{ margin: 0, fontSize: "12px", color: "var(--muted)" }}>Accessibility Layer · WCAG 2.1</p>
               </div>
-
-              {accessibility_layer.detected_sign_terms.length > 0 ? (
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  {accessibility_layer.detected_sign_terms.map((term, idx) => (
-                    <div key={idx} style={{ padding: "10px", background: "#ffffff", borderRadius: "10px", border: "1px solid var(--border)" }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
-                        <strong className="font-thai-reading" style={{ fontSize: "15px" }}>{term.word}</strong>
-                        <span style={{ fontSize: "10px", padding: "1px 6px", borderRadius: "999px", background: "#dcfce7", color: "#15803d", fontWeight: 700 }}>
-                          ✓ ผ่านการรับรอง
-                        </span>
-                      </div>
-                      <SignLanguageSection word={term.word} compact />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p style={{ margin: 0, fontSize: "13px", color: "var(--muted)" }}>
-                  ยังไม่พบคำศัพท์หลักในสารบบภาษามือไทยสำหรับข้อความนี้ สามารถใช้การสะกดนิ้วมือทดแทนได้
-                </p>
-              )}
             </div>
 
-            {/* 2. Braille Unicode Output & Export */}
-            <div style={{ padding: "16px", borderRadius: "14px", background: "#f8fafc", border: "1px solid var(--border)" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ fontSize: "18px" }}>⠠</span>
-                  <h4 style={{ margin: 0, fontSize: "14px", fontWeight: 700, color: "var(--ink)" }}>
-                    แปลงเป็นอักษรเบรลล์ไทย (Unicode Braille)
-                  </h4>
+            {/* Score Gauge */}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{
+                  fontSize: "26px", fontWeight: 800, lineHeight: 1,
+                  color: accessibility_layer.readiness_score >= 80 ? "#16a34a" : "#d97706",
+                }}>
+                  {accessibility_layer.readiness_score}%
                 </div>
+                <div style={{ fontSize: "10px", color: "var(--muted)", marginTop: "2px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  Readiness
+                </div>
+              </div>
+              <div style={{ width: 6, height: 48, borderRadius: "99px", background: "#e2e8f0", overflow: "hidden", flexShrink: 0 }}>
+                <div style={{
+                  width: "100%",
+                  height: `${accessibility_layer.readiness_score}%`,
+                  borderRadius: "99px",
+                  background: accessibility_layer.readiness_score >= 80
+                    ? "linear-gradient(to top, #16a34a, #4ade80)"
+                    : "linear-gradient(to top, #d97706, #fbbf24)",
+                  transition: "height 0.6s ease",
+                }} />
+              </div>
+              <span style={{
+                padding: "4px 12px", borderRadius: "999px", fontSize: "12px", fontWeight: 700,
+                background: accessibility_layer.readiness_score >= 80 ? "#dcfce7" : "#fef3c7",
+                color: accessibility_layer.readiness_score >= 80 ? "#15803d" : "#b45309",
+              }}>
+                {accessibility_layer.readiness_rating === "HIGH" ? "🟢 สูง" :
+                 accessibility_layer.readiness_rating === "MODERATE" ? "🟡 ปานกลาง" : "🔴 ต้องปรับปรุง"}
+              </span>
+            </div>
+          </div>
+
+          {/* ── Disclaimer — collapsible info bar ── */}
+          <details style={{ marginBottom: "20px" }}>
+            <summary style={{
+              cursor: "pointer", listStyle: "none", display: "flex", alignItems: "center", gap: "6px",
+              fontSize: "12px", color: "#92400e", fontWeight: 600,
+              padding: "8px 12px", borderRadius: "8px",
+              background: "#fffbeb", border: "1px solid #fde68a",
+              userSelect: "none",
+            }}>
+              <span>ℹ️</span> ข้อควรทราบด้านมาตรฐาน (คลิกเพื่อดู)
+            </summary>
+            <div style={{
+              padding: "10px 14px", marginTop: "6px", borderRadius: "8px",
+              background: "#fffbeb", border: "1px solid #fde68a",
+              fontSize: "12px", color: "#92400e", lineHeight: 1.6,
+            }}>
+              🛡️ {accessibility_layer.disclaimer}
+            </div>
+          </details>
+
+          {/* ── Two feature cards ── */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px" }}>
+
+            {/* Card A — Thai Sign Language */}
+            <div style={{
+              borderRadius: "16px", overflow: "hidden",
+              border: "1px solid #e0e7ff",
+              background: "#fafafe",
+              display: "flex", flexDirection: "column",
+            }}>
+              {/* card header */}
+              <div style={{
+                padding: "12px 16px", display: "flex", alignItems: "center", gap: "10px",
+                background: "linear-gradient(135deg, #ede9fe 0%, #e0e7ff 100%)",
+                borderBottom: "1px solid #e0e7ff",
+              }}>
+                <span style={{ fontSize: "22px" }}>🤟</span>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: "14px", color: "#3730a3" }}>ภาษามือไทย</div>
+                  <div style={{ fontSize: "11px", color: "#6366f1" }}>Thai Sign Language</div>
+                </div>
+                <div style={{ marginLeft: "auto" }}>
+                  <span style={{
+                    padding: "3px 10px", borderRadius: "999px", fontSize: "11px", fontWeight: 700,
+                    background: accessibility_layer.detected_sign_terms.length > 0 ? "#dcfce7" : "#f1f5f9",
+                    color: accessibility_layer.detected_sign_terms.length > 0 ? "#15803d" : "#94a3b8",
+                  }}>
+                    {accessibility_layer.detected_sign_terms.length > 0
+                      ? `${accessibility_layer.detected_sign_terms.length} คำ พบแล้ว`
+                      : "ไม่พบคำ"}
+                  </span>
+                </div>
+              </div>
+
+              {/* card body */}
+              <div style={{ padding: "14px 16px", flex: 1 }}>
+                {accessibility_layer.detected_sign_terms.length > 0 ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    {accessibility_layer.detected_sign_terms.map((term, idx) => (
+                      <div key={idx} style={{
+                        padding: "12px", background: "#ffffff", borderRadius: "12px",
+                        border: "1px solid #e0e7ff",
+                      }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                          <span style={{
+                            width: 28, height: 28, borderRadius: "8px",
+                            background: "#ede9fe", display: "flex", alignItems: "center",
+                            justifyContent: "center", fontSize: "14px", flexShrink: 0,
+                          }}>🖐️</span>
+                          <strong className="font-thai-reading" style={{ fontSize: "15px", color: "#1e1b4b" }}>{term.word}</strong>
+                          <span style={{
+                            marginLeft: "auto", fontSize: "10px", padding: "2px 7px",
+                            borderRadius: "999px", background: "#dcfce7", color: "#15803d", fontWeight: 700,
+                          }}>✓ รับรองแล้ว</span>
+                        </div>
+                        <SignLanguageSection word={term.word} compact />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{
+                    textAlign: "center", padding: "24px 16px",
+                    color: "var(--muted)", fontSize: "13px",
+                  }}>
+                    <div style={{ fontSize: "32px", marginBottom: "8px" }}>🤲</div>
+                    <div style={{ fontWeight: 600, marginBottom: "4px" }}>ยังไม่พบคำในสารบบ</div>
+                    <div style={{ fontSize: "12px", lineHeight: 1.5 }}>
+                      สามารถใช้การสะกดนิ้วมือ (Finger Spelling) ทดแทนได้
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Card B — Braille */}
+            <div style={{
+              borderRadius: "16px", overflow: "hidden",
+              border: "1px solid #cffafe",
+              background: "#f8ffff",
+              display: "flex", flexDirection: "column",
+            }}>
+              {/* card header */}
+              <div style={{
+                padding: "12px 16px", display: "flex", alignItems: "center", gap: "10px",
+                background: "linear-gradient(135deg, #cffafe 0%, #e0f2fe 100%)",
+                borderBottom: "1px solid #cffafe",
+              }}>
+                <span style={{ fontSize: "22px" }}>⠿</span>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: "14px", color: "#0e7490" }}>อักษรเบรลล์ไทย</div>
+                  <div style={{ fontSize: "11px", color: "#06b6d4" }}>Thai Braille · Unicode</div>
+                </div>
+              </div>
+
+              {/* card body */}
+              <div style={{ padding: "14px 16px", flex: 1, display: "flex", flexDirection: "column", gap: "12px" }}>
+                {/* Big Braille display */}
+                <div style={{
+                  padding: "20px 16px",
+                  background: "#ffffff",
+                  borderRadius: "12px",
+                  border: "2px solid #cffafe",
+                  textAlign: "center",
+                  fontSize: "32px",
+                  fontFamily: "monospace",
+                  letterSpacing: "4px",
+                  wordBreak: "break-all",
+                  lineHeight: 1.4,
+                  color: "#0e7490",
+                  minHeight: "72px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                  {accessibility_layer.braille_unicode || "⠀"}
+                </div>
+
+                {/* Big Copy CTA */}
                 <button
                   type="button"
                   onClick={() => handleCopy(accessibility_layer.braille_unicode)}
                   style={{
-                    padding: "3px 8px",
-                    fontSize: "11px",
-                    borderRadius: "6px",
-                    border: "1px solid var(--border)",
-                    background: "#ffffff",
+                    width: "100%",
+                    padding: "11px 16px",
+                    borderRadius: "10px",
+                    border: "none",
+                    background: "linear-gradient(135deg, #06b6d4, #0e7490)",
+                    color: "#ffffff",
+                    fontWeight: 700,
+                    fontSize: "14px",
                     cursor: "pointer",
-                    fontWeight: 600,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    letterSpacing: "0.02em",
                   }}
                 >
-                  📋 คัดลอกเบรลล์
+                  <span>📋</span> คัดลอกอักษรเบรลล์
                 </button>
-              </div>
 
-              <div
-                style={{
-                  padding: "12px 14px",
-                  background: "#ffffff",
-                  borderRadius: "10px",
-                  border: "1px solid var(--border)",
-                  fontSize: "24px",
-                  fontFamily: "monospace",
-                  letterSpacing: "3px",
-                  wordBreak: "break-all",
-                  marginBottom: "8px",
-                }}
-              >
-                {accessibility_layer.braille_unicode}
-              </div>
-              <div style={{ color: "var(--muted)", fontSize: "11px", marginBottom: "8px" }}>
-                {Array.isArray(accessibility_layer.braille_guide) ? (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {accessibility_layer.braille_guide.map((item: any, idx: number) => (
-                      <span
-                        key={idx}
-                        style={{
-                          padding: "2px 6px",
-                          borderRadius: "4px",
-                          background: "#ffffff",
-                          border: "1px solid #cbd5e1",
+                {/* Character-by-character guide */}
+                {Array.isArray(accessibility_layer.braille_guide) && accessibility_layer.braille_guide.length > 0 && (
+                  <div>
+                    <div style={{ fontSize: "11px", color: "var(--muted)", fontWeight: 600, marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                      คำอธิบายทีละอักขระ
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                      {(accessibility_layer.braille_guide as any[]).map((item: any, idx: number) => (
+                        <div key={idx} style={{
+                          padding: "6px 10px",
+                          borderRadius: "8px",
+                          background: "#f0fdff",
+                          border: "1px solid #a5f3fc",
                           fontFamily: "monospace",
                           fontSize: "11px",
-                        }}
-                      >
-                        {item.char}: <strong style={{ fontSize: "13px" }}>{item.braille_cell}</strong> ({item.braille_dots})
-                      </span>
-                    ))}
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "2px",
+                          minWidth: "44px",
+                        }}>
+                          <span style={{ fontSize: "18px", color: "#0e7490" }}>{item.braille_cell}</span>
+                          <span style={{ color: "#334155", fontWeight: 600 }}>{item.char}</span>
+                          <span style={{ color: "#94a3b8", fontSize: "9px" }}>{item.braille_dots}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ) : (
-                  <span>{String(accessibility_layer.braille_guide || "")}</span>
+                )}
+                {!Array.isArray(accessibility_layer.braille_guide) && accessibility_layer.braille_guide && (
+                  <div style={{ fontSize: "12px", color: "var(--muted)", lineHeight: 1.5 }}>
+                    {String(accessibility_layer.braille_guide)}
+                  </div>
                 )}
               </div>
-
-              {/* Checklist */}
-              {accessibility_layer.checklist && accessibility_layer.checklist.length > 0 && (
-                <div style={{ marginTop: "14px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                  {accessibility_layer.checklist.map((item: any, idx: number) => {
-                    const isPassed = item.status === "PASS" || item.passed === true;
-                    const title = item.title || item.item || "เกณฑ์การตรวจทาน";
-                    const detail = item.detail || item.note || "";
-                    return (
-                      <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "6px", fontSize: "12px", color: "#334155" }}>
-                        <span style={{ color: isPassed ? "#16a34a" : "#d97706" }}>
-                          {isPassed ? "✓" : "⚠️"}
-                        </span>
-                        <span><strong>{title}:</strong> {detail}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
             </div>
           </div>
+
+          {/* ── Checklist strip ── */}
+          {accessibility_layer.checklist && accessibility_layer.checklist.length > 0 && (
+            <div style={{ marginTop: "20px" }}>
+              <div style={{ fontSize: "12px", color: "var(--muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "10px" }}>
+                ✅ รายการตรวจสอบความพร้อม ({accessibility_layer.checklist.filter((i: any) => i.status === "PASS" || i.passed === true).length}/{accessibility_layer.checklist.length} ผ่าน)
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "8px" }}>
+                {accessibility_layer.checklist.map((item: any, idx: number) => {
+                  const isPassed = item.status === "PASS" || item.passed === true;
+                  const isWarn = item.status === "WARN";
+                  const title = item.title || item.item || "เกณฑ์การตรวจทาน";
+                  const detail = item.detail || item.note || "";
+                  return (
+                    <div key={idx} style={{
+                      padding: "10px 12px",
+                      borderRadius: "10px",
+                      border: `1px solid ${isPassed ? "#bbf7d0" : isWarn ? "#fde68a" : "#e2e8f0"}`,
+                      background: isPassed ? "#f0fdf4" : isWarn ? "#fffbeb" : "#f8fafc",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                    }}>
+                      <span style={{
+                        width: 20, height: 20, borderRadius: "6px", flexShrink: 0,
+                        background: isPassed ? "#dcfce7" : isWarn ? "#fef3c7" : "#f1f5f9",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: "11px", fontWeight: 800,
+                        color: isPassed ? "#16a34a" : isWarn ? "#d97706" : "#94a3b8",
+                      }}>
+                        {isPassed ? "✓" : isWarn ? "!" : "–"}
+                      </span>
+                      <div>
+                        <div style={{ fontSize: "12px", fontWeight: 700, color: "#1e293b" }}>{title}</div>
+                        {detail && <div style={{ fontSize: "11px", color: "var(--muted)", marginTop: "2px", lineHeight: 1.4 }}>{detail}</div>}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
         </section>
       )}
 

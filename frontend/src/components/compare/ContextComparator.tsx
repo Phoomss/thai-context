@@ -6,6 +6,7 @@ import type { Recommendation, SearchResponse } from "@/lib/search-types";
 import { getSignResource } from "@/lib/sign-motion-data";
 import { encodeThaiToBraille } from "@/lib/braille-encoder";
 import { audioManager } from "@/lib/audio-manager";
+import { lookupOfficialDefinition } from "@/lib/dictionary-store";
 
 const EMPTY_INPUTS = ["", ""];
 const MISSING_DICTIONARY_DEFINITION = "ไม่มีข้อมูลในพจนานุกรมทางการ";
@@ -155,13 +156,31 @@ export default function ContextComparator({
 
   const leftWord = useMemo(() => {
     const head = (inputs[0] || selected[0] || options[0] || words[0]?.headword || "").trim();
-    return words.find((w) => w.headword.trim() === head) ?? (head ? { headword: head, definition: "" } : undefined);
-  }, [inputs, selected, options, words]);
+    const foundInWords = words.find((w) => w.headword.trim() === head);
+    if (foundInWords) return foundInWords;
+    const foundInResult = result?.words.find((w) => w.headword.trim() === head);
+    const official = lookupOfficialDefinition(head);
+    return head
+      ? ({
+          headword: head,
+          definition: foundInResult?.definition ?? official?.definition ?? "",
+        } as Recommendation)
+      : undefined;
+  }, [inputs, selected, options, words, result]);
 
   const rightWord = useMemo(() => {
     const head = (inputs[1] || selected[1] || options[1] || words[1]?.headword || "").trim();
-    return words.find((w) => w.headword.trim() === head) ?? (head ? { headword: head, definition: "" } : undefined);
-  }, [inputs, selected, options, words]);
+    const foundInWords = words.find((w) => w.headword.trim() === head);
+    if (foundInWords) return foundInWords;
+    const foundInResult = result?.words.find((w) => w.headword.trim() === head);
+    const official = lookupOfficialDefinition(head);
+    return head
+      ? ({
+          headword: head,
+          definition: foundInResult?.definition ?? official?.definition ?? "",
+        } as Recommendation)
+      : undefined;
+  }, [inputs, selected, options, words, result]);
 
   return (
     <section id="compare" className="feature-section comparator" aria-labelledby="compare-title">
@@ -263,11 +282,12 @@ export default function ContextComparator({
               const liveRecommendation = sourceMode === "live"
                 ? words.find((item) => item.headword.trim() === word.headword.trim())
                 : undefined;
+              const official = sourceMode !== "fallback" ? lookupOfficialDefinition(word.headword) : null;
               const definition = word.definition === MISSING_DICTIONARY_DEFINITION
-                ? liveRecommendation?.definition ?? word.definition
+                ? liveRecommendation?.definition ?? official?.definition ?? word.definition
                 : word.definition;
               const partOfSpeech = word.partOfSpeech === UNSPECIFIED_PART_OF_SPEECH
-                ? liveRecommendation?.pos
+                ? (sourceMode === "fallback" ? undefined : liveRecommendation?.pos ?? official?.partOfSpeech)
                 : word.partOfSpeech;
               const signInfo = getSignResource(word.headword);
               const brailleInfo = encodeThaiToBraille(word.headword);

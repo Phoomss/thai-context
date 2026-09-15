@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, type RefObject, type MouseEvent } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 export default function MorphingNavbar({
   navRef,
   busy,
@@ -168,42 +168,7 @@ export default function MorphingNavbar({
         >
           ภาษาถิ่น
         </a>
-        <Link
-          href="/word-scrambler"
-          onClick={() => setOpen(false)}
-          className="nav-btn-pill nav-scrambler-btn nav-link-scrambler font-thai-reading"
-        >
-          สุ่มเปลี่ยนคำ 🔀
-        </Link>
-        <Link
-          href="/workspace"
-          onClick={() => setOpen(false)}
-          className="nav-btn-pill nav-workspace-btn font-thai-reading"
-        >
-          AI Workspace ✦
-        </Link>
-        <Link
-          href="/translate"
-          onClick={() => setOpen(false)}
-          className="nav-btn-pill nav-translate-btn font-thai-reading"
-          aria-label="แปลภาษาสำหรับชาวต่างชาติ (Translator)"
-        >
-          <span aria-hidden="true">🌐</span>
-          <span>แปลภาษา (EN/TH)</span>
-        </Link>
-        <Link
-          href="/ai-assistant"
-          role="button"
-          onClick={() => {
-            setOpen(false);
-            onAIChat?.();
-          }}
-          className="nav-ai-button font-thai-reading"
-          aria-label="ผู้ช่วย AI"
-        >
-          <span aria-hidden="true">✨</span>
-          <span>ผู้ช่วย AI</span>
-        </Link>
+
       </nav>
       {(
         <button

@@ -1,6 +1,29 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import PopularSuggestions from "./PopularSuggestions";
 import { Search } from 'lucide-react';
+
+const HERO_TEXTAREA_FALLBACK_MAX_HEIGHT = 160;
+function resizeTextarea(element: HTMLTextAreaElement) {
+  const styles = getComputedStyle(element);
+  const cssMinHeight = Number.parseFloat(styles.minHeight);
+  const minHeight = Number.isFinite(cssMinHeight) ? cssMinHeight : 48;
+
+  if (!element.value) {
+    element.style.height = `${minHeight}px`;
+    element.style.overflowY = "hidden";
+    return;
+  }
+
+  element.style.height = "0px";
+  const cssMaxHeight = Number.parseFloat(styles.maxHeight);
+  const maxHeight = Number.isFinite(cssMaxHeight)
+    ? cssMaxHeight
+    : HERO_TEXTAREA_FALLBACK_MAX_HEIGHT;
+  const nextHeight = Math.max(minHeight, Math.min(element.scrollHeight, maxHeight));
+  element.style.height = `${nextHeight}px`;
+  element.style.overflowY = element.scrollHeight > maxHeight ? "auto" : "hidden";
+}
+
 export default function HeroSearch({
   busy,
   onSearch,
@@ -15,6 +38,9 @@ export default function HeroSearch({
   const input = useRef<HTMLTextAreaElement>(null);
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
+  useLayoutEffect(() => {
+    if (input.current) resizeTextarea(input.current);
+  }, [query]);
   function submit() {
     if (busy) return;
     if (!query.trim()) {
@@ -56,7 +82,7 @@ export default function HeroSearch({
         <textarea
           ref={input}
           id="meaning"
-          rows={2}
+          rows={1}
           maxLength={600}
           disabled={busy || !hydrated}
           value={query}
@@ -65,6 +91,7 @@ export default function HeroSearch({
           onChange={(e) => {
             setQuery(e.target.value);
             setError("");
+            resizeTextarea(e.currentTarget);
           }}
           onKeyDown={(e) => {
             if (

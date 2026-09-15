@@ -54,7 +54,13 @@ export async function GET(
       );
       if (upstream.ok) {
         const data = await upstream.json();
-        return NextResponse.json(data);
+        if (format === "structured" || tslFormatHeader === "structured") {
+          if (data && typeof data === "object" && !Array.isArray(data) && data.status) {
+            return NextResponse.json(data);
+          }
+        } else {
+          return NextResponse.json(data);
+        }
       }
     } catch {
       // Fallback to structured catalog below
