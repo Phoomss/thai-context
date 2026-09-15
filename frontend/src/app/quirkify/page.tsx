@@ -35,7 +35,7 @@ export default function QuirkifyPage() {
             </div>
             <span
               className="workspace-badge-tag"
-              style={{ background: "#fef3c7", color: "#b45309", borderColor: "#fde68a" }}
+              style={{ background: "#eaf4fe", color: "var(--accent)", borderColor: "#c8e0fa" }}
             >
               ✦ Word Scrambler
             </span>

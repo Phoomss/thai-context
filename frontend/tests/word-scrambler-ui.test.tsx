@@ -164,4 +164,96 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
 
     expect(writeTextMock).toHaveBeenCalledWith("วันนี้ 'ระโหย'");
   });
+
+  it("ensures EVERY changed word in the sentence has official dictionary grounding even if omitted by API", async () => {
+    // API returns a sentence with two quoted words, but only one is in word_mappings
+    vi.spyOn(apiClient, "quirkifySentence").mockResolvedValue({
+      original_sentence: "วันนี้เหนื่อยมาก อยากกลับไปนอนแล้ว",
+      quirkified_sentence: "วันนี้ 'ระโหย' มาก อยากกลับไป 'จำศีล' แล้ว",
+      vibe_style: "สุ่มเปลี่ยนคำในประโยค (Word Scrambler)",
+      punchline_explanation: "สุ่มเปลี่ยนคำ",
+      word_mappings: [
+        {
+          original_phrase: "เหนื่อยมาก",
+          replaced_word: "ระโหย",
+          part_of_speech: "ว.",
+          official_definition: "อ่อนเพลียหมดกำลัง, อ่อนระโหย",
+          source_edition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+          quirk_reason: "สุ่มเปลี่ยนคำวิเศษณ์",
+        },
+        // Notice: 'จำศีล' is omitted by API!
+      ],
+    });
+
+    render(<SentenceQuirkifier embedded={false} />);
+
+    fireEvent.click(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/));
+
+    await waitFor(() => {
+      // Both words should be rendered as interactive pills
+      expect(screen.getByText("'ระโหย'")).toBeTruthy();
+      expect(screen.getByText("'จำศีล'")).toBeTruthy();
+
+      // Heading should show 2 words grounded
+      expect(screen.getByText(/2 คำที่สุ่มเปลี่ยน/)).toBeTruthy();
+
+      // Both words must have evidence cards under "เจาะลึกคำศัพท์ที่สุ่มเปลี่ยน"
+      expect(screen.getByText("อ่อนเพลียหมดกำลัง, อ่อนระโหย")).toBeTruthy();
+      expect(screen.getByText(/การที่สัตว์บางชนิดหลบอยู่นิ่ง ๆ/)).toBeTruthy();
+    });
+
+    // Clicking the word pill for 'จำศีล' in the sentence opens the detail modal
+    const jamSilPill = screen.getByText("'จำศีล'");
+    fireEvent.click(jamSilPill);
+
+    await waitFor(() => {
+      expect(screen.getByText("คำเดิมที่ถูกแทนที่:")).toBeTruthy();
+      expect(screen.getByText("นิยามทางการจากพจนานุกรมราชบัณฑิตยสภา:")).toBeTruthy();
+      expect(screen.getAllByText(/การที่สัตว์บางชนิดหลบอยู่นิ่ง ๆ/).length).toBeGreaterThanOrEqual(2);
+    });
+  });
+
+  it("rerolls a specific word and updates both the sentence and the dictionary grounding", async () => {
+    vi.spyOn(apiClient, "quirkifySentence").mockResolvedValue({
+      original_sentence: "วันนี้เหนื่อยมาก อยากกลับไปนอนแล้ว",
+      quirkified_sentence: "วันนี้ 'ระโหย' มาก อยากกลับไป 'จำศีล' แล้ว",
+      vibe_style: "สุ่มเปลี่ยนคำในประโยค (Word Scrambler)",
+      punchline_explanation: "สุ่มเปลี่ยนคำ",
+      word_mappings: [
+        {
+          original_phrase: "เหนื่อยมาก",
+          replaced_word: "ระโหย",
+          part_of_speech: "ว.",
+          official_definition: "อ่อนเพลียหมดกำลัง, อ่อนระโหย",
+          source_edition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+          quirk_reason: "สุ่มเปลี่ยนคำวิเศษณ์",
+        },
+        {
+          original_phrase: "นอน",
+          replaced_word: "จำศีล",
+          part_of_speech: "ก.",
+          official_definition: "ถือศีล, การที่สัตว์บางชนิดหลบอยู่นิ่ง ๆ ในที่พัก",
+          source_edition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+          quirk_reason: "สุ่มเปลี่ยนคำกริยา",
+        },
+      ],
+    });
+
+    render(<SentenceQuirkifier embedded={false} />);
+
+    fireEvent.click(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/));
+
+    await waitFor(() => {
+      expect(screen.getAllByText("🎲 สุ่มคำอื่นแทน").length).toBe(2);
+    });
+
+    // Click reroll on the first word
+    const rerollBtns = screen.getAllByText("🎲 สุ่มคำอื่นแทน");
+    fireEvent.click(rerollBtns[0]);
+
+    await waitFor(() => {
+      // The toast notification should confirm the reroll
+      expect(screen.getByRole("status")).toBeTruthy();
+    });
+  });
 });

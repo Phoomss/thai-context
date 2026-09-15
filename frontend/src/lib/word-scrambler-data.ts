@@ -157,7 +157,119 @@ export const DICTIONARY_REPLACEMENTS: DictionaryReplacementWord[] = [
     rationale: "สุ่มเปลี่ยนคำว่าสวยงามด้วยคำคุณศัพท์ชั้นสูง",
     triggerWords: ["สวย", "งาม", "สวยงาม", "ดี"],
   },
+  {
+    headword: "อนุเคราะห์",
+    pos: "ก.",
+    definition: "เอื้อเฟื้อ, ช่วยเหลือด้วยความเมตตาปรานีหรือความปรารถนาดี",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าช่วยด้วยคำกริยาแสดงน้ำใจและการเกื้อกูลอย่างเป็นทางการ",
+    triggerWords: ["ช่วย", "ช่วยเหลือ", "ช่วยชีวิต", "ดูแล"],
+  },
+  {
+    headword: "นิวาสสถาน",
+    pos: "น.",
+    definition: "ที่อยู่, ที่พักอาศัย, เรือนพักพิงอันมั่นคง",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าบ้านหรือห้องด้วยคำนามพจนานุกรมชั้นสูง",
+    triggerWords: ["บ้าน", "ห้อง", "ที่พัก", "หอพัก", "คอนโด"],
+  },
+  {
+    headword: "บริโภค",
+    pos: "ก.",
+    definition: "กิน (ใช้เฉพาะอาหาร), ใช้สอยสิ่งของเครื่องอุปโภค",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่ากินด้วยคำกริยาทางการตามพจนานุกรม",
+    triggerWords: ["กิน", "ดื่ม", "ทาน", "รับประทาน"],
+  },
+  {
+    headword: "ผาสุก",
+    pos: "น.",
+    definition: "ความสำราญ, ความอยู่ดีมีสุข, ความสงบเรียบร้อยไร้กังวล",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าดีขึ้นด้วยคำแสดงภาวะแห่งความสุขร่มเย็น",
+    triggerWords: ["ดีขึ้น", "สบาย", "ความสุข", "แฮปปี้"],
+  },
+  {
+    headword: "เกษมศานต์",
+    pos: "ว.",
+    definition: "ชื่นบาน, มีความสุขสำราญ, สบายใจอย่างยิ่ง",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำบอกอารมณ์สนุกสนานด้วยคำวิเศษณ์แสดงความเบิกบานใจ",
+    triggerWords: ["สนุก", "ดีใจ", "ร่าเริง", "ตื่นเต้น"],
+  },
+  {
+    headword: "โสภา",
+    pos: "ว.",
+    definition: "งาม, สวยสดงดงาม, ผุดผ่องชวนมอง",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำชื่นชมด้วยคำไวพจน์ความงามคลาสสิก",
+    triggerWords: ["น่ารัก", "สดใส", "น่ามอง"],
+  },
+  {
+    headword: "ยวดยาน",
+    pos: "น.",
+    definition: "ยานพาหนะสำหรับขับขี่หรือใช้เดินทางสัญจร",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่ารถด้วยศัพท์ทางการตามระเบียบ",
+    triggerWords: ["รถ", "ขับรถ", "นั่งรถ", "เดินทาง"],
+  },
+  {
+    headword: "มิตรสหาย",
+    pos: "น.",
+    definition: "เพื่อนสนิทชิดเชื้อ, เพื่อนร่วมเป็นร่วมตาย",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าเพื่อนด้วยคำนามแสดงมิตรภาพอันเหนียวแน่น",
+    triggerWords: ["เพื่อน", "มิตร", "เกลอ"],
+  },
+  {
+    headword: "วารี",
+    pos: "น.",
+    definition: "น้ำ, สายน้ำ, กระแสน้ำอันใสสะอาด",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าน้ำด้วยคำไวพจน์วรรณคดี",
+    triggerWords: ["น้ำ", "แม่น้ำ", "ทะเล"],
+  },
+  {
+    headword: "สิเน่หา",
+    pos: "น.",
+    definition: "ความรักใคร่เสน่หา, ความผูกพันด้วยความรักอันลึกซึ้ง",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่ารักด้วยนามธรรมแห่งความผูกพัน",
+    triggerWords: ["รัก", "ชอบ", "คิดถึง"],
+  },
+  {
+    headword: "ฉับพลัน",
+    pos: "ว.",
+    definition: "ในทันทีทันใด, รวดเร็วชั่วพริบตาโดยมิได้คาดหมาย",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าเร็วด้วยคำวิเศษณ์แสดงความฉับไว",
+    triggerWords: ["เร็ว", "ด่วน", "ทันที", "ไว"],
+  },
+  {
+    headword: "โภคทรัพย์",
+    pos: "น.",
+    definition: "ทรัพย์สิ่งของเครื่องอุปโภคบริโภค, เงินทองอันพึงใช้สอย",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าเงินด้วยคำนามทางเศรษฐกิจโบราณ",
+    triggerWords: ["เงิน", "ตังค์", "ทอง", "รวย"],
+  },
+  {
+    headword: "เพลานี้",
+    pos: "น.",
+    definition: "เวลานี้, ขณะนี้, ช่วงเวลาปัจจุบัน",
+    sourceEdition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+    rationale: "สุ่มเปลี่ยนคำว่าตอนนี้หรือวันนี้ด้วยคำบอกเวลาโบราณ",
+    triggerWords: ["ตอนนี้", "วันนี้", "เวลานี้", "เดี๋ยวนี้"],
+  },
 ];
+
+/**
+ * Find replacement info for a headword from our grounded dictionary data.
+ */
+export function getReplacementForHeadword(headword: string): DictionaryReplacementWord | undefined {
+  const clean = headword.replace(/['"“”‘’]/g, "").trim();
+  return DICTIONARY_REPLACEMENTS.find((d) => d.headword === clean);
+}
 
 /**
  * Segment a Thai sentence into words using Intl.Segmenter or fallback word boundary regex.
@@ -252,10 +364,13 @@ export function substituteSentenceWords(
   if (matchedReplacements.length === 0) {
     const words = segmentThaiWords(trimmed).filter((w) => w.length >= 2 && !/^\s+$/.test(w));
     if (words.length > 0) {
-      const randomWord = words[Math.floor(Math.random() * words.length)];
-      const randomRepl =
-        DICTIONARY_REPLACEMENTS[Math.floor(Math.random() * DICTIONARY_REPLACEMENTS.length)];
-      matchedReplacements.push({ matchWord: randomWord, replacement: randomRepl });
+      const shuffledWords = [...words].sort(() => 0.5 - Math.random());
+      const chosenWords = shuffledWords.slice(0, Math.min(maxSwaps, words.length));
+      for (const cw of chosenWords) {
+        const randomRepl =
+          DICTIONARY_REPLACEMENTS[Math.floor(Math.random() * DICTIONARY_REPLACEMENTS.length)];
+        matchedReplacements.push({ matchWord: cw, replacement: randomRepl });
+      }
     }
   }
 

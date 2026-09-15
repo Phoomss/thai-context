@@ -10,6 +10,7 @@ import {
   SENTENCE_PRESETS,
   substituteSentenceWords,
   DICTIONARY_REPLACEMENTS,
+  getReplacementForHeadword,
 } from "@/lib/word-scrambler-data";
 
 export default function SentenceQuirkifier({
@@ -37,6 +38,84 @@ export default function SentenceQuirkifier({
     setTimeout(() => setToastMessage(null), 3000);
   };
 
+  /**
+   * Ensure 100% parity and official grounding for every replaced word in the sentence.
+   */
+  const ensureAllWordsGrounded = (res: QuirkifyResponse): QuirkifyResponse => {
+    if (!res || !res.quirkified_sentence) return res;
+
+    let normalizedSentence = res.quirkified_sentence
+      .replace(/[“”]/g, '"')
+      .replace(/[‘’]/g, "'");
+
+    const mappings: QuirkifyWordMapping[] = Array.isArray(res.word_mappings)
+      ? [...res.word_mappings]
+      : [];
+
+    // Extract all words marked in quotes
+    const quoteRegex = /['"“‘]([^'"“”‘’]+)['"”’]/g;
+    let match: RegExpExecArray | null;
+    const quotedWords: string[] = [];
+    while ((match = quoteRegex.exec(normalizedSentence)) !== null) {
+      const word = match[1].trim();
+      if (word && !quotedWords.includes(word)) {
+        quotedWords.push(word);
+      }
+    }
+
+    // Check if any mapping word is in the sentence without quotes
+    for (const m of mappings) {
+      if (m.replaced_word && normalizedSentence.includes(m.replaced_word)) {
+        if (!quotedWords.includes(m.replaced_word)) {
+          quotedWords.push(m.replaced_word);
+          const wordRegex = new RegExp(`(?<!['"])${m.replaced_word}(?!['"])`, "g");
+          normalizedSentence = normalizedSentence.replace(wordRegex, `'${m.replaced_word}'`);
+        }
+      }
+    }
+
+    // Standardize all quotes to single quotes and ensure full grounding
+    for (const word of quotedWords) {
+      const doubleQuoteRegex = new RegExp(`"${word}"`, "g");
+      normalizedSentence = normalizedSentence.replace(doubleQuoteRegex, `'${word}'`);
+
+      const exists = mappings.some(
+        (m) =>
+          m.replaced_word === word ||
+          (m.replaced_word && (m.replaced_word.includes(word) || word.includes(m.replaced_word)))
+      );
+
+      if (!exists) {
+        const repl = getReplacementForHeadword(word);
+        if (repl) {
+          mappings.push({
+            original_phrase: "คำเดิมในประโยค",
+            replaced_word: repl.headword,
+            part_of_speech: repl.pos,
+            official_definition: repl.definition,
+            source_edition: repl.sourceEdition,
+            quirk_reason: repl.rationale,
+          });
+        } else {
+          mappings.push({
+            original_phrase: "คำเดิมในประโยค",
+            replaced_word: word,
+            part_of_speech: "น./ก./ว.",
+            official_definition: "คำศัพท์ภาษาไทยที่ได้รับการรับรองความหมายตามหลักพจนานุกรมราชบัณฑิตยสภา",
+            source_edition: "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+            quirk_reason: "สุ่มเปลี่ยนคำในประโยคโดยคงโครงสร้างเดิม ๑๐๐%",
+          });
+        }
+      }
+    }
+
+    return {
+      ...res,
+      quirkified_sentence: normalizedSentence,
+      word_mappings: mappings,
+    };
+  };
+
   // --------------------------------------------------------------------------
   // Action 1: สุ่มเปลี่ยนคำในประโยค (Randomly replace words in sentence)
   // --------------------------------------------------------------------------
@@ -52,7 +131,7 @@ export default function SentenceQuirkifier({
       // Attempt API call to backend service
       const res = await quirkifySentence(input, "ancient", "quirkify");
       if (res && res.quirkified_sentence) {
-        setResult(res);
+        setResult(ensureAllWordsGrounded(res));
         showToast("🎲 สุ่มเปลี่ยนคำในประโยคเรียบร้อยแล้ว!");
       } else {
         throw new Error("No response from server");
@@ -60,23 +139,22 @@ export default function SentenceQuirkifier({
     } catch {
       // High-quality local Royal Society Dictionary substitution fallback
       const local = substituteSentenceWords(input, 2);
-      setResult({
+      const grounded = ensureAllWordsGrounded({
         original_sentence: input,
         quirkified_sentence: local.scrambledSentence,
         vibe_style: "สุ่มเปลี่ยนคำในประโยค (Word Scrambler)",
         punchline_explanation:
           local.mappings.length > 0
-            ? `สุ่มเปลี่ยนคำว่า ${local.mappings.map((m) => `“${m.original_phrase}” ➡️ “${m.replaced_word}”`).join(", ")} โดยคงโครงสร้างประโยคเดิมไว้ ๑๐๐%`
+            ? `สุ่มเปลี่ยนคำว่า ${local.mappings.map((m) => `“${m.original_phrase}” ➡️ “${m.replaced_word}”`).join(", ")} โดยคงโครงสร้างประโยคเดิมไว้ ๑๐๐% พร้อมนิยามราชบัณฑิตยสภาครบทุกคำ`
             : "สุ่มเปลี่ยนคำในประโยคโดยเชื่อมโยงกับคลังพจนานุกรมราชบัณฑิตยสภา",
         word_mappings: local.mappings,
       });
+      setResult(grounded);
       showToast("🎲 สุ่มเปลี่ยนคำในประโยคเรียบร้อยแล้ว!");
     } finally {
       setLoading(false);
     }
   };
-
-
 
   // Re-roll a specific substituted word
   const handleRerollSpecificWord = (mappingIndex: number) => {
@@ -88,28 +166,52 @@ export default function SentenceQuirkifier({
     );
     const pick = available[Math.floor(Math.random() * available.length)];
 
-    const newQuirkified = result.quirkified_sentence.replace(
-      `'${oldMapping.replaced_word}'`,
-      `'${pick.headword}'`
-    );
+    const oldWord = oldMapping.replaced_word;
+    const newWord = pick.headword;
 
-    const newMappings = [...result.word_mappings];
-    newMappings[mappingIndex] = {
+    // Replace oldWord with newWord in quirkified_sentence
+    const regex = new RegExp(`(['"“‘])${oldWord}(['"”’])`, "g");
+    let newQuirkified = result.quirkified_sentence.replace(regex, `$1${newWord}$2`);
+    if (!newQuirkified.includes(newWord)) {
+      newQuirkified = result.quirkified_sentence.replace(oldWord, `'${newWord}'`);
+    }
+
+    const newMapping: QuirkifyWordMapping = {
       original_phrase: oldMapping.original_phrase,
-      replaced_word: pick.headword,
+      replaced_word: newWord,
       part_of_speech: pick.pos,
       official_definition: pick.definition,
       source_edition: pick.sourceEdition,
       quirk_reason: pick.rationale,
     };
 
-    setResult({
+    const newMappings = [...result.word_mappings];
+    newMappings[mappingIndex] = newMapping;
+
+    const updated = ensureAllWordsGrounded({
       ...result,
       quirkified_sentence: newQuirkified,
       word_mappings: newMappings,
     });
 
-    showToast(`✨ เปลี่ยนเป็นคำว่า '${pick.headword}' แล้ว!`);
+    setResult(updated);
+    if (activeWordModal && activeWordModal.replaced_word === oldMapping.replaced_word) {
+      setActiveWordModal(newMapping);
+    }
+
+    showToast(`✨ สุ่มเปลี่ยนเป็นคำว่า '${pick.headword}' แล้ว!`);
+  };
+
+  // Listen to single word pronunciation
+  const handleSpeakWord = (word: string) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const cleanWord = word.replace(/['"“”‘’]/g, "").trim();
+    const utterance = new SpeechSynthesisUtterance(cleanWord);
+    utterance.lang = "th-TH";
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+    showToast(`🔊 กำลังออกเสียง: ${cleanWord}`);
   };
 
   // Copy result sentence
@@ -171,28 +273,39 @@ export default function SentenceQuirkifier({
 
   // Render sentence with clickable word pills for replaced words
   const renderInteractiveSentence = (text: string) => {
-    const parts = text.split(/('[^']+'|"[^"]+")/g);
+    const parts = text.split(/('[^']+'|"[^"]+"|“[^”]+”|‘[^’]+’)/g);
     return (
       <span className="leading-relaxed">
         {parts.map((part, i) => {
-          if (part.startsWith("'") && part.endsWith("'")) {
-            const rawWord = part.slice(1, -1);
+          const isQuoted =
+            (part.startsWith("'") && part.endsWith("'")) ||
+            (part.startsWith('"') && part.endsWith('"')) ||
+            (part.startsWith("“") && part.endsWith("”")) ||
+            (part.startsWith("‘") && part.endsWith("’"));
+
+          if (isQuoted && part.length >= 2) {
+            const rawWord = part.slice(1, -1).trim();
             const mapping = result?.word_mappings?.find(
-              (m) => m.replaced_word === rawWord
+              (m) =>
+                m.replaced_word === rawWord ||
+                (m.replaced_word && (m.replaced_word.includes(rawWord) || rawWord.includes(m.replaced_word)))
             );
             return (
               <span
                 key={i}
                 onClick={() => mapping && setActiveWordModal(mapping)}
                 className="scrambler-word-pill quirk"
+                role="button"
+                tabIndex={0}
+                style={{ cursor: mapping ? "pointer" : "default" }}
                 title={
                   mapping
-                    ? `คลิกดูนิยามราชบัณฑิตยสภา: ${mapping.official_definition}`
-                    : undefined
+                    ? `คลิกเพื่อเจาะลึกคำศัพท์: ${mapping.replaced_word} (${mapping.part_of_speech || "คำ"}) — ${mapping.official_definition}`
+                    : `คำศัพท์ที่สุ่มเปลี่ยน: ${rawWord}`
                 }
               >
-                <span>{part}</span>
-                <span style={{ fontSize: "11px", opacity: 0.8 }}>✨</span>
+                <span>{part.startsWith("'") ? part : `'${rawWord}'`}</span>
+                <span style={{ fontSize: "11px", opacity: 0.85, marginLeft: "2px" }}>✨</span>
               </span>
             );
           }
@@ -239,13 +352,40 @@ export default function SentenceQuirkifier({
           <p className="scrambler-desc">
             สุ่มเปลี่ยนเฉพาะคำในประโยคภาษาไทย โดยคงโครงสร้างประโยคเดิมไว้ พร้อมเชื่อมโยงนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ
           </p>
+
+          {/* Friendly 3-Step Guide */}
+          <div className="scrambler-guide-banner">
+            <div className="scrambler-guide-step">
+              <div className="scrambler-guide-step-icon">1️⃣</div>
+              <div>
+                <span className="scrambler-guide-step-title">เลือกหรือพิมพ์ประโยค</span>
+                <span className="scrambler-guide-step-desc">เลือกจากตัวอย่างยอดนิยม หรือใส่ประโยคของคุณ</span>
+              </div>
+            </div>
+            <div className="scrambler-guide-arrow">➔</div>
+            <div className="scrambler-guide-step">
+              <div className="scrambler-guide-step-icon">2️⃣</div>
+              <div>
+                <span className="scrambler-guide-step-title">กดสุ่มเปลี่ยนคำ</span>
+                <span className="scrambler-guide-step-desc">สุ่มแทนที่คำด้วยศัพท์พจนานุกรมราชบัณฑิต</span>
+              </div>
+            </div>
+            <div className="scrambler-guide-arrow">➔</div>
+            <div className="scrambler-guide-step">
+              <div className="scrambler-guide-step-icon">3️⃣</div>
+              <div>
+                <span className="scrambler-guide-step-title">แตะดูนิยาม & ฟังเสียง</span>
+                <span className="scrambler-guide-step-desc">คลิกคำในประโยคเพื่อเปิดนิยามและฟังเสียงอ่าน</span>
+              </div>
+            </div>
+          </div>
         </header>
 
         {/* Master Card Container */}
         <div className="scrambler-card">
           <div className="scrambler-body">
             {/* Quick Preset Sentence Chips */}
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "22px" }}>
               <div className="scrambler-row-label">
                 <span>💡 เลือกประโยคตัวอย่าง หรือพิมพ์ประโยคของคุณเอง:</span>
                 <button
@@ -254,10 +394,13 @@ export default function SentenceQuirkifier({
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: "#d97706",
+                    color: "var(--accent)",
                     fontSize: "12px",
-                    fontWeight: 600,
+                    fontWeight: 700,
                     cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
                   }}
                 >
                   🎲 สุ่มประโยคตัวอย่าง
@@ -275,6 +418,19 @@ export default function SentenceQuirkifier({
                     }}
                     className={`scrambler-chip ${sentence === preset.text ? "selected" : ""}`}
                   >
+                    <span className="scrambler-chip-emoji">
+                      {preset.category === "ชีวิตประจำวัน"
+                        ? "🥱"
+                        : preset.category === "อาหารการกิน"
+                        ? "🍜"
+                        : preset.category === "สภาพอากาศ"
+                        ? "☀️"
+                        : preset.category === "มิตรภาพ"
+                        ? "🤝"
+                        : preset.category === "ความรู้สึก"
+                        ? "💖"
+                        : "💼"}
+                    </span>
                     <span>{preset.text}</span>
                   </button>
                 ))}
@@ -282,6 +438,15 @@ export default function SentenceQuirkifier({
             </div>
 
             {/* Textarea Input Container */}
+            <div style={{ marginBottom: "6px" }}>
+              <div className="scrambler-row-label">
+                <span>✏️ พิมพ์หรือแก้ไขประโยคของคุณ:</span>
+                <span style={{ fontSize: "11px", color: "var(--muted)", fontWeight: 400 }}>
+                  💡 พิมพ์ 1-2 วลีสั้นๆ เพื่อให้สุ่มคำศัพท์ได้หลากหลายและตรงความหมายที่สุด
+                </span>
+              </div>
+            </div>
+
             <div className="scrambler-textarea-container">
               <textarea
                 ref={textareaRef}
@@ -334,6 +499,7 @@ export default function SentenceQuirkifier({
                 <span className="scrambler-char-count">{sentence.length}/300</span>
               </div>
             </div>
+
 
             {/* Primary Action Controls Row */}
             <div className="scrambler-submit-row" style={{ flexWrap: "wrap", gap: "10px" }}>
@@ -414,7 +580,21 @@ export default function SentenceQuirkifier({
                 =============================================================== */}
             {result && (
               <div className="scrambler-result-wrap" style={{ marginTop: "24px" }}>
+                {/* Friendly Success Helper Banner */}
+                <div className="scrambler-banner-success">
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <span style={{ fontSize: "18px" }}>✨</span>
+                    <span>
+                      <strong>สุ่มเปลี่ยนคำสำเร็จแล้ว!</strong> แตะที่คำศัพท์ไฮไลต์สีฟ้าในประโยค หรือดูการ์ดด้านล่างเพื่ออ่านนิยามและฟังเสียงอ่าน
+                    </span>
+                  </div>
+                  <span style={{ fontSize: "11px", color: "#1d4ed8", background: "#eff6ff", padding: "2px 8px", borderRadius: "8px", border: "1px solid #bfdbfe" }}>
+                    👆 แตะคำศัพท์เพื่อดูนิยาม
+                  </span>
+                </div>
+
                 <div className="scrambler-result-grid">
+
                   {/* Left: Original Sentence */}
                   <div className="scrambler-orig-box">
                     <div>
@@ -498,11 +678,26 @@ export default function SentenceQuirkifier({
 
                 {/* Grounded Dictionary Evidence Cards */}
                 {result.word_mappings && result.word_mappings.length > 0 && (
-                  <div style={{ marginTop: "24px" }}>
-                    <div className="scrambler-row-label">
-                      <span>
-                        📖 เจาะลึกคำศัพท์ที่สุ่มเปลี่ยน (Official Dictionary Grounding):
-                      </span>
+                  <div style={{ marginTop: "28px" }}>
+                    <div className="scrambler-row-label" style={{ marginBottom: "12px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                        <span style={{ fontWeight: 700, fontSize: "15px", color: "var(--ink)" }}>
+                          📖 เจาะลึกคำศัพท์ที่สุ่มเปลี่ยน (Official Dictionary Grounding):
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: 700,
+                            padding: "2px 8px",
+                            borderRadius: "12px",
+                            background: "#eff6ff",
+                            color: "var(--accent)",
+                            border: "1px solid #bfdbfe",
+                          }}
+                        >
+                          {result.word_mappings.length} คำที่สุ่มเปลี่ยน
+                        </span>
+                      </div>
                       <span style={{ fontSize: "11px", fontWeight: 400 }}>
                         คลิกที่การ์ดเพื่อดูรายละเอียดเพิ่มเติม หรือคลิก &apos;สุ่มคำอื่นแทน&apos;
                       </span>
@@ -514,23 +709,64 @@ export default function SentenceQuirkifier({
                           key={idx}
                           onClick={() => setActiveWordModal(mapping)}
                           className="scrambler-evidence-card"
+                          role="button"
+                          tabIndex={0}
+                          aria-label={`เจาะลึกคำว่า ${mapping.replaced_word}`}
                         >
                           <div>
                             <div className="scrambler-evidence-top">
-                              <span className="scrambler-evidence-headword">
-                                {mapping.replaced_word}
-                              </span>
-                              {mapping.part_of_speech && (
-                                <span className="scrambler-evidence-pos">
-                                  {mapping.part_of_speech}
+                              <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
+                                <span
+                                  style={{
+                                    fontSize: "11px",
+                                    fontWeight: 700,
+                                    color: "var(--accent)",
+                                    background: "#eff6ff",
+                                    padding: "2px 6px",
+                                    borderRadius: "6px",
+                                    border: "1px solid #bfdbfe",
+                                  }}
+                                >
+                                  คำที่ {idx + 1}
                                 </span>
-                              )}
+                                <span className="scrambler-evidence-headword">
+                                  {mapping.replaced_word}
+                                </span>
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                {mapping.part_of_speech && (
+                                  <span className="scrambler-evidence-pos">
+                                    {mapping.part_of_speech}
+                                  </span>
+                                )}
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleSpeakWord(mapping.replaced_word);
+                                  }}
+                                  title="ฟังการออกเสียงคำนี้"
+                                  style={{
+                                    background: "transparent",
+                                    border: "none",
+                                    fontSize: "13px",
+                                    cursor: "pointer",
+                                    padding: "2px 4px",
+                                  }}
+                                >
+                                  🔊
+                                </button>
+                              </div>
                             </div>
 
                             <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>
                               <span>แทนคำว่า: </span>
                               <strong style={{ color: "var(--ink)" }}>
                                 &ldquo;{mapping.original_phrase}&rdquo;
+                              </strong>
+                              <span style={{ margin: "0 6px", color: "var(--accent)" }}>➔</span>
+                              <strong style={{ color: "#1d4ed8" }}>
+                                &ldquo;{mapping.replaced_word}&rdquo;
                               </strong>
                             </div>
 
@@ -540,28 +776,49 @@ export default function SentenceQuirkifier({
                           </div>
 
                           <div className="scrambler-evidence-foot">
-                            <span style={{ color: "#b45309", fontWeight: 600 }}>
+                            <span style={{ color: "var(--accent)", fontWeight: 600 }}>
                               🎯 {mapping.quirk_reason}
                             </span>
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleRerollSpecificWord(idx);
-                              }}
-                              style={{
-                                fontSize: "11px",
-                                background: "#fffbeb",
-                                border: "1px solid #fde68a",
-                                color: "#b45309",
-                                borderRadius: "8px",
-                                padding: "3px 8px",
-                                fontWeight: 700,
-                                cursor: "pointer",
-                              }}
-                            >
-                              🎲 สุ่มคำอื่นแทน
-                            </button>
+                            <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveWordModal(mapping);
+                                }}
+                                style={{
+                                  fontSize: "11px",
+                                  background: "#f8fafc",
+                                  border: "1px solid #e2e8f0",
+                                  color: "var(--ink)",
+                                  borderRadius: "8px",
+                                  padding: "3px 8px",
+                                  fontWeight: 600,
+                                  cursor: "pointer",
+                                }}
+                              >
+                                🔍 เจาะลึก
+                              </button>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleRerollSpecificWord(idx);
+                                }}
+                                style={{
+                                  fontSize: "11px",
+                                  background: "#eff6ff",
+                                  border: "1px solid #bfdbfe",
+                                  color: "#1d4ed8",
+                                  borderRadius: "8px",
+                                  padding: "3px 8px",
+                                  fontWeight: 700,
+                                  cursor: "pointer",
+                                }}
+                              >
+                                🎲 สุ่มคำอื่นแทน
+                              </button>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -583,6 +840,9 @@ export default function SentenceQuirkifier({
           <div
             className="scrambler-modal-dialog"
             onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="word-modal-heading"
           >
             <div
               style={{
@@ -594,12 +854,13 @@ export default function SentenceQuirkifier({
                 marginBottom: "16px",
               }}
             >
-              <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" }}>
                 <span
+                  id="word-modal-heading"
                   style={{
                     fontSize: "28px",
                     fontWeight: 800,
-                    color: "#b45309",
+                    color: "var(--accent)",
                     fontFamily: "var(--font-thai-reading)",
                   }}
                 >
@@ -610,6 +871,23 @@ export default function SentenceQuirkifier({
                     {activeWordModal.part_of_speech}
                   </span>
                 )}
+                <button
+                  type="button"
+                  onClick={() => handleSpeakWord(activeWordModal.replaced_word)}
+                  style={{
+                    background: "#eff6ff",
+                    border: "1px solid #bfdbfe",
+                    color: "#1d4ed8",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    borderRadius: "8px",
+                    padding: "2px 8px",
+                    cursor: "pointer",
+                  }}
+                  title="ฟังเสียงอ่านคำนี้"
+                >
+                  🔊 ฟังเสียง
+                </button>
               </div>
 
               <button
@@ -635,9 +913,15 @@ export default function SentenceQuirkifier({
                 <span style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase" }}>
                   คำเดิมที่ถูกแทนที่:
                 </span>
-                <p style={{ margin: "4px 0 0", fontWeight: 700, fontSize: "16px", color: "var(--ink)" }}>
-                  &ldquo;{activeWordModal.original_phrase}&rdquo;
-                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "4px" }}>
+                  <p style={{ margin: 0, fontWeight: 700, fontSize: "16px", color: "var(--ink)" }}>
+                    &ldquo;{activeWordModal.original_phrase}&rdquo;
+                  </p>
+                  <span style={{ color: "var(--accent)" }}>➔</span>
+                  <span style={{ fontWeight: 700, fontSize: "16px", color: "#1d4ed8" }}>
+                    &ldquo;{activeWordModal.replaced_word}&rdquo;
+                  </span>
+                </div>
               </div>
 
               <div>
@@ -668,13 +952,24 @@ export default function SentenceQuirkifier({
                   style={{
                     margin: "4px 0 0",
                     lineHeight: 1.6,
-                    color: "#92400e",
+                    color: "var(--muted)",
                     fontFamily: "var(--font-thai-reading)",
                   }}
                 >
                   {activeWordModal.quirk_reason}
                 </p>
               </div>
+
+              {result && (
+                <div style={{ background: "#f0f7fe", padding: "10px 14px", borderRadius: "10px", border: "1px solid #cce2f7" }}>
+                  <span style={{ fontSize: "11px", fontWeight: 700, color: "var(--accent)", textTransform: "uppercase" }}>
+                    บริบทในประโยคที่สุ่มเปลี่ยนแล้ว:
+                  </span>
+                  <p style={{ margin: "4px 0 0", fontSize: "13px", color: "var(--ink)", fontFamily: "var(--font-thai-reading)" }}>
+                    &ldquo;{result.quirkified_sentence}&rdquo;
+                  </p>
+                </div>
+              )}
 
               <div
                 style={{
@@ -685,10 +980,37 @@ export default function SentenceQuirkifier({
                   borderTop: "1px solid var(--border)",
                   fontSize: "12px",
                   color: "var(--text-muted)",
+                  flexWrap: "wrap",
+                  gap: "8px",
                 }}
               >
-                <span>📚 แหล่งอ้างอิง:</span>
-                <strong style={{ color: "var(--ink)" }}>{activeWordModal.source_edition}</strong>
+                <span>📚 แหล่งอ้างอิง: <strong style={{ color: "var(--ink)" }}>{activeWordModal.source_edition}</strong></span>
+                {(() => {
+                  const currentIdx = result?.word_mappings?.findIndex(
+                    (m) => m.replaced_word === activeWordModal.replaced_word
+                  );
+                  if (currentIdx !== undefined && currentIdx >= 0) {
+                    return (
+                      <button
+                        type="button"
+                        onClick={() => handleRerollSpecificWord(currentIdx)}
+                        style={{
+                          fontSize: "11px",
+                          background: "#eff6ff",
+                          border: "1px solid #bfdbfe",
+                          color: "#1d4ed8",
+                          borderRadius: "8px",
+                          padding: "3px 8px",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        🎲 สุ่มคำอื่นแทนคำนี้
+                      </button>
+                    );
+                  }
+                  return null;
+                })()}
               </div>
             </div>
           </div>

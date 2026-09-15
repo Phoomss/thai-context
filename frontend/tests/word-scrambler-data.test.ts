@@ -9,6 +9,8 @@ import {
   shuffleSentenceWords,
   substituteSentenceWords,
   SENTENCE_PRESETS,
+  DICTIONARY_REPLACEMENTS,
+  getReplacementForHeadword,
 } from "@/lib/word-scrambler-data";
 
 describe("Word Scrambler Data & Utilities", () => {
@@ -122,6 +124,28 @@ describe("Word Scrambler Data & Utilities", () => {
       expect(p.id).toBeTruthy();
       expect(p.text).toBeTruthy();
       expect(p.category).toBeTruthy();
+    }
+  });
+
+  it("retrieves grounded Royal Society replacement entries by headword", () => {
+    const entry = getReplacementForHeadword("ระโหย");
+    expect(entry).toBeDefined();
+    expect(entry?.headword).toBe("ระโหย");
+    expect(entry?.pos).toBe("ว.");
+    expect(entry?.definition).toContain("อ่อนเพลีย");
+    expect(entry?.sourceEdition).toContain("พจนานุกรม ฉบับราชบัณฑิตยสถาน");
+  });
+
+  it("substitutes sentences without trigger words and still grounds every replaced word", () => {
+    const customSentence = "ดวงดาวส่องแสงเจิดจ้าในราตรีอันยาวนาน";
+    const result = substituteSentenceWords(customSentence, 2);
+    expect(result.scrambledSentence).toBeTruthy();
+    expect(result.mappings.length).toBeGreaterThanOrEqual(1);
+    for (const m of result.mappings) {
+      expect(m.replaced_word).toBeTruthy();
+      expect(m.official_definition).toBeTruthy();
+      expect(m.source_edition).toContain("พจนานุกรม ฉบับราชบัณฑิตยสถาน");
+      expect(m.quirk_reason).toBeTruthy();
     }
   });
 });
