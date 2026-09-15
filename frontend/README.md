@@ -62,8 +62,7 @@ THAI CONTEXT คือเว็บพจนานุกรมไทยร่ว�
 ### 5. เครื่องมือวิเคราะห์และสำรวจภาษาเชิงลึก
 - **⚖️ Multi-Word Context Comparator**: เปรียบเทียบความแตกต่างของคำได้สูงสุด 3–5 คำพร้อมกัน แสดงจุดเน้น (Emphasis), เมื่อใดควรใช้ (Use When), จุดที่มักสับสน (Common Confusion)
 - **⏳ Evolution Explorer**: สำรวจวิวัฒนาการคำศัพท์ตามยุคสมัย (พ.ศ. ๒๔๙๓, ๒๕๒๕, ๒๕๔๒, ๒๕๕๔, ๒๕๖๙)
-- **🗺️ Dialect Explorer**: สำรวจคำภาษาถิ่น 4 ภาค (เหนือ, อีสาน, ใต้, กลาง) เชื่อมโยงกับภาษาไทยมาตรฐาน พร้อมฟังเสียงอ่านสำเนียงท้องถิ่น
-- **✨ AI Co-Thinking Partner Drawer**: แช็ตบอต RAG ที่อิงจากข้อมูลพจนานุกรมจริง มี Context Chips และตัวเลือกคำถามถัดไป (Next-step actions)
+- **🤖 AI Agent Workspace (✨ ผู้ช่วย AI ภาษาไทย)**: ระบบตัวแทนอัจฉริยะ (Multi-Agent System) มีหน้าเพจเฉพาะทาง (`/ai-assistant`) และเมนูสลับหน้า (Navbar Toggle) รวมถึง Drawer ในหน้าค้นหา รองรับ 6 โหมด Agent (Writing, Rewrite, Compare, Discovery, Proofread, Auto), แสดงขั้นตอน Pipeline Traces แบบเรียลไทม์, พร้อมปุ่ม 1-Click Copy และคำสั่งปรับแต่งต่อยอดด่วน
 
 ---
 
