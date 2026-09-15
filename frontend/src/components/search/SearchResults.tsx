@@ -18,6 +18,8 @@ import ShareResultButton from "../share/ShareResultButton";
 import SignLanguageModal from "../tsl/SignLanguageModal";
 import SignLanguageSection from "../tsl/SignLanguageSection";
 import BrailleModal from "../braille/BrailleModal";
+import LanguageRepresentationCard from "../accessibility/LanguageRepresentationCard";
+import { getSignResource } from "@/lib/sign-motion-data";
 import WordTranslations from "../translations/WordTranslations";
 import SearchResultFeedback from "../feedback/SearchResultFeedback";
 import Icon from "../ui/Icon";
@@ -92,12 +94,20 @@ export default function SearchResults({
 
   const allWords = result?.recommendations ?? [];
   const excluded = filters.excluded.split(/[,，\s]+/).filter(Boolean);
-  const words = allWords.filter(
-    (candidate) =>
-      (!filters.register || candidate.registers?.includes(filters.register)) &&
-      (!filters.context || candidate.contexts?.includes(filters.context)) &&
-      !excluded.some((word) => candidate.headword.includes(word)),
-  );
+  const words = allWords.filter((candidate) => {
+    if (filters.register && !candidate.registers?.includes(filters.register)) return false;
+    if (filters.context && !candidate.contexts?.includes(filters.context)) return false;
+    if (excluded.some((word) => candidate.headword.includes(word))) return false;
+    if (filters.hasSignLanguage) {
+      const sign = getSignResource(candidate.headword);
+      if (sign.status !== "VERIFIED" && sign.status !== "EXTERNAL_RESOURCE") return false;
+    }
+    if (filters.hasEnglish) {
+      const hasEn = !!(candidate.english || candidate.translations?.length);
+      if (!hasEn) return false;
+    }
+    return true;
+  });
   const word = words.find((candidate) => candidate.headword === selection) ?? words[0];
 
   useEffect(() => {
@@ -221,6 +231,17 @@ export default function SearchResults({
                             </span>
                           )}
                         </strong>
+                        <span
+                          className="candidate-access-indicators"
+                          style={{ marginLeft: "6px", fontSize: "10px", color: "var(--muted, #64748b)" }}
+                          aria-label="ช่องทางการเข้าถึงที่รองรับ"
+                        >
+                          {getSignResource(candidate.headword).status === "VERIFIED" && (
+                            <span title="มีภาษามือไทย (Verified TSL)">🤟 </span>
+                          )}
+                          <span title="มีเสียงอ่าน">🔊 </span>
+                          <span title="มีอักษรเบรลล์">⠠</span>
+                        </span>
                         <small>{candidate.registers?.join(" · ") || "คำใกล้เคียง"}</small>
                         {candidate.score !== undefined && (
                           <small>
@@ -340,10 +361,14 @@ export default function SearchResults({
                     initialTranslations={word.translations}
                   />
 
-                  {/* 5. Accessibility: Thai Sign Language Player */}
-                  <SignLanguageSection
+                  {/* 5. Multimodal Accessibility Layer (Audio, Sign Language, Braille) */}
+                  <LanguageRepresentationCard
                     word={word.headword}
-                    onOpenFullModal={() => setSignLanguageOpen(true)}
+                    definition={word.definition}
+                    phonetic={word.pronunciation?.phonetic}
+                    english={word.english || word.translations?.[0]?.translatedWord}
+                    onOpenFullSignModal={() => setSignLanguageOpen(true)}
+                    onOpenFullBrailleModal={() => setBrailleOpen(true)}
                   />
 
                   {/* 6. Related Words & Synonyms */}

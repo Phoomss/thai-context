@@ -2,6 +2,10 @@ export type SmartFilterValue = {
   register: string;
   context: string;
   excluded: string;
+  hasSignLanguage?: boolean;
+  hasAudio?: boolean;
+  hasBraille?: boolean;
+  hasEnglish?: boolean;
 };
 
 export default function SmartFilters({
@@ -21,7 +25,11 @@ export default function SmartFilters({
   const activeCount =
     (value.register ? 1 : 0) +
     (value.context ? 1 : 0) +
-    (value.excluded ? 1 : 0);
+    (value.excluded ? 1 : 0) +
+    (value.hasSignLanguage ? 1 : 0) +
+    (value.hasAudio ? 1 : 0) +
+    (value.hasBraille ? 1 : 0) +
+    (value.hasEnglish ? 1 : 0);
 
   return (
     <fieldset className="smart-filters" disabled={disabled}>
@@ -63,7 +71,17 @@ export default function SmartFilters({
             className="clear-filters smart-filters-reset-btn"
             type="button"
             disabled={disabled}
-            onClick={() => onChange({ register: "", context: "", excluded: "" })}
+            onClick={() =>
+              onChange({
+                register: "",
+                context: "",
+                excluded: "",
+                hasSignLanguage: false,
+                hasAudio: false,
+                hasBraille: false,
+                hasEnglish: false,
+              })
+            }
             title="ล้างตัวกรองทั้งหมด"
           >
             <span aria-hidden="true">✕</span>
@@ -192,6 +210,60 @@ export default function SmartFilters({
         </label>
       </div>
 
+      {/* Accessibility Capabilities Filter Row */}
+      <div
+        className="smart-filters-access-row"
+        style={{
+          marginTop: "12px",
+          paddingTop: "10px",
+          borderTop: "1px dashed var(--border, #e2e8f0)",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: "14px",
+        }}
+      >
+        <span style={{ fontSize: "11px", fontWeight: 700, color: "var(--muted, #64748b)" }}>
+          ♿ มิติการเข้าถึง:
+        </span>
+        <label style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "12px", cursor: "pointer" }}>
+          <input
+            type="checkbox"
+            checked={!!value.hasSignLanguage}
+            disabled={disabled}
+            onChange={(e) => onChange({ ...value, hasSignLanguage: e.target.checked })}
+          />
+          <span>🤟 มีภาษามือไทย</span>
+        </label>
+        <label style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "12px", cursor: "pointer" }}>
+          <input
+            type="checkbox"
+            checked={!!value.hasAudio}
+            disabled={disabled}
+            onChange={(e) => onChange({ ...value, hasAudio: e.target.checked })}
+          />
+          <span>🔊 มีเสียงอ่าน</span>
+        </label>
+        <label style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "12px", cursor: "pointer" }}>
+          <input
+            type="checkbox"
+            checked={!!value.hasBraille}
+            disabled={disabled}
+            onChange={(e) => onChange({ ...value, hasBraille: e.target.checked })}
+          />
+          <span>⠠ มีเบรลล์</span>
+        </label>
+        <label style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "12px", cursor: "pointer" }}>
+          <input
+            type="checkbox"
+            checked={!!value.hasEnglish}
+            disabled={disabled}
+            onChange={(e) => onChange({ ...value, hasEnglish: e.target.checked })}
+          />
+          <span>🌐 มีแปลอังกฤษ</span>
+        </label>
+      </div>
+
       {/* Active Filter Tags / Quick Remove Chips */}
       {activeCount > 0 && (
         <div className="smart-filters-active-bar">
@@ -236,9 +308,58 @@ export default function SmartFilters({
                 </button>
               </span>
             )}
+            {value.hasSignLanguage && (
+              <span className="active-filter-tag">
+                🤟 <strong>มีภาษามือไทย</strong>
+                <button
+                  type="button"
+                  onClick={() => onChange({ ...value, hasSignLanguage: false })}
+                  aria-label="ลบตัวกรองภาษามือไทย"
+                >
+                  ✕
+                </button>
+              </span>
+            )}
+            {value.hasAudio && (
+              <span className="active-filter-tag">
+                🔊 <strong>มีเสียงอ่าน</strong>
+                <button
+                  type="button"
+                  onClick={() => onChange({ ...value, hasAudio: false })}
+                  aria-label="ลบตัวกรองเสียงอ่าน"
+                >
+                  ✕
+                </button>
+              </span>
+            )}
+            {value.hasBraille && (
+              <span className="active-filter-tag">
+                ⠠ <strong>มีเบรลล์</strong>
+                <button
+                  type="button"
+                  onClick={() => onChange({ ...value, hasBraille: false })}
+                  aria-label="ลบตัวกรองเบรลล์"
+                >
+                  ✕
+                </button>
+              </span>
+            )}
+            {value.hasEnglish && (
+              <span className="active-filter-tag">
+                🌐 <strong>มีแปลอังกฤษ</strong>
+                <button
+                  type="button"
+                  onClick={() => onChange({ ...value, hasEnglish: false })}
+                  aria-label="ลบตัวกรองแปลอังกฤษ"
+                >
+                  ✕
+                </button>
+              </span>
+            )}
           </div>
         </div>
       )}
     </fieldset>
   );
 }
+

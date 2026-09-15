@@ -249,4 +249,68 @@ describe("WorkspaceView Component", () => {
       expect(screen.getByText(/LOW \(15%\)/)).toBeTruthy();
     });
   });
+
+  it("handles accessibility preset and renders Accessibility Layer", async () => {
+    const executeSpy = vi.spyOn(apiClient, "executeWorkspace").mockResolvedValue({
+      session_id: "test-access-session",
+      intent: "ACCESSIBILITY_CHECK",
+      tasks: ["ACCESSIBILITY_CHECK"],
+      answer: "ตรวจสอบความพร้อมด้านการเข้าถึงและแปลงเบรลล์เรียบร้อย",
+      context: {
+        type: "academic",
+        tone: "formal",
+        audience: "นักศึกษาและผู้พิการ",
+        source: "USER_PROVIDED",
+      },
+      recommendations: [],
+      comparison: null,
+      generated_content: [],
+      language_check: null,
+      language_bridge: null,
+      evidence: [],
+      confidence: 0.95,
+      confidence_level: "HIGH",
+      abstained: false,
+      agent_traces: [],
+      accessibility_layer: {
+        readiness_score: 95,
+        readiness_rating: "HIGH",
+        braille_unicode: "⠅⠕⠞⠆⠕⠝⠗⠡⠃",
+        braille_guide: [
+          { char: "ต", braille_cell: "⠞", braille_dots: "2-3-4-5", description: "พยัญชนะ ต" },
+        ],
+        detected_sign_terms: [
+          {
+            word: "ต้อนรับ",
+            status: "VERIFIED",
+            has_motion: true,
+            sign_name: "ต้อนรับ (Welcome)",
+          },
+        ],
+        checklist: [
+          { title: "การเว้นวรรคเพื่อ Screen Reader", status: "PASS", detail: "ไม่มีอักขระติดกันเกินขีดจำกัด" },
+        ],
+        disclaimer: "Accessibility Readiness เป็นเครื่องมือช่วยตรวจทานเบื้องต้น ไม่ใช่การรับรองทางกฎหมายอย่างเป็นทางการ",
+      },
+    });
+
+    render(<WorkspaceView />);
+
+    const accessPresetBtn = screen.getByText("♿ ตรวจสอบการเข้าถึง & ภาษามือ");
+    fireEvent.click(accessPresetBtn);
+
+    await waitFor(() => {
+      expect(executeSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: "ช่วยตรวจสอบข้อความประกาศต้อนรับนักศึกษาสำหรับผู้พิการและแปลงเป็นอักษรเบรลล์",
+        })
+      );
+      // Accessibility heading rendered
+      expect(screen.getByText(/ความพร้อมด้านการเข้าถึง \(Accessibility Layer\)/)).toBeTruthy();
+      // Braille unicode rendered
+      expect(screen.getByText("⠅⠕⠞⠆⠕⠝⠗⠡⠃")).toBeTruthy();
+      // Detected sign term rendered
+      expect(screen.getByText("ต้อนรับ")).toBeTruthy();
+    });
+  });
 });

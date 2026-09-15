@@ -751,3 +751,75 @@ export async function quirkifySentence(
   return response.json();
 }
 
+export async function fetchAccessibilityWord(
+  word: string,
+  signal?: AbortSignal
+): Promise<any> {
+  const timeoutSignal = AbortSignal.timeout(10000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch(
+    `/api/v1/accessibility/words/${encodeURIComponent(word.trim())}`,
+    {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      signal: combinedSignal,
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch accessibility info for ${word}`);
+  }
+
+  return response.json();
+}
+
+export async function convertTextToBraille(
+  text: string,
+  signal?: AbortSignal
+): Promise<any> {
+  const timeoutSignal = AbortSignal.timeout(10000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/accessibility/braille/convert", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ text }),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to convert text to Braille`);
+  }
+
+  return response.json();
+}
+
+export async function checkAccessibility(
+  text: string,
+  signal?: AbortSignal
+): Promise<any> {
+  const timeoutSignal = AbortSignal.timeout(15000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/v1/accessibility/check", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ text }),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to perform accessibility check`);
+  }
+
+  return response.json();
+}
+
+

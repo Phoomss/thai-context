@@ -48,6 +48,18 @@ const DEMO_PRESETS = [
     query: "คำว่า เกรงใจ แปลเป็นภาษาอังกฤษและมีบริบททางวัฒนธรรมอย่างไร",
     context: { type: "general", tone: "polite", audience: "ชาวต่างชาติ/สากล" },
   },
+  {
+    label: "♿ ตรวจสอบการเข้าถึง & ภาษามือ",
+    desc: "ตรวจทานความพร้อมด้านการเข้าถึง แปลงเบรลล์ และค้นหาท่าภาษามือไทย",
+    query: "ช่วยตรวจสอบข้อความประกาศต้อนรับนักศึกษาสำหรับผู้พิการและแปลงเป็นอักษรเบรลล์",
+    context: { type: "academic", tone: "formal", audience: "นักศึกษาและผู้พิการ" },
+  },
+  {
+    label: "⠠ แปลงเป็นอักษรเบรลล์ไทย",
+    desc: "แปลงคำศัพท์ภาษาไทยเป็น Unicode Braille และคู่มือการสะกดจุดมาตรฐาน",
+    query: "แสดงคำว่า สวัสดี และ ต้อนรับ ในรูปแบบอักษรเบรลล์ไทย",
+    context: { type: "academic", tone: "formal", audience: "ผู้บกพร่องทางการมองเห็น" },
+  },
 ];
 
 const USE_CASES = [
@@ -74,6 +86,12 @@ const USE_CASES = [
     title: "การสื่อสารสากลข้ามวัฒนธรรม",
     sample: "คำว่า เกรงใจ แปลเป็นภาษาอังกฤษและมีบริบททางวัฒนธรรมอย่างไร",
     tag: "Cultural Bridge",
+  },
+  {
+    icon: "♿",
+    title: "การเข้าถึงและการสื่อสารเพื่อคนพิการ",
+    sample: "ช่วยตรวจสอบข้อความประกาศต้อนรับนักศึกษาสำหรับผู้พิการและแปลงเป็นอักษรเบรลล์",
+    tag: "Accessibility Layer",
   },
 ];
 
@@ -134,22 +152,34 @@ export default function WorkspaceView() {
       const response = await executeWorkspace(payload);
       setCurrentResult(response);
       if (messageToSend) {
-        setQuery("");
+        setQuery(messageToSend);
       }
 
-      // Stepper highlights the latest milestone, but keeps activeTab as "all" so user sees the full overview
-      if (response.language_check) {
+      const isAccessQuery = /เบรลล์|ภาษามือ|คนพิการ|ผู้พิการ|การเข้าถึง|accessibility|braille|sign/i.test(text);
+      if (response.accessibility_layer && isAccessQuery) {
+        setCurrentStep(6);
+        setActiveTab("access");
+        showToast("เปิดแท็บ ♿ การเข้าถึง: ตรวจสอบภาษามือและแปลงเบรลล์เรียบร้อย");
+      } else if (response.language_check) {
         setCurrentStep(5);
+        setActiveTab("all");
       } else if (response.generated_content && response.generated_content.length > 0) {
         setCurrentStep(4);
+        setActiveTab("all");
       } else if (response.comparison) {
         setCurrentStep(3);
+        setActiveTab("all");
       } else if (response.recommendations && response.recommendations.length > 0) {
         setCurrentStep(2);
+        setActiveTab("all");
+      } else if (response.accessibility_layer) {
+        setCurrentStep(6);
+        setActiveTab("access");
+        showToast("เปิดแท็บ ♿ การเข้าถึง: ตรวจสอบภาษามือและแปลงเบรลล์เรียบร้อย");
       } else {
         setCurrentStep(1);
+        setActiveTab("all");
       }
-      setActiveTab("all");
 
       setTimeout(() => {
         if (typeof resultsRef.current?.scrollIntoView === "function") {
@@ -220,6 +250,18 @@ export default function WorkspaceView() {
         textareaRef.current?.focus();
         textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         showToast("สเต็ป 5: ตรวจทานภาษา — พร้อมส่งให้ AI ตรวจสอบไวยากรณ์และความเยิ่นเย้อ");
+      }
+    } else if (step === 6) {
+      setActiveTab("access");
+      if (currentResult && currentResult.accessibility_layer) {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("สเต็ป 6: แสดงความพร้อมด้านการเข้าถึง ภาษามือไทย และอักษรเบรลล์");
+      } else {
+        const sample = "ช่วยตรวจสอบข้อความประกาศต้อนรับนักศึกษาสำหรับผู้พิการและแปลงเป็นอักษรเบรลล์";
+        setQuery(sample);
+        textareaRef.current?.focus();
+        textareaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("สเต็ป 6: การเข้าถึง — กรอกตัวอย่างตรวจสอบภาษามือและแปลงเบรลล์แล้ว");
       }
     }
   };
@@ -337,6 +379,15 @@ export default function WorkspaceView() {
           <span className="workspace-step-num">5</span>
           <span>ตรวจทานภาษา</span>
         </button>
+        <button
+          type="button"
+          onClick={() => handleStepClick(6)}
+          className={`workspace-step-item ${currentStep === 6 ? "active" : ""}`}
+          title="คลิกเพื่อดูความพร้อมด้านการเข้าถึง ภาษามือไทย และอักษรเบรลล์"
+        >
+          <span className="workspace-step-num">6</span>
+          <span>♿ การเข้าถึง</span>
+        </button>
       </div>
 
       {/* Main 2-Column Grid Layout */}
@@ -430,6 +481,9 @@ export default function WorkspaceView() {
                     type="button"
                     onClick={() => {
                       setQuery(preset.query);
+                      if (preset.context?.type) {
+                        setSelectedContext(preset.context.type);
+                      }
                       handleSend(preset.query, preset.context);
                     }}
                     className="workspace-draft-btn"
@@ -456,6 +510,42 @@ export default function WorkspaceView() {
             >
               <div style={{ fontWeight: 600, marginBottom: "4px" }}>เกิดข้อผิดพลาด</div>
               <div style={{ fontSize: "14px" }}>{errorMessage}</div>
+            </div>
+          )}
+
+          {/* Active Loading State Banner */}
+          {isLoading && (
+            <div
+              className="workspace-card"
+              style={{
+                marginTop: "16px",
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                background: "linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%)",
+                border: "1px solid #bfdbfe",
+                padding: "20px 24px",
+              }}
+            >
+              <div
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  border: "3px solid #3b82f6",
+                  borderTopColor: "transparent",
+                  borderRadius: "50%",
+                  animation: "spin 1s linear infinite",
+                  flexShrink: 0,
+                }}
+              />
+              <div>
+                <div style={{ fontWeight: 700, color: "var(--ink)", fontSize: "14px" }}>
+                  กำลังประมวลผลคำสั่งด้วย AI Multi-Agent Pipeline...
+                </div>
+                <div style={{ fontSize: "12px", color: "var(--muted)", marginTop: "3px" }}>
+                  วิเคราะห์เฉดคำ ค้นหาท่าภาษามือไทย และแปลงเป็นอักษรเบรลล์มาตรฐาน
+                </div>
+              </div>
             </div>
           )}
 
@@ -525,6 +615,7 @@ export default function WorkspaceView() {
                     else if (tab === "compare") setCurrentStep(3);
                     else if (tab === "writing") setCurrentStep(4);
                     else if (tab === "check") setCurrentStep(5);
+                    else if (tab === "access") setCurrentStep(6);
                     else setCurrentStep(1);
                   }}
                 />
@@ -535,6 +626,20 @@ export default function WorkspaceView() {
                     ⚡ ขั้นตอนถัดไปที่คุณสามารถทำต่อได้ทันที (Next Actions):
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {currentResult?.accessibility_layer && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveTab("access");
+                          setCurrentStep(6);
+                          resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }}
+                        className="workspace-draft-btn"
+                        style={{ color: "var(--accent)", fontWeight: 700, borderColor: "#bfdbfe", background: "#f0fdf4" }}
+                      >
+                        ♿ ดูผลความพร้อมการเข้าถึงและเบรลล์
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
@@ -713,6 +818,15 @@ export default function WorkspaceView() {
                   style={{ fontSize: "11px", padding: "4px 8px", color: "var(--green)" }}
                 >
                   🔍 ตรวจสอบคำซ้ำซ้อน
+                </button>
+                <button
+                  type="button"
+                  disabled={!activeDraft.trim()}
+                  onClick={() => handleSend(`ช่วยตรวจสอบการเข้าถึงและแปลงเป็นเบรลล์: ${activeDraft}`)}
+                  className="workspace-draft-btn"
+                  style={{ fontSize: "11px", padding: "4px 8px", color: "var(--accent)" }}
+                >
+                  ♿ ตรวจการเข้าถึง & เบรลล์
                 </button>
               </div>
             </div>
