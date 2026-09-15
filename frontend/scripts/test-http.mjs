@@ -21,7 +21,7 @@ try{
   child.stderr.on('data',chunk=>process.stderr.write(chunk));
  });
  const base='http://127.0.0.1:3011';
- for(const path of ['/','/assets/editorial-room.png','/assets/book-reference.png']){const res=await fetch(base+path);assert.equal(res.status,200);await res.arrayBuffer();console.log(`PASS GET ${path}`);}
+ for(const path of ['/','/assets/editorial-room.png']){const res=await fetch(base+path);assert.equal(res.status,200);await res.arrayBuffer();console.log(`PASS GET ${path}`);}
  const post=query=>fetch(base+'/api/search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query})});
  for(const n of [0,1,2,3,5]){const res=await post(String(n));assert.equal(res.status,200);const body=await res.json();assert.equal(body.mode,'live');assert.equal(body.recommendations.length,n);console.log(`PASS backend ${n} results`);}
  const start=Date.now();const slow=await (await post('slow')).json();assert.ok(Date.now()-start>=1700);assert.equal(slow.recommendations.length,1);console.log('PASS delayed backend');

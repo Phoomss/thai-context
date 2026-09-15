@@ -46,7 +46,12 @@ export class TtsService {
       const dbCached = await (this.prisma as any).ttsCache.findUnique({
         where: { cacheKey },
       });
-      if (dbCached && dbCached.audioStoragePath) {
+      if (
+        dbCached &&
+        dbCached.audioStoragePath &&
+        !dbCached.providerName?.includes('MOCK') &&
+        !dbCached.providerName?.includes('SYNTHETIC')
+      ) {
         const isWav = dbCached.audioStoragePath.startsWith('UklGR');
         const result: TtsSynthesizeResult = {
           audioBase64: dbCached.audioStoragePath,
@@ -73,14 +78,21 @@ export class TtsService {
 
         const synthesisResult = await provider.synthesize(text, { voice, speed });
 
-        // Save to memory cache
-        this.memoryCache.set(cacheKey, {
-          result: synthesisResult,
-          expiresAt: Date.now() + this.CACHE_TTL_MS,
-        });
+        // Save genuine speech to memory cache and database (never cache mock fallback chime)
+        const isFallback =
+          provider === this.localMockTtsProvider ||
+          synthesisResult.provider === 'LOCAL_MOCK_FALLBACK' ||
+          synthesisResult.provider === 'LOCAL_SYNTHETIC_DRIVER';
 
-        // Save to Database Cache asynchronously
-        this.saveToDbCache(cacheKey, text, synthesisResult.provider, voice, synthesisResult.audioBase64, synthesisResult.durationMs);
+        if (!isFallback) {
+          this.memoryCache.set(cacheKey, {
+            result: synthesisResult,
+            expiresAt: Date.now() + this.CACHE_TTL_MS,
+          });
+
+          // Save to Database Cache asynchronously
+          this.saveToDbCache(cacheKey, text, synthesisResult.provider, voice, synthesisResult.audioBase64, synthesisResult.durationMs);
+        }
 
         return synthesisResult;
       } catch (err: any) {
