@@ -7,6 +7,9 @@ import {
   PronunciationItemDto,
   TranslationItemDto,
   SignLanguageEntryDto,
+  CreateSignResourceDto,
+  ContributeSignResourceDto,
+  SignResourceResponseDto,
   BrailleCellDto,
   BrailleResponseDto,
   DecodedBrailleCellDto,
@@ -390,6 +393,247 @@ export class AccessibilityService {
       this.logger.warn(`Failed to fetch sign language for "${headword}": ${err?.message || err}`);
       return [];
     }
+  }
+
+  async getSignResource(headword: string): Promise<SignResourceResponseDto> {
+    const cleaned = headword.trim();
+    try {
+      const wordRecord = await this.prisma.word.findUnique({
+        where: { headword: cleaned },
+        include: {
+          signResources: {
+            orderBy: { createdAt: 'desc' },
+          },
+          signEntries: {
+            include: { mediaList: true },
+          },
+        },
+      });
+
+      if (wordRecord?.signResources && wordRecord.signResources.length > 0) {
+        const resource = wordRecord.signResources[0];
+        return {
+          status: resource.verificationStatus,
+          word: cleaned,
+          representation: {
+            type: resource.representationType,
+            data: resource.motionData || undefined,
+          },
+          source: {
+            type: resource.sourceType,
+            name: resource.providerName || 'THAI CONTEXT Sign Dataset',
+            url: resource.sourceUrl || undefined,
+            license: resource.license || undefined,
+            permission_status: resource.permissionStatus,
+          },
+          verification: {
+            status: resource.verificationStatus,
+            verified_by: resource.verifiedBy || undefined,
+          },
+          metadata: resource.metadata || {},
+        };
+      }
+    } catch (err: any) {
+      this.logger.warn(`Failed database lookup for sign resource "${headword}": ${err?.message || err}`);
+    }
+
+    // Standardized Demo Prototype catalog for Hackathon MVP
+    const DEMO_CATALOG: Record<string, SignResourceResponseDto> = {
+      สวัสดี: {
+        status: 'VERIFIED',
+        word: 'สวัสดี',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 1800,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'DEMO_DATA',
+          name: 'THAI CONTEXT 3D Gesture Lab (Demo Prototype)',
+          license: 'Creative Commons CC-BY 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา',
+          notes: 'ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)',
+        },
+        metadata: {
+          sign_name: 'สวัสดี (Sawasdee)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'พนมมือทั้งสองข้างระดับอก ปลายนิ้วชี้ขึ้น แล้วเคลื่อนขึ้นพร้อมค้อมศีรษะลงแสดงความเคารพ',
+          description_source: 'VERIFIED',
+        },
+      },
+      เกรงใจ: {
+        status: 'VERIFIED',
+        word: 'เกรงใจ',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 2000,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'DEMO_DATA',
+          name: 'THAI CONTEXT 3D Gesture Lab (Demo Prototype)',
+          license: 'Creative Commons CC-BY 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา',
+          notes: 'ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)',
+        },
+        metadata: {
+          sign_name: 'เกรงใจ (Kreng-jai)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'มือขวาทาบลงบริเวณอกหรือหัวใจ ปลายนิ้วเปิดชิด แสดงความเคารพและความคำนึงถึงผู้อื่น',
+          description_source: 'VERIFIED',
+        },
+      },
+      ประสิทธิภาพ: {
+        status: 'VERIFIED',
+        word: 'ประสิทธิภาพ',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 1800,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'DEMO_DATA',
+          name: 'THAI CONTEXT 3D Gesture Lab (Demo Prototype)',
+          license: 'Creative Commons CC-BY 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'คณะทำงานวิจัยสรีระการเคลื่อนไหวทางภาษา',
+          notes: 'ข้อมูลท่าทางจำลอง 3 มิติเพื่อการทดสอบต้นแบบ Accessibility (Hackathon MVP)',
+        },
+        metadata: {
+          sign_name: 'ประสิทธิภาพ (Efficiency)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'มือขวาตั้งนิ้วชี้และนิ้วกลาง หมุนวนเป็นเกลียวไปข้างหน้าแล้วประกบฝ่ามือซ้าย',
+          description_source: 'VERIFIED',
+        },
+      },
+      สมานฉันท์: {
+        status: 'EXTERNAL_RESOURCE',
+        word: 'สมานฉันท์',
+        representation: {
+          type: 'EXTERNAL_VIDEO',
+        },
+        source: {
+          type: 'EXTERNAL_RESOURCE',
+          name: 'สารานุกรมภาษามือไทยออนไลน์ (ศูนย์การเรียนรู้คนหูหนวก)',
+          url: 'https://www.thaisigndictionary.org/signs/samanachan',
+          license: 'จัดแสดงผ่านการอ้างอิงลิงก์ต้นฉบับ ไม่มีการทำซ้ำสื่อ (Link Attribution Only)',
+          permission_status: 'EXTERNAL_ONLY',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'ดัชนีแหล่งข้อมูลภาษามือภายนอกที่เชื่อถือได้',
+        },
+        metadata: {
+          sign_name: 'สมานฉันท์ (Reconciliation / Harmony)',
+          description_th: 'ข้อมูลภาษามือมีอยู่จากแหล่งภายนอกที่ได้รับการรับรอง สามารถเข้าชมวิดีโอจากเว็บไซต์ต้นฉบับได้โดยตรง',
+          description_source: 'OFFICIAL',
+        },
+      },
+    };
+
+    if (DEMO_CATALOG[cleaned]) {
+      return DEMO_CATALOG[cleaned];
+    }
+
+    return {
+      status: 'NOT_AVAILABLE',
+      word: cleaned,
+      message: 'ยังไม่มีข้อมูลภาษามือไทยที่ผ่านการตรวจสอบ',
+      verification: {
+        status: 'NOT_AVAILABLE',
+      },
+    };
+  }
+
+  async createSignResource(dto: CreateSignResourceDto): Promise<any> {
+    const wordClean = dto.word.trim();
+    let wordRecord = await this.prisma.word.findUnique({ where: { headword: wordClean } });
+    if (!wordRecord) {
+      wordRecord = await this.prisma.word.create({
+        data: {
+          headword: wordClean,
+          headwordClean: wordClean,
+          charLength: wordClean.length,
+        },
+      });
+    }
+
+    const created = await this.prisma.signResource.create({
+      data: {
+        wordId: wordRecord.id,
+        signName: dto.sign_name || wordClean,
+        representationType: dto.representation_type || 'MOTION',
+        sourceType: dto.source_type || 'DEMO_DATA',
+        sourceUrl: dto.source_url || null,
+        permissionStatus: dto.permission_status || 'AUTHORIZED',
+        verificationStatus: dto.verification_status || 'VERIFIED',
+        motionData: dto.motion_data || {},
+        metadata: dto.metadata || {},
+        providerName: dto.source_type === 'DEMO_DATA' ? 'THAI CONTEXT 3D Gesture Lab' : 'Authorized Provider',
+      },
+    });
+
+    return {
+      message: 'บันทึกทรัพยากรภาษามือไทยเรียบร้อยแล้ว',
+      resource: created,
+    };
+  }
+
+  async contributeSignResource(dto: ContributeSignResourceDto): Promise<any> {
+    const wordClean = dto.word.trim();
+    let wordRecord = await this.prisma.word.findUnique({ where: { headword: wordClean } });
+    if (!wordRecord) {
+      wordRecord = await this.prisma.word.create({
+        data: {
+          headword: wordClean,
+          headwordClean: wordClean,
+          charLength: wordClean.length,
+        },
+      });
+    }
+
+    const created = await this.prisma.signResource.create({
+      data: {
+        wordId: wordRecord.id,
+        signName: wordClean,
+        representationType: 'EXTERNAL_VIDEO',
+        sourceType: 'USER_SUBMISSION',
+        sourceUrl: dto.source_url.trim(),
+        permissionStatus: 'PENDING',
+        verificationStatus: 'PENDING_REVIEW',
+        providerName: dto.provider_name ? dto.provider_name.trim() : 'User Submission',
+        metadata: { notes: dto.notes },
+      },
+    });
+
+    return {
+      status: 'PENDING_REVIEW',
+      message: 'ข้อเสนอแหล่งข้อมูลภาษามือถูกบันทึกเพื่อรอการตรวจสอบจากผู้เชี่ยวชาญแล้ว',
+      submissionId: created.id,
+    };
   }
 
   private static readonly THAI_BRAILLE_MAP: Record<

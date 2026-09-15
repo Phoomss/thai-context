@@ -84,6 +84,19 @@ export interface LanguageCheckResult {
   summary: string;
 }
 
+export interface SignLanguageBridgeInfo {
+  available: boolean;
+  status: 'VERIFIED' | 'EXTERNAL_RESOURCE' | 'NOT_AVAILABLE';
+  representation_type?: 'MOTION' | 'SKELETON' | 'AVATAR' | 'EXTERNAL_VIDEO';
+  source_name?: string;
+  source_type?: string;
+  source_url?: string;
+  verification_status?: string;
+  verified_by?: string;
+  description_th?: string;
+  note?: string;
+}
+
 export interface LanguageBridgeResult {
   word: string;
   english_translation: string;
@@ -92,6 +105,7 @@ export interface LanguageBridgeResult {
   transliteration: string;
   cultural_context: string;
   example: string;
+  sign_language?: SignLanguageBridgeInfo;
 }
 
 export interface AgentTrace {

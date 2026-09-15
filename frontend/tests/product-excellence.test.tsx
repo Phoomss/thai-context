@@ -140,6 +140,48 @@ describe("Product Excellence Enhancements", () => {
         excluded: "",
       });
     });
+
+    it("renders active filter tags and allows removing individual filters", () => {
+      const onChange = vi.fn();
+      render(
+        <SmartFilters
+          registers={["ทางการ", "กึ่งทางการ"]}
+          contexts={["การทำงาน"]}
+          value={{ register: "ทางการ", context: "การทำงาน", excluded: "เก่ง" }}
+          disabled={false}
+          onChange={onChange}
+        />
+      );
+
+      // Header shows active count badge and reset button
+      expect(screen.getByText(/กำลังกรอง 3 เงื่อนไข/)).toBeTruthy();
+      expect(screen.getByRole("button", { name: /ล้างตัวกรอง/ })).toBeTruthy();
+
+      // Active filter tags rendered
+      expect(screen.getByText("ตัวกรองที่เลือกไว้:")).toBeTruthy();
+      const removeRegisterBtn = screen.getByRole("button", {
+        name: "ลบตัวกรองระดับภาษา",
+      });
+      expect(removeRegisterBtn).toBeTruthy();
+      fireEvent.click(removeRegisterBtn);
+      expect(onChange).toHaveBeenCalledWith({
+        register: "",
+        context: "การทำงาน",
+        excluded: "เก่ง",
+      });
+
+      // Clear excluded button in input
+      const clearExcludedBtn = screen.getByRole("button", {
+        name: "ล้างคำที่ไม่ต้องการใช้",
+      });
+      expect(clearExcludedBtn).toBeTruthy();
+      fireEvent.click(clearExcludedBtn);
+      expect(onChange).toHaveBeenCalledWith({
+        register: "ทางการ",
+        context: "การทำงาน",
+        excluded: "",
+      });
+    });
   });
 
   describe("4. Nuance Delta Summary in ContextComparator", () => {

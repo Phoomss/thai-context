@@ -65,6 +65,7 @@ model Word {
   feedback      SearchFeedback[]
   translations  WordTranslation[]
   signEntries   SignLanguageEntry[]
+  signResources SignResource[]
 
   @@index([headword])
   @@index([headwordClean])
@@ -312,6 +313,30 @@ model SignMedia {
 
   @@index([signId])
   @@map("sign_media")
+}
+
+model SignResource {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  wordId             String   @map("word_id") @db.Uuid
+  language           String   @default("THAI_SIGN_LANGUAGE") @db.VarChar(50)
+  signName           String   @map("sign_name") @db.VarChar(255)
+  representationType String   @default("MOTION") @map("representation_type") @db.VarChar(50) // 'MOTION' | 'SKELETON' | 'AVATAR' | 'EXTERNAL_VIDEO' | 'EXTERNAL_IMAGE'
+  sourceType         String   @default("DEMO_DATA") @map("source_type") @db.VarChar(50) // 'AUTHORIZED_DATASET' | 'AUTHORIZED_PROVIDER' | 'USER_SUBMISSION' | 'EXTERNAL_RESOURCE' | 'DEMO_DATA'
+  sourceUrl          String?  @map("source_url") @db.Text
+  license            String?  @default("CC-BY-4.0") @db.VarChar(100)
+  permissionStatus   String   @default("AUTHORIZED") @map("permission_status") @db.VarChar(50) // 'AUTHORIZED' | 'EXTERNAL_ONLY' | 'PENDING' | 'UNKNOWN'
+  verificationStatus String   @default("VERIFIED") @map("verification_status") @db.VarChar(50) // 'VERIFIED' | 'PENDING_REVIEW' | 'REJECTED' | 'NOT_AVAILABLE'
+  motionData         Json?    @map("motion_data") @db.JsonB
+  metadata           Json?    @default("{}") @db.JsonB
+  providerName       String?  @map("provider_name") @db.VarChar(255)
+  verifiedBy         String?  @map("verified_by") @db.VarChar(255)
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt          DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  word               Word     @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  @@index([wordId])
+  @@index([verificationStatus])
+  @@map("sign_resources")
 }
 
 model TtsCache {

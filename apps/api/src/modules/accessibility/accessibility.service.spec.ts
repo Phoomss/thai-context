@@ -56,6 +56,14 @@ describe('AccessibilityService', () => {
           }
           return Promise.resolve(null);
         }),
+        create: jest.fn().mockImplementation(({ data }) =>
+          Promise.resolve({ id: 'mock-word-id', ...data })
+        ),
+      },
+      signResource: {
+        create: jest.fn().mockImplementation(({ data }) =>
+          Promise.resolve({ id: 'mock-sign-id', ...data })
+        ),
       },
     };
 
@@ -91,6 +99,44 @@ describe('AccessibilityService', () => {
   it('should return empty sign language array when word has no signs', async () => {
     const res = await service.getSignLanguage('คำที่ไม่มีภาษามือ');
     expect(res).toEqual([]);
+  });
+
+  it('should return VERIFIED motion representation for word with verified sign data', async () => {
+    const res = await service.getSignResource('สวัสดี');
+    expect(res).toBeDefined();
+    expect(res.status).toBe('VERIFIED');
+    expect(res.word).toBe('สวัสดี');
+    expect(res.representation?.type).toBe('MOTION');
+    expect(res.source?.type).toBe('DEMO_DATA');
+    expect(res.verification?.status).toBe('VERIFIED');
+  });
+
+  it('should return EXTERNAL_RESOURCE representation with permission EXTERNAL_ONLY', async () => {
+    const res = await service.getSignResource('สมานฉันท์');
+    expect(res).toBeDefined();
+    expect(res.status).toBe('EXTERNAL_RESOURCE');
+    expect(res.representation?.type).toBe('EXTERNAL_VIDEO');
+    expect(res.source?.url).toBeDefined();
+    expect(res.source?.permission_status).toBe('EXTERNAL_ONLY');
+  });
+
+  it('should return NOT_AVAILABLE representation for unverified words without inventing signs', async () => {
+    const res = await service.getSignResource('คำที่ไม่เคยมีในระบบ');
+    expect(res).toBeDefined();
+    expect(res.status).toBe('NOT_AVAILABLE');
+    expect(res.message).toContain('ยังไม่มีข้อมูลภาษามือไทยที่ผ่านการตรวจสอบ');
+  });
+
+  it('should accept community contribution and save with PENDING_REVIEW', async () => {
+    const res = await service.contributeSignResource({
+      word: 'คำทดสอบ',
+      source_url: 'https://example.com/sign-source',
+      provider_name: 'สมาคมคนหูหนวก',
+      notes: 'ท่ามือภาคกลาง',
+    });
+    expect(res).toBeDefined();
+    expect(res.status).toBe('PENDING_REVIEW');
+    expect(res.message).toContain('รอการตรวจสอบจากผู้เชี่ยวชาญ');
   });
 
   it('should return Thai Braille encoding and reading guide for a word', async () => {
