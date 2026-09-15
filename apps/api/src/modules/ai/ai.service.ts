@@ -245,4 +245,22 @@ export class AIService {
       res.end();
     }
   }
+
+  async quirkify(payload: { sentence: string; style?: string; mode?: string }) {
+    try {
+      const response = await firstValueFrom(
+        this.httpService.post(`${this.aiServiceUrl}/ai/quirkify`, payload, { timeout: 20000 })
+      );
+      return response.data;
+    } catch (err: any) {
+      this.logger.warn(`AI Service quirkify unavailable (${err.message}). Using local rule fallback.`);
+      return {
+        original_sentence: payload.sentence,
+        quirkified_sentence: `เพลานี้ ข้าพเจ้าขอประกาศิตว่า '${payload.sentence}' อันกอปรด้วยความปราชญ์เปรื่อง`,
+        vibe_style: 'โบราณพงศาวดาร',
+        punchline_explanation: 'แปลงประโยคให้มีความเว่อร์วังระดับพงศาวดาร',
+        word_mappings: []
+      };
+    }
+  }
 }

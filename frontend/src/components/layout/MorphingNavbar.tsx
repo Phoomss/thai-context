@@ -80,7 +80,9 @@ export default function MorphingNavbar({
         <a href="#compare" onClick={() => setOpen(false)}>เปรียบเทียบคำ</a>
         <a href="#evolution" onClick={() => setOpen(false)}>สำรวจคำ</a>
         <a href="#dialects" onClick={() => setOpen(false)}>ภาษาถิ่น</a>
-        <a href="#dictionary" onClick={() => setOpen(false)}>ค้นตามเล่ม</a>
+        <a href="#word-scrambler" onClick={() => setOpen(false)} style={{ color: "#b45309", fontWeight: 600 }}>
+          Word Scrambler 🔀
+        </a>
         {onAIChat && (
           <button
             type="button"

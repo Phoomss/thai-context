@@ -704,3 +704,50 @@ export async function executeWorkspace(
 
   return response.json();
 }
+
+export interface QuirkifyWordMapping {
+  original_phrase: string;
+  replaced_word: string;
+  part_of_speech?: string;
+  official_definition: string;
+  source_edition: string;
+  quirk_reason: string;
+}
+
+export interface QuirkifyResponse {
+  original_sentence: string;
+  quirkified_sentence: string;
+  vibe_style: string;
+  punchline_explanation: string;
+  word_mappings: QuirkifyWordMapping[];
+}
+
+export async function quirkifySentence(
+  sentence: string,
+  style: string = "ancient",
+  mode: "quirkify" | "beautify" = "quirkify",
+  signal?: AbortSignal
+): Promise<QuirkifyResponse> {
+  const timeoutSignal = AbortSignal.timeout(25000);
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, timeoutSignal])
+    : timeoutSignal;
+
+  const response = await fetch("/api/quirkify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ sentence: sentence.trim(), style, mode }),
+    signal: combinedSignal,
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || err.message || `Quirkify failed (${response.status})`);
+  }
+
+  return response.json();
+}
+

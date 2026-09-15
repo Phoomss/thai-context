@@ -22,7 +22,9 @@ from app.models.schemas import (
     BilingualTranslateRequest,
     BilingualTranslateResponse,
     TtsSynthesizeRequest,
-    TtsSynthesizeResponse
+    TtsSynthesizeResponse,
+    QuirkifyRequest,
+    QuirkifyResponse
 )
 from app.services.nlp.query_parser import query_parser
 from app.services.nlp.phonetics import phonetics_service
@@ -31,6 +33,7 @@ from app.services.ranking.ranker import ranker_service
 from app.services.rag.assistant import rag_assistant
 from app.services.rag.bilingual_translator import bilingual_translator
 from app.services.audio.tts_engine import tts_engine
+from app.services.quirkify.quirkifier import quirkifier_service
 
 logger = logging.getLogger(__name__)
 
@@ -315,3 +318,11 @@ async def tts_synthesize(payload: TtsSynthesizeRequest):
     except Exception as e:
         logger.error(f"TTS synthesis failed: {e}")
         raise HTTPException(status_code=500, detail=f"TTS synthesis failed: {str(e)}")
+
+@router.post("/quirkify", response_model=QuirkifyResponse)
+def quirkify_sentence(payload: QuirkifyRequest):
+    try:
+        return quirkifier_service.quirkify(payload)
+    except Exception as e:
+        logger.error(f"Sentence quirkify failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Sentence quirkify failed: {str(e)}")
