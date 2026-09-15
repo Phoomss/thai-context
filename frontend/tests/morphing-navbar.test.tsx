@@ -177,4 +177,35 @@ describe("MorphingNavbar Component", () => {
     compareEl.remove();
     dialectsEl.remove();
   });
+
+  it("handles clicking AI Assistant button safely without crashing when onAIChat is undefined", () => {
+    const navRef = createRef<HTMLElement | null>();
+    render(
+      <MorphingNavbar
+        navRef={navRef}
+        busy={false}
+        onHome={vi.fn()}
+      />
+    );
+
+    const aiButton = screen.getByText("ผู้ช่วย AI");
+    expect(() => fireEvent.click(aiButton)).not.toThrow();
+  });
+
+  it("calls onAIChat when onAIChat prop is provided", () => {
+    const navRef = createRef<HTMLElement | null>();
+    const onAIChat = vi.fn();
+    render(
+      <MorphingNavbar
+        navRef={navRef}
+        busy={false}
+        onHome={vi.fn()}
+        onAIChat={onAIChat}
+      />
+    );
+
+    const aiButton = screen.getByText("ผู้ช่วย AI");
+    fireEvent.click(aiButton);
+    expect(onAIChat).toHaveBeenCalledTimes(1);
+  });
 });
