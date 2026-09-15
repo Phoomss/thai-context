@@ -225,14 +225,7 @@ export default function HeroSection({
         aria-hidden="true"
         style={{ opacity: state === "idle" ? 1 : 0 }}
       />
-      {!ready && (
-        <img
-          className="book-poster"
-          src="/assets/book-reference.png"
-          alt=""
-          aria-hidden="true"
-        />
-      )}
+
       <div className="scene-layer">
         {canRenderScene && !failed && (
           <HeroSceneBoundary onFail={onFail}>

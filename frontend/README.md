@@ -140,7 +140,7 @@ frontend/
 │   ├── app/                    # Next.js App Router (Pages, Layouts, API Route Handlers)
 │   │   ├── api/v1/             # Route handlers สำหรับ Search, TSL, Translations, Dialect, Braille, TTS, Feedback
 │   │   ├── globals.css         # ระบบสไตล์หลัก (Modern CSS, Variables, Glassmorphism, Responsive)
-│   │   ├── layout.tsx          # Root Layout พร้อมฟอนต์ Noto Sans Thai และ IBM Plex Sans Thai Looped
+│   │   ├── layout.tsx          # Root Layout พร้อมฟอนต์ Noto Sans Thai และ Sarabun
 │   │   └── page.tsx            # หน้าหลัก SearchExperience
 │   ├── components/
 │   │   ├── ai/                 # AIAssistantDrawer (Grounded Co-Thinking Partner)

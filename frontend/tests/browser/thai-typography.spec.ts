@@ -72,16 +72,16 @@ for (const width of [1440, 768, 375]) {
         headwordSize: parseFloat(style("#word-title").fontSize),
         definitionLineHeight: parseFloat(style(".definition").lineHeight),
         definitionSize: parseFloat(style(".definition").fontSize),
-        fontLoaded: document.fonts.check('36px "IBM Plex Sans Thai Looped"', samples.join("")),
+        fontLoaded: document.fonts.check('36px "Sarabun"', samples.join("")),
         clipped,
       };
     }, thaiSamples);
 
     expect(typography.bodyFont).toContain("Noto Sans Thai");
-    expect(typography.bodyFont).not.toContain("IBM Plex Sans Thai Looped");
-    expect(typography.brandFont).not.toContain("IBM Plex Sans Thai Looped");
+    expect(typography.bodyFont).not.toContain("Sarabun");
+    expect(typography.brandFont).not.toContain("Sarabun");
     expect(typography.learningFonts.length).toBeGreaterThan(20);
-    expect(typography.learningFonts.every((font) => font.includes("IBM Plex Sans Thai Looped"))).toBe(true);
+    expect(typography.learningFonts.every((font) => font.includes("Sarabun"))).toBe(true);
     expect(typography.headwordWeight).toBe("600");
     expect(typography.headwordLineHeight / typography.headwordSize).toBeGreaterThanOrEqual(1.5);
     expect(typography.definitionLineHeight / typography.definitionSize).toBeGreaterThanOrEqual(1.7);
@@ -94,7 +94,7 @@ for (const width of [1440, 768, 375]) {
     await expect(page.locator(".evidence-drawer .font-thai-reading")).toHaveCount(2);
     expect(
       await page.locator(".evidence-source").evaluate((element) => getComputedStyle(element).fontFamily),
-    ).toContain("IBM Plex Sans Thai Looped");
+    ).toContain("Sarabun");
     await page.keyboard.press("Escape");
 
     expect(errors).toEqual([]);

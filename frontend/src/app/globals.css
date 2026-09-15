@@ -7,7 +7,7 @@
   --ease-out:cubic-bezier(.22,1,.36,1); --motion-soft:420ms;
   --page-gutter:clamp(16px,4vw,64px); --section-space:clamp(64px,6vw,96px);
   --font-ui:"Noto Sans Thai",sans-serif;
-  --font-thai-reading:"IBM Plex Sans Thai Looped","Noto Sans Thai Looped","Sarabun","Noto Sans Thai",sans-serif;
+  --font-thai-reading:"Sarabun","Noto Sans Thai Looped","Noto Sans Thai",sans-serif;
 }
 * { box-sizing:border-box }
 html { scroll-behavior:smooth; scroll-padding-top:110px; scroll-padding-bottom:140px; scrollbar-gutter:stable }
