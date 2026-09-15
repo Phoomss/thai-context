@@ -45,8 +45,8 @@ export default function QuirkifyPage() {
             <Link href="/workspace" className="workspace-nav-btn">
               ⚡ AI Workspace
             </Link>
-            <Link href="/#compare" className="workspace-nav-btn" style={{ display: "none" }}>
-              เปรียบเทียบคำ
+            <Link href="/#dictionary" className="workspace-nav-btn">
+              📖 ค้นตามเล่ม
             </Link>
             <Link href="/" className="workspace-nav-btn" style={{ fontWeight: 600, color: "var(--accent)" }}>
               ← กลับสู่หน้าหลัก

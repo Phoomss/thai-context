@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, type RefObject, type MouseEvent } from "react";
 import Image from "next/image";
+import Link from "next/link";
 export default function MorphingNavbar({
   navRef,
   busy,
@@ -35,7 +36,7 @@ export default function MorphingNavbar({
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["hero", "compare", "evolution", "dialects", "word-scrambler"];
+    const sectionIds = ["hero", "compare", "evolution", "dialects"];
     let ticking = false;
 
     const updateActive = () => {
@@ -45,7 +46,7 @@ export default function MorphingNavbar({
         window.innerHeight + window.scrollY >= scrollHeight - 80;
 
       if (isBottom) {
-        setActiveSection("word-scrambler");
+        setActiveSection("dialects");
         return;
       }
 
@@ -167,25 +168,24 @@ export default function MorphingNavbar({
         >
           ภาษาถิ่น
         </a>
-        <a
-          href="#word-scrambler"
-          aria-current={activeSection === "word-scrambler" ? "page" : undefined}
-          className={`nav-link-scrambler ${activeSection === "word-scrambler" ? "active" : ""}`}
-          onClick={() => { setOpen(false); setActiveSection("word-scrambler"); }}
+        <Link
+          href="/word-scrambler"
+          onClick={() => setOpen(false)}
+          className="nav-link-scrambler font-semibold"
           style={{
-            color: activeSection === "word-scrambler" ? "#b45309" : "#d97706",
-            fontWeight: activeSection === "word-scrambler" ? 700 : 600,
+            color: "#d97706",
+            fontWeight: 600,
           }}
         >
           Word Scrambler 🔀
-        </a>
-        <a
+        </Link>
+        <Link
           href="/workspace"
           onClick={() => setOpen(false)}
           className="text-cyan-400 font-semibold hover:text-cyan-300"
         >
           AI Workspace ✦
-        </a>
+        </Link>
         {onAIChat && (
           <button
             type="button"

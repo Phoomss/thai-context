@@ -83,7 +83,11 @@ describe("MorphingNavbar Component", () => {
     const homeLink = screen.getByText("หน้าหลัก");
     const compareLink = screen.getByText("เปรียบเทียบคำ");
     const evolutionLink = screen.getByText("สำรวจคำ");
+    const dialectLink = screen.getByText("ภาษาถิ่น");
     const scramblerLink = screen.getByText("Word Scrambler 🔀");
+
+    // Word Scrambler links to its own dedicated page
+    expect(scramblerLink.getAttribute("href")).toBe("/word-scrambler");
 
     // Initially, home is active
     expect(homeLink.getAttribute("aria-current")).toBe("page");
@@ -95,17 +99,17 @@ describe("MorphingNavbar Component", () => {
     expect(compareLink.classList.contains("active")).toBe(true);
     expect(homeLink.getAttribute("aria-current")).toBeNull();
 
-    // Click on Word Scrambler
-    fireEvent.click(scramblerLink);
-    expect(scramblerLink.getAttribute("aria-current")).toBe("page");
-    expect(scramblerLink.classList.contains("active")).toBe(true);
+    // Click on dialects
+    fireEvent.click(dialectLink);
+    expect(dialectLink.getAttribute("aria-current")).toBe("page");
+    expect(dialectLink.classList.contains("active")).toBe(true);
     expect(compareLink.getAttribute("aria-current")).toBeNull();
 
     // Click on evolution
     fireEvent.click(evolutionLink);
     expect(evolutionLink.getAttribute("aria-current")).toBe("page");
     expect(evolutionLink.classList.contains("active")).toBe(true);
-    expect(scramblerLink.getAttribute("aria-current")).toBeNull();
+    expect(dialectLink.getAttribute("aria-current")).toBeNull();
   });
 
   it("calls onAIChat when clicking the AI Assistant button", () => {
