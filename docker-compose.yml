@@ -65,6 +65,7 @@ services:
       PORT: 3001
       DATABASE_URL: postgresql://postgres:postgrespassword@postgres:5432/thai_context
       AI_SERVICE_URL: http://ai-service:8000
+      TTS_TIMEOUT_MS: 12000
     ports:
       - "3001:3001"
     volumes:

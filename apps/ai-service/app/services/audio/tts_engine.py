@@ -77,18 +77,24 @@ class TtsEngineService:
     async def _synthesize_edge_tts(self, text: str, voice: str, speed: float) -> Optional[bytes]:
         if not HAS_EDGE_TTS:
             return None
-        try:
-            rate_percent = int((speed - 1.0) * 100)
-            rate_str = f"+{rate_percent}%" if rate_percent >= 0 else f"{rate_percent}%"
-            communicate = edge_tts.Communicate(text, voice, rate=rate_str)
-            audio_buffer = bytearray()
-            async for chunk in communicate.stream():
-                if chunk["type"] == "audio":
-                    audio_buffer.extend(chunk["data"])
-            if audio_buffer:
-                return bytes(audio_buffer)
-        except Exception as e:
-            logger.warning(f"Edge TTS synthesis error: {e}. Falling back to synthetic tone.")
+        rate_percent = int((speed - 1.0) * 100)
+        rate_str = f"+{rate_percent}%" if rate_percent >= 0 else f"{rate_percent}%"
+
+        for attempt in range(2):
+            try:
+                communicate = edge_tts.Communicate(text, voice, rate=rate_str)
+                audio_buffer = bytearray()
+                async def _collect():
+                    async for chunk in communicate.stream():
+                        if chunk["type"] == "audio":
+                            audio_buffer.extend(chunk["data"])
+                await asyncio.wait_for(_collect(), timeout=8.0)
+                if audio_buffer:
+                    return bytes(audio_buffer)
+            except Exception as e:
+                logger.warning(f"Edge TTS attempt {attempt + 1} error: {e}")
+                if attempt == 0:
+                    await asyncio.sleep(0.3)
         return None
 
     async def synthesize(self, text: str, voice: str = "th-TH-PremwadeeNeural", speed: float = 1.0) -> Dict[str, Any]:
@@ -114,8 +120,12 @@ class TtsEngineService:
                 "cached": False,
                 "duration_ms": duration_ms,
             }
+            # Cache real neural speech in memory
+            if len(self._memory_cache) > 200:
+                self._memory_cache.clear()
+            self._memory_cache[cache_key] = result
         else:
-            # 2. Guaranteed zero-crash fallback: synthetic WAV chime
+            # 2. Emergency zero-crash fallback: synthetic WAV chime (never cached)
             wav_bytes = self._generate_synthetic_wav(clean_text)
             b64_data = base64.b64encode(wav_bytes).decode("ascii")
             result = {
@@ -125,11 +135,6 @@ class TtsEngineService:
                 "cached": False,
                 "duration_ms": int(min(3.0, max(0.6, len(clean_text) * 0.12)) * 1000),
             }
-
-        # Cache in memory
-        if len(self._memory_cache) > 200:
-            self._memory_cache.clear()
-        self._memory_cache[cache_key] = result
 
         return dict(result)
 

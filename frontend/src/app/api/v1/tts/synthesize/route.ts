@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
   const endpoint =
     process.env.THAI_CONTEXT_TTS_API_URL ?? DEFAULT_TTS_ENDPOINT;
-  const timeout = AbortSignal.timeout(8000);
+  const timeout = AbortSignal.timeout(15000);
 
   try {
     const response = await fetch(endpoint, {
