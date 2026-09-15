@@ -176,6 +176,13 @@ export default function MorphingNavbar({
           สุ่มเปลี่ยนคำ 🔀
         </Link>
         <Link
+          href="/dictionary"
+          onClick={() => setOpen(false)}
+          className="nav-btn-pill nav-dictionary-btn font-thai-reading"
+        >
+          ค้นตามเล่ม 📖
+        </Link>
+        <Link
           href="/workspace"
           onClick={() => setOpen(false)}
           className="nav-btn-pill nav-workspace-btn font-thai-reading"

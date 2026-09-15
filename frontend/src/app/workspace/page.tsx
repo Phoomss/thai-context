@@ -45,7 +45,7 @@ export default function WorkspacePage() {
             <Link href="/word-scrambler" className="workspace-nav-btn">
               🔀 สุ่มเปลี่ยนคำ
             </Link>
-            <Link href="/#dictionary" className="workspace-nav-btn">
+            <Link href="/dictionary" className="workspace-nav-btn">
               📖 ค้นตามเล่ม
             </Link>
             <Link href="/" className="workspace-nav-btn" style={{ fontWeight: 600, color: "var(--accent)" }}>

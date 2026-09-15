@@ -428,7 +428,7 @@ function AIAssistantPageContent() {
             <Link href="/#compare" className="workspace-nav-btn" style={{ display: "none" }}>
               เปรียบเทียบคำ
             </Link>
-            <Link href="/#dictionary" className="workspace-nav-btn">
+            <Link href="/dictionary" className="workspace-nav-btn">
               📖 ค้นตามเล่ม
             </Link>
             <Link href="/word-scrambler" className="workspace-nav-btn" style={{ color: "var(--accent)" }}>

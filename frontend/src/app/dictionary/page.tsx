@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import SentenceQuirkifier from "@/components/quirkify/SentenceQuirkifier";
+import DictionaryBrowser from "@/components/dictionary/DictionaryBrowser";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Word Scrambler — สุ่มเปลี่ยนคำในประโยค | THAI CONTEXT",
+  title: "ค้นหาคำตรงตัวตามเล่มพจนานุกรม | THAI CONTEXT",
   description:
-    "เครื่องมือสุ่มเปลี่ยนเฉพาะคำในประโยคภาษาไทย พร้อมนิยามทางการจากพจนานุกรมราชบัณฑิตยสภา ๗๗,๐๐๐+ รายการ",
+    "ค้นหาคำศัพท์ภาษาไทยตรงตัวตามเล่มพจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒, ๒๕๕๔, ๒๕๖๙ พร้อมตัวกรองฉบับพิมพ์และแหล่งข้อมูล",
 };
 
-export default function QuirkifyPage() {
+export default function DictionaryPage() {
   return (
     <div className="workspace-page-container">
       {/* Top Navigation Header matching THAI CONTEXT design system */}
@@ -35,9 +35,9 @@ export default function QuirkifyPage() {
             </div>
             <span
               className="workspace-badge-tag"
-              style={{ background: "#eaf4fe", color: "var(--accent)", borderColor: "#c8e0fa" }}
+              style={{ background: "#fef3c7", color: "#b45309", borderColor: "#fde68a" }}
             >
-              ✦ สุ่มเปลี่ยนคำ
+              📖 ค้นตามเล่ม
             </span>
           </Link>
 
@@ -48,8 +48,8 @@ export default function QuirkifyPage() {
             <Link href="/workspace" className="workspace-nav-btn">
               ⚡ AI Workspace
             </Link>
-            <Link href="/dictionary" className="workspace-nav-btn">
-              📖 ค้นตามเล่ม
+            <Link href="/word-scrambler" className="workspace-nav-btn">
+              🔀 สุ่มเปลี่ยนคำ
             </Link>
             <Link href="/" className="workspace-nav-btn" style={{ fontWeight: 600, color: "var(--accent)" }}>
               ← กลับสู่หน้าหลัก
@@ -60,7 +60,7 @@ export default function QuirkifyPage() {
 
       {/* Main Content */}
       <main style={{ flex: 1 }}>
-        <SentenceQuirkifier embedded={false} />
+        <DictionaryBrowser initialWord="ประสิทธิภาพ" />
       </main>
 
       <Footer />

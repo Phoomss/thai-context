@@ -36,6 +36,7 @@ describe("MorphingNavbar Component", () => {
     expect(screen.getByText("สำรวจคำ")).toBeTruthy();
     expect(screen.getByText("ภาษาถิ่น")).toBeTruthy();
     expect(screen.getByText("สุ่มเปลี่ยนคำ 🔀")).toBeTruthy();
+    expect(screen.getByText("ค้นตามเล่ม 📖")).toBeTruthy();
     expect(screen.getByText("AI Workspace ✦")).toBeTruthy();
 
     // 3. AI Assistant button must exist
@@ -88,6 +89,9 @@ describe("MorphingNavbar Component", () => {
 
     // Word Scrambler links to its own dedicated page
     expect(scramblerLink.getAttribute("href")).toBe("/word-scrambler");
+
+    const dictionaryLink = screen.getByText("ค้นตามเล่ม 📖");
+    expect(dictionaryLink.getAttribute("href")).toBe("/dictionary");
 
     // Initially, home is active
     expect(homeLink.getAttribute("aria-current")).toBe("page");
