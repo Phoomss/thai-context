@@ -84,8 +84,12 @@ textarea:focus { outline:0 }
 .wordmark small { display:block;font:10px var(--font-ui);color:var(--text-muted);line-height:1.2 }
 .nav-links { display:flex;align-items:center;gap:26px;font-size:12px }
 .nav-links>a { position:relative;min-height:44px;display:flex;align-items:center;gap:8px;white-space:nowrap }
-.nav-links>a::after { content:"";position:absolute;height:2px;background:var(--accent);bottom:0;left:0;right:0;transform:scaleX(0);transform-origin:left;transition:transform 240ms var(--ease-out) }
-.nav-links>a:hover::after,.nav-links>a[aria-current]::after { transform:scaleX(1) }
+.nav-links>a:hover::after,.nav-links>a[aria-current]::after,.nav-links>a.active::after { transform:scaleX(1) }
+.nav-links>a[aria-current],.nav-links>a.active { color:var(--accent);font-weight:700 }
+.nav-links>a.nav-link-scrambler[aria-current]::after,.nav-links>a.nav-link-scrambler.active::after { background:#b45309 }
+.nav-ai-button { display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:16px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all 180ms ease;white-space:nowrap;margin-left:4px }
+.nav-ai-button:hover { background:#dbeafe;border-color:#93c5fd;transform:translateY(-1px);box-shadow:0 3px 10px rgba(29,78,216,.15) }
+.nav-ai-button:active { transform:translateY(0);box-shadow:none }
 .nav-search { color:var(--accent) }
 .nav-menu-button { display:none;width:44px;padding:10px;flex-direction:column;gap:4px;align-items:center;justify-content:center }
 .nav-menu-button span { height:1px;width:18px;background:var(--ink) }
@@ -399,6 +403,8 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
   .nav-links { position:absolute;top:calc(100% + 8px);right:0;width:min(320px,100%);display:flex;flex-direction:column;align-items:stretch;gap:0;padding:16px;background:#fffffff5;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-soft);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 180ms,transform 180ms,visibility 0s 180ms }
   .nav-links.is-open { opacity:1;visibility:visible;transform:none;transition-delay:0s }
   .nav-links>a { font-size:14px;padding:10px;min-height:44px }
+  .nav-links>a[aria-current],.nav-links>a.active { background:#eaf4fe;border-radius:12px;color:var(--accent);font-weight:700 }
+  .nav-ai-button { width:100%;justify-content:center;margin-left:0;margin-top:8px;padding:10px;font-size:14px }
   .capability-strip { grid-template-columns:repeat(3,1fr);gap:12px }
   .capability-strip a { border:0;font-size:11px }
 }

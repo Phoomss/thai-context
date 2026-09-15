@@ -256,9 +256,9 @@ export class AIService {
       this.logger.warn(`AI Service quirkify unavailable (${err.message}). Using local rule fallback.`);
       return {
         original_sentence: payload.sentence,
-        quirkified_sentence: `เพลานี้ ข้าพเจ้าขอประกาศิตว่า '${payload.sentence}' อันกอปรด้วยความปราชญ์เปรื่อง`,
-        vibe_style: 'โบราณพงศาวดาร',
-        punchline_explanation: 'แปลงประโยคให้มีความเว่อร์วังระดับพงศาวดาร',
+        quirkified_sentence: payload.sentence,
+        vibe_style: 'สุ่มเปลี่ยนคำในประโยค (Word Scrambler)',
+        punchline_explanation: 'สุ่มเปลี่ยนเฉพาะคำในประโยคโดยรักษาโครงสร้างเดิม',
         word_mappings: []
       };
     }

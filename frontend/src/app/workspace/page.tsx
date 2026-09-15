@@ -39,8 +39,8 @@ export default function WorkspacePage() {
           </Link>
 
           <div className="workspace-nav-actions">
-            <Link href="/#compare" className="workspace-nav-btn" style={{ display: "none" }}>
-              เปรียบเทียบคำ
+            <Link href="/word-scrambler" className="workspace-nav-btn">
+              🔀 Word Scrambler
             </Link>
             <Link href="/#dictionary" className="workspace-nav-btn">
               📖 ค้นตามเล่ม
