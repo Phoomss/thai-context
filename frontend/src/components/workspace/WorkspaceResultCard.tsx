@@ -512,7 +512,7 @@ export default function WorkspaceResultCard({
                         className="workspace-draft-btn"
                         style={{ fontSize: "11px", padding: "6px 10px", color: "var(--accent)" }}
                       >
-                        นำไปใส่กล่องร่าง ➔
+                        นำไปใส่หน้าต่างตอบกลับ ➔
                       </button>
                     )}
                   </div>
@@ -703,7 +703,7 @@ export default function WorkspaceResultCard({
                         className="workspace-draft-btn"
                         style={{ fontSize: "12px", color: "var(--accent)" }}
                       >
-                        นำไปใส่กล่องร่าง ➔
+                        นำไปใส่หน้าต่างตอบกลับ ➔
                       </button>
                     )}
                   </div>

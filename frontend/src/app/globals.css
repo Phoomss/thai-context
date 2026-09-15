@@ -2448,7 +2448,7 @@ button.workspace-step-item.active,
   color: var(--accent);
 }
 
-/* Active Drafting Studio */
+/* Active Drafting Studio / AI Response Studio */
 .workspace-draft-studio {
   position: sticky;
   top: 94px;
@@ -2473,6 +2473,29 @@ button.workspace-step-item.active,
   gap: 8px;
   margin: 0;
 }
+.workspace-ai-status-badge {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.workspace-ai-status-badge.is-loading {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+.workspace-ai-status-badge.is-ready {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+.workspace-ai-status-badge.is-idle {
+  background: var(--bg-ice);
+  color: var(--accent);
+}
 .workspace-draft-textarea {
   width: 100%;
   min-height: 200px;
@@ -2491,6 +2514,17 @@ button.workspace-step-item.active,
   outline: none;
   border-color: var(--accent);
   background: white;
+}
+.workspace-draft-textarea[readonly] {
+  background: #f8fafd;
+  border-color: #dbeafe;
+  cursor: default;
+  color: var(--ink);
+}
+.workspace-draft-textarea[readonly]:focus {
+  border-color: #93c5fd;
+  background: #f8fafd;
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 10%);
 }
 .workspace-draft-actions {
   display: flex;
