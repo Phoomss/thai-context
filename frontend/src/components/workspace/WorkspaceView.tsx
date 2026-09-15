@@ -106,6 +106,8 @@ export default function WorkspaceView() {
   useEffect(() => {
     if (currentResult?.generated_content && currentResult.generated_content.length > 0) {
       setActiveDraft(currentResult.generated_content[0].content);
+    } else if (currentResult?.answer && !currentResult.abstained) {
+      setActiveDraft(currentResult.answer);
     }
   }, [currentResult]);
 
@@ -246,7 +248,7 @@ export default function WorkspaceView() {
   const handleDraftCopy = () => {
     if (!activeDraft) return;
     navigator.clipboard?.writeText(activeDraft);
-    showToast("คัดลอกข้อความร่างลงคลิปบอร์ดแล้ว");
+    showToast("คัดลอกข้อความตอบกลับจาก AI ลงคลิปบอร์ดแล้ว");
   };
 
   return (
@@ -568,28 +570,75 @@ export default function WorkspaceView() {
           </div>
         </div>
 
-        {/* Right Column: Active Drafting Studio */}
+        {/* Right Column: AI Response Studio */}
         <div>
           <div className="workspace-draft-studio">
             <div className="workspace-draft-header">
               <h3 className="workspace-draft-title">
-                <span>📝</span> สมุดร่างข้อความ (Drafting Studio)
+                <span>🤖</span> หน้าต่างตอบกลับจาก AI (AI Response)
               </h3>
-              <span style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "6px", background: "var(--bg-ice)", color: "var(--accent)", fontWeight: 600 }}>
-                {activeDraft.length} ตัวอักษร
-              </span>
+              {isLoading ? (
+                <span className="workspace-ai-status-badge is-loading">
+                  กำลังประมวลผล...
+                </span>
+              ) : currentResult ? (
+                <span className="workspace-ai-status-badge is-ready">
+                  ✓ AI ตอบกลับแล้ว ({activeDraft.length} ตัวอักษร)
+                </span>
+              ) : (
+                <span className="workspace-ai-status-badge is-idle">
+                  พร้อมรับคำสั่ง
+                </span>
+              )}
             </div>
 
             <p style={{ fontSize: "12px", color: "var(--text-muted)", margin: "0 0 12px", lineHeight: 1.5 }}>
-              พื้นที่แต่งและปรับปรุงข้อความสด พร้อมส่งคำสั่งให้ AI ปรับระดับภาษาได้ทันที
+              แสดงข้อความตอบกลับ ผลการเรียบเรียงประโยค และคำแนะนำเชิงลึกจาก AI อิงข้อมูลพจนานุกรมทางการ
             </p>
 
+            {isLoading && (
+              <div style={{ padding: "18px 14px", textAlign: "center", background: "#f8fafd", border: "1px dashed #bfdbfe", borderRadius: "14px", marginBottom: "12px" }}>
+                <div style={{ margin: "0 auto 8px", width: "22px", height: "22px", border: "2.5px solid #dbeafe", borderTopColor: "var(--accent)", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+                <div style={{ fontSize: "12px", fontWeight: 600, color: "var(--accent)" }}>
+                  AI กำลังวิเคราะห์และเรียบเรียงข้อความตอบกลับ...
+                </div>
+              </div>
+            )}
+
+            {currentResult?.answer && (
+              <div style={{ padding: "10px 14px", background: "#f0f7ff", border: "1px solid #c7ddf5", borderRadius: "12px", marginBottom: "12px" }}>
+                <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--accent)", marginBottom: "4px" }}>
+                  💬 สรุปคำตอบจาก AI:
+                </div>
+                <p style={{ margin: 0, fontSize: "13px", lineHeight: 1.6, color: "var(--ink)" }}>
+                  {currentResult.answer}
+                </p>
+              </div>
+            )}
+
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
+              <label htmlFor="workspace-ai-response-text" style={{ fontSize: "12px", fontWeight: 600, color: "var(--ink)" }}>
+                📝 ข้อความตอบกลับจาก AI:
+              </label>
+              {activeDraft && (
+                <span style={{ fontSize: "11px", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span>🔒</span> อ่านอย่างเดียว (คัดลอกได้)
+                </span>
+              )}
+            </div>
+
             <textarea
+              id="workspace-ai-response-text"
               value={activeDraft}
-              onChange={(e) => setActiveDraft(e.target.value)}
-              placeholder="ข้อความที่กำลังร่างหรือเลือกมาจากผลลัพธ์จะปรากฏที่นี่ เพื่อให้คุณแก้ไขและปรับปรุงได้อย่างอิสระ..."
+              readOnly
+              placeholder="ข้อความตอบกลับจาก AI หรือประโยคที่เรียบเรียงจะปรากฏที่นี่ คุณสามารถอ่าน ตรวจทาน และคัดลอกข้อความได้..."
               className="workspace-draft-textarea"
               rows={8}
+              style={{
+                backgroundColor: "#f8fafd",
+                cursor: "default",
+                userSelect: "text",
+              }}
             />
 
             <div className="workspace-draft-actions">
@@ -598,7 +647,7 @@ export default function WorkspaceView() {
                 onClick={handleDraftSpeak}
                 disabled={!activeDraft.trim()}
                 className="workspace-draft-btn"
-                title="ฟังเสียงอ่านข้อความร่าง"
+                title="ฟังเสียงอ่านคำตอบจาก AI"
               >
                 🔊 ฟังเสียง
               </button>
@@ -607,7 +656,7 @@ export default function WorkspaceView() {
                 onClick={handleDraftCopy}
                 disabled={!activeDraft.trim()}
                 className="workspace-draft-btn"
-                title="คัดลอกข้อความลงคลิปบอร์ด"
+                title="คัดลอกคำตอบลงคลิปบอร์ด"
                 style={{ fontWeight: 600, color: "var(--accent)" }}
               >
                 📋 คัดลอก
@@ -617,21 +666,21 @@ export default function WorkspaceView() {
                 onClick={() => setActiveDraft("")}
                 disabled={!activeDraft}
                 className="workspace-draft-btn"
-                title="ล้างข้อความร่าง"
+                title="ล้างข้อความตอบกลับ"
               >
                 🗑️ ล้าง
               </button>
             </div>
 
-            {/* Quick Actions for Drafted Text */}
+            {/* Quick Actions for AI Response Text */}
             <div style={{ marginTop: "16px", paddingTop: "14px", borderTop: "1px solid var(--border)" }}>
               <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--text-muted)", marginBottom: "8px" }}>
-                คำสั่งด่วนสำหรับข้อความนี้:
+                ⚡ สั่ง AI ปรับปรุงข้อความตอบกลับนี้ต่อ:
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 <button
                   type="button"
-                  disabled={!activeDraft.trim()}
+                  disabled={!activeDraft.trim() || isLoading}
                   onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px" }}
@@ -640,7 +689,7 @@ export default function WorkspaceView() {
                 </button>
                 <button
                   type="button"
-                  disabled={!activeDraft.trim()}
+                  disabled={!activeDraft.trim() || isLoading}
                   onClick={() => handleSend("ปรับให้เป็นทางการตามระเบียบงานสารบรรณ")}
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px" }}
@@ -649,7 +698,7 @@ export default function WorkspaceView() {
                 </button>
                 <button
                   type="button"
-                  disabled={!activeDraft.trim()}
+                  disabled={!activeDraft.trim() || isLoading}
                   onClick={() => handleSend("ปรับให้เป็นภาษาเขียนเชิงวิชาการ")}
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px" }}
@@ -658,7 +707,7 @@ export default function WorkspaceView() {
                 </button>
                 <button
                   type="button"
-                  disabled={!activeDraft.trim()}
+                  disabled={!activeDraft.trim() || isLoading}
                   onClick={() => handleSend("ช่วยตรวจภาษาและคำซ้ำซ้อน")}
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px", color: "var(--green)" }}
