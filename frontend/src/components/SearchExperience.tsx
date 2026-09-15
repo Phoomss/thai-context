@@ -5,6 +5,7 @@ import HeroSection, { type HeroHandle } from "./hero/HeroSection";
 import MorphingNavbar from "./layout/MorphingNavbar";
 import SearchResults from "./search/SearchResults";
 import PersistentSearchComposer from "./search/PersistentSearchComposer";
+import SearchModeSwitcher from "./search/SearchModeSwitcher";
 import EvidenceDrawer from "./evidence/EvidenceDrawer";
 import AIAssistantDrawer from "./ai/AIAssistantDrawer";
 import ContextComparator from "./compare/ContextComparator";
@@ -208,6 +209,16 @@ export default function SearchExperience() {
     );
   }
   const comparisonWords = model.result?.recommendations ?? EMPTY_RECOMMENDATIONS;
+  // Assistant is an existing modal and Workspace owns its own route. Derive the
+  // selected mode from the actual interface, rather than keeping a second state.
+  const modeSwitcher = (
+    <SearchModeSwitcher
+      mode={aiAssistantOpen ? "ai-assistant" : "context-search"}
+      onContextSearch={() => setAiAssistantOpen(false)}
+      onAssistant={() => handleOpenAIChat()}
+      disabled={isCinematic(model.state) || (model.hasResults && !model.revealed)}
+    />
+  );
   const toggleCompare = (word: Recommendation) => {
     setCompareSelected((selected) => {
       if (selected.includes(word.headword))
@@ -220,11 +231,11 @@ export default function SearchExperience() {
       <HeroSection
         heroRef={hero}
         onSearch={(q) => startRequest(q, "hero")}
+        modeSwitcher={modeSwitcher}
       />
       <MorphingNavbar
         navRef={nav}
         busy={isCinematic(model.state)}
-        onAIChat={() => handleOpenAIChat()}
         onHome={(e) => {
           e.preventDefault();
           back();
@@ -273,6 +284,7 @@ export default function SearchExperience() {
           query={model.query}
           busy={model.loading || !model.revealed}
           onSearch={(q) => startRequest(q, "composer")}
+          modeSwitcher={modeSwitcher}
         />
       )}
       {model.state === "evidence-open" && model.evidence && (

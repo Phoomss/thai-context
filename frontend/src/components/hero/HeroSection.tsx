@@ -37,9 +37,11 @@ export type HeroHandle = {
 export default function HeroSection({
   heroRef,
   onSearch,
+  modeSwitcher,
 }: {
   heroRef: RefObject<HeroHandle | null>;
   onSearch: (query: string) => void;
+  modeSwitcher: ReactNode;
 }) {
   const [state, setState] = useState<HeroState>("idle");
   const [reduced, setReduced] = useState(false);
@@ -255,7 +257,7 @@ export default function HeroSection({
             <br className="desktop-break" /> พร้อมความหมาย บริบท ตัวอย่าง และแหล่งที่มา
           </p>
           <p className="search-prompt">วันนี้คุณอยากสื่ออะไร?</p>
-          <HeroSearch busy={state !== "idle"} onSearch={onSearch} />
+          <HeroSearch busy={state !== "idle"} onSearch={onSearch} modeSwitcher={modeSwitcher} />
         </div>
         <div className="hero-foot">
           <span>ไม่ต้องรู้คำ ก็รู้ว่าควรใช้คำไหน</span>

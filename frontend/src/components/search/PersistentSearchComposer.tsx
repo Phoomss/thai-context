@@ -1,14 +1,31 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+
+const COMPOSER_TEXTAREA_MAX_HEIGHT = 160;
+
+function resizeTextarea(element: HTMLTextAreaElement) {
+  if (!element.value) {
+    element.style.height = "44px";
+    element.style.overflowY = "hidden";
+    return;
+  }
+  element.style.height = "0px";
+  const nextHeight = Math.min(element.scrollHeight, COMPOSER_TEXTAREA_MAX_HEIGHT);
+  element.style.height = `${nextHeight}px`;
+  element.style.overflowY = element.scrollHeight > COMPOSER_TEXTAREA_MAX_HEIGHT ? "auto" : "hidden";
+}
+
 export default function PersistentSearchComposer({
   query,
   busy,
   onSearch,
   visible = true,
+  modeSwitcher,
 }: {
   query: string;
   busy: boolean;
   onSearch: (query: string) => void;
   visible?: boolean;
+  modeSwitcher: ReactNode;
 }) {
   const [value, setValue] = useState(query);
   const [error, setError] = useState("");
@@ -16,6 +33,9 @@ export default function PersistentSearchComposer({
   const input = useRef<HTMLTextAreaElement>(null);
   useEffect(() => setValue(query), [query]);
   useEffect(() => { if (visible) setHidden(false); }, [visible]);
+  useLayoutEffect(() => {
+    if (input.current) resizeTextarea(input.current);
+  }, [value, visible]);
   function submit() {
     if (busy) return;
     if (!value.trim()) {
@@ -36,6 +56,7 @@ export default function PersistentSearchComposer({
         }
         setHidden(true);
       }}>
+      <div className="composer-mode-switcher">{modeSwitcher}</div>
       <form
         className="bottom-composer"
         role="search"
@@ -52,7 +73,7 @@ export default function PersistentSearchComposer({
         <textarea
           id="persistent-meaning"
           ref={input}
-          rows={2}
+          rows={1}
           maxLength={600}
           value={value}
           disabled={busy}
@@ -62,6 +83,7 @@ export default function PersistentSearchComposer({
           onChange={(e) => {
             setValue(e.target.value);
             setError("");
+            resizeTextarea(e.currentTarget);
           }}
           onKeyDown={(e) => {
             if (
