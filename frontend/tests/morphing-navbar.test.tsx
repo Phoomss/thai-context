@@ -37,6 +37,7 @@ describe("MorphingNavbar Component", () => {
     expect(screen.getByText("ภาษาถิ่น")).toBeTruthy();
     expect(screen.getByText("สุ่มเปลี่ยนคำ 🔀")).toBeTruthy();
     expect(screen.getByText("AI Workspace ✦")).toBeTruthy();
+    expect(screen.getByText("แปลภาษา (EN/TH)")).toBeTruthy();
 
     // 3. AI Assistant button must exist
     expect(screen.getByText("ผู้ช่วย AI")).toBeTruthy();

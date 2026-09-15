@@ -434,6 +434,9 @@ function AIAssistantPageContent() {
             <Link href="/word-scrambler" className="workspace-nav-btn" style={{ color: "var(--accent)" }}>
               🔀 สุ่มเปลี่ยนคำ
             </Link>
+            <Link href="/translate" className="workspace-nav-btn font-thai-reading" style={{ color: "#15803d", fontWeight: 600 }}>
+              🌐 แปลภาษา
+            </Link>
             <Link href="/workspace" className="workspace-nav-btn">
               ⚡ Multi-Agent Studio
             </Link>
