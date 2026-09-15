@@ -96,8 +96,8 @@ textarea:focus { outline:0 }
 .nav-workspace-btn { background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;margin-left:2px }
 .nav-workspace-btn:hover { background:#ede9fe;border-color:#c4b5fd;color:#5b21b6;transform:translateY(-1px);box-shadow:0 3px 10px rgba(109,40,217,.15) }
 .nav-workspace-btn:active { transform:translateY(0);box-shadow:none }
-.nav-ai-button { display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:16px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all 180ms ease;white-space:nowrap;margin-left:4px }
-.nav-ai-button:hover { background:#dbeafe;border-color:#93c5fd;transform:translateY(-1px);box-shadow:0 3px 10px rgba(29,78,216,.15) }
+.nav-ai-button { display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:16px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all 180ms ease;white-space:nowrap;margin-left:4px;text-decoration:none }
+.nav-ai-button:hover { background:#dbeafe;border-color:#93c5fd;transform:translateY(-1px);box-shadow:0 3px 10px rgba(29,78,216,.15);color:#1e40af }
 .nav-ai-button:active { transform:translateY(0);box-shadow:none }
 .nav-search { color:var(--accent) }
 .nav-menu-button { display:none;width:44px;padding:10px;flex-direction:column;gap:4px;align-items:center;justify-content:center }

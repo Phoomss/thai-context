@@ -42,6 +42,9 @@ export default function QuirkifyPage() {
           </Link>
 
           <div className="workspace-nav-actions">
+            <Link href="/ai-assistant" className="workspace-nav-btn font-thai-reading" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              ✨ ผู้ช่วย AI
+            </Link>
             <Link href="/workspace" className="workspace-nav-btn">
               ⚡ AI Workspace
             </Link>

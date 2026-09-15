@@ -182,19 +182,19 @@ export default function MorphingNavbar({
         >
           AI Workspace ✦
         </Link>
-        {onAIChat && (
-          <button
-            type="button"
-            className="nav-ai-button font-thai-reading"
-            onClick={() => {
-              setOpen(false);
-              onAIChat();
-            }}
-          >
-            <span aria-hidden="true">✨</span>
-            <span>ผู้ช่วย AI</span>
-          </button>
-        )}
+        <Link
+          href="/ai-assistant"
+          role="button"
+          onClick={() => {
+            setOpen(false);
+            onAIChat?.();
+          }}
+          className="nav-ai-button font-thai-reading"
+          aria-label="ผู้ช่วย AI"
+        >
+          <span aria-hidden="true">✨</span>
+          <span>ผู้ช่วย AI</span>
+        </Link>
       </nav>
       {(
         <button

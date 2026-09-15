@@ -223,7 +223,6 @@ export default function SearchExperience() {
       <MorphingNavbar
         navRef={nav}
         busy={isCinematic(model.state)}
-        onAIChat={() => handleOpenAIChat()}
         onHome={(e) => {
           e.preventDefault();
           back();
