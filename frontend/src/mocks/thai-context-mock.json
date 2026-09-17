@@ -1,0 +1,99 @@
+{
+  "meaning_search": {
+    "query_understanding": {
+      "raw_query": "อยากบอกว่าคนนี้ทำงานได้ดี ใช้ทรัพยากรน้อย แต่ไม่อยากใช้คำว่าเก่ง",
+      "detected_meaning": "ทำงานได้ผลลัพธ์ดีโดยใช้ทรัพยากรอย่างคุ้มค่า",
+      "context": "การปฏิบัติงานในองค์กร / บริหารจัดการ",
+      "excluded_words": ["เก่ง"]
+    },
+    "recommendations": [
+      {
+        "headword": "สัมฤทธิผล",
+        "score": 0.96,
+        "pos": "น.",
+        "definition": "ผลที่สำเร็จตามความประสงค์อย่างสมบูรณ์",
+        "edition_name": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+        "ai_explanation": "คำนี้เน้นถึงผลสำเร็จของงานที่มีประสิทธิภาพ เหมาะกับบริบททางการ และไม่ใช่คำว่า 'เก่ง'",
+        "evidence": {
+          "source_book": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+          "edition_year": 2554,
+          "page_number": 1208,
+          "exact_quote": "สัมฤทธิผล น. ผลที่สำเร็จตามความประสงค์",
+          "is_official": true
+        }
+      },
+      {
+        "headword": "มัธยัสถ์",
+        "score": 0.84,
+        "pos": "ก.",
+        "definition": "ใช้จ่ายอย่างประหยัด ระมัดระวัง ไม่ฟุ่มเฟือย",
+        "edition_name": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+        "ai_explanation": "เน้นด้านการประหยัดทรัพยากรและงบประมาณ เหมาะกับการประเมินด้านความคุ้มค่า",
+        "evidence": {
+          "source_book": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+          "edition_year": 2554,
+          "page_number": 864,
+          "exact_quote": "มัธยัสถ์ ก. ใช้จ่ายอย่างประหยัด ระมัดระวัง",
+          "is_official": true
+        }
+      }
+    ],
+    "guardrail": {
+      "passed": true,
+      "confidence_score": 0.96,
+      "abstention_triggered": false
+    }
+  },
+  "evolution_showcase": {
+    "headword": "ดิจิทัล",
+    "timeline": [
+      {
+        "year": 2542,
+        "edition_name": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒",
+        "status": "NOT_FOUND",
+        "definition": "ยังไม่ปรากฏคำว่า 'ดิจิทัล' ในพจนานุกรมฉบับนี้",
+        "page_number": null
+      },
+      {
+        "year": 2554,
+        "edition_name": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔",
+        "status": "ADDED",
+        "definition": "การแสดงข้อมูลด้วยระบบตัวเลขสากลในการประมวลผลของเครื่องคอมพิวเตอร์",
+        "page_number": 452
+      },
+      {
+        "year": 2569,
+        "edition_name": "พจนานุกรม ฉบับราชบัณฑิตยสภา พ.ศ. ๒๕๖๙ (ฉบับดิจิทัล)",
+        "status": "MODIFIED",
+        "definition": "เทคโนโลยีสารสนเทศที่เชื่อมโยงระบบคอมพิวเตอร์ อินเทอร์เน็ต เครือข่าย และระบบเสมือนจริงในชีวิตประจำวัน",
+        "page_number": 510
+      }
+    ]
+  },
+  "dialect_showcase": {
+    "standard_word": "คิดถึง",
+    "dialects": [
+      {
+        "region": "เหนือ",
+        "dialect_word": "กึ๊ดฮอด",
+        "ipa": "kɯt˦.hɔːt̚˥",
+        "is_official": true,
+        "source": "พจนานุกรมภาษาถิ่นล้านนา (ฉบับสถาบันภาษา)"
+      },
+      {
+        "region": "อีสาน",
+        "dialect_word": "คึดฮอด",
+        "ipa": "kʰɯt˦.hɔːt̚˥",
+        "is_official": true,
+        "source": "พจนานุกรมภาษาถิ่นอีสาน-ไทย"
+      },
+      {
+        "region": "ใต้",
+        "dialect_word": "ห่วงหา / นึกถึง",
+        "ipa": "huaŋ˨˩.haː˩",
+        "is_official": false,
+        "source": "AI Inferred (ภาษาปากถิ่นใต้ทั่วไป)"
+      }
+    ]
+  }
+}
