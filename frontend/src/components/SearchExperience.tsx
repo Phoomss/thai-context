@@ -11,6 +11,7 @@ import AIAssistantDrawer from "./ai/AIAssistantDrawer";
 import ContextComparator from "./compare/ContextComparator";
 import EvolutionExplorer from "./evolution/EvolutionExplorer";
 import DialectExplorer from "./dialect/DialectExplorer";
+import ModernVocabularyExplorer from "./modern-vocabulary/ModernVocabularyExplorer";
 import DictionaryBrowser from "./dictionary/DictionaryBrowser";
 import Footer from "./layout/Footer";
 import type { Recommendation } from "@/lib/search-types";
@@ -54,6 +55,18 @@ export default function SearchExperience() {
     setAiAssistantContext(ctx);
     setAiAssistantMessage(message ?? "");
     setAiAssistantOpen(true);
+  }, []);
+
+  const handleCompareWithFormal = useCallback((modernTerm: string, formalCandidate?: string) => {
+    if (formalCandidate) {
+      setCompareSelected([modernTerm, formalCandidate]);
+    } else {
+      setCompareSelected([modernTerm]);
+    }
+    const compareEl = document.getElementById("compare");
+    if (compareEl) {
+      compareEl.scrollIntoView({ behavior: "smooth" });
+    }
   }, []);
 
   const floating =
@@ -280,6 +293,7 @@ export default function SearchExperience() {
           />
           <EvolutionExplorer word={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
           <DialectExplorer currentWord={model.result?.recommendations[0]?.headword} />
+          <ModernVocabularyExplorer onCompareWithFormal={handleCompareWithFormal} />
           <DictionaryBrowser initialWord={model.result?.recommendations[0]?.headword ?? "ประสิทธิภาพ"} />
           <Footer />
         </div>

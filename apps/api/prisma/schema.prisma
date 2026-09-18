@@ -66,6 +66,7 @@ model Word {
   translations  WordTranslation[]
   signEntries   SignLanguageEntry[]
   signResources SignResource[]
+  modernTerms   ModernTerm[]
 
   @@index([headword])
   @@index([headwordClean])
@@ -349,5 +350,151 @@ model TtsCache {
   createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("tts_cache")
+}
+
+model ModernTerm {
+  id              String                   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  term            String                   @db.VarChar(255)
+  normalizedTerm  String                   @map("normalized_term") @db.VarChar(255)
+  slug            String                   @unique @db.VarChar(255)
+  language        String                   @default("th") @db.VarChar(10)
+  termType        String                   @default("WORD") @map("term_type") @db.VarChar(50) // 'WORD', 'PHRASE', 'SLANG', 'ABBREVIATION', 'ACRONYM', 'BORROWED_WORD', 'TECHNICAL_TERM', 'INTERNET_TERM', 'PROPER_NOUN'
+  status          String                   @default("COMMON") @map("status") @db.VarChar(50) // 'EMERGING', 'COMMON', 'TRENDING', 'SPECIALIZED', 'SLANG', 'TECHNICAL', 'BORROWED', 'ABBREVIATION', 'ACRONYM', 'BRAND_DERIVED', 'COMMUNITY_TERM'
+  description     String?                  @db.Text
+  origin          String                   @default("UNKNOWN") @map("origin") @db.VarChar(50) // 'THAI', 'ENGLISH_BORROWING', 'OTHER_LANGUAGE', 'INTERNET', 'SOCIAL_MEDIA', 'TECHNOLOGY', 'COMMUNITY', 'UNKNOWN'
+  register        String?                  @default("NEUTRAL") @map("register") @db.VarChar(50) // 'FORMAL', 'SEMI_FORMAL', 'NEUTRAL', 'INFORMAL', 'SLANG', 'SPECIALIZED'
+  audience        String?                  @default("GENERAL") @map("audience") @db.VarChar(50) // 'GENERAL', 'STUDENT', 'PROFESSIONAL', 'BUSINESS', 'TECHNICAL', 'SOCIAL_MEDIA', 'GAMING', 'ACADEMIC'
+  firstSeenAt     DateTime?                @map("first_seen_at") @db.Date
+  lastSeenAt      DateTime?                @map("last_seen_at") @db.Date
+  sourceCount     Int                      @default(1) @map("source_count")
+  confidence      Decimal                  @default(1.0000) @map("confidence") @db.Decimal(5, 4)
+  isSearchable    Boolean                  @default(true) @map("is_searchable")
+  officialWordId  String?                  @map("official_word_id") @db.Uuid
+  transliteration String?                  @db.VarChar(255)
+  englishMeaning  String?                  @map("english_meaning") @db.Text
+  pronunciation   String?                  @db.VarChar(255)
+  usageWarning    String?                  @map("usage_warning") @db.Text
+  createdAt       DateTime                 @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime                 @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  officialWord           Word?                     @relation(fields: [officialWordId], references: [id], onDelete: SetNull)
+  sources                ModernTermSource[]
+  definitions            ModernTermDefinition[]
+  categories             ModernTermCategory[]
+  examples               ModernTermExample[]
+  relationshipsAsSource  ModernTermRelationship[]  @relation("SourceModernTerm")
+  relationshipsAsTarget  ModernTermRelationship[]  @relation("TargetModernTerm")
+
+  @@index([term])
+  @@index([normalizedTerm])
+  @@index([status])
+  @@index([termType])
+  @@index([origin])
+  @@index([officialWordId])
+  @@map("modern_terms")
+}
+
+model ModernTermSource {
+  id                 String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  modernTermId       String     @map("modern_term_id") @db.Uuid
+  sourceType         String     @default("DEMO") @map("source_type") @db.VarChar(50) // 'OFFICIAL', 'PUBLIC_DATASET', 'COMMUNITY', 'EXTERNAL_SOURCE', 'USER_SUBMITTED', 'RESEARCH', 'DEMO', 'AI_GENERATED'
+  sourceName         String     @map("source_name") @db.VarChar(255)
+  sourceUrl          String?    @map("source_url") @db.Text
+  sourceDate         String?    @map("source_date") @db.VarChar(50)
+  excerpt            String?    @db.Text
+  license            String?    @default("CC-BY-SA 4.0") @db.VarChar(100)
+  verificationStatus String     @default("UNVERIFIED") @map("verification_status") @db.VarChar(50) // 'VERIFIED', 'UNVERIFIED', 'PENDING_REVIEW', 'REJECTED'
+  createdAt          DateTime   @default(now()) @map("created_at") @db.Timestamptz
+
+  modernTerm         ModernTerm @relation(fields: [modernTermId], references: [id], onDelete: Cascade)
+
+  @@index([modernTermId])
+  @@index([sourceType])
+  @@index([verificationStatus])
+  @@map("modern_term_sources")
+}
+
+model ModernTermDefinition {
+  id             String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  modernTermId   String     @map("modern_term_id") @db.Uuid
+  definition     String     @db.Text
+  definitionType String     @default("SOURCE_DEFINED") @map("definition_type") @db.VarChar(50) // 'SOURCE_DEFINED', 'AI_GENERATED', 'EDITOR_REVIEWED', 'COMMUNITY_DEFINED'
+  sourceId       String?    @map("source_id") @db.Uuid
+  generatedBy    String?    @map("generated_by") @db.VarChar(100)
+  verified       Boolean    @default(false)
+  createdAt      DateTime   @default(now()) @map("created_at") @db.Timestamptz
+
+  modernTerm     ModernTerm @relation(fields: [modernTermId], references: [id], onDelete: Cascade)
+
+  @@index([modernTermId])
+  @@map("modern_term_definitions")
+}
+
+model ModernTermCategory {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  modernTermId String     @map("modern_term_id") @db.Uuid
+  category     String     @db.VarChar(50) // 'TECHNOLOGY', 'AI', 'SOCIAL_MEDIA', 'INTERNET', 'BUSINESS', 'FINANCE', 'GAMING', 'EDUCATION', 'SCIENCE', 'ENTERTAINMENT', 'LIFESTYLE', 'YOUTH', 'POP_CULTURE', 'WORKPLACE', 'HEALTH', 'TRANSPORTATION', 'FOOD', 'OTHER'
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz
+
+  modernTerm   ModernTerm @relation(fields: [modernTermId], references: [id], onDelete: Cascade)
+
+  @@index([modernTermId])
+  @@index([category])
+  @@map("modern_term_categories")
+}
+
+model ModernTermExample {
+  id                String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  modernTermId      String     @map("modern_term_id") @db.Uuid
+  exampleText       String     @map("example_text") @db.Text
+  contextNote       String?    @map("context_note") @db.Text
+  sourceAttribution String?    @map("source_attribution") @db.VarChar(255)
+  register          String?    @db.VarChar(50)
+  createdAt         DateTime   @default(now()) @map("created_at") @db.Timestamptz
+
+  modernTerm        ModernTerm @relation(fields: [modernTermId], references: [id], onDelete: Cascade)
+
+  @@index([modernTermId])
+  @@map("modern_term_examples")
+}
+
+model ModernTermRelationship {
+  id                 String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  modernTermId       String      @map("modern_term_id") @db.Uuid
+  targetTerm         String      @map("target_term") @db.VarChar(255)
+  targetModernTermId String?     @map("target_modern_term_id") @db.Uuid
+  relationshipType   String      @map("relationship_type") @db.VarChar(50) // 'SYNONYM', 'RELATED', 'OPPOSITE', 'FORMAL_ALTERNATIVE', 'INFORMAL_ALTERNATIVE', 'TECHNICAL_VARIANT', 'BORROWED_FORM', 'ABBREVIATION_OF'
+  sourceType         String      @default("AI_INFERRED") @map("source_type") @db.VarChar(50) // 'OFFICIAL_DATA', 'COMMUNITY', 'AI_INFERRED'
+  confidence         Decimal     @default(0.8500) @db.Decimal(5, 4)
+  notes              String?     @db.Text
+  createdAt          DateTime    @default(now()) @map("created_at") @db.Timestamptz
+
+  sourceModernTerm   ModernTerm  @relation("SourceModernTerm", fields: [modernTermId], references: [id], onDelete: Cascade)
+  targetModernTerm   ModernTerm? @relation("TargetModernTerm", fields: [targetModernTermId], references: [id], onDelete: SetNull)
+
+  @@index([modernTermId])
+  @@index([targetTerm])
+  @@map("modern_term_relationships")
+}
+
+model ModernTermSubmission {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  term            String    @db.VarChar(255)
+  definition      String    @db.Text
+  context         String?   @db.Text
+  example         String?   @db.Text
+  category        String?   @db.VarChar(50)
+  sourceName      String?   @map("source_name") @db.VarChar(255)
+  sourceUrl       String?   @map("source_url") @db.Text
+  submitterName   String?   @map("submitter_name") @db.VarChar(100)
+  submitterEmail  String?   @map("submitter_email") @db.VarChar(255)
+  status          String    @default("PENDING_REVIEW") @db.VarChar(50) // 'PENDING_REVIEW', 'APPROVED', 'REJECTED'
+  reviewNotes     String?   @map("review_notes") @db.Text
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  reviewedAt      DateTime? @map("reviewed_at") @db.Timestamptz
+
+  @@index([status])
+  @@index([term])
+  @@map("modern_term_submissions")
 }
 

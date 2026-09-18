@@ -12,6 +12,7 @@ import { DialectModule } from './modules/dialect/dialect.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
 import { TtsModule } from './modules/tts/tts.module';
 import { AccessibilityModule } from './modules/accessibility/accessibility.module';
+import { ModernVocabularyModule } from './modules/modern-vocabulary/modern-vocabulary.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { AccessibilityModule } from './modules/accessibility/accessibility.modul
     FeedbackModule,
     TtsModule,
     AccessibilityModule,
+    ModernVocabularyModule,
   ],
 })
 export class AppModule {}
