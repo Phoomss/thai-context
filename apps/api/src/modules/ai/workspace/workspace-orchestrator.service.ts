@@ -136,6 +136,7 @@ export class WorkspaceOrchestratorService {
       generated_content: context.generatedContent,
       language_check: context.languageCheck,
       language_bridge: context.languageBridge,
+      dialect_discovery: context.dialectDiscovery,
       co_thinking: coThinking,
       evidence: context.evidence,
       confidence: context.confidence,
@@ -191,8 +192,27 @@ export class WorkspaceOrchestratorService {
       text.includes('ถูกไหม') ||
       text.includes('ถูกต้อง');
 
+    const isDialect =
+      text.includes('ภาษาถิ่น') ||
+      text.includes('ถิ่น') ||
+      text.includes('ภาคอีสาน') ||
+      text.includes('ภาษาอีสาน') ||
+      text.includes('ภาคเหนือ') ||
+      text.includes('ภาษาเหนือ') ||
+      text.includes('คำเมือง') ||
+      text.includes('ภาคใต้') ||
+      text.includes('ภาษาใต้') ||
+      text.includes('แต่ละภาค') ||
+      text.includes('ทุกภาค') ||
+      text.includes('แหลง') ||
+      text.includes('อู้') ||
+      text.includes('เว้า');
+
     // Intent resolution
-    if (isRewrite) {
+    if (isDialect) {
+      context.intent = 'DIALECT';
+      tasks.push('CONTEXT_ANALYSIS', 'DIALECT');
+    } else if (isRewrite) {
       context.intent = 'REWRITE';
       tasks.push('REWRITE', 'LANGUAGE_CHECK');
     } else if (isLanguageCheck) {
@@ -283,6 +303,28 @@ export class WorkspaceOrchestratorService {
       parts.push(`- **Nuance & Concept:** ${context.languageBridge.english_explanation}`);
       parts.push(`- **Cultural Context:** ${context.languageBridge.cultural_context}`);
       parts.push(`- **Example:** ${context.languageBridge.example}`);
+    }
+
+    // Dialect Discovery & Regional Comparison
+    if (context.dialectDiscovery) {
+      const dd = context.dialectDiscovery;
+      if (dd.type === 'REGIONAL_COMPARISON' && dd.standardWord) {
+        parts.push(`\n### 🗺️ การค้นพบคำภาษาถิ่น ๔ ภาค (แนวคิด: "${dd.standardWord}"):`);
+        if (dd.comparison?.results) {
+          for (const cr of dd.comparison.results) {
+            parts.push(`- **${cr.region_name}:** "${cr.term}" — ${cr.definition} *(บริบท: ${cr.usage_context}, อ้างอิง: ${cr.source})*`);
+          }
+        }
+        if (dd.explanation) {
+          parts.push(`\n${dd.explanation}`);
+        }
+      } else if (dd.results && dd.results.length > 0) {
+        parts.push(`\n### 🗺️ ผลการค้นพบคำภาษาถิ่นตามความหมาย "${dd.detectedMeaning || ''}":`);
+        for (const r of dd.results.slice(0, 5)) {
+          const prov = r.province ? ` จ.${r.province}` : '';
+          parts.push(`- **${r.dialectWord}** [${r.regionName}${prov}]: ${r.localMeaning} *(บริบท: ${r.context || 'ภาษาพูด'})*`);
+        }
+      }
     }
 
     return parts.join('\n');

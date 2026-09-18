@@ -67,6 +67,8 @@ model Word {
   signEntries   SignLanguageEntry[]
   signResources SignResource[]
   modernTerms   ModernTerm[]
+  dialectEntries DialectEntry[]
+  dialectRelationships DialectRelationship[]
 
   @@index([headword])
   @@index([headwordClean])
@@ -130,12 +132,18 @@ model Example {
 }
 
 model DialectRegion {
-  id          String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  code        String         @unique @db.VarChar(50)
-  nameThai    String         @map("name_thai") @db.VarChar(100)
-  description String?        @db.Text
-  createdAt   DateTime       @default(now()) @map("created_at") @db.Timestamptz
-  entries     DialectEntry[]
+  id              String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code            String         @unique @db.VarChar(50)
+  nameThai        String         @map("name_thai") @db.VarChar(100)
+  type            String         @default("REGION") @map("type") @db.VarChar(50) // 'REGION', 'PROVINCE'
+  parentRegionId  String?        @map("parent_region_id") @db.Uuid
+  description     String?        @db.Text
+  createdAt       DateTime       @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime       @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  entries         DialectEntry[] @relation("DialectEntryRegion")
+  provinceEntries DialectEntry[] @relation("DialectEntryProvince")
+  parentRegion    DialectRegion? @relation("RegionHierarchy", fields: [parentRegionId], references: [id], onDelete: SetNull)
+  subRegions      DialectRegion[] @relation("RegionHierarchy")
 
   @@map("dialect_regions")
 }
@@ -144,21 +152,103 @@ model DialectEntry {
   id                String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   regionId          String            @map("region_id") @db.Uuid
   editionId         String            @map("edition_id") @db.Uuid
+  wordId            String?           @map("word_id") @db.Uuid
+  provinceId        String?           @map("province_id") @db.Uuid
   dialectWord       String            @map("dialect_word") @db.VarChar(255)
   dialectWordClean  String            @map("dialect_word_clean") @db.VarChar(255)
   ipaPhonetic       String?           @map("ipa_phonetic") @db.VarChar(255)
   localMeaning      String            @map("local_meaning") @db.Text
   culturalNotes     String?           @map("cultural_notes") @db.Text
+  province          String?           @db.VarChar(100)
+  languageVariant   String?           @map("language_variant") @db.VarChar(100)
+  partOfSpeech      String?           @map("part_of_speech") @db.VarChar(50)
+  status            String            @default("OFFICIAL_SOURCE") @db.VarChar(50) // 'OFFICIAL_SOURCE', 'VERIFIED', 'EXTERNAL_SOURCE', 'AI_INFERRED', 'UNVERIFIED'
+  context           String?           @db.VarChar(50) // 'FORMAL', 'NEUTRAL', 'INFORMAL', 'CONVERSATIONAL', 'LOCAL', 'TRADITIONAL', 'CULTURAL'
   createdAt         DateTime          @default(now()) @map("created_at") @db.Timestamptz
   updatedAt         DateTime          @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
-  region            DialectRegion     @relation(fields: [regionId], references: [id], onDelete: Restrict)
+  region            DialectRegion     @relation("DialectEntryRegion", fields: [regionId], references: [id], onDelete: Restrict)
+  provinceRegion    DialectRegion?    @relation("DialectEntryProvince", fields: [provinceId], references: [id], onDelete: SetNull)
   edition           DictionaryEdition @relation(fields: [editionId], references: [id], onDelete: Restrict)
+  word              Word?             @relation(fields: [wordId], references: [id], onDelete: SetNull)
   semanticMappings  SemanticMapping[]
+  definitions       DialectDefinition[]
+  sources           DialectSource[]
+  examples          DialectExample[]
+  relationships     DialectRelationship[]
 
   @@index([regionId])
   @@index([editionId])
+  @@index([wordId])
+  @@index([provinceId])
   @@index([dialectWord])
   @@map("dialect_entries")
+}
+
+model DialectDefinition {
+  id              String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  dialectEntryId  String         @map("dialect_entry_id") @db.Uuid
+  definition      String         @db.Text
+  definitionType  String         @default("SOURCE_DEFINED") @map("definition_type") @db.VarChar(50) // 'SOURCE_DEFINED', 'EDITOR_REVIEWED', 'AI_GENERATED'
+  sourceId        String?        @map("source_id") @db.Uuid
+  verified        Boolean        @default(true)
+  createdAt       DateTime       @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime       @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  dialectEntry    DialectEntry   @relation(fields: [dialectEntryId], references: [id], onDelete: Cascade)
+  source          DialectSource? @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+
+  @@index([dialectEntryId])
+  @@map("dialect_definitions")
+}
+
+model DialectSource {
+  id                 String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  dialectEntryId     String              @map("dialect_entry_id") @db.Uuid
+  sourceType         String              @map("source_type") @db.VarChar(50) // 'ROYAL_SOCIETY', 'ORGANIZER_DATA', 'DIALECT_DICTIONARY', 'RESEARCH_DATA', 'OPEN_DATA', 'EXTERNAL', 'DEMO'
+  sourceName         String              @map("source_name") @db.VarChar(255)
+  sourceUrl          String?             @map("source_url") @db.Text
+  edition            String?             @db.VarChar(100)
+  sourceDate         DateTime?           @map("source_date") @db.Date
+  license            String?             @db.VarChar(100)
+  verificationStatus String              @default("VERIFIED") @map("verification_status") @db.VarChar(50) // 'VERIFIED', 'OFFICIAL', 'EXTERNAL', 'UNVERIFIED', 'DEMO'
+  createdAt          DateTime            @default(now()) @map("created_at") @db.Timestamptz
+  dialectEntry       DialectEntry        @relation(fields: [dialectEntryId], references: [id], onDelete: Cascade)
+  definitions        DialectDefinition[]
+
+  @@index([dialectEntryId])
+  @@map("dialect_sources")
+}
+
+model DialectExample {
+  id                String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  dialectEntryId    String       @map("dialect_entry_id") @db.Uuid
+  exampleText       String       @map("example_text") @db.Text
+  meaningTh         String?      @map("meaning_th") @db.Text
+  contextNote       String?      @map("context_note") @db.Text
+  sourceAttribution String?      @map("source_attribution") @db.VarChar(255)
+  createdAt         DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  dialectEntry      DialectEntry @relation(fields: [dialectEntryId], references: [id], onDelete: Cascade)
+
+  @@index([dialectEntryId])
+  @@map("dialect_examples")
+}
+
+model DialectRelationship {
+  id               String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  dialectEntryId   String       @map("dialect_entry_id") @db.Uuid
+  targetType       String       @default("STANDARD_WORD") @map("target_type") @db.VarChar(50) // 'STANDARD_WORD', 'DIALECT_WORD', 'CONCEPT'
+  targetId         String?      @map("target_id") @db.VarChar(255)
+  standardWordId   String?      @map("standard_word_id") @db.Uuid
+  relationshipType String       @map("relationship_type") @db.VarChar(50) // 'STANDARD_EQUIVALENT', 'MEANING_EQUIVALENT', 'RELATED', 'REGIONAL_VARIANT', 'SYNONYM', 'SIMILAR_MEANING', 'OPPOSITE', 'AI_INFERRED'
+  confidenceScore  Decimal      @default(1.0000) @map("confidence_score") @db.Decimal(5, 4)
+  notes            String?      @db.Text
+  isInferred       Boolean      @default(false) @map("is_inferred")
+  createdAt        DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  dialectEntry     DialectEntry @relation(fields: [dialectEntryId], references: [id], onDelete: Cascade)
+  standardWord     Word?        @relation(fields: [standardWordId], references: [id], onDelete: SetNull)
+
+  @@index([dialectEntryId])
+  @@index([standardWordId])
+  @@map("dialect_relationships")
 }
 
 model SemanticMapping {

@@ -8,6 +8,8 @@ import { WritingAgent } from './agents/writing.agent';
 import { RewriteAgent } from './agents/rewrite.agent';
 import { LanguageCheckerAgent } from './agents/language-checker.agent';
 import { LanguageBridgeAgent } from './agents/language-bridge.agent';
+import { DialectAgent } from './agents/dialect.agent';
+import { DialectService } from '../../dialect/dialect.service';
 import { PrismaService } from '../../../database/prisma.service';
 import { AIService } from '../ai.service';
 
@@ -25,6 +27,13 @@ describe('WorkspaceOrchestratorService (Section 37 Test Suite)', () => {
       getRecommendations: jest.fn().mockResolvedValue({ recommendations: [] }),
     };
 
+    const mockDialectService = {
+      searchMeaning: jest.fn().mockResolvedValue({ results: [], regional_grouped: {} }),
+      compareDialects: jest.fn().mockResolvedValue({ results: [] }),
+      getStandardDialectMapping: jest.fn().mockResolvedValue({ has_mappings: false, mappings: [] }),
+      explainDialects: jest.fn().mockResolvedValue({ answer: '', grounded: false }),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         WorkspaceOrchestratorService,
@@ -36,6 +45,8 @@ describe('WorkspaceOrchestratorService (Section 37 Test Suite)', () => {
         RewriteAgent,
         LanguageCheckerAgent,
         LanguageBridgeAgent,
+        DialectAgent,
+        { provide: DialectService, useValue: mockDialectService },
         { provide: PrismaService, useValue: mockPrisma },
         { provide: AIService, useValue: mockAIService },
       ],
