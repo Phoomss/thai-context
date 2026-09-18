@@ -220,29 +220,6 @@ def _retrieve_chat_evidences(payload: ChatRequest) -> List[EvidenceItem]:
                         seen_words.add(m.word)
                         candidates.append(m)
 
-    # Fallback mock definitions for key core terms if nothing was retrieved
-    if not candidates or max((c.score for c in candidates), default=0.0) < 0.60:
-        if "ประสิทธิภาพ" in payload.message or (payload.word and "ประสิทธิภาพ" in payload.word):
-            candidates.append(
-                SemanticSearchResult(
-                    id="ROYAL-2554-001",
-                    word="ประสิทธิภาพ",
-                    definition="ความสามารถที่ทำให้เกิดผลสัมฤทธิ์ในการปฏิบัติงานโดยใช้ทรัพยากรและเวลาอย่างคุ้มค่าที่สุด",
-                    edition="2554",
-                    score=0.98
-                )
-            )
-        if "ประสิทธิผล" in payload.message:
-            candidates.append(
-                SemanticSearchResult(
-                    id="ROYAL-2554-002",
-                    word="ประสิทธิผล",
-                    definition="ผลสำเร็จตามความมุ่งหมาย, ผลที่เกิดขึ้นตามเป้าหมายที่ตั้งไว้",
-                    edition="2554",
-                    score=0.95
-                )
-            )
-
     evidences = [
         EvidenceItem(
             word=c.word,

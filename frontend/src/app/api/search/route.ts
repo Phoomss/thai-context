@@ -131,15 +131,19 @@ export async function POST(request: Request) {
 
   try {
     let rawData: any = null;
-    const meaningResponse = await fetch(meaningEndpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query: cleanQuery }),
-      cache: "no-store",
-      signal: AbortSignal.any([request.signal, AbortSignal.timeout(7000)]),
-    });
-    if (meaningResponse.ok) {
-      rawData = await meaningResponse.json();
+    try {
+      const meaningResponse = await fetch(meaningEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: cleanQuery }),
+        cache: "no-store",
+        signal: AbortSignal.any([request.signal, AbortSignal.timeout(12000)]),
+      });
+      if (meaningResponse.ok) {
+        rawData = await meaningResponse.json();
+      }
+    } catch {
+      // Meaning search timed out or was unavailable, will fall back to live DB keyword search
     }
 
     // If meaning search yielded no results, fallback to keyword search on official database
@@ -155,16 +159,20 @@ export async function POST(request: Request) {
         : 0;
 
     if (resultsCount === 0) {
-      const kwResponse = await fetch(keywordUrl, {
-        headers: { Accept: "application/json" },
-        cache: "no-store",
-        signal: AbortSignal.any([request.signal, AbortSignal.timeout(4000)]),
-      });
-      if (kwResponse.ok) {
-        const kwData = await kwResponse.json();
-        if (Array.isArray(kwData?.results) && kwData.results.length > 0) {
-          rawData = kwData;
+      try {
+        const kwResponse = await fetch(keywordUrl, {
+          headers: { Accept: "application/json" },
+          cache: "no-store",
+          signal: AbortSignal.any([request.signal, AbortSignal.timeout(5000)]),
+        });
+        if (kwResponse.ok) {
+          const kwData = await kwResponse.json();
+          if (Array.isArray(kwData?.results) && kwData.results.length > 0) {
+            rawData = kwData;
+          }
         }
+      } catch {
+        // Keyword search failed
       }
     }
 
