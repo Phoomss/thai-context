@@ -22,8 +22,10 @@ const CATEGORIES = [
   { id: "FANDOM", label: "🌟 แฟนดอม" },
 ];
 
+const EMPTY_TERMS: ModernTerm[] = [];
+
 export default function ModernVocabularyExplorer({
-  initialTerms = [],
+  initialTerms = EMPTY_TERMS,
   onCompareWithFormal,
 }: ModernVocabularyExplorerProps) {
   const [terms, setTerms] = useState<ModernTerm[]>(initialTerms);
@@ -38,13 +40,22 @@ export default function ModernVocabularyExplorer({
   const [activeDetailTerm, setActiveDetailTerm] = useState<ModernTerm | null>(null);
   const [isSuggestModalOpen, setIsSuggestModalOpen] = useState(false);
 
-  // Fetch terms on mount if initialTerms is empty
+  // Sync if initialTerms prop is provided/updated from outside
+  useEffect(() => {
+    if (initialTerms && initialTerms.length > 0) {
+      setTerms(initialTerms);
+      setLoading(false);
+    }
+  }, [initialTerms]);
+
+  // Fetch terms once on mount only if initialTerms is empty
   useEffect(() => {
     if (initialTerms.length > 0) return;
     if (typeof window === "undefined" || process.env.NODE_ENV === "test") {
       setLoading(false);
       return;
     }
+    let isMounted = true;
     setLoading(true);
     fetch("/api/v1/modern-vocabulary?limit=50")
       .then((res) => {
@@ -52,15 +63,21 @@ export default function ModernVocabularyExplorer({
         return res.json();
       })
       .then((data) => {
-        if (data && Array.isArray(data.items)) {
+        if (isMounted && data && Array.isArray(data.items)) {
           setTerms(data.items);
         }
       })
       .catch(() => {
         // Silently catch in offline or testing
       })
-      .finally(() => setLoading(false));
-  }, [initialTerms]);
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Client-side filtering and sorting for instant responsiveness
   const filteredTerms = useMemo(() => {
