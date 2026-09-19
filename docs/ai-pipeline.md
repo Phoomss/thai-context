@@ -77,10 +77,28 @@
 - **OpenAI Embedding**:
   - โมเดล `text-embedding-3-small` (1,536 มิติ)
 
-### 3.2 LLM Providers
-- **Local Grounded Template Synthesizer (ค่าเริ่มต้น)**:
-  - สังเคราะห์คำตอบตามโครงสร้าง Template ภาษาไทยที่เข้มงวด ปลอดภัย ไร้ Hallucination 100%
-- **Google Gemini LLM**:
-  - โมเดล `gemini-1.5-flash` สำหรับการอธิบายความแตกต่างและการตอบคำถามที่สละสลวย
-- **OpenAI LLM**:
-  - โมเดล `gpt-4o-mini`
+### 3.2 LLM Providers & Centralized Model Router
+ระบบเชื่อมต่อ LLM ผ่าน **Model Routing Layer** โดยไม่ hard-code ชื่อโมเดลลงใน Sub-Agent:
+- **FAST Tier**: `gemini-2.5-flash-lite` (งานตัดต่อข้อความ แปลงรูปประโยคสั้นๆ และงานเข้าถึง)
+- **STANDARD Tier**: `gemini-2.5-flash` (งานค้นพบคำศัพท์, วิเคราะห์บริบท, RAG, ตรวจทานภาษา)
+- **REASONING Tier**: `gemini-2.5-pro` (งานเปรียบเทียบคำศัพท์วิจัยเชิงลึก, ยกร่างเอกสารทางการ)
+- **Local Fallback Synthesizer**: สังเคราะห์คำตอบตามโครงสร้าง Template ปลอดภัย ไร้ Hallucination เมื่อรันแบบ Offline
+
+---
+
+## 4. สถาปัตยกรรม Sub-Agent ทั้ง 11 ตัว และ Evidence Guard
+
+1. **WordDiscoveryAgent** (`STANDARD`): จับคู่คำศัพท์จากความหมายและเจตนา อิงหลักฐานพจนานุกรม
+2. **ContextAgent** (`STANDARD`): วิเคราะห์ระดับภาษา (Academic, Business, Government, Casual) และกลุ่มเป้าหมาย
+3. **WritingAgent** (`STANDARD` $\rightarrow$ `REASONING`): สร้างประโยคและย่อหน้าทางการ ยกระดับเป็น Pro เมื่องานมีข้อจำกัดเชิงวิชาการ
+4. **RewriteAgent** (`STANDARD` $\rightarrow$ `FAST`): ปรับปรุงข้อความให้สั้นลง กระชับ หรือเป็นทางการ
+5. **LanguageCheckerAgent** (`STANDARD`): ตรวจจับคำฟุ่มเฟือยและสำนวนแปล ผ่าน Rule Engine และ LLM
+6. **WordCompareAgent** (`STANDARD` $\rightarrow$ `REASONING`): เปรียบเทียบความแตกต่าง (เช่น ประสิทธิภาพ vs ประสิทธิผล)
+7. **DialectAgent** (`STANDARD`): สังเคราะห์ภาษาถิ่นจากฐานข้อมูลที่ผ่านการรับรอง ห้ามมโนคำถิ่นเด็ดขาด
+8. **ModernVocabularyAgent** (`STANDARD`): วิเคราะห์คำสแลงและศัพท์บัญญัติใหม่ พร้อมระบุ Provenance ชัดเจน
+9. **LanguageBridgeAgent** (`STANDARD`): ถ่ายทอดความหมายและบริบทเชิงวัฒนธรรมไทย-อังกฤษ (Pronunciation, RTGS, Nuance)
+10. **AccessibilityAgent** (`FAST`): แปลงอักษรเบรลล์แบบ Deterministic และแคตตาล็อกภาษามือไทย 3 มิติ
+11. **RAGAgent** (`STANDARD`): สืบค้นและคัดกรอง Top-K Evidence พร้อมสังเคราะห์คำตอบที่มีการอ้างอิงชัดเจน
+
+**EvidenceGuard**: รั้วกั้นตรวจสอบว่าข้อมูลอ้างอิงตรงกับพจนานุกรมทางการหรือไม่ หากไม่พบข้อมูลจะทำการ Safe Abstention ทันที (*"ไม่พบข้อมูลที่เพียงพอจากแหล่งข้อมูลพจนานุกรมที่ระบบรองรับ"*)
+

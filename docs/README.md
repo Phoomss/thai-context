@@ -23,7 +23,9 @@
 | **10** | [**10-hackathon-execution-summary.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/10-hackathon-execution-summary.md) | **Hackathon Master Execution Summary:** สรุปพิมพ์เขียวฉบับสมบูรณ์ โครงสร้างทีม 3 คน, Vertical Slice, Tech Stack, ข้อเปรียบเทียบ ORM, Extreme Performance & Perfection |
 | **11** | [**real-data-guide.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/real-data-guide.md) | **Real Data Architecture & Usage Guide:** คู่มือการรันฐานข้อมูลจริง (PostgreSQL + pgvector), การ Ingestion คำศัพท์ 57,000+ คำ, การตั้งค่า Frontend, การสลับโหมด และการตรวจสอบความถูกต้อง |
 | **12** | [**12-api-audit-and-team-handoff.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/12-api-audit-and-team-handoff.md) | **API Audit & Engineering Team Handoff:** รายการตรวจสอบ API ที่ยังไม่ได้เชื่อมต่อ, ตารางสถานะ Matrix, และ 6 แผนงาน Actionable Tasks พร้อม Data Contract สำหรับทีมพัฒนาต่อยอด |
+| **13** | [**13-gemini-model-routing-and-subagents.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/13-gemini-model-routing-and-subagents.md) | **Gemini Model Routing & Sub-Agent Architecture:** สถาปัตยกรรม Model Router (FAST/STANDARD/REASONING), นโยบาย Fallback, Telemetry & Cost Tracking, 11 Sub-Agents และ EvidenceGuard Anti-Hallucination |
 | 📑 | [**final-requriment.md**](file:///Users/mac/Desktop/workspace/thai-context/docs/final-requriment.md) | **Master PRD (Original All-in-One):** เอกสารข้อกำหนดระบบฉบับรวมสมบูรณ์ในไฟล์เดียว |
+
 
 ---
 
