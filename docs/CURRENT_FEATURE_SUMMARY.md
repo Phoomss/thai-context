@@ -117,13 +117,20 @@ THAI CONTEXT เป็นแพลตฟอร์มพจนานุกรม�
 - ค้นหาและดูรายการคำถิ่น
 - mapping ระหว่างคำถิ่นกับภาษาไทยมาตรฐาน
 
-### AI และ NLP
+### AI และ NLP (Production-Grade Model Routing & Sub-Agent Architecture)
 
-- วิเคราะห์ query และเจตนาของผู้ใช้
-- สร้าง embeddings และค้นหาเชิงความหมายด้วย pgvector
-- จัดอันดับผลลัพธ์ตามบริบท
-- Grounded AI chat/RAG โดยอ้างอิงข้อมูลในระบบ
-- รองรับงาน RTGS, translation และการสังเคราะห์เสียงผ่าน AI service
+- **Gemini Model Routing Layer**: เลเยอร์กำหนดเส้นทางโมเดลแบบรวมศูนย์ ไม่ผูกขาดชื่อโมเดลใน Sub-Agent
+  - `FAST Tier` (`gemini-2.5-flash-lite`): สำหรับงานเบา การตัดทอนข้อความ และการเข้าถึง
+  - `STANDARD Tier` (`gemini-2.5-flash`): สำหรับงานหลัก Word Discovery, Context, RAG, Checker
+  - `REASONING Tier` (`gemini-2.5-pro`): สำหรับงานเปรียบเทียบเชิงลึก งานวิจัย และการร่างเอกสารซับซ้อน
+- **Dynamic Complexity Resolution**: ประเมินความซับซ้อนของเจตนาผู้ใช้ (`SIMPLE` $\rightarrow$ `FAST`, `NORMAL` $\rightarrow$ `STANDARD`, `COMPLEX` $\rightarrow$ `REASONING`)
+- **Controlled Retries & Fallback**: รองรับการ Retry และ Fallback เมื่อเจอ 429 Quota Exhausted หรือปัญหาเครือข่ายชั่วคราว พร้อม Logging ปลอดภัย
+- **11 Specialized Sub-Agents**:
+  - `WordDiscoveryAgent`, `ContextAgent`, `WritingAgent`, `RewriteAgent`, `LanguageCheckerAgent`
+  - `WordCompareAgent`, `DialectAgent`, `ModernVocabularyAgent`, `LanguageBridgeAgent`, `AccessibilityAgent`, `RAGAgent`
+- **Strict Evidence Guard**: ตรวจสอบความถูกต้องของข้อมูลอ้างอิงและทำ Safe Abstention เมื่อไม่มีหลักฐานพจนานุกรมรองรับ
+- **Telemetry & Cost Tracking**: บันทึก Latency, Token Usage และคำนวณต้นทุนการประมวลผลต่อคำร้องขอ
+
 
 ### Server-side TTS
 

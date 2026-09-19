@@ -337,12 +337,143 @@ event: evidence
 data: {"word":"อนุมัติ","edition":"2554","source":"สำนักงานราชบัณฑิตยสภา","definition":"ให้อำนาจกระทำการตามหน้าที่หรือระเบียบที่กำหนดไว้","source_type":"OFFICIAL","relevance":0.95}
 
 event: complete
-data: {"confidence":0.92,"confidence_level":"HIGH","grounded":true,"abstained":false,"generated_content":[{"type":"writing_suggestion","content":"คณะกรรมการได้พิจารณาตามระเบียบแล้วมีมติอนุมัติตามข้อเสนอที่เสนอมา"}]}
+---
+
+### `POST /api/v1/ai/workspace`
+รันกระบวนการ AI Language Workspace แบบหลาย Agent (Multi-Agent Pipeline) รองรับการวิเคราะห์บริบท, ค้นหาคำ, เปรียบเทียบ, ยกร่างข้อความ, ตรวจทานภาษา, และ Language Bridge
+
+**Request Body:**
+```json
+{
+  "message": "ประสิทธิภาพ หรือ ประสิทธิผล ต่างกันอย่างไร และควรใช้คำไหนในรายงานวิจัย",
+  "session_id": "session-uuid",
+  "context": {
+    "type": "academic",
+    "tone": "formal",
+    "audience": "คณะกรรมการวิจัย"
+  },
+  "selected_words": ["ประสิทธิภาพ", "ประสิทธิผล"]
+}
 ```
 
 ---
 
+### `POST /api/v1/ai/orchestrator`
+รันกระบวนการ AI Orchestrator พร้อม Dynamic Complexity Routing ไปยังโมเดลเทียร์ `FAST`, `STANDARD`, หรือ `REASONING` และตรวจสอบผ่าน `EvidenceGuard`
+
+**Request Body:**
+```json
+{
+  "message": "คำไหนเหมาะกับรายงานวิจัยแทนคำว่าเก่ง",
+  "context": {
+    "type": "academic"
+  }
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "sessionId": "b47c0ef9-...",
+  "intent": "WORD_DISCOVERY",
+  "complexity": "COMPLEX",
+  "modelTier": "REASONING",
+  "plan": {
+    "intent": "WORD_DISCOVERY",
+    "complexity": "COMPLEX",
+    "agents": ["CONTEXT", "WORD_DISCOVERY"],
+    "modelTier": "REASONING"
+  },
+  "answer": "...",
+  "evidence": [...],
+  "confidence": 0.95,
+  "confidenceLevel": "HIGH",
+  "abstained": false,
+  "agentTraces": [
+    { "agent": "CONTEXT", "status": "completed", "durationMs": 4 },
+    { "agent": "WORD_DISCOVERY", "status": "completed", "durationMs": 18 }
+  ]
+}
+```
+
+---
+
+### `POST /api/v1/ai/orchestrator/stream`
+สตรีมเหตุการณ์กระบวนการ Multi-Agent แบบ Real-time ผ่าน Server-Sent Events (SSE)
+
+**SSE Events:**
+- `event: agent.started`
+- `event: retrieval.completed`
+- `event: evidence.validated`
+- `event: agent.completed`
+- `event: generation.delta`
+- `event: generation.completed`
+
+---
+
+### `GET /api/v1/ai/models`
+แสดงรายการนโยบาย Model Policy สำหรับแต่ละ Tier (`FAST`, `STANDARD`, `REASONING`) รวมถึงชื่อโมเดล Gemini ที่คอนฟิกไว้ และสถานะ Admin Override ในปัจจุบัน
+
+**Response (200 OK):**
+```json
+{
+  "policies": {
+    "FAST": { "tier": "FAST", "modelName": "gemini-2.5-flash-lite", "temperature": 0.1, "maxOutputTokens": 1024, "fallbackTier": "STANDARD" },
+    "STANDARD": { "tier": "STANDARD", "modelName": "gemini-2.5-flash", "temperature": 0.2, "maxOutputTokens": 4096, "fallbackTier": "REASONING" },
+    "REASONING": { "tier": "REASONING", "modelName": "gemini-2.5-pro", "temperature": 0.1, "maxOutputTokens": 8192, "fallbackTier": "STANDARD" }
+  },
+  "overrides": {
+    "global": null,
+    "agents": {}
+  }
+}
+```
+
+---
+
+### `GET /api/v1/ai/telemetry`
+ดึงข้อมูลสรุปการใช้งานโมเดล (Token Usage, Latency, Error Counts, Fallback Count, Estimated Cost)
+
+**Response (200 OK):**
+```json
+{
+  "totalRequests": 128,
+  "totalTokens": 45200,
+  "totalCost": 0.0245,
+  "averageLatencyMs": 840,
+  "errorCount": 0,
+  "fallbackCount": 1,
+  "byTier": {
+    "FAST": { "count": 42, "tokens": 9800, "cost": 0.0028 },
+    "STANDARD": { "count": 76, "tokens": 28400, "cost": 0.0125 },
+    "REASONING": { "count": 10, "tokens": 7000, "cost": 0.0092 }
+  }
+}
+```
+
+---
+
+### `POST /api/v1/ai/admin/override`
+ปรับเปลี่ยน Model Tier ชั่วคราวสำหรับการทดสอบหรือโหมดฉุกเฉิน (จำกัดเฉพาะ Trusted Backend / Admin)
+
+**Request Body:**
+```json
+{
+  "globalTier": "FAST",
+  "agent": "WORD_COMPARE",
+  "agentTier": "REASONING"
+}
+```
+
+---
+
+### `DELETE /api/v1/ai/admin/override`
+ล้างการตั้งค่า Override ทั้งหมด และกลับไปใช้ค่านโยบายมาตรฐาน
+
+---
+
 ### `POST /api/v1/feedback`
+
 *รองรับ FR-18 (Search Feedback)*  
 บันทึกการประเมินผลของผู้ใช้เพื่อนำไปปรับปรุง Ranking Weights
 
