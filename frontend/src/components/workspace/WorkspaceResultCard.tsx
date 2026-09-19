@@ -9,6 +9,8 @@ import type {
 import { audioManager } from "@/lib/audio-manager";
 import type { Recommendation } from "@/lib/search-types";
 import SignLanguageSection from "../tsl/SignLanguageSection";
+import BrailleModal from "../braille/BrailleModal";
+import SignLanguageModal from "../tsl/SignLanguageModal";
 
 export type WorkspaceResultTab = "all" | "words" | "compare" | "writing" | "check" | "bridge" | "access";
 
@@ -33,7 +35,43 @@ export default function WorkspaceResultCard({
   const [copiedGeneral, setCopiedGeneral] = useState(false);
   const [selectedWordSet, setSelectedWordSet] = useState<Set<string>>(new Set());
   const [internalTab, setInternalTab] = useState<WorkspaceResultTab>("all");
+  const [accessView, setAccessView] = useState<"both" | "sign" | "braille">("both");
+  const [selectedSignIdx, setSelectedSignIdx] = useState<number>(0);
+  const [brailleCopied, setBrailleCopied] = useState(false);
+  const [brailleGuideCopied, setBrailleGuideCopied] = useState(false);
+  const [activeSignModalWord, setActiveSignModalWord] = useState<string | null>(null);
+  const [isBrailleModalOpen, setIsBrailleModalOpen] = useState(false);
   const activeTab = controlledTab ?? internalTab;
+
+  const handleCopyBrailleUnicode = (text: string) => {
+    navigator.clipboard?.writeText(text);
+    setBrailleCopied(true);
+    setTimeout(() => setBrailleCopied(false), 2000);
+  };
+
+  const handleCopyBrailleWithGuide = (unicode: string, guide: string | any[]) => {
+    const guideText = Array.isArray(guide)
+      ? guide.map((g: any) => `${g.char || ""}: ${g.braille_cell || ""} (จุด ${g.braille_dots || ""})`).join(", ")
+      : String(guide || "");
+    const full = `[อักษรเบรลล์ไทย]: ${unicode}\n[แจกแจงอักขระ]: ${guideText}`;
+    navigator.clipboard?.writeText(full);
+    setBrailleGuideCopied(true);
+    setTimeout(() => setBrailleGuideCopied(false), 2000);
+  };
+
+  const handleDownloadBrailleTxt = (unicode: string, guide: string | any[]) => {
+    const guideText = Array.isArray(guide)
+      ? guide.map((g: any) => `${g.char || ""}: ${g.braille_cell || ""} (จุด ${g.braille_dots || ""})`).join("\n")
+      : String(guide || "");
+    const content = `=== THAI CONTEXT: Thai Braille Unicode Export ===\n\n[อักษรเบรลล์ (Unicode)]:\n${unicode}\n\n[การแจกแจงทีละอักขระ]:\n${guideText}\n\nมาตรฐาน: สมาคมคนตาบอดแห่งประเทศไทย (มอก. 2565 / W3C WCAG 2.1)`;
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `thai-braille-${Date.now()}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const handleTabSelect = (tab: WorkspaceResultTab) => {
     setInternalTab(tab);
@@ -998,183 +1036,570 @@ export default function WorkspaceResultCard({
             </div>
           </details>
 
-          {/* ── Two feature cards ── */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px" }}>
-
-            {/* Card A — Thai Sign Language */}
-            <div style={{
-              borderRadius: "16px", overflow: "hidden",
-              border: "1px solid #e0e7ff",
-              background: "#fafafe",
-              display: "flex", flexDirection: "column",
-            }}>
-              {/* card header */}
-              <div style={{
-                padding: "12px 16px", display: "flex", alignItems: "center", gap: "10px",
-                background: "linear-gradient(135deg, #ede9fe 0%, #e0e7ff 100%)",
-                borderBottom: "1px solid #e0e7ff",
-              }}>
-                <span style={{ fontSize: "22px" }}>🤟</span>
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: "14px", color: "#3730a3" }}>ภาษามือไทย</div>
-                  <div style={{ fontSize: "11px", color: "#6366f1" }}>Thai Sign Language</div>
-                </div>
-                <div style={{ marginLeft: "auto" }}>
-                  <span style={{
-                    padding: "3px 10px", borderRadius: "999px", fontSize: "11px", fontWeight: 700,
-                    background: accessibility_layer.detected_sign_terms.length > 0 ? "#dcfce7" : "#f1f5f9",
-                    color: accessibility_layer.detected_sign_terms.length > 0 ? "#15803d" : "#94a3b8",
-                  }}>
-                    {accessibility_layer.detected_sign_terms.length > 0
-                      ? `${accessibility_layer.detected_sign_terms.length} คำ พบแล้ว`
-                      : "ไม่พบคำ"}
-                  </span>
-                </div>
-              </div>
-
-              {/* card body */}
-              <div style={{ padding: "14px 16px", flex: 1 }}>
-                {accessibility_layer.detected_sign_terms.length > 0 ? (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    {accessibility_layer.detected_sign_terms.map((term, idx) => (
-                      <div key={idx} style={{
-                        padding: "12px", background: "#ffffff", borderRadius: "12px",
-                        border: "1px solid #e0e7ff",
-                      }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-                          <span style={{
-                            width: 28, height: 28, borderRadius: "8px",
-                            background: "#ede9fe", display: "flex", alignItems: "center",
-                            justifyContent: "center", fontSize: "14px", flexShrink: 0,
-                          }}>🖐️</span>
-                          <strong className="font-thai-reading" style={{ fontSize: "15px", color: "#1e1b4b" }}>{term.word}</strong>
-                          <span style={{
-                            marginLeft: "auto", fontSize: "10px", padding: "2px 7px",
-                            borderRadius: "999px", background: "#dcfce7", color: "#15803d", fontWeight: 700,
-                          }}>✓ รับรองแล้ว</span>
-                        </div>
-                        <SignLanguageSection word={term.word} compact />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div style={{
-                    textAlign: "center", padding: "24px 16px",
-                    color: "var(--muted)", fontSize: "13px",
-                  }}>
-                    <div style={{ fontSize: "32px", marginBottom: "8px" }}>🤲</div>
-                    <div style={{ fontWeight: 600, marginBottom: "4px" }}>ยังไม่พบคำในสารบบ</div>
-                    <div style={{ fontSize: "12px", lineHeight: 1.5 }}>
-                      สามารถใช้การสะกดนิ้วมือ (Finger Spelling) ทดแทนได้
-                    </div>
-                  </div>
-                )}
-              </div>
+          {/* ── Sub-view Toggle: Separate Sign Language & Braille ── */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "10px",
+            marginBottom: "20px",
+            padding: "10px 14px",
+            borderRadius: "14px",
+            background: "#f8fafc",
+            border: "1px solid #e2e8f0",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--ink)" }}>
+                📑 มุมมองการเข้าถึง:
+              </span>
+              <span style={{ fontSize: "11px", color: "var(--muted)" }}>
+                เลือกดูแยกส่วนอย่างชัดเจนหรือดูรวม
+              </span>
             </div>
-
-            {/* Card B — Braille */}
-            <div style={{
-              borderRadius: "16px", overflow: "hidden",
-              border: "1px solid #cffafe",
-              background: "#f8ffff",
-              display: "flex", flexDirection: "column",
-            }}>
-              {/* card header */}
-              <div style={{
-                padding: "12px 16px", display: "flex", alignItems: "center", gap: "10px",
-                background: "linear-gradient(135deg, #cffafe 0%, #e0f2fe 100%)",
-                borderBottom: "1px solid #cffafe",
-              }}>
-                <span style={{ fontSize: "22px" }}>⠿</span>
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: "14px", color: "#0e7490" }}>อักษรเบรลล์ไทย</div>
-                  <div style={{ fontSize: "11px", color: "#06b6d4" }}>Thai Braille · Unicode</div>
-                </div>
-              </div>
-
-              {/* card body */}
-              <div style={{ padding: "14px 16px", flex: 1, display: "flex", flexDirection: "column", gap: "12px" }}>
-                {/* Big Braille display */}
-                <div style={{
-                  padding: "20px 16px",
-                  background: "#ffffff",
-                  borderRadius: "12px",
-                  border: "2px solid #cffafe",
-                  textAlign: "center",
-                  fontSize: "32px",
-                  fontFamily: "monospace",
-                  letterSpacing: "4px",
-                  wordBreak: "break-all",
-                  lineHeight: 1.4,
-                  color: "#0e7490",
-                  minHeight: "72px",
+            <div role="tablist" aria-label="เลือกการแสดงผลการเข้าถึง" style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={accessView === "both"}
+                onClick={() => setAccessView("both")}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  fontWeight: accessView === "both" ? 700 : 500,
+                  border: "1px solid",
+                  borderColor: accessView === "both" ? "#4f46e5" : "#cbd5e1",
+                  background: accessView === "both" ? "#4f46e5" : "#ffffff",
+                  color: accessView === "both" ? "#ffffff" : "#475569",
+                  cursor: "pointer",
+                  transition: "all 0.15s ease",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  gap: "6px",
+                }}
+              >
+                <span>⚡ แสดงทั้ง 2 ส่วน</span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={accessView === "sign"}
+                onClick={() => setAccessView("sign")}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  fontWeight: accessView === "sign" ? 700 : 500,
+                  border: "1px solid",
+                  borderColor: accessView === "sign" ? "#6366f1" : "#cbd5e1",
+                  background: accessView === "sign" ? "#6366f1" : "#ffffff",
+                  color: accessView === "sign" ? "#ffffff" : "#475569",
+                  cursor: "pointer",
+                  transition: "all 0.15s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
+              >
+                <span>🤟 ภาษามือไทย (TSL)</span>
+                {accessibility_layer.detected_sign_terms.length > 0 && (
+                  <span style={{
+                    padding: "1px 6px",
+                    borderRadius: "999px",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    background: accessView === "sign" ? "#e0e7ff" : "#ede9fe",
+                    color: accessView === "sign" ? "#3730a3" : "#4f46e5",
+                  }}>
+                    {accessibility_layer.detected_sign_terms.length} คำ
+                  </span>
+                )}
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={accessView === "braille"}
+                onClick={() => setAccessView("braille")}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  fontWeight: accessView === "braille" ? 700 : 500,
+                  border: "1px solid",
+                  borderColor: accessView === "braille" ? "#0891b2" : "#cbd5e1",
+                  background: accessView === "braille" ? "#0891b2" : "#ffffff",
+                  color: accessView === "braille" ? "#ffffff" : "#475569",
+                  cursor: "pointer",
+                  transition: "all 0.15s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
+              >
+                <span>⠿ อักษรเบรลล์ไทย (Thai Braille)</span>
+              </button>
+            </div>
+          </div>
+
+          {/* ── Separated Sections Container ── */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+
+            {/* ── SECTION 1: THAI SIGN LANGUAGE ── */}
+            {(accessView === "both" || accessView === "sign") && (
+              <div style={{
+                borderRadius: "18px",
+                overflow: "hidden",
+                border: "1.5px solid #c7d2fe",
+                background: "#fafafe",
+                boxShadow: "0 4px 16px rgba(99, 102, 241, 0.05)",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                {/* Header */}
+                <div style={{
+                  padding: "14px 18px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  background: "linear-gradient(135deg, #ede9fe 0%, #e0e7ff 100%)",
+                  borderBottom: "1px solid #c7d2fe",
                 }}>
-                  {accessibility_layer.braille_unicode || "⠀"}
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <span style={{ fontSize: "24px" }} aria-hidden="true">🤟</span>
+                    <div>
+                      <div style={{ fontWeight: 800, fontSize: "15px", color: "#312e81" }}>
+                        ภาษามือไทย (Thai Sign Language · TSL)
+                      </div>
+                      <div style={{ fontSize: "11px", color: "#6366f1" }}>
+                        เพื่อผู้มีความบกพร่องทางการได้ยินและล่ามภาษามือ (Hearing Accessibility · WCAG 2.1)
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                    <span style={{
+                      padding: "4px 10px",
+                      borderRadius: "999px",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      background: accessibility_layer.detected_sign_terms.length > 0 ? "#dcfce7" : "#fef3c7",
+                      color: accessibility_layer.detected_sign_terms.length > 0 ? "#15803d" : "#b45309",
+                      border: `1px solid ${accessibility_layer.detected_sign_terms.length > 0 ? "#bbf7d0" : "#fde68a"}`,
+                    }}>
+                      {accessibility_layer.detected_sign_terms.length > 0
+                        ? `✓ พบในสารบบ ${accessibility_layer.detected_sign_terms.length} คำ`
+                        : "🤲 แนะนำสะกดนิ้วมือ (Finger Spelling)"}
+                    </span>
+
+                    {accessibility_layer.detected_sign_terms.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const activeTerm = accessibility_layer.detected_sign_terms[selectedSignIdx] || accessibility_layer.detected_sign_terms[0];
+                          if (activeTerm) setActiveSignModalWord(activeTerm.word);
+                        }}
+                        style={{
+                          padding: "5px 12px",
+                          borderRadius: "8px",
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          background: "#ffffff",
+                          border: "1px solid #c7d2fe",
+                          color: "#4338ca",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "4px",
+                        }}
+                      >
+                        <span>🔍 ขยายดูท่าแบบ 3D</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
 
-                {/* Big Copy CTA */}
-                <button
-                  type="button"
-                  onClick={() => handleCopy(accessibility_layer.braille_unicode)}
-                  style={{
-                    width: "100%",
-                    padding: "11px 16px",
-                    borderRadius: "10px",
-                    border: "none",
-                    background: "linear-gradient(135deg, #06b6d4, #0e7490)",
-                    color: "#ffffff",
-                    fontWeight: 700,
-                    fontSize: "14px",
-                    cursor: "pointer",
+                {/* Body */}
+                <div style={{ padding: "18px 20px" }}>
+                  {accessibility_layer.detected_sign_terms.length > 0 ? (
+                    <div>
+                      {/* Word Selector Chips if multiple */}
+                      {accessibility_layer.detected_sign_terms.length > 1 && (
+                        <div style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          flexWrap: "wrap",
+                          marginBottom: "16px",
+                          padding: "8px 12px",
+                          background: "#ffffff",
+                          borderRadius: "10px",
+                          border: "1px solid #e0e7ff",
+                        }}>
+                          <span style={{ fontSize: "12px", fontWeight: 700, color: "#475569" }}>
+                            เลือกดูท่าคำ:
+                          </span>
+                          {accessibility_layer.detected_sign_terms.map((term, tIdx) => {
+                            const isSelected = selectedSignIdx === tIdx;
+                            return (
+                              <button
+                                key={tIdx}
+                                type="button"
+                                onClick={() => setSelectedSignIdx(tIdx)}
+                                style={{
+                                  padding: "4px 12px",
+                                  borderRadius: "8px",
+                                  fontSize: "12px",
+                                  fontWeight: isSelected ? 700 : 500,
+                                  border: `1.5px solid ${isSelected ? "#6366f1" : "#cbd5e1"}`,
+                                  background: isSelected ? "#ede9fe" : "#ffffff",
+                                  color: isSelected ? "#3730a3" : "#475569",
+                                  cursor: "pointer",
+                                  transition: "all 0.15s ease",
+                                }}
+                              >
+                                {term.word}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+
+                      {/* Display cards for detected terms */}
+                      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                        {accessibility_layer.detected_sign_terms.map((term, idx) => {
+                          const isFocused = selectedSignIdx === idx;
+                          return (
+                            <div
+                              key={idx}
+                              style={{
+                                padding: "16px 18px",
+                                background: "#ffffff",
+                                borderRadius: "14px",
+                                border: `1.5px solid ${isFocused ? "#818cf8" : "#e0e7ff"}`,
+                                boxShadow: isFocused ? "0 4px 12px rgba(99, 102, 241, 0.08)" : "none",
+                                transition: "border-color 0.2s ease",
+                              }}
+                            >
+                              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px", marginBottom: "12px" }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                  <span style={{
+                                    width: 32, height: 32, borderRadius: "10px",
+                                    background: "#ede9fe", display: "flex", alignItems: "center",
+                                    justifyContent: "center", fontSize: "16px", flexShrink: 0,
+                                  }}>🖐️</span>
+                                  <strong className="font-thai-reading" style={{ fontSize: "18px", color: "#1e1b4b" }}>
+                                    {term.word}
+                                  </strong>
+                                  <span style={{
+                                    fontSize: "10px", padding: "3px 8px",
+                                    borderRadius: "999px", background: "#dcfce7", color: "#15803d", fontWeight: 700,
+                                  }}>✓ รับรองแล้ว</span>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() => setActiveSignModalWord(term.word)}
+                                  style={{
+                                    fontSize: "11px",
+                                    color: "#4f46e5",
+                                    background: "#f5f3ff",
+                                    border: "1px solid #ddd6fe",
+                                    padding: "4px 10px",
+                                    borderRadius: "8px",
+                                    cursor: "pointer",
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  ดูท่าขนาดใหญ่ ↗
+                                </button>
+                              </div>
+
+                              <SignLanguageSection word={term.word} compact={accessView === "both"} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{
+                      textAlign: "center",
+                      padding: "32px 20px",
+                      background: "#ffffff",
+                      borderRadius: "14px",
+                      border: "1px solid #e0e7ff",
+                      color: "var(--muted)",
+                    }}>
+                      <div style={{ fontSize: "36px", marginBottom: "10px" }}>🤲</div>
+                      <div style={{ fontWeight: 700, fontSize: "15px", color: "#1e293b", marginBottom: "6px" }}>
+                        ยังไม่พบคำที่มีท่าภาษามือมาตรฐานเฉพาะคำในข้อความนี้
+                      </div>
+                      <div style={{ fontSize: "13px", lineHeight: 1.6, maxWidth: "560px", margin: "0 auto", color: "#64748b" }}>
+                        ในกรณีคำศัพท์เฉพาะหรือคำที่ยังไม่มีท่ามาตรฐาน สามารถใช้ <strong>การสะกดนิ้วมือภาษาไทย (Thai Finger Spelling)</strong> ทีละตัวอักษร หรือใช้คำที่มีความหมายใกล้เคียงเพื่อสื่อสารความหมายได้อย่างครบถ้วนตามหลักสากล
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ── SECTION 2: THAI BRAILLE ── */}
+            {(accessView === "both" || accessView === "braille") && (
+              <div style={{
+                borderRadius: "18px",
+                overflow: "hidden",
+                border: "1.5px solid #a5f3fc",
+                background: "#f0fdfa",
+                boxShadow: "0 4px 16px rgba(14, 116, 144, 0.05)",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                {/* Header */}
+                <div style={{
+                  padding: "14px 18px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  background: "linear-gradient(135deg, #cffafe 0%, #e0f2fe 100%)",
+                  borderBottom: "1px solid #a5f3fc",
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <span style={{ fontSize: "24px" }} aria-hidden="true">⠿</span>
+                    <div>
+                      <div style={{ fontWeight: 800, fontSize: "15px", color: "#0e7490" }}>
+                        อักษรเบรลล์ไทย (Thai Braille · Unicode)
+                      </div>
+                      <div style={{ fontSize: "11px", color: "#06b6d4" }}>
+                        เพื่อผู้มีความบกพร่องทางการมองเห็นและจอแสดงผลเบรลล์ (Visual Accessibility · มอก. 2565)
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                    <span style={{
+                      padding: "4px 10px",
+                      borderRadius: "999px",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      background: "#e0f2fe",
+                      color: "#0369a1",
+                      border: "1px solid #bae6fd",
+                    }}>
+                      มาตรฐาน 6-Dot Unicode
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsBrailleModalOpen(true)}
+                      style={{
+                        padding: "5px 12px",
+                        borderRadius: "8px",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        background: "#ffffff",
+                        border: "1px solid #a5f3fc",
+                        color: "#0e7490",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                      }}
+                    >
+                      <span>⌨️ ห้องทดลองพิมพ์เบรลล์</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Body */}
+                <div style={{ padding: "18px 20px", display: "flex", flexDirection: "column", gap: "16px" }}>
+                  {/* Big Braille display banner */}
+                  <div style={{
+                    padding: "24px 20px",
+                    background: "#ffffff",
+                    borderRadius: "14px",
+                    border: "2px solid #a5f3fc",
+                    textAlign: "center",
+                    fontSize: "36px",
+                    fontFamily: "monospace",
+                    letterSpacing: "6px",
+                    wordBreak: "break-all",
+                    lineHeight: 1.4,
+                    color: "#0e7490",
+                    minHeight: "84px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: "8px",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  <span>📋</span> คัดลอกอักษรเบรลล์
-                </button>
+                    boxShadow: "inset 0 2px 8px rgba(14, 116, 144, 0.04)",
+                  }}>
+                    {accessibility_layer.braille_unicode || "⠀"}
+                  </div>
 
-                {/* Character-by-character guide */}
-                {Array.isArray(accessibility_layer.braille_guide) && accessibility_layer.braille_guide.length > 0 && (
-                  <div>
-                    <div style={{ fontSize: "11px", color: "var(--muted)", fontWeight: 600, marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                      คำอธิบายทีละอักขระ
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                      {(accessibility_layer.braille_guide as any[]).map((item: any, idx: number) => (
-                        <div key={idx} style={{
-                          padding: "6px 10px",
-                          borderRadius: "8px",
-                          background: "#f0fdff",
-                          border: "1px solid #a5f3fc",
-                          fontFamily: "monospace",
-                          fontSize: "11px",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          gap: "2px",
-                          minWidth: "44px",
-                        }}>
-                          <span style={{ fontSize: "18px", color: "#0e7490" }}>{item.braille_cell}</span>
-                          <span style={{ color: "#334155", fontWeight: 600 }}>{item.char}</span>
-                          <span style={{ color: "#94a3b8", fontSize: "9px" }}>{item.braille_dots}</span>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Actions Toolbar */}
+                  <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyBrailleUnicode(accessibility_layer.braille_unicode)}
+                      style={{
+                        flex: 1,
+                        minWidth: "180px",
+                        padding: "10px 16px",
+                        borderRadius: "10px",
+                        border: "none",
+                        background: brailleCopied ? "#16a34a" : "linear-gradient(135deg, #06b6d4, #0e7490)",
+                        color: "#ffffff",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "6px",
+                        transition: "background 0.2s ease",
+                      }}
+                    >
+                      <span>{brailleCopied ? "✓" : "📋"}</span>
+                      <span>{brailleCopied ? "คัดลอกรหัสเบรลล์แล้ว!" : "คัดลอกรหัสเบรลล์ (Unicode)"}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleCopyBrailleWithGuide(accessibility_layer.braille_unicode, accessibility_layer.braille_guide)}
+                      style={{
+                        padding: "10px 16px",
+                        borderRadius: "10px",
+                        border: "1px solid #cbd5e1",
+                        background: brailleGuideCopied ? "#f0fdf4" : "#ffffff",
+                        color: brailleGuideCopied ? "#15803d" : "#334155",
+                        fontWeight: 600,
+                        fontSize: "13px",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <span>{brailleGuideCopied ? "✓" : "📄"}</span>
+                      <span>{brailleGuideCopied ? "คัดลอกพร้อมคำอ่านแล้ว" : "คัดลอกพร้อมแจกแจง"}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleDownloadBrailleTxt(accessibility_layer.braille_unicode, accessibility_layer.braille_guide)}
+                      style={{
+                        padding: "10px 16px",
+                        borderRadius: "10px",
+                        border: "1px solid #cbd5e1",
+                        background: "#ffffff",
+                        color: "#334155",
+                        fontWeight: 600,
+                        fontSize: "13px",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <span>💾</span>
+                      <span>ดาวน์โหลด (.txt)</span>
+                    </button>
                   </div>
-                )}
-                {!Array.isArray(accessibility_layer.braille_guide) && accessibility_layer.braille_guide && (
-                  <div style={{ fontSize: "12px", color: "var(--muted)", lineHeight: 1.5 }}>
-                    {String(accessibility_layer.braille_guide)}
+
+                  {/* Character-by-character guide */}
+                  {Array.isArray(accessibility_layer.braille_guide) && accessibility_layer.braille_guide.length > 0 && (
+                    <div style={{
+                      background: "#ffffff",
+                      borderRadius: "14px",
+                      border: "1px solid #cffafe",
+                      padding: "14px 16px",
+                    }}>
+                      <div style={{
+                        fontSize: "12px",
+                        color: "#0e7490",
+                        fontWeight: 700,
+                        marginBottom: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}>
+                        <span>🔍 คำอธิบายทีละอักขระและตำแหน่งจุด (Character & Dot Breakdown)</span>
+                        <span style={{ fontSize: "11px", color: "var(--muted)", fontWeight: 500 }}>
+                          {accessibility_layer.braille_guide.length} เซลล์
+                        </span>
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(76px, 1fr))", gap: "8px" }}>
+                        {(accessibility_layer.braille_guide as any[]).map((item: any, idx: number) => (
+                          <div key={idx} style={{
+                            padding: "8px 6px",
+                            borderRadius: "10px",
+                            background: "#f8ffff",
+                            border: "1px solid #a5f3fc",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            gap: "3px",
+                            textAlign: "center",
+                          }}>
+                            <span style={{ fontSize: "24px", color: "#0e7490", fontFamily: "monospace", lineHeight: 1 }}>
+                              {item.braille_cell}
+                            </span>
+                            <span style={{ color: "#1e293b", fontWeight: 700, fontSize: "14px" }}>
+                              {item.char}
+                            </span>
+                            <span style={{
+                              color: "#0369a1",
+                              background: "#e0f2fe",
+                              padding: "1px 5px",
+                              borderRadius: "4px",
+                              fontSize: "10px",
+                              fontFamily: "monospace",
+                              fontWeight: 600,
+                            }}>
+                              จุด {item.braille_dots}
+                            </span>
+                            {item.description && (
+                              <span style={{ color: "#64748b", fontSize: "9px", marginTop: "2px", lineHeight: 1.2 }}>
+                                {item.description}
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {!Array.isArray(accessibility_layer.braille_guide) && accessibility_layer.braille_guide && (
+                    <div style={{
+                      padding: "12px 14px",
+                      background: "#ffffff",
+                      borderRadius: "10px",
+                      border: "1px solid #cffafe",
+                      fontSize: "13px",
+                      color: "#334155",
+                      lineHeight: 1.6,
+                    }}>
+                      {String(accessibility_layer.braille_guide)}
+                    </div>
+                  )}
+
+                  {/* Standard reading note */}
+                  <div style={{
+                    fontSize: "11px",
+                    color: "#0e7490",
+                    background: "#ecfeff",
+                    padding: "8px 12px",
+                    borderRadius: "8px",
+                    border: "1px solid #cffafe",
+                    lineHeight: 1.5,
+                  }}>
+                    💡 <strong>หลักเกณฑ์อักษรเบรลล์ไทย (มอก. 2565):</strong> ออกแบบให้เรียงลำดับตามตัวอักษรที่ปรากฏ เพื่อให้สามารถใช้งานร่วมกับ Refreshable Braille Display และเครื่องพิมพ์เบรลล์ได้อย่างถูกต้องตามมาตรฐานสมาคมคนตาบอดแห่งประเทศไทย
                   </div>
-                )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* ── Checklist strip ── */}
@@ -1263,6 +1688,24 @@ export default function WorkspaceResultCard({
             ))}
           </div>
         </section>
+      )}
+
+      {/* Interactive Braille Lab Modal */}
+      {isBrailleModalOpen && (
+        <BrailleModal
+          word={(result.context as any)?.target_word || recommendations?.[0]?.word || "ข้อความ"}
+          isOpen={isBrailleModalOpen}
+          onClose={() => setIsBrailleModalOpen(false)}
+        />
+      )}
+
+      {/* Interactive 3D Motion Sign Language Modal */}
+      {activeSignModalWord && (
+        <SignLanguageModal
+          word={activeSignModalWord}
+          isOpen={Boolean(activeSignModalWord)}
+          onClose={() => setActiveSignModalWord(null)}
+        />
       )}
     </div>
   );

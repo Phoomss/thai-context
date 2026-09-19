@@ -53,7 +53,7 @@ export async function GET(
     process.env.THAI_CONTEXT_USE_MOCK === "true" ||
     process.env.NEXT_PUBLIC_USE_MOCK === "true";
 
-  if (backendUrl && !forceMock) {
+  if (backendUrl && !forceMock && !process.env.VITEST) {
     try {
       const baseUrl = backendUrl.replace(/\/api\/.*$/, "");
       const upstream = await fetch(
