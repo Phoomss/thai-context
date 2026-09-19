@@ -42,6 +42,7 @@ export default function EvolutionExplorer({ word }: EvolutionExplorerProps) {
   useEffect(() => {
     let cancelled = false;
     const clean = currentWord.trim();
+    if (!clean) return;
 
     if (CURATED_WORD_EVOLUTIONS[clean]) {
       setEvolutionData(CURATED_WORD_EVOLUTIONS[clean]);

@@ -185,45 +185,6 @@ export class DictionaryService {
     const cached = this.getFromCache(cacheKey);
     if (cached) return cached;
 
-    // Curated benchmark definitions from royal society dictionaries for key reference terms
-    const CURATED_EVOLUTIONS: Record<string, any> = {
-      สมานฉันท์: {
-        word: 'สมานฉันท์',
-        timeline: [
-          {
-            editionYear: '2542',
-            edition: '2542',
-            editionTitle: 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒',
-            definition: 'ความพอใจร่วมกัน, ความเห็นพ้องต้องกัน',
-            status: 'ORIGINAL',
-            pageNumber: null,
-          },
-          {
-            editionYear: '2554',
-            editionTitle: 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔',
-            edition: '2554',
-            definition: 'ความพร้อมเพรียงกัน, ความปรองดองกัน',
-            status: 'CHANGED',
-            pageNumber: null,
-          },
-          {
-            editionYear: '2569',
-            editionTitle: 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๖๙',
-            edition: '2569',
-            definition: 'ความพร้อมเพรียง, ความร่วมมือร่วมใจเพื่อประโยชน์ส่วนรวม',
-            status: 'EXPANDED',
-            pageNumber: null,
-          },
-        ],
-      },
-    };
-
-    if (CURATED_EVOLUTIONS[headword]) {
-      const curated = CURATED_EVOLUTIONS[headword];
-      this.setCache(cacheKey, curated);
-      return curated;
-    }
-
     const word = await this.prisma.word.findUnique({
       where: { headword },
       include: {

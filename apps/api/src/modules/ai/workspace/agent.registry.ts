@@ -8,6 +8,7 @@ import { WritingAgent } from './agents/writing.agent';
 import { RewriteAgent } from './agents/rewrite.agent';
 import { LanguageCheckerAgent } from './agents/language-checker.agent';
 import { LanguageBridgeAgent } from './agents/language-bridge.agent';
+import { DialectAgent } from './agents/dialect.agent';
 
 @Injectable()
 export class AgentRegistry {
@@ -21,6 +22,7 @@ export class AgentRegistry {
     rewriteAgent: RewriteAgent,
     languageCheckerAgent: LanguageCheckerAgent,
     languageBridgeAgent: LanguageBridgeAgent,
+    dialectAgent: DialectAgent,
   ) {
     this.agents = [
       contextAgent,
@@ -30,6 +32,7 @@ export class AgentRegistry {
       rewriteAgent,
       languageCheckerAgent,
       languageBridgeAgent,
+      dialectAgent,
     ];
   }
 

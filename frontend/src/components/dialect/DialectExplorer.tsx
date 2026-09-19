@@ -192,6 +192,26 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
         <span>
           คำมาตรฐาน: {activeGroup.standardWord} — แตะการ์ดเพื่อดูที่มาของข้อมูล
         </span>
+        <div style={{ marginTop: "10px" }}>
+          <a
+            href="/dialect"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              color: "#059669",
+              backgroundColor: "#ecfdf5",
+              padding: "6px 14px",
+              borderRadius: "9999px",
+              textDecoration: "none",
+              border: "1px solid #a7f3d0",
+            }}
+          >
+            🧭 เปิดระบบค้นพบภาษาถิ่นจากความหมาย (Dialect Intelligence) →
+          </a>
+        </div>
       </header>
 
       {/* Category Selection Tabs & Search Controls */}

@@ -351,7 +351,7 @@ export class AccessibilityService {
         languageCode: 'en',
         secondaryTranslations: fallback ? fallback.sec : [],
         contextualExplanation: fallback ? fallback.exp : definition || 'No verified bilingual explanation found.',
-        provenance: fallback ? 'OFFICIAL_CURATED' : 'AI_GENERATED',
+        provenance: fallback ? 'DEMO_PROTOTYPE' : 'AI_GENERATED',
         confidenceScore: fallback ? 0.95 : 0.5,
       };
     }

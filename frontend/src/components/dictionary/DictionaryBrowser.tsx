@@ -144,6 +144,8 @@ export default function DictionaryBrowser({ initialWord = "ประสิทธ
       if (BENCHMARK_DICTIONARY_ENTRIES[clean]) {
         setResults(BENCHMARK_DICTIONARY_ENTRIES[clean]);
         setTotalCount(BENCHMARK_DICTIONARY_ENTRIES[clean].length);
+      } else {
+        performSearch(clean);
       }
     }
   }, [initialWord]);

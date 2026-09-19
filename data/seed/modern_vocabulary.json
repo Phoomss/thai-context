@@ -1,0 +1,1287 @@
+[
+  {
+    "term": "RAG",
+    "slug": "rag",
+    "language": "en",
+    "term_type": "ACRONYM",
+    "categories": ["AI", "TECHNOLOGY"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ย่อมาจาก Retrieval-Augmented Generation สถาปัตยกรรมการต่อยอดโมเดลภาษาขนาดใหญ่ (LLM) ด้วยการค้นคืนข้อมูลภายนอกจากคลังเอกสารเฉพาะทางก่อนนำมาประมวลผลเป็นคำตอบ",
+    "first_seen_at": "2020-05-22",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "อาร์เอจี",
+    "english_meaning": "Retrieval-Augmented Generation: An AI framework that augments LLM generation by retrieving relevant external context.",
+    "pronunciation": "อาร์-เอ-จี",
+    "usage_warning": "เป็นศัพท์เฉพาะทางเทคนิคคอมพิวเตอร์และปัญญาประดิษฐ์ หากนำมาใช้ในภาษาไทยทางการนิยมทับศัพท์หรืออธิบายขยายความ",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "Lewis et al. (NeurIPS 2020) / AI Research Papers",
+        "source_url": "https://arxiv.org/abs/2005.11401",
+        "source_date": "2020-05-22",
+        "excerpt": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "license": "arXiv non-exclusive license",
+        "verification_status": "VERIFIED"
+      },
+      {
+        "source_type": "DEMO",
+        "source_name": "THAI CONTEXT Modern Tech Corpus 2026",
+        "source_url": "https://thai-context.example/corpus/tech",
+        "source_date": "2026-01-15",
+        "excerpt": "ระบบตอบคำถามด้วยเอกสารอ้างอิงของไทยคอนเทกซ์ใช้แนวคิด RAG",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "สถาปัตยกรรมระบบ AI ที่ผสานการดึงข้อมูลที่เกี่ยวข้องจากคลังเอกสารภายนอก (Retrieval) เข้ากับการประมวลผลสร้างข้อความตอบของโมเดลภาษา (Generation) เพื่อลดปัญหาภาพหลอน (Hallucination) และเพิ่มความแม่นยำในการตอบคำถาม",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      },
+      {
+        "definition": "กระบวนการให้ AI ตอบคำถามโดยอ้างอิงหลักฐานจากเอกสารหรือฐานข้อมูลที่เตรียมไว้",
+        "definition_type": "EDITOR_REVIEWED",
+        "generated_by": "THAI CONTEXT Lexical Team",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "บริษัทได้นำเทคโนโลยี RAG มาใช้เชื่อมต่อกับคู่มือองค์กรเพื่อให้ AI ตอบคำถามพนักงานได้อย่างถูกต้องตรงตามเอกสาร",
+        "context_note": "การประยุกต์ใช้งานในองค์กรธุรกิจและงานไอที",
+        "source_attribution": "Tech Report Thailand 2025",
+        "register": "SPECIALIZED"
+      },
+      {
+        "example_text": "หากต้องการให้แชตบอตตอบข้อมูลล่าสุดของมหาวิทยาลัย ควรทำ RAG เชื่อมต่อกับระบบจัดเก็บเอกสาร",
+        "context_note": "การศึกษาและพัฒนาระบบ",
+        "source_attribution": "Computer Science Seminar 2025",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "การสร้างเนื้อหาโดยอาศัยการค้นคืนข้อมูล",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำแปลเชิงอธิบายที่สามารถใช้ในงานวิชาการภาษาไทยแทนคำทับศัพท์ย่อ RAG"
+      },
+      {
+        "target_term": "AI",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.98,
+        "notes": "RAG เป็นเทคนิคย่อยในสาขาปัญญาประดิษฐ์"
+      }
+    ]
+  },
+  {
+    "term": "ป้ายยา",
+    "slug": "pai-ya",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": ["SOCIAL_MEDIA", "INTERNET", "LIFESTYLE", "POP_CULTURE"],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "SOCIAL_MEDIA",
+    "description": "คำสแลงสื่อสังคมออนไลน์ หมายถึง การแนะนำ บอกต่อ หรือรีวิวสินค้า/บริการอย่างกระตือรือร้นและน่าดึงดูด จนทำให้ผู้อื่นเกิดความรู้สึกอยากซื้อหรือใช้ตาม",
+    "first_seen_at": "2019-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "pai-ya",
+    "english_meaning": "To enthusiastically recommend a product, show, or item to someone until they are strongly persuaded to buy or follow it.",
+    "pronunciation": "ป้าย-ยา",
+    "usage_warning": "เป็นภาษาพูดและสแลงบนสื่อสังคมออนไลน์ ไม่ควรใช้ในหนังสือราชการหรือรายงานทางวิชาการ ควรใช้คำว่า 'โน้มน้าว' หรือ 'แนะนำ' แทน",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "คลังคำสแลงและภาษาสื่อสังคมออนไลน์ไทย 2020-2026",
+        "source_url": "https://thai-slang.example/terms/pai-ya",
+        "source_date": "2020-03-12",
+        "excerpt": "ป้ายยา: การบอกต่อของดีให้เพื่อนอยากซื้อตาม",
+        "license": "CC-BY-SA 4.0",
+        "verification_status": "VERIFIED"
+      },
+      {
+        "source_type": "DEMO",
+        "source_name": "ศูนย์สำรวจภาษาร่วมสมัย THAI CONTEXT",
+        "source_url": "https://thai-context.example/demo/social-lexicon",
+        "source_date": "2024-06-01",
+        "excerpt": "สำรวจพบการใช้งานมากกว่า 500,000 ครั้งบนแพลตฟอร์ม X, TikTok และ Facebook",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "การแนะนำ ชักชวน หรือรีวิวสิ่งของ สินค้า บริการ หรือความบันเทิงอย่างมีพลังดึงดูด ทำให้ผู้ฟังหรือผู้ติดตามเกิดความอยากได้ อยากซื้อ หรืออยากติดตามตามไปด้วย",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      },
+      {
+        "definition": "การทำให้ผู้อื่นคล้อยตามจนตัดสินใจซื้อสินค้าผ่านการบอกต่ออย่างจริงใจและเร้าอารมณ์",
+        "definition_type": "COMMUNITY_DEFINED",
+        "generated_by": "Social Media Lexical Group",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "เพื่อนป้ายยาหูฟังไร้สายตัวใหม่มา พอลองฟังเสียงแล้วกดสั่งซื้อทันทีเลย",
+        "context_note": "การพูดคุยทั่วไปในกลุ่มเพื่อนและสื่อสังคมออนไลน์",
+        "source_attribution": "โซเชียลมีเดียทั่วไป",
+        "register": "SLANG"
+      },
+      {
+        "example_text": "อินฟลูเอนเซอร์คนนี้ป้ายยาเก่งมาก รีวิวลิปสติกทีไรสินค้าขาดตลาดทุกที",
+        "context_note": "การรีวิวสินค้าผ่านสื่อออนไลน์",
+        "source_attribution": "บล็อกไลฟ์สไตล์และความงาม",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "โน้มน้าว",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.94,
+        "notes": "คำที่เป็นทางการ เหมาะสำหรับใช้ในงานเขียนวิชาการหรือบริบทที่เป็นทางการ"
+      },
+      {
+        "target_term": "แนะนำ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.90,
+        "notes": "คำระดับภาษาเป็นกลาง ใช้ได้ทั่วไปทุกสถานการณ์"
+      },
+      {
+        "target_term": "ชักจูง",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.85,
+        "notes": "มีเฉดความหมายคล้ายการชี้นำหรือชวนให้ทำตาม"
+      }
+    ]
+  },
+  {
+    "term": "จึ้ง",
+    "slug": "jueng",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": ["POP_CULTURE", "YOUTH", "SOCIAL_MEDIA", "ENTERTAINMENT"],
+    "status": "TRENDING",
+    "origin": "COMMUNITY",
+    "register": "SLANG",
+    "audience": "YOUTH",
+    "description": "คำอุทานและคำคุณศัพท์สแลง แสดงความรู้สึกทึ่ง ตะลึง ตกใจในความสวยงาม ความยอดเยี่ยม หรือความโดดเด่นอย่างมากจนสะกดสายตา",
+    "first_seen_at": "2021-08-10",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.93,
+    "transliteration": "jueng",
+    "english_meaning": "Stunning, mind-blowing, fabulous, or breathtakingly impressive.",
+    "pronunciation": "จึ้ง",
+    "usage_warning": "เป็นคำสแลงเฉพาะกลุ่มวัยรุ่นและคอมมูนิตี้บันเทิง ไม่เหมาะอย่างยิ่งกับบริบททางการหรือเอกสารราชการ",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "คลังคำแสลงร่วมสมัย LGBTQ+ & Pop Culture",
+        "source_url": "https://pop-culture-terms.example/slang/jueng",
+        "source_date": "2021-09-01",
+        "excerpt": "จึ้ง: ดีมากจนตะลึง เช่น ชุดวันนี้จึ้งมาก",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      },
+      {
+        "source_type": "DEMO",
+        "source_name": "THAI CONTEXT Trend Watch 2026",
+        "source_url": "https://thai-context.example/demo/trends",
+        "source_date": "2026-02-01",
+        "excerpt": "คำศัพท์ยอดนิยมในกลุ่ม Gen Z บนแพลตฟอร์มวิดีโอสั้น",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ยอดเยี่ยม สวยงาม ตระการตา หรือน่าประทับใจอย่างยิ่งจนทำให้ผู้พบเห็นตกตะลึงและทึ่งในผลลัพธ์",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ลุคแต่งหน้าไปงานกาล่าคืนนี้ของเธอจึ้งมาก ทุกคนในงานต้องเหลียวมอง",
+        "context_note": "การชมแฟชั่นและความงาม",
+        "source_attribution": "นิตยสารบันเทิงออนไลน์",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ยอดเยี่ยม",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำทางการสำหรับบอกถึงความดีเลิศอย่างยิ่ง"
+      },
+      {
+        "target_term": "โดดเด่นเป็นพิเศษ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.90,
+        "notes": "คำทางการสำหรับระบุถึงความสะดุดตาและน่าจดจำ"
+      },
+      {
+        "target_term": "ปัง",
+        "relationship_type": "SYNONYM",
+        "source_type": "COMMUNITY",
+        "confidence": 0.88,
+        "notes": "สแลงในกลุ่มความหมายใกล้เคียงกัน"
+      },
+      {
+        "target_term": "เริ่ด",
+        "relationship_type": "RELATED",
+        "source_type": "COMMUNITY",
+        "confidence": 0.86,
+        "notes": "สแลงแสดงความชื่นชมในความเลิศหรู"
+      }
+    ]
+  },
+  {
+    "term": "คอนเทนต์",
+    "slug": "content",
+    "language": "th",
+    "term_type": "BORROWED_WORD",
+    "categories": ["SOCIAL_MEDIA", "INTERNET", "BUSINESS", "ENTERTAINMENT"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "คำยืมจากภาษาอังกฤษ (Content) หมายถึง ข้อมูล สาระ หรือเรื่องราวที่ถูกผลิตและเผยแพร่ผ่านสื่อต่าง ๆ โดยเฉพาะสื่อดิจิทัลและแพลตฟอร์มออนไลน์",
+    "first_seen_at": "2015-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.98,
+    "transliteration": "khon-ten",
+    "english_meaning": "Content: Information, creative material, or media experiences directed toward an end-user or audience.",
+    "pronunciation": "คอน-เท้น",
+    "usage_warning": "ใช้กันอย่างแพร่หลายในวงการสื่อสารมวลชนและการตลาด แต่ในเอกสารราชการหรือตำราวิชาการเคร่งครัดนิยมใช้คำว่า 'เนื้อหา' หรือ 'สาระ'",
+    "sources": [
+      {
+        "source_type": "PUBLIC_DATASET",
+        "source_name": "คลังคำยืมภาษาอังกฤษในภาษาไทยร่วมสมัย (T-Corpus)",
+        "source_url": "https://corpus.example/loanwords/content",
+        "source_date": "2018-05-10",
+        "excerpt": "คอนเทนต์: คำยืมภาษาอังกฤษใช้แทนเนื้อหาสื่อดิจิทัล",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "เนื้อหาสาระ ข้อมูล หรือเรื่องราวที่สร้างสรรค์ขึ้นมาในรูปแบบข้อความ รูปภาพ เสียง หรือวิดีโอ เพื่อเผยแพร่สู่ผู้รับสารผ่านช่องทางดิจิทัลและสื่อสังคมออนไลน์",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ทีมงานกำลังวางแผนผลิตคอนเทนต์เพื่อส่งเสริมการท่องเที่ยวเชิงวัฒนธรรมในชุมชน",
+        "context_note": "การประชาสัมพันธ์และการตลาดดิจิทัล",
+        "source_attribution": "รายงานการสื่อสารองค์กร",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "เนื้อหา",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.95,
+        "notes": "คำทางการที่ใช้แทนคำว่าคอนเทนต์ได้ในเกือบทุกบริบทวิชาการ"
+      },
+      {
+        "target_term": "สาระ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.88,
+        "notes": "เน้นที่คุณค่าของแก่นเรื่อง"
+      }
+    ]
+  },
+  {
+    "term": "ครีเอเตอร์",
+    "slug": "creator",
+    "language": "th",
+    "term_type": "BORROWED_WORD",
+    "categories": ["SOCIAL_MEDIA", "INTERNET", "ENTERTAINMENT", "BUSINESS"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "คำยืมจากภาษาอังกฤษ (Content Creator / Creator) หมายถึง ผู้สร้างสรรค์ผลงานหรือผู้ผลิตเนื้อหาบนแพลตฟอร์มดิจิทัล เช่น วิดีโอ บทความ พอดแคสต์ หรือกราฟิก",
+    "first_seen_at": "2017-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "khri-e-toe",
+    "english_meaning": "Creator / Content Creator: An individual who produces and shares entertainment or educational material online.",
+    "pronunciation": "ครี-เอ-เต้อ",
+    "usage_warning": "เป็นคำร่วมสมัยที่นิยมใช้ในวงการสื่อดิจิทัล หากเขียนบทความวิชาการควรใช้คำว่า 'ผู้สร้างสรรค์เนื้อหา' หรือ 'ผู้ผลิตสื่อดิจิทัล'",
+    "sources": [
+      {
+        "source_type": "PUBLIC_DATASET",
+        "source_name": "สมาคมผู้ผลิตสื่อดิจิทัลไทย",
+        "source_url": "https://digitalmedia.example/definitions/creator",
+        "source_date": "2021-04-18",
+        "excerpt": "นิยามกลุ่มอาชีพครีเอเตอร์ในเศรษฐกิจดิจิทัล",
+        "license": "CC-BY-NC 4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "บุคคลหรือกลุ่มบุคคลที่มีหน้าที่ผลิต ออกแบบ และเผยแพร่ผลงานสื่อสร้างสรรค์ลงบนแพลตฟอร์มออนไลน์ต่าง ๆ เพื่อสื่อสารกับกลุ่มผู้ชมและผู้ติดตาม",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "งานสัมมนาครั้งนี้จัดขึ้นเพื่อพัฒนาทักษะการเล่าเรื่องของเหล่าครีเอเตอร์รุ่นใหม่",
+        "context_note": "การอบรมและพัฒนาทักษะวิชาชีพ",
+        "source_attribution": "ข่าวการศึกษาดิจิทัล",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ผู้สร้างสรรค์เนื้อหา",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.95,
+        "notes": "คำทางการที่สะท้อนบทบาทและหน้าที่อย่างชัดเจนในภาษาไทยมาตรฐาน"
+      },
+      {
+        "target_term": "ผู้ผลิตสื่อ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.90,
+        "notes": "คำทางการสำหรับวงการสื่อสารมวลชน"
+      },
+      {
+        "target_term": "คอนเทนต์",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.96,
+        "notes": "ครีเอเตอร์คือผู้ผลิตคอนเทนต์"
+      }
+    ]
+  },
+  {
+    "term": "อินฟลูเอนเซอร์",
+    "slug": "influencer",
+    "language": "th",
+    "term_type": "BORROWED_WORD",
+    "categories": ["SOCIAL_MEDIA", "BUSINESS", "INTERNET"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "คำยืมจากภาษาอังกฤษ (Influencer) หมายถึง ผู้มีอิทธิพลทางความคิดหรือพฤติกรรมบนโลกออนไลน์ ซึ่งมีผู้ติดตามจำนวนมากและสามารถโน้มน้าวการตัดสินใจของผู้รับสารได้",
+    "first_seen_at": "2016-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "in-flu-en-soe",
+    "english_meaning": "Influencer: A person with the ability to influence potential buyers or followers by promoting or recommending items on social media.",
+    "pronunciation": "อิน-ฟลู-เอ็น-เซ่อ",
+    "usage_warning": "ในรายงานทางวิชาการและการตลาดอย่างเป็นทางการ ควรใช้คำว่า 'ผู้มีอิทธิพลทางสื่อสังคมออนไลน์' หรือ 'ผู้มีอิทธิพลทางความคิด'",
+    "sources": [
+      {
+        "source_type": "EXTERNAL_SOURCE",
+        "source_name": "วารสารการสื่อสารและการตลาดดิจิทัล 2023",
+        "source_url": "https://marketing-journal.example/articles/influencers-thailand",
+        "source_date": "2023-08-15",
+        "excerpt": "การวิเคราะห์พฤติกรรมผู้บริโภคที่มีต่ออินฟลูเอนเซอร์ไทย",
+        "license": "All Rights Reserved (Quoted under fair use)",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ผู้ที่สร้างฐานผู้ติดตามบนเครือข่ายสังคมออนไลน์ และมีพลังในการโน้มน้าวทัศนคติ พฤติกรรม หรือการตัดสินใจซื้อของกลุ่มผู้ติดตามผ่านการแบ่งปันประสบการณ์และความคิดเห็น",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "แบรนด์เครื่องสำอางเลือกใช้อินฟลูเอนเซอร์สายรีวิวเพื่อช่วยสร้างความน่าเชื่อถือให้กับผลิตภัณฑ์เปิดตัวใหม่",
+        "context_note": "แผนการตลาดและการประชาสัมพันธ์",
+        "source_attribution": "กลยุทธ์การตลาดแบรนด์",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ผู้มีอิทธิพลทางสื่อสังคมออนไลน์",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.94,
+        "notes": "คำทางการที่ใช้ในงานวิจัยและวิทยานิพนธ์"
+      },
+      {
+        "target_term": "ผู้มีอิทธิพลทางความคิด",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.90,
+        "notes": "คำทางการเชิงนิเทศศาสตร์และการสื่อสารมวลชน"
+      }
+    ]
+  },
+  {
+    "term": "Prompt",
+    "slug": "prompt",
+    "language": "en",
+    "term_type": "TECHNICAL_TERM",
+    "categories": ["AI", "TECHNOLOGY", "EDUCATION"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ข้อความ คำสั่ง หรือคำถามที่ผู้ใช้ป้อนให้กับระบบ AI หรือโมเดลภาษาขนาดใหญ่ เพื่อให้ระบบประมวลผลและสร้างคำตอบออกมาตามเป้าหมาย",
+    "first_seen_at": "2022-11-30",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "พรอมต์",
+    "english_meaning": "Prompt: An instruction, question, or text input provided to an AI model to guide its output.",
+    "pronunciation": "พฺรอมต์",
+    "usage_warning": "ในวงการคอมพิวเตอร์และ AI นิยมทับศัพท์ว่า 'พรอมต์' หากแปลเป็นทางการนิยมใช้ 'ข้อความคำสั่ง' หรือ 'คำสั่งป้อน'",
+    "sources": [
+      {
+        "source_type": "EXTERNAL_SOURCE",
+        "source_name": "คู่มือการใช้งานปัญญาประดิษฐ์และ AI Literacy สวทช.",
+        "source_url": "https://nstda.example/ai-literacy/prompting",
+        "source_date": "2023-09-05",
+        "excerpt": "การเขียนพรอมต์ (Prompt) คือหัวใจของการควบคุมการทำงานของ Generative AI",
+        "license": "Government Open Data",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ชุดข้อความ คำสั่ง หรือบริบทที่ป้อนเข้าสู่โมเดลปัญญาประดิษฐ์ เพื่อชี้นำให้โมเดลสร้างผลลัพธ์ที่ตรงกับความต้องการและข้อจำกัดที่กำหนด",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "การเขียน Prompt ที่มีความชัดเจนและระบุบทบาทอย่างละเอียดจะช่วยให้ได้ผลลัพธ์ที่มีคุณภาพสูง",
+        "context_note": "การใช้งาน AI ในการทำงานประจำวัน",
+        "source_attribution": "คู่มือการประยุกต์ใช้ AI ในองค์กร",
+        "register": "SPECIALIZED"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ข้อความคำสั่ง",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.88,
+        "notes": "คำไทยเชิงอธิบายที่สามารถใช้ในเอกสารทางการ"
+      },
+      {
+        "target_term": "คำสั่งป้อน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.85,
+        "notes": "คำเทียบเคียงในบริบทวิทยาการคอมพิวเตอร์"
+      },
+      {
+        "target_term": "Prompt Engineering",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.96,
+        "notes": "ศาสตร์ว่าด้วยการออกแบบและปรับแต่งพรอมต์"
+      }
+    ]
+  },
+  {
+    "term": "Prompt Engineering",
+    "slug": "prompt-engineering",
+    "language": "en",
+    "term_type": "TECHNICAL_TERM",
+    "categories": ["AI", "TECHNOLOGY", "EDUCATION"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ศาสตร์และทักษะในการออกแบบ เรียบเรียง และปรับแต่งข้อความคำสั่ง (Prompt) อย่างเป็นระบบ เพื่อให้โมเดล AI แสดงศักยภาพและสร้างผลลัพธ์ได้อย่างแม่นยำสูงสุด",
+    "first_seen_at": "2023-01-15",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "พรอมต์เอนจิเนียริง",
+    "english_meaning": "Prompt Engineering: The practice of structuring and optimizing input prompts to effectively communicate with and elicit desired outputs from generative AI.",
+    "pronunciation": "พฺรอมต์-เอ็น-จิ-เนีย-ริ่ง",
+    "usage_warning": "เป็นศัพท์เทคนิคใหม่ นิยมทับศัพท์ หรือใช้คำอธิบายภาษาไทยว่า 'วิศวกรรมคำสั่งป้อน'",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "IEEE Spectrum / AI Engineering Papers",
+        "source_url": "https://spectrum.ieee.example/prompt-engineering",
+        "source_date": "2023-03-20",
+        "excerpt": "Prompt engineering as a critical skill in modern software workflows",
+        "license": "Academic Reference",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "กระบวนการเชิงวิศวกรรมและการทดลองเพื่อค้นหารูปแบบคำสั่งที่ดีที่สุดสำหรับการชี้นำให้โมเดลภาษาขนาดใหญ่ทำงานได้อย่างมีประสิทธิภาพและสอดคล้องกับวัตถุประสงค์",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "หลักสูตรใหม่เปิดสอนวิชา Prompt Engineering เพื่อเตรียมความพร้อมให้นักศึกษาสามารถนำ AI ไปประยุกต์ใช้ในอุตสาหกรรม",
+        "context_note": "การศึกษาและการพัฒนาทักษะแรงงาน",
+        "source_attribution": "ข่าวประชาสัมพันธ์คณะวิทยาศาสตร์",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "วิศวกรรมคำสั่งป้อน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.86,
+        "notes": "คำแปลเชิงเทคนิคที่อาจนำมาใช้ในเอกสารวิชาการไทย"
+      },
+      {
+        "target_term": "Prompt",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.98,
+        "notes": "Prompt Engineering คือการวิศวกรรมตัว Prompt"
+      }
+    ]
+  },
+  {
+    "term": "Generative AI",
+    "slug": "generative-ai",
+    "language": "en",
+    "term_type": "TECHNICAL_TERM",
+    "categories": ["AI", "TECHNOLOGY", "SCIENCE"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ปัญญาประดิษฐ์แบบสร้างสรรค์ สาขาหนึ่งของ AI ที่มีความสามารถในการสร้างเนื้อหาใหม่ ๆ ได้ด้วยตนเอง เช่น ข้อความ รูปภาพ โค้ดคอมพิวเตอร์ ดนตรี หรือวิดีโอ โดยเรียนรู้จากชุดข้อมูลขนาดใหญ่",
+    "first_seen_at": "2022-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.97,
+    "transliteration": "เจนเนอเรทีฟ เอไอ",
+    "english_meaning": "Generative AI: Artificial intelligence capable of generating text, images, videos, or other data using generative models.",
+    "pronunciation": "เจน-เนอ-เร-ทีฟ-เอ-ไอ",
+    "usage_warning": "ภาษาไทยทางการบัญญัติว่า 'ปัญญาประดิษฐ์แบบสร้างสรรค์' ควบคู่กับการใช้ทับศัพท์ว่า เจนเนอเรทีฟ เอไอ",
+    "sources": [
+      {
+        "source_type": "OFFICIAL",
+        "source_name": "สำนักงานราชบัณฑิตยสภา (บัญชีศัพท์บัญญัติคอมพิวเตอร์และเทคโนโลยีสารสนเทศ)",
+        "source_url": "https://legacy.orst.go.th/coined_terms/generative_ai",
+        "source_date": "2023-11-20",
+        "excerpt": "Generative AI: ปัญญาประดิษฐ์แบบสร้างสรรค์",
+        "license": "Official Public Record",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ระบบปัญญาประดิษฐ์ที่ได้รับการฝึกฝนให้เข้าใจโครงสร้างและรูปแบบของข้อมูล เพื่อนำมาสังเคราะห์และสร้างสรรค์ผลงานใหม่ที่คล้ายคลึงกับข้อมูลที่มนุษย์สร้างขึ้น",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "การนำ Generative AI มาประยุกต์ใช้ในการร่างเอกสารและการออกแบบงานกราฟิกช่วยยกระดับผลิตภาพของทีมงานอย่างก้าวกระโดด",
+        "context_note": "การพัฒนาเทคโนโลยีในองค์กร",
+        "source_attribution": "วารสารนวัตกรรมองค์กร",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ปัญญาประดิษฐ์แบบสร้างสรรค์",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "OFFICIAL_DATA",
+        "confidence": 0.99,
+        "notes": "ศัพท์บัญญัติทางการของสำนักงานราชบัณฑิตยสภา"
+      },
+      {
+        "target_term": "AI",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.99,
+        "notes": "เป็นแขนงย่อยของปัญญาประดิษฐ์"
+      }
+    ]
+  },
+  {
+    "term": "Deepfake",
+    "slug": "deepfake",
+    "language": "en",
+    "term_type": "TECHNICAL_TERM",
+    "categories": ["AI", "TECHNOLOGY", "INTERNET", "LAW"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "GENERAL",
+    "description": "สื่อดิจิทัลสังเคราะห์ (ภาพ เสียง หรือวิดีโอ) ที่ถูกสร้างหรือดัดแปลงโดยใช้เทคโนโลยี Deep Learning เพื่อจำลองบุคคลให้พูดหรือกระทำการที่ไม่ได้เกิดขึ้นจริงอย่างแนบเนียน",
+    "first_seen_at": "2017-12-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "ดีปเฟก",
+    "english_meaning": "Deepfake: Synthetic media in which a person in an existing image or video is replaced with someone else's likeness using artificial neural networks.",
+    "pronunciation": "ดีป-เฟก",
+    "usage_warning": "มักใช้ทับศัพท์ว่า ดีปเฟก ในเอกสารทางการและกฎหมายนิยมอธิบายเป็น 'สื่อสังเคราะห์ดัดแปลงเสมือนจริง' หรือ 'ภาพลวงเลียนแบบบุคคล'",
+    "sources": [
+      {
+        "source_type": "PUBLIC_DATASET",
+        "source_name": "ศูนย์ต่อต้านข่าวปลอม ประเทศไทย (Anti-Fake News Center)",
+        "source_url": "https://antifakenewscenter.example/cyber/deepfake-guide",
+        "source_date": "2024-02-14",
+        "excerpt": "คู่มือรู้เท่าทันภัยสื่อลวงเทคโนโลยีดีปเฟก (Deepfake)",
+        "license": "Government Open Data",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "เทคโนโลยีการตัดต่อและสร้างสื่อเสมือนจริงด้วยโครงข่ายประสาทเทียมขั้นสูง เพื่อสลับใบหน้า เลียนแบบเสียง หรือจำลองท่าทางของบุคคลให้ดูสมจริงจนแยกแยะได้ยาก",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ทางการเตือนประชาชนให้ระวังมิจฉาชีพใช้เทคโนโลยี Deepfake ปลอมเสียงและใบหน้าของคนรู้จักมาหลอกยืมเงิน",
+        "context_note": "ข่าวเตือนภัยความมั่นคงปลอดภัยไซเบอร์",
+        "source_attribution": "ข่าวเตือนภัยอาชญากรรมทางเทคโนโลยี",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "สื่อสังเคราะห์ดัดแปลงเสมือนจริง",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.90,
+        "notes": "คำแปลเชิงอธิบายสำหรับใช้ในงานวิจัยและกฎหมาย"
+      }
+    ]
+  },
+  {
+    "term": "ด้อม",
+    "slug": "dom",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": ["POP_CULTURE", "ENTERTAINMENT", "YOUTH", "SOCIAL_MEDIA"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SLANG",
+    "audience": "SOCIAL_MEDIA",
+    "description": "คำสแลงตัดทอนมาจากคำว่า แฟนด้อม (Fandom) หมายถึง กลุ่มแฟนคลับหรือกลุ่มผู้ชื่นชอบศิลปิน ดารา ไอดอล การ์ตูน หรือผลงานสร้างสรรค์ร่วมกัน",
+    "first_seen_at": "2018-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.94,
+    "transliteration": "dom",
+    "english_meaning": "Fandom / Standom: A dedicated community of fans who passionately support a celebrity, music group, or pop culture franchise.",
+    "pronunciation": "ด้อม",
+    "usage_warning": "เป็นสแลงภาษาพูดในกลุ่มแฟนคลับและสื่อสังคมออนไลน์ ไม่ควรใช้ในงานวิชาการ ควรใช้คำว่า 'กลุ่มผู้สนับสนุน' หรือ 'กลุ่มแฟนคลับ'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "คลังคำศัพท์วัฒนธรรมป๊อปและไอดอลไทย",
+        "source_url": "https://pop-idols.example/slang/dom",
+        "source_date": "2020-07-25",
+        "excerpt": "ด้อม: ตัดทอนจาก Fandom หมายถึงกลุ่มแฟนคลับ",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "กลุ่มสังคมของผู้ที่มีความสนใจ ชื่นชอบ และสนับสนุนบุคคล ศิลปิน วงดนตรี หรือผลงานชิ้นเดียวกันอย่างเหนียวแน่นบนแพลตฟอร์มดิจิทัล",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ชาวด้อมร่วมใจกันจัดกิจกรรมการกุศลเนื่องในโอกาสวันคล้ายวันเกิดของศิลปินคนโปรด",
+        "context_note": "ข่าวกิจกรรมแฟนคลับศิลปิน",
+        "source_attribution": "ข่าวบันเทิงออนไลน์",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "กลุ่มแฟนคลับ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.93,
+        "notes": "คำกึ่งทางการที่เป็นที่ยอมรับทั่วไป"
+      },
+      {
+        "target_term": "กลุ่มผู้สนับสนุน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.91,
+        "notes": "คำทางการสำหรับใช้ในงานเขียนเชิงวิชาการหรือนโยบาย"
+      },
+      {
+        "target_term": "ติ่ง",
+        "relationship_type": "RELATED",
+        "source_type": "COMMUNITY",
+        "confidence": 0.89,
+        "notes": "คำสแลงในบริบทการเป็นแฟนคลับเช่นกัน"
+      }
+    ]
+  },
+  {
+    "term": "ติ่ง",
+    "slug": "ting",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": ["POP_CULTURE", "ENTERTAINMENT", "YOUTH", "SOCIAL_MEDIA"],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "SOCIAL_MEDIA",
+    "description": "คำสแลงที่แต่เดิมมีความหมายเชิงล้อเลียนทรงผม ปัจจุบันพัฒนามาเป็นคำนามและคำกริยาหมายถึง การเป็นแฟนคลับหรือการติดตามชื่นชอบศิลปินอย่างคลั่งไคล้และทุ่มเท",
+    "first_seen_at": "2010-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "ting",
+    "english_meaning": "Die-hard fan / to stan: An enthusiastic, devoted admirer who passionately follows a celebrity or idol.",
+    "pronunciation": "ติ่ง",
+    "usage_warning": "เป็นคำสแลงภาษาปาก ไม่ควรใช้ในงานเขียนที่เป็นทางการหรือรายงานวิชาการ ควรใช้ 'ผู้ชื่นชอบ' หรือ 'แฟนคลับ'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "พจนานุกรมศัพท์วัยรุ่นไทยและวิวัฒนาการคำสแลง",
+        "source_url": "https://thai-youth-slang.example/terms/ting",
+        "source_date": "2015-02-11",
+        "excerpt": "ติ่ง: วิวัฒนาการจากทรงผมสู่ความหมายแฟนคลับ",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ผู้ที่ชื่นชอบ ติดตาม และให้กำลังใจศิลปิน ไอดอล หรือดาราอย่างจริงจังและเหนียวแน่น และยังใช้เป็นกริยาหมายถึงการติดตามผลงานอย่างทุ่มเท",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "เธอเป็นติ่งวงนี้มาตั้งแต่สมัยมัธยมจนปัจจุบันทำงานแล้วก็ยังตามไปดูคอนเสิร์ตทุกรอบ",
+        "context_note": "การบอกเล่าความชอบส่วนตัว",
+        "source_attribution": "บทสนทนาทั่วไป",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ผู้ชื่นชอบอย่างเหนียวแน่น",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.90,
+        "notes": "คำทางการที่สุภาพและเหมาะสมในรายงานวิชาการ"
+      },
+      {
+        "target_term": "แฟนคลับ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำกึ่งทางการที่สื่อสารเข้าใจตรงกัน"
+      }
+    ]
+  },
+  {
+    "term": "ฟีล",
+    "slug": "feel",
+    "language": "th",
+    "term_type": "BORROWED_WORD",
+    "categories": ["LIFESTYLE", "SOCIAL_MEDIA", "YOUTH"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "INFORMAL",
+    "audience": "GENERAL",
+    "description": "คำยืมจากภาษาอังกฤษ (Feel / Feeling) มักใช้เป็นคำนามหรือคำกริยาช่วย หมายถึง บรรยากาศ อารมณ์ ความรู้สึก หรือฟีลลิ่งของการกระทำหรือสถานที่นั้น ๆ",
+    "first_seen_at": "2016-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.94,
+    "transliteration": "fil",
+    "english_meaning": "Feel / Vibe: Mood, sensation, atmosphere, or impression of a situation or setting.",
+    "pronunciation": "ฟีล",
+    "usage_warning": "เป็นภาษาพูดและการสื่อสารส่วนบุคคล ในงานวิชาการหรือหนังสือราชการควรใช้ 'ความรู้สึก' 'บรรยากาศ' หรือ 'อารมณ์'",
+    "sources": [
+      {
+        "source_type": "PUBLIC_DATASET",
+        "source_name": "คลังคำภาษาพูดในสื่อสังคมไทยร่วมสมัย",
+        "source_url": "https://corpus.example/spoken/feel",
+        "source_date": "2019-10-04",
+        "excerpt": "ฟีล: การยืมคำว่า feel มาแสดงอารมณ์และบรรยากาศ",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "อารมณ์ ความรู้สึกร่วม หรือบรรยากาศแวดล้อมที่เกิดขึ้นในขณะใดขณะหนึ่ง หรือความรู้สึกที่ได้รับจากสิ่งใดสิ่งหนึ่ง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "คาเฟ่ริมแม่น้ำร้านนี้ได้ฟีลเหมือนกำลังนั่งพักผ่อนอยู่ในเมืองชนบทของญี่ปุ่น",
+        "context_note": "การรีวิวสถานที่ท่องเที่ยว",
+        "source_attribution": "รีวิวท่องเที่ยวไลฟ์สไตล์",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ความรู้สึก",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.95,
+        "notes": "คำทางการมาตรฐาน"
+      },
+      {
+        "target_term": "บรรยากาศ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "ใช้เมื่อหมายถึงฟีลของสถานที่หรือบริบทแวดล้อม"
+      }
+    ]
+  },
+  {
+    "term": "เดดไลน์",
+    "slug": "deadline",
+    "language": "th",
+    "term_type": "BORROWED_WORD",
+    "categories": ["WORKPLACE", "BUSINESS", "EDUCATION"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "PROFESSIONAL",
+    "description": "คำยืมภาษาอังกฤษ (Deadline) หมายถึง วันเวลาสุดท้ายหรือกำหนดเส้นตายที่ต้องส่งงาน ดำเนินการ หรือเสร็จสิ้นภารกิจตามที่ตกลงกันไว้",
+    "first_seen_at": "2005-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.98,
+    "transliteration": "det-lai",
+    "english_meaning": "Deadline: The latest time or date by which something should be completed or submitted.",
+    "pronunciation": "เด็ด-ลาย",
+    "usage_warning": "ใช้แพร่หลายในแวดวงการทำงานและการศึกษา หากเขียนหนังสือราชการหรือสัญญาที่เป็นทางการควรใช้ 'กำหนดเวลาส่งมอบ' หรือ 'วันสิ้นสุดกำหนดการ'",
+    "sources": [
+      {
+        "source_type": "PUBLIC_DATASET",
+        "source_name": "คลังศัพท์ภาษาอังกฤษในสถานที่ทำงานไทย",
+        "source_url": "https://workplace-terms.example/deadline",
+        "source_date": "2012-03-01",
+        "excerpt": "เดดไลน์: กำหนดวันส่งงานขั้นสุดท้าย",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "กำหนดเวลาสุดท้ายที่ยอมรับได้ในการส่งมอบงาน ผลงาน หรือการปฏิบัติหน้าที่ให้ลุล่วงตามข้อตกลง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ทุกคนในทีมต้องเร่งมือร่วมกันเพื่อให้ส่งมอบโครงการทันตามเดดไลน์ที่ลูกค้ากำหนดไว้สิ้นเดือนนี้",
+        "context_note": "การบริหารจัดการโครงการในองค์กร",
+        "source_attribution": "การประชุมบริหารโครงการ",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "กำหนดเวลาส่งมอบ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.95,
+        "notes": "คำทางการสำหรับสัญญาและการบริหารงาน"
+      },
+      {
+        "target_term": "วันสิ้นสุดกำหนดการ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำทางการในระบบราชการและสถาบันการศึกษา"
+      }
+    ]
+  },
+  {
+    "term": "งานเข้า",
+    "slug": "ngan-khao",
+    "language": "th",
+    "term_type": "PHRASE",
+    "categories": ["WORKPLACE", "LIFESTYLE", "SOCIAL_MEDIA"],
+    "status": "COMMON",
+    "origin": "COMMUNITY",
+    "register": "INFORMAL",
+    "audience": "GENERAL",
+    "description": "สำนวนหรือคำสแลงร่วมสมัย หมายถึง เกิดเรื่องยุ่งยาก ปัญหาไม่คาดคิด หรือมีภาระงานเร่งด่วนถาโถมเข้ามาอย่างกะทันหัน",
+    "first_seen_at": "2008-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "ngan-khao",
+    "english_meaning": "In trouble / swamped with unexpected troubles or sudden workload.",
+    "pronunciation": "งาน-เข้า",
+    "usage_warning": "เป็นภาษาพูดและสแลงสนทนา ไม่ควรใช้ในหนังสือราชการหรือรายงานผู้บริหาร ควรใช้ 'เกิดปัญหาขัดข้อง' หรือ 'มีภาระงานเร่งด่วนเพิ่มขึ้น'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "สำนวนไทยร่วมสมัยและภาษาปาก (Contemporary Thai Idioms)",
+        "source_url": "https://thai-idioms.example/terms/ngan-khao",
+        "source_date": "2010-05-15",
+        "excerpt": "งานเข้า: หมายถึงเกิดเรื่องเดือดร้อนหรือภาระเข้ามาไม่ทันตั้งตัว",
+        "license": "CC-BY-SA 4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "สถานการณ์ที่มีปัญหา ความเดือดร้อน หรือภาระความรับผิดชอบเกิดขึ้นอย่างกะทันหันโดยไม่ได้คาดหมายไว้ล่วงหน้า",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "กำลังจะเลิกงานอยู่แล้ว เซิร์ฟเวอร์หลักเกิดล่มกะทันหัน งานเข้ากันทั้งแผนกไอที",
+        "context_note": "การพูดคุยในที่ทำงานเมื่อเกิดเหตุฉุกเฉิน",
+        "source_attribution": "บทสนทนาในที่ทำงาน",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "เกิดปัญหาขัดข้องกะทันหัน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำทางการสำหรับรายงานเหตุการณ์"
+      },
+      {
+        "target_term": "มีภาระงานเร่งด่วนเพิ่มขึ้น",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.88,
+        "notes": "คำทางการในบริบทการทำงาน"
+      }
+    ]
+  },
+  {
+    "term": "Meme",
+    "slug": "meme",
+    "language": "en",
+    "term_type": "INTERNET_TERM",
+    "categories": ["INTERNET", "SOCIAL_MEDIA", "POP_CULTURE", "ENTERTAINMENT"],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "INFORMAL",
+    "audience": "GENERAL",
+    "description": "มักเขียนทับศัพท์ว่า มีม หมายถึง แนวคิด รูปภาพ วิดีโอ หรือข้อความตลกล้อเลียนที่ถูกส่งต่อและดัดแปลงอย่างรวดเร็วแพร่หลายบนโลกอินเทอร์เน็ต",
+    "first_seen_at": "2010-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "มีม",
+    "english_meaning": "Meme: An image, video, piece of text, typically humorous in nature, that is copied and spread rapidly by internet users.",
+    "pronunciation": "มีม",
+    "usage_warning": "ใช้กันทั่วไปในสื่อสังคมออนไลน์ ในเชิงวิชาการนิยมแปลตามหลักทฤษฎีวัฒนธรรมว่า 'หน่วยทางวัฒนธรรม' หรือ 'สื่อล้อเลียนบนอินเทอร์เน็ต'",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "การศึกษาวาทกรรมสื่อมีมบนสังคมออนไลน์ไทย (ม.ธรรมศาสตร์)",
+        "source_url": "https://digital-humanities.example/research/memes-thailand",
+        "source_date": "2021-11-10",
+        "excerpt": "บทบาทของมีมในฐานะเครื่องมือสะท้อนสังคมของคนรุ่นใหม่",
+        "license": "Open Access",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "สื่อทางอินเทอร์เน็ตที่ประกอบด้วยภาพ ข้อความ หรือวิดีโอที่สื่อความหมายในเชิงขบขัน ล้อเลียน หรือเสียดสีสังคม และถูกผู้ใช้นำไปดัดแปลงผลิตซ้ำอย่างแพร่หลาย",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ภาพเหตุการณ์น่ารักของแมวตัวนี้กลายเป็นมีมยอดฮิตที่มีคนแชร์หลายแสนครั้งในชั่วข้ามคืน",
+        "context_note": "ปรากฏการณ์บนสื่อสังคมออนไลน์",
+        "source_attribution": "บทความไวรัลโซเชียล",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "สื่อตลกล้อเลียนบนอินเทอร์เน็ต",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.89,
+        "notes": "คำแปลเชิงอธิบายในงานวิจัยวิชาการ"
+      }
+    ]
+  },
+  {
+    "term": "Viral",
+    "slug": "viral",
+    "language": "en",
+    "term_type": "INTERNET_TERM",
+    "categories": ["INTERNET", "SOCIAL_MEDIA", "BUSINESS"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "ทับศัพท์ว่า ไวรัล หมายถึง ปรากฏการณ์ที่ข้อมูล ข่าวสาร รูปภาพ หรือวิดีโอแพร่กระจายและส่งต่ออย่างรวดเร็วและเป็นวงกว้างบนเครือข่ายอินเทอร์เน็ต คล้ายการแพร่ระบาดของไวรัส",
+    "first_seen_at": "2010-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.97,
+    "transliteration": "ไวรัล",
+    "english_meaning": "Viral: Relating to or involving an image, video, or piece of information that is circulated rapidly and widely from one internet user to another.",
+    "pronunciation": "ไว-รัล",
+    "usage_warning": "ใช้ทั่วไปในการตลาดและสื่อสารมวลชน หากใช้ในภาษาไทยทางการนิยมใช้คำว่า 'การแพร่กระจายอย่างรวดเร็วบนโลกออนไลน์'",
+    "sources": [
+      {
+        "source_type": "PUBLIC_DATASET",
+        "source_name": "สมาคมการตลาดดิจิทัลไทย (Digital Marketing Association)",
+        "source_url": "https://dmat.example/terms/viral-marketing",
+        "source_date": "2018-09-12",
+        "excerpt": "ไวรัลมาร์เก็ตติง: กลยุทธ์การสื่อสารแบบปากต่อปากบนโลกออนไลน์",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ลักษณะของเนื้อหาที่ได้รับความนิยมสูง มีการกดแชร์และบอกต่ออย่างก้าวกระโดดบนสื่อสังคมออนไลน์ จนกลายเป็นประเด็นที่คนในสังคมพูดถึงอย่างกว้างขวางในเวลาอันรวดเร็ว",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "คลิปวิดีโอทำความดีของเด็กนักเรียนกลายเป็นไวรัลที่สร้างความประทับใจให้ผู้คนทั่วประเทศ",
+        "context_note": "ข่าวสารออนไลน์และสังคม",
+        "source_attribution": "สำนักข่าวออนไลน์",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "การแพร่กระจายอย่างรวดเร็วบนสื่อออนไลน์",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.91,
+        "notes": "คำทางการเชิงนิเทศศาสตร์"
+      }
+    ]
+  },
+  {
+    "term": "ปัง",
+    "slug": "pang",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": ["POP_CULTURE", "YOUTH", "LIFESTYLE", "SOCIAL_MEDIA"],
+    "status": "COMMON",
+    "origin": "POP_CULTURE",
+    "register": "SLANG",
+    "audience": "YOUTH",
+    "description": "คำสแลงแสดงความสำเร็จ ความโดดเด่น ความเลิศหรู หรือผลลัพธ์ที่ดีเลิศเกินความคาดหมาย",
+    "first_seen_at": "2015-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.94,
+    "transliteration": "pang",
+    "english_meaning": "Fabulous, smashing success, hit, or stunningly successful.",
+    "pronunciation": "ปัง",
+    "usage_warning": "เป็นสแลงสนทนา ไม่ควรใช้ในงานวิชาการหรือหนังสือทางการ ควรใช้คำว่า 'ประสบความสำเร็จอย่างสูง' หรือ 'โดดเด่น'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "คลังคำสแลงบันเทิงไทย",
+        "source_url": "https://thai-slang.example/terms/pang",
+        "source_date": "2017-06-20",
+        "excerpt": "ปัง: ความสำเร็จที่ดังเปรี้ยงปร้าง",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ประสบผลสำเร็จอย่างงดงาม โดดเด่นเป็นที่สะดุดตา หรือได้รับความนิยมอย่างถล่มทลาย",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "เพลงใหม่ของวงเปิดตัววันแรกก็ปังมาก ยอดวิวพุ่งแตะหลักล้านภายในไม่กี่ชั่วโมง",
+        "context_note": "ข่าววงการบันเทิง",
+        "source_attribution": "ข่าวบันเทิงออนไลน์",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ประสบความสำเร็จอย่างโดดเด่น",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำทางการสำหรับความสำเร็จ"
+      },
+      {
+        "target_term": "จึ้ง",
+        "relationship_type": "RELATED",
+        "source_type": "COMMUNITY",
+        "confidence": 0.88,
+        "notes": "สแลงในกลุ่มแสดงความปัง"
+      }
+    ]
+  },
+  {
+    "term": "ChatGPT",
+    "slug": "chatgpt",
+    "language": "en",
+    "term_type": "PROPER_NOUN",
+    "categories": ["AI", "TECHNOLOGY", "EDUCATION"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "NEUTRAL",
+    "audience": "GENERAL",
+    "description": "ชื่อระบบปัญญาประดิษฐ์และบริการแชตบอตที่พัฒนาโดย OpenAI โดยใช้โมเดลภาษาขนาดใหญ่ตระกูล GPT สามารถสนทนา ตอบคำถาม และช่วยเขียนข้อความได้เสมือนมนุษย์",
+    "first_seen_at": "2022-11-30",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.99,
+    "transliteration": "แชตจีพีที",
+    "english_meaning": "ChatGPT: An AI-powered conversational agent developed by OpenAI, based on large language models.",
+    "pronunciation": "แชต-จี-พี-ที",
+    "usage_warning": "เป็นชื่อเฉพาะทางการค้า (Proper Noun / Trademark) ของบริษัท OpenAI ควรระบุอย่างชัดเจนในการอ้างอิงวิชาการ",
+    "sources": [
+      {
+        "source_type": "EXTERNAL_SOURCE",
+        "source_name": "OpenAI Official Documentation",
+        "source_url": "https://openai.com/chatgpt",
+        "source_date": "2022-11-30",
+        "excerpt": "ChatGPT: Optimizing Language Models for Dialogue",
+        "license": "Trademark OpenAI",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "โปรแกรมสนทนาอัจฉริยะที่ใช้โมเดลภาษาขนาดใหญ่ (LLM) ในการประมวลผลและสร้างข้อความตอบกลับที่เป็นธรรมชาติ สามารถช่วยงานวิเคราะห์ เขียนโค้ด ร่างเนื้อหา และตอบคำถามได้หลากหลายสาขาวิชา",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "นักวิจัยใช้ ChatGPT ช่วยตรวจทานไวยากรณ์ภาษาอังกฤษและสรุปประเด็นสำคัญของบทความ",
+        "context_note": "การใช้งาน AI ในการทำงานวิชาการ",
+        "source_attribution": "วารสารการวิจัยประยุกต์",
+        "register": "NEUTRAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "AI",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.99,
+        "notes": "ChatGPT เป็นแอปพลิเคชันปัญญาประดิษฐ์"
+      },
+      {
+        "target_term": "Generative AI",
+        "relationship_type": "RELATED",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.99,
+        "notes": "เป็นตัวอย่างการใช้งานเทคโนโลยี Generative AI"
+      }
+    ]
+  },
+  {
+    "term": "AI",
+    "slug": "ai",
+    "language": "en",
+    "term_type": "TECHNICAL_TERM",
+    "categories": ["AI", "TECHNOLOGY", "SCIENCE"],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "NEUTRAL",
+    "audience": "GENERAL",
+    "description": "ย่อมาจาก Artificial Intelligence หมายถึง สาขาวิทยาการคอมพิวเตอร์ที่มุ่งพัฒนาโปรแกรมหรือระบบเครื่องจักรให้มีความสามารถในการคิด วิเคราะห์ ให้เหตุผล และเรียนรู้ได้เช่นเดียวกับมนุษย์",
+    "first_seen_at": "1956-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.99,
+    "transliteration": "เอไอ",
+    "english_meaning": "Artificial Intelligence: The simulation of human intelligence in machines that are programmed to think and learn.",
+    "pronunciation": "เอ-ไอ",
+    "usage_warning": "ภาษาไทยทางการบัญญัติว่า 'ปัญญาประดิษฐ์' สามารถใช้สลับกันได้ตามระดับความเคร่งครัดของเอกสาร",
+    "sources": [
+      {
+        "source_type": "OFFICIAL",
+        "source_name": "สำนักงานราชบัณฑิตยสภา (พจนานุกรมศัพท์คอมพิวเตอร์และเทคโนโลยีสารสนเทศ)",
+        "source_url": "https://legacy.orst.go.th/coined_terms/ai",
+        "source_date": "2015-01-01",
+        "excerpt": "Artificial Intelligence (AI): ปัญญาประดิษฐ์",
+        "license": "Official Public Record",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ปัญญาประดิษฐ์ สาขาวิชาทางวิทยาการคอมพิวเตอร์และระบบสารสนเทศที่สร้างระบบให้เลียนแบบพฤติกรรมและการตัดสินใจอย่างชาญฉลาดของมนุษย์",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "การพัฒนาเทคโนโลยี AI ได้เข้ามามีบทบาทอย่างลึกซึ้งในวงการแพทย์และการวิเคราะห์ภาพถ่ายทางรังสี",
+        "context_note": "การแพทย์และเทคโนโลยีสุขภาพ",
+        "source_attribution": "วารสารการแพทย์ร่วมสมัย",
+        "register": "FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ปัญญาประดิษฐ์",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "OFFICIAL_DATA",
+        "confidence": 1.0,
+        "notes": "ศัพท์บัญญัติอย่างเป็นทางการของราชบัณฑิตยสภา"
+      }
+    ]
+  }
+]

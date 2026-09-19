@@ -384,7 +384,7 @@ export function mockSearch(
     mode,
     notice:
       mode === "fallback"
-        ? "ระบบค้นหาหลักกำลังเชื่อมต่อ ขณะนี้แสดงผลลัพธ์ยืนยันจากคลังพจนานุกรมทางการ"
+        ? "ระบบค้นหาหลักกำลังเชื่อมต่อ ขณะนี้แสดงข้อมูลสำรอง (Demo / Offline Fallback)"
         : undefined,
   };
 }

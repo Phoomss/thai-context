@@ -45,11 +45,6 @@ export async function GET(
     );
   }
 
-  // 1. Check curated benchmark showcase words first for optimal fidelity
-  if (CURATED_WORD_EVOLUTIONS[decodedWord]) {
-    return NextResponse.json(CURATED_WORD_EVOLUTIONS[decodedWord]);
-  }
-
   const backendUrl =
     process.env.THAI_CONTEXT_API_URL ??
     process.env.NEXT_PUBLIC_API_URL ??
