@@ -225,4 +225,17 @@ describe('WorkspaceOrchestratorService (Section 37 Test Suite)', () => {
       expect(res.language_bridge?.cultural_context).toContain('harmony');
     });
   });
+
+  // Test 9: Dialect Agent Integration (Section 20 & 21)
+  describe('Test 9: Dialect Agent Integration', () => {
+    it('should route dialect queries to DialectAgent and return regional comparisons', async () => {
+      const res = await orchestrator.process({
+        message: 'คำว่า กิน ในแต่ละภาคใช้คำว่าอะไรบ้าง',
+      });
+
+      expect(res.intent).toBe('DIALECT');
+      expect(res.dialect_discovery).toBeDefined();
+      expect(res.dialect_discovery?.standardWord).toBe('กิน');
+    });
+  });
 });

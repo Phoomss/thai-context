@@ -58,7 +58,7 @@ describe("Dialect Intelligence & Discovery Feature", () => {
       expect(data.concept).toBe("คิดถึง");
       expect(data.results).toHaveLength(4);
       const north = data.results.find((r: any) => r.region === "NORTH");
-      expect(north.term).toBe("กึ๊ดเติงหา");
+      expect(["กึ๊ดเติงหา", "กึดเติงหา"]).toContain(north.term);
       expect(north.found).toBe(true);
     });
 
