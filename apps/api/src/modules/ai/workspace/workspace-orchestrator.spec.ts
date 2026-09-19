@@ -8,6 +8,8 @@ import { WritingAgent } from './agents/writing.agent';
 import { RewriteAgent } from './agents/rewrite.agent';
 import { LanguageCheckerAgent } from './agents/language-checker.agent';
 import { LanguageBridgeAgent } from './agents/language-bridge.agent';
+import { DialectAgent } from './agents/dialect.agent';
+import { DialectService } from '../../dialect/dialect.service';
 import { PrismaService } from '../../../database/prisma.service';
 import { AIService } from '../ai.service';
 
@@ -25,6 +27,13 @@ describe('WorkspaceOrchestratorService (Section 37 Test Suite)', () => {
       getRecommendations: jest.fn().mockResolvedValue({ recommendations: [] }),
     };
 
+    const mockDialectService = {
+      searchMeaning: jest.fn().mockResolvedValue({ results: [], regional_grouped: {} }),
+      compareDialects: jest.fn().mockResolvedValue({ results: [] }),
+      getStandardDialectMapping: jest.fn().mockResolvedValue({ has_mappings: false, mappings: [] }),
+      explainDialects: jest.fn().mockResolvedValue({ answer: '', grounded: false }),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         WorkspaceOrchestratorService,
@@ -36,6 +45,8 @@ describe('WorkspaceOrchestratorService (Section 37 Test Suite)', () => {
         RewriteAgent,
         LanguageCheckerAgent,
         LanguageBridgeAgent,
+        DialectAgent,
+        { provide: DialectService, useValue: mockDialectService },
         { provide: PrismaService, useValue: mockPrisma },
         { provide: AIService, useValue: mockAIService },
       ],
@@ -212,6 +223,19 @@ describe('WorkspaceOrchestratorService (Section 37 Test Suite)', () => {
       expect(res.language_bridge?.english_translation).toContain('Considerate');
       expect(res.language_bridge?.pronunciation).toBeDefined();
       expect(res.language_bridge?.cultural_context).toContain('harmony');
+    });
+  });
+
+  // Test 9: Dialect Agent Integration (Section 20 & 21)
+  describe('Test 9: Dialect Agent Integration', () => {
+    it('should route dialect queries to DialectAgent and return regional comparisons', async () => {
+      const res = await orchestrator.process({
+        message: 'คำว่า กิน ในแต่ละภาคใช้คำว่าอะไรบ้าง',
+      });
+
+      expect(res.intent).toBe('DIALECT');
+      expect(res.dialect_discovery).toBeDefined();
+      expect(res.dialect_discovery?.standardWord).toBe('กิน');
     });
   });
 });

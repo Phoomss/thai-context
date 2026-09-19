@@ -36,7 +36,7 @@ export default function MorphingNavbar({
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["hero", "compare", "evolution", "dialects"];
+    const sectionIds = ["hero", "compare", "evolution", "dialects", "modern-vocabulary"];
     let ticking = false;
 
     const updateActive = () => {
@@ -46,7 +46,7 @@ export default function MorphingNavbar({
         window.innerHeight + window.scrollY >= scrollHeight - 80;
 
       if (isBottom) {
-        setActiveSection("dialects");
+        setActiveSection("modern-vocabulary");
         return;
       }
 
@@ -167,6 +167,14 @@ export default function MorphingNavbar({
           onClick={() => { setOpen(false); setActiveSection("dialects"); }}
         >
           ภาษาถิ่น
+        </a>
+        <a
+          href="#modern-vocabulary"
+          aria-current={activeSection === "modern-vocabulary" ? "page" : undefined}
+          className={activeSection === "modern-vocabulary" ? "active" : ""}
+          onClick={() => { setOpen(false); setActiveSection("modern-vocabulary"); }}
+        >
+          คำศัพท์สมัยใหม่ ⚡
         </a>
 
       </nav>

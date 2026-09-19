@@ -63,10 +63,11 @@ export class SearchService {
       take: take * 2,
     });
 
-    const mapped = definitions.map((d) => {
+    const officialMapped = definitions.map((d) => {
       const rawDef = d.definitionText || '';
       const cleanDef = rawDef.replace(/^\[SAMPLE DEFINITION\s*—\s*\d+\]\s*/i, '').trim();
       return {
+        type: 'OFFICIAL',
         word: d.entry.word.headword,
         headwordClean: d.entry.word.headwordClean,
         definition: cleanDef,
@@ -78,13 +79,92 @@ export class SearchService {
         editionCode: d.entry.edition.editionCode,
         subjectDomain: d.subjectDomain,
         pageNumber: d.entry.pageNumber,
-        metadata: d.entry.metadata,
+        metadata: {
+          ...(typeof d.entry.metadata === 'object' && d.entry.metadata ? d.entry.metadata : {}),
+          type: 'OFFICIAL',
+          is_official: true,
+        },
       };
     });
 
+    // Query modern terms if not restricted to official edition or official source
+    let modernMapped: any[] = [];
+    if (!queryDto.edition && (!queryDto.source || queryDto.source === 'MODERN')) {
+      try {
+        const modernTerms = await this.prisma.modernTerm.findMany({
+          where: {
+            isSearchable: true,
+            OR: isExact
+              ? [
+                  { term: { equals: q, mode: 'insensitive' } },
+                  { normalizedTerm: { equals: q.toLowerCase(), mode: 'insensitive' } },
+                ]
+              : [
+                  { term: { contains: q, mode: 'insensitive' } },
+                  { normalizedTerm: { contains: q.toLowerCase(), mode: 'insensitive' } },
+                  { transliteration: { contains: q, mode: 'insensitive' } },
+                  { description: { contains: q, mode: 'insensitive' } },
+                  { englishMeaning: { contains: q, mode: 'insensitive' } },
+                  { definitions: { some: { definition: { contains: q, mode: 'insensitive' } } } },
+                ],
+          },
+          include: {
+            categories: true,
+            definitions: { take: 1 },
+            sources: { take: 1 },
+          },
+          take: take * 2,
+        });
+
+        modernMapped = modernTerms.map((m) => {
+          const primaryDef = m.definitions[0]?.definition || m.description || '';
+          const primarySource = m.sources[0]?.sourceName || 'คลังคำศัพท์สมัยใหม่ THAI CONTEXT';
+          const primarySourceCode = m.sources[0]?.sourceType || 'DEMO';
+          const cats = m.categories.map((c) => c.category);
+
+          return {
+            type: 'MODERN',
+            word: m.term,
+            headwordClean: m.normalizedTerm,
+            definition: primaryDef,
+            partOfSpeech: m.termType || 'คำศัพท์ร่วมสมัย',
+            source: primarySource,
+            sourceCode: primarySourceCode,
+            edition: 'MODERN',
+            editionTitle: 'คำศัพท์สมัยใหม่ (Modern Thai Vocabulary)',
+            editionCode: 'MODERN_VOCABULARY',
+            subjectDomain: cats[0] || 'เทคโนโลยี/ร่วมสมัย',
+            pageNumber: null,
+            metadata: {
+              type: 'MODERN',
+              termType: m.termType,
+              status: m.status,
+              register: m.register,
+              origin: m.origin,
+              audience: m.audience,
+              categories: cats,
+              confidence: Number(m.confidence),
+              verificationStatus: m.sources[0]?.verificationStatus || 'UNVERIFIED',
+              sourceType: primarySourceCode,
+              slug: m.slug,
+              transliteration: m.transliteration,
+              englishMeaning: m.englishMeaning,
+              pronunciation: m.pronunciation,
+              usageWarning: m.usageWarning,
+              is_official: false,
+            },
+          };
+        });
+      } catch (err: any) {
+        this.logger.warn(`Failed to query modern terms in keywordSearch: ${err.message}`);
+      }
+    }
+
+    const combined = [...officialMapped, ...modernMapped];
+
     // Re-rank results: Exact headword match > startsWith > contains in headword > definition text
     const qLower = q.toLowerCase();
-    mapped.sort((a, b) => {
+    combined.sort((a, b) => {
       const aHead = a.word.toLowerCase();
       const bHead = b.word.toLowerCase();
 
@@ -93,17 +173,17 @@ export class SearchService {
 
       if (aRank !== bRank) return bRank - aRank;
 
-      // Secondary sort: latest edition year first
-      const aYear = parseInt(a.edition, 10) || 0;
-      const bYear = parseInt(b.edition, 10) || 0;
+      // Secondary sort: modern or latest edition year
+      const aYear = parseInt(a.edition, 10) || (a.type === 'MODERN' ? 2026 : 0);
+      const bYear = parseInt(b.edition, 10) || (b.type === 'MODERN' ? 2026 : 0);
       return bYear - aYear;
     });
 
-    const paginatedResults = mapped.slice(0, take);
+    const paginatedResults = combined.slice(0, take);
 
     return {
       query: q,
-      total: mapped.length,
+      total: combined.length,
       page,
       limit: take,
       filters: {
@@ -119,11 +199,80 @@ export class SearchService {
     const rawQuery = dto.query.trim();
 
     // 1. Call AI Service for query understanding & recommendation
-    const aiResult = await this.aiService.getRecommendations(rawQuery);
+    let aiResult: any = { intent: 'find_word_by_meaning', recommendations: [] };
+    try {
+      aiResult = await this.aiService.getRecommendations(rawQuery);
+    } catch {
+      this.logger.warn('AI recommendation unavailable, using direct semantic matching');
+    }
 
-    const formattedResults = aiResult.recommendations.map((item) => {
-      const topEvidence = item.evidence[0];
+    // 2. Also search modern terms for semantic/keyword matches on the raw query
+    let modernMatches: any[] = [];
+    try {
+      const modernTerms = await this.prisma.modernTerm.findMany({
+        where: {
+          isSearchable: true,
+          OR: [
+            { term: { contains: rawQuery, mode: 'insensitive' } },
+            { normalizedTerm: { contains: rawQuery.toLowerCase(), mode: 'insensitive' } },
+            { description: { contains: rawQuery, mode: 'insensitive' } },
+            { englishMeaning: { contains: rawQuery, mode: 'insensitive' } },
+            { definitions: { some: { definition: { contains: rawQuery, mode: 'insensitive' } } } },
+          ],
+        },
+        include: {
+          categories: true,
+          definitions: { take: 1 },
+          sources: { take: 1 },
+        },
+        take: 3,
+      });
+
+      modernMatches = modernTerms.map((m) => {
+        const topDef = m.definitions[0]?.definition || m.description || '';
+        const topSrc = m.sources[0];
+        return {
+          word: m.term,
+          score: 0.95,
+          reason: `ตรงกับความหมายในภาษาร่วมสมัย (${m.termType || 'คำศัพท์สมัยใหม่'}) หมวด ${m.categories.map((c) => c.category).join(', ')}`,
+          type: 'MODERN',
+          evidence: [
+            {
+              source: topSrc?.sourceName || 'ศูนย์สำรวจภาษาร่วมสมัย THAI CONTEXT',
+              edition: 'ร่วมสมัย',
+              definition: topDef,
+              relevance: 0.95,
+              source_type: topSrc?.sourceType || 'DEMO',
+              verification_status: topSrc?.verificationStatus || 'UNVERIFIED',
+              is_official: false,
+            },
+          ],
+          categories: m.categories.map((c) => c.category),
+          register: m.register,
+          origin: m.origin,
+          slug: m.slug,
+        };
+      });
+    } catch {
+      // Fall through
+    }
+
+    const aiRecs = aiResult?.recommendations || [];
+    const existingWords = new Set(aiRecs.map((r: any) => r.word));
+    const mergedRecs = [...aiRecs];
+
+    for (const mm of modernMatches) {
+      if (!existingWords.has(mm.word)) {
+        existingWords.add(mm.word);
+        mergedRecs.unshift(mm); // Prioritize direct modern match
+      }
+    }
+
+    const formattedResults = mergedRecs.map((item) => {
+      const topEvidence = item.evidence?.[0];
+      const isModern = item.type === 'MODERN' || topEvidence?.is_official === false;
       return {
+        type: isModern ? 'MODERN' : 'OFFICIAL',
         word: item.word,
         score: item.score,
         reason: item.reason,
@@ -131,28 +280,34 @@ export class SearchService {
         source: {
           name: topEvidence ? topEvidence.source : 'สำนักงานราชบัณฑิตยสภา',
           edition: topEvidence ? topEvidence.edition : '2554',
+          is_official: !isModern,
         },
+        categories: item.categories || undefined,
+        register: item.register || undefined,
       };
     });
 
-    const recommendations = aiResult.recommendations.map((item, idx) => {
-      const topEvidence = item.evidence[0];
+    const recommendations = mergedRecs.map((item, idx) => {
+      const topEvidence = item.evidence?.[0];
+      const isModern = item.type === 'MODERN' || topEvidence?.is_official === false;
       const edYear = topEvidence?.edition ? parseInt(topEvidence.edition, 10) : 2554;
       return {
         id: `rec-${item.word}-${idx}`,
+        type: isModern ? 'MODERN' : 'OFFICIAL',
         headword: item.word,
         score: Number(Math.max(0.1, Math.min(1.0, item.score)).toFixed(2)),
         definition: topEvidence?.definition || item.reason,
         ai_explanation: item.reason,
         evidence: {
-          source_book: topEvidence?.source || 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔',
-          edition: `พ.ศ. ${topEvidence?.edition || '2554'}`,
-          edition_year: isNaN(edYear) ? 2554 : edYear,
+          source_book: topEvidence?.source || (isModern ? 'คลังคำศัพท์สมัยใหม่' : 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔'),
+          edition: isModern ? 'ภาษาร่วมสมัย' : `พ.ศ. ${topEvidence?.edition || '2554'}`,
+          edition_year: isModern ? 2026 : isNaN(edYear) ? 2554 : edYear,
           quote: topEvidence?.definition || item.reason,
-          is_official: true,
+          is_official: !isModern,
+          source_type: topEvidence?.source_type || (isModern ? 'DEMO' : 'OFFICIAL'),
         },
-        registers: ['ทางการ'],
-        contexts: ['ทั่วไป'],
+        registers: [item.register || (isModern ? 'ไม่เป็นทางการ/ร่วมสมัย' : 'ทางการ')],
+        contexts: item.categories || ['ทั่วไป'],
       };
     });
 

@@ -53,9 +53,35 @@ export class LanguageCheckerAgent implements LanguageAgent {
       });
     }
 
-    // Check 4: Check if text uses words not present in standard dictionary or flag factual checks
-    if (textToCheck.includes('ประสิทธิภาพ')) {
-      // Validated against dictionary
+    // Check 4: Check modern vocabulary in formal / academic context
+    const isFormalContext =
+      context.inferredContext?.type === 'academic' ||
+      context.inferredContext?.type === 'government' ||
+      context.inferredContext?.type === 'professional' ||
+      /รายงาน|วิชาการ|มหาวิทยาลัย|วิทยานิพนธ์|ราชการ|ทางการ/.test(context.message) ||
+      /รายงาน|วิชาการ|มหาวิทยาลัย|วิทยานิพนธ์|ราชการ|ทางการ/.test(textToCheck);
+
+    const modernSlangWords = [
+      { word: 'ป้ายยา', formal: 'โน้มน้าว หรือ แนะนำ', label: 'คำศัพท์ร่วมสมัย / ภาษาพูด' },
+      { word: 'จึ้ง', formal: 'ยอดเยี่ยม หรือ โดดเด่นเป็นพิเศษ', label: 'คำศัพท์ร่วมสมัย / ภาษาพูด' },
+      { word: 'ฟีล', formal: 'ความรู้สึก หรือ บรรยากาศ', label: 'คำยืมภาษาพูด' },
+      { word: 'งานเข้า', formal: 'เกิดปัญหาขัดข้องกะทันหัน', label: 'สำนวนภาษาพูด' },
+      { word: 'ด้อม', formal: 'กลุ่มแฟนคลับ หรือ กลุ่มผู้สนับสนุน', label: 'คำสแลงเฉพาะกลุ่ม' },
+      { word: 'ติ่ง', formal: 'ผู้ชื่นชอบ หรือ แฟนคลับ', label: 'คำสแลงภาษาพูด' },
+    ];
+
+    if (isFormalContext) {
+      for (const item of modernSlangWords) {
+        if (textToCheck.includes(item.word)) {
+          issues.push({
+            type: 'FORMALITY_MISMATCH',
+            text: item.word,
+            suggestion: item.formal,
+            rule_type: 'AI_LANGUAGE_SUGGESTION',
+            description: `⚠ ${item.label} — หากเป็นรายงานวิชาการหรือเอกสารทางการ อาจพิจารณาใช้คำที่เป็นกลางหรือเป็นทางการกว่า เช่น "${item.formal}" (มิได้ถือว่าเป็นคำผิด แต่ควรปรับระดับภาษาให้เหมาะกับกาลเทศะ)`,
+          });
+        }
+      }
     }
 
     let score = 96;

@@ -6,7 +6,8 @@ export type AgentTask =
   | 'REWRITE'
   | 'LANGUAGE_CHECK'
   | 'TRANSLATION'
-  | 'EXPLANATION';
+  | 'EXPLANATION'
+  | 'DIALECT';
 
 export type ContextType =
   | 'academic'
@@ -137,6 +138,7 @@ export interface WorkspaceContext {
   generatedContent: GeneratedContentItem[];
   languageCheck?: LanguageCheckResult | null;
   languageBridge?: LanguageBridgeResult | null;
+  dialectDiscovery?: any;
   coThinking?: CoThinkingAnalysis | null;
   evidence: EvidenceItem[];
   confidence: number;
@@ -170,6 +172,7 @@ export interface WorkspaceResponseDto {
   generated_content: GeneratedContentItem[];
   language_check?: LanguageCheckResult | null;
   language_bridge?: LanguageBridgeResult | null;
+  dialect_discovery?: any;
   co_thinking?: CoThinkingAnalysis | null;
   evidence: EvidenceItem[];
   confidence: number;

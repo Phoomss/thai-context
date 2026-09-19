@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Recommendation, SearchResponse } from "@/lib/search-types";
 import { getSignResource } from "@/lib/sign-motion-data";
 import SearchResultFeedback from "../feedback/SearchResultFeedback";
+import ModernTermBadge from "../modern-vocabulary/ModernTermBadge";
 
 export default function WordResultCard({
   word,
@@ -60,6 +61,18 @@ export default function WordResultCard({
     word.examples?.[0] ||
     `การดำเนินงานในครั้งนี้มุ่งเน้นการเสริมสร้าง${word.headword}เพื่อให้บรรลุเป้าหมายได้อย่างคุ้มค่า`;
 
+  const isModern =
+    word.registers?.includes("สแลง") ||
+    word.registers?.includes("ภาษาปาก") ||
+    word.sources?.some(
+      (s) =>
+        s.source_book.includes("ร่วมสมัย") ||
+        s.source_book.includes("Modern") ||
+        s.is_official === false
+    ) ||
+    word.evidence?.source_book?.includes("ร่วมสมัย") ||
+    word.evidence?.is_official === false;
+
   return (
     <article
       data-reveal
@@ -68,6 +81,9 @@ export default function WordResultCard({
     >
       <div className="card-meta">
         <span>{String(index + 1).padStart(2, "0")}</span>
+        {isModern && (
+          <ModernTermBadge isOfficial={false} register={word.registers?.[0]} compact />
+        )}
         <span>
           {word.score === undefined
             ? "คำใกล้เคียง"

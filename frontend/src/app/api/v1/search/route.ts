@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as fs from "fs";
 import * as path from "path";
+import { loadSeedModernVocabulary } from "@/lib/modern-vocabulary-store";
 
 let evolutionJsonCache: Record<string, any> | null = null;
 
@@ -157,10 +158,59 @@ export async function GET(request: NextRequest) {
               editionCode: editionCodes[edYear] || `ROYAL_${edYear}`,
               subjectDomain: null,
               pageNumber: null,
-              metadata: null,
+              metadata: {
+                type: "OFFICIAL",
+                is_official: true,
+              },
             });
           }
         }
+      }
+    }
+  }
+
+  // Also include modern vocabulary in fallback search if edition is not restricted to official years
+  if (!edition || edition === "MODERN" || edition === "ภาษาร่วมสมัย") {
+    const modernTerms = loadSeedModernVocabulary();
+    for (const m of modernTerms) {
+      const termLower = m.term.toLowerCase();
+      let matched = false;
+      if (exact) {
+        matched = termLower === qLower;
+      } else {
+        matched =
+          termLower.includes(qLower) ||
+          m.description.toLowerCase().includes(qLower) ||
+          (m.english_meaning && m.english_meaning.toLowerCase().includes(qLower)) ||
+          m.categories.some((c) => c.toLowerCase().includes(qLower));
+      }
+
+      if (matched) {
+        const primaryDef = m.definitions?.[0]?.definition || m.description || "";
+        const primarySource = m.sources?.[0]?.source_name || "คลังคำศัพท์ภาษาไทยร่วมสมัย";
+        results.push({
+          word: m.term,
+          headwordClean: m.term,
+          definition: primaryDef,
+          partOfSpeech: "คำศัพท์สมัยใหม่",
+          source: primarySource,
+          sourceCode: "MODERN_VOCABULARY",
+          edition: "ภาษาร่วมสมัย",
+          editionTitle: "คลังคำศัพท์ภาษาไทยร่วมสมัย (Modern Thai Vocabulary)",
+          editionCode: "MODERN_VOCAB",
+          subjectDomain: m.categories?.[0] || "ภาษาร่วมสมัย",
+          pageNumber: null,
+          metadata: {
+            type: "MODERN",
+            is_official: false,
+            status: m.status,
+            register: m.register,
+            origin: m.origin,
+            categories: m.categories,
+            sources: m.sources,
+            foreign_support: m.foreigner_support,
+          },
+        });
       }
     }
   }

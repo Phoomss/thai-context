@@ -41,6 +41,50 @@ describe('DictionaryService', () => {
               relationshipsAsTarget: [],
             });
           }
+          if (where.headword === 'สมานฉันท์') {
+            return Promise.resolve({
+              headword: 'สมานฉันท์',
+              charLength: 9,
+              entries: [
+                {
+                  edition: {
+                    editionYear: '2542',
+                    title: 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒',
+                    source: { name: 'สำนักงานราชบัณฑิตยสภา' },
+                  },
+                  definitions: [
+                    {
+                      definitionText: 'ความพอใจร่วมกัน และความเห็นพ้องกันในหมู่ชน',
+                    },
+                  ],
+                },
+                {
+                  edition: {
+                    editionYear: '2554',
+                    title: 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๕๔',
+                    source: { name: 'สำนักงานราชบัณฑิตยสภา' },
+                  },
+                  definitions: [
+                    {
+                      definitionText: 'ความเห็นชอบร่วมกันในหมู่นิกรชน',
+                    },
+                  ],
+                },
+                {
+                  edition: {
+                    editionYear: '2569',
+                    title: 'พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๖๙',
+                    source: { name: 'สำนักงานราชบัณฑิตยสภา' },
+                  },
+                  definitions: [
+                    {
+                      definitionText: 'ความเห็นชอบร่วมกันในหมู่นิกรชน เพื่อความสงบเรียบร้อยและการอยู่ร่วมกันอย่างสันติสุข',
+                    },
+                  ],
+                },
+              ],
+            });
+          }
           return Promise.resolve(null);
         }),
       },
