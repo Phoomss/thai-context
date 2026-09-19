@@ -201,11 +201,11 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
           role="tablist"
           aria-label="เลือกหมวดหมู่คำภาษาถิ่น"
         >
-          {DIALECT_CATEGORIES.map((cat) => {
+          {DIALECT_CATEGORIES.map((cat, catIndex) => {
             const isSelected = selectedCategory === cat.key && !searchQuery;
             return (
               <button
-                key={cat.key}
+                key={`${cat.key}-${catIndex}`}
                 type="button"
                 role="tab"
                 aria-selected={isSelected}
@@ -247,11 +247,11 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
             role="group"
             aria-label="เลือกคำศัพท์มาตรฐาน"
           >
-            {filteredWords.map((group) => {
+            {filteredWords.map((group, groupIndex) => {
               const isCurrent = group.id === activeGroup.id;
               return (
                 <button
-                  key={group.id}
+                  key={`${group.id || group.standardWord}-${groupIndex}`}
                   type="button"
                   aria-pressed={isCurrent}
                   className={`dialect-chip ${isCurrent ? "active" : ""}`}
@@ -299,12 +299,12 @@ export default function DialectExplorer({ currentWord }: DialectExplorerProps) {
 
       {/* 4 Regions Dialect Grid */}
       <div className="dialect-grid">
-        {displayedEntries.map((entry) => {
+        {displayedEntries.map((entry, entryIndex) => {
           const active = selectedRegion === entry.region;
           return (
             <button
               type="button"
-              key={entry.region}
+              key={`${entry.region}-${entry.word}-${entryIndex}`}
               className="dialect-card"
               aria-pressed={active}
               onClick={() => setSelectedRegion(entry.region)}

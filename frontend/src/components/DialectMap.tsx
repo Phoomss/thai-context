@@ -19,9 +19,9 @@ export default function DialectMap() {
 
       {/* Region Selector Tabs */}
       <div className="flex flex-wrap gap-2 mb-5">
-        {dialectData.dialects.map((d) => (
+        {dialectData.dialects.map((d, index) => (
           <button
-            key={d.region}
+            key={`${d.region}-${index}`}
             onClick={() => setSelectedRegion(d.region)}
             className={`px-4 py-2 rounded-xl text-sm font-bold border transition ${
               selectedRegion === d.region
