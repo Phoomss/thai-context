@@ -22,7 +22,7 @@ import { WritingAgent as CentralWritingAgent } from './agents/writing.agent';
 import { RewriteAgent as CentralRewriteAgent } from './agents/rewrite.agent';
 import { LanguageCheckerAgent as CentralLanguageCheckerAgent } from './agents/language-checker.agent';
 import { WordCompareAgent as CentralWordCompareAgent } from './agents/word-compare.agent';
-import { DialectAgent } from './agents/dialect.agent';
+import { DialectAgent as CentralDialectAgent } from './agents/dialect.agent';
 import { ModernVocabularyAgent } from './agents/modern-vocabulary.agent';
 import { LanguageBridgeAgent as CentralLanguageBridgeAgent } from './agents/language-bridge.agent';
 import { AccessibilityAgent } from './agents/accessibility.agent';
@@ -47,7 +47,7 @@ import { DialectModule } from '../dialect/dialect.module';
 
 @Global()
 @Module({
-  imports: [HttpModule, DialectModule],
+  imports: [HttpModule, DialectModule, AccessibilityModule],
   controllers: [AIController],
   providers: [
     AIService,
@@ -64,7 +64,7 @@ import { DialectModule } from '../dialect/dialect.module';
     CentralRewriteAgent,
     CentralLanguageCheckerAgent,
     CentralWordCompareAgent,
-    DialectAgent,
+    CentralDialectAgent,
     ModernVocabularyAgent,
     CentralLanguageBridgeAgent,
     AccessibilityAgent,
