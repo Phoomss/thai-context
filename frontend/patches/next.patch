@@ -1,0 +1,65 @@
+diff --git a/dist/esm/lib/fs/rename.js b/dist/esm/lib/fs/rename.js
+index 37ba98fdacf03a4f6ca7fa3238c7648ffedc0a2e..7fa2b3ab9eeebea51a12a4b328410731d080ae4b 100644
+--- a/dist/esm/lib/fs/rename.js
++++ b/dist/esm/lib/fs/rename.js
+@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+  */ // This file is based on https://github.com/microsoft/vscode/blob/f860fcf11022f10a992440fd54c6e45674e39617/src/vs/base/node/pfs.ts
+ // See the LICENSE at the top of the file
+-import { renameSync as fsRenameSync, statSync } from 'node:fs';
++import { renameSync as fsRenameSync, statSync, copyFileSync, unlinkSync } from 'node:fs';
+ /**
+  * A drop-in replacement for `fs.rename` that:
+  * - allows to move across multiple disks
+@@ -55,6 +55,11 @@ function renameSyncWithRetry(source, target, startTime, retryTimeout, attempt =
+             ;
+         }
+         if (attempt > 100) {
++            try {
++                copyFileSync(source, target);
++                unlinkSync(source);
++                return;
++            } catch {}
+             console.error(`Node.js fs rename failed after ${attempt} retries with error ${error}`);
+             throw error;
+         }
+@@ -73,6 +78,11 @@ function renameSyncWithRetry(source, target, startTime, retryTimeout, attempt =
+                 throw error;
+             }
+         }
++        // Delay with incremental backoff up to 100ms
++        try {
++            const delay = Math.min(100, (attempt + 1) * 10);
++            Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, delay);
++        } catch {}
+         // Attempt again
+         return renameSyncWithRetry(source, target, startTime, retryTimeout, attempt + 1);
+     }
+diff --git a/dist/lib/fs/rename.js b/dist/lib/fs/rename.js
+index ba9f169898a5a02664df5c0a45a72ea2cf28ef73..97048ac163d5bdbfa4a9149a88a29f8a6b015631 100644
+--- a/dist/lib/fs/rename.js
++++ b/dist/lib/fs/rename.js
+@@ -61,6 +61,11 @@ function renameSyncWithRetry(source, target, startTime, retryTimeout, attempt =
+             ;
+         }
+         if (attempt > 100) {
++            try {
++                (0, _nodefs.copyFileSync)(source, target);
++                (0, _nodefs.unlinkSync)(source);
++                return;
++            } catch {}
+             console.error(`Node.js fs rename failed after ${attempt} retries with error ${error}`);
+             throw error;
+         }
+@@ -79,6 +84,11 @@ function renameSyncWithRetry(source, target, startTime, retryTimeout, attempt =
+                 throw error;
+             }
+         }
++        // Delay with incremental backoff up to 100ms
++        try {
++            const delay = Math.min(100, (attempt + 1) * 10);
++            Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, delay);
++        } catch {}
+         // Attempt again
+         return renameSyncWithRetry(source, target, startTime, retryTimeout, attempt + 1);
+     }
