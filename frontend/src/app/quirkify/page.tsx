@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Shuffle,
+  Bot,
+  Zap,
+  BookOpen,
+  ArrowLeft,
+} from "lucide-react";
 import SentenceQuirkifier from "@/components/quirkify/SentenceQuirkifier";
 import Footer from "@/components/layout/Footer";
 
@@ -37,22 +44,27 @@ export default function QuirkifyPage() {
               className="workspace-badge-tag"
               style={{ background: "#eaf4fe", color: "var(--accent)", borderColor: "#c8e0fa" }}
             >
-              ✦ สุ่มเปลี่ยนคำ
+              <Shuffle className="w-3.5 h-3.5 mr-1" />
+              <span>สุ่มเปลี่ยนคำ</span>
             </span>
           </Link>
 
           <div className="workspace-nav-actions">
             <Link href="/ai-assistant" className="workspace-nav-btn font-thai-reading" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              ✨ ผู้ช่วย AI
+              <Bot className="w-4 h-4 mr-1.5" />
+              <span>ผู้ช่วย AI</span>
             </Link>
-            <Link href="/workspace" className="workspace-nav-btn">
-              ⚡ AI Workspace
+            <Link href="/workspace" className="workspace-nav-btn font-thai-reading">
+              <Zap className="w-4 h-4 mr-1.5" />
+              <span>AI Workspace</span>
             </Link>
-            <Link href="/#dictionary" className="workspace-nav-btn">
-              📖 ค้นตามเล่ม
+            <Link href="/#dictionary" className="workspace-nav-btn font-thai-reading">
+              <BookOpen className="w-4 h-4 mr-1.5" />
+              <span>ค้นตามเล่ม</span>
             </Link>
-            <Link href="/" className="workspace-nav-btn" style={{ fontWeight: 600, color: "var(--accent)" }}>
-              ← กลับสู่หน้าหลัก
+            <Link href="/" className="workspace-nav-btn font-thai-reading" style={{ fontWeight: 600, color: "var(--accent)" }}>
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>กลับสู่หน้าหลัก</span>
             </Link>
           </div>
         </div>

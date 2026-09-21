@@ -4,22 +4,48 @@ import React, { useState, useEffect, useRef, useCallback, Suspense } from "react
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import Icon from "../ui/Icon";
+import {
+  Bot,
+  PenTool,
+  Wand2,
+  Scale,
+  Search,
+  CheckCircle2,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+  BookOpen,
+  Copy,
+  Check,
+  Send,
+  Square,
+  Trash2,
+  ArrowLeft,
+  ArrowRight,
+  Shuffle,
+  GraduationCap,
+  Building,
+  Briefcase,
+  MessageSquare,
+  RotateCcw,
+  X,
+  Layers,
+} from "lucide-react";
 import type { EvidenceItemData, AgentTraceData, ChatMessage, AgentPersona } from "./AIAssistantDrawer";
 
 const CONTEXT_OPTIONS = [
-  "รายงานวิชาการ",
-  "งานสารบรรณ",
-  "เชิงบริหาร",
-  "การสนทนาทั่วไป",
-  "เชิงกฎหมาย",
+  { id: "รายงานวิชาการ", label: "รายงานวิชาการ", icon: GraduationCap, tip: "ภาษาทางการเชิงวิชาการ อ้างอิงระเบียบวิธีวิจัย" },
+  { id: "งานสารบรรณ", label: "งานสารบรรณ", icon: Building, tip: "ถูกต้องตามระเบียบงานสารบรรณราชการและหนังสือทางการ" },
+  { id: "เชิงบริหาร", label: "เชิงบริหาร", icon: Briefcase, tip: "กระชับ ตรงประเด็น หนักแน่น เหมาะสำหรับผู้บริหาร" },
+  { id: "การสนทนาทั่วไป", label: "การสนทนาทั่วไป", icon: MessageSquare, tip: "เป็นธรรมชาติ สุภาพ เข้าใจง่ายในชีวิตประจำวัน" },
+  { id: "เชิงกฎหมาย", label: "เชิงกฎหมาย", icon: Scale, tip: "รัดกุม นิยามเคร่งครัด ไร้ช่องโหว่ความกำกวม" },
 ];
 
 const AGENT_PERSONAS: AgentPersona[] = [
   {
     id: "AUTO",
-    label: "🤖 ตัวแทนอัตโนมัติ",
-    icon: "🤖",
+    label: "ตัวแทนอัตโนมัติ",
+    icon: "Bot",
     badge: "Auto Agent",
     agentName: "OrchestratorAgent",
     desc: "AI วางแผนงานและเรียกใช้ชุด Agent ที่เหมาะสมให้อัตโนมัติ",
@@ -33,8 +59,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "WRITING",
-    label: "✍️ ร่างและเขียน",
-    icon: "✍️",
+    label: "ร่างและเขียน",
+    icon: "PenTool",
     badge: "Writing Agent",
     agentName: "WritingAgent",
     desc: "ร่างเนื้อหา: อีเมลธุรกิจ, หนังสือราชการ, คำแถลง, บทคัดย่อวิชาการ",
@@ -48,8 +74,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "REWRITE",
-    label: "🔄 ขัดเกลาสำนวน",
-    icon: "🔄",
+    label: "ขัดเกลาสำนวน",
+    icon: "Wand2",
     badge: "Rewrite Agent",
     agentName: "RewriteAgent",
     desc: "ยกระดับภาษาพูดเป็นภาษาทางการหรือกึ่งทางการ สละสลวย และถูกต้อง",
@@ -63,8 +89,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "COMPARE",
-    label: "⚖️ วิจัยเปรียบเทียบคำ",
-    icon: "⚖️",
+    label: "วิจัยเปรียบเทียบคำ",
+    icon: "Scale",
     badge: "Compare Agent",
     agentName: "WordCompareAgent",
     desc: "วิเคราะห์ความต่างอย่างลึกซึ้ง: นัยความหมาย (Nuance) และข้อควรระวัง",
@@ -78,8 +104,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "DISCOVERY",
-    label: "🔍 ค้นหาคำจากความคิด",
-    icon: "🔍",
+    label: "ค้นหาคำจากความคิด",
+    icon: "Search",
     badge: "Discovery Agent",
     agentName: "WordDiscoveryAgent",
     desc: "ถอดความคิดหรือมโนทัศน์ที่นึกไม่ออก ออกมาเป็นคลังคำที่ตรงใจ",
@@ -93,8 +119,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "PROOFREAD",
-    label: "🛡️ ตรวจทานหลักภาษา",
-    icon: "🛡️",
+    label: "ตรวจทานหลักภาษา",
+    icon: "CheckCircle2",
     badge: "Checker Agent",
     agentName: "LanguageCheckerAgent",
     desc: "สแกนหาคำฟุ่มเฟือย คำกำกวม และระดับภาษาที่ไม่สอดคล้องกัน",
@@ -107,6 +133,40 @@ const AGENT_PERSONAS: AgentPersona[] = [
     ],
   },
 ];
+
+function getPersonaIcon(id: string, className = "w-4 h-4") {
+  switch (id) {
+    case "AUTO":
+      return <Bot className={className} />;
+    case "WRITING":
+      return <PenTool className={className} />;
+    case "REWRITE":
+      return <Wand2 className={className} />;
+    case "COMPARE":
+      return <Scale className={className} />;
+    case "DISCOVERY":
+      return <Search className={className} />;
+    case "PROOFREAD":
+      return <CheckCircle2 className={className} />;
+    default:
+      return <Bot className={className} />;
+  }
+}
+
+function getMissionIcon(idx: number, className = "w-4 h-4 text-blue-600") {
+  switch (idx % 4) {
+    case 0:
+      return <PenTool className={className} />;
+    case 1:
+      return <Wand2 className={className} />;
+    case 2:
+      return <Scale className={className} />;
+    case 3:
+      return <CheckCircle2 className={className} />;
+    default:
+      return <Sparkles className={className} />;
+  }
+}
 
 function AIAssistantPageContent() {
   const searchParams = useSearchParams();
@@ -412,7 +472,8 @@ function AIAssistantPageContent() {
               className="workspace-badge-tag"
               style={{ background: "#eff6ff", color: "#1d4ed8", borderColor: "#bfdbfe" }}
             >
-              🤖 ผู้ช่วย AI Agent Workspace
+              <Bot className="w-3.5 h-3.5 mr-1" />
+              <span>ผู้ช่วย AI Agent Workspace</span>
             </span>
           </Link>
 
@@ -423,20 +484,32 @@ function AIAssistantPageContent() {
               className="workspace-nav-btn font-thai-reading"
               style={{ fontWeight: 600, color: "var(--accent)" }}
             >
-              ← สลับไปหน้าค้นหาหลัก (หน้าหลัก)
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>สลับไปหน้าค้นหาหลัก (หน้าหลัก)</span>
             </Link>
-            <Link href="/#compare" className="workspace-nav-btn" style={{ display: "none" }}>
-              เปรียบเทียบคำ
+            <Link href="/#dictionary" className="workspace-nav-btn font-thai-reading">
+              <BookOpen className="w-4 h-4 mr-1.5" />
+              <span>ค้นตามเล่ม</span>
             </Link>
-            <Link href="/#dictionary" className="workspace-nav-btn">
-              📖 ค้นตามเล่ม
+            <Link href="/word-scrambler" className="workspace-nav-btn font-thai-reading" style={{ color: "var(--accent)" }}>
+              <Shuffle className="w-4 h-4 mr-1.5" />
+              <span>สุ่มเปลี่ยนคำ</span>
             </Link>
-            <Link href="/word-scrambler" className="workspace-nav-btn" style={{ color: "var(--accent)" }}>
-              🔀 สุ่มเปลี่ยนคำ
+            <Link href="/workspace" className="workspace-nav-btn font-thai-reading">
+              <Zap className="w-4 h-4 mr-1.5" />
+              <span>Multi-Agent Studio</span>
             </Link>
-            <Link href="/workspace" className="workspace-nav-btn">
-              ⚡ Multi-Agent Studio
-            </Link>
+            {messages.length > 0 && (
+              <button
+                type="button"
+                onClick={handleClear}
+                className="workspace-nav-btn ai-new-chat-btn font-thai-reading"
+                title="เริ่มบทสนทนาใหม่"
+              >
+                <RotateCcw className="w-3.5 h-3.5 mr-1 text-blue-600" />
+                <span>เริ่มสนทนาใหม่</span>
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -449,13 +522,16 @@ function AIAssistantPageContent() {
             <div className="ai-page-header-meta">
               <div className="ai-badge-row">
                 <span className="ai-brand-badge font-thai-reading">
-                  ✨ ผู้ช่วย AI ภาษาไทย
+                  <Sparkles className="w-3.5 h-3.5 mr-1" />
+                  <span>ผู้ช่วย AI ภาษาไทย</span>
                 </span>
-                <span className="ai-agent-tag-pill">
-                  🤖 AI Agent Workspace
+                <span className="ai-agent-tag-pill font-thai-reading">
+                  <Bot className="w-3.5 h-3.5 mr-1" />
+                  <span>AI Agent Workspace</span>
                 </span>
-                <span className="ai-rag-pill">
-                  🛡️ Grounded RAG (ไม่มโน)
+                <span className="ai-rag-pill font-thai-reading">
+                  <ShieldCheck className="w-3.5 h-3.5 mr-1" />
+                  <span>Grounded RAG (ไม่มโน)</span>
                 </span>
               </div>
               <h1 className="ai-page-title font-thai-reading">
@@ -483,7 +559,7 @@ function AIAssistantPageContent() {
                     onClick={() => setSelectedRole(persona.id)}
                     title={persona.desc}
                   >
-                    <span className="ai-tab-icon">{persona.icon}</span>
+                    <span className="ai-tab-icon">{getPersonaIcon(persona.id)}</span>
                     <span className="ai-tab-text">{persona.label}</span>
                   </button>
                 );
@@ -491,37 +567,58 @@ function AIAssistantPageContent() {
             </div>
           </div>
 
+          {/* Active Persona Banner */}
+          <div className="ai-active-persona-banner font-thai-reading">
+            <div className="ai-active-persona-icon">
+              {getPersonaIcon(activePersona.id, "w-5 h-5 text-blue-600")}
+            </div>
+            <div className="ai-active-persona-text">
+              <div className="ai-active-persona-title-row">
+                <strong>{activePersona.label}</strong>
+                <span className="ai-active-persona-tag">{activePersona.badge}</span>
+              </div>
+              <p>{activePersona.desc}</p>
+            </div>
+          </div>
+
           {/* Target Word & Context Selector Bar */}
-          <div className="ai-context-bar">
+          <div className="ai-context-bar font-thai-reading">
             {word && (
               <div className="ai-target-word-pill font-thai-reading">
                 <span className="ai-pill-label">คำเป้าหมาย:</span>
-                <strong>{word}</strong>
+                <strong className="ai-pill-word">{word}</strong>
                 <button
                   type="button"
                   className="ai-clear-word"
                   onClick={() => setWord("")}
-                  title="เปลี่ยนเป็นสั่งงานทั่วไป"
+                  title="ยกเลิกคำเป้าหมาย"
+                  aria-label="ลบคำเป้าหมาย"
                 >
-                  ×
+                  <X className="w-3.5 h-3.5" />
                 </button>
               </div>
             )}
             <div className="ai-context-selector">
               <span className="ai-context-label">บริบทเป้าหมาย:</span>
               <div className="ai-context-chips" role="radiogroup" aria-label="เลือกบริบท">
-                {CONTEXT_OPTIONS.map((c) => (
-                  <button
-                    key={c}
-                    type="button"
-                    role="radio"
-                    aria-checked={context === c}
-                    className={`ai-context-chip ${context === c ? "active" : ""}`}
-                    onClick={() => setContext(c)}
-                  >
-                    {c}
-                  </button>
-                ))}
+                {CONTEXT_OPTIONS.map((c) => {
+                  const IconComp = c.icon;
+                  const isSelected = context === c.id;
+                  return (
+                    <button
+                      key={c.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={isSelected}
+                      className={`ai-context-chip ${isSelected ? "active" : ""}`}
+                      onClick={() => setContext(c.id)}
+                      title={c.tip}
+                    >
+                      <IconComp className="w-3.5 h-3.5" />
+                      <span>{c.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -531,8 +628,13 @@ function AIAssistantPageContent() {
             {messages.length === 0 ? (
               <div className="ai-chat-empty-state font-thai-reading">
                 <div className="ai-welcome-hero">
-                  <div className="ai-welcome-icon-glow">{activePersona.icon}</div>
-                  <span className="ai-empty-agent-badge">{activePersona.badge}</span>
+                  <div className="ai-welcome-icon-glow">
+                    {getPersonaIcon(activePersona.id, "w-8 h-8 text-blue-600")}
+                  </div>
+                  <span className="ai-empty-agent-badge">
+                    <Sparkles className="w-3 h-3 mr-1" />
+                    <span>{activePersona.badge}</span>
+                  </span>
                   <h3 className="ai-welcome-title">
                     สวัสดีครับ วันนี้ให้ผู้ช่วย AI ช่วยคุณทำอะไรดี?
                   </h3>
@@ -544,7 +646,8 @@ function AIAssistantPageContent() {
                 {/* Mission Presets 2x2 Grid */}
                 <div className="ai-quick-prompts-section">
                   <span className="ai-quick-prompts-label">
-                    💡 เลือกภารกิจด่วนที่ต้องการสั่งงาน หรือพิมพ์คำสั่งด้านล่างได้เลย:
+                    <Sparkles className="w-4 h-4 mr-1.5 text-blue-600" />
+                    <span>เลือกภารกิจด่วนที่ต้องการสั่งงาน หรือพิมพ์คำสั่งด้านล่างได้เลย:</span>
                   </span>
                   <div className="ai-mission-cards-grid">
                     {activePersona.missions.map((prompt, idx) => (
@@ -556,9 +659,12 @@ function AIAssistantPageContent() {
                       >
                         <div className="ai-mission-card-top">
                           <span className="ai-mission-icon">
-                            {idx === 0 ? "✍️" : idx === 1 ? "🔄" : idx === 2 ? "⚖️" : "🛡️"}
+                            {getMissionIcon(idx)}
                           </span>
-                          <span className="ai-mission-tag">คลิกเพื่อสั่งงาน ➔</span>
+                          <span className="ai-mission-tag">
+                            <span>คลิกเพื่อสั่งงาน</span>
+                            <ArrowRight className="w-3 h-3 ml-1" />
+                          </span>
                         </div>
                         <span className="ai-mission-text">{prompt}</span>
                       </button>
@@ -568,19 +674,19 @@ function AIAssistantPageContent() {
 
                 <div className="ai-agent-capabilities-banner">
                   <div className="ai-cap-item">
-                    <span className="ai-cap-icon">✍️</span>
+                    <PenTool className="w-4 h-4 text-blue-600 mr-1.5" />
                     <span>ร่างจดหมาย/อีเมล</span>
                   </div>
                   <div className="ai-cap-item">
-                    <span className="ai-cap-icon">🔄</span>
+                    <Wand2 className="w-4 h-4 text-blue-600 mr-1.5" />
                     <span>ขัดเกลาระดับภาษา</span>
                   </div>
                   <div className="ai-cap-item">
-                    <span className="ai-cap-icon">⚖️</span>
+                    <Scale className="w-4 h-4 text-blue-600 mr-1.5" />
                     <span>วิจัยเปรียบเทียบคำ</span>
                   </div>
                   <div className="ai-cap-item">
-                    <span className="ai-cap-icon">🛡️</span>
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 mr-1.5" />
                     <span>ตรวจทานหลักไวยากรณ์</span>
                   </div>
                 </div>
@@ -596,7 +702,7 @@ function AIAssistantPageContent() {
                   >
                     {msg.role === "assistant" && (
                       <div className="ai-avatar" aria-hidden="true">
-                        🤖
+                        <Bot className="w-4 h-4 text-white" />
                       </div>
                     )}
 
@@ -609,14 +715,17 @@ function AIAssistantPageContent() {
                       {msg.role === "assistant" && (
                         <div className="ai-message-agent-header">
                           <div className="ai-agent-identity">
-                            <span className="ai-agent-icon">⚡</span>
+                            <span className="ai-agent-icon">
+                              <Zap className="w-3.5 h-3.5 text-blue-600" />
+                            </span>
                             <span className="ai-agent-name">
                               {msg.activeAgent || activePersona.agentName}
                             </span>
                           </div>
                           {msg.isStreaming && (
                             <span className="ai-agent-running-indicator">
-                              กำลังปฏิบัติการ...
+                              <Sparkles className="w-3 h-3 mr-1 animate-spin" />
+                              <span>กำลังปฏิบัติการ...</span>
                             </span>
                           )}
                         </div>
@@ -625,7 +734,12 @@ function AIAssistantPageContent() {
                       {/* Execution Pipeline Trace Bar */}
                       {msg.role === "assistant" && msg.agentTraces && msg.agentTraces.length > 0 && (
                         <div className="ai-agent-trace-bar font-thai-reading">
-                          <span className="ai-trace-title">กระบวนการทำงานของ Agent:</span>
+                          <div className="ai-trace-header-row">
+                            <span className="ai-trace-title">
+                              <Layers className="w-3.5 h-3.5 mr-1 text-blue-600" />
+                              <span>กระบวนการทำงานของ Agent:</span>
+                            </span>
+                          </div>
                           <div className="ai-trace-pills">
                             {msg.agentTraces.map((trace, tIdx) => (
                               <div key={tIdx} className={`ai-trace-pill ${trace.status}`}>
@@ -654,7 +768,7 @@ function AIAssistantPageContent() {
                       {msg.evidences && msg.evidences.length > 0 && (
                         <div className="ai-evidence-box">
                           <div className="ai-evidence-header">
-                            <span className="ai-evidence-icon">📚</span>
+                            <BookOpen className="w-4 h-4 text-emerald-700 mr-1.5" />
                             <span className="ai-evidence-title font-thai-reading">
                               หลักฐานพจนานุกรมทางการ (Official Evidence)
                             </span>
@@ -683,14 +797,24 @@ function AIAssistantPageContent() {
 
                       {/* Interactive Artifact Actions */}
                       {msg.role === "assistant" && !msg.isStreaming && (
-                        <div className="ai-artifact-actions">
+                        <div className="ai-artifact-actions font-thai-reading">
                           <button
                             type="button"
                             className={`ai-action-btn ${copiedId === msg.id ? "copied" : ""}`}
                             onClick={() => handleCopyText(msg.id, msg.text)}
                             title="คัดลอกข้อความผลลัพธ์นี้"
                           >
-                            {copiedId === msg.id ? "✓ คัดลอกสำเร็จ!" : "📋 คัดลอกผลลัพธ์"}
+                            {copiedId === msg.id ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 mr-1 text-emerald-600" />
+                                <span>คัดลอกสำเร็จ!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 mr-1" />
+                                <span>คัดลอกผลลัพธ์</span>
+                              </>
+                            )}
                           </button>
 
                           <span className="ai-action-divider">|</span>
@@ -703,7 +827,8 @@ function AIAssistantPageContent() {
                               handleSend("ช่วยปรับข้อความข้างต้นให้เป็นทางการยิ่งขึ้นตามระเบียบงานสารบรรณ")
                             }
                           >
-                            ✨ ปรับให้ทางการขึ้น
+                            <Sparkles className="w-3 h-3 mr-1 text-blue-600" />
+                            <span>ปรับให้ทางการขึ้น</span>
                           </button>
                           <button
                             type="button"
@@ -712,7 +837,8 @@ function AIAssistantPageContent() {
                               handleSend("ช่วยสรุปข้อความข้างต้นให้กระชับและตรงประเด็นที่สุด")
                             }
                           >
-                            ✂️ สรุปให้กระชับ
+                            <Wand2 className="w-3 h-3 mr-1 text-blue-600" />
+                            <span>สรุปให้กระชับ</span>
                           </button>
                           <button
                             type="button"
@@ -721,17 +847,18 @@ function AIAssistantPageContent() {
                               handleSend("ช่วยยกตัวอย่างประโยคการนำไปใช้ในงานเขียนจริงเพิ่มอีก 2 รูปแบบ")
                             }
                           >
-                            📝 เพิ่มตัวอย่างอีก 2 แบบ
+                            <PenTool className="w-3 h-3 mr-1 text-blue-600" />
+                            <span>เพิ่มตัวอย่างอีก 2 แบบ</span>
                           </button>
                         </div>
                       )}
 
                       {/* Footer */}
                       {msg.role === "assistant" && !msg.isStreaming && (
-                        <div className="ai-message-footer">
+                        <div className="ai-message-footer font-thai-reading">
                           {msg.grounded && (
                             <span className="ai-grounded-status">
-                              <Icon name="check" style={{ width: 14, height: 14 }} />
+                              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 mr-1" />
                               <span>อ้างอิงพจนานุกรมทางการ (Grounded)</span>
                             </span>
                           )}
@@ -755,7 +882,7 @@ function AIAssistantPageContent() {
             <div className="ai-input-box-wrapper">
               <textarea
                 ref={inputRef}
-                rows={3}
+                rows={2}
                 value={inputMessage}
                 disabled={isGenerating}
                 placeholder={activePersona.placeholder}
@@ -775,7 +902,8 @@ function AIAssistantPageContent() {
                     className="ai-stop-btn font-thai-reading"
                     onClick={handleStop}
                   >
-                    ■ หยุดการตอบ
+                    <Square className="w-3.5 h-3.5 mr-1 fill-current" />
+                    <span>หยุดการตอบ</span>
                   </button>
                 ) : (
                   <button
@@ -786,26 +914,33 @@ function AIAssistantPageContent() {
                     onClick={() => handleSend()}
                   >
                     <span>สั่ง Agent</span>
-                    <span aria-hidden="true">→</span>
+                    <Send className="w-3.5 h-3.5 ml-1" />
                   </button>
                 )}
               </div>
             </div>
-            {messages.length > 0 && (
-              <div className="ai-footer-toolbar">
-                <button
-                  type="button"
-                  className="ai-clear-chat-btn"
-                  onClick={handleClear}
-                  disabled={isGenerating}
-                >
-                  ล้างบทสนทนา
-                </button>
-                <span className="ai-footer-note">
-                  Thai Context Multi-Agent System · ยึดข้อมูลพจนานุกรมทางการเป็นข้อเท็จจริงอ้างอิง
+            <div className="ai-footer-toolbar font-thai-reading">
+              <div className="ai-footer-left">
+                {messages.length > 0 && (
+                  <button
+                    type="button"
+                    className="ai-clear-chat-btn"
+                    onClick={handleClear}
+                    disabled={isGenerating}
+                  >
+                    <Trash2 className="w-3.5 h-3.5 mr-1" />
+                    <span>ล้างบทสนทนา</span>
+                  </button>
+                )}
+                <span className="ai-input-hint">
+                  กด Enter เพื่อส่ง · Shift + Enter ขึ้นบรรทัดใหม่
                 </span>
               </div>
-            )}
+              <span className="ai-footer-note">
+                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-600 inline" />
+                <span>Thai Context Multi-Agent System · ยึดข้อมูลพจนานุกรมทางการเป็นข้อเท็จจริงอ้างอิง</span>
+              </span>
+            </div>
           </footer>
         </div>
       </main>
@@ -841,6 +976,15 @@ function renderFormattedText(rawText: string) {
       );
     }
 
+    if (trimmed.startsWith("##")) {
+      const heading = trimmed.replace(/^##\s*/, "");
+      return (
+        <h3 key={idx} className="ai-msg-heading-2">
+          {renderInlineFormatting(heading)}
+        </h3>
+      );
+    }
+
     if (trimmed.startsWith(">")) {
       const quote = trimmed.replace(/^>\s*/, "");
       return (
@@ -859,6 +1003,15 @@ function renderFormattedText(rawText: string) {
       );
     }
 
+    if (/^\d+\.\s/.test(trimmed)) {
+      const item = trimmed.replace(/^\d+\.\s*/, "");
+      return (
+        <li key={idx} className="ai-numbered-item">
+          {renderInlineFormatting(item)}
+        </li>
+      );
+    }
+
     return (
       <p key={idx} className="ai-paragraph-line">
         {renderInlineFormatting(line)}
@@ -868,13 +1021,16 @@ function renderFormattedText(rawText: string) {
 }
 
 function renderInlineFormatting(text: string) {
-  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|`.*?`)/g);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
     }
     if (part.startsWith("*") && part.endsWith("*")) {
       return <em key={i}>{part.slice(1, -1)}</em>;
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return <code key={i} className="ai-inline-code">{part.slice(1, -1)}</code>;
     }
     return part;
   });

@@ -19,7 +19,7 @@ describe("AIAssistantPageView Dedicated Page View", () => {
 
     // Brand and Page Header
     expect(screen.getByText("ศูนย์ปฏิบัติการ AI Agent ด้านภาษาไทย")).toBeTruthy();
-    expect(screen.getByText("🤖 ผู้ช่วย AI Agent Workspace")).toBeTruthy();
+    expect(screen.getByText(/ผู้ช่วย AI Agent Workspace/)).toBeTruthy();
 
     // Toggle back to Main Search Page
     const backBtn = screen.getByRole("link", {
@@ -89,7 +89,7 @@ describe("AIAssistantPageView Dedicated Page View", () => {
     // Verify response rendered with traces and action buttons
     await waitFor(() => {
       expect(screen.getByText("ContextAgent")).toBeTruthy();
-      expect(screen.getByText("📋 คัดลอกผลลัพธ์")).toBeTruthy();
+      expect(screen.getByText(/คัดลอกผลลัพธ์/)).toBeTruthy();
     });
   });
 });

@@ -22,7 +22,7 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
     expect(screen.getByText(/THAI CONTEXT Word Scrambler/)).toBeTruthy();
 
     // Primary action button
-    expect(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/)).toBeTruthy();
+    expect(screen.getByRole("button", { name: /สุ่มเปลี่ยนคำในประโยค/ })).toBeTruthy();
     expect(screen.queryByText("สลับตำแหน่งคำในประโยค")).toBeNull();
     expect(screen.queryByText("สลับตำแหน่ง + เปลี่ยนคำ")).toBeNull();
 
@@ -71,7 +71,7 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
 
     render(<SentenceQuirkifier embedded={false} />);
 
-    const substituteBtn = screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/);
+    const substituteBtn = screen.getByRole("button", { name: /สุ่มเปลี่ยนคำในประโยค/ });
     fireEvent.click(substituteBtn);
 
     await waitFor(() => {
@@ -111,7 +111,7 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
 
     render(<SentenceQuirkifier embedded={false} />);
 
-    fireEvent.click(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/));
+    fireEvent.click(screen.getByRole("button", { name: /สุ่มเปลี่ยนคำในประโยค/ }));
 
     await waitFor(() => {
       expect(screen.getByText("อ่อนเพลียหมดกำลัง, อ่อนระโหย")).toBeTruthy();
@@ -128,7 +128,7 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
     });
 
     // Close modal
-    const closeBtn = screen.getByText("✕");
+    const closeBtn = screen.getByLabelText("ปิด");
     fireEvent.click(closeBtn);
 
     await waitFor(() => {
@@ -154,13 +154,13 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
 
     render(<SentenceQuirkifier embedded={false} />);
 
-    fireEvent.click(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/));
+    fireEvent.click(screen.getByRole("button", { name: /สุ่มเปลี่ยนคำในประโยค/ }));
 
     await waitFor(() => {
-      expect(screen.getByText("📋 คัดลอกประโยค")).toBeTruthy();
+      expect(screen.getByText("คัดลอกประโยค")).toBeTruthy();
     });
 
-    fireEvent.click(screen.getByText("📋 คัดลอกประโยค"));
+    fireEvent.click(screen.getByText("คัดลอกประโยค"));
 
     expect(writeTextMock).toHaveBeenCalledWith("วันนี้ 'ระโหย'");
   });
@@ -187,7 +187,7 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
 
     render(<SentenceQuirkifier embedded={false} />);
 
-    fireEvent.click(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/));
+    fireEvent.click(screen.getByRole("button", { name: /สุ่มเปลี่ยนคำในประโยค/ }));
 
     await waitFor(() => {
       // Both words should be rendered as interactive pills
@@ -241,14 +241,14 @@ describe("Word Scrambler (สุ่มเปลี่ยนคำในประ
 
     render(<SentenceQuirkifier embedded={false} />);
 
-    fireEvent.click(screen.getByText(/สุ่มเปลี่ยนคำในประโยค ✦/));
+    fireEvent.click(screen.getByRole("button", { name: /สุ่มเปลี่ยนคำในประโยค/ }));
 
     await waitFor(() => {
-      expect(screen.getAllByText("🎲 สุ่มคำอื่นแทน").length).toBe(2);
+      expect(screen.getAllByText("สุ่มคำอื่นแทน").length).toBe(2);
     });
 
     // Click reroll on the first word
-    const rerollBtns = screen.getAllByText("🎲 สุ่มคำอื่นแทน");
+    const rerollBtns = screen.getAllByText("สุ่มคำอื่นแทน");
     fireEvent.click(rerollBtns[0]);
 
     await waitFor(() => {
