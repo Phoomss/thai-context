@@ -42,7 +42,9 @@ export async function POST(request: NextRequest) {
 
       if (upstream.ok) {
         const data = await upstream.json();
-        return NextResponse.json(data);
+        if (data && Array.isArray(data.results) && data.results.some((r: any) => r.found)) {
+          return NextResponse.json(data);
+        }
       }
     } catch {
       // Fallback

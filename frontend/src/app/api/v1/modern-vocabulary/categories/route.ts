@@ -22,7 +22,14 @@ export async function GET(request: NextRequest) {
 
       if (upstream.ok) {
         const data = await upstream.json();
-        return NextResponse.json(data);
+        const cats = Array.isArray(data)
+          ? data
+          : Array.isArray(data?.categories)
+          ? data.categories
+          : [];
+        if (cats.length > 0) {
+          return NextResponse.json(Array.isArray(data) ? { categories: cats } : data);
+        }
       }
     } catch {
       // Backend unreachable or timed out, fall through to local fallback

@@ -63,8 +63,15 @@ export default function ModernVocabularyExplorer({
         return res.json();
       })
       .then((data) => {
-        if (isMounted && data && Array.isArray(data.items)) {
-          setTerms(data.items);
+        if (isMounted && data) {
+          const list = Array.isArray(data.items)
+            ? data.items
+            : Array.isArray(data.results)
+            ? data.results
+            : null;
+          if (list && list.length > 0) {
+            setTerms(list);
+          }
         }
       })
       .catch(() => {

@@ -28,7 +28,9 @@ export async function GET(request: Request) {
 
     if (upstream.ok) {
       const data = await upstream.json();
-      return NextResponse.json(data);
+      if (data && Array.isArray(data.provinces) && data.provinces.length > 0) {
+        return NextResponse.json(data);
+      }
     }
   } catch {
     // Backend unreachable, fallback

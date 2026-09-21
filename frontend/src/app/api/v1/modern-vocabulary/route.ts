@@ -42,7 +42,20 @@ export async function GET(request: NextRequest) {
 
       if (upstream.ok) {
         const data = await upstream.json();
-        return NextResponse.json(data);
+        const list = Array.isArray(data.results)
+          ? data.results
+          : Array.isArray(data.items)
+          ? data.items
+          : [];
+
+        if (list.length > 0) {
+          return NextResponse.json({
+            ...data,
+            items: list,
+            results: list,
+          });
+        }
+        // Backend returned empty results (e.g. unseeded database), fall through to local fallback
       }
     } catch {
       // Backend unreachable or timed out, fall through to local fallback
@@ -61,5 +74,8 @@ export async function GET(request: NextRequest) {
     limit,
   });
 
-  return NextResponse.json(data);
+  return NextResponse.json({
+    ...data,
+    results: data.items,
+  });
 }

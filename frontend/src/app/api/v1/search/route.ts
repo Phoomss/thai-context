@@ -98,7 +98,67 @@ export async function GET(request: NextRequest) {
 
       if (upstream.ok) {
         const data: KeywordSearchResponse = await upstream.json();
-        return NextResponse.json(data);
+        const qLower = q.toLowerCase();
+
+        if (data && Array.isArray(data.results)) {
+          // Augment with modern vocabulary if edition filter allows
+          if (!edition || edition === "MODERN" || edition === "ภาษาร่วมสมัย") {
+            const modernTerms = loadSeedModernVocabulary();
+            const modernResults: KeywordSearchResultItem[] = [];
+            for (const m of modernTerms) {
+              const termLower = m.term.toLowerCase();
+              let matched = false;
+              if (exact) {
+                matched = termLower === qLower;
+              } else {
+                matched =
+                  termLower.includes(qLower) ||
+                  m.description.toLowerCase().includes(qLower) ||
+                  (m.english_meaning && m.english_meaning.toLowerCase().includes(qLower)) ||
+                  m.categories.some((c) => c.toLowerCase().includes(qLower));
+              }
+
+              if (
+                matched &&
+                !data.results.some(
+                  (r) =>
+                    r.word.toLowerCase() === m.term.toLowerCase() &&
+                    r.editionCode === "MODERN_VOCAB"
+                )
+              ) {
+                const primaryDef = m.definitions?.[0]?.definition || m.description || "";
+                const primarySource = m.sources?.[0]?.source_name || "คลังคำศัพท์ภาษาไทยร่วมสมัย";
+                modernResults.push({
+                  word: m.term,
+                  headwordClean: m.term,
+                  definition: primaryDef,
+                  partOfSpeech: "คำศัพท์สมัยใหม่",
+                  source: primarySource,
+                  sourceCode: "MODERN_VOCABULARY",
+                  edition: "ภาษาร่วมสมัย",
+                  editionTitle: "คลังคำศัพท์ภาษาไทยร่วมสมัย (Modern Thai Vocabulary)",
+                  editionCode: "MODERN_VOCAB",
+                  subjectDomain: m.categories.join(", "),
+                  pageNumber: null,
+                  metadata: {
+                    type: "MODERN",
+                    is_official: false,
+                    modern_term: m,
+                  },
+                });
+              }
+            }
+            if (modernResults.length > 0) {
+              data.results.push(...modernResults);
+              data.total = data.results.length;
+            }
+          }
+
+          if (data.results.length > 0) {
+            return NextResponse.json(data);
+          }
+        }
+        // If upstream backend returned 0 results, fall through to local fallback
       }
     } catch {
       // Backend unreachable or timed out, fall through to local fallback

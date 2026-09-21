@@ -1,4 +1,5 @@
 import { mockSearch } from "@/lib/mock-search";
+import { searchMeaningRealVector } from "@/lib/vector-semantic-search";
 import { parseResponse, type SearchResponse } from "@/lib/search-types";
 
 function adaptSearchResponse(raw: any, query: string): unknown {
@@ -129,7 +130,7 @@ export async function POST(request: Request) {
     process.env.NEXT_PUBLIC_USE_MOCK === "true";
 
   if (!rawEndpoint || forceMock)
-    return Response.json(mockSearch(cleanQuery), {
+    return Response.json(searchMeaningRealVector(cleanQuery), {
       headers: { "Cache-Control": "no-store" },
     });
 
@@ -192,9 +193,9 @@ export async function POST(request: Request) {
     const adapted = adaptSearchResponse(rawData, cleanQuery);
     const parsed = parseResponse(adapted);
 
-    // If still 0 recommendations, fall back to mock search for smooth UX
+    // If still 0 recommendations, use real vector semantic search on official dictionary
     if (parsed.recommendations.length === 0) {
-      return Response.json(mockSearch(cleanQuery, "fallback"), {
+      return Response.json(searchMeaningRealVector(cleanQuery), {
         headers: { "Cache-Control": "no-store" },
       });
     }
@@ -203,7 +204,7 @@ export async function POST(request: Request) {
       headers: { "Cache-Control": "no-store" },
     });
   } catch {
-    return Response.json(mockSearch(cleanQuery, "fallback"), {
+    return Response.json(searchMeaningRealVector(cleanQuery), {
       headers: { "Cache-Control": "no-store" },
     });
   }

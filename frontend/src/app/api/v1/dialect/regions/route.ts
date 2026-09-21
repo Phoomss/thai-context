@@ -24,7 +24,9 @@ export async function GET() {
 
     if (upstream.ok) {
       const data = await upstream.json();
-      return NextResponse.json(data);
+      if (data && Array.isArray(data.regions) && data.regions.length >= 4) {
+        return NextResponse.json(data);
+      }
     }
   } catch {
     // Backend unreachable, fallback
