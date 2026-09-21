@@ -15,23 +15,23 @@ interface ModernTermBadgeProps {
   compact?: boolean;
 }
 
-const REGISTER_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  SLANG: { label: "สแลง (Slang)", color: "#b45309", bg: "#fef3c7" },
-  INFORMAL: { label: "ภาษาปาก (Informal)", color: "#0284c7", bg: "#e0f2fe" },
-  NEUTRAL: { label: "ภาษาระดับกลาง", color: "#475569", bg: "#f1f5f9" },
-  SEMI_FORMAL: { label: "กึ่งทางการ", color: "#4338ca", bg: "#e0e7ff" },
-  FORMAL: { label: "ภาษาทางการ", color: "#15803d", bg: "#dcfce7" },
-  SPECIALIZED: { label: "ศัพท์เฉพาะทาง (Technical)", color: "#7c3aed", bg: "#ede9fe" },
-  TABOO: { label: "ภาษาต้องห้าม / ระวังการใช้", color: "#b91c1c", bg: "#fee2e2" },
+const REGISTER_LABELS: Record<string, { label: string; icon: string; color: string; bg: string; border: string }> = {
+  SLANG: { label: "สแลงร่วมสมัย", icon: "🔥", color: "#c2410c", bg: "#fff7ed", border: "#ffedd5" },
+  INFORMAL: { label: "ภาษาปาก", icon: "💬", color: "#0284c7", bg: "#f0f9ff", border: "#e0f2fe" },
+  NEUTRAL: { label: "ภาษาระดับกลาง", icon: "📝", color: "#475569", bg: "#f8fafc", border: "#e2e8f0" },
+  SEMI_FORMAL: { label: "กึ่งทางการ", icon: "📜", color: "#4338ca", bg: "#eef2ff", border: "#e0e7ff" },
+  FORMAL: { label: "ภาษาทางการ", icon: "🏛️", color: "#15803d", bg: "#f0fdf4", border: "#dcfce7" },
+  SPECIALIZED: { label: "ศัพท์เฉพาะทาง", icon: "💻", color: "#7c3aed", bg: "#faf5ff", border: "#ede9fe" },
+  TABOO: { label: "ระวังการใช้", icon: "⚠️", color: "#b91c1c", bg: "#fef2f2", border: "#fee2e2" },
 };
 
-const STATUS_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  EMERGING: { label: "คำเกิดใหม่ (Emerging)", color: "#c2410c", bg: "#ffedd5" },
-  TRENDING: { label: "กำลังนิยม (Trending)", color: "#be185d", bg: "#fce7f3" },
-  COMMON: { label: "ใช้แพร่หลาย (Common)", color: "#047857", bg: "#d1fae5" },
-  SPECIALIZED: { label: "เฉพาะกลุ่ม (Specialized)", color: "#6d28d9", bg: "#ede9fe" },
-  DECLINING: { label: "ความนิยมลดลง", color: "#64748b", bg: "#f1f5f9" },
-  HISTORICAL: { label: "คำในอดีต", color: "#78716c", bg: "#f5f5f4" },
+const STATUS_LABELS: Record<string, { label: string; icon: string; color: string; bg: string; border: string }> = {
+  EMERGING: { label: "คำเกิดใหม่", icon: "✨", color: "#c2410c", bg: "#fff7ed", border: "#ffedd5" },
+  TRENDING: { label: "กำลังนิยม", icon: "📈", color: "#be185d", bg: "#fdf2f8", border: "#fce7f3" },
+  COMMON: { label: "ใช้แพร่หลาย", icon: "✓", color: "#047857", bg: "#ecfdf5", border: "#d1fae5" },
+  SPECIALIZED: { label: "เฉพาะกลุ่ม", icon: "🎯", color: "#6d28d9", bg: "#faf5ff", border: "#ede9fe" },
+  DECLINING: { label: "ความนิยมลดลง", icon: "📉", color: "#64748b", bg: "#f8fafc", border: "#e2e8f0" },
+  HISTORICAL: { label: "คำในอดีต", icon: "⏳", color: "#78716c", bg: "#f5f5f4", border: "#e7e5e4" },
 };
 
 export default function ModernTermBadge({
@@ -56,7 +56,7 @@ export default function ModernTermBadge({
       {/* Primary Tier Badge */}
       {isOfficial ? (
         <span
-          className="badge-official inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full"
+          className="badge-official inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full"
           style={{
             backgroundColor: "#ecfdf5",
             color: "#065f46",
@@ -73,7 +73,7 @@ export default function ModernTermBadge({
         </span>
       ) : (
         <span
-          className="badge-modern inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full"
+          className="badge-modern inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full"
           style={{
             backgroundColor: "#eff6ff",
             color: "#1d4ed8",
@@ -93,36 +93,40 @@ export default function ModernTermBadge({
       {/* Register / Formality Badge */}
       {regMeta && (
         <span
-          className="badge-register inline-flex items-center text-xs px-2 py-0.5 rounded-md font-medium"
+          className="badge-register inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full font-semibold"
           style={{
             backgroundColor: regMeta.bg,
             color: regMeta.color,
+            border: `1px solid ${regMeta.border}`,
             fontSize: "11px",
             fontWeight: 600,
-            borderRadius: "6px",
-            padding: "1px 6px",
+            borderRadius: "9999px",
+            padding: "2px 8px",
           }}
           title={`ระดับภาษา: ${regMeta.label}`}
         >
-          {regMeta.label}
+          <span>{regMeta.icon}</span>
+          <span>{regMeta.label}</span>
         </span>
       )}
 
       {/* Status Badge */}
-      {!compact && statMeta && (
+      {statMeta && (
         <span
-          className="badge-status inline-flex items-center text-xs px-2 py-0.5 rounded-md"
+          className="badge-status inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full font-medium"
           style={{
             backgroundColor: statMeta.bg,
             color: statMeta.color,
+            border: `1px solid ${statMeta.border}`,
             fontSize: "11px",
             fontWeight: 500,
-            borderRadius: "6px",
-            padding: "1px 6px",
+            borderRadius: "9999px",
+            padding: "2px 7px",
           }}
           title={`สถานะการใช้: ${statMeta.label}`}
         >
-          {statMeta.label}
+          <span>{statMeta.icon}</span>
+          <span>{statMeta.label}</span>
         </span>
       )}
 
@@ -150,7 +154,7 @@ export default function ModernTermBadge({
       {/* Confidence metric */}
       {!compact && typeof confidence === "number" && confidence > 0 && (
         <span
-          className="badge-confidence text-xs"
+          className="badge-confidence text-xs font-medium"
           style={{
             color: "#64748b",
             fontSize: "10.5px",
@@ -158,7 +162,7 @@ export default function ModernTermBadge({
           }}
           title="ความสมบูรณ์และหลักฐานของข้อมูลคำศัพท์"
         >
-          ความมั่นใจข้อมูล {Math.round(confidence * 100)}%
+          ความมั่นใจ {Math.round(confidence * 100)}%
         </span>
       )}
     </div>

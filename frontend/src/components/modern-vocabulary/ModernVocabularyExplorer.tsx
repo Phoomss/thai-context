@@ -36,6 +36,11 @@ export default function ModernVocabularyExplorer({
   const [foreignerMode, setForeignerMode] = useState(false);
   const [sortBy, setSortBy] = useState("confidence");
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState<number>(9); // Default 9 items (3x3 grid)
+  const [jumpPageInput, setJumpPageInput] = useState<string>("");
+
   // Modals state
   const [activeDetailTerm, setActiveDetailTerm] = useState<ModernTerm | null>(null);
   const [isSuggestModalOpen, setIsSuggestModalOpen] = useState(false);
@@ -57,7 +62,7 @@ export default function ModernVocabularyExplorer({
     }
     let isMounted = true;
     setLoading(true);
-    fetch("/api/v1/modern-vocabulary?limit=50")
+    fetch("/api/v1/modern-vocabulary?limit=100")
       .then((res) => {
         if (!res.ok) return null;
         return res.json();
@@ -125,6 +130,73 @@ export default function ModernVocabularyExplorer({
 
     return result;
   }, [terms, query, selectedCategory, selectedRegister, sortBy]);
+
+  // Reset pagination when search query, filters, or page size change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query, selectedCategory, selectedRegister, sortBy, pageSize]);
+
+  // Pagination calculations
+  const totalItems = filteredTerms.length;
+  const isShowAll = pageSize === -1 || pageSize >= totalItems;
+  const effectivePageSize = isShowAll ? Math.max(1, totalItems) : pageSize;
+  const totalPages = isShowAll ? 1 : Math.max(1, Math.ceil(totalItems / effectivePageSize));
+
+  // Safe clamped current page
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = isShowAll ? 0 : (safeCurrentPage - 1) * effectivePageSize;
+  const endIndex = isShowAll ? totalItems : Math.min(startIndex + effectivePageSize, totalItems);
+
+  const paginatedTerms = useMemo(() => {
+    return filteredTerms.slice(startIndex, endIndex);
+  }, [filteredTerms, startIndex, endIndex]);
+
+  const handlePageChange = (targetPage: number) => {
+    const clamped = Math.max(1, Math.min(targetPage, totalPages));
+    setCurrentPage(clamped);
+    if (typeof window !== "undefined") {
+      const el = document.getElementById("modern-vocab-results-anchor");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
+
+  const handleJumpSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const val = parseInt(jumpPageInput, 10);
+    if (!isNaN(val)) {
+      handlePageChange(val);
+      setJumpPageInput("");
+    }
+  };
+
+  // Smart page numbers generation with ellipsis
+  const pageNumbers = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    const pages: (number | string)[] = [];
+    pages.push(1);
+
+    if (safeCurrentPage > 3) {
+      pages.push("...");
+    }
+
+    const start = Math.max(2, safeCurrentPage - 1);
+    const end = Math.min(totalPages - 1, safeCurrentPage + 1);
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (safeCurrentPage < totalPages - 2) {
+      pages.push("...");
+    }
+
+    pages.push(totalPages);
+    return pages;
+  }, [safeCurrentPage, totalPages]);
 
   return (
     <section
@@ -410,6 +482,53 @@ export default function ModernVocabularyExplorer({
         </div>
       </div>
 
+      {/* Results Status Bar & Page Size Selector */}
+      {!loading && filteredTerms.length > 0 && (
+        <div id="modern-vocab-results-anchor" className="modern-vocab-status-bar">
+          <div className="status-text">
+            <span>
+              แสดงรายการที่ <strong className="status-count-highlight">{startIndex + 1} – {endIndex}</strong> จากทั้งหมด{" "}
+              <strong className="status-count-highlight">{totalItems}</strong> คำ
+            </span>
+            {selectedCategory !== "ALL" && (
+              <span className="category-pill-tag">
+                หมวด {CATEGORIES.find((c) => c.id === selectedCategory)?.label.replace(/^[^\s]+\s*/, "")}
+              </span>
+            )}
+            {!isShowAll && totalPages > 1 && (
+              <span style={{ color: "#64748b", fontSize: "12px", marginLeft: "4px" }}>
+                (หน้า {safeCurrentPage}/{totalPages})
+              </span>
+            )}
+          </div>
+
+          <div className="page-size-picker">
+            <span className="picker-label">แสดงต่อหน้า:</span>
+            <div className="picker-options">
+              {[6, 9, 12, 18].map((size) => (
+                <button
+                  key={size}
+                  type="button"
+                  className={`size-btn ${pageSize === size ? "active" : ""}`}
+                  onClick={() => setPageSize(size)}
+                  aria-label={`แสดง ${size} คำต่อหน้า`}
+                >
+                  {size}
+                </button>
+              ))}
+              <button
+                type="button"
+                className={`size-btn ${pageSize === -1 ? "active" : ""}`}
+                onClick={() => setPageSize(-1)}
+                aria-label="แสดงคำทั้งหมดในหน้าเดียว"
+              >
+                ทั้งหมด
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Grid of Terms */}
       {loading ? (
         <div style={{ textAlign: "center", padding: "60px 0", color: "#64748b" }}>
@@ -458,7 +577,7 @@ export default function ModernVocabularyExplorer({
             gap: "20px",
           }}
         >
-          {filteredTerms.map((term) => (
+          {paginatedTerms.map((term) => (
             <ModernTermCard
               key={term.id || term.term}
               term={term}
@@ -468,6 +587,116 @@ export default function ModernVocabularyExplorer({
             />
           ))}
         </div>
+      )}
+
+      {/* Pagination Navigation Bar */}
+      {!loading && !isShowAll && totalPages > 1 && (
+        <nav
+          aria-label="การแบ่งหน้าคลังคำศัพท์ภาษาไทยร่วมสมัย"
+          className="modern-vocab-pagination"
+        >
+          <div className="pagination-wrapper">
+            {/* First Page Button */}
+            <button
+              type="button"
+              className="pagination-nav-btn first-btn"
+              onClick={() => handlePageChange(1)}
+              disabled={safeCurrentPage === 1}
+              aria-label="ไปยังหน้าแรก"
+              title="หน้าแรก (Page 1)"
+            >
+              « หน้าแรก
+            </button>
+
+            {/* Prev Page Button */}
+            <button
+              type="button"
+              className="pagination-nav-btn prev-btn"
+              onClick={() => handlePageChange(safeCurrentPage - 1)}
+              disabled={safeCurrentPage === 1}
+              aria-label="ไปยังหน้าก่อนหน้า"
+              title="หน้าก่อนหน้า"
+            >
+              ‹ ก่อนหน้า
+            </button>
+
+            {/* Page Number Buttons */}
+            <div className="pagination-numbers">
+              {pageNumbers.map((p, idx) => {
+                if (p === "...") {
+                  return (
+                    <span
+                      key={`ellipsis-${idx}`}
+                      className="pagination-ellipsis"
+                      aria-hidden="true"
+                    >
+                      …
+                    </span>
+                  );
+                }
+                const pageNum = Number(p);
+                const isActive = pageNum === safeCurrentPage;
+                return (
+                  <button
+                    key={`page-${pageNum}`}
+                    type="button"
+                    className={`pagination-num-btn ${isActive ? "active" : ""}`}
+                    onClick={() => handlePageChange(pageNum)}
+                    aria-label={`ไปยังหน้าที่ ${pageNum}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Next Page Button */}
+            <button
+              type="button"
+              className="pagination-nav-btn next-btn"
+              onClick={() => handlePageChange(safeCurrentPage + 1)}
+              disabled={safeCurrentPage === totalPages}
+              aria-label="ไปยังหน้าถัดไป"
+              title="หน้าถัดไป"
+            >
+              ถัดไป ›
+            </button>
+
+            {/* Last Page Button */}
+            <button
+              type="button"
+              className="pagination-nav-btn last-btn"
+              onClick={() => handlePageChange(totalPages)}
+              disabled={safeCurrentPage === totalPages}
+              aria-label="ไปยังหน้าสุดท้าย"
+              title={`หน้าสุดท้าย (Page ${totalPages})`}
+            >
+              หน้าสุดท้าย »
+            </button>
+          </div>
+
+          {/* Jump to Page Quick Input for large sets */}
+          {totalPages >= 4 && (
+            <form onSubmit={handleJumpSubmit} className="pagination-jump">
+              <span>ไปที่หน้า:</span>
+              <input
+                type="number"
+                min={1}
+                max={totalPages}
+                value={jumpPageInput}
+                onChange={(e) => setJumpPageInput(e.target.value)}
+                placeholder={String(safeCurrentPage)}
+                aria-label="ระบุหน้าที่ต้องการไป"
+                className="jump-input"
+              />
+              <span className="total-pages-label">/ {totalPages}</span>
+              <button type="submit" className="jump-btn">
+                ไป
+              </button>
+            </form>
+          )}
+        </nav>
       )}
 
       {/* Modals */}

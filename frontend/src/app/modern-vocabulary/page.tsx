@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default function ModernVocabularyPage() {
-  const initialData = filterModernTerms({ limit: 50 });
+  const initialData = filterModernTerms({ limit: 100 });
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between">

@@ -4,7 +4,10 @@
     "slug": "rag",
     "language": "en",
     "term_type": "ACRONYM",
-    "categories": ["AI", "TECHNOLOGY"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SPECIALIZED",
@@ -86,7 +89,12 @@
     "slug": "pai-ya",
     "language": "th",
     "term_type": "SLANG",
-    "categories": ["SOCIAL_MEDIA", "INTERNET", "LIFESTYLE", "POP_CULTURE"],
+    "categories": [
+      "SOCIAL_MEDIA",
+      "INTERNET",
+      "LIFESTYLE",
+      "POP_CULTURE"
+    ],
     "status": "COMMON",
     "origin": "INTERNET",
     "register": "SLANG",
@@ -158,7 +166,7 @@
         "target_term": "แนะนำ",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "AI_INFERRED",
-        "confidence": 0.90,
+        "confidence": 0.9,
         "notes": "คำระดับภาษาเป็นกลาง ใช้ได้ทั่วไปทุกสถานการณ์"
       },
       {
@@ -175,7 +183,12 @@
     "slug": "jueng",
     "language": "th",
     "term_type": "SLANG",
-    "categories": ["POP_CULTURE", "YOUTH", "SOCIAL_MEDIA", "ENTERTAINMENT"],
+    "categories": [
+      "POP_CULTURE",
+      "YOUTH",
+      "SOCIAL_MEDIA",
+      "ENTERTAINMENT"
+    ],
     "status": "TRENDING",
     "origin": "COMMUNITY",
     "register": "SLANG",
@@ -235,7 +248,7 @@
         "target_term": "โดดเด่นเป็นพิเศษ",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "AI_INFERRED",
-        "confidence": 0.90,
+        "confidence": 0.9,
         "notes": "คำทางการสำหรับระบุถึงความสะดุดตาและน่าจดจำ"
       },
       {
@@ -259,7 +272,12 @@
     "slug": "content",
     "language": "th",
     "term_type": "BORROWED_WORD",
-    "categories": ["SOCIAL_MEDIA", "INTERNET", "BUSINESS", "ENTERTAINMENT"],
+    "categories": [
+      "SOCIAL_MEDIA",
+      "INTERNET",
+      "BUSINESS",
+      "ENTERTAINMENT"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SEMI_FORMAL",
@@ -320,7 +338,12 @@
     "slug": "creator",
     "language": "th",
     "term_type": "BORROWED_WORD",
-    "categories": ["SOCIAL_MEDIA", "INTERNET", "ENTERTAINMENT", "BUSINESS"],
+    "categories": [
+      "SOCIAL_MEDIA",
+      "INTERNET",
+      "ENTERTAINMENT",
+      "BUSINESS"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SEMI_FORMAL",
@@ -371,7 +394,7 @@
         "target_term": "ผู้ผลิตสื่อ",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "AI_INFERRED",
-        "confidence": 0.90,
+        "confidence": 0.9,
         "notes": "คำทางการสำหรับวงการสื่อสารมวลชน"
       },
       {
@@ -388,7 +411,11 @@
     "slug": "influencer",
     "language": "th",
     "term_type": "BORROWED_WORD",
-    "categories": ["SOCIAL_MEDIA", "BUSINESS", "INTERNET"],
+    "categories": [
+      "SOCIAL_MEDIA",
+      "BUSINESS",
+      "INTERNET"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SEMI_FORMAL",
@@ -439,7 +466,7 @@
         "target_term": "ผู้มีอิทธิพลทางความคิด",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "AI_INFERRED",
-        "confidence": 0.90,
+        "confidence": 0.9,
         "notes": "คำทางการเชิงนิเทศศาสตร์และการสื่อสารมวลชน"
       }
     ]
@@ -449,7 +476,11 @@
     "slug": "prompt",
     "language": "en",
     "term_type": "TECHNICAL_TERM",
-    "categories": ["AI", "TECHNOLOGY", "EDUCATION"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY",
+      "EDUCATION"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SPECIALIZED",
@@ -517,7 +548,11 @@
     "slug": "prompt-engineering",
     "language": "en",
     "term_type": "TECHNICAL_TERM",
-    "categories": ["AI", "TECHNOLOGY", "EDUCATION"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY",
+      "EDUCATION"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SPECIALIZED",
@@ -578,7 +613,11 @@
     "slug": "generative-ai",
     "language": "en",
     "term_type": "TECHNICAL_TERM",
-    "categories": ["AI", "TECHNOLOGY", "SCIENCE"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY",
+      "SCIENCE"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SPECIALIZED",
@@ -639,7 +678,12 @@
     "slug": "deepfake",
     "language": "en",
     "term_type": "TECHNICAL_TERM",
-    "categories": ["AI", "TECHNOLOGY", "INTERNET", "LAW"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY",
+      "INTERNET",
+      "LAW"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SPECIALIZED",
@@ -683,7 +727,7 @@
         "target_term": "สื่อสังเคราะห์ดัดแปลงเสมือนจริง",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "AI_INFERRED",
-        "confidence": 0.90,
+        "confidence": 0.9,
         "notes": "คำแปลเชิงอธิบายสำหรับใช้ในงานวิจัยและกฎหมาย"
       }
     ]
@@ -693,7 +737,12 @@
     "slug": "dom",
     "language": "th",
     "term_type": "SLANG",
-    "categories": ["POP_CULTURE", "ENTERTAINMENT", "YOUTH", "SOCIAL_MEDIA"],
+    "categories": [
+      "POP_CULTURE",
+      "ENTERTAINMENT",
+      "YOUTH",
+      "SOCIAL_MEDIA"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SLANG",
@@ -761,7 +810,12 @@
     "slug": "ting",
     "language": "th",
     "term_type": "SLANG",
-    "categories": ["POP_CULTURE", "ENTERTAINMENT", "YOUTH", "SOCIAL_MEDIA"],
+    "categories": [
+      "POP_CULTURE",
+      "ENTERTAINMENT",
+      "YOUTH",
+      "SOCIAL_MEDIA"
+    ],
     "status": "COMMON",
     "origin": "INTERNET",
     "register": "SLANG",
@@ -805,7 +859,7 @@
         "target_term": "ผู้ชื่นชอบอย่างเหนียวแน่น",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "AI_INFERRED",
-        "confidence": 0.90,
+        "confidence": 0.9,
         "notes": "คำทางการที่สุภาพและเหมาะสมในรายงานวิชาการ"
       },
       {
@@ -822,7 +876,11 @@
     "slug": "feel",
     "language": "th",
     "term_type": "BORROWED_WORD",
-    "categories": ["LIFESTYLE", "SOCIAL_MEDIA", "YOUTH"],
+    "categories": [
+      "LIFESTYLE",
+      "SOCIAL_MEDIA",
+      "YOUTH"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "INFORMAL",
@@ -883,7 +941,11 @@
     "slug": "deadline",
     "language": "th",
     "term_type": "BORROWED_WORD",
-    "categories": ["WORKPLACE", "BUSINESS", "EDUCATION"],
+    "categories": [
+      "WORKPLACE",
+      "BUSINESS",
+      "EDUCATION"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SEMI_FORMAL",
@@ -944,7 +1006,11 @@
     "slug": "ngan-khao",
     "language": "th",
     "term_type": "PHRASE",
-    "categories": ["WORKPLACE", "LIFESTYLE", "SOCIAL_MEDIA"],
+    "categories": [
+      "WORKPLACE",
+      "LIFESTYLE",
+      "SOCIAL_MEDIA"
+    ],
     "status": "COMMON",
     "origin": "COMMUNITY",
     "register": "INFORMAL",
@@ -1005,7 +1071,12 @@
     "slug": "meme",
     "language": "en",
     "term_type": "INTERNET_TERM",
-    "categories": ["INTERNET", "SOCIAL_MEDIA", "POP_CULTURE", "ENTERTAINMENT"],
+    "categories": [
+      "INTERNET",
+      "SOCIAL_MEDIA",
+      "POP_CULTURE",
+      "ENTERTAINMENT"
+    ],
     "status": "COMMON",
     "origin": "INTERNET",
     "register": "INFORMAL",
@@ -1059,7 +1130,11 @@
     "slug": "viral",
     "language": "en",
     "term_type": "INTERNET_TERM",
-    "categories": ["INTERNET", "SOCIAL_MEDIA", "BUSINESS"],
+    "categories": [
+      "INTERNET",
+      "SOCIAL_MEDIA",
+      "BUSINESS"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "SEMI_FORMAL",
@@ -1113,7 +1188,12 @@
     "slug": "pang",
     "language": "th",
     "term_type": "SLANG",
-    "categories": ["POP_CULTURE", "YOUTH", "LIFESTYLE", "SOCIAL_MEDIA"],
+    "categories": [
+      "POP_CULTURE",
+      "YOUTH",
+      "LIFESTYLE",
+      "SOCIAL_MEDIA"
+    ],
     "status": "COMMON",
     "origin": "POP_CULTURE",
     "register": "SLANG",
@@ -1174,7 +1254,11 @@
     "slug": "chatgpt",
     "language": "en",
     "term_type": "PROPER_NOUN",
-    "categories": ["AI", "TECHNOLOGY", "EDUCATION"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY",
+      "EDUCATION"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "NEUTRAL",
@@ -1235,7 +1319,11 @@
     "slug": "ai",
     "language": "en",
     "term_type": "TECHNICAL_TERM",
-    "categories": ["AI", "TECHNOLOGY", "SCIENCE"],
+    "categories": [
+      "AI",
+      "TECHNOLOGY",
+      "SCIENCE"
+    ],
     "status": "COMMON",
     "origin": "ENGLISH_BORROWING",
     "register": "NEUTRAL",
@@ -1279,8 +1367,919 @@
         "target_term": "ปัญญาประดิษฐ์",
         "relationship_type": "FORMAL_ALTERNATIVE",
         "source_type": "OFFICIAL_DATA",
-        "confidence": 1.0,
+        "confidence": 1,
         "notes": "ศัพท์บัญญัติอย่างเป็นทางการของราชบัณฑิตยสภา"
+      }
+    ]
+  },
+  {
+    "term": "อวยยศ",
+    "slug": "uay-yot",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": [
+      "SLANG",
+      "FANDOM",
+      "POP_CULTURE"
+    ],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "การยกย่อง ชื่นชม หรือกล่าวสรรเสริญศิลปิน บุคคล หรือผลงานอย่างเกินจริงหรืออย่างเต็มที่ด้วยความรักความประทับใจ",
+    "first_seen_at": "2021-02-15",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "uay-yot",
+    "english_meaning": "To shower someone (often an idol or artist) with overwhelming praise or celebrate their achievements enthusiastically.",
+    "pronunciation": "อวย-ยด",
+    "usage_warning": "เป็นภาษาพูดและภาษาแฟนดอม ในเอกสารทางการควรใช้คำว่า 'ยกย่องสรรเสริญ' หรือ 'ชื่นชมยินดี'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "T-Pop & K-Pop Online Community Corpus 2022-2026",
+        "source_url": "https://thai-context.example/corpus/fandom",
+        "source_date": "2022-04-10",
+        "excerpt": "แฟนคลับรวมตัวอวยยศศิลปินหลังคว้ารางวัลระดับนานาชาติ",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "การกล่าวชื่นชม ยกย่องสรรเสริญ หรือมอบเกียรติให้ใครบางคนอย่างเต็มที่ มักใช้ในกลุ่มแฟนคลับและโซเชียลมีเดีย",
+        "definition_type": "COMMUNITY_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "วันนี้ต้องขออวยยศให้ทีมงานทุกคนที่จัดงานออกมาได้อย่างสมบูรณ์แบบ",
+        "context_note": "การชื่นชมทีมงานในโซเชียล",
+        "source_attribution": "Social Media Post 2024",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ยกย่อง",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.94,
+        "notes": "คำทางการเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "ช็อตฟีล",
+    "slug": "shot-feel",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": [
+      "SLANG",
+      "SOCIAL_MEDIA"
+    ],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "การกระทำหรือคำพูดที่ทำให้บรรยากาศหรืออารมณ์ความรู้สึกที่กำลังสนุกสนานหรือซาบซึ้งอยู่ต้องสะดุด ดับวูบ หรือพังทลายลงกะทันหัน",
+    "first_seen_at": "2022-06-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "shot-feel",
+    "english_meaning": "To ruin the mood or buzzkill; speaking or doing something that suddenly interrupts the enjoyable atmosphere.",
+    "pronunciation": "ช็อด-ฟีน",
+    "usage_warning": "คำสแลงยอดนิยม ไม่ควรใช้ในบริบทที่เป็นทางการ ควรใช้คำว่า 'ขัดจังหวะ' หรือ 'ทำให้เสียบรรยากาศ'",
+    "sources": [
+      {
+        "source_type": "MEDIA",
+        "source_name": "สำรวจศัพท์วัยรุ่นไทย The Standard Pop",
+        "source_url": "https://thestandard.co/shot-feel-slang",
+        "source_date": "2022-08-15",
+        "excerpt": "คำว่า 'ช็อตฟีล' มาจากการผสมคำว่า ช็อต (Short) กับ ฟีล (Feel)",
+        "license": "Editorial Reference",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ทำให้เสียอารมณ์ ขัดจังหวะความรู้สึก หรือทำให้บรรยากาศที่กำลังดีสะดุดลง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "กำลังคุยเรื่องซึ้งๆ อยู่ดีๆ เพื่อนก็เล่าเรื่องตลกขึ้นมาเฉย ช็อตฟีลมาก",
+        "context_note": "บทสนทนาระหว่างเพื่อน",
+        "source_attribution": "Social Chat Observation 2023",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ขัดจังหวะ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.91,
+        "notes": "คำทางการที่สื่อความหมายใกล้เคียง"
+      }
+    ]
+  },
+  {
+    "term": "แกง",
+    "slug": "kaeng",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": [
+      "SLANG",
+      "SOCIAL_MEDIA"
+    ],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "การแกล้ง หลอกลวง หักมุม หรือหลอกให้หลงเชื่อเรื่องที่ไม่เป็นความจริงในเชิงหยอกล้อขำขัน",
+    "first_seen_at": "2020-03-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.94,
+    "transliteration": "kaeng",
+    "english_meaning": "To prank, tease, or fool someone playfully.",
+    "pronunciation": "แกง",
+    "usage_warning": "เป็นสแลงอินเทอร์เน็ต คำทางการควรใช้คำว่า 'หลอก' 'แกล้ง' หรือ 'หยอกล้อ'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "Thai Internet Slang Lexicon",
+        "source_url": "https://thai-slang.example/terms/kaeng",
+        "source_date": "2020-09-01",
+        "excerpt": "โดนแกง: โดนแกล้งหรือโดนหลอก",
+        "license": "CC-BY-SA 4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "แกล้ง แกล้งหลอก หรือหลอกลวงแบบขำๆ จนผู้ถูกแกล้งหน้าแตกหรือหลงเชื่อ",
+        "definition_type": "COMMUNITY_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "นึกว่าวันนี้จะมีของแจก ที่แท้โดนเพื่อนแกงกันทั้งกลุ่ม",
+        "context_note": "การหยอกล้อในกลุ่มเพื่อน",
+        "source_attribution": "Online Community Post 2021",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "หยอกล้อ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.9,
+        "notes": "คำทางการเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "บ้ง",
+    "slug": "bong",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": [
+      "SLANG",
+      "SOCIAL_MEDIA"
+    ],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "พัง ล้มเหลว แย่ ไม่ได้เรื่อง หรือผลลัพธ์ออกมาไม่ดีตรงข้ามกับที่คาดหวังไว้",
+    "first_seen_at": "2019-05-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "bong",
+    "english_meaning": "To flop, fail miserably, or turn out very badly.",
+    "pronunciation": "บ้ง",
+    "usage_warning": "คำสแลงภาษาพูด ไม่ควรใช้ในงานวิชาการหรือทางการ ควรใช้ 'ล้มเหลว' หรือ 'ผิดพลาด'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "Thai LGBTQ+ & Pop Culture Slang Corpus",
+        "source_url": "https://thai-slang.example/terms/bong",
+        "source_date": "2019-10-01",
+        "excerpt": "บ้ง: ใช้บอกว่าผลงานหรือการกระทำนั้นพัง ไม่รอด",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ล้มเหลว ไม่ประสบความสำเร็จ หรือดูแย่มาก",
+        "definition_type": "COMMUNITY_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ชุดนี้ใส่แล้วดูบ้งมาก ไม่เข้ากับธีมงานเลย",
+        "context_note": "การวิจารณ์แฟชั่น",
+        "source_attribution": "Twitter Review 2022",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ล้มเหลว",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.93,
+        "notes": "คำทางการเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "ฉ่ำ",
+    "slug": "cham",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": [
+      "SLANG",
+      "POP_CULTURE"
+    ],
+    "status": "COMMON",
+    "origin": "INTERNET",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "คำวิเศษณ์บอกปริมาณหรือระดับ แปลว่า อย่างเต็มที่ อย่างจุใจ มากมาย หรืออย่างถึงอกถึงใจ",
+    "first_seen_at": "2023-01-10",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "cham",
+    "english_meaning": "Intensely, abundantly, fully, to the max.",
+    "pronunciation": "ฉ่ำ",
+    "usage_warning": "เป็นสแลงใหม่ที่นำคำเดิมมาขยายความหมาย ในทางการใช้ 'อย่างเต็มที่' หรือ 'จุใจ'",
+    "sources": [
+      {
+        "source_type": "MEDIA",
+        "source_name": "รายงานเทรนด์ภาษาไทยประจำปี 2023-2024",
+        "source_url": "https://thai-context.example/trends/cham",
+        "source_date": "2023-11-20",
+        "excerpt": "คำว่า 'ฉ่ำ' ถูกนำมาใช้ต่อท้ายคำกริยาเพื่อแสดงความเข้มข้น เช่น กินฉ่ำ นอนฉ่ำ เต้นฉ่ำ",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "อย่างจุใจ เต็มที่ ไม่มียั้ง ทำต่อเนื่องเป็นจำนวนมาก",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "วันหยุดยาวนี้ได้พักผ่อนนอนฉ่ำเลย ไม่ต้องตั้งนาฬิกาปลุก",
+        "context_note": "การเล่าเรื่องวันหยุด",
+        "source_attribution": "Instagram Story 2024",
+        "register": "SLANG"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "เต็มที่",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำทางการเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "นอยด์",
+    "slug": "noid",
+    "language": "th",
+    "term_type": "SLANG",
+    "categories": [
+      "SLANG",
+      "SOCIAL_MEDIA"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "INFORMAL",
+    "audience": "GENERAL",
+    "description": "มาจากคำว่า paranoid หมายถึง รู้สึกกังวล คิดมาก น้อยใจ หวาดระแวง หรือวิตกจริตเกินเหตุ",
+    "first_seen_at": "2010-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "noid",
+    "english_meaning": "Paranoid, anxious, overthinking, or feeling sulky.",
+    "pronunciation": "นอย",
+    "usage_warning": "เป็นภาษาพูด ควรใช้คำว่า 'กังวล' 'น้อยใจ' หรือ 'วิตกจริต' ในภาษาทางการ",
+    "sources": [
+      {
+        "source_type": "DICTIONARY",
+        "source_name": "พจนานุกรมคำใหม่ เล่ม ๒ ราชบัณฑิตยสถาน (ระบุคำว่า นอยด์)",
+        "source_url": "https://royin.go.th",
+        "source_date": "2009-01-01",
+        "excerpt": "นอยด์: ว. รู้สึกกังวลหรือคิดมาก (ตัดมาจากคำว่า paranoid)",
+        "license": "Public Reference",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "อารมณ์รู้สึกกังวล คิดมาก วิตก หรือเกิดความรู้สึกน้อยใจ",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "อย่านอยด์ไปเลย เรื่องเล็กน้อยเดี๋ยวก็ผ่านไป",
+        "context_note": "การปลอบใจเพื่อน",
+        "source_attribution": "Chat Message 2023",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "กังวล",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.94,
+        "notes": "คำทางการเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "LLM",
+    "slug": "llm",
+    "language": "en",
+    "term_type": "ACRONYM",
+    "categories": [
+      "AI",
+      "TECHNOLOGY"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ย่อมาจาก Large Language Model โมเดลภาษาขนาดใหญ่ที่ได้รับการฝึกฝนด้วยข้อมูลมหาศาลเพื่อทำความเข้าใจและสร้างภาษาธรรมชาติ",
+    "first_seen_at": "2019-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.98,
+    "transliteration": "แอลแอลเอ็ม",
+    "english_meaning": "Large Language Model: Deep learning algorithm that can recognize, summarize, translate, predict, and generate text.",
+    "pronunciation": "แอล-แอล-เอ็ม",
+    "usage_warning": "คำศัพท์ทางเทคนิค หากใช้ในภาษาไทยทางการนิยมใช้ 'โมเดลภาษาขนาดใหญ่'",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "Artificial Intelligence Survey 2024",
+        "source_url": "https://arxiv.org",
+        "source_date": "2024-01-10",
+        "excerpt": "Large Language Models foundational overview",
+        "license": "arXiv",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "โมเดลโครงข่ายประสาทเทียมขนาดใหญ่ที่เรียนรู้โครงสร้างภาษาจากคลังข้อความมหึมา สามารถแต่งประโยค แปลภาษา และตอบคำถามได้คล้ายมนุษย์",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ระบบค้นหาอัจฉริยะนี้เชื่อมต่อกับ LLM เพื่อช่วยเรียบเรียงคำอธิบายให้เข้าใจง่าย",
+        "context_note": "การอธิบายสถาปัตยกรรมระบบ",
+        "source_attribution": "Tech Whitepaper 2025",
+        "register": "SPECIALIZED"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "โมเดลภาษาขนาดใหญ่",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.98,
+        "notes": "คำแปลบัญญัติภาษาไทย"
+      }
+    ]
+  },
+  {
+    "term": "Agentic AI",
+    "slug": "agentic-ai",
+    "language": "en",
+    "term_type": "COMPOUND",
+    "categories": [
+      "AI",
+      "TECHNOLOGY"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ระบบปัญญาประดิษฐ์ที่มีความเป็นตัวแทนอัตโนมัติ สามารถวางแผน ตัดสินใจ และเรียกใช้เครื่องมือภายนอกเพื่อบรรลุเป้าหมายที่ซับซ้อนโดยไม่ต้องมีมนุษย์คอยสั่งทีละขั้นตอน",
+    "first_seen_at": "2024-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "เอเจนติก เอไอ",
+    "english_meaning": "Agentic AI: Systems capable of autonomous goal-driven action, planning, and tool use with minimal human supervision.",
+    "pronunciation": "เอ-เจน-ติก-เอ-ไอ",
+    "usage_warning": "ศัพท์เทคโนโลยี AI ขั้นสูง นิยมใช้ทับศัพท์หรืออธิบายขยายความ",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "MIT Technology Review 2025 / Gartner Top Strategic Tech Trends",
+        "source_url": "https://technologyreview.example",
+        "source_date": "2025-01-05",
+        "excerpt": "The Rise of Agentic AI in Enterprise Workflows",
+        "license": "Reference",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ระบบ AI ที่มีอำนาจดำเนินการตามเป้าหมาย (Autonomous Agency) สามารถแบ่งงานย่อย ประเมินผล และแก้ปัญหาเฉพาะหน้าได้เอง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "ในปี 2026 องค์กรเริ่มปรับใช้ Agentic AI ในการเขียนโค้ดและทดสอบระบบอัตโนมัติ",
+        "context_note": "บทความแนวโน้มเทคโนโลยี",
+        "source_attribution": "Software Engineering Today 2026",
+        "register": "SPECIALIZED"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ปัญญาประดิษฐ์แบบตัวแทนอัตโนมัติ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำอธิบายเชิงวิชาการภาษาไทย"
+      }
+    ]
+  },
+  {
+    "term": "Hallucination",
+    "slug": "hallucination",
+    "language": "en",
+    "term_type": "LOANWORD",
+    "categories": [
+      "AI",
+      "TECHNOLOGY"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SPECIALIZED",
+    "audience": "TECHNICAL",
+    "description": "ภาวะที่แบบจำลองปัญญาประดิษฐ์สร้างข้อมูลหรือคำตอบที่ไม่ถูกต้อง หลอกลวง หรือไม่มีอยู่จริงขึ้นมาด้วยความมั่นใจสูง",
+    "first_seen_at": "2022-11-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.97,
+    "transliteration": "ฮัลลูซิเนชัน",
+    "english_meaning": "AI Hallucination: A phenomenon where a large language model generates false or fabricated information presented as fact.",
+    "pronunciation": "ฮัล-ลู-ซิ-เน-ชัน",
+    "usage_warning": "ในภาษาไทยทางการนิยมแปลว่า 'อาการภาพหลอนของเอไอ' หรือ 'การสร้างข้อเท็จจริงเท็จ'",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "ACM Computing Surveys on LLM Reliability",
+        "source_url": "https://dl.acm.org",
+        "source_date": "2023-09-01",
+        "excerpt": "Survey of Hallucination in Natural Language Generation",
+        "license": "ACM",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ปรากฏการณ์ที่ AI แต่งเรื่องหรือกุข้อมูลผิดพลาดขึ้นมาเองโดยไม่มีหลักฐานอ้างอิง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "เราต้องใส่การตรวจสอบหลักฐานเข้าไปในโมเดลเพื่อป้องกันปัญหา Hallucination",
+        "context_note": "การพัฒนาซอฟต์แวร์ AI",
+        "source_attribution": "NLP Engineering Guide 2024",
+        "register": "SPECIALIZED"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ภาพหลอนของเอไอ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.94,
+        "notes": "คำอธิบายภาษาไทย"
+      }
+    ]
+  },
+  {
+    "term": "Soft Power",
+    "slug": "soft-power",
+    "language": "en",
+    "term_type": "LOANWORD",
+    "categories": [
+      "POP_CULTURE",
+      "WORKPLACE"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "อำนาจละมุน ความสามารถในการดึงดูดและจูงใจผู้อื่นผ่านวัฒนธรรม ค่านิยมทางการเมือง และนโยบายสาธารณะ โดยไม่ใช้กำลังบังคับหรือเงินตรา",
+    "first_seen_at": "2000-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.98,
+    "transliteration": "ซอฟต์เพาเวอร์",
+    "english_meaning": "Soft power: The ability to co-opt rather than coerce, using culture, values, and policies.",
+    "pronunciation": "ซ็อฟ-เพา-เว่อ",
+    "usage_warning": "ราชบัณฑิตยสภาเคยมีข้อเสนอคำแปลว่า 'อำนาจละมุน' แต่ในสื่อทั่วไปนิยมทับศัพท์ว่า ซอฟต์พาวเวอร์",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "Joseph Nye / Harvard Kennedy School",
+        "source_url": "https://harvard.example",
+        "source_date": "2004-01-01",
+        "excerpt": "Soft Power: The Means to Success in World Politics",
+        "license": "Academic Citation",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "อิทธิพลหรืออำนาจทางวัฒนธรรมและค่านิยมที่โน้มน้าวใจผู้คนให้คล้อยตามโดยสมัครใจ",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "อาหารไทยและภาพยนตร์ไทยเป็น Soft Power สำคัญที่ช่วยสร้างชื่อเสียงให้ประเทศ",
+        "context_note": "ข่าวเศรษฐกิจและวัฒนธรรม",
+        "source_attribution": "News Report 2024",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "อำนาจละมุน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.96,
+        "notes": "คำแปลบัญญัติทางวิชาการ"
+      }
+    ]
+  },
+  {
+    "term": "FOMO",
+    "slug": "fomo",
+    "language": "en",
+    "term_type": "ACRONYM",
+    "categories": [
+      "SOCIAL_MEDIA",
+      "SLANG"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "ย่อมาจาก Fear Of Missing Out ความกลัวการตกกระแส วิตกกังวลว่าจะพลาดข่าวสาร เหตุการณ์สำคัญ หรือโอกาสที่คนอื่นกำลังมีส่วนร่วม",
+    "first_seen_at": "2013-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.94,
+    "transliteration": "โฟโม",
+    "english_meaning": "FOMO (Fear Of Missing Out): Anxiety that an exciting or interesting event may currently be happening elsewhere.",
+    "pronunciation": "โฟ-โม",
+    "usage_warning": "เป็นคำย่อภาษาอังกฤษที่นิยมใช้ในโซเชียลมีเดีย ภาษาทางการใช้ 'ความกลัวการตกกระแส'",
+    "sources": [
+      {
+        "source_type": "MEDIA",
+        "source_name": "Psychology Today / Oxford English Dictionary",
+        "source_url": "https://oed.com",
+        "source_date": "2013-08-28",
+        "excerpt": "FOMO added to Oxford Dictionaries",
+        "license": "Public Reference",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ความกังวลใจว่าจะตกข่าว ตกเทรนด์ หรือพลาดสิ่งที่คนส่วนใหญ่กำลังทำหรือพูดถึง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "เพราะกลัว FOMO เลยต้องคอยรีเฟรชฟีดโซเชียลดูเทรนด์ใหม่ตลอดเวลา",
+        "context_note": "พฤติกรรมผู้ใช้โซเชียลมีเดีย",
+        "source_attribution": "Social Trend Analysis 2024",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ความกลัวการตกกระแส",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.93,
+        "notes": "คำอธิบายภาษาไทย"
+      }
+    ]
+  },
+  {
+    "term": "Burnout",
+    "slug": "burnout",
+    "language": "en",
+    "term_type": "LOANWORD",
+    "categories": [
+      "WORKPLACE"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "ภาวะหมดไฟในการทำงาน อาการเหนื่อยล้าทางอารมณ์ ร่างกาย และจิตใจอันเนื่องมาจากความเครียดเรื้อรังในการทำงาน",
+    "first_seen_at": "2015-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.97,
+    "transliteration": "เบิร์นเอาต์",
+    "english_meaning": "Burnout: State of emotional, physical, and mental exhaustion caused by excessive and prolonged stress.",
+    "pronunciation": "เบิน-เอาต์",
+    "usage_warning": "ในทางการแพทย์และจิตวิทยาใช้คำว่า 'ภาวะหมดไฟ'",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "องค์การอนามัยโลก (WHO) ICD-11",
+        "source_url": "https://who.int",
+        "source_date": "2019-05-28",
+        "excerpt": "Burn-out an occupational phenomenon in ICD-11",
+        "license": "Public Domain",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ภาวะความเหนื่อยล้าหมดพลังจากการทำงานสะสมต่อเนื่องจนส่งผลต่อประสิทธิภาพและความสุขในชีวิต",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "หลังจากทำงานหามรุ่งหามค่ำมาหลายเดือน เขาก็เริ่มมีอาการ Burnout จนต้องลางานพักผ่อน",
+        "context_note": "การทำงานในออฟฟิศ",
+        "source_attribution": "HR Survey Thailand 2024",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "ภาวะหมดไฟ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.99,
+        "notes": "คำแปลทางการแพทย์และวิชาการ"
+      }
+    ]
+  },
+  {
+    "term": "Red Flag",
+    "slug": "red-flag",
+    "language": "en",
+    "term_type": "LOANWORD",
+    "categories": [
+      "SOCIAL_MEDIA",
+      "SLANG"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "สัญญาณเตือนอันตรายหรือพฤติกรรมที่ไม่น่าไว้วางใจ ที่บ่งชี้ว่าบุคคลหรือสถานการณ์นั้นอาจสร้างปัญหาหรือเป็นพิษ (toxic)",
+    "first_seen_at": "2021-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.95,
+    "transliteration": "เรดแฟล็ก",
+    "english_meaning": "Red flag: A warning sign of a problem, danger, or toxic behavior.",
+    "pronunciation": "เรด-แฟล็ก",
+    "usage_warning": "เป็นสแลงโซเชียลมีเดีย ภาษาทางการใช้ 'สัญญาณเตือนภัย' หรือ 'ข้อควรระวัง'",
+    "sources": [
+      {
+        "source_type": "MEDIA",
+        "source_name": "Pop Culture & Relationship Terminology Review 2023",
+        "source_url": "https://thai-context.example/terms/red-flag",
+        "source_date": "2023-05-12",
+        "excerpt": "Red Flag ในความสัมพันธ์และที่ทำงาน",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "สัญญาณเตือนถึงพฤติกรรมที่ไม่ดี หรือสิ่งที่ไม่น่าไว้วางใจที่ควรหลีกเลี่ยง",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "การที่เขาชอบพูดโกหกเรื่องเล็กๆ น้อยๆ ถือเป็น Red Flag ที่ต้องระวัง",
+        "context_note": "การให้คำปรึกษาความสัมพันธ์",
+        "source_attribution": "Online Podcast 2024",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "สัญญาณเตือน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.92,
+        "notes": "คำทางการเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "Green Flag",
+    "slug": "green-flag",
+    "language": "en",
+    "term_type": "LOANWORD",
+    "categories": [
+      "SOCIAL_MEDIA",
+      "SLANG"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "สัญญาณที่ดีหรือพฤติกรรมเชิงบวก บ่งบอกว่าบุคคลนั้นมีความจริงใจ ปลอดภัย น่าคบหา หรือมีความคิดที่เป็นผู้ใหญ่",
+    "first_seen_at": "2021-06-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.94,
+    "transliteration": "กรีนแฟล็ก",
+    "english_meaning": "Green flag: Positive indicator or healthy sign in a relationship or situation.",
+    "pronunciation": "กรีน-แฟล็ก",
+    "usage_warning": "คำสแลงสื่อสารมวลชน ภาษาทางการใช้ 'คุณลักษณะเชิงบวก' หรือ 'สัญญาณที่ดี'",
+    "sources": [
+      {
+        "source_type": "COMMUNITY",
+        "source_name": "Modern Relationship Corpus 2023",
+        "source_url": "https://thai-context.example/corpus/lifestyle",
+        "source_date": "2023-07-20",
+        "excerpt": "Green Flag: สัญญาณความสัมพันธ์สุขภาพดี",
+        "license": "CC-BY-4.0",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "ลักษณะนิสัยหรือการกระทำที่ดี ที่สะท้อนถึงความปลอดภัยและน่าไว้วางใจ",
+        "definition_type": "COMMUNITY_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "เขาเป็นคนรับฟังความคิดเห็นของผู้อื่นเสมอ นี่คือ Green Flag สำคัญเลย",
+        "context_note": "การชมเพื่อนร่วมงานหรือคู่สนทนา",
+        "source_attribution": "Social Discussion 2024",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "สัญญาณที่ดี",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.91,
+        "notes": "คำเทียบเท่า"
+      }
+    ]
+  },
+  {
+    "term": "Ghosting",
+    "slug": "ghosting",
+    "language": "en",
+    "term_type": "LOANWORD",
+    "categories": [
+      "SOCIAL_MEDIA",
+      "SLANG"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SLANG",
+    "audience": "GENERAL",
+    "description": "พฤติกรรมการตัดขาดการติดต่ออย่างกะทันหัน โดยหายตัวไปเฉยๆ ไม่ตอบข้อความและไม่มีคำอธิบายใดๆ ทั้งสิ้น",
+    "first_seen_at": "2018-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.96,
+    "transliteration": "โกสต์ติง",
+    "english_meaning": "Ghosting: The practice of ending a personal relationship suddenly by withdrawing from all communication without explanation.",
+    "pronunciation": "โกส-ติ้ง",
+    "usage_warning": "คำสแลง ภาษาทางการควรใช้ 'การหายตัวไปโดยไม่บอกกล่าว' หรือ 'การตัดขาดการติดต่อ'",
+    "sources": [
+      {
+        "source_type": "MEDIA",
+        "source_name": "Merriam-Webster Word of the Year Observations",
+        "source_url": "https://merriam-webster.com",
+        "source_date": "2018-02-14",
+        "excerpt": "Ghosting definition and modern cultural usage",
+        "license": "Public Citation",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "การเงียบหายไปเฉยๆ โดยไม่ตอบข้อความหรือติดต่อกลับอีกเลย",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "คุยกันมาเป็นเดือน อยู่ดีๆ เขาก็ทำ Ghosting หายไปเฉยๆ ซะงั้น",
+        "context_note": "การเล่าประสบการณ์การนัดเดต",
+        "source_attribution": "Forum Discussion 2023",
+        "register": "INFORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "การตัดการติดต่อ",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.9,
+        "notes": "คำอธิบายทางการ"
+      }
+    ]
+  },
+  {
+    "term": "Work-Life Balance",
+    "slug": "work-life-balance",
+    "language": "en",
+    "term_type": "COMPOUND",
+    "categories": [
+      "WORKPLACE"
+    ],
+    "status": "COMMON",
+    "origin": "ENGLISH_BORROWING",
+    "register": "SEMI_FORMAL",
+    "audience": "GENERAL",
+    "description": "ความสมดุลระหว่างการทำงานและการใช้ชีวิตส่วนตัว การจัดสรรเวลาและพลังงานให้เหมาะสมระหว่างภาระหน้าที่การงานกับสุขภาพ ครอบครัว และเวลาพักผ่อน",
+    "first_seen_at": "2012-01-01",
+    "last_seen_at": "2026-03-01",
+    "confidence": 0.98,
+    "transliteration": "เวิร์กไลฟ์บาลานซ์",
+    "english_meaning": "Work-Life Balance: The division of one's time and focus between working and family or leisure activities.",
+    "pronunciation": "เวิก-ไลฟ-บา-ลาน",
+    "usage_warning": "เป็นคำทับศัพท์ที่นิยมใช้มากในองค์กรยุคใหม่ ภาษาทางการใช้ 'สมดุลชีวิตและการทำงาน'",
+    "sources": [
+      {
+        "source_type": "RESEARCH",
+        "source_name": "International Labour Organization (ILO)",
+        "source_url": "https://ilo.org",
+        "source_date": "2020-01-01",
+        "excerpt": "Working time and work-life balance around the world",
+        "license": "UN ILO",
+        "verification_status": "VERIFIED"
+      }
+    ],
+    "definitions": [
+      {
+        "definition": "การรักษาสมดุลระหว่างเวลาทำงานกับเวลาพักผ่อนและชีวิตครอบครัวเพื่อสุขภาวะที่ดี",
+        "definition_type": "SOURCE_DEFINED",
+        "verified": true
+      }
+    ],
+    "examples": [
+      {
+        "example_text": "คนรุ่นใหม่ให้ความสำคัญกับ Work-Life Balance ไม่น้อยไปกว่าเงินเดือน",
+        "context_note": "การสำรวจตลาดแรงงาน",
+        "source_attribution": "Job Fair Survey 2025",
+        "register": "SEMI_FORMAL"
+      }
+    ],
+    "relationships": [
+      {
+        "target_term": "สมดุลชีวิตและการทำงาน",
+        "relationship_type": "FORMAL_ALTERNATIVE",
+        "source_type": "AI_INFERRED",
+        "confidence": 0.98,
+        "notes": "คำแปลทางการ"
       }
     ]
   }
