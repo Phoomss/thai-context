@@ -99,6 +99,69 @@ export const MOCK_SIGN_LANGUAGE: Record<string, SignLanguageEntry[]> = {
       ],
     },
   ],
+  ปัญญาประดิษฐ์: [
+    {
+      signName: "ปัญญาประดิษฐ์",
+      handshapeDescription:
+        "ชี้นิ้วชี้ขวาที่ขมับ แตะเบาๆ แล้วกางมือทั้งสองขยับนิ้วคล้ายวงจรอิเล็กทรอนิกส์",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "สมาคมคนหูหนวกแห่งประเทศไทย (NADT)",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/ai.mp4",
+          thumbnailUrl:
+            "https://assets.thai-context.org/tsl/thumbs/ai.jpg",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
+  อร่อย: [
+    {
+      signName: "อร่อย",
+      handshapeDescription:
+        "ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "สมาคมคนหูหนวกแห่งประเทศไทย (NADT)",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/aroi.mp4",
+          thumbnailUrl:
+            "https://assets.thai-context.org/tsl/thumbs/aroi.jpg",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
+  มิตรภาพ: [
+    {
+      signName: "มิตรภาพ",
+      handshapeDescription:
+        "ประสานนิ้วก้อยทั้งสองมือเข้าด้วยกัน แล้วดึงเข้ามาใกล้หน้าอกอย่างอ่อนโยน",
+      dialectRegion: "ภาคกลาง (CENTRAL)",
+      verificationStatus: "OFFICIAL",
+      sourceAttribution: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "CC-BY-SA 4.0",
+      media: [
+        {
+          mediaType: "VIDEO_MP4",
+          mediaUrl:
+            "https://assets.thai-context.org/tsl/videos/friendship.mp4",
+          thumbnailUrl:
+            "https://assets.thai-context.org/tsl/thumbs/friendship.jpg",
+          isPrimary: true,
+        },
+      ],
+    },
+  ],
 };
 
 export const MOCK_TRANSLATIONS: Record<string, TranslationItem[]> = {

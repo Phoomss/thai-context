@@ -223,33 +223,38 @@ export default function SearchResults({
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>
-                        <strong>
-                          {candidate.headword}
+                        <strong className="candidate-title-row">
+                          <span className="candidate-headword-text">{candidate.headword}</span>
                           {(candidate.english || candidate.translations?.[0]?.translatedWord) && (
                             <span className="candidate-english font-ui">
                               {" "}· {candidate.english || candidate.translations?.[0]?.translatedWord}
                             </span>
                           )}
+                          {candidate.score !== undefined && (
+                            <span className="candidate-match-badge font-ui">
+                              ตรง {Math.round(candidate.score * 100)}%
+                            </span>
+                          )}
                         </strong>
                         <span
                           className="candidate-access-indicators"
-                          style={{ marginLeft: "6px", fontSize: "10px", color: "var(--muted, #64748b)" }}
+                          style={{ marginLeft: "0px", marginTop: "3px", display: "inline-flex", gap: "4px", fontSize: "10.5px" }}
                           aria-label="ช่องทางการเข้าถึงที่รองรับ"
                         >
                           {getSignResource(candidate.headword).status === "VERIFIED" && (
-                            <span title="มีภาษามือไทย (Verified TSL)">🤟 </span>
+                            <span className="acc-tag tsl-tag" title="มีภาษามือไทย (Verified TSL)">🤟 ภาษามือ</span>
                           )}
-                          <span title="มีเสียงอ่าน">🔊 </span>
-                          <span title="มีอักษรเบรลล์">⠠</span>
+                          <span className="acc-tag audio-tag" title="มีเสียงอ่าน">🔊 เสียง</span>
+                          <span className="acc-tag braille-tag" title="มีอักษรเบรลล์">⠠ เบรลล์</span>
                         </span>
-                        <small>{candidate.registers?.join(" · ") || "คำใกล้เคียง"}</small>
-                        {candidate.score !== undefined && (
-                          <small>
-                            ความใกล้เคียง {Math.round(candidate.score * 100)}%
-                          </small>
-                        )}
+                        <div className="candidate-meta-row">
+                          <small className="candidate-register-tag">{candidate.registers?.join(" · ") || "คำใกล้เคียง"}</small>
+                          {candidate.headword === word.headword && (
+                            <span className="candidate-active-badge font-ui">กำลังดูอยู่ ✓</span>
+                          )}
+                        </div>
                       </span>
-                      <span aria-hidden="true">›</span>
+                      <span className="candidate-arrow-indicator" aria-hidden="true">›</span>
                     </button>
                   ))}
                 </div>
@@ -271,7 +276,7 @@ export default function SearchResults({
                       </h3>
                       <button
                         type="button"
-                        className="quick-copy-word-btn"
+                        className="quick-copy-word-btn font-ui"
                         aria-label={`คัดลอกคำว่า ${word.headword}`}
                         onClick={() => handleCopyWord(word.headword)}
                         title={`คัดลอกคำว่า ${word.headword}`}
@@ -321,17 +326,35 @@ export default function SearchResults({
                     <p className="definition font-thai-reading">{word.definition}</p>
                   </section>
 
-                  {/* 2. Real-World Examples */}
+                  {/* 2. Sentence Pattern Formula */}
+                  {(word.comparison?.sentence_pattern || word.sentence_pattern) && (
+                    <section className="detail-section sentence-pattern-section">
+                      <div className="section-title-with-badge">
+                        <h4>📐 รูปแบบโครงสร้างประโยคที่แนะนำ</h4>
+                        <span className="pattern-badge font-ui">โครงสร้างไวยากรณ์ & การวางตำแหน่ง</span>
+                      </div>
+                      <div className="sentence-pattern-box font-thai-reading">
+                        <div className="pattern-formula">
+                          {word.comparison?.sentence_pattern || word.sentence_pattern}
+                        </div>
+                        <p className="pattern-guide-tip">
+                          💡 <strong>คำแนะนำการใช้:</strong> วางคำว่า <strong>“{word.headword}”</strong> ลงในตำแหน่งโครงสร้างด้านบน เพื่อสร้างประโยคที่สละสลวย ถูกต้องตามระดับภาษา
+                        </p>
+                      </div>
+                    </section>
+                  )}
+
+                  {/* 3. In-Context Examples */}
                   {!!examples.length && (
                     <section className="detail-section examples-section">
-                      <h4>ตัวอย่างการใช้</h4>
+                      <h4>ตัวอย่างการใช้จริงในประโยค</h4>
                       <div className="examples-list">
                         {examples.map((example, idx) => (
                           <div className="example-item-wrap" key={example + idx}>
                             <blockquote className="font-thai-reading">{example}</blockquote>
                             <button
                               type="button"
-                              className="copy-sentence-btn"
+                              className="copy-sentence-btn font-ui"
                               aria-label={`คัดลอกประโยคตัวอย่าง: ${example}`}
                               onClick={() => handleCopySentence(example, idx)}
                               title="คัดลอกประโยคตัวอย่างนี้"
@@ -345,7 +368,34 @@ export default function SearchResults({
                     </section>
                   )}
 
-                  {/* 3. Suitable Tone & Contexts */}
+                  {/* 4. Context Guidance & Disambiguation / Watch-outs */}
+                  {(word.comparison?.use_when || word.comparison?.emphasis || word.comparison?.common_confusion) && (
+                    <section className="detail-section nuance-guidance-section">
+                      <h4>🎯 คำแนะนำบริบท & ข้อควรระวัง</h4>
+                      <div className="nuance-guidance-grid">
+                        {word.comparison?.emphasis && (
+                          <div className="nuance-card emphasis-card">
+                            <span className="nuance-label">📌 จุดเน้นของคำ:</span>
+                            <p className="font-thai-reading">{word.comparison.emphasis}</p>
+                          </div>
+                        )}
+                        {word.comparison?.use_when && (
+                          <div className="nuance-card use-when-card">
+                            <span className="nuance-label">✓ จังหวะที่ควรใช้:</span>
+                            <p className="font-thai-reading">{word.comparison.use_when}</p>
+                          </div>
+                        )}
+                        {word.comparison?.common_confusion && (
+                          <div className="nuance-card confusion-card">
+                            <span className="nuance-label">⚠️ ข้อควรระวัง:</span>
+                            <p className="font-thai-reading">{word.comparison.common_confusion}</p>
+                          </div>
+                        )}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* 5. Suitable Tone & Contexts */}
                   <section className="detail-section context-tags-section">
                     <h4>เหมาะกับบริบท</h4>
                     <div className="word-tags font-thai-reading">

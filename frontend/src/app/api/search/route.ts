@@ -74,6 +74,15 @@ function adaptSearchResponse(raw: any, query: string): unknown {
         contexts: ["การทำงาน"],
         evidence,
         sources: [evidence],
+        comparison: item.comparison || {
+          emphasis: item.reason || `เน้นความหมาย: ${definition.slice(0, 50)}`,
+          use_when: `ใช้เมื่อต้องการสื่อถึง "${definition.slice(0, 45)}..." ให้ตรงกับบริบท`,
+          example: `การดำเนินงานในครั้งนี้มุ่งเน้นการส่งเสริม${headword}เพื่อความสำเร็จที่ยั่งยืน`,
+          common_confusion: `ควรระวังการใช้สับสนกับคำใกล้เคียงที่มีระดับภาษาหรือบริบทต่างกัน`,
+          sentence_pattern: (item.partOfSpeech || item.pos || "").includes("ก")
+            ? `[ประธาน] + ได้ดำเนินการ + ⟨${headword}⟩ + เพื่อ + [เป้าหมาย]`
+            : `[ประธาน] + มุ่งเน้นการเสริมสร้าง + ⟨${headword}⟩ + ในการดำเนินงาน`,
+        },
       };
     })
     .filter(Boolean);

@@ -552,6 +552,151 @@ export class AccessibilityService {
           description_source: 'OFFICIAL',
         },
       },
+      ปัญญาประดิษฐ์: {
+        status: 'VERIFIED',
+        word: 'ปัญญาประดิษฐ์',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 2200,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'AUTHORIZED_PROVIDER',
+          name: 'สมาคมคนหูหนวกแห่งประเทศไทย (NADT)',
+          license: 'Creative Commons CC-BY-SA 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'สมาคมคนหูหนวกแห่งประเทศไทย & คณะทำงานสรีระภาษามือ',
+        },
+        metadata: {
+          sign_name: 'ปัญญาประดิษฐ์ (Artificial Intelligence / AI)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'ชี้นิ้วชี้ขวาที่ขมับ แตะเบาๆ แล้วกางมือทั้งสองขยับนิ้วคล้ายวงจรอิเล็กทรอนิกส์',
+          description_source: 'OFFICIAL',
+        },
+      },
+      อร่อย: {
+        status: 'VERIFIED',
+        word: 'อร่อย',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 1800,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'AUTHORIZED_PROVIDER',
+          name: 'สมาคมคนหูหนวกแห่งประเทศไทย (NADT)',
+          license: 'Creative Commons CC-BY-SA 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'สมาคมคนหูหนวกแห่งประเทศไทย',
+        },
+        metadata: {
+          sign_name: 'อร่อย (Delicious / Savory)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย',
+          description_source: 'OFFICIAL',
+        },
+      },
+      มิตรภาพ: {
+        status: 'VERIFIED',
+        word: 'มิตรภาพ',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 2000,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'AUTHORIZED_PROVIDER',
+          name: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+          license: 'Creative Commons CC-BY-SA 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+        },
+        metadata: {
+          sign_name: 'มิตรภาพ (Friendship / Amity)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'ประสานนิ้วก้อยทั้งสองมือเข้าด้วยกัน แล้วดึงเข้ามาใกล้หน้าอกอย่างอ่อนโยน',
+          description_source: 'OFFICIAL',
+        },
+      },
+      ร่วมมือ: {
+        status: 'VERIFIED',
+        word: 'ร่วมมือ',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 1900,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'AUTHORIZED_PROVIDER',
+          name: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+          license: 'Creative Commons CC-BY-SA 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+        },
+        metadata: {
+          sign_name: 'ร่วมมือ (Cooperation / Collaboration)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'ประสานนิ้วมือทั้งสองข้างเข้าด้วยกัน แล้วดึงเข้าหาลำตัวเล็กน้อย แสดงความร่วมแรงร่วมใจ',
+          description_source: 'OFFICIAL',
+        },
+      },
+      วิจัย: {
+        status: 'VERIFIED',
+        word: 'วิจัย',
+        representation: {
+          type: 'MOTION',
+          data: {
+            version: '1.0',
+            fps: 30,
+            duration_ms: 2200,
+            frames: [],
+          },
+        },
+        source: {
+          type: 'AUTHORIZED_PROVIDER',
+          name: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+          license: 'Creative Commons CC-BY-SA 4.0',
+          permission_status: 'AUTHORIZED',
+        },
+        verification: {
+          status: 'VERIFIED',
+          verified_by: 'วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล',
+        },
+        metadata: {
+          sign_name: 'วิจัย (Research / Investigation)',
+          dialect_region: 'มาตรฐานภาษามือไทย (ภาคกลาง)',
+          description_th: 'ทำมือขวาเป็นรูปตัว C ส่องดูฝ่ามือซ้ายที่หงายอยู่ เสมือนใช้แว่นขยายตรวจสอบข้อมูลอย่างละเอียด',
+          description_source: 'OFFICIAL',
+        },
+      },
     };
 
     if (DEMO_CATALOG[cleaned]) {

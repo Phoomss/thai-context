@@ -96,6 +96,22 @@ export default function PersistentSearchComposer({
             }
           }}
         />
+        {value.trim() && (
+          <button
+            type="button"
+            className="composer-clear-btn"
+            disabled={busy}
+            onClick={() => {
+              setValue("");
+              setError("");
+              input.current?.focus();
+            }}
+            aria-label="ล้างข้อความ"
+            title="ล้างข้อความ"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        )}
         <button
           disabled={busy}
           type="submit"

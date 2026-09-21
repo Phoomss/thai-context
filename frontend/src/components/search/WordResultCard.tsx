@@ -183,64 +183,142 @@ export default function WordResultCard({
         </div>
       )}
 
-      {/* In-Sentence Word Swap Box */}
+      {/* In-Sentence Word Swap Box, Sentence Pattern, & Nuance Guidance */}
       <div
         className="sentence-swap-box"
         style={{
-          margin: "12px 0",
-          padding: "10px 14px",
+          margin: "14px 0",
+          padding: "14px 16px",
           background: "#f8fafc",
-          borderRadius: "10px",
+          borderRadius: "12px",
           border: "1px solid var(--border)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
         }}
       >
+        {/* 1. Sentence Pattern / Template Formula */}
         <div
           style={{
+            padding: "8px 12px",
+            background: "#ffffff",
+            borderRadius: "8px",
+            border: "1px dashed #cbd5e1",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "6px",
+            flexDirection: "column",
+            gap: "4px",
           }}
         >
-          <span
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <span style={{ fontSize: "11px", fontWeight: 700, color: "#0284c7" }}>
+              📐 รูปแบบโครงสร้างประโยค (Sentence Pattern):
+            </span>
+          </div>
+          <p
+            className="font-thai-reading"
             style={{
-              fontSize: "11px",
-              fontWeight: 600,
-              color: "var(--muted)",
+              margin: 0,
+              fontSize: "12.5px",
+              color: "#1e293b",
+              lineHeight: 1.5,
+              fontWeight: 500,
             }}
           >
-            💡 ตัวอย่างการใช้จริงในประโยค:
-          </span>
-          <button
-            type="button"
-            className="sentence-copy-btn"
-            onClick={() => handleCopySentence(exampleSentence)}
-            style={{
-              fontSize: "10px",
-              padding: "2px 8px",
-              borderRadius: "6px",
-              border: "1px solid var(--border)",
-              background: copiedSentence ? "#ecfdf5" : "white",
-              color: copiedSentence ? "#047857" : "var(--ink)",
-              cursor: "pointer",
-              fontWeight: 600,
-            }}
-          >
-            {copiedSentence ? "คัดลอกประโยคแล้ว ✓" : "📋 คัดลอกประโยค"}
-          </button>
+            {word.comparison?.sentence_pattern ||
+              (word.pos?.includes("ก")
+                ? `[ประธาน/ทีมงาน] + ได้ดำเนินการ + ⟨${word.headword}⟩ + เพื่อ + [เป้าหมาย]`
+                : `[ประธาน/หน่วยงาน] + มุ่งเน้นการเสริมสร้าง + ⟨${word.headword}⟩ + ในการปฏิบัติงาน`)}
+          </p>
         </div>
-        <p
-          className="font-thai-reading"
-          style={{
-            margin: 0,
-            fontSize: "13px",
-            lineHeight: 1.6,
-            color: "#334155",
-          }}
-        >
-          &ldquo;{exampleSentence}&rdquo;
-        </p>
+
+        {/* 2. Real-world In-Sentence Example */}
+        <div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "8px",
+              marginBottom: "4px",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                color: "var(--muted)",
+              }}
+            >
+              💡 ตัวอย่างการใช้จริงในประโยค:
+            </span>
+            <button
+              type="button"
+              className="sentence-copy-btn"
+              onClick={() => handleCopySentence(exampleSentence)}
+              style={{
+                fontSize: "10px",
+                padding: "2px 8px",
+                borderRadius: "6px",
+                border: "1px solid var(--border)",
+                background: copiedSentence ? "#ecfdf5" : "white",
+                color: copiedSentence ? "#047857" : "var(--ink)",
+                cursor: "pointer",
+                fontWeight: 600,
+              }}
+            >
+              {copiedSentence ? "คัดลอกประโยคแล้ว ✓" : "📋 คัดลอกประโยค"}
+            </button>
+          </div>
+          <p
+            className="font-thai-reading"
+            style={{
+              margin: 0,
+              fontSize: "13px",
+              lineHeight: 1.6,
+              color: "#334155",
+            }}
+          >
+            &ldquo;{exampleSentence}&rdquo;
+          </p>
+        </div>
+
+        {/* 3. Nuance Guidance & Common Confusion Warning */}
+        {(word.comparison?.use_when || word.comparison?.common_confusion) && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "6px",
+              paddingTop: "8px",
+              borderTop: "1px solid #e2e8f0",
+              fontSize: "12px",
+            }}
+          >
+            {word.comparison.use_when && (
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "6px" }}>
+                <span style={{ color: "#059669", fontWeight: 700, flexShrink: 0 }}>✓ เหมาะกับ:</span>
+                <span style={{ color: "#475569" }}>{word.comparison.use_when}</span>
+              </div>
+            )}
+            {word.comparison.common_confusion && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "6px",
+                  background: "#fffbeb",
+                  padding: "6px 10px",
+                  borderRadius: "6px",
+                  border: "1px solid #fef3c7",
+                }}
+              >
+                <span style={{ color: "#b45309", fontWeight: 600, fontSize: "11.5px" }}>
+                  {word.comparison.common_confusion}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="word-tags">

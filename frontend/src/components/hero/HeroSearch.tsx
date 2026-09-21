@@ -103,16 +103,43 @@ export default function HeroSearch({
               submit();
             }
           }}
-          placeholder={`เช่น อยากได้คำที่หมายถึง “ทำงานได้ผลดี
-โดยใช้ทรัพยากรน้อย”`}
+          placeholder={`เช่น อยากได้คำที่หมายถึง “ทำงานได้ผลดี โดยใช้ทรัพยากรน้อย” หรือ “ช่วยกันทำงานให้สำเร็จ”`}
         />
-        <button className="search-submit" disabled={busy || !hydrated} type="submit" aria-label={busy ? "กำลังเปิดโลกของคำ" : "ค้นหาคำที่ใช่"}>
+        {query.trim() && (
+          <button
+            type="button"
+            className="search-clear-btn"
+            disabled={busy || !hydrated}
+            onClick={() => {
+              setQuery("");
+              setError("");
+              input.current?.focus();
+            }}
+            aria-label="ล้างข้อความค้นหา"
+            title="ล้างข้อความค้นหา"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        )}
+        <button
+          className="search-submit"
+          disabled={busy || !hydrated}
+          type="submit"
+          aria-label={busy ? "กำลังเปิดโลกของคำ" : "ค้นหาคำที่ใช่"}
+        >
           <span className="sr-only">{busy ? "กำลังเปิดโลกของคำ" : "ค้นหาคำที่ใช่"}</span>
-          <span aria-hidden="true"> <Search /> </span>
+          <span className="search-submit-inner" aria-hidden="true">
+            <Search className="search-submit-icon" />
+            <span className="search-submit-label">{busy ? "ค้นหา..." : "ค้นหา"}</span>
+          </span>
         </button>
       </form>
+      <div className="search-hints-row" aria-hidden="true">
+        <span className="search-hint-badge">💡 เล่าความหมายหรือสถานการณ์ที่ต้องการสื่อ แล้วกดค้นหา</span>
+        <span className="search-hint-kbd">Enter ↵ เพื่อค้นหา</span>
+      </div>
       <p id="search-error" className="search-error" role="alert" hidden={!error}>
-        {error}
+        {error ? `⚠️ ${error}` : ""}
       </p>
       <div className="hero-mode-switcher">{modeSwitcher}</div>
       <PopularSuggestions

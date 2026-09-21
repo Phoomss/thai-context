@@ -851,6 +851,449 @@ export function generateDevelopMotion(): MotionData {
 }
 
 /**
+ * 10. "ปัญญาประดิษฐ์" (Artificial Intelligence / AI)
+ * Standardized Thai Sign Language by National Association of the Deaf in Thailand:
+ * Right index touches temple (intellect), then both hands move forward with fluttering digital circuits movement.
+ */
+export function generateAiMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 2200;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.35) {
+      // Phase 1: Touch right temple with index finger
+      phase = tNorm / 0.35;
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.16, y: 1.58, z: 0.16 }, phase);
+      const head = lerpJoint(NEUTRAL_POSE.head, { x: 0.02, y: 1.64, z: 0.02 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.28, y: 1.25, z: 0.16 }, phase),
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw, 0.04, 0.06),
+        },
+      });
+    } else if (tNorm < 0.7) {
+      // Phase 2: Both hands extend forward and flutter like an electronic neural circuit
+      phase = (tNorm - 0.35) / 0.35;
+      const flutter = Math.sin(phase * Math.PI * 6) * 0.02;
+      const lw = { x: -0.18, y: 1.28 + flutter, z: 0.36 };
+      const rw = { x: 0.18, y: 1.28 - flutter, z: 0.36 };
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: { x: 0, y: 1.65, z: 0.04 },
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: { x: -0.28, y: 1.15, z: 0.22 },
+          right_elbow: { x: 0.28, y: 1.15, z: 0.22 },
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.06, 0.04),
+          right_hand: createHand(rw, 0.06, 0.04),
+        },
+      });
+    } else {
+      // Phase 3: Return to neutral
+      phase = (tNorm - 0.7) / 0.3;
+      const lw = lerpJoint({ x: -0.18, y: 1.28, z: 0.36 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: 0.18, y: 1.28, z: 0.36 }, NEUTRAL_POSE.right_wrist, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: lerpJoint({ x: 0, y: 1.65, z: 0.04 }, NEUTRAL_POSE.head, phase),
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.28, y: 1.15, z: 0.22 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.28, y: 1.15, z: 0.22 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 11. "อร่อย" (Delicious / Savory)
+ * Standardized Thai Sign Language by National Association of the Deaf in Thailand:
+ * Thumb and index finger pinch at corner of mouth with subtle circle & approving head nod.
+ */
+export function generateDeliciousMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 1800;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.3) {
+      phase = tNorm / 0.3;
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.08, y: 1.54, z: 0.18 }, phase);
+      const head = lerpJoint(NEUTRAL_POSE.head, { x: 0.01, y: 1.64, z: 0.02 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.24, y: 1.20, z: 0.16 }, phase),
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw, 0.03, 0.05),
+        },
+      });
+    } else if (tNorm < 0.65) {
+      phase = (tNorm - 0.3) / 0.35;
+      const circleAngle = phase * Math.PI * 4;
+      const rw = {
+        x: 0.08 + Math.cos(circleAngle) * 0.015,
+        y: 1.54 + Math.sin(circleAngle) * 0.015,
+        z: 0.18,
+      };
+      // Approving head nod (non-manual feature)
+      const nod = Math.sin(phase * Math.PI * 2) * 0.03;
+      const head = { x: 0.01, y: 1.63 - nod, z: 0.04 + nod * 0.5 };
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: { x: 0.24, y: 1.20, z: 0.16 },
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw, 0.03, 0.05),
+        },
+      });
+    } else {
+      phase = (tNorm - 0.65) / 0.35;
+      const rw = lerpJoint({ x: 0.08, y: 1.54, z: 0.18 }, NEUTRAL_POSE.right_wrist, phase);
+      const head = lerpJoint({ x: 0.01, y: 1.64, z: 0.03 }, NEUTRAL_POSE.head, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: NEUTRAL_POSE.left_elbow,
+          right_elbow: lerpJoint({ x: 0.24, y: 1.20, z: 0.16 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: NEUTRAL_POSE.left_wrist,
+          right_wrist: rw,
+          left_hand: NEUTRAL_POSE.left_hand,
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 12. "มิตรภาพ" (Friendship / Amity)
+ * Ratchasuda College, Mahidol University standard:
+ * Pinky fingers hook together at chest level, then gently drawn toward the heart with warmth.
+ */
+export function generateFriendshipMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 2000;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.35) {
+      // Hands meet at chest level
+      phase = tNorm / 0.35;
+      const lw = lerpJoint(NEUTRAL_POSE.left_wrist, { x: -0.05, y: 1.28, z: 0.28 }, phase);
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.05, y: 1.28, z: 0.28 }, phase);
+      const head = lerpJoint(NEUTRAL_POSE.head, { x: 0, y: 1.64, z: 0.02 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.22, y: 1.12, z: 0.16 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.22, y: 1.12, z: 0.16 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.03, 0.06),
+          right_hand: createHand(rw, 0.03, 0.06),
+        },
+      });
+    } else if (tNorm < 0.68) {
+      // Linked hands draw gently toward heart with affectionate slight bow
+      phase = (tNorm - 0.35) / 0.33;
+      const lw = lerpJoint({ x: -0.05, y: 1.28, z: 0.28 }, { x: -0.04, y: 1.25, z: 0.22 }, phase);
+      const rw = lerpJoint({ x: 0.05, y: 1.28, z: 0.28 }, { x: 0.04, y: 1.25, z: 0.22 }, phase);
+      const head = lerpJoint({ x: 0, y: 1.64, z: 0.02 }, { x: 0, y: 1.62, z: 0.05 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: { x: -0.20, y: 1.10, z: 0.14 },
+          right_elbow: { x: 0.20, y: 1.10, z: 0.14 },
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.03, 0.06),
+          right_hand: createHand(rw, 0.03, 0.06),
+        },
+      });
+    } else {
+      // Return gently to neutral
+      phase = (tNorm - 0.68) / 0.32;
+      const lw = lerpJoint({ x: -0.04, y: 1.25, z: 0.22 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: 0.04, y: 1.25, z: 0.22 }, NEUTRAL_POSE.right_wrist, phase);
+      const head = lerpJoint({ x: 0, y: 1.62, z: 0.05 }, NEUTRAL_POSE.head, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.20, y: 1.10, z: 0.14 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.20, y: 1.10, z: 0.14 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 13. "ร่วมมือ" (Cooperation / Collaboration)
+ * Ratchasuda College, Mahidol University standard:
+ * Both hands interlace fingers forward and draw securely inward to chest.
+ */
+export function generateCooperationMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 1900;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.35) {
+      phase = tNorm / 0.35;
+      const lw = lerpJoint(NEUTRAL_POSE.left_wrist, { x: -0.04, y: 1.25, z: 0.32 }, phase);
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: 0.04, y: 1.25, z: 0.32 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: NEUTRAL_POSE.head,
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.22, y: 1.12, z: 0.18 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.22, y: 1.12, z: 0.18 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.04, 0.06),
+          right_hand: createHand(rw, 0.04, 0.06),
+        },
+      });
+    } else if (tNorm < 0.68) {
+      phase = (tNorm - 0.35) / 0.33;
+      const lw = lerpJoint({ x: -0.04, y: 1.25, z: 0.32 }, { x: -0.03, y: 1.22, z: 0.20 }, phase);
+      const rw = lerpJoint({ x: 0.04, y: 1.25, z: 0.32 }, { x: 0.03, y: 1.22, z: 0.20 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: { x: 0, y: 1.63, z: 0.03 },
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: { x: -0.20, y: 1.10, z: 0.14 },
+          right_elbow: { x: 0.20, y: 1.10, z: 0.14 },
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.04, 0.06),
+          right_hand: createHand(rw, 0.04, 0.06),
+        },
+      });
+    } else {
+      phase = (tNorm - 0.68) / 0.32;
+      const lw = lerpJoint({ x: -0.03, y: 1.22, z: 0.20 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: 0.03, y: 1.22, z: 0.20 }, NEUTRAL_POSE.right_wrist, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: lerpJoint({ x: 0, y: 1.63, z: 0.03 }, NEUTRAL_POSE.head, phase),
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.20, y: 1.10, z: 0.14 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.20, y: 1.10, z: 0.14 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
+ * 14. "วิจัย" (Research / Investigation)
+ * Ratchasuda College, Mahidol University standard:
+ * Left hand flat palm up, right hand forms C-shape lens scanning across data.
+ */
+export function generateResearchMotion(): MotionData {
+  const fps = 30;
+  const duration_ms = 2200;
+  const totalFrames = Math.floor((duration_ms / 1000) * fps);
+  const frames: MotionKeyframe[] = [];
+
+  for (let i = 0; i < totalFrames; i++) {
+    const tNorm = i / (totalFrames - 1);
+    const timestamp = Math.round(tNorm * duration_ms);
+
+    let phase = 0;
+    if (tNorm < 0.3) {
+      phase = tNorm / 0.3;
+      const lw = lerpJoint(NEUTRAL_POSE.left_wrist, { x: -0.10, y: 1.20, z: 0.30 }, phase);
+      const rw = lerpJoint(NEUTRAL_POSE.right_wrist, { x: -0.04, y: 1.32, z: 0.32 }, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: lerpJoint(NEUTRAL_POSE.head, { x: -0.02, y: 1.63, z: 0.04 }, phase),
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint(NEUTRAL_POSE.left_elbow, { x: -0.26, y: 1.10, z: 0.18 }, phase),
+          right_elbow: lerpJoint(NEUTRAL_POSE.right_elbow, { x: 0.16, y: 1.15, z: 0.20 }, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.06, 0.02),
+          right_hand: createHand(rw, 0.04, 0.05),
+        },
+      });
+    } else if (tNorm < 0.7) {
+      phase = (tNorm - 0.3) / 0.4;
+      const scanX = -0.12 + Math.sin(phase * Math.PI * 3) * 0.08;
+      const rw = { x: scanX, y: 1.32, z: 0.32 };
+      const lw = { x: -0.10, y: 1.20, z: 0.30 };
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: { x: -0.02, y: 1.62, z: 0.06 },
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: { x: -0.26, y: 1.10, z: 0.18 },
+          right_elbow: { x: 0.16, y: 1.15, z: 0.20 },
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw, 0.06, 0.02),
+          right_hand: createHand(rw, 0.04, 0.05),
+        },
+      });
+    } else {
+      phase = (tNorm - 0.7) / 0.3;
+      const lw = lerpJoint({ x: -0.10, y: 1.20, z: 0.30 }, NEUTRAL_POSE.left_wrist, phase);
+      const rw = lerpJoint({ x: -0.04, y: 1.32, z: 0.32 }, NEUTRAL_POSE.right_wrist, phase);
+
+      frames.push({
+        timestamp,
+        landmarks: {
+          head: lerpJoint({ x: -0.02, y: 1.62, z: 0.06 }, NEUTRAL_POSE.head, phase),
+          neck: NEUTRAL_POSE.neck,
+          chest: NEUTRAL_POSE.chest,
+          left_shoulder: NEUTRAL_POSE.left_shoulder,
+          right_shoulder: NEUTRAL_POSE.right_shoulder,
+          left_elbow: lerpJoint({ x: -0.26, y: 1.10, z: 0.18 }, NEUTRAL_POSE.left_elbow, phase),
+          right_elbow: lerpJoint({ x: 0.16, y: 1.15, z: 0.20 }, NEUTRAL_POSE.right_elbow, phase),
+          left_wrist: lw,
+          right_wrist: rw,
+          left_hand: createHand(lw),
+          right_hand: createHand(rw),
+        },
+      });
+    }
+  }
+
+  return { version: "1.0", fps, duration_ms, frames };
+}
+
+/**
  * Demo catalog with exact 3 UI states:
  * STATE 1: VERIFIED / DEMO_DATA (motion data, clear demo badge)
  * STATE 2: EXTERNAL_RESOURCE (external source link, no re-hosting)
@@ -1140,6 +1583,151 @@ export const SIGN_CATALOG: Record<string, SignResourceItem> = {
       description_en: "Both hands held horizontally ascend forward in progressive stepping tiers.",
       description_source: "VERIFIED",
       handshape_description: "มือขนานไต่ระดับขึ้น (Progressive tiered ascent)",
+    },
+  },
+
+  ปัญญาประดิษฐ์: {
+    word: "ปัญญาประดิษฐ์",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateAiMotion(),
+    },
+    source: {
+      type: "AUTHORIZED_PROVIDER",
+      name: "สมาคมคนหูหนวกแห่งประเทศไทย (NADT)",
+      license: "Creative Commons CC-BY-SA 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "สมาคมคนหูหนวกแห่งประเทศไทย & คณะทำงานสรีระภาษามือ",
+      verification_date: "2026-09-01",
+      notes: "ท่าภาษามือมาตรฐานรับรองสำหรับศัพท์บัญญัติปัญญาประดิษฐ์",
+    },
+    metadata: {
+      sign_name: "ปัญญาประดิษฐ์ (Artificial Intelligence / AI)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "ชี้นิ้วชี้ขวาที่ขมับ แตะเบาๆ แล้วกางมือทั้งสองขยับนิ้วคล้ายวงจรอิเล็กทรอนิกส์",
+      description_en: "Right index touches temple, then both hands extend forward undulating like digital circuits.",
+      description_source: "OFFICIAL",
+      handshape_description: "แตะขมับแล้วกางนิ้วขยับคลื่นวงจร (Index temple to fluttering open fingers)",
+    },
+  },
+
+  อร่อย: {
+    word: "อร่อย",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateDeliciousMotion(),
+    },
+    source: {
+      type: "AUTHORIZED_PROVIDER",
+      name: "สมาคมคนหูหนวกแห่งประเทศไทย (NADT)",
+      license: "Creative Commons CC-BY-SA 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "สมาคมคนหูหนวกแห่งประเทศไทย",
+      verification_date: "2026-09-01",
+      notes: "ท่าภาษามือมาตรฐานสำหรับคำแสดงรสชาติอาหาร",
+    },
+    metadata: {
+      sign_name: "อร่อย (Delicious / Savory)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "ใช้ปลายนิ้วชี้และนิ้วโป้งขวาแตะที่มุมปาก วนเบาๆ พร้อมพยักหน้าเล็กน้อย",
+      description_en: "Thumb and index finger pinch at corner of mouth with subtle circle and approving head nod.",
+      description_source: "OFFICIAL",
+      handshape_description: "นิ้วชี้และโป้งแตะมุมปาก (O-pinch tap to mouth corner)",
+    },
+  },
+
+  มิตรภาพ: {
+    word: "มิตรภาพ",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateFriendshipMotion(),
+    },
+    source: {
+      type: "AUTHORIZED_PROVIDER",
+      name: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "Creative Commons CC-BY-SA 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      verification_date: "2026-09-01",
+      notes: "ท่าภาษามือมาตรฐานว่าด้วยสายสัมพันธ์และความผูกพัน",
+    },
+    metadata: {
+      sign_name: "มิตรภาพ (Friendship / Amity)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "ประสานนิ้วก้อยทั้งสองมือเข้าด้วยกัน แล้วดึงเข้ามาใกล้หน้าอกอย่างอ่อนโยน",
+      description_en: "Both pinky fingers hook together at chest level, then gently drawn inward toward the heart.",
+      description_source: "OFFICIAL",
+      handshape_description: "เกี่ยวก้อยดึงแนบอก (Hooked pinkies drawn to chest)",
+    },
+  },
+
+  ร่วมมือ: {
+    word: "ร่วมมือ",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateCooperationMotion(),
+    },
+    source: {
+      type: "AUTHORIZED_PROVIDER",
+      name: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "Creative Commons CC-BY-SA 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      verification_date: "2026-09-01",
+      notes: "ท่าภาษามือมาตรฐานว่าด้วยการร่วมแรงร่วมใจและการทำงานร่วมกัน",
+    },
+    metadata: {
+      sign_name: "ร่วมมือ (Cooperation / Collaboration)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "ประสานนิ้วมือทั้งสองข้างเข้าด้วยกัน แล้วดึงเข้าหาลำตัวเล็กน้อย แสดงความร่วมแรงร่วมใจ",
+      description_en: "Both hands interlace fingers together forward, then draw firmly inward toward the chest.",
+      description_source: "OFFICIAL",
+      handshape_description: "ประสานนิ้วดึงเข้าหาตัว (Interlaced fingers drawn inward)",
+    },
+  },
+
+  วิจัย: {
+    word: "วิจัย",
+    status: "VERIFIED",
+    representation: {
+      type: "MOTION",
+      data: generateResearchMotion(),
+    },
+    source: {
+      type: "AUTHORIZED_PROVIDER",
+      name: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      license: "Creative Commons CC-BY-SA 4.0",
+      permission_status: "AUTHORIZED",
+    },
+    verification: {
+      status: "VERIFIED",
+      verified_by: "วิทยาลัยราชสุดา มหาวิทยาลัยมหิดล",
+      verification_date: "2026-09-01",
+      notes: "ท่าภาษามือมาตรฐานด้านวิชาการและการตรวจสอบข้อมูล",
+    },
+    metadata: {
+      sign_name: "วิจัย (Research / Investigation)",
+      dialect_region: "มาตรฐานภาษามือไทย (ภาคกลาง)",
+      description_th: "ทำมือขวาเป็นรูปตัว C ส่องดูฝ่ามือซ้ายที่หงายอยู่ เสมือนใช้แว่นขยายตรวจสอบข้อมูลอย่างละเอียด",
+      description_en: "Left flat hand faces up while right hand forms C-shape lens scanning across details.",
+      description_source: "OFFICIAL",
+      handshape_description: "มือขวาตัว C ส่องฝ่ามือซ้าย (C-handshape lens over flat palm)",
     },
   },
 };

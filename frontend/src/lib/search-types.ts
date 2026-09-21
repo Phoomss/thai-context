@@ -31,7 +31,9 @@ export type Recommendation = {
     use_when: string;
     example: string;
     common_confusion: string;
+    sentence_pattern?: string;
   };
+  sentence_pattern?: string;
 };
 export type SearchResponse = {
   query_understanding: {
