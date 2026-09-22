@@ -90,6 +90,53 @@ describe("AIAssistantPageView Dedicated Page View", () => {
     await waitFor(() => {
       expect(screen.getByText("ContextAgent")).toBeTruthy();
       expect(screen.getByText(/คัดลอกผลลัพธ์/)).toBeTruthy();
+      expect(screen.getByText(/ฟังเสียง/)).toBeTruthy();
     });
+
+    // Test assistant message "Speak to emotion" menu with emojis
+    const assistantEmotionBtns = screen.getAllByRole("button", { name: /Speak to emotion/ });
+    expect(assistantEmotionBtns.length).toBeGreaterThanOrEqual(1);
+
+    // Click the assistant toolbar emotion button
+    fireEvent.click(assistantEmotionBtns[0]);
+
+    // Verify emoji choices appear
+    expect(screen.getByText(/สดใส \/ ร่าเริง/)).toBeTruthy();
+    expect(screen.getByText(/ซาบซึ้ง \/ เห็นใจ/)).toBeTruthy();
+    expect(screen.getByText(/สุขุม \/ ลึกซึ้ง/)).toBeTruthy();
+    expect(screen.getByText(/หนักแน่น \/ ดุดัน/)).toBeTruthy();
+    expect(screen.getByText(/อ่อนโยน \/ อบอุ่น/)).toBeTruthy();
+    expect(screen.getByText(/ตื่นเต้น \/ เร้าใจ/)).toBeTruthy();
+    expect(screen.getByText(/สงบ \/ นอบน้อม/)).toBeTruthy();
+    expect(screen.getByText("😊")).toBeTruthy();
+    expect(screen.getByText("🥺")).toBeTruthy();
+    expect(screen.getByText("🕊️")).toBeTruthy();
+  });
+
+  it("toggles the Speak to emotion menu in the context bar with emojis", () => {
+    render(<AIAssistantPageView />);
+
+    // Find the Speak to emotion button in the prompt / context area
+    const emotionToggleBtn = screen.getAllByTitle("เปิดเมนูพูดสื่ออารมณ์")[0];
+    expect(emotionToggleBtn).toBeTruthy();
+
+    // Click to open emotion palette
+    fireEvent.click(emotionToggleBtn);
+
+    // Verify all emoji tone options are rendered
+    expect(screen.getByText("😊")).toBeTruthy();
+    expect(screen.getByText("🥺")).toBeTruthy();
+    expect(screen.getByText("🧐")).toBeTruthy();
+    expect(screen.getByText("😠")).toBeTruthy();
+    expect(screen.getByText("💖")).toBeTruthy();
+    expect(screen.getByText("🥳")).toBeTruthy();
+    expect(screen.getByText("🕊️")).toBeTruthy();
+
+    // Click an emotion tone to select it
+    const cheerfulBtn = screen.getByText(/สดใส \/ ร่าเริง/);
+    fireEvent.click(cheerfulBtn);
+
+    // Verify toast or active tone is selected
+    expect(screen.getByText(/อารมณ์ปัจจุบัน: 😊 สดใส \/ ร่าเริง/)).toBeTruthy();
   });
 });

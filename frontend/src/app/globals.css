@@ -4853,4 +4853,193 @@ button.workspace-step-item.active,
   transform: translateX(3px);
 }
 
+/* ==========================================================================
+   Google Gemini Reference Design Language for AI Assistant
+   ========================================================================== */
+
+.gemini-theme-page {
+  background: 
+    radial-gradient(circle at 10% 12%, rgba(66, 133, 244, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 90% 18%, rgba(155, 114, 207, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(217, 101, 112, 0.04) 0%, transparent 50%),
+    #f8fafc;
+}
+
+.gemini-hero-gradient {
+  background: linear-gradient(135deg, #1a73e8 0%, #4285f4 28%, #9b72cf 68%, #d96570 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gemini-sparkle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+  border: 1px solid #c7d2fe;
+  color: #4338ca;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.gemini-card-container {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  box-shadow: 0 10px 40px -10px rgba(26, 115, 232, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+}
+
+.gemini-chip-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 180ms ease;
+  white-space: nowrap;
+}
+
+.gemini-chip-tab:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.gemini-chip-tab.active {
+  background: #1e293b;
+  color: #ffffff;
+  border-color: #1e293b;
+  box-shadow: 0 2px 10px rgba(30, 41, 59, 0.2);
+}
+
+.gemini-prompt-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 110px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gemini-prompt-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1a73e8, #9b72cf, #d96570);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.gemini-prompt-card:hover {
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+  box-shadow: 0 8px 24px rgba(26, 115, 232, 0.08);
+}
+
+.gemini-prompt-card:hover::before {
+  opacity: 1;
+}
+
+/* Gemini Capsule Prompt Bar */
+.gemini-capsule-input {
+  background: #ffffff;
+  border: 1.5px solid #dfe1e5;
+  border-radius: 28px;
+  padding: 12px 16px 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 220ms ease;
+}
+
+.gemini-capsule-input:focus-within {
+  border-color: #1a73e8;
+  box-shadow: 0 6px 28px rgba(26, 115, 232, 0.16);
+}
+
+.gemini-send-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 180ms ease;
+  flex-shrink: 0;
+}
+
+.gemini-send-circle:hover:not(:disabled) {
+  background: #1557b0;
+  transform: scale(1.05);
+}
+
+.gemini-send-circle:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Assistant Message Action Toolbar */
+.gemini-msg-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.gemini-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.gemini-tool-btn:hover {
+  background: #ffffff;
+  color: #1a73e8;
+  border-color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.gemini-tool-btn.active {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #ea580c;
+  font-weight: 600;
+}
+
 

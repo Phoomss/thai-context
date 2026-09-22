@@ -30,8 +30,29 @@ import {
   RotateCcw,
   X,
   Layers,
+  Volume2,
+  ThumbsUp,
 } from "lucide-react";
 import type { EvidenceItemData, AgentTraceData, ChatMessage, AgentPersona } from "./AIAssistantDrawer";
+
+export interface EmotionTone {
+  id: string;
+  emoji: string;
+  label: string;
+  pitch: number;
+  rate: number;
+  desc: string;
+}
+
+export const EMOTION_TONES: EmotionTone[] = [
+  { id: "cheerful", emoji: "😊", label: "สดใส / ร่าเริง", pitch: 1.3, rate: 1.05, desc: "น้ำเสียงสดชื่น มีชีวิตชีวา เบิกบานใจ" },
+  { id: "empathetic", emoji: "🥺", label: "ซาบซึ้ง / เห็นใจ", pitch: 0.88, rate: 0.82, desc: "น้ำเสียงอบอุ่น เข้าอกเข้าใจ ซึ้งกินใจ" },
+  { id: "formal", emoji: "🧐", label: "สุขุม / ลึกซึ้ง", pitch: 0.92, rate: 0.88, desc: "น้ำเสียงหนักแน่น น่าเชื่อถือ มีวุฒิภาวะ" },
+  { id: "intense", emoji: "😠", label: "หนักแน่น / ดุดัน", pitch: 0.78, rate: 0.95, desc: "น้ำเสียงจริงจัง มุ่งมั่น ชัดเจนไม่ลังเล" },
+  { id: "tender", emoji: "💖", label: "อ่อนโยน / อบอุ่น", pitch: 1.1, rate: 0.8, desc: "น้ำเสียงนุ่มนวล ปลอบประโลม ห่วงใย" },
+  { id: "excited", emoji: "🥳", label: "ตื่นเต้น / เร้าใจ", pitch: 1.4, rate: 1.18, desc: "น้ำเสียงเปี่ยมพลัง ตื่นตัว เร้าอารมณ์" },
+  { id: "peaceful", emoji: "🕊️", label: "สงบ / นอบน้อม", pitch: 1.02, rate: 0.85, desc: "น้ำเสียงนอบน้อม สุภาพ นุ่มลึก" },
+];
 
 const CONTEXT_OPTIONS = [
   { id: "รายงานวิชาการ", label: "รายงานวิชาการ", icon: GraduationCap, tip: "ภาษาทางการเชิงวิชาการ อ้างอิงระเบียบวิธีวิจัย" },
@@ -181,10 +202,65 @@ function AIAssistantPageContent() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState<string | null>(null);
+  const [activeEmotionMsgId, setActiveEmotionMsgId] = useState<string | null>(null);
+  const [isContextEmotionOpen, setIsContextEmotionOpen] = useState(false);
+  const [selectedTone, setSelectedTone] = useState<EmotionTone | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const chatBottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+
+  const showToast = useCallback((msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2800);
+  }, []);
+
+  const handleSpeakText = useCallback(
+    (msgId: string, text: string, tone?: EmotionTone) => {
+      const cleanText = text
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .replace(/^>\s*/gm, "")
+        .replace(/^[•\-*]\s*/gm, "")
+        .replace(/🤖\s*\[.*?\]/g, "")
+        .trim();
+
+      if (!cleanText) return;
+
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(cleanText);
+          utterance.lang = "th-TH";
+          if (tone) {
+            utterance.pitch = tone.pitch;
+            utterance.rate = tone.rate;
+          }
+
+          utterance.onstart = () => setIsPlayingAudio(msgId);
+          utterance.onend = () => setIsPlayingAudio(null);
+          utterance.onerror = () => setIsPlayingAudio(null);
+
+          const voices = window.speechSynthesis.getVoices();
+          const thaiVoice = voices.find((v) => v.lang?.toLowerCase().startsWith("th"));
+          if (thaiVoice) utterance.voice = thaiVoice;
+
+          window.speechSynthesis.speak(utterance);
+          if (tone) {
+            showToast(`🎭 กำลังอ่านด้วยอารมณ์: ${tone.emoji} ${tone.label}`);
+          } else {
+            showToast("🔊 กำลังอ่านออกเสียงข้อความ...");
+          }
+        } catch {
+          showToast("ไม่สามารถเปิดระบบอ่านออกเสียงได้บนเบราว์เซอร์นี้");
+        }
+      } else {
+        showToast("เบราว์เซอร์ของคุณไม่รองรับ Speech Synthesis");
+      }
+    },
+    [showToast]
+  );
 
   const activePersona =
     AGENT_PERSONAS.find((p) => p.id === selectedRole) || AGENT_PERSONAS[0];
@@ -216,8 +292,12 @@ function AIAssistantPageContent() {
 
   const handleSend = useCallback(
     async (textToSend?: string) => {
-      const messageText = (textToSend ?? inputMessage).trim();
-      if (!messageText || isGenerating) return;
+      const rawText = (textToSend ?? inputMessage).trim();
+      if (!rawText || isGenerating) return;
+
+      const messageText = selectedTone
+        ? `[อารมณ์: ${selectedTone.emoji} ${selectedTone.label}] ${rawText}`
+        : rawText;
 
       setInputMessage("");
       const userMsgId = `user-${Date.now()}`;
@@ -432,7 +512,7 @@ function AIAssistantPageContent() {
         );
       }
     },
-    [inputMessage, isGenerating, word, context, selectedRole, activePersona]
+    [inputMessage, isGenerating, word, context, selectedRole, activePersona, selectedTone]
   );
 
   const handleStop = () => {
@@ -447,7 +527,15 @@ function AIAssistantPageContent() {
   };
 
   return (
-    <div className="ai-page-wrapper">
+    <div className="ai-page-wrapper gemini-theme-page">
+      {/* Toast Alert */}
+      {toastMessage && (
+        <div className="workspace-toast" role="status">
+          <span style={{ color: "#4ade80", fontWeight: "bold" }}>✓</span>
+          <span>{toastMessage}</span>
+        </div>
+      )}
+
       {/* Top Header Navbar */}
       <header className="workspace-navbar" role="banner">
         <div className="workspace-navbar-inner">
@@ -477,7 +565,7 @@ function AIAssistantPageContent() {
             </span>
           </Link>
 
-          {/* Navigation and Toggle Menu */}
+          {/* Navigation and Toggle Menu - ALL MENUS USE ICONS */}
           <div className="workspace-nav-actions">
             <Link
               href="/"
@@ -516,25 +604,25 @@ function AIAssistantPageContent() {
 
       {/* Main Full-Page Agent Workspace Canvas */}
       <main className="ai-page-main">
-        <div className="ai-page-card">
-          {/* Persona Header Banner */}
+        <div className="ai-page-card gemini-card-container">
+          {/* Persona Header Banner - Google Gemini Aesthetic */}
           <div className="ai-page-card-header">
             <div className="ai-page-header-meta">
               <div className="ai-badge-row">
-                <span className="ai-brand-badge font-thai-reading">
-                  <Sparkles className="w-3.5 h-3.5 mr-1" />
+                <span className="gemini-sparkle-badge font-thai-reading">
+                  <Sparkles className="w-3.5 h-3.5 mr-1 text-blue-600" />
                   <span>ผู้ช่วย AI ภาษาไทย</span>
                 </span>
                 <span className="ai-agent-tag-pill font-thai-reading">
-                  <Bot className="w-3.5 h-3.5 mr-1" />
+                  <Bot className="w-3.5 h-3.5 mr-1 text-indigo-600" />
                   <span>AI Agent Workspace</span>
                 </span>
                 <span className="ai-rag-pill font-thai-reading">
-                  <ShieldCheck className="w-3.5 h-3.5 mr-1" />
+                  <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-600" />
                   <span>Grounded RAG (ไม่มโน)</span>
                 </span>
               </div>
-              <h1 className="ai-page-title font-thai-reading">
+              <h1 className="ai-page-title gemini-hero-gradient font-thai-reading">
                 ศูนย์ปฏิบัติการ AI Agent ด้านภาษาไทย
               </h1>
               <p className="ai-page-subtitle font-thai-reading">
@@ -543,7 +631,7 @@ function AIAssistantPageContent() {
             </div>
           </div>
 
-          {/* Agent Persona Selector Tabs */}
+          {/* Agent Persona Selector Tabs - Menus use Lucide Icons */}
           <div className="ai-agent-personas-strip" role="tablist" aria-label="เลือกบทบาท AI Agent">
             <span className="ai-persona-strip-label font-thai-reading">บทบาท Agent:</span>
             <div className="ai-persona-chips-scroll">
@@ -581,7 +669,7 @@ function AIAssistantPageContent() {
             </div>
           </div>
 
-          {/* Target Word & Context Selector Bar */}
+          {/* Target Word & Context Selector Bar with Speak to Emotion Toggle */}
           <div className="ai-context-bar font-thai-reading">
             {word && (
               <div className="ai-target-word-pill font-thai-reading">
@@ -619,23 +707,87 @@ function AIAssistantPageContent() {
                     </button>
                   );
                 })}
+
+                {/* Speak to Emotion Toggle Button - Emoji Menu */}
+                <button
+                  type="button"
+                  onClick={() => setIsContextEmotionOpen(!isContextEmotionOpen)}
+                  className={`workspace-context-pill ${isContextEmotionOpen || selectedTone ? "active" : ""}`}
+                  style={{
+                    background: isContextEmotionOpen || selectedTone ? "#fff7ed" : "white",
+                    color: isContextEmotionOpen || selectedTone ? "#c2410c" : "var(--muted)",
+                    borderColor: isContextEmotionOpen || selectedTone ? "#fed7aa" : "var(--border)",
+                    fontWeight: 600,
+                  }}
+                  title="เปิดเมนูพูดสื่ออารมณ์"
+                >
+                  <span>🎭 Speak to emotion</span>
+                  {selectedTone && (
+                    <span style={{ marginLeft: "4px", fontSize: "12px" }}>
+                      ({selectedTone.emoji} {selectedTone.label})
+                    </span>
+                  )}
+                </button>
               </div>
             </div>
+
+            {/* Speak to Emotion Menu Dropdown/Palette - USES EMOJIS! */}
+            {isContextEmotionOpen && (
+              <div className="workspace-emotion-menu" style={{ width: "100%", marginTop: "12px" }}>
+                <div className="workspace-emotion-header">
+                  <div className="workspace-emotion-title">
+                    <span>🎭</span>
+                    <span>Speak to emotion — เลือกอารมณ์เพื่อแต่งประโยคหรืออ่านออกเสียง:</span>
+                  </div>
+                  {selectedTone && (
+                    <span style={{ fontSize: "11px", color: "#ea580c", fontWeight: 700 }}>
+                      อารมณ์ปัจจุบัน: {selectedTone.emoji} {selectedTone.label}
+                    </span>
+                  )}
+                </div>
+                <div className="workspace-emotion-grid">
+                  {EMOTION_TONES.map((tone) => {
+                    const isSelected = selectedTone?.id === tone.id;
+                    return (
+                      <button
+                        key={tone.id}
+                        type="button"
+                        onClick={() => {
+                          if (isSelected) {
+                            setSelectedTone(null);
+                            showToast("ยกเลิกการใช้น้ำเสียงอารมณ์");
+                          } else {
+                            setSelectedTone(tone);
+                            showToast(`เลือกอารมณ์: ${tone.emoji} ${tone.label}`);
+                          }
+                        }}
+                        className={`workspace-emotion-btn ${isSelected ? "active" : ""}`}
+                        title={tone.desc}
+                      >
+                        <span className="workspace-emotion-emoji">{tone.emoji}</span>
+                        <span>{tone.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Message Stream Viewport */}
           <div className="ai-chat-stream-viewport ai-page-chat-viewport" aria-live="polite">
             {messages.length === 0 ? (
               <div className="ai-chat-empty-state font-thai-reading">
+                {/* Google Gemini Airy Welcome Hero */}
                 <div className="ai-welcome-hero">
                   <div className="ai-welcome-icon-glow">
-                    {getPersonaIcon(activePersona.id, "w-8 h-8 text-blue-600")}
+                    <Sparkles className="w-8 h-8 text-blue-600" />
                   </div>
-                  <span className="ai-empty-agent-badge">
-                    <Sparkles className="w-3 h-3 mr-1" />
+                  <span className="gemini-sparkle-badge">
+                    <Sparkles className="w-3 h-3 mr-1 text-blue-600" />
                     <span>{activePersona.badge}</span>
                   </span>
-                  <h3 className="ai-welcome-title">
+                  <h3 className="ai-welcome-title gemini-hero-gradient">
                     สวัสดีครับ วันนี้ให้ผู้ช่วย AI ช่วยคุณทำอะไรดี?
                   </h3>
                   <p className="ai-welcome-desc">
@@ -643,7 +795,7 @@ function AIAssistantPageContent() {
                   </p>
                 </div>
 
-                {/* Mission Presets 2x2 Grid */}
+                {/* Gemini Suggestion Prompt Cards 2x2 Grid */}
                 <div className="ai-quick-prompts-section">
                   <span className="ai-quick-prompts-label">
                     <Sparkles className="w-4 h-4 mr-1.5 text-blue-600" />
@@ -654,24 +806,27 @@ function AIAssistantPageContent() {
                       <button
                         key={idx}
                         type="button"
-                        className="ai-mission-card font-thai-reading"
+                        className="gemini-prompt-card font-thai-reading"
                         onClick={() => handleSend(prompt)}
                       >
-                        <div className="ai-mission-card-top">
+                        <div className="ai-mission-card-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "8px" }}>
                           <span className="ai-mission-icon">
                             {getMissionIcon(idx)}
                           </span>
-                          <span className="ai-mission-tag">
+                          <span className="ai-mission-tag" style={{ display: "inline-flex", alignItems: "center", fontSize: "11px", color: "var(--accent)" }}>
                             <span>คลิกเพื่อสั่งงาน</span>
                             <ArrowRight className="w-3 h-3 ml-1" />
                           </span>
                         </div>
-                        <span className="ai-mission-text">{prompt}</span>
+                        <span className="ai-mission-text" style={{ fontSize: "13px", lineHeight: "1.5", color: "var(--ink)", fontWeight: 500 }}>
+                          {prompt}
+                        </span>
                       </button>
                     ))}
                   </div>
                 </div>
 
+                {/* Agent Capability Badges with Lucide Icons */}
                 <div className="ai-agent-capabilities-banner">
                   <div className="ai-cap-item">
                     <PenTool className="w-4 h-4 text-blue-600 mr-1.5" />
@@ -795,65 +950,122 @@ function AIAssistantPageContent() {
                         </div>
                       )}
 
-                      {/* Interactive Artifact Actions */}
+                      {/* Interactive Actions Toolbar - Google Gemini style */}
                       {msg.role === "assistant" && !msg.isStreaming && (
-                        <div className="ai-artifact-actions font-thai-reading">
-                          <button
-                            type="button"
-                            className={`ai-action-btn ${copiedId === msg.id ? "copied" : ""}`}
-                            onClick={() => handleCopyText(msg.id, msg.text)}
-                            title="คัดลอกข้อความผลลัพธ์นี้"
-                          >
-                            {copiedId === msg.id ? (
-                              <>
-                                <Check className="w-3.5 h-3.5 mr-1 text-emerald-600" />
-                                <span>คัดลอกสำเร็จ!</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-3.5 h-3.5 mr-1" />
-                                <span>คัดลอกผลลัพธ์</span>
-                              </>
-                            )}
-                          </button>
+                        <>
+                          <div className="gemini-msg-toolbar font-thai-reading">
+                            <button
+                              type="button"
+                              className={`gemini-tool-btn ${copiedId === msg.id ? "active" : ""}`}
+                              onClick={() => handleCopyText(msg.id, msg.text)}
+                              title="คัดลอกข้อความผลลัพธ์นี้"
+                            >
+                              {copiedId === msg.id ? (
+                                <>
+                                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                                  <span>คัดลอกสำเร็จ!</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3.5 h-3.5" />
+                                  <span>คัดลอกผลลัพธ์</span>
+                                </>
+                              )}
+                            </button>
 
-                          <span className="ai-action-divider">|</span>
+                            {/* Standard Speak Voice Button */}
+                            <button
+                              type="button"
+                              className="gemini-tool-btn"
+                              onClick={() => handleSpeakText(msg.id, msg.text)}
+                              title="ฟังเสียงอ่านข้อความนี้"
+                            >
+                              <Volume2 className="w-3.5 h-3.5 text-blue-600" />
+                              <span>ฟังเสียง</span>
+                            </button>
 
-                          <span className="ai-action-label">สั่ง Agent ต่อยอด:</span>
-                          <button
-                            type="button"
-                            className="ai-quick-refine-chip"
-                            onClick={() =>
-                              handleSend("ช่วยปรับข้อความข้างต้นให้เป็นทางการยิ่งขึ้นตามระเบียบงานสารบรรณ")
-                            }
-                          >
-                            <Sparkles className="w-3 h-3 mr-1 text-blue-600" />
-                            <span>ปรับให้ทางการขึ้น</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="ai-quick-refine-chip"
-                            onClick={() =>
-                              handleSend("ช่วยสรุปข้อความข้างต้นให้กระชับและตรงประเด็นที่สุด")
-                            }
-                          >
-                            <Wand2 className="w-3 h-3 mr-1 text-blue-600" />
-                            <span>สรุปให้กระชับ</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="ai-quick-refine-chip"
-                            onClick={() =>
-                              handleSend("ช่วยยกตัวอย่างประโยคการนำไปใช้ในงานเขียนจริงเพิ่มอีก 2 รูปแบบ")
-                            }
-                          >
-                            <PenTool className="w-3 h-3 mr-1 text-blue-600" />
-                            <span>เพิ่มตัวอย่างอีก 2 แบบ</span>
-                          </button>
-                        </div>
+                            {/* Speak to Emotion Button - USES EMOJI */}
+                            <button
+                              type="button"
+                              className={`gemini-tool-btn ${activeEmotionMsgId === msg.id ? "active" : ""}`}
+                              onClick={() =>
+                                setActiveEmotionMsgId(
+                                  activeEmotionMsgId === msg.id ? null : msg.id
+                                )
+                              }
+                              title="เปิดเมนูพูดสื่ออารมณ์ (Speak to emotion)"
+                            >
+                              <span>🎭 Speak to emotion</span>
+                            </button>
+
+                            <span className="ai-action-divider" style={{ color: "#cbd5e1" }}>|</span>
+
+                            <button
+                              type="button"
+                              className="gemini-tool-btn"
+                              onClick={() =>
+                                handleSend("ช่วยปรับข้อความข้างต้นให้เป็นทางการยิ่งขึ้นตามระเบียบงานสารบรรณ")
+                              }
+                            >
+                              <Sparkles className="w-3 h-3 text-blue-600" />
+                              <span>ปรับให้ทางการขึ้น</span>
+                            </button>
+                            <button
+                              type="button"
+                              className="gemini-tool-btn"
+                              onClick={() =>
+                                handleSend("ช่วยสรุปข้อความข้างต้นให้กระชับและตรงประเด็นที่สุด")
+                              }
+                            >
+                              <Wand2 className="w-3 h-3 text-blue-600" />
+                              <span>สรุปให้กระชับ</span>
+                            </button>
+                            <button
+                              type="button"
+                              className="gemini-tool-btn"
+                              onClick={() =>
+                                handleSend("ช่วยยกตัวอย่างประโยคการนำไปใช้ในงานเขียนจริงเพิ่มอีก 2 รูปแบบ")
+                              }
+                            >
+                              <PenTool className="w-3 h-3 text-blue-600" />
+                              <span>เพิ่มตัวอย่างอีก 2 แบบ</span>
+                            </button>
+                          </div>
+
+                          {/* Speak to Emotion Menu for Assistant Message - USES EMOJIS! */}
+                          {activeEmotionMsgId === msg.id && (
+                            <div className="workspace-emotion-menu" style={{ marginTop: "10px" }}>
+                              <div className="workspace-emotion-header">
+                                <div className="workspace-emotion-title">
+                                  <span>🎭</span>
+                                  <span>Speak to emotion — เลือกอารมณ์เพื่อฟังเสียงอ่าน:</span>
+                                </div>
+                                {isPlayingAudio === msg.id && (
+                                  <span style={{ fontSize: "11px", color: "#ea580c", fontWeight: 700 }}>
+                                    🔊 กำลังอ่านออกเสียง...
+                                  </span>
+                                )}
+                              </div>
+                              <div className="workspace-emotion-grid">
+                                {EMOTION_TONES.map((tone) => (
+                                  <button
+                                    key={tone.id}
+                                    type="button"
+                                    onClick={() => handleSpeakText(msg.id, msg.text, tone)}
+                                    className="workspace-emotion-btn"
+                                    title={tone.desc}
+                                  >
+                                    <span className="workspace-emotion-emoji">{tone.emoji}</span>
+                                    <span>{tone.label}</span>
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </>
                       )}
 
-                      {/* Footer */}
+                      {/* Footer Grounded Status */}
                       {msg.role === "assistant" && !msg.isStreaming && (
                         <div className="ai-message-footer font-thai-reading">
                           {msg.grounded && (
@@ -877,9 +1089,9 @@ function AIAssistantPageContent() {
             )}
           </div>
 
-          {/* Large Input Console Footer */}
+          {/* Large Input Console Footer - Google Gemini Capsule Design */}
           <footer className="ai-input-footer ai-page-input-footer">
-            <div className="ai-input-box-wrapper">
+            <div className="gemini-capsule-input">
               <textarea
                 ref={inputRef}
                 rows={2}
@@ -887,6 +1099,15 @@ function AIAssistantPageContent() {
                 disabled={isGenerating}
                 placeholder={activePersona.placeholder}
                 className="ai-chat-input font-thai-reading"
+                style={{
+                  border: "none",
+                  boxShadow: "none",
+                  outline: "none",
+                  background: "transparent",
+                  width: "100%",
+                  resize: "none",
+                  padding: "6px 8px",
+                }}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
@@ -895,28 +1116,63 @@ function AIAssistantPageContent() {
                   }
                 }}
               />
-              <div className="ai-input-controls">
-                {isGenerating ? (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginTop: "6px",
+                  paddingTop: "6px",
+                  borderTop: "1px solid #f1f5f9",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
                   <button
                     type="button"
-                    className="ai-stop-btn font-thai-reading"
-                    onClick={handleStop}
+                    onClick={() => setIsContextEmotionOpen(!isContextEmotionOpen)}
+                    className="gemini-tool-btn"
+                    style={{
+                      background: selectedTone ? "#fff7ed" : "#f8fafc",
+                      borderColor: selectedTone ? "#fed7aa" : "#e2e8f0",
+                      color: selectedTone ? "#c2410c" : "#475569",
+                      borderRadius: "999px",
+                      padding: "4px 10px",
+                      fontSize: "12px",
+                    }}
+                    title="เปิดเมนูพูดสื่ออารมณ์"
                   >
-                    <Square className="w-3.5 h-3.5 mr-1 fill-current" />
-                    <span>หยุดการตอบ</span>
+                    <span>🎭 Speak to emotion</span>
+                    {selectedTone && <span>: {selectedTone.emoji} {selectedTone.label}</span>}
                   </button>
-                ) : (
-                  <button
-                    type="button"
-                    disabled={!inputMessage.trim()}
-                    aria-label="สั่งงาน AI Agent"
-                    className="ai-send-btn font-thai-reading"
-                    onClick={() => handleSend()}
-                  >
-                    <span>สั่ง Agent</span>
-                    <Send className="w-3.5 h-3.5 ml-1" />
-                  </button>
-                )}
+                  <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>
+                    บริบท: {context}
+                  </span>
+                </div>
+
+                <div className="ai-input-controls">
+                  {isGenerating ? (
+                    <button
+                      type="button"
+                      className="ai-stop-btn font-thai-reading"
+                      onClick={handleStop}
+                      title="หยุดการตอบ"
+                    >
+                      <Square className="w-3.5 h-3.5 mr-1 fill-current" />
+                      <span>หยุดการตอบ</span>
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled={!inputMessage.trim()}
+                      aria-label="สั่งงาน AI Agent"
+                      className="gemini-send-circle"
+                      onClick={() => handleSend()}
+                      title="สั่ง Agent"
+                    >
+                      <Send className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
             <div className="ai-footer-toolbar font-thai-reading">
