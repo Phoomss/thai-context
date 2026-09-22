@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { Search, Bot, Zap } from "lucide-react";
 
 export type SearchMode = "context-search" | "ai-assistant" | "ai-workspace";
 
@@ -38,6 +39,7 @@ export default function SearchModeSwitcher({
           onClick={onContextSearch}
           disabled={disabled}
         >
+          <Search className="w-3.5 h-3.5 mr-1.5 inline" />
           Context Search
         </button>
       ) : (
@@ -45,6 +47,7 @@ export default function SearchModeSwitcher({
           href={searchHref}
           aria-current={mode === "context-search" ? "page" : undefined}
         >
+          <Search className="w-3.5 h-3.5 mr-1.5 inline" />
           Context Search
         </Link>
       )}
@@ -59,12 +62,14 @@ export default function SearchModeSwitcher({
           }
         }}
       >
+        <Bot className="w-3.5 h-3.5 mr-1.5 inline" />
         AI Assistant
       </Link>
       <Link
         href={workspaceHref}
         aria-current={mode === "ai-workspace" ? "page" : undefined}
       >
+        <Zap className="w-3.5 h-3.5 mr-1.5 inline" />
         AI Workspace
       </Link>
     </div>

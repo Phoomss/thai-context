@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Home, Scale, Sparkles } from "lucide-react";
 import ModernVocabularyExplorer from "@/components/modern-vocabulary/ModernVocabularyExplorer";
 import Footer from "@/components/layout/Footer";
 import { filterModernTerms } from "@/lib/modern-vocabulary-store";
@@ -65,9 +66,13 @@ export default function ModernVocabularyPage() {
                 color: "#475569",
                 textDecoration: "none",
                 fontWeight: 500,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
               }}
             >
-              หน้าแรก (ค้นหาความหมาย)
+              <Home className="w-3.5 h-3.5 text-slate-500" />
+              <span>หน้าแรก (ค้นหาความหมาย)</span>
             </Link>
             <Link
               href="/#compare"
@@ -75,9 +80,13 @@ export default function ModernVocabularyPage() {
                 color: "#475569",
                 textDecoration: "none",
                 fontWeight: 500,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
               }}
             >
-              เปรียบเทียบคำ
+              <Scale className="w-3.5 h-3.5 text-slate-500" />
+              <span>เปรียบเทียบคำ</span>
             </Link>
             <span
               style={{
@@ -86,9 +95,13 @@ export default function ModernVocabularyPage() {
                 backgroundColor: "#eff6ff",
                 padding: "4px 10px",
                 borderRadius: "6px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
               }}
             >
-              คำศัพท์สมัยใหม่ ⚡
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <span>คำศัพท์สมัยใหม่</span>
             </span>
           </nav>
         </div>

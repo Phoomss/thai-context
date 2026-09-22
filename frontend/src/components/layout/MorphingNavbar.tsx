@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, type RefObject, type MouseEvent } from "react";
 import Image from "next/image";
+import { Home, Scale, BookOpen, Compass, Sparkles } from "lucide-react";
 
 export default function MorphingNavbar({
   navRef,
@@ -142,7 +143,7 @@ export default function MorphingNavbar({
           className={activeSection === "hero" ? "active" : ""}
           onClick={e => { setOpen(false); setActiveSection("hero"); onHome(e); }}
         >
-          หน้าหลัก
+          <Home className="w-3.5 h-3.5 mr-1.5 inline" />หน้าหลัก
         </a>
         <a
           href="#compare"
@@ -150,7 +151,7 @@ export default function MorphingNavbar({
           className={activeSection === "compare" ? "active" : ""}
           onClick={() => { setOpen(false); setActiveSection("compare"); }}
         >
-          เปรียบเทียบคำ
+          <Scale className="w-3.5 h-3.5 mr-1.5 inline" />เปรียบเทียบคำ
         </a>
         <a
           href="#evolution"
@@ -158,7 +159,7 @@ export default function MorphingNavbar({
           className={activeSection === "evolution" ? "active" : ""}
           onClick={() => { setOpen(false); setActiveSection("evolution"); }}
         >
-          สำรวจคำ
+          <BookOpen className="w-3.5 h-3.5 mr-1.5 inline" />สำรวจคำ
         </a>
         <a
           href="#dialects"
@@ -166,7 +167,7 @@ export default function MorphingNavbar({
           className={activeSection === "dialects" ? "active" : ""}
           onClick={() => { setOpen(false); setActiveSection("dialects"); }}
         >
-          ภาษาถิ่น
+          <Compass className="w-3.5 h-3.5 mr-1.5 inline" />ภาษาถิ่น
         </a>
         <a
           href="#modern-vocabulary"
@@ -174,7 +175,7 @@ export default function MorphingNavbar({
           className={activeSection === "modern-vocabulary" ? "active" : ""}
           onClick={() => { setOpen(false); setActiveSection("modern-vocabulary"); }}
         >
-          คำศัพท์สมัยใหม่ ⚡
+          <Sparkles className="w-3.5 h-3.5 mr-1.5 inline" />คำศัพท์สมัยใหม่
         </a>
 
       </nav>

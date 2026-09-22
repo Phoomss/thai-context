@@ -2,6 +2,16 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import {
+  Bot,
+  PenTool,
+  Wand2,
+  Scale,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Volume2,
+} from "lucide-react";
 import Icon from "../ui/Icon";
 
 export interface EvidenceItemData {
@@ -41,6 +51,25 @@ export interface AIAssistantDrawerProps {
   onClose: () => void;
 }
 
+export interface EmotionTone {
+  id: string;
+  emoji: string;
+  label: string;
+  pitch: number;
+  rate: number;
+  desc: string;
+}
+
+export const EMOTION_TONES: EmotionTone[] = [
+  { id: "cheerful", emoji: "😊", label: "สดใส / ร่าเริง", pitch: 1.3, rate: 1.05, desc: "น้ำเสียงสดชื่น มีชีวิตชีวา เบิกบานใจ" },
+  { id: "empathetic", emoji: "🥺", label: "ซาบซึ้ง / เห็นใจ", pitch: 0.88, rate: 0.82, desc: "น้ำเสียงอบอุ่น เข้าอกเข้าใจ ซึ้งกินใจ" },
+  { id: "formal", emoji: "🧐", label: "สุขุม / ลึกซึ้ง", pitch: 0.92, rate: 0.88, desc: "น้ำเสียงหนักแน่น น่าเชื่อถือ มีวุฒิภาวะ" },
+  { id: "intense", emoji: "😠", label: "หนักแน่น / ดุดัน", pitch: 0.78, rate: 0.95, desc: "น้ำเสียงจริงจัง มุ่งมั่น ชัดเจนไม่ลังเล" },
+  { id: "tender", emoji: "💖", label: "อ่อนโยน / อบอุ่น", pitch: 1.1, rate: 0.8, desc: "น้ำเสียงนุ่มนวล ปลอบประโลม ห่วงใย" },
+  { id: "excited", emoji: "🥳", label: "ตื่นเต้น / เร้าใจ", pitch: 1.4, rate: 1.18, desc: "น้ำเสียงเปี่ยมพลัง ตื่นตัว เร้าอารมณ์" },
+  { id: "peaceful", emoji: "🕊️", label: "สงบ / นอบน้อม", pitch: 1.02, rate: 0.85, desc: "น้ำเสียงนอบน้อม สุภาพ นุ่มลึก" },
+];
+
 const CONTEXT_OPTIONS = [
   "รายงานวิชาการ",
   "งานสารบรรณ",
@@ -60,11 +89,30 @@ export interface AgentPersona {
   missions: string[];
 }
 
+function getPersonaIcon(id: string, className: string = "w-3.5 h-3.5 mr-1") {
+  switch (id) {
+    case "AUTO":
+      return <Bot className={className} />;
+    case "WRITING":
+      return <PenTool className={className} />;
+    case "REWRITE":
+      return <Wand2 className={className} />;
+    case "COMPARE":
+      return <Scale className={className} />;
+    case "DISCOVERY":
+      return <Search className={className} />;
+    case "PROOFREAD":
+      return <ShieldCheck className={className} />;
+    default:
+      return <Bot className={className} />;
+  }
+}
+
 const AGENT_PERSONAS: AgentPersona[] = [
   {
     id: "AUTO",
-    label: "🤖 ตัวแทนอัตโนมัติ",
-    icon: "🤖",
+    label: "ตัวแทนอัตโนมัติ",
+    icon: "Bot",
     badge: "Auto Agent",
     agentName: "OrchestratorAgent",
     desc: "AI วางแผนงานและเรียกใช้ชุด Agent ที่เหมาะสมให้อัตโนมัติ",
@@ -78,8 +126,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "WRITING",
-    label: "✍️ ร่างและเขียน",
-    icon: "✍️",
+    label: "ร่างและเขียน",
+    icon: "PenTool",
     badge: "Writing Agent",
     agentName: "WritingAgent",
     desc: "ร่างเนื้อหา: อีเมลธุรกิจ, หนังสือราชการ, คำแถลง, บทคัดย่อวิชาการ",
@@ -93,8 +141,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "REWRITE",
-    label: "🔄 ขัดเกลาสำนวน",
-    icon: "🔄",
+    label: "ขัดเกลาสำนวน",
+    icon: "Wand2",
     badge: "Rewrite Agent",
     agentName: "RewriteAgent",
     desc: "ยกระดับภาษาพูดเป็นภาษาทางการหรือกึ่งทางการ สละสลวย และถูกต้อง",
@@ -108,8 +156,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "COMPARE",
-    label: "⚖️ วิจัยเปรียบเทียบคำ",
-    icon: "⚖️",
+    label: "วิจัยเปรียบเทียบคำ",
+    icon: "Scale",
     badge: "Compare Agent",
     agentName: "WordCompareAgent",
     desc: "วิเคราะห์ความต่างอย่างลึกซึ้ง: นัยความหมาย (Nuance) และข้อควรระวัง",
@@ -123,8 +171,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "DISCOVERY",
-    label: "🔍 ค้นหาคำจากความคิด",
-    icon: "🔍",
+    label: "ค้นหาคำจากความคิด",
+    icon: "Search",
     badge: "Discovery Agent",
     agentName: "WordDiscoveryAgent",
     desc: "ถอดความคิดหรือมโนทัศน์ที่นึกไม่ออก ออกมาเป็นคลังคำที่ตรงใจ",
@@ -138,8 +186,8 @@ const AGENT_PERSONAS: AgentPersona[] = [
   },
   {
     id: "PROOFREAD",
-    label: "🛡️ ตรวจทานหลักภาษา",
-    icon: "🛡️",
+    label: "ตรวจทานหลักภาษา",
+    icon: "ShieldCheck",
     badge: "Checker Agent",
     agentName: "LanguageCheckerAgent",
     desc: "สแกนหาคำฟุ่มเฟือย คำกำกวม และระดับภาษาที่ไม่สอดคล้องกัน",
@@ -172,6 +220,45 @@ export default function AIAssistantDrawer({
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [isPlayingAudio, setIsPlayingAudio] = useState<string | null>(null);
+  const [activeEmotionMsgId, setActiveEmotionMsgId] = useState<string | null>(null);
+  const [isContextEmotionOpen, setIsContextEmotionOpen] = useState(false);
+  const [selectedTone, setSelectedTone] = useState<EmotionTone | null>(null);
+
+  const handleSpeakText = useCallback((msgId: string, text: string, tone?: EmotionTone) => {
+    const cleanText = text
+      .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/^>\s*/gm, "")
+      .replace(/^[•\-*]\s*/gm, "")
+      .replace(/🤖\s*\[.*?\]/g, "")
+      .trim();
+
+    if (!cleanText) return;
+
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = "th-TH";
+        if (tone) {
+          utterance.pitch = tone.pitch;
+          utterance.rate = tone.rate;
+        }
+
+        utterance.onstart = () => setIsPlayingAudio(msgId);
+        utterance.onend = () => setIsPlayingAudio(null);
+        utterance.onerror = () => setIsPlayingAudio(null);
+
+        const voices = window.speechSynthesis.getVoices();
+        const thaiVoice = voices.find((v) => v.lang?.toLowerCase().startsWith("th"));
+        if (thaiVoice) utterance.voice = thaiVoice;
+
+        window.speechSynthesis.speak(utterance);
+      } catch {
+        // Fallback silently
+      }
+    }
+  }, []);
 
   const activePersona =
     AGENT_PERSONAS.find((p) => p.id === selectedRole) || AGENT_PERSONAS[0];
@@ -566,7 +653,7 @@ export default function AIAssistantDrawer({
                   onClick={() => setSelectedRole(persona.id)}
                   title={persona.desc}
                 >
-                  <span className="ai-tab-icon">{persona.icon}</span>
+                  <span className="ai-tab-icon">{getPersonaIcon(persona.id)}</span>
                   <span className="ai-tab-text">{persona.label}</span>
                 </button>
               );
@@ -605,8 +692,82 @@ export default function AIAssistantDrawer({
                   {c}
                 </button>
               ))}
+
+              {/* Speak to Emotion Toggle Button - Emoji Menu */}
+              <button
+                type="button"
+                onClick={() => setIsContextEmotionOpen(!isContextEmotionOpen)}
+                className={`workspace-context-pill ${isContextEmotionOpen || selectedTone ? "active" : ""}`}
+                style={{
+                  background: isContextEmotionOpen || selectedTone ? "#fff7ed" : "white",
+                  color: isContextEmotionOpen || selectedTone ? "#c2410c" : "var(--muted)",
+                  borderColor: isContextEmotionOpen || selectedTone ? "#fed7aa" : "var(--border)",
+                  fontWeight: 600,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  padding: "4px 10px",
+                  borderRadius: "9999px",
+                  fontSize: "12px",
+                  cursor: "pointer",
+                }}
+                title="เปิดเมนูพูดสื่ออารมณ์"
+              >
+                <span>🎭 Speak to emotion</span>
+                {selectedTone && (
+                  <span style={{ fontSize: "11px", marginLeft: "2px" }}>
+                    ({selectedTone.emoji} {selectedTone.label})
+                  </span>
+                )}
+              </button>
             </div>
           </div>
+
+          {/* Speak to Emotion Menu Dropdown/Palette - USES EMOJIS! */}
+          {isContextEmotionOpen && (
+            <div className="workspace-emotion-menu" style={{ width: "100%", marginTop: "8px", padding: "8px 12px", background: "#fffaf5", border: "1px solid #fed7aa", borderRadius: "10px" }}>
+              <div className="workspace-emotion-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                <div className="workspace-emotion-title" style={{ fontSize: "12px", fontWeight: 600, color: "#9a3412", display: "flex", alignItems: "center", gap: "6px" }}>
+                  <span>🎭</span>
+                  <span>Speak to emotion — เลือกอารมณ์เพื่อแต่งประโยคหรืออ่านออกเสียง:</span>
+                </div>
+                {selectedTone && (
+                  <span style={{ fontSize: "11px", color: "#ea580c", fontWeight: 700 }}>
+                    {selectedTone.emoji} {selectedTone.label}
+                  </span>
+                )}
+              </div>
+              <div className="workspace-emotion-grid" style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                {EMOTION_TONES.map((tone) => {
+                  const isSelected = selectedTone?.id === tone.id;
+                  return (
+                    <button
+                      key={tone.id}
+                      type="button"
+                      onClick={() => setSelectedTone(isSelected ? null : tone)}
+                      className={`workspace-emotion-btn ${isSelected ? "active" : ""}`}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        padding: "4px 8px",
+                        borderRadius: "8px",
+                        border: isSelected ? "1.5px solid #ea580c" : "1px solid #fed7aa",
+                        background: isSelected ? "#ffedd5" : "#ffffff",
+                        color: isSelected ? "#9a3412" : "#4b5563",
+                        fontSize: "12px",
+                        cursor: "pointer",
+                      }}
+                      title={tone.desc}
+                    >
+                      <span>{tone.emoji}</span>
+                      <span>{tone.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Message Transcript */}
@@ -766,46 +927,118 @@ export default function AIAssistantDrawer({
 
                     {/* Interactive Agent Artifact Toolbar */}
                     {msg.role === "assistant" && !msg.isStreaming && (
-                      <div className="ai-artifact-actions">
-                        <button
-                          type="button"
-                          className={`ai-action-btn ${copiedId === msg.id ? "copied" : ""}`}
-                          onClick={() => handleCopyText(msg.id, msg.text)}
-                          title="คัดลอกข้อความผลลัพธ์นี้"
-                        >
-                          {copiedId === msg.id ? "✓ คัดลอกสำเร็จ!" : "📋 คัดลอกผลลัพธ์"}
-                        </button>
+                      <div className="ai-artifact-actions-container" style={{ width: "100%" }}>
+                        <div className="ai-artifact-actions" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px" }}>
+                          <button
+                            type="button"
+                            className={`ai-action-btn ${copiedId === msg.id ? "copied" : ""}`}
+                            onClick={() => handleCopyText(msg.id, msg.text)}
+                            title="คัดลอกข้อความผลลัพธ์นี้"
+                          >
+                            {copiedId === msg.id ? "✓ คัดลอกสำเร็จ!" : "📋 คัดลอกผลลัพธ์"}
+                          </button>
 
-                        <span className="ai-action-divider">|</span>
+                          {/* Audio TTS button */}
+                          <button
+                            type="button"
+                            className="ai-action-btn"
+                            onClick={() => handleSpeakText(msg.id, msg.text, selectedTone || undefined)}
+                            title="ฟังเสียงอ่านข้อความนี้"
+                            style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
+                          >
+                            <Volume2 className="w-3.5 h-3.5 text-blue-600" />
+                            <span>{isPlayingAudio === msg.id ? "กำลังอ่าน..." : "ฟังเสียง"}</span>
+                          </button>
 
-                        <span className="ai-action-label">สั่ง Agent ต่อยอด:</span>
-                        <button
-                          type="button"
-                          className="ai-quick-refine-chip"
-                          onClick={() =>
-                            handleSend("ช่วยปรับข้อความข้างต้นให้เป็นทางการยิ่งขึ้นตามระเบียบงานสารบรรณ")
-                          }
-                        >
-                          ✨ ปรับให้ทางการขึ้น
-                        </button>
-                        <button
-                          type="button"
-                          className="ai-quick-refine-chip"
-                          onClick={() =>
-                            handleSend("ช่วยสรุปข้อความข้างต้นให้กระชับและตรงประเด็นที่สุด")
-                          }
-                        >
-                          ✂️ สรุปให้กระชับ
-                        </button>
-                        <button
-                          type="button"
-                          className="ai-quick-refine-chip"
-                          onClick={() =>
-                            handleSend("ช่วยยกตัวอย่างประโยคการนำไปใช้ในงานเขียนจริงเพิ่มอีก 2 รูปแบบ")
-                          }
-                        >
-                          📝 เพิ่มตัวอย่างอีก 2 แบบ
-                        </button>
+                          {/* Speak to Emotion Button - USES EMOJI */}
+                          <button
+                            type="button"
+                            className={`ai-action-btn ${activeEmotionMsgId === msg.id ? "active" : ""}`}
+                            onClick={() =>
+                              setActiveEmotionMsgId(
+                                activeEmotionMsgId === msg.id ? null : msg.id
+                              )
+                            }
+                            title="เปิดเมนูพูดสื่ออารมณ์ (Speak to emotion)"
+                            style={{
+                              background: activeEmotionMsgId === msg.id ? "#fff7ed" : undefined,
+                              color: activeEmotionMsgId === msg.id ? "#c2410c" : undefined,
+                              borderColor: activeEmotionMsgId === msg.id ? "#fed7aa" : undefined,
+                              fontWeight: 600,
+                            }}
+                          >
+                            <span>🎭 Speak to emotion</span>
+                          </button>
+
+                          <span className="ai-action-divider">|</span>
+
+                          <span className="ai-action-label">สั่ง Agent ต่อยอด:</span>
+                          <button
+                            type="button"
+                            className="ai-quick-refine-chip"
+                            onClick={() =>
+                              handleSend("ช่วยปรับข้อความข้างต้นให้เป็นทางการยิ่งขึ้นตามระเบียบงานสารบรรณ")
+                            }
+                          >
+                            ✨ ปรับให้ทางการขึ้น
+                          </button>
+                          <button
+                            type="button"
+                            className="ai-quick-refine-chip"
+                            onClick={() =>
+                              handleSend("ช่วยสรุปข้อความข้างต้นให้กระชับและตรงประเด็นที่สุด")
+                            }
+                          >
+                            ✂️ สรุปให้กระชับ
+                          </button>
+                          <button
+                            type="button"
+                            className="ai-quick-refine-chip"
+                            onClick={() =>
+                              handleSend("ช่วยยกตัวอย่างประโยคการนำไปใช้ในงานเขียนจริงเพิ่มอีก 2 รูปแบบ")
+                            }
+                          >
+                            📝 เพิ่มตัวอย่างอีก 2 แบบ
+                          </button>
+                        </div>
+
+                        {/* Emotion Palette for this message */}
+                        {activeEmotionMsgId === msg.id && (
+                          <div className="workspace-emotion-menu" style={{ width: "100%", marginTop: "8px", padding: "8px 12px", background: "#fffaf5", border: "1px solid #fed7aa", borderRadius: "10px" }}>
+                            <div className="workspace-emotion-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                              <div className="workspace-emotion-title" style={{ fontSize: "12px", fontWeight: 600, color: "#9a3412", display: "flex", alignItems: "center", gap: "6px" }}>
+                                <span>🎭</span>
+                                <span>Speak to emotion — เลือกอารมณ์เพื่อฟังเสียงอ่านสื่อความรู้สึก:</span>
+                              </div>
+                            </div>
+                            <div className="workspace-emotion-grid" style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                              {EMOTION_TONES.map((tone) => (
+                                <button
+                                  key={tone.id}
+                                  type="button"
+                                  onClick={() => handleSpeakText(msg.id, msg.text, tone)}
+                                  className="workspace-emotion-btn"
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: "4px",
+                                    padding: "4px 8px",
+                                    borderRadius: "8px",
+                                    border: "1px solid #fed7aa",
+                                    background: "#ffffff",
+                                    color: "#4b5563",
+                                    fontSize: "12px",
+                                    cursor: "pointer",
+                                  }}
+                                  title={tone.desc}
+                                >
+                                  <span>{tone.emoji}</span>
+                                  <span>{tone.label}</span>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
 

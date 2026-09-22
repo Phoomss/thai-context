@@ -1,6 +1,19 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+import {
+  Search,
+  Globe,
+  Sparkles,
+  Bot,
+  Laptop,
+  Smartphone,
+  Flame,
+  Briefcase,
+  Film,
+  Star,
+  Layers,
+} from "lucide-react";
 import { ModernTerm } from "@/lib/modern-vocabulary-types";
 import ModernTermCard from "./ModernTermCard";
 import ModernTermDetailModal from "./ModernTermDetailModal";
@@ -12,14 +25,14 @@ interface ModernVocabularyExplorerProps {
 }
 
 const CATEGORIES = [
-  { id: "ALL", label: "ทั้งหมด" },
-  { id: "AI", label: "🤖 ปัญญาประดิษฐ์ (AI)" },
-  { id: "TECHNOLOGY", label: "💻 เทคโนโลยี" },
-  { id: "SOCIAL_MEDIA", label: "📱 โซเชียลมีเดีย" },
-  { id: "SLANG", label: "🔥 สแลงร่วมสมัย" },
-  { id: "WORKPLACE", label: "💼 ภาษาออฟฟิศ" },
-  { id: "POP_CULTURE", label: "🎬 บันเทิง & ป็อปคัลเจอร์" },
-  { id: "FANDOM", label: "🌟 แฟนดอม" },
+  { id: "ALL", label: "ทั้งหมด", icon: Layers },
+  { id: "AI", label: "ปัญญาประดิษฐ์ (AI)", icon: Bot },
+  { id: "TECHNOLOGY", label: "เทคโนโลยี", icon: Laptop },
+  { id: "SOCIAL_MEDIA", label: "โซเชียลมีเดีย", icon: Smartphone },
+  { id: "SLANG", label: "สแลงร่วมสมัย", icon: Flame },
+  { id: "WORKPLACE", label: "ภาษาออฟฟิศ", icon: Briefcase },
+  { id: "POP_CULTURE", label: "บันเทิง & ป็อปคัลเจอร์", icon: Film },
+  { id: "FANDOM", label: "แฟนดอม", icon: Star },
 ];
 
 const EMPTY_TERMS: ModernTerm[] = [];
@@ -308,10 +321,11 @@ export default function ModernVocabularyExplorer({
                 top: "50%",
                 transform: "translateY(-50%)",
                 color: "#94a3b8",
-                fontSize: "16px",
+                display: "flex",
+                alignItems: "center",
               }}
             >
-              🔍
+              <Search className="w-4 h-4 text-slate-400" />
             </span>
             <input
               type="text"
@@ -367,7 +381,7 @@ export default function ModernVocabularyExplorer({
                 cursor: "pointer",
               }}
             >
-              <span>🇬🇧</span>
+              <Globe className="w-4 h-4 text-emerald-600" />
               <span>โหมดผู้เรียนต่างชาติ (English & Phonetics)</span>
             </button>
 
@@ -389,16 +403,17 @@ export default function ModernVocabularyExplorer({
                 cursor: "pointer",
               }}
             >
-              <span>✨</span>
+              <Sparkles className="w-4 h-4" />
               <span>เสนอคำศัพท์ใหม่</span>
             </button>
           </div>
         </div>
 
-        {/* Categories Pills */}
+        {/* Categories Pills with Lucide Icons */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
           {CATEGORIES.map((cat) => {
             const active = selectedCategory === cat.id;
+            const IconComp = cat.icon;
             return (
               <button
                 key={cat.id}
@@ -414,9 +429,13 @@ export default function ModernVocabularyExplorer({
                   border: "none",
                   cursor: "pointer",
                   transition: "all 0.15s ease",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
                 }}
               >
-                {cat.label}
+                <IconComp className="w-3.5 h-3.5" />
+                <span>{cat.label}</span>
               </button>
             );
           })}

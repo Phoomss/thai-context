@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useId, useCallback } from "react";
+import { Compass, BarChart2, Sparkles, Bot } from "lucide-react";
 import Icon from "../ui/Icon";
 import { audioManager } from "@/lib/audio-manager";
 import { encodeThaiToBraille } from "@/lib/braille-encoder";
@@ -582,7 +583,8 @@ export default function DialectDiscoveryView() {
                 : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            <span>🧭 ค้นพบภาษาถิ่นตามภาค</span>
+            <Compass className="w-4 h-4 text-emerald-600" />
+            <span>ค้นพบภาษาถิ่นตามภาค</span>
             <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
               {results.length}
             </span>
@@ -597,7 +599,8 @@ export default function DialectDiscoveryView() {
                 : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            <span>📊 ตารางเปรียบเทียบ 4 ภาค</span>
+            <BarChart2 className="w-4 h-4 text-blue-600" />
+            <span>ตารางเปรียบเทียบ 4 ภาค</span>
             {comparisonResults.length > 0 && (
               <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 font-medium">
                 4 ภูมิภาค
@@ -617,7 +620,8 @@ export default function DialectDiscoveryView() {
                 : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            <span>✨ AI อธิบายความแตกต่างเชิงวัฒนธรรม</span>
+            <Sparkles className="w-4 h-4 text-purple-600" />
+            <span>AI อธิบายความแตกต่างเชิงวัฒนธรรม</span>
             <span className="text-xs px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-bold">
               Grounded
             </span>
@@ -630,7 +634,14 @@ export default function DialectDiscoveryView() {
           disabled={explainingLoading}
           className="text-xs font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all"
         >
-          {explainingLoading ? "⏳ กำลังวิเคราะห์..." : "🤖 ให้ AI อธิบายคำนี้"}
+          {explainingLoading ? (
+            <span>กำลังวิเคราะห์...</span>
+          ) : (
+            <>
+              <Bot className="w-3.5 h-3.5 text-purple-700" />
+              <span>ให้ AI อธิบายคำนี้</span>
+            </>
+          )}
         </button>
       </div>
 

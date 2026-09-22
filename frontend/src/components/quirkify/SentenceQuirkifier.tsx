@@ -39,6 +39,25 @@ import {
   getReplacementForHeadword,
 } from "@/lib/word-scrambler-data";
 
+export interface EmotionTone {
+  id: string;
+  emoji: string;
+  label: string;
+  pitch: number;
+  rate: number;
+  desc: string;
+}
+
+export const EMOTION_TONES: EmotionTone[] = [
+  { id: "cheerful", emoji: "😊", label: "สดใส / ร่าเริง", pitch: 1.3, rate: 1.05, desc: "น้ำเสียงสดชื่น มีชีวิตชีวา เบิกบานใจ" },
+  { id: "empathetic", emoji: "🥺", label: "ซาบซึ้ง / เห็นใจ", pitch: 0.88, rate: 0.82, desc: "น้ำเสียงอบอุ่น เข้าอกเข้าใจ ซึ้งกินใจ" },
+  { id: "formal", emoji: "🧐", label: "สุขุม / ลึกซึ้ง", pitch: 0.92, rate: 0.88, desc: "น้ำเสียงหนักแน่น น่าเชื่อถือ มีวุฒิภาวะ" },
+  { id: "intense", emoji: "😠", label: "หนักแน่น / ดุดัน", pitch: 0.78, rate: 0.95, desc: "น้ำเสียงจริงจัง มุ่งมั่น ชัดเจนไม่ลังเล" },
+  { id: "tender", emoji: "💖", label: "อ่อนโยน / อบอุ่น", pitch: 1.1, rate: 0.8, desc: "น้ำเสียงนุ่มนวล ปลอบประโลม ห่วงใย" },
+  { id: "excited", emoji: "🥳", label: "ตื่นเต้น / เร้าใจ", pitch: 1.4, rate: 1.18, desc: "น้ำเสียงเปี่ยมพลัง ตื่นตัว เร้าอารมณ์" },
+  { id: "peaceful", emoji: "🕊️", label: "สงบ / นอบน้อม", pitch: 1.02, rate: 0.85, desc: "น้ำเสียงนอบน้อม สุภาพ นุ่มลึก" },
+];
+
 function getCategoryIcon(category: string) {
   switch (category) {
     case "ชีวิตประจำวัน":
@@ -73,6 +92,8 @@ export default function SentenceQuirkifier({
   // Interaction feedback states
   const [copiedSentence, setCopiedSentence] = useState(false);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [isEmotionMenuOpen, setIsEmotionMenuOpen] = useState(false);
+  const [selectedEmotion, setSelectedEmotion] = useState<EmotionTone | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [activeWordModal, setActiveWordModal] = useState<QuirkifyWordMapping | null>(null);
 
@@ -293,6 +314,35 @@ export default function SentenceQuirkifier({
     utterance.onerror = () => setIsPlayingAudio(false);
 
     window.speechSynthesis.speak(utterance);
+  };
+
+  const handleSpeakWithEmotion = (tone: EmotionTone) => {
+    if (!result?.quirkified_sentence || typeof window === "undefined") return;
+    setSelectedEmotion(tone);
+
+    if ("speechSynthesis" in window) {
+      try {
+        window.speechSynthesis.cancel();
+        const cleanSpeech = result.quirkified_sentence.replace(/['"“”‘’]/g, "");
+        const utterance = new SpeechSynthesisUtterance(cleanSpeech);
+        utterance.lang = "th-TH";
+        utterance.pitch = tone.pitch;
+        utterance.rate = tone.rate;
+
+        utterance.onstart = () => setIsPlayingAudio(true);
+        utterance.onend = () => setIsPlayingAudio(false);
+        utterance.onerror = () => setIsPlayingAudio(false);
+
+        const voices = window.speechSynthesis.getVoices();
+        const thaiVoice = voices.find((v) => v.lang?.toLowerCase().startsWith("th"));
+        if (thaiVoice) utterance.voice = thaiVoice;
+
+        window.speechSynthesis.speak(utterance);
+        showToast(`🎭 กำลังอ่านด้วยอารมณ์: ${tone.emoji} ${tone.label}`);
+      } catch {
+        showToast("ไม่สามารถเปิดระบบอ่านออกเสียงได้บนเบราว์เซอร์นี้");
+      }
+    }
   };
 
   // Paste from clipboard
@@ -741,8 +791,57 @@ export default function SentenceQuirkifier({
                               </>
                             )}
                           </button>
+
+                          {/* Speak to Emotion Button - USES EMOJI */}
+                          <button
+                            type="button"
+                            onClick={() => setIsEmotionMenuOpen(!isEmotionMenuOpen)}
+                            className="scrambler-action-btn-secondary font-thai-reading"
+                            style={{
+                              padding: "6px 12px",
+                              fontSize: "12px",
+                              background: isEmotionMenuOpen ? "#fff7ed" : "white",
+                              borderColor: isEmotionMenuOpen ? "#fed7aa" : "#dce8f4",
+                              color: isEmotionMenuOpen ? "#c2410c" : "var(--muted)",
+                              fontWeight: 600,
+                            }}
+                            title="เปิดเมนูพูดสื่ออารมณ์ (Speak to emotion)"
+                          >
+                            <span>🎭 Speak to emotion</span>
+                          </button>
                         </div>
                       </div>
+
+                      {/* Speak to Emotion Menu - USES EMOJIS! */}
+                      {isEmotionMenuOpen && (
+                        <div className="workspace-emotion-menu" style={{ margin: "12px 0 10px" }}>
+                          <div className="workspace-emotion-header">
+                            <div className="workspace-emotion-title">
+                              <span>🎭</span>
+                              <span>Speak to emotion — เลือกอารมณ์เพื่อฟังเสียงอ่าน:</span>
+                            </div>
+                            {selectedEmotion && (
+                              <span style={{ fontSize: "11px", color: "#ea580c", fontWeight: 700 }}>
+                                อารมณ์ปัจจุบัน: {selectedEmotion.emoji} {selectedEmotion.label}
+                              </span>
+                            )}
+                          </div>
+                          <div className="workspace-emotion-grid">
+                            {EMOTION_TONES.map((tone) => (
+                              <button
+                                key={tone.id}
+                                type="button"
+                                onClick={() => handleSpeakWithEmotion(tone)}
+                                className="workspace-emotion-btn"
+                                title={tone.desc}
+                              >
+                                <span className="workspace-emotion-emoji">{tone.emoji}</span>
+                                <span>{tone.label}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
 
                       {/* Main Transformed Text with interactive pills */}
                       <div className="scrambler-transformed-sentence font-thai-reading">
