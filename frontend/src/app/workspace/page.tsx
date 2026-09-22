@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { Bot, Shuffle, BookOpen, ArrowLeft, Sparkles } from "lucide-react";
 import WorkspaceView from "@/components/workspace/WorkspaceView";
 import Footer from "@/components/layout/Footer";
 
@@ -34,24 +35,29 @@ export default function WorkspacePage() {
               </span>
             </div>
             <span className="workspace-badge-tag">
-              ✦ AI Language Workspace
+              <Sparkles className="w-3.5 h-3.5" style={{ color: "var(--accent)" }} />
+              <span>AI Language Workspace</span>
             </span>
           </Link>
 
-          <div className="workspace-nav-actions">
+          <nav className="workspace-nav-actions" aria-label="เมนูหลัก Workspace">
             <Link href="/ai-assistant" className="workspace-nav-btn font-thai-reading" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              ✨ ผู้ช่วย AI
+              <Bot className="w-4 h-4" />
+              <span>ผู้ช่วย AI</span>
             </Link>
-            <Link href="/word-scrambler" className="workspace-nav-btn">
-              🔀 สุ่มเปลี่ยนคำ
+            <Link href="/word-scrambler" className="workspace-nav-btn font-thai-reading">
+              <Shuffle className="w-4 h-4" />
+              <span>สุ่มเปลี่ยนคำ</span>
             </Link>
-            <Link href="/#dictionary" className="workspace-nav-btn">
-              📖 ค้นตามเล่ม
+            <Link href="/#dictionary" className="workspace-nav-btn font-thai-reading">
+              <BookOpen className="w-4 h-4" />
+              <span>ค้นตามเล่ม</span>
             </Link>
-            <Link href="/" className="workspace-nav-btn" style={{ fontWeight: 600, color: "var(--accent)" }}>
-              ← กลับหน้าค้นหาหลัก
+            <Link href="/" className="workspace-nav-btn font-thai-reading" style={{ fontWeight: 600, color: "var(--accent)" }}>
+              <ArrowLeft className="w-4 h-4" />
+              <span>กลับหน้าค้นหาหลัก</span>
             </Link>
-          </div>
+          </nav>
         </div>
       </header>
 

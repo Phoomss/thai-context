@@ -2286,7 +2286,7 @@ dialog::backdrop { background:#13233b3d;backdrop-filter:blur(3px) }
 /* Stepper Bar */
 .workspace-stepper {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
   background: white;
   border: 1px solid var(--border);
@@ -2300,7 +2300,7 @@ button.workspace-step-item,
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid transparent;
   background: transparent;
@@ -2310,13 +2310,14 @@ button.workspace-step-item,
   transition: all 180ms ease;
   cursor: pointer;
   text-align: left;
-  min-height: 42px;
+  min-height: 44px;
   width: 100%;
 }
 button.workspace-step-item:hover,
 .workspace-step-item:hover {
   background: var(--bg-soft);
   color: var(--ink);
+  transform: translateY(-1px);
 }
 button.workspace-step-item.active,
 .workspace-step-item.active {
@@ -2324,6 +2325,7 @@ button.workspace-step-item.active,
   color: var(--accent);
   border-color: #bcd6f0;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
 }
 .workspace-step-num {
   display: inline-flex;
@@ -2341,6 +2343,68 @@ button.workspace-step-item.active,
 .workspace-step-item.active .workspace-step-num {
   background: var(--accent);
   color: white;
+}
+
+/* Speak to Emotion Menu & Toolbar */
+.workspace-emotion-menu {
+  background: linear-gradient(135deg, #fffbf2 0%, #fff7ed 50%, #fdf2f8 100%);
+  border: 1.5px solid #fed7aa;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  box-shadow: 0 6px 20px rgba(251, 146, 60, 0.1);
+  animation: fadeIn 200ms ease-out;
+}
+.workspace-emotion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.workspace-emotion-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #9a3412;
+}
+.workspace-emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+.workspace-emotion-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border-radius: 10px;
+  border: 1px solid #fed7aa;
+  background: white;
+  color: #7c2d12;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+  text-align: left;
+}
+.workspace-emotion-btn:hover {
+  background: #fff;
+  border-color: #f97316;
+  color: #c2410c;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+}
+.workspace-emotion-btn.active {
+  background: #ffedd5;
+  border-color: #ea580c;
+  color: #9a3412;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2);
+}
+.workspace-emotion-emoji {
+  font-size: 16px;
+  line-height: 1;
 }
 
 /* Presets Row */

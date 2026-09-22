@@ -317,4 +317,41 @@ describe("WorkspaceView Component", () => {
       expect(screen.getByText("ต้อนรับ")).toBeTruthy();
     });
   });
+
+  it("renders Speak to emotion menu with emojis and handles emotion selection", () => {
+    const speakSpy = vi.fn();
+    const cancelSpy = vi.fn();
+    vi.stubGlobal("speechSynthesis", {
+      speak: speakSpy,
+      cancel: cancelSpy,
+      getVoices: () => [],
+    });
+
+    render(<WorkspaceView />);
+
+    // Check Speak to emotion button in context selector
+    const emotionMenuBtn = screen.getByTitle("เปิดโหมดพูดสื่ออารมณ์");
+    expect(emotionMenuBtn).toBeTruthy();
+    expect(emotionMenuBtn.textContent).toContain("🎭 Speak to emotion");
+
+    // Click to open emotion mode
+    fireEvent.click(emotionMenuBtn);
+
+    // Verify emoji-based emotion options are rendered
+    expect(screen.getByText("😊")).toBeTruthy();
+    expect(screen.getByText("สดใส / ร่าเริง")).toBeTruthy();
+    expect(screen.getByText("🥺")).toBeTruthy();
+    expect(screen.getByText("ซาบซึ้ง / เห็นใจ")).toBeTruthy();
+    expect(screen.getByText("🧐")).toBeTruthy();
+    expect(screen.getByText("สุขุม / ลึกซึ้ง")).toBeTruthy();
+    expect(screen.getByText("💖")).toBeTruthy();
+    expect(screen.getByText("อ่อนโยน / อบอุ่น")).toBeTruthy();
+
+    // Click an emotion button
+    const cheerfulBtn = screen.getByText("สดใส / ร่าเริง");
+    fireEvent.click(cheerfulBtn);
+
+    // Verify active emotion indicator
+    expect(screen.getByText(/อารมณ์ปัจจุบัน: 😊 สดใส \/ ร่าเริง/)).toBeTruthy();
+  });
 });

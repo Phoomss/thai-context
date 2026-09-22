@@ -8,6 +8,18 @@ import type {
 } from "@/lib/workspace-types";
 import { audioManager } from "@/lib/audio-manager";
 import type { Recommendation } from "@/lib/search-types";
+import {
+  Layers,
+  BookOpen,
+  Scale,
+  PenTool,
+  CheckCircle2,
+  Globe,
+  Accessibility,
+  Volume2,
+  Copy,
+  Check,
+} from "lucide-react";
 import SignLanguageSection from "../tsl/SignLanguageSection";
 import BrailleModal from "../braille/BrailleModal";
 import SignLanguageModal from "../tsl/SignLanguageModal";
@@ -363,66 +375,87 @@ export default function WorkspaceResultCard({
       )}
 
       {/* Section Filter Tabs */}
-      <div className="workspace-tabs">
+      <div className="workspace-tabs" role="tablist" aria-label="แถบตัวกรองผลลัพธ์">
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === "all"}
           onClick={() => handleTabSelect("all")}
           className={`workspace-tab-btn ${activeTab === "all" ? "active" : ""}`}
         >
-          🌟 แสดงทั้งหมด
+          <Layers className="w-4 h-4" />
+          <span>แสดงทั้งหมด</span>
         </button>
         {recommendations && recommendations.length > 0 && (
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "words"}
             onClick={() => handleTabSelect("words")}
             className={`workspace-tab-btn ${activeTab === "words" ? "active" : ""}`}
           >
-            📖 คำศัพท์ ({recommendations.length})
+            <BookOpen className="w-4 h-4" />
+            <span>คำศัพท์ ({recommendations.length})</span>
           </button>
         )}
         {comparison && (
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "compare"}
             onClick={() => handleTabSelect("compare")}
             className={`workspace-tab-btn ${activeTab === "compare" ? "active" : ""}`}
           >
-            ⚖️ เปรียบเทียบคำ
+            <Scale className="w-4 h-4" />
+            <span>เปรียบเทียบคำ</span>
           </button>
         )}
         {generated_content && generated_content.length > 0 && (
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "writing"}
             onClick={() => handleTabSelect("writing")}
             className={`workspace-tab-btn ${activeTab === "writing" ? "active" : ""}`}
           >
-            ✍️ ข้อความที่สร้าง ({generated_content.length})
+            <PenTool className="w-4 h-4" />
+            <span>ข้อความที่สร้าง ({generated_content.length})</span>
           </button>
         )}
         {language_check && (
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "check"}
             onClick={() => handleTabSelect("check")}
             className={`workspace-tab-btn ${activeTab === "check" ? "active" : ""}`}
           >
-            🔍 ตรวจภาษา ({language_check.score}/100)
+            <CheckCircle2 className="w-4 h-4" />
+            <span>ตรวจภาษา ({language_check.score}/100)</span>
           </button>
         )}
         {language_bridge && (
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "bridge"}
             onClick={() => handleTabSelect("bridge")}
             className={`workspace-tab-btn ${activeTab === "bridge" ? "active" : ""}`}
           >
-            🌐 Bridge (EN)
+            <Globe className="w-4 h-4" />
+            <span>Bridge (EN)</span>
           </button>
         )}
         {accessibility_layer && (
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "access"}
             onClick={() => handleTabSelect("access")}
             className={`workspace-tab-btn ${activeTab === "access" ? "active" : ""}`}
           >
-            ♿ การเข้าถึง ({accessibility_layer.readiness_score}%)
+            <Accessibility className="w-4 h-4" />
+            <span>การเข้าถึง ({accessibility_layer.readiness_score}%)</span>
           </button>
         )}
       </div>
@@ -496,13 +529,15 @@ export default function WorkspaceResultCard({
                             background: "transparent",
                             border: "none",
                             cursor: "pointer",
-                            fontSize: "14px",
-                            padding: "2px",
+                            padding: "4px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            color: "var(--muted)",
                           }}
                           title="ฟังเสียงอ่าน"
                           aria-label={`ฟังเสียงอ่านคำว่า ${rec.word}`}
                         >
-                          🔊
+                          <Volume2 className="w-4 h-4" />
                         </button>
                       </div>
 
@@ -929,7 +964,8 @@ export default function WorkspaceResultCard({
                 className="workspace-draft-btn"
                 style={{ fontSize: "11px", padding: "4px 8px" }}
               >
-                🔊 ฟังเสียง
+                <Volume2 className="w-3.5 h-3.5" />
+                <span>ฟังเสียง</span>
               </button>
             </div>
 

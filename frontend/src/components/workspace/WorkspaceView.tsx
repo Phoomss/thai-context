@@ -1,6 +1,23 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import {
+  Target,
+  BookOpen,
+  Scale,
+  PenTool,
+  CheckCircle2,
+  Accessibility,
+  Sparkles,
+  RotateCcw,
+  Volume2,
+  Copy,
+  Trash2,
+  Scissors,
+  Building,
+  Globe,
+  Send,
+} from "lucide-react";
 import AgentPipelineStatus from "./AgentPipelineStatus";
 import WorkspaceResultCard, { type WorkspaceResultTab } from "./WorkspaceResultCard";
 import { executeWorkspace } from "@/lib/api-client";
@@ -10,6 +27,25 @@ import type {
   WorkspaceResponsePayload,
   WorkspaceRequestPayload,
 } from "@/lib/workspace-types";
+
+export interface EmotionTone {
+  id: string;
+  emoji: string;
+  label: string;
+  pitch: number;
+  rate: number;
+  desc: string;
+}
+
+export const EMOTION_TONES: EmotionTone[] = [
+  { id: "cheerful", emoji: "😊", label: "สดใส / ร่าเริง", pitch: 1.3, rate: 1.05, desc: "น้ำเสียงสดชื่น มีชีวิตชีวา เบิกบานใจ" },
+  { id: "empathetic", emoji: "🥺", label: "ซาบซึ้ง / เห็นใจ", pitch: 0.88, rate: 0.82, desc: "น้ำเสียงอบอุ่น เข้าอกเข้าใจ ซึ้งกินใจ" },
+  { id: "formal", emoji: "🧐", label: "สุขุม / ลึกซึ้ง", pitch: 0.92, rate: 0.88, desc: "น้ำเสียงหนักแน่น น่าเชื่อถือ มีวุฒิภาวะ" },
+  { id: "intense", emoji: "😠", label: "หนักแน่น / ดุดัน", pitch: 0.78, rate: 0.95, desc: "น้ำเสียงจริงจัง มุ่งมั่น ชัดเจนไม่ลังเล" },
+  { id: "tender", emoji: "💖", label: "อ่อนโยน / อบอุ่น", pitch: 1.1, rate: 0.8, desc: "น้ำเสียงนุ่มนวล ปลอบประโลม ห่วงใย" },
+  { id: "excited", emoji: "🥳", label: "ตื่นเต้น / เร้าใจ", pitch: 1.4, rate: 1.18, desc: "น้ำเสียงเปี่ยมพลัง ตื่นตัว เร้าอารมณ์" },
+  { id: "peaceful", emoji: "🕊️", label: "สงบ / นอบน้อม", pitch: 1.02, rate: 0.85, desc: "น้ำเสียงนอบน้อม สุภาพ นุ่มลึก" },
+];
 
 const DEMO_PRESETS = [
   {
@@ -104,6 +140,12 @@ export default function WorkspaceView() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [activeDraft, setActiveDraft] = useState<string>("");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Speak to emotion states
+  const [isEmotionMode, setIsEmotionMode] = useState(false);
+  const [isStudioEmotionOpen, setIsStudioEmotionOpen] = useState(false);
+  const [selectedEmotion, setSelectedEmotion] = useState<EmotionTone | null>(null);
+  const [isSpeakingEmotion, setIsSpeakingEmotion] = useState(false);
 
   // Interactive 5-Step Workflow & Filter Tab state
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -273,6 +315,9 @@ export default function WorkspaceView() {
     setActiveDraft("");
     setCurrentStep(1);
     setActiveTab("all");
+    setSelectedEmotion(null);
+    setIsEmotionMode(false);
+    setIsStudioEmotionOpen(false);
     setErrorMessage(null);
     showToast("เริ่มเซสชันใหม่เรียบร้อยแล้ว");
   };
@@ -285,6 +330,38 @@ export default function WorkspaceView() {
       pos: "ข้อความ",
       definition: "",
     } as unknown as Recommendation);
+  };
+
+  const handleSpeakWithEmotion = (tone: EmotionTone) => {
+    const textToSpeak = activeDraft.trim() || query.trim() || "ระบบภาษาไทยเพื่อความเข้าใจบริบทอย่างลึกซึ้ง";
+    setSelectedEmotion(tone);
+
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = "th-TH";
+        utterance.pitch = tone.pitch;
+        utterance.rate = tone.rate;
+
+        utterance.onstart = () => setIsSpeakingEmotion(true);
+        utterance.onend = () => setIsSpeakingEmotion(false);
+        utterance.onerror = () => setIsSpeakingEmotion(false);
+
+        const voices = window.speechSynthesis.getVoices();
+        const thaiVoice = voices.find((v) => v.lang?.toLowerCase().startsWith("th"));
+        if (thaiVoice) utterance.voice = thaiVoice;
+
+        window.speechSynthesis.speak(utterance);
+        showToast(`🎭 กำลังอ่านด้วยอารมณ์: ${tone.emoji} ${tone.label}`);
+      } catch {
+        handleDraftSpeak();
+        showToast(`🎭 กำลังอ่านด้วยอารมณ์: ${tone.emoji} ${tone.label}`);
+      }
+    } else {
+      handleDraftSpeak();
+      showToast(`🎭 กำลังอ่านด้วยอารมณ์: ${tone.emoji} ${tone.label}`);
+    }
   };
 
   const handleDraftCopy = () => {
@@ -308,7 +385,8 @@ export default function WorkspaceView() {
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
           <div>
             <div className="workspace-eyebrow">
-              <span>✦</span> UNIFIED AI LANGUAGE WORKSPACE
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>UNIFIED AI LANGUAGE WORKSPACE</span>
             </div>
             <h1 className="workspace-title" style={{ margin: "6px 0 8px" }}>
               THAI CONTEXT Workspace
@@ -325,7 +403,7 @@ export default function WorkspaceView() {
               className="workspace-nav-btn"
               title="เริ่มเซสชันใหม่ เคลียร์บริบทที่จำไว้"
             >
-              <span>🔄</span>
+              <RotateCcw className="w-4 h-4" />
               <span>เริ่มเซสชันใหม่</span>
             </button>
           </div>
@@ -341,6 +419,7 @@ export default function WorkspaceView() {
           title="คลิกเพื่อไประบุเจตนาการใช้งาน"
         >
           <span className="workspace-step-num">1</span>
+          <Target className="w-4 h-4" />
           <span>ระบุเจตนา</span>
         </button>
         <button
@@ -350,6 +429,7 @@ export default function WorkspaceView() {
           title="คลิกเพื่อดูคลังคำศัพท์ที่ค้นพบ"
         >
           <span className="workspace-step-num">2</span>
+          <BookOpen className="w-4 h-4" />
           <span>ค้นพบคำศัพท์</span>
         </button>
         <button
@@ -359,6 +439,7 @@ export default function WorkspaceView() {
           title="คลิกเพื่อดูการเปรียบเทียบเฉดคำ"
         >
           <span className="workspace-step-num">3</span>
+          <Scale className="w-4 h-4" />
           <span>เปรียบเทียบเฉด</span>
         </button>
         <button
@@ -368,6 +449,7 @@ export default function WorkspaceView() {
           title="คลิกเพื่อดูข้อความที่แต่งและเรียบเรียง"
         >
           <span className="workspace-step-num">4</span>
+          <PenTool className="w-4 h-4" />
           <span>แต่งและเรียบเรียง</span>
         </button>
         <button
@@ -377,6 +459,7 @@ export default function WorkspaceView() {
           title="คลิกเพื่อดูการตรวจทานภาษาและความสละสลวย"
         >
           <span className="workspace-step-num">5</span>
+          <CheckCircle2 className="w-4 h-4" />
           <span>ตรวจทานภาษา</span>
         </button>
         <button
@@ -386,6 +469,7 @@ export default function WorkspaceView() {
           title="คลิกเพื่อดูความพร้อมด้านการเข้าถึง ภาษามือไทย และอักษรเบรลล์"
         >
           <span className="workspace-step-num">6</span>
+          <Accessibility className="w-4 h-4" />
           <span>♿ การเข้าถึง</span>
         </button>
       </div>
@@ -404,8 +488,11 @@ export default function WorkspaceView() {
                   <button
                     key={ctx}
                     type="button"
-                    onClick={() => setSelectedContext(ctx)}
-                    className={`workspace-context-pill ${selectedContext === ctx ? "active" : ""}`}
+                    onClick={() => {
+                      setSelectedContext(ctx);
+                      setIsEmotionMode(false);
+                    }}
+                    className={`workspace-context-pill ${selectedContext === ctx && !isEmotionMode ? "active" : ""}`}
                   >
                     {ctx === "academic"
                       ? "🎓 วิชาการ"
@@ -416,6 +503,22 @@ export default function WorkspaceView() {
                       : "💬 สนทนา"}
                   </button>
                 ))}
+
+                {/* Speak to Emotion Mode Toggle */}
+                <button
+                  type="button"
+                  onClick={() => setIsEmotionMode(!isEmotionMode)}
+                  className={`workspace-context-pill ${isEmotionMode ? "active" : ""}`}
+                  style={{
+                    background: isEmotionMode ? "#ea580c" : "#fff7ed",
+                    color: isEmotionMode ? "#ffffff" : "#c2410c",
+                    borderColor: "#fed7aa",
+                    fontWeight: 600,
+                  }}
+                  title="เปิดโหมดพูดสื่ออารมณ์"
+                >
+                  <span>🎭 Speak to emotion</span>
+                </button>
               </div>
 
               {sessionId && (
@@ -424,6 +527,44 @@ export default function WorkspaceView() {
                 </span>
               )}
             </div>
+
+            {/* Speak to Emotion Menu / Toolbar - USES EMOJIS! */}
+            {isEmotionMode && (
+              <div className="workspace-emotion-menu" style={{ marginBottom: "16px" }}>
+                <div className="workspace-emotion-header">
+                  <div className="workspace-emotion-title">
+                    <span>🎭</span>
+                    <span>Speak to emotion — เลือกอารมณ์เพื่อแต่งประโยคหรืออ่านออกเสียง:</span>
+                  </div>
+                  {selectedEmotion && (
+                    <span style={{ fontSize: "11px", color: "#ea580c", fontWeight: 700 }}>
+                      อารมณ์ปัจจุบัน: {selectedEmotion.emoji} {selectedEmotion.label}
+                    </span>
+                  )}
+                </div>
+                <div className="workspace-emotion-grid">
+                  {EMOTION_TONES.map((tone) => {
+                    const isSelected = selectedEmotion?.id === tone.id;
+                    return (
+                      <button
+                        key={tone.id}
+                        type="button"
+                        onClick={() => {
+                          setSelectedEmotion(tone);
+                          setSelectedContext(tone.id);
+                          showToast(`เลือกอารมณ์: ${tone.emoji} ${tone.label}`);
+                        }}
+                        className={`workspace-emotion-btn ${isSelected ? "active" : ""}`}
+                        title={tone.desc}
+                      >
+                        <span className="workspace-emotion-emoji">{tone.emoji}</span>
+                        <span>{tone.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {/* Textarea Composer */}
             <div className="workspace-textarea-wrap">
@@ -452,17 +593,17 @@ export default function WorkspaceView() {
                   disabled={isLoading || !query.trim()}
                   onClick={() => handleSend()}
                   className="workspace-submit-btn"
-                  style={{ width: "auto", minWidth: "200px" }}
+                  style={{ width: "auto", minWidth: "220px" }}
                 >
                   {isLoading ? (
                     <>
                       <span style={{ display: "inline-block", width: "14px", height: "14px", border: "2px solid rgba(255,255,255,0.3)", borderTopColor: "white", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
-                      กำลังประมวลผล...
+                      <span>กำลังประมวลผล...</span>
                     </>
                   ) : (
                     <>
+                      <Send className="w-4 h-4" />
                       <span>ประมวลผล Workspace</span>
-                      <span>➔</span>
                     </>
                   )}
                 </button>
@@ -622,8 +763,9 @@ export default function WorkspaceView() {
 
                 {/* Continuation Action Bar */}
                 <div className="workspace-card" style={{ marginTop: "24px" }}>
-                  <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--ink)", marginBottom: "12px" }}>
-                    ⚡ ขั้นตอนถัดไปที่คุณสามารถทำต่อได้ทันที (Next Actions):
+                  <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--ink)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "6px" }}>
+                    <Sparkles className="w-4 h-4 text-blue-600" />
+                    <span>ขั้นตอนถัดไปที่คุณสามารถทำต่อได้ทันที (Next Actions):</span>
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                     {currentResult?.accessibility_layer && (
@@ -637,7 +779,8 @@ export default function WorkspaceView() {
                         className="workspace-draft-btn"
                         style={{ color: "var(--accent)", fontWeight: 700, borderColor: "#bfdbfe", background: "#f0fdf4" }}
                       >
-                        ♿ ดูผลความพร้อมการเข้าถึงและเบรลล์
+                        <Accessibility className="w-3.5 h-3.5" />
+                        <span>♿ ดูผลความพร้อมการเข้าถึงและเบรลล์</span>
                       </button>
                     )}
                     <button
@@ -645,28 +788,45 @@ export default function WorkspaceView() {
                       onClick={() => handleSend("ทำให้สั้นลงและกระชับขึ้น")}
                       className="workspace-draft-btn"
                     >
-                      ✂️ ทำให้สั้นลง
+                      <Scissors className="w-3.5 h-3.5" />
+                      <span>✂️ ทำให้สั้นลง</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => handleSend("ปรับให้เป็นทางการตามระเบียบงานสารบรรณ")}
                       className="workspace-draft-btn"
                     >
-                      🏛️ ปรับให้เป็นภาษาทางการ
+                      <Building className="w-3.5 h-3.5" />
+                      <span>🏛️ ปรับให้เป็นภาษาทางการ</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => handleSend("ช่วยตรวจภาษาและคำซ้ำซ้อน")}
                       className="workspace-draft-btn"
                     >
-                      🔍 ตรวจสอบคำซ้ำซ้อน
+                      <CheckCircle2 className="w-3.5 h-3.5 text-green-600" />
+                      <span>🔍 ตรวจสอบคำซ้ำซ้อน</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => handleSend("แปลเป็นภาษาอังกฤษและอธิบายบริบทวัฒนธรรม")}
                       className="workspace-draft-btn"
                     >
-                      🌐 อธิบายเป็นภาษาอังกฤษ (Cross-Cultural)
+                      <Globe className="w-3.5 h-3.5 text-indigo-600" />
+                      <span>🌐 อธิบายเป็นภาษาอังกฤษ (Cross-Cultural)</span>
+                    </button>
+
+                    {/* Speak to Emotion Next Action with Emoji */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsStudioEmotionOpen(true);
+                        showToast("เปิดเมนู 🎭 Speak to emotion ในหน้าต่างตอบกลับแล้ว");
+                      }}
+                      className="workspace-draft-btn"
+                      style={{ background: "#fff7ed", borderColor: "#fed7aa", color: "#ea580c", fontWeight: 700 }}
+                    >
+                      <span>🎭 Speak to emotion</span>
                     </button>
                   </div>
                 </div>
@@ -754,8 +914,27 @@ export default function WorkspaceView() {
                 className="workspace-draft-btn"
                 title="ฟังเสียงอ่านคำตอบจาก AI"
               >
-                🔊 ฟังเสียง
+                <Volume2 className="w-4 h-4" />
+                <span>ฟังเสียง</span>
               </button>
+
+              {/* Speak to Emotion Menu Button */}
+              <button
+                type="button"
+                onClick={() => setIsStudioEmotionOpen(!isStudioEmotionOpen)}
+                disabled={!activeDraft.trim()}
+                className="workspace-draft-btn"
+                style={{
+                  background: isStudioEmotionOpen ? "#fff7ed" : "white",
+                  borderColor: isStudioEmotionOpen ? "#f97316" : "var(--border)",
+                  color: isStudioEmotionOpen ? "#c2410c" : "var(--muted)",
+                  fontWeight: 600,
+                }}
+                title="เปิดเมนูพูดสื่ออารมณ์ (Speak to emotion)"
+              >
+                <span>🎭 Speak to emotion</span>
+              </button>
+
               <button
                 type="button"
                 onClick={handleDraftCopy}
@@ -764,7 +943,8 @@ export default function WorkspaceView() {
                 title="คัดลอกคำตอบลงคลิปบอร์ด"
                 style={{ fontWeight: 600, color: "var(--accent)" }}
               >
-                📋 คัดลอก
+                <Copy className="w-4 h-4" />
+                <span>คัดลอก</span>
               </button>
               <button
                 type="button"
@@ -773,14 +953,69 @@ export default function WorkspaceView() {
                 className="workspace-draft-btn"
                 title="ล้างข้อความตอบกลับ"
               >
-                🗑️ ล้าง
+                <Trash2 className="w-4 h-4" />
+                <span>ล้าง</span>
               </button>
             </div>
 
+            {/* Speak to Emotion Menu inside Studio - USES EMOJIS! */}
+            {isStudioEmotionOpen && (
+              <div className="workspace-emotion-menu">
+                <div className="workspace-emotion-header">
+                  <div className="workspace-emotion-title">
+                    <span>🎭</span>
+                    <span>Speak to emotion — เลือกอารมณ์เพื่อฟังเสียงอ่าน:</span>
+                  </div>
+                  {isSpeakingEmotion && (
+                    <span style={{ fontSize: "11px", color: "#ea580c", fontWeight: 700 }}>
+                      🔊 กำลังอ่านออกเสียง...
+                    </span>
+                  )}
+                </div>
+                <div className="workspace-emotion-grid">
+                  {EMOTION_TONES.map((tone) => (
+                    <button
+                      key={tone.id}
+                      type="button"
+                      onClick={() => handleSpeakWithEmotion(tone)}
+                      className="workspace-emotion-btn"
+                      title={`${tone.desc} (คลิกเพื่อฟังเสียง)`}
+                    >
+                      <span className="workspace-emotion-emoji">{tone.emoji}</span>
+                      <span>{tone.label}</span>
+                    </button>
+                  ))}
+                </div>
+                <div style={{ marginTop: "10px", paddingTop: "8px", borderTop: "1px dashed #fed7aa", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "6px" }}>
+                  <span style={{ fontSize: "11px", color: "#9a3412" }}>
+                    💡 คลิกที่อีโมจิเพื่อฟังเสียงสำเนียงและระดับเสียงตามอารมณ์ทันที
+                  </span>
+                  {selectedEmotion && (
+                    <button
+                      type="button"
+                      onClick={() => handleSend(`ปรับสำนวนข้อความนี้ให้สื่ออารมณ์ ${selectedEmotion.label}: ${activeDraft}`)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        fontSize: "11px",
+                        color: "#ea580c",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      ✍️ ปรับสำนวนเป็น {selectedEmotion.emoji} {selectedEmotion.label}
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Quick Actions for AI Response Text */}
             <div style={{ marginTop: "16px", paddingTop: "14px", borderTop: "1px solid var(--border)" }}>
-              <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--text-muted)", marginBottom: "8px" }}>
-                ⚡ สั่ง AI ปรับปรุงข้อความตอบกลับนี้ต่อ:
+              <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--text-muted)", marginBottom: "8px", display: "flex", alignItems: "center", gap: "5px" }}>
+                <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                <span>สั่ง AI ปรับปรุงข้อความตอบกลับนี้ต่อ:</span>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 <button
@@ -790,7 +1025,8 @@ export default function WorkspaceView() {
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px" }}
                 >
-                  ✂️ ทำให้สั้นลง
+                  <Scissors className="w-3 h-3" />
+                  <span>ทำให้สั้นลง</span>
                 </button>
                 <button
                   type="button"
@@ -799,7 +1035,8 @@ export default function WorkspaceView() {
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px" }}
                 >
-                  🏛️ ภาษาทางการ
+                  <Building className="w-3 h-3" />
+                  <span>ภาษาทางการ</span>
                 </button>
                 <button
                   type="button"
@@ -808,7 +1045,8 @@ export default function WorkspaceView() {
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px" }}
                 >
-                  🎓 เชิงวิชาการ
+                  <PenTool className="w-3 h-3" />
+                  <span>เชิงวิชาการ</span>
                 </button>
                 <button
                   type="button"
@@ -817,7 +1055,8 @@ export default function WorkspaceView() {
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px", color: "var(--green)" }}
                 >
-                  🔍 ตรวจสอบคำซ้ำซ้อน
+                  <CheckCircle2 className="w-3 h-3" />
+                  <span>ตรวจสอบคำซ้ำซ้อน</span>
                 </button>
                 <button
                   type="button"
@@ -826,7 +1065,17 @@ export default function WorkspaceView() {
                   className="workspace-draft-btn"
                   style={{ fontSize: "11px", padding: "4px 8px", color: "var(--accent)" }}
                 >
-                  ♿ ตรวจการเข้าถึง & เบรลล์
+                  <Accessibility className="w-3 h-3" />
+                  <span>ตรวจการเข้าถึง & เบรลล์</span>
+                </button>
+                <button
+                  type="button"
+                  disabled={!activeDraft.trim()}
+                  onClick={() => setIsStudioEmotionOpen(true)}
+                  className="workspace-draft-btn"
+                  style={{ fontSize: "11px", padding: "4px 8px", background: "#fff7ed", borderColor: "#fed7aa", color: "#ea580c", fontWeight: 700 }}
+                >
+                  <span>🎭 Speak to emotion</span>
                 </button>
               </div>
             </div>
